@@ -237,7 +237,7 @@
 <p>后来该博客经过几次改版，自己发现不怎么适应。因此就转到了博客园。相比前者的经常改版，甚至有段时间广告频繁，博客园就好很多，页面也非常清爽。</p>
 <p>………………</p>
 <p>等等，后期可能还会有其他动作，敬请期待…………</p>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><p>邮箱：<a href="mailto:&#x33;&#49;&#55;&#57;&#54;&#50;&#x33;&#x34;&#x35;&#48;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#x33;&#49;&#55;&#57;&#54;&#50;&#x33;&#x34;&#x35;&#48;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;</a><br>QQ: 3179623450</p>
+<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><p>邮箱：<a href="mailto:&#51;&#49;&#55;&#x39;&#x36;&#x32;&#x33;&#x34;&#x35;&#x30;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#51;&#49;&#55;&#x39;&#x36;&#x32;&#x33;&#x34;&#x35;&#x30;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a><br>QQ: 3179623450</p>
 <br>
 
 <center>
@@ -413,14 +413,9 @@
                 console.error('Failed to save visitor count', error);
               });
           } else {
-              Counter('post', '/classes/Counter', { title, url, time: 1 })
-                .then(response => response.json())
-                .then(() => {
-                  leancloudSelector(url).innerText = 1;
-                })
-                .catch(error => {
-                  console.error('Failed to create', error);
-                });
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
           }
         })
         .catch(error => {
@@ -447,7 +442,7 @@
         });
     }
 
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"6j19UEsrl7OzSd1pKymBePYy-gzGzoHsz","app_key":"D2EuWdtLiuAmXyxqPMEPkreM","server_url":null,"security":false,"betterPerformance":false};
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"6j19UEsrl7OzSd1pKymBePYy-gzGzoHsz","app_key":"D2EuWdtLiuAmXyxqPMEPkreM","server_url":null,"security":true,"betterPerformance":false};
     function fetchData(api_server) {
       var Counter = (method, url, data) => {
         return fetch(`${api_server}/1.1${url}`, {
