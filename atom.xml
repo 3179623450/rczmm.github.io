@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2021-07-21T15:15:56.723Z</updated>
+  <updated>2021-07-23T13:50:48.576Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java发展历史</title>
+    <link href="http://rczmm.github.io/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/"/>
+    <id>http://rczmm.github.io/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</id>
+    <published>2021-07-23T13:35:45.000Z</published>
+    <updated>2021-07-23T13:50:48.576Z</updated>
+    
+    <content type="html"><![CDATA[<p>java发展历史</p><p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>java语言诞生于20世纪90年代，经过长期的发展，已经成为最流行的编程语言之一，java不但广泛应用在服务端编程上，而且各个移动设备也大量使用java平台。</p><p>java是sun公司开发出来的一套编程语言，来源于一个green的嵌入式程序项目，目的是为了电子消费产品开发一个分布式代码系统，这样子就可以通过网络对家用电器进行控制。</p><p>在green项目最开始，工程师本来是打算c++进行开发，但是考虑到c++语言开发的复杂性，于是就基于c++设计了自己的一套的独立平台oak，这个就被称为是java的前身，是一种用于网络的安全语言，刚好碰到了当时的一个mosaic和netscape项目，这两个项目启发了oak的工程师，于是他们设计了一个hotjava浏览器，触发了java进军互联网，但是由于后来互联网低潮，sun公司被oracle收购。</p><p>java是一门综合性的编程语言，从最初设计的时候就考虑了嵌入式系统开发以及企业平台的支持。</p><p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=2578611845,4184638346&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>实际java开发过程之中，主要有三种方向。</p><p>java se （java标准开发，包含的主要是语言核心类，（jdbc、接口定义、输入输出、网络io）当用户安装jdk之后，就自动支持java se开发）</p><p>java ee（包含了java se部分的类，用于是电子产品的软件开发，但是此类开发已经几乎被安卓替代）</p><p>java me（包含se所有类，并且还包含了开发企业级的应用类。（xml、事务控制、jsp、servlet）、也是目前大型系统和互联网项目开发的主要平台）</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;java发展历史&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg&quot; alt=&quot;img&quot;&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>笔趣阁爬虫—scrapy小实例</title>
