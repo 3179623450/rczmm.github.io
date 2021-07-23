@@ -19,28 +19,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java发展历史</title>
-    <url>/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
-    <content><![CDATA[<p>java发展历史</p>
-<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
-<p>java语言诞生于20世纪90年代，经过长期的发展，已经成为最流行的编程语言之一，java不但广泛应用在服务端编程上，而且各个移动设备也大量使用java平台。</p>
-<p>java是sun公司开发出来的一套编程语言，来源于一个green的嵌入式程序项目，目的是为了电子消费产品开发一个分布式代码系统，这样子就可以通过网络对家用电器进行控制。</p>
-<p>在green项目最开始，工程师本来是打算c++进行开发，但是考虑到c++语言开发的复杂性，于是就基于c++设计了自己的一套的独立平台oak，这个就被称为是java的前身，是一种用于网络的安全语言，刚好碰到了当时的一个mosaic和netscape项目，这两个项目启发了oak的工程师，于是他们设计了一个hotjava浏览器，触发了java进军互联网，但是由于后来互联网低潮，sun公司被oracle收购。</p>
-<p>java是一门综合性的编程语言，从最初设计的时候就考虑了嵌入式系统开发以及企业平台的支持。</p>
-<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=2578611845,4184638346&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
-<p>实际java开发过程之中，主要有三种方向。</p>
-<p>java se （java标准开发，包含的主要是语言核心类，（jdbc、接口定义、输入输出、网络io）当用户安装jdk之后，就自动支持java se开发）</p>
-<p>java ee（包含了java se部分的类，用于是电子产品的软件开发，但是此类开发已经几乎被安卓替代）</p>
-<p>java me（包含se所有类，并且还包含了开发企业级的应用类。（xml、事务控制、jsp、servlet）、也是目前大型系统和互联网项目开发的主要平台）</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java语言特点</title>
     <url>/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/</url>
     <content><![CDATA[<p>java语言特点</p>
@@ -70,6 +48,28 @@
 <p>lambda表达式编程</p>
 <p>11、模块化支持</p>
 <p>拉锯（代码名字）、jdk9之后的功能。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java发展历史</title>
+    <url>/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
+    <content><![CDATA[<p>java发展历史</p>
+<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>java语言诞生于20世纪90年代，经过长期的发展，已经成为最流行的编程语言之一，java不但广泛应用在服务端编程上，而且各个移动设备也大量使用java平台。</p>
+<p>java是sun公司开发出来的一套编程语言，来源于一个green的嵌入式程序项目，目的是为了电子消费产品开发一个分布式代码系统，这样子就可以通过网络对家用电器进行控制。</p>
+<p>在green项目最开始，工程师本来是打算c++进行开发，但是考虑到c++语言开发的复杂性，于是就基于c++设计了自己的一套的独立平台oak，这个就被称为是java的前身，是一种用于网络的安全语言，刚好碰到了当时的一个mosaic和netscape项目，这两个项目启发了oak的工程师，于是他们设计了一个hotjava浏览器，触发了java进军互联网，但是由于后来互联网低潮，sun公司被oracle收购。</p>
+<p>java是一门综合性的编程语言，从最初设计的时候就考虑了嵌入式系统开发以及企业平台的支持。</p>
+<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=2578611845,4184638346&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>实际java开发过程之中，主要有三种方向。</p>
+<p>java se （java标准开发，包含的主要是语言核心类，（jdbc、接口定义、输入输出、网络io）当用户安装jdk之后，就自动支持java se开发）</p>
+<p>java ee（包含了java se部分的类，用于是电子产品的软件开发，但是此类开发已经几乎被安卓替代）</p>
+<p>java me（包含se所有类，并且还包含了开发企业级的应用类。（xml、事务控制、jsp、servlet）、也是目前大型系统和互联网项目开发的主要平台）</p>
 ]]></content>
       <categories>
         <category>java</category>
@@ -363,26 +363,34 @@
       </tags>
   </entry>
   <entry>
-    <title>异常</title>
-    <url>/2021/07/20/%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<p>异常</p>
-<p>程序在运行当中，不可避免的会产生一些错误。</p>
-<p>​    使用了没有赋值的变量，使用了不存在的索引、使用了过深的递归、传入了无效的参数…</p>
-<p>一旦出现异常，程序会立即停止。</p>
-<p>处理异常</p>
-<p>python是希望在出现异常的时候，程序不停，可以编写代码来对异常进行处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">	代码块（可能出现异常的语句）</span><br><span class="line">except 异常类型 as 异常名（可以自定义）:</span><br><span class="line">	代码块（程序出错了的处理方式）</span><br><span class="line">else:</span><br><span class="line">	代码块（没出错要执行的语句）</span><br><span class="line">finally:</span><br><span class="line">	代码块（一定会执行，无论是否出错的语句）</span><br></pre></td></tr></table></figure>
-
-<p>try语句是必须的，else则不是，except和finally至少要有一股</p>
-<p>raise语句 抛出异常</p>
-<p>常见的异常对象</p>
-<p>nameerror（你的变量名称为找到，函数名称，类名称。变量没有定义）</p>
-<p>recursionerror（超过最大递归深度）</p>
-<p>syntaxerror 语法错误</p>
-<p>timeoueerror 超时</p>
-<p>typeerror 类型错误（print（1+“sasda”））</p>
-<p>valueerror   int（”12.2月”）</p>
-<p>keyerror </p>
+    <title>序列</title>
+    <url>/2021/07/20/%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<p>序列</p>
+<p>1、列表 list</p>
+<p>​    1、列表是python中的一个对象</p>
+<p>​    2、之前所说的对象，他只能单一的保存数据</p>
+<p>​    3、列表可以保存很多个<strong>有序</strong>的数据</p>
+<p>​    4、列表是用来存储对象的对象</p>
+<p>​    5、列表的使用（本身、里面数据）</p>
+<p>2、序列</p>
+<p>​    1、序列是python中最基本的数据结构</p>
+<p>​    2、数据结构是计算机中数据储存的方式</p>
+<p>​    3、序列用于保存一组有序的数据，所有数据在序列当中是唯一的。（索引）</p>
+<p>​    4、序列中的数据会按照添加的顺序来分配索引（从0开始）</p>
+<p>​    5、序列的分类：</p>
+<p>​            可变序列：list</p>
+<p>​            不可变序列：str、tuple</p>
+<p>3、字典 dict</p>
+<p>​    1、字典又叫映射（mapping）</p>
+<p>​    2、列表存的性能很好，查的性能很差。</p>
+<p>​    3、字典查的性能很好，在字典中，每一个元素都有一个唯一的名字，通过这个名字可以很快的找到指定的元素</p>
+<p>​    4、字典有可以被称为键值对，唯一的名字，键，那个值叫做值</p>
+<p>4、集合 set</p>
+<pre><code> 1、集合和列表很像
+</code></pre>
+<p>​     2、集合只能存不可变的对象</p>
+<p>​     3、集合中的对象是无序的</p>
+<p>​     4、集合中不能出现重复的元素</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -488,34 +496,26 @@
       </tags>
   </entry>
   <entry>
-    <title>序列</title>
-    <url>/2021/07/20/%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p>序列</p>
-<p>1、列表 list</p>
-<p>​    1、列表是python中的一个对象</p>
-<p>​    2、之前所说的对象，他只能单一的保存数据</p>
-<p>​    3、列表可以保存很多个<strong>有序</strong>的数据</p>
-<p>​    4、列表是用来存储对象的对象</p>
-<p>​    5、列表的使用（本身、里面数据）</p>
-<p>2、序列</p>
-<p>​    1、序列是python中最基本的数据结构</p>
-<p>​    2、数据结构是计算机中数据储存的方式</p>
-<p>​    3、序列用于保存一组有序的数据，所有数据在序列当中是唯一的。（索引）</p>
-<p>​    4、序列中的数据会按照添加的顺序来分配索引（从0开始）</p>
-<p>​    5、序列的分类：</p>
-<p>​            可变序列：list</p>
-<p>​            不可变序列：str、tuple</p>
-<p>3、字典 dict</p>
-<p>​    1、字典又叫映射（mapping）</p>
-<p>​    2、列表存的性能很好，查的性能很差。</p>
-<p>​    3、字典查的性能很好，在字典中，每一个元素都有一个唯一的名字，通过这个名字可以很快的找到指定的元素</p>
-<p>​    4、字典有可以被称为键值对，唯一的名字，键，那个值叫做值</p>
-<p>4、集合 set</p>
-<pre><code> 1、集合和列表很像
-</code></pre>
-<p>​     2、集合只能存不可变的对象</p>
-<p>​     3、集合中的对象是无序的</p>
-<p>​     4、集合中不能出现重复的元素</p>
+    <title>异常</title>
+    <url>/2021/07/20/%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>异常</p>
+<p>程序在运行当中，不可避免的会产生一些错误。</p>
+<p>​    使用了没有赋值的变量，使用了不存在的索引、使用了过深的递归、传入了无效的参数…</p>
+<p>一旦出现异常，程序会立即停止。</p>
+<p>处理异常</p>
+<p>python是希望在出现异常的时候，程序不停，可以编写代码来对异常进行处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">try:</span><br><span class="line">	代码块（可能出现异常的语句）</span><br><span class="line">except 异常类型 as 异常名（可以自定义）:</span><br><span class="line">	代码块（程序出错了的处理方式）</span><br><span class="line">else:</span><br><span class="line">	代码块（没出错要执行的语句）</span><br><span class="line">finally:</span><br><span class="line">	代码块（一定会执行，无论是否出错的语句）</span><br></pre></td></tr></table></figure>
+
+<p>try语句是必须的，else则不是，except和finally至少要有一股</p>
+<p>raise语句 抛出异常</p>
+<p>常见的异常对象</p>
+<p>nameerror（你的变量名称为找到，函数名称，类名称。变量没有定义）</p>
+<p>recursionerror（超过最大递归深度）</p>
+<p>syntaxerror 语法错误</p>
+<p>timeoueerror 超时</p>
+<p>typeerror 类型错误（print（1+“sasda”））</p>
+<p>valueerror   int（”12.2月”）</p>
+<p>keyerror </p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -577,50 +577,6 @@
       <tags>
         <tag>java</tag>
         <tag>jdk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>流程控制语句</title>
-    <url>/2021/07/20/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h2 id="流程控制语句（练习）"><a href="#流程控制语句（练习）" class="headerlink" title="流程控制语句（练习）"></a>流程控制语句（练习）</h2><h2 id="1、获取用户输入，判断奇数还是偶数"><a href="#1、获取用户输入，判断奇数还是偶数" class="headerlink" title="1、获取用户输入，判断奇数还是偶数"></a>1、获取用户输入，判断奇数还是偶数</h2><p>​    input函数的返回值默认是字符串类型，而字符串类型是无法直接用整形的运算符的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">num=int（input(&quot;请输入一个任意的整数：&quot;)）</span><br><span class="line">if num%2==0:</span><br><span class="line">    print(&quot;偶数！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;奇数&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、检查一个年份是否是闰年"><a href="#2、检查一个年份是否是闰年" class="headerlink" title="2、检查一个年份是否是闰年"></a>2、检查一个年份是否是闰年</h2><p>​    闰年：年份可以被4整除并且不能被100整除，或者可以被400整除，这个年份刚好就是闰年</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">year=int(input(&quot;请输入一个任意的年份：&quot;))</span><br><span class="line">if year %4==0 and year % 100==0 or year % 400 ==0:</span><br><span class="line">    print(year,&quot;是闰年&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(year,&quot;不是闰年！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"><a href="#3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？" class="headerlink" title="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"></a>3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？</h2><p>​    狗的年纪：狗的前两年的每一年相当于人类的10.5岁，然后每一年增加四岁。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dog_age=float(input(&quot;请输入狗的年龄：&quot;))</span><br><span class="line">like_person_age=0</span><br><span class="line">if dog_age&gt;0:</span><br><span class="line">    if dog_age&lt;=2:</span><br><span class="line">        like_person_age=dog_age*10.5</span><br><span class="line">    else:</span><br><span class="line">        like_person_age=2*10.5</span><br><span class="line">        like_person_age+=(dog_age-2)*4</span><br><span class="line">    print(dog_age,&quot;岁的狗，相当于人类年龄的&quot;,like_person_age,&#x27;岁&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;请输入一个合法的年龄！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、小鹏的期末成绩"><a href="#4、小鹏的期末成绩" class="headerlink" title="4、小鹏的期末成绩"></a>4、小鹏的期末成绩</h2><p>​    当成绩为100的时候，奖励一台手机</p>
-<p>​    当成绩为80到99的时候，奖励一台ps4</p>
-<p>​    当成绩为60到79的时候，奖励他一本参考书</p>
-<p>​    其他，奖励他一个大嘴巴子</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">score=int(input(&quot;请输入小鹏的成绩：&quot;))</span><br><span class="line"># 来一条华丽的分割线</span><br><span class="line">print(&quot;==&quot;*40)</span><br><span class="line"># 检查用户的输入</span><br><span class="line">if 0 &lt;= score &lt;= 100:</span><br><span class="line">    # 判断奖励</span><br><span class="line">    if score == 100:</span><br><span class="line">        print(&quot;奖励一台手机&quot;)</span><br><span class="line">    elif score &gt;= 80:</span><br><span class="line">        print(&quot;ps4，拿去玩吧！&quot;)</span><br><span class="line">    elif score &gt;= 60:</span><br><span class="line">        print(&quot;参考书！拿去！&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;大嘴巴子！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入内容不合法！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"><a href="#5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件" class="headerlink" title="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"></a>5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件</h2><p>​    高：180dm以上，富：1000块以上，帅：颜值分250以上</p>
-<p>​    如果三个条件都满足，“一定能娶到老婆”</p>
-<p>​    如果三个条件有一个满足，“有可能娶到老婆”</p>
-<p>​    如果三个条件都不满足，“一定娶不到”</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">height=int(input(&quot;请输入你的身高！&quot;))</span><br><span class="line">money=int(input(&quot;请输入你的余额！&quot;))</span><br><span class="line">face=int(input(&quot;你觉得你这张脸能打多少分！&quot;))</span><br><span class="line">if height &gt;180 and money &gt;1000 and fcae &gt; 250:</span><br><span class="line">    print(&quot;一定能娶到老婆&quot;)</span><br><span class="line">elif height &gt;180 or money &gt;1000 or face &gt; 250:</span><br><span class="line">    print(&quot;有可能娶到老婆&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;不嫁给你！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="6、大鹏大战白骨精"><a href="#6、大鹏大战白骨精" class="headerlink" title="6、大鹏大战白骨精"></a>6、大鹏大战白骨精</h2><p>​    首先，你可以有两个身份，大鹏和白骨精</p>
-<p>​    其次，你有生命值和攻击力，生命值归0，那一方输了，另一方胜利。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 显示欢迎信息</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(&quot;欢迎来到大鹏大战白骨精&quot;)</span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 身份选择</span><br><span class="line"></span><br><span class="line">print(&quot;请选择你的身份！&quot;)</span><br><span class="line">print(&quot;\t 1.大鹏&quot;)</span><br><span class="line">print(&quot;\t 2.白骨精&quot;)</span><br><span class="line">player_choose=input(&quot;请选择[1|2]&quot;)</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 提示信息</span><br><span class="line"></span><br><span class="line">if player_choose==&quot;1&quot;:</span><br><span class="line">    print(&quot;你已经选择了1，你将会用大鹏的身份来进行游戏！&quot;)</span><br><span class="line">elif player_choose==&quot;2&quot;:</span><br><span class="line">    print(&quot;你居然选了白骨精！你还是会用大鹏的身份进行游戏！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入有问题！系统将自动分配身份！你将成为不要脸的大鹏！&quot;)</span><br><span class="line"></span><br><span class="line"># 进行游戏</span><br><span class="line"></span><br><span class="line">player_life=100</span><br><span class="line">player_attack=1000</span><br><span class="line"></span><br><span class="line">boss_life=10000</span><br><span class="line">boss_attack=10</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(f&#x27;大鹏，你的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&#x27;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;请选择你要做的操作！&quot;)</span><br><span class="line">    print(&#x27;\t 1.练级&#x27;)</span><br><span class="line">    print(&#x27;\t 2.打boss&#x27;)</span><br><span class="line">    print(&#x27;\t 3.逃跑&#x27;)</span><br><span class="line">    game_choose=input(&quot;请选择要做的操作！&quot;)</span><br><span class="line">   if game_choose==&#x27;1&#x27;:</span><br><span class="line">    player_life+=1</span><br><span class="line">    player_attack+=1</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(f&quot;恭喜你升级了，你现在的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&quot;)</span><br><span class="line"></span><br><span class="line">elif game_choose==&#x27;2&#x27;:</span><br><span class="line">    boss_life-=player_attack</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏偷袭了白骨精！不讲武德！&#x27;)</span><br><span class="line">    if boss_life &lt;=0:</span><br><span class="line">        print(f&#x27;白骨精受到了&#123;player_attack&#125;点伤害，重伤不治，最终还是死了，大鹏获得了胜利！&#x27;)</span><br><span class="line">        break</span><br><span class="line">    </span><br><span class="line">    player_life-=boss_attack</span><br><span class="line">    print(&#x27;白骨精攻击了大鹏，大快人心！&#x27;)</span><br><span class="line">    if player_life &lt;=0:</span><br><span class="line">        print(f&#x27;大鹏受到了&#123;boss_attack&#125;点伤害，重伤不治，最后死了！game over!&#x27;)</span><br><span class="line">        break</span><br><span class="line">elif game_choose==&#x27;3&#x27;:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏扭头就跑！，撒腿就跑！game over!&#x27;)</span><br><span class="line">    break</span><br><span class="line">else:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;你的输入有问题&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="7、求1000以内的所有的质数"><a href="#7、求1000以内的所有的质数" class="headerlink" title="7、求1000以内的所有的质数"></a>7、求1000以内的所有的质数</h2><p>（质数就是除了1和他本身，不能被其他数整除的数，除数，被除数）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，求1-1000以内的质数</span><br><span class="line">i=2</span><br><span class="line">while i&lt;=1000:</span><br><span class="line">    # 创建一个变量，储存一下i的状态</span><br><span class="line">    flag=True</span><br><span class="line">    # 判断i是否为质数</span><br><span class="line">    j=2</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        if i % j == 0:</span><br><span class="line">            flag=False</span><br><span class="line">        j += 1</span><br><span class="line">    if flag:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="8、求1000以内的水仙花数"><a href="#8、求1000以内的水仙花数" class="headerlink" title="8、求1000以内的水仙花数"></a>8、求1000以内的水仙花数</h2><p>水仙花数：是一个n位数（n&gt;=3），他的每一个位上的数字的n次幂之和等于它本身<br>$$<br>153=1<strong>3+5</strong>3+3**3<br>$$</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 求1000以内的水仙花数</span><br><span class="line">i = 100</span><br><span class="line">while i &lt; 1000 :</span><br><span class="line">    # 假设 i的百位数是a，十位数是b，个位数是c</span><br><span class="line">    a = i // 100</span><br><span class="line">    # b = i // 10 % 10</span><br><span class="line">    b = ( i- a * 100 ) // 10</span><br><span class="line">    c = i % 10</span><br><span class="line">    if a ** 3 + b ** 3 + c ** 3 == i:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="9、打印99乘法表"><a href="#9、打印99乘法表" class="headerlink" title="9、打印99乘法表"></a>9、打印99乘法表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，来控制高度</span><br><span class="line">i = 0</span><br><span class="line">while i &lt; 9:</span><br><span class="line">    i += 1</span><br><span class="line">    # 创建一个循环，来控制宽度</span><br><span class="line">    j = 0</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        j += 1</span><br><span class="line">        print(f&quot;&#123;j&#125;*&#123;i&#125;=&#123;i*j&#125; &quot;,end=&quot;&quot;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -773,6 +729,50 @@
       <tags>
         <tag>python</tag>
         <tag>数据结构算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流程控制语句</title>
+    <url>/2021/07/20/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h2 id="流程控制语句（练习）"><a href="#流程控制语句（练习）" class="headerlink" title="流程控制语句（练习）"></a>流程控制语句（练习）</h2><h2 id="1、获取用户输入，判断奇数还是偶数"><a href="#1、获取用户输入，判断奇数还是偶数" class="headerlink" title="1、获取用户输入，判断奇数还是偶数"></a>1、获取用户输入，判断奇数还是偶数</h2><p>​    input函数的返回值默认是字符串类型，而字符串类型是无法直接用整形的运算符的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">num=int（input(&quot;请输入一个任意的整数：&quot;)）</span><br><span class="line">if num%2==0:</span><br><span class="line">    print(&quot;偶数！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;奇数&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、检查一个年份是否是闰年"><a href="#2、检查一个年份是否是闰年" class="headerlink" title="2、检查一个年份是否是闰年"></a>2、检查一个年份是否是闰年</h2><p>​    闰年：年份可以被4整除并且不能被100整除，或者可以被400整除，这个年份刚好就是闰年</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">year=int(input(&quot;请输入一个任意的年份：&quot;))</span><br><span class="line">if year %4==0 and year % 100==0 or year % 400 ==0:</span><br><span class="line">    print(year,&quot;是闰年&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(year,&quot;不是闰年！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"><a href="#3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？" class="headerlink" title="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"></a>3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？</h2><p>​    狗的年纪：狗的前两年的每一年相当于人类的10.5岁，然后每一年增加四岁。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dog_age=float(input(&quot;请输入狗的年龄：&quot;))</span><br><span class="line">like_person_age=0</span><br><span class="line">if dog_age&gt;0:</span><br><span class="line">    if dog_age&lt;=2:</span><br><span class="line">        like_person_age=dog_age*10.5</span><br><span class="line">    else:</span><br><span class="line">        like_person_age=2*10.5</span><br><span class="line">        like_person_age+=(dog_age-2)*4</span><br><span class="line">    print(dog_age,&quot;岁的狗，相当于人类年龄的&quot;,like_person_age,&#x27;岁&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;请输入一个合法的年龄！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、小鹏的期末成绩"><a href="#4、小鹏的期末成绩" class="headerlink" title="4、小鹏的期末成绩"></a>4、小鹏的期末成绩</h2><p>​    当成绩为100的时候，奖励一台手机</p>
+<p>​    当成绩为80到99的时候，奖励一台ps4</p>
+<p>​    当成绩为60到79的时候，奖励他一本参考书</p>
+<p>​    其他，奖励他一个大嘴巴子</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">score=int(input(&quot;请输入小鹏的成绩：&quot;))</span><br><span class="line"># 来一条华丽的分割线</span><br><span class="line">print(&quot;==&quot;*40)</span><br><span class="line"># 检查用户的输入</span><br><span class="line">if 0 &lt;= score &lt;= 100:</span><br><span class="line">    # 判断奖励</span><br><span class="line">    if score == 100:</span><br><span class="line">        print(&quot;奖励一台手机&quot;)</span><br><span class="line">    elif score &gt;= 80:</span><br><span class="line">        print(&quot;ps4，拿去玩吧！&quot;)</span><br><span class="line">    elif score &gt;= 60:</span><br><span class="line">        print(&quot;参考书！拿去！&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;大嘴巴子！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入内容不合法！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"><a href="#5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件" class="headerlink" title="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"></a>5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件</h2><p>​    高：180dm以上，富：1000块以上，帅：颜值分250以上</p>
+<p>​    如果三个条件都满足，“一定能娶到老婆”</p>
+<p>​    如果三个条件有一个满足，“有可能娶到老婆”</p>
+<p>​    如果三个条件都不满足，“一定娶不到”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">height=int(input(&quot;请输入你的身高！&quot;))</span><br><span class="line">money=int(input(&quot;请输入你的余额！&quot;))</span><br><span class="line">face=int(input(&quot;你觉得你这张脸能打多少分！&quot;))</span><br><span class="line">if height &gt;180 and money &gt;1000 and fcae &gt; 250:</span><br><span class="line">    print(&quot;一定能娶到老婆&quot;)</span><br><span class="line">elif height &gt;180 or money &gt;1000 or face &gt; 250:</span><br><span class="line">    print(&quot;有可能娶到老婆&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;不嫁给你！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、大鹏大战白骨精"><a href="#6、大鹏大战白骨精" class="headerlink" title="6、大鹏大战白骨精"></a>6、大鹏大战白骨精</h2><p>​    首先，你可以有两个身份，大鹏和白骨精</p>
+<p>​    其次，你有生命值和攻击力，生命值归0，那一方输了，另一方胜利。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 显示欢迎信息</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(&quot;欢迎来到大鹏大战白骨精&quot;)</span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 身份选择</span><br><span class="line"></span><br><span class="line">print(&quot;请选择你的身份！&quot;)</span><br><span class="line">print(&quot;\t 1.大鹏&quot;)</span><br><span class="line">print(&quot;\t 2.白骨精&quot;)</span><br><span class="line">player_choose=input(&quot;请选择[1|2]&quot;)</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 提示信息</span><br><span class="line"></span><br><span class="line">if player_choose==&quot;1&quot;:</span><br><span class="line">    print(&quot;你已经选择了1，你将会用大鹏的身份来进行游戏！&quot;)</span><br><span class="line">elif player_choose==&quot;2&quot;:</span><br><span class="line">    print(&quot;你居然选了白骨精！你还是会用大鹏的身份进行游戏！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入有问题！系统将自动分配身份！你将成为不要脸的大鹏！&quot;)</span><br><span class="line"></span><br><span class="line"># 进行游戏</span><br><span class="line"></span><br><span class="line">player_life=100</span><br><span class="line">player_attack=1000</span><br><span class="line"></span><br><span class="line">boss_life=10000</span><br><span class="line">boss_attack=10</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(f&#x27;大鹏，你的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&#x27;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;请选择你要做的操作！&quot;)</span><br><span class="line">    print(&#x27;\t 1.练级&#x27;)</span><br><span class="line">    print(&#x27;\t 2.打boss&#x27;)</span><br><span class="line">    print(&#x27;\t 3.逃跑&#x27;)</span><br><span class="line">    game_choose=input(&quot;请选择要做的操作！&quot;)</span><br><span class="line">   if game_choose==&#x27;1&#x27;:</span><br><span class="line">    player_life+=1</span><br><span class="line">    player_attack+=1</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(f&quot;恭喜你升级了，你现在的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&quot;)</span><br><span class="line"></span><br><span class="line">elif game_choose==&#x27;2&#x27;:</span><br><span class="line">    boss_life-=player_attack</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏偷袭了白骨精！不讲武德！&#x27;)</span><br><span class="line">    if boss_life &lt;=0:</span><br><span class="line">        print(f&#x27;白骨精受到了&#123;player_attack&#125;点伤害，重伤不治，最终还是死了，大鹏获得了胜利！&#x27;)</span><br><span class="line">        break</span><br><span class="line">    </span><br><span class="line">    player_life-=boss_attack</span><br><span class="line">    print(&#x27;白骨精攻击了大鹏，大快人心！&#x27;)</span><br><span class="line">    if player_life &lt;=0:</span><br><span class="line">        print(f&#x27;大鹏受到了&#123;boss_attack&#125;点伤害，重伤不治，最后死了！game over!&#x27;)</span><br><span class="line">        break</span><br><span class="line">elif game_choose==&#x27;3&#x27;:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏扭头就跑！，撒腿就跑！game over!&#x27;)</span><br><span class="line">    break</span><br><span class="line">else:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;你的输入有问题&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、求1000以内的所有的质数"><a href="#7、求1000以内的所有的质数" class="headerlink" title="7、求1000以内的所有的质数"></a>7、求1000以内的所有的质数</h2><p>（质数就是除了1和他本身，不能被其他数整除的数，除数，被除数）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，求1-1000以内的质数</span><br><span class="line">i=2</span><br><span class="line">while i&lt;=1000:</span><br><span class="line">    # 创建一个变量，储存一下i的状态</span><br><span class="line">    flag=True</span><br><span class="line">    # 判断i是否为质数</span><br><span class="line">    j=2</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        if i % j == 0:</span><br><span class="line">            flag=False</span><br><span class="line">        j += 1</span><br><span class="line">    if flag:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="8、求1000以内的水仙花数"><a href="#8、求1000以内的水仙花数" class="headerlink" title="8、求1000以内的水仙花数"></a>8、求1000以内的水仙花数</h2><p>水仙花数：是一个n位数（n&gt;=3），他的每一个位上的数字的n次幂之和等于它本身<br>$$<br>153=1<strong>3+5</strong>3+3**3<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 求1000以内的水仙花数</span><br><span class="line">i = 100</span><br><span class="line">while i &lt; 1000 :</span><br><span class="line">    # 假设 i的百位数是a，十位数是b，个位数是c</span><br><span class="line">    a = i // 100</span><br><span class="line">    # b = i // 10 % 10</span><br><span class="line">    b = ( i- a * 100 ) // 10</span><br><span class="line">    c = i % 10</span><br><span class="line">    if a ** 3 + b ** 3 + c ** 3 == i:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、打印99乘法表"><a href="#9、打印99乘法表" class="headerlink" title="9、打印99乘法表"></a>9、打印99乘法表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，来控制高度</span><br><span class="line">i = 0</span><br><span class="line">while i &lt; 9:</span><br><span class="line">    i += 1</span><br><span class="line">    # 创建一个循环，来控制宽度</span><br><span class="line">    j = 0</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        j += 1</span><br><span class="line">        print(f&quot;&#123;j&#125;*&#123;i&#125;=&#123;i*j&#125; &quot;,end=&quot;&quot;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
