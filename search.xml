@@ -79,98 +79,6 @@
       </tags>
   </entry>
   <entry>
-    <title>scrapy框架初步解析</title>
-    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
-<p>Scrapy的架构</p>
-<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
-<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
-<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
-<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
-<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
-<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
-<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
-<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
-<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>对应爬虫三大流程</th>
-<th>Scrapy项目是否需要修改</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>引擎</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>调度器</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>下载器</td>
-<td>获取网页（requests库）</td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>爬虫器</td>
-<td>解析网页（beautifulsoup库）</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>管道</td>
-<td>储存数据</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>下载器中间件</td>
-<td>获取网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-<tr>
-<td>爬虫器中间件</td>
-<td>解析网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-</tbody></table>
-<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
-<p>?</p>
-<p>到底数据是怎么在scrapy中流动的呐？</p>
-<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
-<p>（2）   爬虫器：提供www…….给引擎</p>
-<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
-<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
-<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
-<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
-<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
-<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
-<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
-<p>（10） 管道：储存数据</p>
-<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
-<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
-<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
-<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
-<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
-<p>scrapy的安装</p>
-<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
-<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
-<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
-<p>使用pip安装Scrapy框架程序。</p>
-<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
-<p>制作爬虫</p>
-<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>入门部分</title>
     <url>/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/</url>
     <content><![CDATA[<h2 id="计算机基础知识（电子计算机）"><a href="#计算机基础知识（电子计算机）" class="headerlink" title="计算机基础知识（电子计算机）"></a>计算机基础知识（电子计算机）</h2><h3 id="1、计算机是什么？"><a href="#1、计算机是什么？" class="headerlink" title="1、计算机是什么？"></a>1、计算机是什么？</h3><p>计算机就是一个用来计算的机器</p>
@@ -300,66 +208,132 @@
       </tags>
   </entry>
   <entry>
-    <title>基于vm的完全分布式hadoop3-2集群搭建</title>
-    <url>/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>文章最终效果为，三台虚拟机三个namenode节点，依赖zkfc处理活跃问题，两个rm节点，同样依赖zkfc处理活跃问题。3之后的hadoop。hdfs的http端口改为了9870，也可以自行修改，yarn不变，依旧是8088。</p>
-<h2 id="1、部署环境"><a href="#1、部署环境" class="headerlink" title="1、部署环境"></a>1、部署环境</h2><p>Windows 10 家庭中文版（家庭版不存在问题）</p>
-<p>vmware 16.0 （百度到处都有激活码，可尝试下面的激活码）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
-
-<p>centos 7.4  64位（linux系统，附带官网链接）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://isoredirect.centos.org/centos/7/isos/x86_64/</span><br></pre></td></tr></table></figure>
-
-<p>jdk 1.8 （稳定版本，hadoop神器版本）</p>
-<p>hadoop 3.2.1</p>
-<p>zookeeper 3.6.2（版本不限）</p>
-<h2 id="2、准备工作"><a href="#2、准备工作" class="headerlink" title="2、准备工作"></a>2、准备工作</h2><p>1、完成ssh免密配置的三台虚拟机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">三台虚拟机生成秘钥</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">三节点拷贝到同一节点</span><br><span class="line">ssh-copy-id node1 </span><br><span class="line">将此节点上的秘钥通过scp发送到其他节点，此处可通过编写sh脚本，简化。</span><br></pre></td></tr></table></figure>
-
-<p>2、三台安装jdk并且配置其环境变量</p>
-<p>3、三台虚拟机成功安装并且部署好zookeeper集群</p>
-<h2 id="3、配置文件"><a href="#3、配置文件" class="headerlink" title="3、配置文件"></a>3、配置文件</h2><p>1、/etc/profile</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br><span class="line"></span><br><span class="line">export ZOOKEEPER_HOME=/export/server/zookeeper</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/export/server/hadoop</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
-
-<p>2、core-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://my01&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/export/server/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">          &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">          &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、hdfs-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.nameservices&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;my01&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.replication&lt;/name&gt;                  </span><br><span class="line"> &lt;value&gt;3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                                 </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.namenodes.my01&lt;/name&gt;             </span><br><span class="line"> &lt;value&gt;nn1,nn2,nn3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9820&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                              </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9870&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                          </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;                                   </span><br><span class="line"> &lt;value&gt;qjournal://node1:8485;node2:8485;node3:8485/my01&lt;/value&gt;               </span><br><span class="line">&lt;/property&gt;                               </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;/export/data/hadoop/journaldata&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;     </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.client.failover.proxy.provider.my01&lt;/name&gt;                         &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;                                  </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;                   </span><br><span class="line"> &lt;value&gt;sshfence</span><br><span class="line"> shell(/bin/true)&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;                             </span><br><span class="line"> &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                      </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;30000&lt;/value&gt;                   </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;                                       </span><br><span class="line"> &lt;value&gt;100&lt;/value&gt;                           </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                          </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt; </span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; </span><br><span class="line">       &lt;value&gt;file:///export/data/hadoop/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt; </span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; </span><br><span class="line">        &lt;value&gt;file:///export/data/hadoop/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;ture&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、mapred-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">&lt;name&gt;mapreduce.framework.name&lt;/name&gt;                                    </span><br><span class="line">&lt;value&gt;yarn&lt;/value&gt;            </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;                               </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">        /export/server/hadoop/etc/hadoop,                                    </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/*,                           </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/lib/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/lib/*,                         </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/lib/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/lib/*                         </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line">  &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5、yarn-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;                           </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;                      </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.automatic-failover.enabled&lt;/name&gt;       </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                                                   </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;            </span><br><span class="line">        &lt;value&gt;yarn-rm-cluster&lt;/value&gt;                  </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;        </span><br><span class="line">        &lt;value&gt;rm1,rm2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;                         </span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;                     </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                      </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;rm1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;      </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;                                                         </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;                            </span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;       </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">        &lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;yarn.application.classpath&lt;/name&gt;                                   </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">/export/server/hadoop/etc/hadoop:/export/server/hadoop//share/hadoop/common/lib/*:/export/server/hadoop//share/hadoop/co  mmon/*:/export/server/hadoop//share/hadoop/hdfs:/export/server/hadoop//share/hadoop/hdfs/lib/*:/export/server/hadoop//sh  are/hadoop/hdfs/*:/export/server/hadoop//share/hadoop/mapreduce/lib/*:/export/server/hadoop//share/hadoop/mapreduce/*:/e  xport/server/hadoop//share/hadoop/yarn:/export/server/hadoop//share/hadoop/yarn/lib/*:/export/server/hadoop//share/hadoop/yarn/*                             </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line"> &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</span><br><span class="line">&lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">         &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>6、yarn-env.sh  hadoop-env.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export HADOOP_HOME=/export/server/hadoop/</span><br></pre></td></tr></table></figure>
-
-<p>7、start-dfs.sh  stop-dfs.sh  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HDFS_DATANODE_USER=root</span><br><span class="line">HDFS_DATANODE_SECURE_USER=hdfs </span><br><span class="line">HDFS_NAMENODE_USER=root </span><br><span class="line">HDFS_SECONDARYNAMENODE_USER=root</span><br><span class="line">HDFS_JOURNALNODE_USER=root</span><br><span class="line">HDFS_ZKFC_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>8、start-yarn.sh  stop-yarn.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YARN_RESOURCEMANAGER_USER=root</span><br><span class="line">HADOOP_SECURE_DN_USER=yarn</span><br><span class="line">YARN_NODEMANAGER_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>9、启动顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh start</span><br><span class="line">hadoop-daemon.sh start journalnode</span><br><span class="line">hdfs namenode -format / /namenode 格式化</span><br><span class="line">hdfs zkfc -formatZK //格式化高可用</span><br><span class="line">hdfs namenode //启动namenode</span><br><span class="line">hdfs namenode -bootstrapStandby</span><br><span class="line">hadoop-daemon.sh stop namenode</span><br><span class="line">hadoop-daemon.sh stop journalnode</span><br><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>1、启动顺序一定不要乱</p>
-<p>2、格式化出错就排错</p>
-<p>3、配置文件写完之后，先开启zk集群，先status查看集群状态，确认无误之后再进行初始化操作</p>
-<p>4、zk集群状态，开启后等待半分钟左右再去查看</p>
-<p>5、如何验证集群搭好了，jps查看节点无误，向集群上传文件无误，启动wordcount实例无误。</p>
-<p>6、启动顺序，先开启zk，一键启动start-all.sh或者分别启动yarn和hdfs都可以。不需要再次格式化了。</p>
-<p>7、防火墙关闭</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
-
+    <title>scrapy框架初步解析</title>
+    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
+<p>Scrapy的架构</p>
+<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
+<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
+<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
+<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
+<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
+<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
+<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
+<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
+<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>对应爬虫三大流程</th>
+<th>Scrapy项目是否需要修改</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>引擎</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>调度器</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>下载器</td>
+<td>获取网页（requests库）</td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>爬虫器</td>
+<td>解析网页（beautifulsoup库）</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>管道</td>
+<td>储存数据</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>下载器中间件</td>
+<td>获取网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+<tr>
+<td>爬虫器中间件</td>
+<td>解析网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+</tbody></table>
+<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
+<p>?</p>
+<p>到底数据是怎么在scrapy中流动的呐？</p>
+<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
+<p>（2）   爬虫器：提供www…….给引擎</p>
+<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
+<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
+<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
+<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
+<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
+<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
+<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
+<p>（10） 管道：储存数据</p>
+<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
+<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
+<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
+<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
+<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
+<p>scrapy的安装</p>
+<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
+<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
+<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
+<p>使用pip安装Scrapy框架程序。</p>
+<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
+<p>制作爬虫</p>
+<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
 ]]></content>
       <categories>
-        <category>hadoop</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>hadoop</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>序列</title>
+    <url>/2021/07/20/%E5%BA%8F%E5%88%97/</url>
+    <content><![CDATA[<p>序列</p>
+<p>1、列表 list</p>
+<p>​    1、列表是python中的一个对象</p>
+<p>​    2、之前所说的对象，他只能单一的保存数据</p>
+<p>​    3、列表可以保存很多个<strong>有序</strong>的数据</p>
+<p>​    4、列表是用来存储对象的对象</p>
+<p>​    5、列表的使用（本身、里面数据）</p>
+<p>2、序列</p>
+<p>​    1、序列是python中最基本的数据结构</p>
+<p>​    2、数据结构是计算机中数据储存的方式</p>
+<p>​    3、序列用于保存一组有序的数据，所有数据在序列当中是唯一的。（索引）</p>
+<p>​    4、序列中的数据会按照添加的顺序来分配索引（从0开始）</p>
+<p>​    5、序列的分类：</p>
+<p>​            可变序列：list</p>
+<p>​            不可变序列：str、tuple</p>
+<p>3、字典 dict</p>
+<p>​    1、字典又叫映射（mapping）</p>
+<p>​    2、列表存的性能很好，查的性能很差。</p>
+<p>​    3、字典查的性能很好，在字典中，每一个元素都有一个唯一的名字，通过这个名字可以很快的找到指定的元素</p>
+<p>​    4、字典有可以被称为键值对，唯一的名字，键，那个值叫做值</p>
+<p>4、集合 set</p>
+<pre><code> 1、集合和列表很像
+</code></pre>
+<p>​     2、集合只能存不可变的对象</p>
+<p>​     3、集合中的对象是无序的</p>
+<p>​     4、集合中不能出现重复的元素</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -459,40 +433,66 @@
       </tags>
   </entry>
   <entry>
-    <title>序列</title>
-    <url>/2021/07/20/%E5%BA%8F%E5%88%97/</url>
-    <content><![CDATA[<p>序列</p>
-<p>1、列表 list</p>
-<p>​    1、列表是python中的一个对象</p>
-<p>​    2、之前所说的对象，他只能单一的保存数据</p>
-<p>​    3、列表可以保存很多个<strong>有序</strong>的数据</p>
-<p>​    4、列表是用来存储对象的对象</p>
-<p>​    5、列表的使用（本身、里面数据）</p>
-<p>2、序列</p>
-<p>​    1、序列是python中最基本的数据结构</p>
-<p>​    2、数据结构是计算机中数据储存的方式</p>
-<p>​    3、序列用于保存一组有序的数据，所有数据在序列当中是唯一的。（索引）</p>
-<p>​    4、序列中的数据会按照添加的顺序来分配索引（从0开始）</p>
-<p>​    5、序列的分类：</p>
-<p>​            可变序列：list</p>
-<p>​            不可变序列：str、tuple</p>
-<p>3、字典 dict</p>
-<p>​    1、字典又叫映射（mapping）</p>
-<p>​    2、列表存的性能很好，查的性能很差。</p>
-<p>​    3、字典查的性能很好，在字典中，每一个元素都有一个唯一的名字，通过这个名字可以很快的找到指定的元素</p>
-<p>​    4、字典有可以被称为键值对，唯一的名字，键，那个值叫做值</p>
-<p>4、集合 set</p>
-<pre><code> 1、集合和列表很像
-</code></pre>
-<p>​     2、集合只能存不可变的对象</p>
-<p>​     3、集合中的对象是无序的</p>
-<p>​     4、集合中不能出现重复的元素</p>
+    <title>基于vm的完全分布式hadoop3-2集群搭建</title>
+    <url>/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>文章最终效果为，三台虚拟机三个namenode节点，依赖zkfc处理活跃问题，两个rm节点，同样依赖zkfc处理活跃问题。3之后的hadoop。hdfs的http端口改为了9870，也可以自行修改，yarn不变，依旧是8088。</p>
+<h2 id="1、部署环境"><a href="#1、部署环境" class="headerlink" title="1、部署环境"></a>1、部署环境</h2><p>Windows 10 家庭中文版（家庭版不存在问题）</p>
+<p>vmware 16.0 （百度到处都有激活码，可尝试下面的激活码）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
+
+<p>centos 7.4  64位（linux系统，附带官网链接）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://isoredirect.centos.org/centos/7/isos/x86_64/</span><br></pre></td></tr></table></figure>
+
+<p>jdk 1.8 （稳定版本，hadoop神器版本）</p>
+<p>hadoop 3.2.1</p>
+<p>zookeeper 3.6.2（版本不限）</p>
+<h2 id="2、准备工作"><a href="#2、准备工作" class="headerlink" title="2、准备工作"></a>2、准备工作</h2><p>1、完成ssh免密配置的三台虚拟机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">三台虚拟机生成秘钥</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">三节点拷贝到同一节点</span><br><span class="line">ssh-copy-id node1 </span><br><span class="line">将此节点上的秘钥通过scp发送到其他节点，此处可通过编写sh脚本，简化。</span><br></pre></td></tr></table></figure>
+
+<p>2、三台安装jdk并且配置其环境变量</p>
+<p>3、三台虚拟机成功安装并且部署好zookeeper集群</p>
+<h2 id="3、配置文件"><a href="#3、配置文件" class="headerlink" title="3、配置文件"></a>3、配置文件</h2><p>1、/etc/profile</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br><span class="line"></span><br><span class="line">export ZOOKEEPER_HOME=/export/server/zookeeper</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/export/server/hadoop</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
+
+<p>2、core-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://my01&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/export/server/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">          &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">          &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、hdfs-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.nameservices&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;my01&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.replication&lt;/name&gt;                  </span><br><span class="line"> &lt;value&gt;3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                                 </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.namenodes.my01&lt;/name&gt;             </span><br><span class="line"> &lt;value&gt;nn1,nn2,nn3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9820&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                              </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9870&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                          </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;                                   </span><br><span class="line"> &lt;value&gt;qjournal://node1:8485;node2:8485;node3:8485/my01&lt;/value&gt;               </span><br><span class="line">&lt;/property&gt;                               </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;/export/data/hadoop/journaldata&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;     </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.client.failover.proxy.provider.my01&lt;/name&gt;                         &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;                                  </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;                   </span><br><span class="line"> &lt;value&gt;sshfence</span><br><span class="line"> shell(/bin/true)&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;                             </span><br><span class="line"> &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                      </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;30000&lt;/value&gt;                   </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;                                       </span><br><span class="line"> &lt;value&gt;100&lt;/value&gt;                           </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                          </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt; </span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; </span><br><span class="line">       &lt;value&gt;file:///export/data/hadoop/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt; </span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; </span><br><span class="line">        &lt;value&gt;file:///export/data/hadoop/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;ture&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、mapred-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">&lt;name&gt;mapreduce.framework.name&lt;/name&gt;                                    </span><br><span class="line">&lt;value&gt;yarn&lt;/value&gt;            </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;                               </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">        /export/server/hadoop/etc/hadoop,                                    </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/*,                           </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/lib/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/lib/*,                         </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/lib/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/lib/*                         </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line">  &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>5、yarn-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;                           </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;                      </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.automatic-failover.enabled&lt;/name&gt;       </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                                                   </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;            </span><br><span class="line">        &lt;value&gt;yarn-rm-cluster&lt;/value&gt;                  </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;        </span><br><span class="line">        &lt;value&gt;rm1,rm2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;                         </span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;                     </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                      </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;rm1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;      </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;                                                         </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;                            </span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;       </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">        &lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;yarn.application.classpath&lt;/name&gt;                                   </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">/export/server/hadoop/etc/hadoop:/export/server/hadoop//share/hadoop/common/lib/*:/export/server/hadoop//share/hadoop/co  mmon/*:/export/server/hadoop//share/hadoop/hdfs:/export/server/hadoop//share/hadoop/hdfs/lib/*:/export/server/hadoop//sh  are/hadoop/hdfs/*:/export/server/hadoop//share/hadoop/mapreduce/lib/*:/export/server/hadoop//share/hadoop/mapreduce/*:/e  xport/server/hadoop//share/hadoop/yarn:/export/server/hadoop//share/hadoop/yarn/lib/*:/export/server/hadoop//share/hadoop/yarn/*                             </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line"> &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</span><br><span class="line">&lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">         &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>6、yarn-env.sh  hadoop-env.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export HADOOP_HOME=/export/server/hadoop/</span><br></pre></td></tr></table></figure>
+
+<p>7、start-dfs.sh  stop-dfs.sh  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HDFS_DATANODE_USER=root</span><br><span class="line">HDFS_DATANODE_SECURE_USER=hdfs </span><br><span class="line">HDFS_NAMENODE_USER=root </span><br><span class="line">HDFS_SECONDARYNAMENODE_USER=root</span><br><span class="line">HDFS_JOURNALNODE_USER=root</span><br><span class="line">HDFS_ZKFC_USER=root</span><br></pre></td></tr></table></figure>
+
+<p>8、start-yarn.sh  stop-yarn.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YARN_RESOURCEMANAGER_USER=root</span><br><span class="line">HADOOP_SECURE_DN_USER=yarn</span><br><span class="line">YARN_NODEMANAGER_USER=root</span><br></pre></td></tr></table></figure>
+
+<p>9、启动顺序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh start</span><br><span class="line">hadoop-daemon.sh start journalnode</span><br><span class="line">hdfs namenode -format / /namenode 格式化</span><br><span class="line">hdfs zkfc -formatZK //格式化高可用</span><br><span class="line">hdfs namenode //启动namenode</span><br><span class="line">hdfs namenode -bootstrapStandby</span><br><span class="line">hadoop-daemon.sh stop namenode</span><br><span class="line">hadoop-daemon.sh stop journalnode</span><br><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>1、启动顺序一定不要乱</p>
+<p>2、格式化出错就排错</p>
+<p>3、配置文件写完之后，先开启zk集群，先status查看集群状态，确认无误之后再进行初始化操作</p>
+<p>4、zk集群状态，开启后等待半分钟左右再去查看</p>
+<p>5、如何验证集群搭好了，jps查看节点无误，向集群上传文件无误，启动wordcount实例无误。</p>
+<p>6、启动顺序，先开启zk，一键启动start-all.sh或者分别启动yarn和hdfs都可以。不需要再次格式化了。</p>
+<p>7、防火墙关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
-        <category>python</category>
+        <category>hadoop</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
