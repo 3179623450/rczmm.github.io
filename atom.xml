@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2021-07-23T13:50:48.576Z</updated>
+  <updated>2021-07-23T14:31:55.446Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java语言特点</title>
+    <link href="http://rczmm.github.io/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/"/>
+    <id>http://rczmm.github.io/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/</id>
+    <published>2021-07-23T13:53:16.000Z</published>
+    <updated>2021-07-23T14:31:55.446Z</updated>
+    
+    <content type="html"><![CDATA[<p>java语言特点</p><p>java之所以能广泛的活跃在互联网和电子设备上，主要是因为其开发语言简洁并且有完善的生态系统，是一门优秀编程语言。</p><p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=656404101,826481724&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>java不仅拥有完善的编程体系，同时也收到众多软件厂商的追捧——围绕其开发出来了大量的第三方应用，使得java的技术得以迅速的发展壮大，并且被广泛的应用，在长期的技术发展中，java语言的特性也在不断的提升。</p><p>1、简洁有效</p><p>克服了c++中所有的难以理解和容易混淆的特点，比如：头文件、指针、结构、单元、运算符重载和虚拟基础类，java更加的严谨、简洁、因此也足够简单。</p><p>2、可移植性</p><p>一次编写、处处运行。因为java的执行是基于jvm，在源代码编译后形成字节码文件，在不同的os上只需要植入与系统匹配的jvm就可以直接利用jvm的指令集解释程序运行，降低了开发难度，提高了开发效率。</p><p>3、面向对象</p><p>java是面向对象的语言，并且有着良好的程序结构定义，</p><p>4、垃圾回收</p><p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=3964968350,1272502470&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>gc，无用的内存回收，java提供了垃圾回收机制。</p><p>5、引用传递</p><p>指针的代替品，更加简单。（指针虽然高效，但是需要较强的逻辑分析能力）</p><p>6、分布式</p><p>java适合网络编程，适合分布式程序开发，socket（套接字），还包括公共网关接口，cgi等，还有包括nio、aio等。</p><p>7、健壮性</p><p>编译时，有语法检查，异常可以避免错误产生时程序中断运行。</p><p>8、多线程</p><p>线程是轻量级的进程、juc多线程开发框架。</p><p>9、安全性</p><p>jvm安全，jdk更新，jvm也能更新。</p><p>10、函数式编程</p><p>lambda表达式编程</p><p>11、模块化支持</p><p>拉锯（代码名字）、jdk9之后的功能。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;java语言特点&lt;/p&gt;
+&lt;p&gt;java之所以能广泛的活跃在互联网和电子设备上，主要是因为其开发语言简洁并且有完善的生态系统，是一门优秀编程语言。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7</summary>
+      
+    
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>java发展历史</title>
