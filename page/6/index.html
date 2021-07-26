@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="post-title-link" itemprop="url">迭代器、生成器与装饰器</a>
+            <a href="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">搭建java开发环境</a>
         </h2>
 
         <div class="post-meta">
@@ -238,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-21 22:18:16" itemprop="dateCreated datePublished" datetime="2021-07-21T22:18:16+08:00">2021-07-21</time>
+              <time title="创建时间：2021-07-23 22:35:53" itemprop="dateCreated datePublished" datetime="2021-07-23T22:35:53+08:00">2021-07-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,7 +246,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -266,8 +266,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,14 +277,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
+              <span>679</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -296,43 +296,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>迭代器、生成器与装饰器</p>
-<p>迭代器</p>
-<p>迭代几乎是python最强的功能之一，是访问集合元素的一种方式</p>
-<p>for i in rang(1,101)</p>
-<p>迭代器是一个可以记住遍历的位置的<strong>对象</strong></p>
-<p>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完，结束</p>
-<p>迭代器<strong>只能前进，不能后退</strong>。</p>
-<p>迭代器基本方法：iter（）和next（）</p>
-<p>迭代器用在哪儿？（字符串、列表、元组等对象都可以创建迭代器）（序列）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it=iter(list)</span><br></pre></td></tr></table></figure>
+          <p>Java语言执行需要经过编译器编译，而后才可以在jvm上解释字节码程序，这些操作都需要jdk的支持才可以正常完成。</p>
+<p>jdk java开发工具包，java专属的开发工具，也是最底层的技术支持。</p>
+<p>开发者可以直接通过oracle官网（<a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/">Java 软件 | Oracle 中国</a>）获取jdk工具。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224057138.png" alt="image-20210723224057138"></p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224120031.png" alt="image-20210723224120031"></p>
+<p>进入java se的下载页面时会展示我们下载的jdk类型。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224213603.png" alt="image-20210723224213603"></p>
+<p>同时，除了jdk，也提供了jre的下载。</p>
+<p>jre java运行时环境，jdk自带。（分两类，一个是server 一个是client），jre本身不支持开发。</p>
+<p>注意选择自己适合的系统版本。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224534162.png" alt="image-20210723224534162"></p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224859826.png" alt="image-20210723224859826"></p>
+<p>x86 32位，x64 64位。注意根据自己的电脑系统合理选择。</p>
+<p>jdk的安装与配置</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225353570.png" alt="image-20210723225353570"></p>
+<p>打开我们下载的一个Windows的程序安装包，双击运行即可安装，并出现以上的界面。点击下一步。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225450635.png" alt="image-20210723225450635"></p>
+<p>选择安装目录，不要带有中文的目录。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225543007.png" alt="image-20210723225543007"></p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225554851.png" alt="image-20210723225554851"></p>
+<p>显示成功安装。</p>
+<p>打开目录</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225655107.png" alt="image-20210723225655107"></p>
+<p>打开bin目录。</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225716346.png" alt="image-20210723225716346"></p>
+<p>在这个目录里，有两个核心的命令，java.exe and javac.exe</p>
+<p>这两个命令本身不属于Windows本身，如果要在命令行（cmd）里直接使用，那么就必须在Windows系统中进行可执行程序的路径配置，也就是环境变量。</p>
+<p>计算机——属性——高级系统设置</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225913817.png" alt="image-20210723225913817"></p>
+<p>高级——环境变量——系统变量——path</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225943116.png" alt="image-20210723225943116"></p>
+<p>添加jdk下bin的目录</p>
+<p>E:\Program Files\java-13\bin</p>
+<p>打开cmd窗口。</p>
+<p>输入 java -version</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230140245.png" alt="image-20210723230140245"></p>
+<p>出现以上内容，表示安装成功。</p>
+<p>Windows命令行</p>
+<p>可以直接在搜索cmd，dos，命令提示符等，</p>
+<p>也可以win +R 打开运行</p>
+<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230310972.png" alt="image-20210723230310972"></p>
+<p>搜索cmd。</p>
+<p>如果配置了环境变量，必须重新启动命令行才能加载到最新的环境变量配置。</p>
 
-<p>for语句遍历：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line">for i in it:</span><br><span class="line">	print(i,end=&#x27; &#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>next()函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	try:</span><br><span class="line">		print(next(it))</span><br><span class="line">	except StopIteration:</span><br><span class="line">		sys.exit()</span><br></pre></td></tr></table></figure>
-
-<p>创建一个迭代器</p>
-<p>类有一个构造函数，python中，他会在对象初始化的时候执行</p>
-<p>迭代器类里，iter()方法返回一个特殊的迭代器对象，这个迭代器对象实现了next（）并且通过StopIteration</p>
-<p>异常的标识来判断迭代是否完成</p>
-<p>next（）方法返回下一个迭代器的对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        x = self.a</span><br><span class="line">        self.a+=1</span><br><span class="line">        return x</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
-
-<p>以上的代码把一个类当做了迭代器，我们不难发现，需要至少实现两个方法，iter和next。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        if self.a &lt;= 3:</span><br><span class="line">            x = self.a</span><br><span class="line">            self.a+=1</span><br><span class="line">            return x</span><br><span class="line">        else:</span><br><span class="line">            raise StopIteration</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
-
-<p>以上代码，使用了stopiteration异常来限制了循环的次数（迭代的次数）</p>
-<p>所有的技术都要根据使用场景来。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
  <div>
@@ -354,7 +361,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -422,7 +429,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -483,12 +490,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">38k</span>
+    <span title="站点总字数">48k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
   <span class="post-meta-divider">|</span>
   <span id="busuanzi_container_site_pv">
     <span class="post-meta-item-icon">
