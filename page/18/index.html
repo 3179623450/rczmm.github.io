@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%881%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%881%EF%BC%89/" class="post-title-link" itemprop="url">数据结构与算法（1）</a>
+            <a href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">安装和几个概念</a>
         </h2>
 
         <div class="post-meta">
@@ -238,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 20:46:02" itemprop="dateCreated datePublished" datetime="2021-07-20T20:46:02+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-20 23:17:48" itemprop="dateCreated datePublished" datetime="2021-07-20T23:17:48+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,10 +247,6 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
                 </span>
             </span>
 
@@ -270,8 +266,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%881%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%881%EF%BC%89/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -281,14 +277,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.8k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -300,146 +296,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p><strong>编程就是在跟数据打交道，计算机程序总是在接受数据、操作数据或者返回数据。</strong></p>
-<p>数据：其实就是指很多的信息（数字、字符串）</p>
-<p>无论多复杂的数据结构，我们都可以拆成最简单的数字和字符串来看。</p>
-<p>数据结构则是数据的组织形式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=&quot;hello&quot;</span><br><span class="line">b=&quot;liupeng&quot;</span><br><span class="line">print(a+b)</span><br></pre></td></tr></table></figure>
-
-<p>这个程序就把两条数据连成了一句话，如果要描述该程序中的数据结构。</p>
-<p>（这个有两个独立的变量，分别引用了两个独立的字符串）</p>
-<p>数据结构：不只是用来组织数据，他影响了代码的运行速度。</p>
-<p>数据结构和算法不同，对程序的影响也不同。</p>
-<p><strong>时间复杂度、空间复杂度。</strong></p>
-<p>时间复杂度</p>
-<p>list（列表）python []</p>
-<p>[1,2,3,4,5,6]</p>
-<p>python中的列表</p>
-<p>索引：标识数据的位置的，从0开始计算。</p>
-<p>数据结构：一般数据结构有4种操作（用法）</p>
-<p>1、读取：查看数据结构中某一个位置的数据</p>
-<p>2、查找：从数据结构中找出某一个数据的所在</p>
-<p>3、插入：给数据结构增加一个数据值</p>
-<p>4、删除：从数据结构中移走一个数据值</p>
-<p>操作的速度：在程序中，操作的速度不是按照时间来计算的，而是按照<strong>步数</strong>来计算。</p>
-<p>因为，影响程序运行的一个很关键的因素是硬件。受硬件而影响的计时方法，非常不可靠。</p>
-<p>步数</p>
-<p>a操作需要5步，b操作需要500步。</p>
-<p>步数作为衡量程序快慢的标准（时间复杂度、速度、效率、性能、步数）</p>
-<p>1、读取：查看列表中某一个索引所指的数据</p>
-<p>一步，计算机本身就有跳到任何一个索引位置的能力</p>
-<p>list=[]</p>
-<p><strong>所以，列表的读取是一种十分高效的操作，无论他有多长，一步就可以完成操作</strong></p>
-<p>2、查找：检查它是否包含某个值</p>
-<p>如果包含，需要给出索引</p>
-<p>（计算机没有眼睛，他只能一步一步走）</p>
-<p>这种逐一去检查的做法，就叫做<strong>线性查找</strong></p>
-<p>我们需要多少步？</p>
-<p>最多6步（长度只有索引5的列表）</p>
-<p>以此类推，一个长度为n的列表，线性查找的步数最多就是n（自然数）</p>
-<p>3、插入</p>
-<p>从列表里插入一个新元素，取决于插入的位置。</p>
-<p>末尾插入：一步</p>
-<p>开头插入：一步是真正的插入，六步是在移动数据。</p>
-<p>类推，一个n长度的列表，最坏的情况，插入需要n+1步，n次移动，一次插入（开头插入）</p>
-<p>4、删除：</p>
-<p>末尾删除：一步</p>
-<p>开头删除：一步删除，5步时移动元素</p>
-<p>类推·，一个长度n的列表，删除，最坏情况，n步（n-1（移动元素）+1（删除元素））</p>
-<p><strong>集合：set （不允许元素重复）</strong></p>
-<p>比如说，我们现在需要一个电话本来存储一万个电话，我们需要选择一个数据结构（一个电话不应该出现两次）</p>
-<p>1、读取：一步</p>
-<p>2、查找：n步</p>
-<p>3、插入：</p>
-<p>末尾插入：（需要先确定插入的值在不在集合中间）检查元素6步，插入一步</p>
-<p>类推，n长度的集合，末尾插入，n+1（n步检查元素，1步用来插入元素）</p>
-<p>开头插入，n步（检查元素），1步（插入），n步（移动元素）</p>
-<p>那么，最坏的情况 ，插入需要2n+1步</p>
-<p><strong>数据结构的的性能（理解），关键在于步数。</strong></p>
-<p>算法，不高级。</p>
-<p>某种操作的过程。</p>
-<p>读取、查找、插入、删除</p>
-<p>有序列表</p>
-<p>二分查找（5，线性：5步。二分需要：2步）</p>
-<p>python</p>
-<p><strong>1、将序列分解为单独的变量，序列（数据结构）</strong></p>
-<p>问题：我们有一个包含n个元素的元组或者序列，现在想把它分解成n个单独的变量</p>
-<p>解决方案：任何的序列都可以通过一个简单的赋值操作来分解为单独的变量，唯一的要求是变量的总数和结构要与序列一致。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple=(1,2,3)</span><br><span class="line">x,y,z=tuple</span><br><span class="line">print(x,y,z)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tuple=(1,2,3,4)</span><br><span class="line">x,y,z=tuple</span><br><span class="line">print(x,y,z)</span><br></pre></td></tr></table></figure>
-
-<p>ValueError: too many values to unpack (expected 3)</p>
-<p>元素的数量不匹配，就会得到错误提示。</p>
-<p>讨论：上面是元组。来看一下其他的序列（可以迭代的对象），比如：字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str=&quot;hello&quot;</span><br><span class="line">_,a,_ ,_  ,_   =str</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、从任意长度的可迭代对象中分解元素</strong></p>
-<p>问题：需要从某个可迭代对象（字符串、列表、集合、字典）分解出n个元素，但是这个可迭代对象的长度可能超过了n，这就会出现分解的值过多的情况。</p>
-<p>解决方案：python中的*表达式可以解决这个问题。</p>
-<p>比如：我开了一门课，并且决定在期末成绩中去掉一个最高分，去掉一个最低分，接下来求平均数。</p>
-<p>*，用在两个字面量或者变量中间，乘号</p>
-<p>单一的* ，*是用来接受多个参数，并且放到一个元组里。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def demo(*p):</span><br><span class="line">    print(p)</span><br><span class="line">demo(1,2)</span><br></pre></td></tr></table></figure>
-
-<p>函数在调用多个参数的时候，在可迭代对象作为实参，并在前面加*</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def d(a,b,c):</span><br><span class="line">    print(a,b,c)</span><br><span class="line"></span><br><span class="line">a=[1,2,3]</span><br><span class="line">b=[1,2,3]</span><br><span class="line">c=[1,2,3]</span><br><span class="line"></span><br><span class="line">d(*a)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=(&quot;liupeng&quot;,&quot;liupeng@qq.com&quot;,&quot;110&quot;,&quot;119&quot;)</span><br><span class="line">name,email,*phone = list</span><br><span class="line">print(phone)</span><br><span class="line">print(name)</span><br><span class="line">print(email)</span><br></pre></td></tr></table></figure>
-
-<p>不管需要分解出多少个电话号码（甚至说没有电话号码），变量phone都一直是一个列表，而这时毫无意义的，如此一来，任何使用了变量phone的代码（万一这些代码默认phone是一个字符串，那么如果出错了，这些代码就不负责任。）</p>
-<p>由*修饰的变量也可以位于列表最开始，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=(&quot;liupeng&quot;,&quot;liuxiaopen&quot;,&quot;liupeng@qq.com&quot;)</span><br><span class="line">*name,email=list</span><br><span class="line">print(name)</span><br><span class="line">print(email)</span><br></pre></td></tr></table></figure>
-
-<p>讨论：分解未知或者任意长度的可迭代对象，这种扩展式的操作可谓是是量身定做的工作，通常，这类可迭代对象中会有一些已知的组件或者模式，</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">line=&quot;E:\qq\3179623450\FileRecv\MobileFile&quot;</span><br><span class="line"></span><br><span class="line">panfu,*dir=line.split(&quot;:&quot;)</span><br><span class="line">print(panfu)</span><br><span class="line">print(dir)</span><br></pre></td></tr></table></figure>
-
-<p>用这种*式的语法所支持的分解操作非常有用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[&#x27;acme&#x27;,50,39,343,54,232,(12,3,54,2021)]</span><br><span class="line">name,*_,(*_,year)=list</span><br><span class="line">print(name)</span><br><span class="line">print(year)</span><br></pre></td></tr></table></figure>
-
-<p>这个就是说，有时候想分解出某些值然后丢弃他们，在分解的时候，不能只是一个单独的*，可以使用激光常用的来表示要丢掉的变量名。</p>
-<p>递归不是python的强项。</p>
-<p>递归深度过深（1000），RecursionError: maximum recursion depth exceeded</p>
-<p>电脑不同，栈空间或许不同</p>
-<p>python为什么对递归有限制，是为了害怕内存溢出。递归有限制，效率低，而且有大量重复计算，时间复杂度搞。默认最大深度1000。</p>
-<p><strong>3、保存最后n个元素</strong></p>
-<p>问题：我们希望在迭代或者是其他的形式的处理过程中对最后迹象记录做一个有限的历史记录。</p>
-<p>解决方案：from collections import deque</p>
-<p>讨论：编写搜索某项记录的代码时，通常会用到含有id的生成器。</p>
-<p>deque（maxlen=n）创建一个固定长度的队列，当有新纪录加入而队列满了的时候回自动转移那一条最老的记录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from collections import deque  # 内部库,内库</span><br><span class="line">q=deque(maxlen=3)</span><br><span class="line">q.append(1)</span><br><span class="line">q.append(2)</span><br><span class="line">q.append(3)</span><br><span class="line">print(q)</span><br><span class="line">q.append(4)</span><br><span class="line">print(q)</span><br></pre></td></tr></table></figure>
-
-<p>尽管在列表中可以使用append与del手动完成这些操作，但是我们使用队列这种解决方法会优雅并且运行速度会快得多。</p>
-<p>更普遍</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">q=deque()</span><br><span class="line">q.append(1)</span><br><span class="line">q.append(2)</span><br><span class="line">q.append(3)</span><br><span class="line">q.append(4)</span><br><span class="line">print(q)</span><br><span class="line">q.appendleft(5)</span><br><span class="line">print(q)</span><br><span class="line">print(q.pop())</span><br></pre></td></tr></table></figure>
-
-<p>从队列两端添加或者弹出元素的步数，1步。O(1)</p>
-<p>列表从开始插入或者删除元素，n步，O（n）</p>
-<p><strong>4、找到最大或者最小的n个元素</strong></p>
-<p>问题：我们想在某个集合中找出最大或者最小的n个元素</p>
-<p>解决方案：heapq模块（内库）中有两个函数，nlargest（）和nsmallest（）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line">nums=[1,3,5,65,-1,453,121,-65]</span><br><span class="line">print(heapq.nlargest(2,nums))</span><br><span class="line">print(heapq.nsmallest(2,nums))</span><br></pre></td></tr></table></figure>
-
-<p>这正是我们需要的，这两个函数都可以接受一个参数key，从而允许他们工作在更加复杂的数据结构之下。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line">list=[</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng&#x27;,&quot;age&quot;:18,&#x27;class&#x27;:12&#125;,</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng1&#x27;,&quot;age&quot;:23,&#x27;class&#x27;:45&#125;,</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng2&#x27;,&quot;age&quot;:43,&#x27;class&#x27;:2&#125;,</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng3&#x27;,&quot;age&quot;:21,&#x27;class&#x27;:22&#125;,</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng4&#x27;,&quot;age&quot;:54,&#x27;class&#x27;:62&#125;,</span><br><span class="line">    &#123;&#x27;name&#x27;:&#x27;liupeng5&#x27;,&quot;age&quot;:23,&#x27;class&#x27;:212&#125;</span><br><span class="line">]</span><br><span class="line">forclass=heapq.nsmallest(3,list,key=lambda s :s[&quot;class&quot;])</span><br><span class="line">minage=heapq.nlargest(3,list,key=lambda s:s[&quot;age&quot;])</span><br><span class="line">print(forclass)</span><br><span class="line">print(minage)</span><br></pre></td></tr></table></figure>
-
-<p>讨论：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line">nums=[1,2,3,54,12,546,-324,-54,67512,45,34321,54534,34,53453,465,4645]</span><br><span class="line">heap=list(nums)</span><br><span class="line">heapq.heapify(heap)</span><br><span class="line">print(heapq.heappop(heap))</span><br><span class="line">print(heapq.heappop(heap))</span><br></pre></td></tr></table></figure>
-
-<p>heapify这个方法，排序，从小到大。</p>
-<p>那么heap[0]总是最小的那个元素，此外接下来的元素就可以通过headpop方法轻松找到，这个方法将第一个元素（最小的）弹出，然后用第二个元素代替第一个元素。</p>
-<p>当所要找的元素相对较小是，nlargest（）和nsmallest（）这个最适合，如果只是想找最大和最小（n=1），min（）和max（）这两个函数更加方便和快捷。如果说n和序列本身的大小差不多。通常先对序列排序，然后做切片。（堆数据结构）</p>
-<p><strong>5、实现优先级队列</strong></p>
-<p>问题：我们要一个队列，能使用给定的优先级对元素排序，每次pop，都会返回优先级高的元素。</p>
-<p>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import heapq</span><br><span class="line"></span><br><span class="line">class Queue:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self._queue=[]</span><br><span class="line">        self._index=0</span><br><span class="line">    def push(self,item,p):</span><br><span class="line">        heapq.heappush(self._queue,(p,self._index,item))</span><br><span class="line">        self._index+=1</span><br><span class="line">    def pop(self):</span><br><span class="line">        return heapq.heappop(self._queue)[-1]</span><br><span class="line"></span><br><span class="line">class Item:</span><br><span class="line">    def __init__(self,name):</span><br><span class="line">        self.name=name</span><br><span class="line">    def __repr__(self):</span><br><span class="line">        return &#x27;Item(&#123;!r&#125;)&#x27;.format(self.name)</span><br><span class="line"></span><br><span class="line">q=Queue()</span><br><span class="line">q.push(Item(&#x27;liupeng&#x27;),1)</span><br><span class="line">q.push(Item(&#x27;liupeng1&#x27;),5)</span><br><span class="line">q.push(Item(&#x27;liupeng2&#x27;),3)</span><br><span class="line">q.push(Item(&#x27;liupeng3&#x27;),8)</span><br><span class="line">q.push(Item(&#x27;liupeng4&#x27;),12)</span><br><span class="line">q.push(Item(&#x27;liupeng5&#x27;),45)</span><br><span class="line">print(q.pop())</span><br><span class="line">print(q.pop())</span><br><span class="line">print(q.pop())</span><br></pre></td></tr></table></figure>
-
-<p><strong>6、在字典中将键映射到多个值上</strong></p>
-<p>问题：我们想要一个能将键映射到多个值的字典，一键多值</p>
-<p>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">a=&#123;</span><br><span class="line">    &quot;a&quot;:[1,2,3],</span><br><span class="line">    &quot;b&quot;:(1,6)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line"># a=defaultdict(list)</span><br><span class="line"># a[&quot;a&quot;].append(1)</span><br><span class="line"># a[&quot;a&quot;].append(2)</span><br><span class="line"># a[&quot;a&quot;].append(3)</span><br><span class="line"># q=&#123;&#125;</span><br><span class="line"># q.setdefault(&#x27;a&#x27;,[]).append(1)</span><br><span class="line"></span><br><span class="line">d=&#123;&#125;</span><br><span class="line">for key,value in pairs:</span><br><span class="line">    if key not in d:</span><br><span class="line">        d[key]=[]</span><br><span class="line">    d[key].append(value)</span><br><span class="line"></span><br><span class="line">w=defaultdict(list)</span><br><span class="line">for jey,value in pairs1:</span><br><span class="line">    d[key].append(value)</span><br></pre></td></tr></table></figure>
-
-
+          <p>python的安装</p>
+<p><a target="_blank" rel="noopener" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+<p>python   2和3两个版本，这两个版本是并行，而且差距还有点大</p>
+<p>idle python自带的一个开发工具（tab 自动补全）</p>
+<p>交互界面去完成一些简单的测试</p>
+<p>一般将python代码保存到一个py文件里，然后通过python指令来执行文件中的代码。</p>
+<p> 几个概念</p>
+<p>1、表达式</p>
+<p>表达式就是类似于数学公式的东西</p>
+<p>表达式一般仅仅用来计算，不会对程序有什么实质性影响，如果说你在交互模式直接输入表达式，那么解释器会自动的表达式的值输出。</p>
+<p>2、语句</p>
+<p>语句，一般需要他完成某种功能</p>
+<p>print 打印一些信息</p>
+<p>input  获取信息</p>
+<p>a=1  为变量赋值</p>
+<p>……</p>
+<p>语句的执行一般来说都会对程序造成一定的影响</p>
+<p>在交互模式中不一定会输出语句的结果</p>
+<p>3、程序</p>
+<p>程序是由一条一条的语句和一条条的表达式构成的</p>
+<p>4、函数</p>
+<p>函数也是一种语句，来完成特定的功能</p>
+<p>函数：xx（）</p>
+<p>函数的分类：</p>
+<p>​    内置函数：</p>
+<p>​        由解释器提供的函数：print（）</p>
+<p>​    自定义函数：</p>
+<p>​        由开发者自己创建的函数</p>
+<p>函数有两个要素：参数（），括号中的内容就是参数</p>
+<p>​        函数可以没有参数，也可以有很多个参数，多个参数用，隔开</p>
+<p>​    返回值</p>
+<p>​        返回值就是函数的返回结果，不是所有的函数都有返回值</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
  <div>
@@ -461,7 +357,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -529,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -590,12 +486,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">56k</span>
+    <span title="站点总字数">62k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">51 分钟</span>
+    <span title="站点阅读时长">56 分钟</span>
   <span class="post-meta-divider">|</span>
   <span id="busuanzi_container_site_pv">
     <span class="post-meta-item-icon">

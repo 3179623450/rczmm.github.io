@@ -20,30 +20,33 @@
     var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="你看到的不止如此">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小小世界">
-<meta property="og:url" content="http://rczmm.github.io/page/2/index.html">
+  <meta name="description" content="String 类 string在实际开发中，几乎是一个必须使用的程序类，也可以说是项目的核心组件类。 string用“”双引号定义，可以用+实现字符串连接。 1、string类对象实例化 java中基本数据类型不包含string，但是考虑到程序开发的实际需要，就设计了string类，并且这个类的对象可以直接赋值进行实例化。 java程序中使用双引号定义的内容，都是字符串。 123public fi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String类">
+<meta property="og:url" content="http://rczmm.github.io/2021/07/27/String%E7%B1%BB/index.html">
 <meta property="og:site_name" content="小小世界">
-<meta property="og:description" content="你看到的不止如此">
+<meta property="og:description" content="String 类 string在实际开发中，几乎是一个必须使用的程序类，也可以说是项目的核心组件类。 string用“”双引号定义，可以用+实现字符串连接。 1、string类对象实例化 java中基本数据类型不包含string，但是考虑到程序开发的实际需要，就设计了string类，并且这个类的对象可以直接赋值进行实例化。 java程序中使用双引号定义的内容，都是字符串。 123public fi">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-27T14:59:04.000Z">
+<meta property="article:modified_time" content="2021-07-28T14:34:33.719Z">
 <meta property="article:author" content="rczmm">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://rczmm.github.io/page/2/">
+<link rel="canonical" href="http://rczmm.github.io/2021/07/27/String%E7%B1%BB/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>小小世界</title>
+  <title>String类 | 小小世界</title>
   
 
 
@@ -206,9 +209,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -224,10 +228,9 @@
       <meta itemprop="name" content="小小世界">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/27/String%E7%B1%BB/" class="post-title-link" itemprop="url">String类</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          String类
+        </h1>
 
         <div class="post-meta">
 
@@ -296,7 +299,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>String 类</p>
+        <p>String 类</p>
 <p>string在实际开发中，几乎是一个必须使用的程序类，也可以说是项目的核心组件类。</p>
 <p>string用“”双引号定义，可以用+实现字符串连接。</p>
 <p>1、string类对象实例化</p>
@@ -404,17 +407,80 @@
 
 <p>7、字符串替换（全部替换，替换第一个）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.replaceAll(&quot;1&quot;,&quot;mm&quot;));</span><br><span class="line">System.out.println(str01.replaceFirst(&quot;3&quot;,&quot;mm&quot;));</span><br></pre></td></tr></table></figure>
-      
     </div>
  <div>
       
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:24px;"><-------------文章到这里就结束了！-------------></div>
+    
+</div>
+
+      
     </div>
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="rczmm 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="rczmm 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>rczmm
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://rczmm.github.io/2021/07/27/String%E7%B1%BB/" title="String类">http://rczmm.github.io/2021/07/27/String类/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/26/%E6%95%B0%E7%BB%84/" rel="prev" title="数组">
+      <i class="fa fa-chevron-left"></i> 数组
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/28/%E7%BB%A7%E6%89%BF/" rel="next" title="继承">
+      继承 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
 
 
@@ -423,15 +489,10 @@
   
 
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
