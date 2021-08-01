@@ -1828,4 +1828,98 @@
         <tag>java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>抽象类与接口</title>
+    <url>/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<p>抽象类与接口：有效拆分大型系统，避免产生耦合。</p>
+<p>抽象类</p>
+<p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
+<p>普通类只是一个设计完善，可以直接产生实例化对象并且调用类中的属性和方法，抽象类最大特点，就是必须被子类继承，并且抽象类本身无法进行实例化。在实际项目中，往往很少设计普通类，大多都会选择继承抽象类。</p>
+<p>抽象类基本定义：抽象类是为了方法覆写而提供的类结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本实例中利用abstract关键字声明了抽象类与抽象方法：</p>
+<p>1、抽象方法与普通方法不一样，抽象方法不能有方法体{}</p>
+<p>2、抽象类不是一个完整的类，抽象类必须提供子类，子类继承依然用extends关键字</p>
+<p>3、子类（非抽象类）一定要覆写抽象类中的全部抽象方法</p>
+<p>4、抽象类的对象实例化可以通过子类向上转型来实现</p>
+<p>抽象类的使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02();</span><br><span class="line">        j1.setType(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类最大特点的是自己无法对象实例化，所以说在实际项目中，抽象类用来当中间过渡，当我们想要使用抽象类中，往往是为了解决继承中带来的代码重复处理。</p>
+<p>抽象类的说明</p>
+<p>1、抽象类必须有子类继承，抽象方法必须被覆写，所以抽象类定义时，不允许final定义抽象类和抽象方法。</p>
+<p>2、抽象类也可以定义成员属性和普通方法，为了给抽象类的成员属性初始化，我们可以给抽象类设计构造方法，子类在继承时会调用抽象类的无参构造，如果抽象类没有提供，那么就需要super关键字。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abstract  class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract  String getconn();</span><br><span class="line"></span><br><span class="line">    public javademo01(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line"></span><br><span class="line">    public javademo02(String type) &#123;</span><br><span class="line">        super(type);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类中可以没有抽象方法，即使没有抽象方法，也不能使用new关键字实例化对象。</p>
+<p>抽象类中可以使用static定义静态方法，直接通过类名调用，毫无影响。</p>
+<p>模板设计模式（servlet）：</p>
+<p>类的作用是对一类事物的特征进行抽象化，从设计上来说，抽象类的级别比普通类要高。抽象类是对类的进一步抽象。</p>
+<p>机器人：充电+工作</p>
+<p>人：吃饭+睡觉+工作</p>
+<p>猪：吃饭+睡觉</p>
+<p>这三个类有公共的行为可以抽象，这时候就可以利用抽象类。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.concurrent.ForkJoinWorkerThread;</span><br><span class="line"></span><br><span class="line">abstract class Action&#123;</span><br><span class="line">    public static final int EAT = 1;</span><br><span class="line">    public static final int SLEEP = 5;</span><br><span class="line">    public static final int WORK = 10;</span><br><span class="line">    public void command (int code)&#123;</span><br><span class="line">        switch (code)&#123;</span><br><span class="line">            case EAT:&#123;</span><br><span class="line">                this.eat();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case SLEEP:&#123;</span><br><span class="line">                this.sleep();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case WORK:&#123;</span><br><span class="line">                this.work();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case EAT+SLEEP+WORK:&#123;</span><br><span class="line">                this.eat();</span><br><span class="line">                this.sleep();</span><br><span class="line">                this.work();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public abstract void eat();</span><br><span class="line">    public abstract void sleep();</span><br><span class="line">    public abstract void work();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Robot extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;机器人需要充电&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;</span><br><span class="line">        System.out.println(&quot;机器人开始工作&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person11 extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;饿的时候吃饭！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line">        System.out.println(&quot;困的时候睡觉！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;</span><br><span class="line">        System.out.println(&quot;穷的时候去工作！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Pig extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;吃饲料！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line">        System.out.println(&quot;倒地就睡！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo14 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Action robot = new Robot();</span><br><span class="line">        Action person = new Person11();</span><br><span class="line">        Action pig = new Pig();</span><br><span class="line">        System.out.println(&quot;----------------Robot-----------------&quot;);</span><br><span class="line">        robot.command(Action.EAT);</span><br><span class="line">        robot.command(Action.WORK);</span><br><span class="line">        System.out.println(&quot;---------------person------------------&quot;);</span><br><span class="line">        person.command(Action.EAT);</span><br><span class="line">        person.command(Action.SLEEP);</span><br><span class="line">        person.command(Action.WORK);</span><br><span class="line">        System.out.println(&quot;--------------pig----------------------&quot;);</span><br><span class="line">        pig.command(Action.EAT);</span><br><span class="line">        pig.command(Action.SLEEP);</span><br><span class="line">        System.out.println(&quot;--------------no pig================&quot;);</span><br><span class="line">        person.command(Action.EAT+Action.SLEEP+ Action.WORK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类定义了3个子类，这三个子类会根据需要进行方法的覆写，对于暂时不需要的功能，以空方法体进行实现。</p>
+<p>包装类</p>
+<p>为了统一参数类型，需要针对基本数据类型进行引用传递，所以java提供了包装类的概念。</p>
+<p>java是一门面向对象的语言，但是基本数据类型和这一理念冲突。</p>
+<p>利用类的结构对基本数据类型进行包装。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Int &#123;   // 定义了一个包装类</span><br><span class="line">    private int data;  // 包装了一个基本数据类型</span><br><span class="line"></span><br><span class="line">    public Int(int data) &#123; //构造方法设置基本数据类型</span><br><span class="line">        this.data = data;   // 保存基本数据类型</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int intValue()&#123;  // 从包装类中获取基本数据类型</span><br><span class="line">        return this.data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo15 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Object obj = new Int(10); // 装箱,将基本数据类型保存在包装类中</span><br><span class="line">        int x = ((Int) obj).intValue(); //拆箱，从包装类对象中取出基本数据类型</span><br><span class="line">        System.out.println(x * 2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>面对这样的设计缺陷，java也有自己的方案，设计了8个包装类。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Integer i1 = new Integer(10);</span><br><span class="line">int num = i1.intValue(); </span><br><span class="line">System.out.println(num);</span><br></pre></td></tr></table></figure>
+
+<p>如上就是针对int数据类型的装箱、拆箱操作。</p>
+<p>如上的操作，在jdk5之前必须做，但是5之后，java提供了自动装箱和拆箱的机制，并且包装类的对象可以自行计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Integer i2 = 10;</span><br><span class="line">int num1 = i2;</span><br><span class="line">System.out.println(num1);</span><br></pre></td></tr></table></figure>
+
+<p>这个其实就已经和string类型差不多了，因为他有两种实例化方式，一个是构造方法，一个是直接赋值，其实和string一样，直接赋值直接入池，反之。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Integer i1 = new Integer(10);</span><br><span class="line">int num = i1.intValue();</span><br><span class="line">System.out.println(num);</span><br><span class="line"></span><br><span class="line">Integer i2 = 10;</span><br><span class="line">int num1 = i2;</span><br><span class="line">System.out.println(num1);</span><br><span class="line"></span><br><span class="line">System.out.println(i1 == i2);</span><br><span class="line"></span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+
+<p>除此之外，还要注意一点。</p>
+<p>自动装箱的相等判断：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Integer ii1 = 100;</span><br><span class="line">Integer ii2 = 100;</span><br><span class="line">System.out.println(ii1 == ii2);</span><br><span class="line"></span><br><span class="line">Integer ii3 = 130;</span><br><span class="line">Integer ii4 = 130;</span><br><span class="line"></span><br><span class="line">System.out.println(ii3 == ii4);</span><br><span class="line"></span><br><span class="line">true</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意，不再-128~127范围内的数，通过==比较返回的就是false。</p>
+<p>自动装箱中，如果范围属于-128到127，可以自动实现堆内存的引用，否则不行。</p>
+<p>数据类型转换</p>
+<p>将字符串转化为int</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">String str = &quot;123&quot;;</span><br><span class="line">int num = Integer.parseInt(str);</span><br><span class="line">System.out.println(num + num);</span><br></pre></td></tr></table></figure>
+
+<p>如果含有非数字，就会抛出异常。</p>
+<p>Exception in thread “main” java.lang.NumberFormatException</p>
+<p>字符串转boolean（不是true或者false，统一返回false）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">String str = &quot;1sa23&quot;;</span><br><span class="line">boolean b1 = Boolean.parseBoolean(str);</span><br><span class="line">System.out.println(b1);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>基本数据类型转string</p>
+<p>+连接符连接一个空字符串就可以了</p>
+<p>接口：</p>
+<p>比抽象类更重要，定义开发标准。</p>
+<p>接口是一个特殊的类，通过interface关键字定义，在接口中可以定义全局常量、抽象方法（访问权限必须是public）、default方法以及static方法。</p>
+<p>定义标准接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface IMessage &#123;</span><br><span class="line">    public static final String INFO = &quot;i love mm&quot;;</span><br><span class="line">    public abstract String getInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1、接口中存在抽象方法，因此无法被实例化。</p>
+<p>2、接口需要被子类实现，子类通过implements关键字实现多个父接口</p>
+<p>3、子类如果不是抽象类，子类一定要覆写全部的抽象方法</p>
+<p>4、接口对象可以利用子类对象实现向上转型</p>
+<p>继承和实现的顺序：先继承后实现接口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface IMessage &#123;</span><br><span class="line">    public static final String INFO = &quot;i love mm&quot;;</span><br><span class="line">    public abstract String getInfo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class fff &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class sss extends fff implements IMessage&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getInfo() &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>接口的基本使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface face01&#123;</span><br><span class="line">    public static final String INFO = &quot;i love mm&quot;;</span><br><span class="line">    public abstract String getInfo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo16_1 implements face01&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getInfo() &#123;</span><br><span class="line">        return &quot;i love mm&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo16 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        face01 f1 = new demo16_1();</span><br><span class="line">        System.out.println(f1.getInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
 </search>
