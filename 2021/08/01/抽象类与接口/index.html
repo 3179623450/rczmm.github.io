@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="抽象类与接口：有效拆分大型系统，避免产生耦合。 抽象类 类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。 普通类只是一个设计完善，可以直接产生实例化对象并且调用">
+  <meta name="description" content="抽象类与接口：有效拆分大型系统，避免产生耦合。 抽象类类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。 普通类只是一个设计完善，可以直接产生实例化对象并且调用类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="抽象类与接口">
 <meta property="og:url" content="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="小小世界">
-<meta property="og:description" content="抽象类与接口：有效拆分大型系统，避免产生耦合。 抽象类 类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。 普通类只是一个设计完善，可以直接产生实例化对象并且调用">
+<meta property="og:description" content="抽象类与接口：有效拆分大型系统，避免产生耦合。 抽象类类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。 普通类只是一个设计完善，可以直接产生实例化对象并且调用类">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/image-20210803003800286.png">
 <meta property="og:image" content="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/image-20210803123739591.png">
 <meta property="og:image" content="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/image-20210803125650132.png">
 <meta property="article:published_time" content="2021-08-01T12:20:38.000Z">
-<meta property="article:modified_time" content="2021-08-03T05:12:07.839Z">
+<meta property="article:modified_time" content="2021-08-03T13:16:00.479Z">
 <meta property="article:author" content="rczmm">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -304,8 +304,7 @@
 
       
         <p>抽象类与接口：有效拆分大型系统，避免产生耦合。</p>
-<p>抽象类</p>
-<p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
 <p>普通类只是一个设计完善，可以直接产生实例化对象并且调用类中的属性和方法，抽象类最大特点，就是必须被子类继承，并且抽象类本身无法进行实例化。在实际项目中，往往很少设计普通类，大多都会选择继承抽象类。</p>
 <p>抽象类基本定义：抽象类是为了方法覆写而提供的类结构。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -328,8 +327,7 @@
 <p>抽象类中可以使用static定义静态方法，直接通过类名调用，毫无影响。</p>
 <span id="more"></span>
 
-<p>模板设计模式（servlet）：</p>
-<p>类的作用是对一类事物的特征进行抽象化，从设计上来说，抽象类的级别比普通类要高。抽象类是对类的进一步抽象。</p>
+<h2 id="模板设计模式（servlet）："><a href="#模板设计模式（servlet）：" class="headerlink" title="模板设计模式（servlet）："></a>模板设计模式（servlet）：</h2><p>类的作用是对一类事物的特征进行抽象化，从设计上来说，抽象类的级别比普通类要高。抽象类是对类的进一步抽象。</p>
 <p>机器人：充电+工作</p>
 <p>人：吃饭+睡觉+工作</p>
 <p>猪：吃饭+睡觉</p>
@@ -337,8 +335,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">import java.util.concurrent.ForkJoinWorkerThread;</span><br><span class="line"></span><br><span class="line">abstract class Action&#123;</span><br><span class="line">    public static final int EAT = 1;</span><br><span class="line">    public static final int SLEEP = 5;</span><br><span class="line">    public static final int WORK = 10;</span><br><span class="line">    public void command (int code)&#123;</span><br><span class="line">        switch (code)&#123;</span><br><span class="line">            case EAT:&#123;</span><br><span class="line">                this.eat();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case SLEEP:&#123;</span><br><span class="line">                this.sleep();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case WORK:&#123;</span><br><span class="line">                this.work();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            case EAT+SLEEP+WORK:&#123;</span><br><span class="line">                this.eat();</span><br><span class="line">                this.sleep();</span><br><span class="line">                this.work();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public abstract void eat();</span><br><span class="line">    public abstract void sleep();</span><br><span class="line">    public abstract void work();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Robot extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;机器人需要充电&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;</span><br><span class="line">        System.out.println(&quot;机器人开始工作&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person11 extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;饿的时候吃饭！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line">        System.out.println(&quot;困的时候睡觉！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;</span><br><span class="line">        System.out.println(&quot;穷的时候去工作！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Pig extends Action&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void eat() &#123;</span><br><span class="line">        System.out.println(&quot;吃饲料！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void sleep() &#123;</span><br><span class="line">        System.out.println(&quot;倒地就睡！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void work() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo14 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Action robot = new Robot();</span><br><span class="line">        Action person = new Person11();</span><br><span class="line">        Action pig = new Pig();</span><br><span class="line">        System.out.println(&quot;----------------Robot-----------------&quot;);</span><br><span class="line">        robot.command(Action.EAT);</span><br><span class="line">        robot.command(Action.WORK);</span><br><span class="line">        System.out.println(&quot;---------------person------------------&quot;);</span><br><span class="line">        person.command(Action.EAT);</span><br><span class="line">        person.command(Action.SLEEP);</span><br><span class="line">        person.command(Action.WORK);</span><br><span class="line">        System.out.println(&quot;--------------pig----------------------&quot;);</span><br><span class="line">        pig.command(Action.EAT);</span><br><span class="line">        pig.command(Action.SLEEP);</span><br><span class="line">        System.out.println(&quot;--------------no pig================&quot;);</span><br><span class="line">        person.command(Action.EAT+Action.SLEEP+ Action.WORK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>抽象类定义了3个子类，这三个子类会根据需要进行方法的覆写，对于暂时不需要的功能，以空方法体进行实现。</p>
-<p>包装类</p>
-<p>为了统一参数类型，需要针对基本数据类型进行引用传递，所以java提供了包装类的概念。</p>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><p>为了统一参数类型，需要针对基本数据类型进行引用传递，所以java提供了包装类的概念。</p>
 <p>java是一门面向对象的语言，但是基本数据类型和这一理念冲突。</p>
 <p>利用类的结构对基本数据类型进行包装。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Int &#123;   // 定义了一个包装类</span><br><span class="line">    private int data;  // 包装了一个基本数据类型</span><br><span class="line"></span><br><span class="line">    public Int(int data) &#123; //构造方法设置基本数据类型</span><br><span class="line">        this.data = data;   // 保存基本数据类型</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int intValue()&#123;  // 从包装类中获取基本数据类型</span><br><span class="line">        return this.data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo15 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Object obj = new Int(10); // 装箱,将基本数据类型保存在包装类中</span><br><span class="line">        int x = ((Int) obj).intValue(); //拆箱，从包装类对象中取出基本数据类型</span><br><span class="line">        System.out.println(x * 2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -359,8 +356,7 @@
 
 <p>这里要注意，不再-128~127范围内的数，通过==比较返回的就是false。</p>
 <p>自动装箱中，如果范围属于-128到127，可以自动实现堆内存的引用，否则不行。</p>
-<p>数据类型转换</p>
-<p>将字符串转化为int</p>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p>将字符串转化为int</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = &quot;123&quot;;</span><br><span class="line">int num = Integer.parseInt(str);</span><br><span class="line">System.out.println(num + num);</span><br></pre></td></tr></table></figure>
 
 <p>如果含有非数字，就会抛出异常。</p>
@@ -372,8 +368,7 @@
 
 <p>基本数据类型转string</p>
 <p>+连接符连接一个空字符串就可以了</p>
-<p>接口：</p>
-<p>比抽象类更重要，定义开发标准。</p>
+<h2 id="接口："><a href="#接口：" class="headerlink" title="接口："></a>接口：</h2><p>比抽象类更重要，定义开发标准。</p>
 <p>接口是一个特殊的类，通过interface关键字定义，在接口中可以定义全局常量、抽象方法（访问权限必须是public）、default方法以及static方法。</p>
 <p>定义标准接口：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface IMessage &#123;</span><br><span class="line">    public static final String INFO = &quot;i love mm&quot;;</span><br><span class="line">    public abstract String getInfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -409,6 +404,7 @@
 <p>以上两种定义的作用完全相同，但是从实际的开发程序来讲，在接口中定义抽象方法时建议保留public的声明，这样的接口定义会更加的清楚。</p>
 <p>在面向对象设计中，抽象类也是必不可少的一种结构，利用抽象类可以实现一些公共方法的定义，可以利用extends先继承父类再利用implements实现若干父接口的顺序完成子类定义。</p>
 <p>java中的extends关键字除了具有类继承的作用外，也可以在接口上使用以实现接口的继承关系，并且可以同时实现多个父接口。</p>
+<p>接口之间的继承，不存在任何强制性的覆写，类无法继承接口，只能实现。</p>
 <p>接口的使用分析：在面向对象设计中，接口的核心用处是为了实现方法名的暴露与子类的隐藏。</p>
 <hr>
 <p>接口定义加强</p>
@@ -576,7 +572,10 @@
     <a href="/2021/07/28/%E7%BB%A7%E6%89%BF/" rel="prev" title="继承">
       <i class="fa fa-chevron-left"></i> 继承
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/03/%E6%B3%9B%E5%9E%8B/" rel="next" title="泛型">
+      泛型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -638,6 +637,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88servlet%EF%BC%89%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">模板设计模式（servlet）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.</span> <span class="nav-text">数据类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">接口：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -653,7 +653,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -714,12 +714,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">87k</span>
+    <span title="站点总字数">93k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:19</span>
+    <span title="站点阅读时长">1:25</span>
   <span class="post-meta-divider">|</span>
   <span id="busuanzi_container_site_pv">
     <span class="post-meta-item-icon">
