@@ -515,34 +515,28 @@
 
   
 
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
     });
     new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
-      appKey     : 'UuxnA5liCzoSIlXGGSnWG271',
-      placeholder: "都看到这里了，真的不说两句嘛？",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '20' || 10,
-      visitor    : true,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
+        appKey: 'UuxnA5liCzoSIlXGGSnWG271',
+        placeholder: '都看到这里了，真的不说两句嘛？',
+        avatar:'mm',
+        guest_info:guest,
+        meta:guest,
+        pageSize:'20' || 10,
+        visitor: true
     });
-  }, window.Valine);
-});
-</script>
-
+  </script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
