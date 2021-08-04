@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2021-08-03T14:58:16.209Z</updated>
+  <updated>2021-08-03T15:10:07.005Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>类结构扩展</title>
+    <link href="http://rczmm.github.io/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/"/>
+    <id>http://rczmm.github.io/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/</id>
+    <published>2021-08-03T15:10:06.000Z</published>
+    <updated>2021-08-03T15:10:07.005Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>泛型</title>
@@ -567,58 +580,6 @@
 &lt;p&gt;​    3、列表可以保存很多个&lt;strong&gt;有序&lt;/strong&gt;的数据&lt;/p&gt;
 &lt;p&gt;​</summary>
       
-    
-    
-    
-    <category term="python" scheme="http://rczmm.github.io/categories/python/"/>
-    
-    
-    <category term="python" scheme="http://rczmm.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安装和几个概念</title>
-    <link href="http://rczmm.github.io/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/"/>
-    <id>http://rczmm.github.io/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/</id>
-    <published>2021-07-20T15:17:48.000Z</published>
-    <updated>2021-07-21T14:25:02.687Z</updated>
-    
-    <content type="html"><![CDATA[<p>python的安装</p><p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p><p>python   2和3两个版本，这两个版本是并行，而且差距还有点大</p><p>idle python自带的一个开发工具（tab 自动补全）</p><p>交互界面去完成一些简单的测试</p><p>一般将python代码保存到一个py文件里，然后通过python指令来执行文件中的代码。</p><p> 几个概念</p><p>1、表达式</p><p>表达式就是类似于数学公式的东西</p><p>表达式一般仅仅用来计算，不会对程序有什么实质性影响，如果说你在交互模式直接输入表达式，那么解释器会自动的表达式的值输出。</p><p>2、语句</p><p>语句，一般需要他完成某种功能</p><p>print 打印一些信息</p><p>input  获取信息</p><p>a=1  为变量赋值</p><p>……</p><p>语句的执行一般来说都会对程序造成一定的影响</p><p>在交互模式中不一定会输出语句的结果</p><p>3、程序</p><p>程序是由一条一条的语句和一条条的表达式构成的</p><p>4、函数</p><p>函数也是一种语句，来完成特定的功能</p><p>函数：xx（）</p><p>函数的分类：</p><p>​    内置函数：</p><p>​        由解释器提供的函数：print（）</p><p>​    自定义函数：</p><p>​        由开发者自己创建的函数</p><p>函数有两个要素：参数（），括号中的内容就是参数</p><p>​        函数可以没有参数，也可以有很多个参数，多个参数用，隔开</p><p>​    返回值</p><p>​        返回值就是函数的返回结果，不是所有的函数都有返回值</p><span id="more"></span><p>5、字面量和变量</p><p>​    字面量就是一个一个的值，一个一个看得到的值，</p><p>​    1,2,3，asa，“dsd”</p><p>​    就是它表面上的值，在程序·中可以直接使用字面量</p><p>​    变量 变量可以用来保存字面量，而且保存的字面量是不一定的。</p><p>​    x=qwq</p><p>​    变量本身是没有任何意思的，他的意思根据字面量来表达</p><p>6、数据类型</p><p>​    数据类型就是变量的值的类型，也就是说可以为变量赋那些值，还可以说，变量可以等于那些东西</p><p>​    数值（整型（整数）、浮点型（浮点数）、布尔（就是是或者否，true or false 1或者0）、字符串、空值）</p><p>7、对象</p><p>python是一门面向对象的语言</p><p>一切都是对象（一切都是函数）</p><p>程序运行当中，所有的数据都要储存到内存当中然后运行，对象实际上就是一个在内存中用来存储数据的一块区域，他就是一个容器，用来存储数据。</p><p>对象的结构</p><p>id（标识）</p><p>用来确定对象的唯一性</p><p>id是由解析器生成的，cpython中，id就是对象的内存地址。</p><p>id（）函数可以查看id</p><p>对象一旦创建。他的id永远不能改变。</p><p>type（类型）</p><p>int float bool str</p><p>类型决定了对象的功能</p><p>type（）函数可以查看对象类型</p><p>python是一门强类型的语言，java也是，但是js，JavaScript他不是，对象一旦创建就是更改类型</p><p>value（值）</p><p>值就是对象里存储的数据</p><p>对于值有些对象是可以改变的</p><p>对象又分为两个大类，一个是可变的，一个是不可变的。</p><p>8、变量和对象</p><p>对象其实没有存储到变量中，在Python中，变量更加像是给对象取了一个名字（别名）</p><p>变量中存储的不是对象的值，而是对象的id（内存地址）</p><p>使用变量，实际上就是通过id来查找对象</p><p>变量中保存的对象，只有在再一次赋值的时候才会改变</p><p>变量与变量是独立的，修改一个变量不会影响到下一个变量</p><p>9、类型转换</p><p>一个类型的对象转换为其他对象（不是改变对象本身，而是根据对象的值来创建一个新对象）</p><p>10、运算符</p><p><strong>+</strong>  <strong>-</strong> ***** <strong>/</strong> </p><p>算术运算符 </p><p>= 赋值运算符</p><p>== &lt;= &gt;= ! 比较运算符（关系运算符）</p><p>条件运算符（三元运算符）</p><p>逻辑运算符 and or</p><p>11、基本语法</p><p>1、python严格区分大小写</p><p>2、每一行就是一条语句</p><p>3、一行语句不要过长</p><p>4、一条语句可以多行写，后面\（转义字符）结尾</p><p>5、严格缩进（在python里不要随便写缩进）</p><p>6、#这是单行注释，严格养成写注释的习惯，而且一般来说，#后面加一个空格</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;python的安装&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;python   2和3两个版本，这两个版本是并行，而且差距还有点大&lt;/p&gt;
-&lt;p&gt;idle python自带的一个开发工具（tab 自动补全）&lt;/p&gt;
-&lt;p&gt;交互界面去完成一些简单的测试&lt;/p&gt;
-&lt;p&gt;一般将python代码保存到一个py文件里，然后通过python指令来执行文件中的代码。&lt;/p&gt;
-&lt;p&gt; 几个概念&lt;/p&gt;
-&lt;p&gt;1、表达式&lt;/p&gt;
-&lt;p&gt;表达式就是类似于数学公式的东西&lt;/p&gt;
-&lt;p&gt;表达式一般仅仅用来计算，不会对程序有什么实质性影响，如果说你在交互模式直接输入表达式，那么解释器会自动的表达式的值输出。&lt;/p&gt;
-&lt;p&gt;2、语句&lt;/p&gt;
-&lt;p&gt;语句，一般需要他完成某种功能&lt;/p&gt;
-&lt;p&gt;print 打印一些信息&lt;/p&gt;
-&lt;p&gt;input  获取信息&lt;/p&gt;
-&lt;p&gt;a=1  为变量赋值&lt;/p&gt;
-&lt;p&gt;……&lt;/p&gt;
-&lt;p&gt;语句的执行一般来说都会对程序造成一定的影响&lt;/p&gt;
-&lt;p&gt;在交互模式中不一定会输出语句的结果&lt;/p&gt;
-&lt;p&gt;3、程序&lt;/p&gt;
-&lt;p&gt;程序是由一条一条的语句和一条条的表达式构成的&lt;/p&gt;
-&lt;p&gt;4、函数&lt;/p&gt;
-&lt;p&gt;函数也是一种语句，来完成特定的功能&lt;/p&gt;
-&lt;p&gt;函数：xx（）&lt;/p&gt;
-&lt;p&gt;函数的分类：&lt;/p&gt;
-&lt;p&gt;​    内置函数：&lt;/p&gt;
-&lt;p&gt;​        由解释器提供的函数：print（）&lt;/p&gt;
-&lt;p&gt;​    自定义函数：&lt;/p&gt;
-&lt;p&gt;​        由开发者自己创建的函数&lt;/p&gt;
-&lt;p&gt;函数有两个要素：参数（），括号中的内容就是参数&lt;/p&gt;
-&lt;p&gt;​        函数可以没有参数，也可以有很多个参数，多个参数用，隔开&lt;/p&gt;
-&lt;p&gt;​    返回值&lt;/p&gt;
-&lt;p&gt;​        返回值就是函数的返回结果，不是所有的函数都有返回值&lt;/p&gt;</summary>
     
     
     

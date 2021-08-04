@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%BA%8F%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E5%BA%8F%E5%88%97/" class="post-title-link" itemprop="url">序列</a>
+            <a href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类与对象</a>
         </h2>
 
         <div class="post-meta">
@@ -238,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:20:15" itemprop="dateCreated datePublished" datetime="2021-07-20T23:20:15+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-20 23:21:27" itemprop="dateCreated datePublished" datetime="2021-07-20T23:21:27+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,8 +266,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E5%BA%8F%E5%88%97/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%BA%8F%E5%88%97/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,7 +277,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>422</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -296,32 +296,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>序列</p>
-<p>1、列表 list</p>
-<p>​    1、列表是python中的一个对象</p>
-<p>​    2、之前所说的对象，他只能单一的保存数据</p>
-<p>​    3、列表可以保存很多个<strong>有序</strong>的数据</p>
-<p>​    4、列表是用来存储对象的对象</p>
-<p>​    5、列表的使用（本身、里面数据）</p>
-<p>2、序列</p>
-<p>​    1、序列是python中最基本的数据结构</p>
-<p>​    2、数据结构是计算机中数据储存的方式</p>
-<p>​    3、序列用于保存一组有序的数据，所有数据在序列当中是唯一的。（索引）</p>
-<p>​    4、序列中的数据会按照添加的顺序来分配索引（从0开始）</p>
-<p>​    5、序列的分类：</p>
-<p>​            可变序列：list</p>
-<p>​            不可变序列：str、tuple</p>
-<p>3、字典 dict</p>
-<p>​    1、字典又叫映射（mapping）</p>
-<p>​    2、列表存的性能很好，查的性能很差。</p>
-<p>​    3、字典查的性能很好，在字典中，每一个元素都有一个唯一的名字，通过这个名字可以很快的找到指定的元素</p>
-<p>​    4、字典有可以被称为键值对，唯一的名字，键，那个值叫做值</p>
-<p>4、集合 set</p>
-<pre><code> 1、集合和列表很像
-</code></pre>
-<p>​     2、集合只能存不可变的对象</p>
-<p>​     3、集合中的对象是无序的</p>
-<p>​     4、集合中不能出现重复的元素</p>
+          <p>函数</p>
+<p>python是一门面向对象的语言，万物皆是对象（一切其实皆函数（不准确，不正确））</p>
+<p>函数也是一种对象（内存中专门用来储存数据的一块区域）</p>
+<p>函数可以保存一些可执行的代码，并且，在需要的时候，这一部分代码可以重复的使用。</p>
+<p>创建函数：</p>
+<p>def 函数名（形参1，形参2…..）：</p>
+<p>​    代码块</p>
+<p>函数名的命名规范，（不能占用保留字符，可以包含字母、数字、下划线，但是不能用数字开头）</p>
+<p>函数中保存的代码不会立即执行，而是要调用才会执行（注意函数的参数）</p>
+<p>调用函数</p>
+<p>函数名（参数）</p>
+<p>函数可以没有参数，也可以有多个参数，调用时必须要符合定义的规范</p>
+<p>参数</p>
+<p>形参（就相当于在函数内部声明了一个变量），多个形参用逗号隔开</p>
+<p>实参（实际参数）调用函数的时候，传递进来的参数，实参会赋值给形参</p>
+<p>有几个形参就要几个实参</p>
+<p>函数式的编程</p>
+<p>在python中，函数式一等对象</p>
+<p>一等对象，如下特点</p>
+<p>1、对象是在运行时创建的</p>
+<p>2、能赋值给变量或者作为数据结构中的元素</p>
+<p>3、能作为参数转递</p>
+<p>4、能作为返回值返回</p>
+<p>高阶函数</p>
+<p>第一、接受一个或者多个函数作为参数</p>
+<p>第二、将函数作为返回值返回</p>
+<p>第三、装饰器</p>
+<p>类与对象</p>
+<p>面向对象</p>
+<p>所谓的面向对象、简单来说就是所有操作都可以通过对象来实现</p>
+<p>面向过程、将程序拆解成一个个的步骤</p>
+<p>大鹏上学记</p>
+<p>​    1、妈妈起床</p>
+<p>​    2、妈妈上厕所</p>
+<p>​    3、妈妈洗漱</p>
+<p>​    4、妈妈做早饭</p>
+<p>​    5、妈妈叫大鹏</p>
+<p>​    6、大鹏上厕所</p>
+<p>​    7、大鹏洗漱</p>
+<p>​    8、大鹏吃早饭</p>
+<p>​    9、背上书包</p>
+<p>​    10、上学校‘</p>
+<p>编程思想（面向过程）：将一个功能拆分成许多的小步骤</p>
+<p>只适用于一个功能，如果要实现另外一个功能，即使两个功能相差很小，但是依旧要重新写代码</p>
+<p>复用性比较低，难于维护</p>
+<p>面向对象：关注的不是过程，关注的是对象</p>
+<p>大鹏上学记</p>
+<p>​    1、大鹏妈妈叫大鹏上学</p>
+<p>编程思想（面向对象），将所有的功能保存到一个对象里</p>
+<p>比如，妈妈的功能保存到妈妈对象里，大鹏的功能保存到大鹏的对象里，要使用这个功能，直接来找对象。</p>
+<p>（要值得一提的是，作为一个功能来讲，（中小功能），面向过程写起来比较酣畅淋漓，同时比较快）</p>
+<p>简单归纳一下，面向对象的思想：1、找对象、2、搞对象（设计对象，做对象）、调用对象</p>
+<p>类（class）</p>
+<p>类和对象是什么关系</p>
+<p>类就是对象的图纸！</p>
+<p>对象是类的实例</p>
+<p>类也是一个对象（一个用来创建对象的对象）</p>
+<p>类：</p>
+<p>生活中所有的事物都可以抽象出来</p>
+<p>1、数据（属性） 变量</p>
+<p>2、行为（方法） 函数</p>
+<p>所有的这个类的实例都可以对象.属性来访问这个变量，对象.方法（）都可以来调用这个方法</p>
+<p>定义一个类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class 类名（）:</span><br><span class="line">	公共的一些属性</span><br><span class="line">	a=1</span><br><span class="line">	b=2</span><br><span class="line">	</span><br><span class="line">	对象的初始化方法</span><br><span class="line">	def __init__(self,...):</span><br><span class="line">		...</span><br><span class="line">	其他的方法</span><br><span class="line">	def method():</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
+
+<p>p1=类名（）（创建了一个对象，根据类名的那个类）然后，初始化方法就会自动调用，其他方法需要手动调用。</p>
 
       
     </div>
@@ -344,7 +384,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -412,7 +452,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -480,17 +520,13 @@
     </span>
     <span title="站点阅读时长">1:25</span>
   <span class="post-meta-divider">|</span>
-  <span id="busuanzi_container_site_pv">
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
     </span>
     访问量：<span id="busuanzi_value_site_pv"></span> 次数
-  </span>
 
   <span class="post-meta-divider">|</span>
-  <span id="busuanzi_container_site_uv">
     访客数：<span id="busuanzi_value_site_uv"></span> 人次
-  </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
