@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/03/%E6%B3%9B%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">抽象类与接口</a>
+            <a href="/2021/08/03/%E6%B3%9B%E5%9E%8B/" class="post-title-link" itemprop="url">泛型</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-01 20:20:38" itemprop="dateCreated datePublished" datetime="2021-08-01T20:20:38+08:00">2021-08-01</time>
+              <time title="创建时间：2021-08-03 13:14:08" itemprop="dateCreated datePublished" datetime="2021-08-03T13:14:08+08:00">2021-08-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="leancloud_visitors" data-flag-title="抽象类与接口">
+             <span id="/2021/08/03/%E6%B3%9B%E5%9E%8B/" class="leancloud_visitors" data-flag-title="泛型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/03/%E6%B3%9B%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/%E6%B3%9B%E5%9E%8B/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>12k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>11 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -293,36 +293,92 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>抽象类与接口：有效拆分大型系统，避免产生耦合。</p>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
-<p>普通类只是一个设计完善，可以直接产生实例化对象并且调用类中的属性和方法，抽象类最大特点，就是必须被子类继承，并且抽象类本身无法进行实例化。在实际项目中，往往很少设计普通类，大多都会选择继承抽象类。</p>
-<p>抽象类基本定义：抽象类是为了方法覆写而提供的类结构。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>泛型</p>
+<p>泛型其实不是java最开始的概念，他起源于jdk5之后，是一个新加入的特性。</p>
+<p>泛型的出现是为了解决对象强制转型之后可能出现的安全隐患问题。</p>
+<p>我们知道，为了方便参数的统一，我们会使用object类，利用此类对象可以接受所有类型的数据，包括基本数据类型和引用数据类型，但是由于其描述的数据类型过大，所以在实现中就会出现传入数据类型错误，从而引发异常classcastexception异常。</p>
+<p>例如：</p>
+<p>现在要设计一个描述坐标的类，point（包括x与y坐标轴信息），对于坐标点，允许保留整形、浮点与字符串三类数据。</p>
+<p>于是在设计point的时候，就需要考虑到x和y的具体类型，这个类型要求就可以保存以上三种类型的数据，于是最明显的就是利用object进行定义，这是因为存在以下的转换关系：</p>
+<p>整形：基本数据类型—包装为integer对象—自动向上转型为object</p>
+<p>浮点：基本数据类型——包装为double对象—自动向上转型为object</p>
+<p>字符串：string类对象——自动向上转型为object</p>
+<p>定义point坐标类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Point&#123;</span><br><span class="line">    private Object x;</span><br><span class="line">    private Object y;</span><br><span class="line"></span><br><span class="line">    public Object getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(Object x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(Object y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>本实例中利用abstract关键字声明了抽象类与抽象方法：</p>
-<p>1、抽象方法与普通方法不一样，抽象方法不能有方法体{}</p>
-<p>2、抽象类不是一个完整的类，抽象类必须提供子类，子类继承依然用extends关键字</p>
-<p>3、子类（非抽象类）一定要覆写抽象类中的全部抽象方法</p>
-<p>4、抽象类的对象实例化可以通过子类向上转型来实现</p>
-<p>抽象类的使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02();</span><br><span class="line">        j1.setType(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为采用了object作为存储类型，这样就可以接受任意的数据类型，于是此时可能出现两种情况：</p>
+<p>1、使用者按照同意的数据类型设计坐标内容，并且利用向下转型获取原始坐标数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point p1 = new Point();</span><br><span class="line">        p1.setX(10);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = (Integer) p1.getX();</span><br><span class="line">        int y = (Integer) p1.getY();</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>抽象类最大特点的是自己无法对象实例化，所以说在实际项目中，抽象类用来当中间过渡，当我们想要使用抽象类中，往往是为了解决继承中带来的代码重复处理。</p>
-<p>抽象类的说明</p>
-<p>1、抽象类必须有子类继承，抽象方法必须被覆写，所以抽象类定义时，不允许final定义抽象类和抽象方法。</p>
-<p>2、抽象类也可以定义成员属性和普通方法，为了给抽象类的成员属性初始化，我们可以给抽象类设计构造方法，子类在继承时会调用抽象类的无参构造，如果抽象类没有提供，那么就需要super关键字。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">abstract  class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract  String getconn();</span><br><span class="line"></span><br><span class="line">    public javademo01(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line"></span><br><span class="line">    public javademo02(String type) &#123;</span><br><span class="line">        super(type);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用基本数据类型自动装箱为包装类对象的特点向point类对象传入了x与y两个坐标信息，并且在获取坐标原始数据时，也依据设置的数据类型进行强制性的向下转型，所以可以得到正确的执行结果。</p>
+<p>2、使用者没有按照统一的数据类型设置坐标内容，读取数据时使用了错误的类型进行强制转换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Point p2 = new Point();</span><br><span class="line">p2.setX(100);</span><br><span class="line">p2.setY(&quot;北纬20度&quot;);</span><br><span class="line"></span><br><span class="line">int x1 = (Integer) p2.getX();</span><br><span class="line">int y1 = (Integer) p2.getY();</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;x:&quot; + x + &quot;y:&quot; + y);</span><br></pre></td></tr></table></figure>
 
-<p>抽象类中可以没有抽象方法，即使没有抽象方法，也不能使用new关键字实例化对象。</p>
-<p>抽象类中可以使用static定义静态方法，直接通过类名调用，毫无影响。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<p>值得一提的是，程序完全符合语法规范，不会在编译的时候告诉开发者，而是会在执行过程中才会出现安全隐患，而造成此问题的核心就是object类型能够接收的类型过大。</p>
+<p>泛型：可以在编译时检测出程序的安全隐患，使得程序更加的健壮。</p>
+<p>如果想要解决项目中可能出现的classcastexception安全隐患，最核心的方案就是避免强制性的向下转型，所以泛型的核心思想就是，类中的属性或方法的参数与返回值的类型采用动态标记，在对象实例化的时候动态配置要使用的数据类型。</p>
+<blockquote>
+<p><strong>泛型在类上标记出以后，需要通过实例化对象进行类型的设置，而所设置的类型只能够是引用数据类型，如果要设置基本数据类型，则必须采用包装类的形式，这就是为什么jdk5之后才引入包装类对象的自动装箱和自动拆箱机制的原因。</strong></p>
+</blockquote>
+<p>在类上使用泛型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setX(100);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = p1.getX();</span><br><span class="line">        int y = p1.getY();</span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本程序中实例化point类对象所采用的的泛型设置为了integer，这样一类当前point类对象的x，y的属性类型就是integer，对应的方法参数和返回值也都是integer，这样不仅可以在编译的时候明确知道数据类型的错误，也避免了对象向下转型操作。</p>
+<blockquote>
+<p>7之后的jdk版本再定义泛型的时候简化了，在实例化对象时的泛型类型就通过声明时的泛型类型来定义了，但是依旧建议使用完整语法。</p>
+</blockquote>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Point&lt;Integer&gt; p1 = new Point&lt;&gt;();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>为了照顾到最初的开发者，允许开发者在实例化对象时不设置泛型类型，这样在程序的编译时就会出现相应的警告信息，同时为了保证程序不出错，未设置的泛型类型将使用object作为默认类型。</p>
+<p>泛型虽然保证了代码的正确性。但是对于引用传递会带来参数统一问题。</p>
+<p>利用泛型类在实例化对象时进行的动态类型匹配，虽然可以有效地解决对象向下转型的安全隐患，但是在程序中实例化泛型类对象时，不同的泛型类型对象之间彼此是无法进行引用传递的。</p>
+<p>所以在进行泛型类型的引用对象时，为了可以适应所有本类的实例化对象，则可以在接收时使用“？”作为泛型通配符来使用，利用？表示的泛型类型只允许从对象中获取数据，而不允许修改数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point &lt;?&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不设置泛型类型或者设置泛型类型为object可否解决以上问题？</p>
+<p>1、public static void fun(point <object> temp){}</object></p>
+<p>2、public static void fun(point temp){}</p>
+<p>泛型需要考虑到操作类型统一性</p>
+<p>首先搞清楚一个核心问题，object可以接收一切的数据类型，但是在泛型概念里，point<string>与point<integer>这是两个不同的类型的对象。</integer></string></p>
+<p>如果采取类型1的引用，表示fun方法只接收point<object>类型的引用</object></p>
+<p>如果采取类型2的引用，实际上可以解决当前问题（不同泛型类型的对象传递），但是也会带来新的问题，允许随意修改数据</p>
+<p><strong>观察不设置泛型类型的方法参数定义：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point temp)&#123;</span><br><span class="line">        temp.setY(199);</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行完程序可以发现，虽然不设置泛型类型可以实现对所有泛型类型的接收，但是无法对修改做出控制，然而使用了通配符？只允许获取，不允许修改。</p>
+</blockquote>
+<p>通配符？除了可以匹配任意的泛型类型之外，还可以通过泛型上限和下限的配置实现更加严格的类型定义。</p>
+<p>类和方法：设置泛型的上限，（？ extends 类）只能够使用当前类或者其子类设置泛型</p>
+<p>方法：设置泛型的下限，（？ super 类）只能设置指定的类或者父类。</p>
+<p>设置泛型上限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class  demo22_1 &lt;T extends Number&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo22 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo22_1&lt;Integer&gt; d1 = new demo22_1&lt;Integer&gt;();</span><br><span class="line">        d1.setContent(199);</span><br><span class="line">        fun(d1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun(demo22_1&lt;? extends Number&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置泛型的下限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class demo23_1&lt;T&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo23 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo23_1&lt;String&gt; d1 = new demo23_1&lt;&gt;();</span><br><span class="line">        d1.setContent(&quot;i always love mm&quot;);</span><br><span class="line">        fun(d1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void fun(demo23_1&lt;? super String&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>泛型接口</p>
+<p>泛型可以定义在任意程序的结构体中</p>
+<p>泛型也可以定义在接口上，这样的接口叫做泛型接口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于此时的泛型接口来说，子类定义时就有两种方式，在子类中继续声明泛型和子类中为父类设置泛型类型。</p>
+<p>1、在子类中继续声明泛型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2&lt;S&gt; implements demo24_1&lt;S&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(S t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2&lt;String&gt;();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在定义子类声明了一个泛型标记S，并且实例化子类对象的时候，设置的泛型类型会传递到泛型接口中去。</p>
+<p>2、在子类中为父类设置泛型;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2 implements demo24_1&lt;String&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(String t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在子类时，没有定义泛型标记，而是为父接口设置了泛型类型为string，所以说在覆写echo方法的时候，参数类型就是string。</p>
+<p>泛型方法：对于泛型，除了可以定义在类上之外，也可以在方法上进行定义，而在方法上直接定义的泛型不一定要在类中定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class demo25 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer num [] = fun(1,2,3,4,5,6,7,8,9);</span><br><span class="line">        for (int temp: num) &#123;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static &lt;T&gt; T[] fun(T... args)&#123;</span><br><span class="line">        return args;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上，这是在一个没有泛型声明的类中定义了泛型方法，所以在fun方法声明处就必须单独定义泛型标记，此时的泛型类型由传入的参数来决定。</p>
+
       
     </div>
  <div>
@@ -344,7 +400,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -412,7 +468,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -473,12 +529,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">102k</span>
+    <span title="站点总字数">115k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:33</span>
+    <span title="站点阅读时长">1:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

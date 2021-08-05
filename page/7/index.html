@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/26/%E6%95%B0%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/27/String%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/26/%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">数组</a>
+            <a href="/2021/07/27/String%E7%B1%BB/" class="post-title-link" itemprop="url">String类</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-26 23:31:38" itemprop="dateCreated datePublished" datetime="2021-07-26T23:31:38+08:00">2021-07-26</time>
+              <time title="创建时间：2021-07-27 22:59:04" itemprop="dateCreated datePublished" datetime="2021-07-27T22:59:04+08:00">2021-07-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/26/%E6%95%B0%E7%BB%84/" class="leancloud_visitors" data-flag-title="数组">
+             <span id="/2021/07/27/String%E7%B1%BB/" class="leancloud_visitors" data-flag-title="String类">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/26/%E6%95%B0%E7%BB%84/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/26/%E6%95%B0%E7%BB%84/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/27/String%E7%B1%BB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/27/String%E7%B1%BB/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>8.4k</span>
+              <span>5.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>8 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -293,104 +293,118 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>数组</p>
-<p>数组是程序设计语言里面一门很重要的数据结构，java里，数组是引用数据类型，就必然牵扯到栈内存的开辟和引用传递。</p>
-<p>数组是一门非常基础的线性存储结构，可以实现一组变量的有效关联。</p>
-<p>数组是一些相关变量的集合。如果我现在要定义100个整形变量，</p>
-<p>int i1，i2，i3…i100.</p>
-<p>以上的定义方式可以满足需求，但是每一个变量之间不存在逻辑控制关系，每一个变量完全独立，就会出现不方便管理变量的情况。</p>
-<p>数组：</p>
-<p>声明与开辟：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int listDemo01 [] = new int[10];</span><br><span class="line">int [] listDemo02 = new int[10];</span><br><span class="line">数据类型 [] 数组名称 = new 数据类型[长度]</span><br></pre></td></tr></table></figure>
+          <p>String 类</p>
+<p>string在实际开发中，几乎是一个必须使用的程序类，也可以说是项目的核心组件类。</p>
+<p>string用“”双引号定义，可以用+实现字符串连接。</p>
+<p>1、string类对象实例化</p>
+<p>java中基本数据类型不包含string，但是考虑到程序开发的实际需要，就设计了string类，并且这个类的对象可以直接赋值进行实例化。</p>
+<p>java程序中使用双引号定义的内容，都是字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public final class String</span><br><span class="line"></span><br><span class="line">private final byte[] value</span><br></pre></td></tr></table></figure>
 
-<p>声明：</p>
-<p>数据类型 [] 数组名称 = null；</p>
-<p>开辟：</p>
-<p>数据名称 = new 数据类型 [长度]；</p>
-<p>当数组开辟空间之后，就可以通过访问下标，索引的方式去实现查询，修改，删除。所有数组的索引都是从0开始的。如果访问的索引超过了数组下标的长度，那就会抛出异常，（数据越界）</p>
-<p>以上的都是动态初始化的内容，只给了数组长度，如果如上声明，则每一个元素的数据类型都是int，且根据默认值，是0。</p>
-<p>数组是一种顺序结构，长度是固定的，输出的时候采用循环。（for循环）</p>
-<p>java为了方便获取数组长度，提供了此listDemo01.length属性。</p>
-<p>数组的核心：声明并且分配内存空间，而后根据索引进行访问。</p>
-<p>数组和对象：差别就在于堆内存中，对象保存的是属性，数组保存的是信息。</p>
-<p>静态初始化（在开辟内存空间的时候，就给出数组中元素的值）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int data [] =null;</span><br><span class="line">data = new int[] &#123;1,2,3,4,5&#125;;</span><br></pre></td></tr></table></figure>
+<p>jdk8 保存的是字符数组，jdk9之后字符串源代码实现就是字节数组。</p>
+<p>我们可以得出一个结论，string就是对数组的特殊包装应用，而对数组而言最大的问题是长度的固定。</p>
+<p>string本身是一个系统类，除了可以赋值进行对象实例化之外，还可以使用相关的构造方法来进行对象实例化。</p>
+<p>string类构造方法(之一)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public String(String original) &#123;</span><br><span class="line">    this.value = original.value;</span><br><span class="line">    this.coder = original.coder;</span><br><span class="line">    this.hash = original.hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>数组最大的方便就是在于可以使用线性结构来存储相同数据类型的变量，但是另一个角度来看，最大的缺陷也正是如此，保存个数固定，因此在实际中，我们会采用类集框架（java提供的数据结构实现）来实现动态数组的操作。但是这并不意味着，我们不会使用数组。</p>
-<p>数组引用传递分析：</p>
-<p>数组属于引用数据类型，在使用是需要new关键字开辟堆内存空间，一个堆内存可以被多个栈内存指向。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int data[] = new int[]&#123;10, 20, 30&#125;;</span><br><span class="line">int temp[] = data;</span><br><span class="line">temp[0] = 99;</span><br><span class="line">for (int i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">    System.out.print(data[i]+&quot;\t&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">99	20	30	</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;2222&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>如上，两种定义方式，看起来效果几乎完全一样，但实际上两者是有本质差别的。</p>
+<p>字符串比较</p>
+<p>如果是基本数据类型，在java中，可以使用==比较运算符直接进行比较。</p>
+<p>但是string属于引用数据类型，他的对象名中保存的是堆内存地址，string对象使用==比较的就不再是内容，而是堆内存地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str03 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;1111&quot;);</span><br><span class="line">    System.out.println(str02==str01);</span><br><span class="line">    System.out.println(str03==str01);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>关于自定义类的比较，和字符串一样，都是比较的堆内存地址。</p>
+<p>在string类里，提供了equals（）方法来比较字符串内容（区分大小写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject)</span><br></pre></td></tr></table></figure>
 
-<p>要注意对数组来说，如果只是声明，没有开辟空间，是无法根据下标访问的，否则会报空指针异常。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int temp[] = null;</span><br><span class="line">temp[0] = 99;</span><br><span class="line">System.out.println(temp[0]);</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
-
-<p>foreach输出</p>
-<p>数组的输出除了索引和循环之外，还提供了foreach结构。</p>
-<p>数组，定长。</p>
-<p>foreach（加强的for循环）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int data[] = new int[]&#123;10, 20, 30&#125;;</span><br><span class="line"></span><br><span class="line">for (int temp : data) &#123;</span><br><span class="line">    System.out.println(temp+&quot;\t&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意：没有foreach关键字。</p>
-<p>利用foreach输出，可以避免数组越界异常。</p>
-<p>二维数组：</p>
-<p>两个数组的嵌套。</p>
-<p>之前的数组，一维数组，实际上是一种线性结构。（相当于只描述了一行的内容）</p>
-<p>现在我们要描述多行多列的内容，那就需要用到二维数组。（多维数组）</p>
-<p>动态初始化、静态初始化：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int data [][] = new int [8][8];</span><br><span class="line">int data1 [][] = new int [][] &#123;&#123;1,1,1&#125;,&#123;2,2,2&#125;&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int data1 [][] = new int [][] &#123;&#123;1,1,1&#125;,&#123;2,2,2&#125;,&#123;1,2,4,5,6,7&#125;&#125;;</span><br><span class="line">for (int x =0 ;x&lt;data1.length;x++)&#123;</span><br><span class="line">    for (int y=0;y&lt;data1[x].length;y++)&#123;</span><br><span class="line">        System.out.print(data1[x][y]+&quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>外层循环控制行，内存循环控制列。</p>
-<p>foreach循环输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int temp[] : data) &#123;</span><br><span class="line">    for (int num: temp) &#123;</span><br><span class="line">        System.out.print(num + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str03 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;1111&quot;);</span><br><span class="line">    System.out.println(str01.equals(str02));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
 
 
 
-<p>数组与方法：</p>
-<p>在数组进行引用传递，最为常见的就是利用方法进行引用数据的处理或者返回。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int data[][] = new int[][]&#123;&#123;1, 1, 1&#125;, &#123;2, 2, 2&#125;, &#123;1, 2, 4, 5, 6, 7&#125;&#125;;</span><br><span class="line">    printArray(data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void printArray(int data[][])&#123;</span><br><span class="line">    for (int temp[] : data) &#123;</span><br><span class="line">        for (int num: temp) &#123;</span><br><span class="line">            System.out.print(num + &quot;\t&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>字符串常量</p>
+<p>常量就是不会修改的内容。</p>
+<p>字符串常量，严格意义上说是string类的匿名对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    System.out.println(&quot;1111&quot;.equals(str01));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void changeArray(int data[][])&#123;</span><br><span class="line">    for (int temp[] : data) &#123;</span><br><span class="line">        for (int num: temp) &#123;</span><br><span class="line">            num *= 2;</span><br><span class="line">            System.out.print(num+&quot;\t&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类中的普通方法只有对象能调用，所以我们说字符串常量是string类的匿名对象。</p>
+<p>所谓的直接赋值的操作，实际上就是给匿名对象一个名字而已。</p>
+<p>区别：string类的匿名对象是系统自动生成的，不再由用户自己创建。</p>
+<p>实际问题——字符串比较：</p>
+<p>如果我们要获取用户输入，然后进行字符串比较，但是用户没有输入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String input = null;</span><br><span class="line">    if (input.equals(&quot;baidu&quot;))&#123;</span><br><span class="line">        System.out.println(&quot;www。baidu.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
 
-<p>数组排序：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int data[] = new int[]&#123;1, 3, 4, 5, 6, 78, 23, 54, 65, 76, 432, 32, 54&#125;;</span><br><span class="line">    Arrays.sort(data);</span><br><span class="line"></span><br><span class="line">    for (int temp : data) &#123;</span><br><span class="line">        System.out.print(temp + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决途径：（回避）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String input = null;</span><br><span class="line">    if (&quot;baidu&quot;.equals(input))&#123;</span><br><span class="line">        System.out.println(&quot;www。baidu.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>数组转置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int data[] = new int[]&#123;1, 3, 4, 5, 6, 78, 23, 54, 65, 76, 432, 32, 54&#125;;</span><br><span class="line">    Arrays.sort(data);</span><br><span class="line"></span><br><span class="line">    int center = data.length / 2; //确定交换次数</span><br><span class="line">    int head = 0;</span><br><span class="line">    int tail = data.length - 1;</span><br><span class="line">    for (int x = 0; x &lt; center; x++) &#123;</span><br><span class="line">        int temp = data[head];</span><br><span class="line">        data[head] = data[tail];</span><br><span class="line">        data[tail] = temp;</span><br><span class="line">        head++;</span><br><span class="line">        tail--;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int temp : data) &#123;</span><br><span class="line">        System.out.print(temp + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序中直接调用了字符串常量“baidu”来执行。equals方法，因为字符串<strong>常量</strong>是string对象，所以永远不可能是null，而equals方法的参数又是object，因此这就避免了空指针异常。</p>
+<p>两种实例化方式的比较：</p>
+<p>1、直接赋值：</p>
+<p>在堆内存中开辟一块地址，保存字符串常量，并且栈内存直接引用这一部分的堆内存。</p>
+<p>而且，对同一字符串的多次直接赋值还可以实现对堆内存的重复利用。也就是说采用直接赋值的方式进行string对象实例化，在内容相同（字符串常量一致）的情况下，不会开辟新的堆内存空间，而会直接指向已有的堆内存。</p>
+<p>字符串对象池</p>
+<p><strong>jvm的底层的存在一个对象池</strong>（string只是对象池中的一种类型），当我们使用直接赋值的方式定义了一个string对象之后，字符串所使用的匿名对象入池保存，如果后面我们还有string对象直接赋值定义，并且采用了同一块字符串常量，也就是内容相同，那么就不会开辟新的堆内存空间，而是使用已经有的对象进行引用的分配。</p>
+<p>共享设计模式的应用：（如果有一天，你需要一把剪刀，你出去买了一把，用完之后不可以丢掉，放在家里，等下一次用的时候再继续使用，剪刀放在工具箱里，同样工具箱的东西都可以下一次继续使用）</p>
+<p>构造方法实例化：</p>
+<p>如果要明确的调用string类的构造方法进行实例化string对象，那么一定要使用new关键字，而每当使用new关键字时，就会开辟新的堆内存空间。而这块堆内存的内容就是构造方法传入的字符串常量。</p>
+<p>构造方法定义时：传入的字符串常量会创建一个匿名对象，然后new关键字会开辟一块堆内存空间，也会传入一个字符串常量。那么就相当于一共创建了两块堆内存空间，并且字符串常量也就是匿名对象创建的堆内存只负责实例化string对象，不与构造方法实例化出的string对象有关联。真正使用的堆内存是new开辟的堆内存，而之前定义字符串常量开辟的堆内存空间不会被任何栈内存引用（指向），成为垃圾空间，等待gc回收。</p>
+<p>因此，构造方法创建string对象，会开辟两份空间，并且一块空间成为垃圾。</p>
+<p>除此之外。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = new String(&quot;mm&quot;);</span><br><span class="line">    String str02 = &quot;mm&quot;;</span><br><span class="line">    System.out.println(str01 == str02);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">false</span><br></pre></td></tr></table></figure>
 
-<p>数组复制：</p>
-<p>是把源数组部分内容复制到另一个数组，但是数组长度不变。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int data[] = new int[]&#123;1, 3, 4, 5, 6, 78, 23, 54, 65, 76, 432, 32, 54&#125;;</span><br><span class="line">int data1[] = new int[]&#123;1, 3, 4, 5, 6&#125;;</span><br><span class="line"></span><br><span class="line">System.arraycopy(data,4,data1,1,3);</span><br></pre></td></tr></table></figure>
+<p>使用构造方法定义的string对象不会自动入池保存。</p>
+<p>string对象手动入池：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = new String(&quot;mm&quot;).intern();</span><br><span class="line">    String str02 = &quot;mm&quot;;</span><br><span class="line">    System.out.println(str01 == str02);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
 
-<p>（源数组名称、源数组开始点、目标数组名、目标数组开始点、长度）</p>
-<p>方法可变参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int sum(int... data) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for (int temp:data) &#123;</span><br><span class="line">        sum += temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(sum(data));</span><br><span class="line">System.out.println(sum(1,23,45,65,7543,9));</span><br></pre></td></tr></table></figure>
+<p>所以，实际开发时，尽量的直接赋值定义字符串。</p>
+<p>字符串常量池</p>
+<p>为了防止字符串过多，jdk进行了结构上的优化。（本质是一个动态对象数组），所有直接赋值的字符串对象都可以自动保存在常量池中，方便下次使用。</p>
+<p>静态常量池：</p>
+<p>程序（class）在加载（不是运行）时会把字符串、常量、类、方法全部进行分配</p>
+<p>运行时常量池：</p>
+<p>加载之后，有一些字符串内容是通过拼接的，由于string对象内容可以改变，所以叫做运行时常量池。</p>
+<p>字符串修改：</p>
+<p>常量的内容一旦被定义就无法修改，但是字符串比较特殊，重新实例化来实现修改字符串内容。</p>
+<p>string类关于数据的存储是通过数组，数组本身又是定长的数据类型。实际上就代表了string对象一旦被实例化，内容就无法改变，那么字符串对象内容实际上就是通过改变引用的方式来实现的。</p>
+<p>要注意：这样会产生许多的垃圾空间。</p>
+<p>主方法组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String [] args) &#123;&#125;</span><br></pre></td></tr></table></figure>
 
-<p>为了方便我们灵活的定义方法，避免参数限制，就给出了方便可变参数。</p>
-<p>（参数类型…变量）</p>
-<p>混合参数定义时（既有普通参数，也有可变的参数）</p>
-<p>可变参数一定要写在最后、并且一个方法只能有一个可变参数</p>
-<p>对象数组</p>
-<p>数组内不止可以存放基本数据类型，还可以存放引用数据类型。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Person0 &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person0(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getInfo() &#123;</span><br><span class="line">        return &quot;name:&quot; + this.name + &quot;\tage:&quot; + this.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person0 p1[] = new Person0[3];</span><br><span class="line">        p1[0] = new Person0(&quot;mm&quot;, 7);</span><br><span class="line">        p1[1] = new Person0(&quot;mm01&quot;, 4);</span><br><span class="line">        p1[2] = new Person0(&quot;mm01&quot;, 8);</span><br><span class="line">        for (Person0 temp : p1) &#123;</span><br><span class="line">            System.out.println(temp.getInfo());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>public: 一种访问权限、主方法是一切程序的入口，有且只能有一个，一定是公共的。</p>
+<p>static：程序的执行是通过类，所以这个方法由类直接调用。</p>
+<p>void：主方法是一切程序的起点，程序一旦开始，不需要返回结果。</p>
+<p>main：系统定义好的方法名称，当java执行时，自动寻找。</p>
+<p>String [] args：字符串的数组，可以实现启动参数的接受。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class demo04 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        if (args.length == 0)&#123;</span><br><span class="line">            System.out.println(&quot;please input your argments:&quot;);</span><br><span class="line">            System.exit(1);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            for (String temp:args) &#123;</span><br><span class="line">                System.out.println(temp+&quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">java demo04 one 2 3 4 5</span><br></pre></td></tr></table></figure>
 
 
 
-<p>引用传递应用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">class Car&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private double price;</span><br><span class="line">    private Person1 person;</span><br><span class="line"></span><br><span class="line">    public Car(String name, double price) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(double price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person1 getPerson() &#123;</span><br><span class="line">        return this.person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPerson(Person1 person) &#123;</span><br><span class="line">        this.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getInfo()&#123;</span><br><span class="line">        return &quot;name:&quot;+this.name+&quot;\tprice:&quot;+this.price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person1&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private Car car;</span><br><span class="line"></span><br><span class="line">    public Person1(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Car getCar() &#123;</span><br><span class="line">        return this.car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCar(Car car) &#123;</span><br><span class="line">        this.car = car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getInfo()&#123;</span><br><span class="line">        return &quot;name:&quot;+this.name+&quot;\tage:&quot;+this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo03 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person1 p1 = new Person1(&quot;mm&quot;,7);</span><br><span class="line">        Car c1 = new Car(&quot;mm01&quot;,1223132.32);</span><br><span class="line">        p1.setCar(c1);</span><br><span class="line">        c1.setPerson(p1);</span><br><span class="line">        System.out.println(p1.getCar().getInfo());</span><br><span class="line">        System.out.println(c1.getPerson().getInfo());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>string类常用方法：</p>
+<p>1、字符数组转字符串（字节等同理）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char [] char01 =new char[]&#123;&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;&#125;;</span><br><span class="line">String str01 = new String(char01);</span><br><span class="line">System.out.println(str01);</span><br></pre></td></tr></table></figure>
 
-<p>注意87、88.代码链。</p>
-<p>自身类结构关联</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">class Car&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private double price;</span><br><span class="line">    private Person1 person;</span><br><span class="line"></span><br><span class="line">    public Car(String name, double price) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getPrice() &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPrice(double price) &#123;</span><br><span class="line">        this.price = price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person1 getPerson() &#123;</span><br><span class="line">        return this.person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPerson(Person1 person) &#123;</span><br><span class="line">        this.person = person;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getInfo()&#123;</span><br><span class="line">        return &quot;name:&quot;+this.name+&quot;\tprice:&quot;+this.price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person1&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public Person1[] getChild() &#123;</span><br><span class="line">        return this.child;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setChild(Person1[] child) &#123;</span><br><span class="line">        this.child = child;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Car car;</span><br><span class="line">    private Person1 child[];</span><br><span class="line"></span><br><span class="line">    public Person1(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Car getCar() &#123;</span><br><span class="line">        return this.car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCar(Car car) &#123;</span><br><span class="line">        this.car = car;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getInfo()&#123;</span><br><span class="line">        return &quot;name:&quot;+this.name+&quot;\tage:&quot;+this.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo03 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person1 p1 = new Person1(&quot;mm&quot;,7);</span><br><span class="line">        Person1 child1 = new Person1(&quot;mm01&quot;,7);</span><br><span class="line">        Person1 child2 = new Person1(&quot;mm02&quot;,7);</span><br><span class="line">        child1.setCar(new Car(&quot;法拉克&quot;,121321321.2221));</span><br><span class="line">        child2.setCar(new Car(&quot;卡车拉货&quot;,12132.3231));</span><br><span class="line">        p1.setChild(new Person1[]&#123;child1,child2&#125;);</span><br><span class="line">        Car c1 = new Car(&quot;bbb&quot;,12121.32);</span><br><span class="line">        p1.setCar(c1);</span><br><span class="line">        c1.setPerson(p1);</span><br><span class="line"></span><br><span class="line">        for (int x=0;x&lt;p1.getChild().length;x++)&#123;</span><br><span class="line">            System.out.println(p1.getChild()[x].getInfo());</span><br><span class="line">            System.out.println(p1.getChild()[x].getCar().getInfo());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、指定范围转换（第二个参数是步长）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char [] char01 =new char[]&#123;&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;&#125;;</span><br><span class="line">String str01 = new String(char01,0,3);</span><br><span class="line">System.out.println(str01);</span><br></pre></td></tr></table></figure>
 
-<p>合成设计模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Pc &#123;   //父结构</span><br><span class="line">    private 显示器 对象数组[];  //一台计算机可以连接多个小显示器</span><br><span class="line">    private 主机 对象; //一台计算机只能有一个主机</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 显示器 &#123;  //独立类</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 主机 &#123;   //子结构</span><br><span class="line">    private 主板 对象; //一块主板</span><br><span class="line">    private 鼠标 对象1; //一个鼠标</span><br><span class="line">    private 键盘 对象2; //一块键盘</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 主板 &#123; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 鼠标 &#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class 键盘 &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、获取指定索引的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.charAt(0));</span><br></pre></td></tr></table></figure>
 
-<p>通过不同的类实现子结构，然后在父结构中整合。（如上，就是典型的面向对象思想）</p>
-<p>引用数据类型不仅仅是内存的操作形式，更多的是抽象和关联的设计思想</p>
+<p>4、大小写转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.toLowerCase());</span><br><span class="line">System.out.println(str01.toUpperCase());</span><br></pre></td></tr></table></figure>
+
+<p>5、截取字符串（开始索引到结束索引）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.substring(0,10));</span><br><span class="line">System.out.println(str01.substring(0));</span><br></pre></td></tr></table></figure>
+
+<p>6、判断是否以指定字符串开头、结尾</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.startsWith(&quot;12&quot;));</span><br><span class="line">System.out.println(str01.startsWith(&quot;12&quot;,3));</span><br><span class="line">System.out.println(str01.endsWith(&quot;rf&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>7、字符串替换（全部替换，替换第一个）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.replaceAll(&quot;1&quot;,&quot;mm&quot;));</span><br><span class="line">System.out.println(str01.replaceFirst(&quot;3&quot;,&quot;mm&quot;));</span><br></pre></td></tr></table></figure>
+
+<p>………..</p>
+<p>java doc文档</p>
+<p>这是java官方提供的关于jdk相关api的文档，文档中详细描述了每一个模块中不同的包里不同的类的相关定义和相关说明信息，以及成员属性介绍，包括构造方法普通方法以及其他的说明摘要。</p>
 
       
     </div>
@@ -413,7 +427,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -481,7 +495,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -542,12 +556,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">102k</span>
+    <span title="站点总字数">115k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:33</span>
+    <span title="站点阅读时长">1:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
