@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%BC%82%E5%B8%B8/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E5%BC%82%E5%B8%B8/" class="post-title-link" itemprop="url">异常</a>
+            <a href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="post-title-link" itemprop="url">迭代器、生成器与装饰器</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:22:10" itemprop="dateCreated datePublished" datetime="2021-07-20T23:22:10+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-21 22:18:16" itemprop="dateCreated datePublished" datetime="2021-07-21T22:18:16+08:00">2021-07-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/20/%E5%BC%82%E5%B8%B8/" class="leancloud_visitors" data-flag-title="异常">
+             <span id="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="leancloud_visitors" data-flag-title="迭代器、生成器与装饰器">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E5%BC%82%E5%B8%B8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%BC%82%E5%B8%B8/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>437</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -293,25 +293,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>异常</p>
-<p>程序在运行当中，不可避免的会产生一些错误。</p>
-<p>​    使用了没有赋值的变量，使用了不存在的索引、使用了过深的递归、传入了无效的参数…</p>
-<p>一旦出现异常，程序会立即停止。</p>
-<p>处理异常</p>
-<p>python是希望在出现异常的时候，程序不停，可以编写代码来对异常进行处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">	代码块（可能出现异常的语句）</span><br><span class="line">except 异常类型 as 异常名（可以自定义）:</span><br><span class="line">	代码块（程序出错了的处理方式）</span><br><span class="line">else:</span><br><span class="line">	代码块（没出错要执行的语句）</span><br><span class="line">finally:</span><br><span class="line">	代码块（一定会执行，无论是否出错的语句）</span><br></pre></td></tr></table></figure>
+          <p>迭代器、生成器与装饰器</p>
+<p>迭代器</p>
+<p>迭代几乎是python最强的功能之一，是访问集合元素的一种方式</p>
+<p>for i in rang(1,101)</p>
+<p>迭代器是一个可以记住遍历的位置的<strong>对象</strong></p>
+<p>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完，结束</p>
+<p>迭代器<strong>只能前进，不能后退</strong>。</p>
+<p>迭代器基本方法：iter（）和next（）</p>
+<p>迭代器用在哪儿？（字符串、列表、元组等对象都可以创建迭代器）（序列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it=iter(list)</span><br></pre></td></tr></table></figure>
 
-<p>try语句是必须的，else则不是，except和finally至少要有一股</p>
-<p>raise语句 抛出异常</p>
-<p>常见的异常对象</p>
-<p>nameerror（你的变量名称为找到，函数名称，类名称。变量没有定义）</p>
-<p>recursionerror（超过最大递归深度）</p>
-<p>syntaxerror 语法错误</p>
-<p>timeoueerror 超时</p>
-<p>typeerror 类型错误（print（1+“sasda”））</p>
-<p>valueerror   int（”12.2月”）</p>
-<p>keyerror </p>
+<p>for语句遍历：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line">for i in it:</span><br><span class="line">	print(i,end=&#x27; &#x27;)</span><br></pre></td></tr></table></figure>
 
+<p>next()函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	try:</span><br><span class="line">		print(next(it))</span><br><span class="line">	except StopIteration:</span><br><span class="line">		sys.exit()</span><br></pre></td></tr></table></figure>
+
+<p>创建一个迭代器</p>
+<p>类有一个构造函数，python中，他会在对象初始化的时候执行</p>
+<p>迭代器类里，iter()方法返回一个特殊的迭代器对象，这个迭代器对象实现了next（）并且通过StopIteration</p>
+<p>异常的标识来判断迭代是否完成</p>
+<p>next（）方法返回下一个迭代器的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        x = self.a</span><br><span class="line">        self.a+=1</span><br><span class="line">        return x</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
+
+<p>以上的代码把一个类当做了迭代器，我们不难发现，需要至少实现两个方法，iter和next。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        if self.a &lt;= 3:</span><br><span class="line">            x = self.a</span><br><span class="line">            self.a+=1</span><br><span class="line">            return x</span><br><span class="line">        else:</span><br><span class="line">            raise StopIteration</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
+
+<p>以上代码，使用了stopiteration异常来限制了循环的次数（迭代的次数）</p>
+<p>所有的技术都要根据使用场景来。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
  <div>
@@ -333,7 +351,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -401,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -462,12 +480,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">115k</span>
+    <span title="站点总字数">127k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:45</span>
+    <span title="站点阅读时长">1:55</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

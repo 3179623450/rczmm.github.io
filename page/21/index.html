@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类与对象</a>
+            <a href="/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/" class="post-title-link" itemprop="url">真正的看python（1）</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:21:27" itemprop="dateCreated datePublished" datetime="2021-07-20T23:21:27+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-20 23:23:54" itemprop="dateCreated datePublished" datetime="2021-07-20T23:23:54+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="leancloud_visitors" data-flag-title="类与对象">
+             <span id="/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/" class="leancloud_visitors" data-flag-title="真正的看python（1）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.1k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -293,73 +293,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>函数</p>
-<p>python是一门面向对象的语言，万物皆是对象（一切其实皆函数（不准确，不正确））</p>
-<p>函数也是一种对象（内存中专门用来储存数据的一块区域）</p>
-<p>函数可以保存一些可执行的代码，并且，在需要的时候，这一部分代码可以重复的使用。</p>
-<p>创建函数：</p>
-<p>def 函数名（形参1，形参2…..）：</p>
-<p>​    代码块</p>
-<p>函数名的命名规范，（不能占用保留字符，可以包含字母、数字、下划线，但是不能用数字开头）</p>
-<p>函数中保存的代码不会立即执行，而是要调用才会执行（注意函数的参数）</p>
-<p>调用函数</p>
-<p>函数名（参数）</p>
-<p>函数可以没有参数，也可以有多个参数，调用时必须要符合定义的规范</p>
-<p>参数</p>
-<p>形参（就相当于在函数内部声明了一个变量），多个形参用逗号隔开</p>
-<p>实参（实际参数）调用函数的时候，传递进来的参数，实参会赋值给形参</p>
-<p>有几个形参就要几个实参</p>
-<p>函数式的编程</p>
-<p>在python中，函数式一等对象</p>
-<p>一等对象，如下特点</p>
-<p>1、对象是在运行时创建的</p>
-<p>2、能赋值给变量或者作为数据结构中的元素</p>
-<p>3、能作为参数转递</p>
-<p>4、能作为返回值返回</p>
-<p>高阶函数</p>
-<p>第一、接受一个或者多个函数作为参数</p>
-<p>第二、将函数作为返回值返回</p>
-<p>第三、装饰器</p>
-<p>类与对象</p>
-<p>面向对象</p>
-<p>所谓的面向对象、简单来说就是所有操作都可以通过对象来实现</p>
-<p>面向过程、将程序拆解成一个个的步骤</p>
-<p>大鹏上学记</p>
-<p>​    1、妈妈起床</p>
-<p>​    2、妈妈上厕所</p>
-<p>​    3、妈妈洗漱</p>
-<p>​    4、妈妈做早饭</p>
-<p>​    5、妈妈叫大鹏</p>
-<p>​    6、大鹏上厕所</p>
-<p>​    7、大鹏洗漱</p>
-<p>​    8、大鹏吃早饭</p>
-<p>​    9、背上书包</p>
-<p>​    10、上学校‘</p>
-<p>编程思想（面向过程）：将一个功能拆分成许多的小步骤</p>
-<p>只适用于一个功能，如果要实现另外一个功能，即使两个功能相差很小，但是依旧要重新写代码</p>
-<p>复用性比较低，难于维护</p>
-<p>面向对象：关注的不是过程，关注的是对象</p>
-<p>大鹏上学记</p>
-<p>​    1、大鹏妈妈叫大鹏上学</p>
-<p>编程思想（面向对象），将所有的功能保存到一个对象里</p>
-<p>比如，妈妈的功能保存到妈妈对象里，大鹏的功能保存到大鹏的对象里，要使用这个功能，直接来找对象。</p>
-<p>（要值得一提的是，作为一个功能来讲，（中小功能），面向过程写起来比较酣畅淋漓，同时比较快）</p>
-<p>简单归纳一下，面向对象的思想：1、找对象、2、搞对象（设计对象，做对象）、调用对象</p>
-<p>类（class）</p>
-<p>类和对象是什么关系</p>
-<p>类就是对象的图纸！</p>
-<p>对象是类的实例</p>
-<p>类也是一个对象（一个用来创建对象的对象）</p>
-<p>类：</p>
-<p>生活中所有的事物都可以抽象出来</p>
-<p>1、数据（属性） 变量</p>
-<p>2、行为（方法） 函数</p>
-<p>所有的这个类的实例都可以对象.属性来访问这个变量，对象.方法（）都可以来调用这个方法</p>
-<p>定义一个类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class 类名（）:</span><br><span class="line">	公共的一些属性</span><br><span class="line">	a=1</span><br><span class="line">	b=2</span><br><span class="line">	</span><br><span class="line">	对象的初始化方法</span><br><span class="line">	def __init__(self,...):</span><br><span class="line">		...</span><br><span class="line">	其他的方法</span><br><span class="line">	def method():</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
-
-<p>p1=类名（）（创建了一个对象，根据类名的那个类）然后，初始化方法就会自动调用，其他方法需要手动调用。</p>
-
+          <h1 id="真正的看python（1）"><a href="#真正的看python（1）" class="headerlink" title="真正的看python（1）"></a>真正的看python（1）</h1><h2 id="1、python是一门解释性语言嘛？"><a href="#1、python是一门解释性语言嘛？" class="headerlink" title="1、python是一门解释性语言嘛？"></a>1、python是一门解释性语言嘛？</h2><p>是但不完全是，python其实是一门基于虚拟机的语言，首先他有三门主要的解释器，他利用这个解释器，来解释并且执行自己定义的语法来生成代码执行。解释性语言并不需要编译。</p>
+<p>再说的清楚一点、计算机并不能直接理解我们的语言，他只能理解机器语言，也就是0和1，因此，我们需要进行翻译。</p>
+<p>而翻译，有两种，一种就是解释、一种就是编译。</p>
+<p>编译型语言、在我们的程序执行之前，会通过编译器编译为机器语言</p>
+<p>，那么在运行的时候，就不需要翻译，直接执行就可以了，最典型的例子就是c。</p>
+<p>解释型语言、没有提前编译的过程，在程序运行的时候，通过解释器对程序逐行做出解释，然后执行。</p>
+<p>可以发现，从效率上来说，势必的，编译型语言的效率绝对是要比解释型语言要强的，但是现在的热门语言其实已经脱离了单纯的编译和解释的差别。</p>
+<p>例如，java，java先通过编译器编译成字节码文件，然后运行时通过解释器解释成机器文件，可以说java是先编译再解释的语言。</p>
+<p>python，其实和java一样，都是基于虚拟机的，同样也是先编译再解释的语言。</p>
+<p>py文件，pyc文件，pycodeobject文件。</p>
+<p>py文件不用说，就是我们写的，pyc我们也能在硬盘上看到。</p>
+<p>pycodeobject其实是python编译器真正编译成的结果，只不过当程序运行时，这个文件被保存在内存中，运行完了后，解释器会把这个文件写到pyc文件中，当程序第二次运行时，首先会寻找pyc文件，然后对py和pyc的时间戳判断，是否修改过，没有的话，就直接载入pyc。</p>
+<p>那么就很清晰了，pyc其实就是pyo的持久化存储方式。</p>
+<h2 id="2、python的面向对象"><a href="#2、python的面向对象" class="headerlink" title="2、python的面向对象"></a>2、python的面向对象</h2><p>首先，要明白，面向对象是一种编程方式、基于的是类和对象的使用。</p>
+<p>类是一个模板，封装了多个函数和变量。对象就是根据模板创建的实例。</p>
+<p>面向对象有三大特性，封装、继承、多态。</p>
+<p>来看看类。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/20/%E7%9C%9F%E6%AD%A3%E7%9A%84%E7%9C%8Bpython%EF%BC%881%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
  <div>
@@ -381,7 +339,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -449,7 +407,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,12 +468,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">115k</span>
+    <span title="站点总字数">127k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:45</span>
+    <span title="站点阅读时长">1:55</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
