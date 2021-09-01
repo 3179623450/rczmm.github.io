@@ -20,30 +20,33 @@
     var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="你看到的不止如此">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小小世界">
-<meta property="og:url" content="http://rczmm.github.io/page/16/index.html">
+  <meta name="description" content="进程一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。 进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程基础概念">
+<meta property="og:url" content="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="小小世界">
-<meta property="og:description" content="你看到的不止如此">
+<meta property="og:description" content="进程一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。 进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-01T07:27:13.000Z">
+<meta property="article:modified_time" content="2021-09-01T07:42:13.149Z">
 <meta property="article:author" content="rczmm">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://rczmm.github.io/page/16/">
+<link rel="canonical" href="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>小小世界</title>
+  <title>进程基础概念 | 小小世界</title>
   
 
 
@@ -206,13 +209,14 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -224,10 +228,9 @@
       <meta itemprop="name" content="小小世界">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">程序基础概念</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          进程基础概念
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -236,7 +239,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 15:50:18" itemprop="dateCreated datePublished" datetime="2021-07-24T15:50:18+08:00">2021-07-24</time>
+              <time title="创建时间：2021-09-01 15:27:13" itemprop="dateCreated datePublished" datetime="2021-09-01T15:27:13+08:00">2021-09-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +247,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="程序基础概念">
+             <span id="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="进程基础概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +268,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +278,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>798</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,117 +296,84 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
-<p>1、注释</p>
-<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
-<p>java里一共分为3种形式的注释</p>
-<p>单行注释</p>
-<p>多行注释</p>
-<p>文档注释</p>
-<p>2、标识符与关键字</p>
-<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
-<p>例如：类、方法、变量结构。</p>
-<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
-<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
-<p>1、尽量的不要用数字</p>
-<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
-<p>3、标识符区分大小写</p>
-<p>4、$ 美元符号有特殊含义（内部类）</p>
-<p>数据类型</p>
-<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
-<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
-<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
-<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
-<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
-<p>整型</p>
-<p>byte、short、int、long</p>
-<p>默认的数据类型是int。（整型常量）</p>
-<p>数据类型转换</p>
-<p>自动转换：范围小——范围大</p>
-<p>强制转换：大——小（数据溢出）</p>
-<p>浮点型 小数 double</p>
-<p>char</p>
-<p>16进制的unicode</p>
-<p>布尔型</p>
-<p>一种逻辑结果，true和false</p>
-<p>string</p>
-<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
-<p>转义字符：\ \ \t \n &#39; &quot;</p>
-<p>运算符</p>
-<p>&amp;&amp;      ||</p>
-<p>短路与 短路或</p>
-<p>（逻辑运算符）</p>
-<p>boolean || boolean （短路原则）（有假则假）</p>
-<p>&amp;   | （位运算符）</p>
-<p>逻辑与 逻辑或 （按位与、按位或）</p>
-<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
-<p>3 5</p>
-<p>0011 </p>
-<p>0101</p>
-<p>3 | 5  0111 7</p>
-<p>3 &amp; 5 0001 1</p>
-<p>负数的补码</p>
-<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
-<p>19 </p>
-<p>二进制：原码：0001 0011</p>
-<p>20</p>
-<p>010100</p>
-<p>按位与 都是1，就是1. </p>
-<p>按位或 有一个1，就是1</p>
-<p>异或 相同就是0，不同就是1</p>
-<p>取反</p>
-<p>-20</p>
-<p>二进制原码：1001 0100</p>
-<p>反码：1110 1011 + 1 = 补码</p>
-<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
-<p>按位取反：0001 0011（正数）</p>
-<p>19</p>
-<p>正数的补码、反码、原码都是一样的。</p>
-<p>20</p>
-<p>原码：0001 0100</p>
-<p>按位取反：1110 1011</p>
-<p>取反码：1001 0100</p>
-<p>取补码：1001 0101</p>
-<p>-21</p>
-<p>取反</p>
-<p>1、求补码</p>
-<p>2、按位取反</p>
-<p>3、求补码(最终结果)</p>
-<p>按位左移、按位右移。(负数补1，正数补0)</p>
-<p>20 &lt;&lt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0101 0000</p>
-<p>80</p>
-<p>20 &gt;&gt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0000 0101</p>
-<p>5</p>
-<p>无符号右移（全部补0）</p>
-<p>20 &gt;&gt;&gt; 2</p>
-<p>~13</p>
-<p>原码、补码：0000 1101</p>
-<p>按位取反：1111 0010</p>
-<p>取反码：1000 1101</p>
-<p>取补码：1000 1110</p>
-<p>-14</p>
-<p>~-27</p>
-<p>原码：1001 1011</p>
-<p>反码：1110 0100</p>
-<p>补码：1110 0101</p>
-<p>按位取反：0001 1010（正数）</p>
-<p>26</p>
+        <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。</p>
+<p>进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像在独占的使用硬件。而<strong>并发运行</strong>，则是说一个进程的指令和另外一个进程的指令其实是交错着在执行的。</p>
+<p>在大多数系统中，需要运行的进程数是可以多于可以运行他们的cpu个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序，这是通过处理器在进程之间切换来实现的，操作系统实现这种交错执行的机制成为<strong>上下文切换</strong>。</p>
+<p>操作系统保持跟踪进程运行所需的所有状态信息，这种状态，也就是上下文，包括许多信息，比如pc（寄存器，处理器核心（大小为一个字的储存设备））和寄存器文件的当前值，以及主存的内容。在任何一个时刻，单核处理器都只能执行一个进程的代码，当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行上下文切换，即保存当前进程的上下文，恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
+<p>一个进程到另一个进程的转换是由操作系统内核负责管理的，内核不是一个独立的进程，他是操作系统用来管理全部进程所用的代码和数据结构的集合。他是操作系统代码常驻主存的部分，当app需要操作系统的某些操作时，例如最简单的读写文件，内核就会执行一条特殊的系统调用指令，将控制权传递给内核，然后内核执行被请求的操作并返回app。</p>
+<p>现在进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作，以后会揭示这项工作的基本原理，以及app是如何创建和控制他们的进程的。</p>
 
-      
     </div>
  <div>
       
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:24px;"><-------------文章到这里就结束了！-------------></div>
+    
+</div>
+
+      
     </div>
     
     
     
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="rczmm 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="rczmm 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>rczmm
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title="进程基础概念">http://rczmm.github.io/2021/09/01/进程基础概念/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/16/%E4%BF%A1%E6%81%AF%E5%B0%B1%E6%98%AF%E4%BD%8D%E5%8A%A0%E4%B8%8A%E4%B8%8B%E6%96%87/" rel="prev" title="信息就是位加上下文">
+      <i class="fa fa-chevron-left"></i> 信息就是位加上下文
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
 
 
@@ -412,15 +382,10 @@
   
 
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -467,6 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
