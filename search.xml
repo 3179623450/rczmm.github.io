@@ -142,28 +142,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java发展历史</title>
-    <url>/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
-    <content><![CDATA[<p>java发展历史</p>
-<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
-<p>java语言诞生于20世纪90年代，经过长期的发展，已经成为最流行的编程语言之一，java不但广泛应用在服务端编程上，而且各个移动设备也大量使用java平台。</p>
-<p>java是sun公司开发出来的一套编程语言，来源于一个green的嵌入式程序项目，目的是为了电子消费产品开发一个分布式代码系统，这样子就可以通过网络对家用电器进行控制。</p>
-<p>在green项目最开始，工程师本来是打算c++进行开发，但是考虑到c++语言开发的复杂性，于是就基于c++设计了自己的一套的独立平台oak，这个就被称为是java的前身，是一种用于网络的安全语言，刚好碰到了当时的一个mosaic和netscape项目，这两个项目启发了oak的工程师，于是他们设计了一个hotjava浏览器，触发了java进军互联网，但是由于后来互联网低潮，sun公司被oracle收购。</p>
-<p>java是一门综合性的编程语言，从最初设计的时候就考虑了嵌入式系统开发以及企业平台的支持。</p>
-<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=2578611845,4184638346&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
-<p>实际java开发过程之中，主要有三种方向。</p>
-<p>java se （java标准开发，包含的主要是语言核心类，（jdbc、接口定义、输入输出、网络io）当用户安装jdk之后，就自动支持java se开发）</p>
-<p>java ee（包含了java se部分的类，用于是电子产品的软件开发，但是此类开发已经几乎被安卓替代）</p>
-<p>java me（包含se所有类，并且还包含了开发企业级的应用类。（xml、事务控制、jsp、servlet）、也是目前大型系统和互联网项目开发的主要平台）</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>io编程</title>
     <url>/2021/08/12/io%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="io编程"><a href="#io编程" class="headerlink" title="io编程"></a>io编程</h1><p>io（input|output，输入|输出）可以实现数据的读取和写入的操作。Java针对io提供了一给工具包。</p>
@@ -238,6 +216,28 @@
       </tags>
   </entry>
   <entry>
+    <title>java发展历史</title>
+    <url>/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
+    <content><![CDATA[<p>java发展历史</p>
+<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=593216026,135847718&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>java语言诞生于20世纪90年代，经过长期的发展，已经成为最流行的编程语言之一，java不但广泛应用在服务端编程上，而且各个移动设备也大量使用java平台。</p>
+<p>java是sun公司开发出来的一套编程语言，来源于一个green的嵌入式程序项目，目的是为了电子消费产品开发一个分布式代码系统，这样子就可以通过网络对家用电器进行控制。</p>
+<p>在green项目最开始，工程师本来是打算c++进行开发，但是考虑到c++语言开发的复杂性，于是就基于c++设计了自己的一套的独立平台oak，这个就被称为是java的前身，是一种用于网络的安全语言，刚好碰到了当时的一个mosaic和netscape项目，这两个项目启发了oak的工程师，于是他们设计了一个hotjava浏览器，触发了java进军互联网，但是由于后来互联网低潮，sun公司被oracle收购。</p>
+<p>java是一门综合性的编程语言，从最初设计的时候就考虑了嵌入式系统开发以及企业平台的支持。</p>
+<p><img src="/2021/07/23/java%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/u=2578611845,4184638346&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>实际java开发过程之中，主要有三种方向。</p>
+<p>java se （java标准开发，包含的主要是语言核心类，（jdbc、接口定义、输入输出、网络io）当用户安装jdk之后，就自动支持java se开发）</p>
+<p>java ee（包含了java se部分的类，用于是电子产品的软件开发，但是此类开发已经几乎被安卓替代）</p>
+<p>java me（包含se所有类，并且还包含了开发企业级的应用类。（xml、事务控制、jsp、servlet）、也是目前大型系统和互联网项目开发的主要平台）</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java语言特点</title>
     <url>/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/</url>
     <content><![CDATA[<p>java语言特点</p>
@@ -273,6 +273,98 @@
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>scrapy框架初步解析</title>
+    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
+<p>Scrapy的架构</p>
+<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
+<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
+<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
+<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
+<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
+<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
+<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
+<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
+<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>对应爬虫三大流程</th>
+<th>Scrapy项目是否需要修改</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>引擎</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>调度器</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>下载器</td>
+<td>获取网页（requests库）</td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>爬虫器</td>
+<td>解析网页（beautifulsoup库）</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>管道</td>
+<td>储存数据</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>下载器中间件</td>
+<td>获取网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+<tr>
+<td>爬虫器中间件</td>
+<td>解析网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+</tbody></table>
+<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
+<p>?</p>
+<p>到底数据是怎么在scrapy中流动的呐？</p>
+<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
+<p>（2）   爬虫器：提供www…….给引擎</p>
+<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
+<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
+<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
+<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
+<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
+<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
+<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
+<p>（10） 管道：储存数据</p>
+<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
+<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
+<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
+<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
+<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
+<p>scrapy的安装</p>
+<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
+<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
+<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
+<p>使用pip安装Scrapy框架程序。</p>
+<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
+<p>制作爬虫</p>
+<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -409,98 +501,6 @@
 <p>ironpython</p>
 <p>.net编写</p>
 <p>jpython</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>scrapy框架初步解析</title>
-    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
-<p>Scrapy的架构</p>
-<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
-<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
-<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
-<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
-<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
-<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
-<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
-<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
-<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>对应爬虫三大流程</th>
-<th>Scrapy项目是否需要修改</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>引擎</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>调度器</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>下载器</td>
-<td>获取网页（requests库）</td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>爬虫器</td>
-<td>解析网页（beautifulsoup库）</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>管道</td>
-<td>储存数据</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>下载器中间件</td>
-<td>获取网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-<tr>
-<td>爬虫器中间件</td>
-<td>解析网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-</tbody></table>
-<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
-<p>?</p>
-<p>到底数据是怎么在scrapy中流动的呐？</p>
-<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
-<p>（2）   爬虫器：提供www…….给引擎</p>
-<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
-<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
-<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
-<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
-<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
-<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
-<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
-<p>（10） 管道：储存数据</p>
-<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
-<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
-<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
-<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
-<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
-<p>scrapy的安装</p>
-<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
-<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
-<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
-<p>使用pip安装Scrapy框架程序。</p>
-<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
-<p>制作爬虫</p>
-<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1417,71 +1417,6 @@
       </tags>
   </entry>
   <entry>
-    <title>程序逻辑控制</title>
-    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
-<p>程序逻辑</p>
-<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
-<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
-<p>顺序结构</p>
-<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
-<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
-<p>分支结构</p>
-<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
-<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
-<p>循环结构</p>
-<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
-<p>分支结构</p>
-<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
-<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>switch开关结构。</p>
-<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>if可以判断布尔表达式、switch只能判断内容。</p>
-<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
-<p>循环结构</p>
-<p>while</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>while需要先判断条件再执行，do先执行再判断</p>
-<p>避免死循环。（循环条件一直满足）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
-
-<p>for</p>
-<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
-
-<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
-<p>}</p>
-<p>循环初始化条件：只执行一次</p>
-<p>循环判断：循环前后各执行一次</p>
-<p>循环变更：循环内语句执行完执行一次</p>
-<p>尽量不要这么去写。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
-
-<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
-<p>for：确定循环次数。</p>
-<p>循环控制语句</p>
-<p>continue</p>
-<p>break</p>
-<p>循环结构内，只要条件满足，就会一直执行。</p>
-<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
-<p>循环嵌套</p>
-<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序基础概念</title>
     <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
@@ -1584,6 +1519,71 @@
 <p>按位取反：0001 1010（正数）</p>
 <p>26</p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序逻辑控制</title>
+    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
+<p>程序逻辑</p>
+<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
+<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
+<p>顺序结构</p>
+<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
+<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
+<p>分支结构</p>
+<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
+<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
+<p>循环结构</p>
+<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
+<p>分支结构</p>
+<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
+<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>switch开关结构。</p>
+<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if可以判断布尔表达式、switch只能判断内容。</p>
+<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
+<p>循环结构</p>
+<p>while</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>while需要先判断条件再执行，do先执行再判断</p>
+<p>避免死循环。（循环条件一直满足）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for</p>
+<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
+<p>}</p>
+<p>循环初始化条件：只执行一次</p>
+<p>循环判断：循环前后各执行一次</p>
+<p>循环变更：循环内语句执行完执行一次</p>
+<p>尽量不要这么去写。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
+<p>for：确定循环次数。</p>
+<p>循环控制语句</p>
+<p>continue</p>
+<p>break</p>
+<p>循环结构内，只要条件满足，就会一直执行。</p>
+<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
+<p>循环嵌套</p>
+<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>java</category>
       </categories>
