@@ -276,96 +276,9 @@
       </tags>
   </entry>
   <entry>
-    <title>scrapy框架初步解析</title>
-    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
-<p>Scrapy的架构</p>
-<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
-<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
-<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
-<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
-<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
-<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
-<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
-<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
-<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th>对应爬虫三大流程</th>
-<th>Scrapy项目是否需要修改</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>引擎</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>调度器</td>
-<td></td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>下载器</td>
-<td>获取网页（requests库）</td>
-<td>无需修改</td>
-</tr>
-<tr>
-<td>爬虫器</td>
-<td>解析网页（beautifulsoup库）</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>管道</td>
-<td>储存数据</td>
-<td>需要</td>
-</tr>
-<tr>
-<td>下载器中间件</td>
-<td>获取网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-<tr>
-<td>爬虫器中间件</td>
-<td>解析网页（个性化部分）</td>
-<td>一般不用</td>
-</tr>
-</tbody></table>
-<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
-<p>?</p>
-<p>到底数据是怎么在scrapy中流动的呐？</p>
-<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
-<p>（2）   爬虫器：提供www…….给引擎</p>
-<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
-<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
-<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
-<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
-<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
-<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
-<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
-<p>（10） 管道：储存数据</p>
-<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
-<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
-<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
-<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
-<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
-<p>scrapy的安装</p>
-<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
-<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
-<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
-<p>使用pip安装Scrapy框架程序。</p>
-<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
-<p>制作爬虫</p>
-<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
+    <title>numpy</title>
+    <url>/2021/09/09/numpy/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>信息就是位加上下文</title>
@@ -507,69 +420,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于vm的完全分布式hadoop3-2集群搭建</title>
-    <url>/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>文章最终效果为，三台虚拟机三个namenode节点，依赖zkfc处理活跃问题，两个rm节点，同样依赖zkfc处理活跃问题。3之后的hadoop。hdfs的http端口改为了9870，也可以自行修改，yarn不变，依旧是8088。</p>
-<h2 id="1、部署环境"><a href="#1、部署环境" class="headerlink" title="1、部署环境"></a>1、部署环境</h2><p>Windows 10 家庭中文版（家庭版不存在问题）</p>
-<p>vmware 16.0 （百度到处都有激活码，可尝试下面的激活码）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
-
-<p>centos 7.4  64位（linux系统，附带官网链接）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://isoredirect.centos.org/centos/7/isos/x86_64/</span><br></pre></td></tr></table></figure>
-
-<p>jdk 1.8 （稳定版本，hadoop神器版本）</p>
-<p>hadoop 3.2.1</p>
-<p>zookeeper 3.6.2（版本不限）</p>
-<h2 id="2、准备工作"><a href="#2、准备工作" class="headerlink" title="2、准备工作"></a>2、准备工作</h2><p>1、完成ssh免密配置的三台虚拟机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">三台虚拟机生成秘钥</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">三节点拷贝到同一节点</span><br><span class="line">ssh-copy-id node1 </span><br><span class="line">将此节点上的秘钥通过scp发送到其他节点，此处可通过编写sh脚本，简化。</span><br></pre></td></tr></table></figure>
-
-<p>2、三台安装jdk并且配置其环境变量</p>
-<p>3、三台虚拟机成功安装并且部署好zookeeper集群</p>
-<h2 id="3、配置文件"><a href="#3、配置文件" class="headerlink" title="3、配置文件"></a>3、配置文件</h2><p>1、/etc/profile</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br><span class="line"></span><br><span class="line">export ZOOKEEPER_HOME=/export/server/zookeeper</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/export/server/hadoop</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
-
-<p>2、core-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://my01&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/export/server/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">          &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">          &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、hdfs-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.nameservices&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;my01&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.replication&lt;/name&gt;                  </span><br><span class="line"> &lt;value&gt;3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                                 </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.namenodes.my01&lt;/name&gt;             </span><br><span class="line"> &lt;value&gt;nn1,nn2,nn3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9820&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                              </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9870&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                          </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;                                   </span><br><span class="line"> &lt;value&gt;qjournal://node1:8485;node2:8485;node3:8485/my01&lt;/value&gt;               </span><br><span class="line">&lt;/property&gt;                               </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;/export/data/hadoop/journaldata&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;     </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.client.failover.proxy.provider.my01&lt;/name&gt;                         &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;                                  </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;                   </span><br><span class="line"> &lt;value&gt;sshfence</span><br><span class="line"> shell(/bin/true)&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;                             </span><br><span class="line"> &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                      </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;30000&lt;/value&gt;                   </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;                                       </span><br><span class="line"> &lt;value&gt;100&lt;/value&gt;                           </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                          </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt; </span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; </span><br><span class="line">       &lt;value&gt;file:///export/data/hadoop/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt; </span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; </span><br><span class="line">        &lt;value&gt;file:///export/data/hadoop/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;ture&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、mapred-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">&lt;name&gt;mapreduce.framework.name&lt;/name&gt;                                    </span><br><span class="line">&lt;value&gt;yarn&lt;/value&gt;            </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;                               </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">        /export/server/hadoop/etc/hadoop,                                    </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/*,                           </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/lib/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/lib/*,                         </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/lib/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/lib/*                         </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line">  &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5、yarn-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;                           </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;                      </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.automatic-failover.enabled&lt;/name&gt;       </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                                                   </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;            </span><br><span class="line">        &lt;value&gt;yarn-rm-cluster&lt;/value&gt;                  </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;        </span><br><span class="line">        &lt;value&gt;rm1,rm2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;                         </span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;                     </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                      </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;rm1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;      </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;                                                         </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;                            </span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;       </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">        &lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;yarn.application.classpath&lt;/name&gt;                                   </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">/export/server/hadoop/etc/hadoop:/export/server/hadoop//share/hadoop/common/lib/*:/export/server/hadoop//share/hadoop/co  mmon/*:/export/server/hadoop//share/hadoop/hdfs:/export/server/hadoop//share/hadoop/hdfs/lib/*:/export/server/hadoop//sh  are/hadoop/hdfs/*:/export/server/hadoop//share/hadoop/mapreduce/lib/*:/export/server/hadoop//share/hadoop/mapreduce/*:/e  xport/server/hadoop//share/hadoop/yarn:/export/server/hadoop//share/hadoop/yarn/lib/*:/export/server/hadoop//share/hadoop/yarn/*                             </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line"> &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</span><br><span class="line">&lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">         &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>6、yarn-env.sh  hadoop-env.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export HADOOP_HOME=/export/server/hadoop/</span><br></pre></td></tr></table></figure>
-
-<p>7、start-dfs.sh  stop-dfs.sh  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HDFS_DATANODE_USER=root</span><br><span class="line">HDFS_DATANODE_SECURE_USER=hdfs </span><br><span class="line">HDFS_NAMENODE_USER=root </span><br><span class="line">HDFS_SECONDARYNAMENODE_USER=root</span><br><span class="line">HDFS_JOURNALNODE_USER=root</span><br><span class="line">HDFS_ZKFC_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>8、start-yarn.sh  stop-yarn.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YARN_RESOURCEMANAGER_USER=root</span><br><span class="line">HADOOP_SECURE_DN_USER=yarn</span><br><span class="line">YARN_NODEMANAGER_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>9、启动顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh start</span><br><span class="line">hadoop-daemon.sh start journalnode</span><br><span class="line">hdfs namenode -format / /namenode 格式化</span><br><span class="line">hdfs zkfc -formatZK //格式化高可用</span><br><span class="line">hdfs namenode //启动namenode</span><br><span class="line">hdfs namenode -bootstrapStandby</span><br><span class="line">hadoop-daemon.sh stop namenode</span><br><span class="line">hadoop-daemon.sh stop journalnode</span><br><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>1、启动顺序一定不要乱</p>
-<p>2、格式化出错就排错</p>
-<p>3、配置文件写完之后，先开启zk集群，先status查看集群状态，确认无误之后再进行初始化操作</p>
-<p>4、zk集群状态，开启后等待半分钟左右再去查看</p>
-<p>5、如何验证集群搭好了，jps查看节点无误，向集群上传文件无误，启动wordcount实例无误。</p>
-<p>6、启动顺序，先开启zk，一键启动start-all.sh或者分别启动yarn和hdfs都可以。不需要再次格式化了。</p>
-<p>7、防火墙关闭</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>hadoop</category>
-      </categories>
-      <tags>
-        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -1165,137 +1015,89 @@
       </tags>
   </entry>
   <entry>
-    <title>泛型</title>
-    <url>/2021/08/03/%E6%B3%9B%E5%9E%8B/</url>
-    <content><![CDATA[<p>泛型</p>
-<p>泛型其实不是java最开始的概念，他起源于jdk5之后，是一个新加入的特性。</p>
-<p>泛型的出现是为了解决对象强制转型之后可能出现的安全隐患问题。</p>
-<p>我们知道，为了方便参数的统一，我们会使用object类，利用此类对象可以接受所有类型的数据，包括基本数据类型和引用数据类型，但是由于其描述的数据类型过大，所以在实现中就会出现传入数据类型错误，从而引发异常classcastexception异常。</p>
-<p>例如：</p>
-<p>现在要设计一个描述坐标的类，point（包括x与y坐标轴信息），对于坐标点，允许保留整形、浮点与字符串三类数据。</p>
-<p>于是在设计point的时候，就需要考虑到x和y的具体类型，这个类型要求就可以保存以上三种类型的数据，于是最明显的就是利用object进行定义，这是因为存在以下的转换关系：</p>
-<p>整形：基本数据类型—包装为integer对象—自动向上转型为object</p>
-<p>浮点：基本数据类型——包装为double对象—自动向上转型为object</p>
-<p>字符串：string类对象——自动向上转型为object</p>
-<p>定义point坐标类：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&#123;</span><br><span class="line">    private Object x;</span><br><span class="line">    private Object y;</span><br><span class="line"></span><br><span class="line">    public Object getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(Object x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(Object y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因为采用了object作为存储类型，这样就可以接受任意的数据类型，于是此时可能出现两种情况：</p>
-<p>1、使用者按照同意的数据类型设计坐标内容，并且利用向下转型获取原始坐标数据</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point p1 = new Point();</span><br><span class="line">        p1.setX(10);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = (Integer) p1.getX();</span><br><span class="line">        int y = (Integer) p1.getY();</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>利用基本数据类型自动装箱为包装类对象的特点向point类对象传入了x与y两个坐标信息，并且在获取坐标原始数据时，也依据设置的数据类型进行强制性的向下转型，所以可以得到正确的执行结果。</p>
-<p>2、使用者没有按照统一的数据类型设置坐标内容，读取数据时使用了错误的类型进行强制转换：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Point p2 = new Point();</span><br><span class="line">p2.setX(100);</span><br><span class="line">p2.setY(&quot;北纬20度&quot;);</span><br><span class="line"></span><br><span class="line">int x1 = (Integer) p2.getX();</span><br><span class="line">int y1 = (Integer) p2.getY();</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;x:&quot; + x + &quot;y:&quot; + y);</span><br></pre></td></tr></table></figure>
-
-<p>值得一提的是，程序完全符合语法规范，不会在编译的时候告诉开发者，而是会在执行过程中才会出现安全隐患，而造成此问题的核心就是object类型能够接收的类型过大。</p>
-<p>泛型：可以在编译时检测出程序的安全隐患，使得程序更加的健壮。</p>
-<p>如果想要解决项目中可能出现的classcastexception安全隐患，最核心的方案就是避免强制性的向下转型，所以泛型的核心思想就是，类中的属性或方法的参数与返回值的类型采用动态标记，在对象实例化的时候动态配置要使用的数据类型。</p>
-<blockquote>
-<p><strong>泛型在类上标记出以后，需要通过实例化对象进行类型的设置，而所设置的类型只能够是引用数据类型，如果要设置基本数据类型，则必须采用包装类的形式，这就是为什么jdk5之后才引入包装类对象的自动装箱和自动拆箱机制的原因。</strong></p>
-</blockquote>
-<p>在类上使用泛型：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setX(100);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = p1.getX();</span><br><span class="line">        int y = p1.getY();</span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>本程序中实例化point类对象所采用的的泛型设置为了integer，这样一类当前point类对象的x，y的属性类型就是integer，对应的方法参数和返回值也都是integer，这样不仅可以在编译的时候明确知道数据类型的错误，也避免了对象向下转型操作。</p>
-<blockquote>
-<p>7之后的jdk版本再定义泛型的时候简化了，在实例化对象时的泛型类型就通过声明时的泛型类型来定义了，但是依旧建议使用完整语法。</p>
-</blockquote>
-<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Point&lt;Integer&gt; p1 = new Point&lt;&gt;();</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>为了照顾到最初的开发者，允许开发者在实例化对象时不设置泛型类型，这样在程序的编译时就会出现相应的警告信息，同时为了保证程序不出错，未设置的泛型类型将使用object作为默认类型。</p>
-<p>泛型虽然保证了代码的正确性。但是对于引用传递会带来参数统一问题。</p>
-<p>利用泛型类在实例化对象时进行的动态类型匹配，虽然可以有效地解决对象向下转型的安全隐患，但是在程序中实例化泛型类对象时，不同的泛型类型对象之间彼此是无法进行引用传递的。</p>
-<p>所以在进行泛型类型的引用对象时，为了可以适应所有本类的实例化对象，则可以在接收时使用“？”作为泛型通配符来使用，利用？表示的泛型类型只允许从对象中获取数据，而不允许修改数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point &lt;?&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果不设置泛型类型或者设置泛型类型为object可否解决以上问题？</p>
-<p>1、public static void fun(point <object> temp){}</object></p>
-<p>2、public static void fun(point temp){}</p>
-<p>泛型需要考虑到操作类型统一性</p>
-<p>首先搞清楚一个核心问题，object可以接收一切的数据类型，但是在泛型概念里，point<string>与point<integer>这是两个不同的类型的对象。</integer></string></p>
-<p>如果采取类型1的引用，表示fun方法只接收point<object>类型的引用</object></p>
-<p>如果采取类型2的引用，实际上可以解决当前问题（不同泛型类型的对象传递），但是也会带来新的问题，允许随意修改数据</p>
-<p><strong>观察不设置泛型类型的方法参数定义：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point temp)&#123;</span><br><span class="line">        temp.setY(199);</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行完程序可以发现，虽然不设置泛型类型可以实现对所有泛型类型的接收，但是无法对修改做出控制，然而使用了通配符？只允许获取，不允许修改。</p>
-</blockquote>
-<p>通配符？除了可以匹配任意的泛型类型之外，还可以通过泛型上限和下限的配置实现更加严格的类型定义。</p>
-<p>类和方法：设置泛型的上限，（？ extends 类）只能够使用当前类或者其子类设置泛型</p>
-<p>方法：设置泛型的下限，（？ super 类）只能设置指定的类或者父类。</p>
-<p>设置泛型上限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class  demo22_1 &lt;T extends Number&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo22 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo22_1&lt;Integer&gt; d1 = new demo22_1&lt;Integer&gt;();</span><br><span class="line">        d1.setContent(199);</span><br><span class="line">        fun(d1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun(demo22_1&lt;? extends Number&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置泛型的下限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class demo23_1&lt;T&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo23 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo23_1&lt;String&gt; d1 = new demo23_1&lt;&gt;();</span><br><span class="line">        d1.setContent(&quot;i always love mm&quot;);</span><br><span class="line">        fun(d1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void fun(demo23_1&lt;? super String&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>泛型接口</p>
-<p>泛型可以定义在任意程序的结构体中</p>
-<p>泛型也可以定义在接口上，这样的接口叫做泛型接口。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对于此时的泛型接口来说，子类定义时就有两种方式，在子类中继续声明泛型和子类中为父类设置泛型类型。</p>
-<p>1、在子类中继续声明泛型：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2&lt;S&gt; implements demo24_1&lt;S&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(S t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2&lt;String&gt;();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在定义子类声明了一个泛型标记S，并且实例化子类对象的时候，设置的泛型类型会传递到泛型接口中去。</p>
-<p>2、在子类中为父类设置泛型;</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2 implements demo24_1&lt;String&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(String t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在子类时，没有定义泛型标记，而是为父接口设置了泛型类型为string，所以说在覆写echo方法的时候，参数类型就是string。</p>
-<p>泛型方法：对于泛型，除了可以定义在类上之外，也可以在方法上进行定义，而在方法上直接定义的泛型不一定要在类中定义。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo25 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer num [] = fun(1,2,3,4,5,6,7,8,9);</span><br><span class="line">        for (int temp: num) &#123;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static &lt;T&gt; T[] fun(T... args)&#123;</span><br><span class="line">        return args;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如上，这是在一个没有泛型声明的类中定义了泛型方法，所以在fun方法声明处就必须单独定义泛型标记，此时的泛型类型由传入的参数来决定。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>流程控制语句</title>
-    <url>/2021/07/20/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<h2 id="流程控制语句（练习）"><a href="#流程控制语句（练习）" class="headerlink" title="流程控制语句（练习）"></a>流程控制语句（练习）</h2><h2 id="1、获取用户输入，判断奇数还是偶数"><a href="#1、获取用户输入，判断奇数还是偶数" class="headerlink" title="1、获取用户输入，判断奇数还是偶数"></a>1、获取用户输入，判断奇数还是偶数</h2><p>​    input函数的返回值默认是字符串类型，而字符串类型是无法直接用整形的运算符的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">num=int（input(&quot;请输入一个任意的整数：&quot;)）</span><br><span class="line">if num%2==0:</span><br><span class="line">    print(&quot;偶数！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;奇数&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、检查一个年份是否是闰年"><a href="#2、检查一个年份是否是闰年" class="headerlink" title="2、检查一个年份是否是闰年"></a>2、检查一个年份是否是闰年</h2><p>​    闰年：年份可以被4整除并且不能被100整除，或者可以被400整除，这个年份刚好就是闰年</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">year=int(input(&quot;请输入一个任意的年份：&quot;))</span><br><span class="line">if year %4==0 and year % 100==0 or year % 400 ==0:</span><br><span class="line">    print(year,&quot;是闰年&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(year,&quot;不是闰年！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"><a href="#3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？" class="headerlink" title="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"></a>3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？</h2><p>​    狗的年纪：狗的前两年的每一年相当于人类的10.5岁，然后每一年增加四岁。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dog_age=float(input(&quot;请输入狗的年龄：&quot;))</span><br><span class="line">like_person_age=0</span><br><span class="line">if dog_age&gt;0:</span><br><span class="line">    if dog_age&lt;=2:</span><br><span class="line">        like_person_age=dog_age*10.5</span><br><span class="line">    else:</span><br><span class="line">        like_person_age=2*10.5</span><br><span class="line">        like_person_age+=(dog_age-2)*4</span><br><span class="line">    print(dog_age,&quot;岁的狗，相当于人类年龄的&quot;,like_person_age,&#x27;岁&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;请输入一个合法的年龄！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、小鹏的期末成绩"><a href="#4、小鹏的期末成绩" class="headerlink" title="4、小鹏的期末成绩"></a>4、小鹏的期末成绩</h2><p>​    当成绩为100的时候，奖励一台手机</p>
-<p>​    当成绩为80到99的时候，奖励一台ps4</p>
-<p>​    当成绩为60到79的时候，奖励他一本参考书</p>
-<p>​    其他，奖励他一个大嘴巴子</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">score=int(input(&quot;请输入小鹏的成绩：&quot;))</span><br><span class="line"># 来一条华丽的分割线</span><br><span class="line">print(&quot;==&quot;*40)</span><br><span class="line"># 检查用户的输入</span><br><span class="line">if 0 &lt;= score &lt;= 100:</span><br><span class="line">    # 判断奖励</span><br><span class="line">    if score == 100:</span><br><span class="line">        print(&quot;奖励一台手机&quot;)</span><br><span class="line">    elif score &gt;= 80:</span><br><span class="line">        print(&quot;ps4，拿去玩吧！&quot;)</span><br><span class="line">    elif score &gt;= 60:</span><br><span class="line">        print(&quot;参考书！拿去！&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;大嘴巴子！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入内容不合法！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"><a href="#5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件" class="headerlink" title="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"></a>5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件</h2><p>​    高：180dm以上，富：1000块以上，帅：颜值分250以上</p>
-<p>​    如果三个条件都满足，“一定能娶到老婆”</p>
-<p>​    如果三个条件有一个满足，“有可能娶到老婆”</p>
-<p>​    如果三个条件都不满足，“一定娶不到”</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">height=int(input(&quot;请输入你的身高！&quot;))</span><br><span class="line">money=int(input(&quot;请输入你的余额！&quot;))</span><br><span class="line">face=int(input(&quot;你觉得你这张脸能打多少分！&quot;))</span><br><span class="line">if height &gt;180 and money &gt;1000 and fcae &gt; 250:</span><br><span class="line">    print(&quot;一定能娶到老婆&quot;)</span><br><span class="line">elif height &gt;180 or money &gt;1000 or face &gt; 250:</span><br><span class="line">    print(&quot;有可能娶到老婆&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;不嫁给你！&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="6、大鹏大战白骨精"><a href="#6、大鹏大战白骨精" class="headerlink" title="6、大鹏大战白骨精"></a>6、大鹏大战白骨精</h2><p>​    首先，你可以有两个身份，大鹏和白骨精</p>
-<p>​    其次，你有生命值和攻击力，生命值归0，那一方输了，另一方胜利。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 显示欢迎信息</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(&quot;欢迎来到大鹏大战白骨精&quot;)</span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 身份选择</span><br><span class="line"></span><br><span class="line">print(&quot;请选择你的身份！&quot;)</span><br><span class="line">print(&quot;\t 1.大鹏&quot;)</span><br><span class="line">print(&quot;\t 2.白骨精&quot;)</span><br><span class="line">player_choose=input(&quot;请选择[1|2]&quot;)</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 提示信息</span><br><span class="line"></span><br><span class="line">if player_choose==&quot;1&quot;:</span><br><span class="line">    print(&quot;你已经选择了1，你将会用大鹏的身份来进行游戏！&quot;)</span><br><span class="line">elif player_choose==&quot;2&quot;:</span><br><span class="line">    print(&quot;你居然选了白骨精！你还是会用大鹏的身份进行游戏！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入有问题！系统将自动分配身份！你将成为不要脸的大鹏！&quot;)</span><br><span class="line"></span><br><span class="line"># 进行游戏</span><br><span class="line"></span><br><span class="line">player_life=100</span><br><span class="line">player_attack=1000</span><br><span class="line"></span><br><span class="line">boss_life=10000</span><br><span class="line">boss_attack=10</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(f&#x27;大鹏，你的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&#x27;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;请选择你要做的操作！&quot;)</span><br><span class="line">    print(&#x27;\t 1.练级&#x27;)</span><br><span class="line">    print(&#x27;\t 2.打boss&#x27;)</span><br><span class="line">    print(&#x27;\t 3.逃跑&#x27;)</span><br><span class="line">    game_choose=input(&quot;请选择要做的操作！&quot;)</span><br><span class="line">   if game_choose==&#x27;1&#x27;:</span><br><span class="line">    player_life+=1</span><br><span class="line">    player_attack+=1</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(f&quot;恭喜你升级了，你现在的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&quot;)</span><br><span class="line"></span><br><span class="line">elif game_choose==&#x27;2&#x27;:</span><br><span class="line">    boss_life-=player_attack</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏偷袭了白骨精！不讲武德！&#x27;)</span><br><span class="line">    if boss_life &lt;=0:</span><br><span class="line">        print(f&#x27;白骨精受到了&#123;player_attack&#125;点伤害，重伤不治，最终还是死了，大鹏获得了胜利！&#x27;)</span><br><span class="line">        break</span><br><span class="line">    </span><br><span class="line">    player_life-=boss_attack</span><br><span class="line">    print(&#x27;白骨精攻击了大鹏，大快人心！&#x27;)</span><br><span class="line">    if player_life &lt;=0:</span><br><span class="line">        print(f&#x27;大鹏受到了&#123;boss_attack&#125;点伤害，重伤不治，最后死了！game over!&#x27;)</span><br><span class="line">        break</span><br><span class="line">elif game_choose==&#x27;3&#x27;:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏扭头就跑！，撒腿就跑！game over!&#x27;)</span><br><span class="line">    break</span><br><span class="line">else:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;你的输入有问题&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="7、求1000以内的所有的质数"><a href="#7、求1000以内的所有的质数" class="headerlink" title="7、求1000以内的所有的质数"></a>7、求1000以内的所有的质数</h2><p>（质数就是除了1和他本身，不能被其他数整除的数，除数，被除数）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，求1-1000以内的质数</span><br><span class="line">i=2</span><br><span class="line">while i&lt;=1000:</span><br><span class="line">    # 创建一个变量，储存一下i的状态</span><br><span class="line">    flag=True</span><br><span class="line">    # 判断i是否为质数</span><br><span class="line">    j=2</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        if i % j == 0:</span><br><span class="line">            flag=False</span><br><span class="line">        j += 1</span><br><span class="line">    if flag:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="8、求1000以内的水仙花数"><a href="#8、求1000以内的水仙花数" class="headerlink" title="8、求1000以内的水仙花数"></a>8、求1000以内的水仙花数</h2><p>水仙花数：是一个n位数（n&gt;=3），他的每一个位上的数字的n次幂之和等于它本身<br>$$<br>153=1<strong>3+5</strong>3+3**3<br>$$</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 求1000以内的水仙花数</span><br><span class="line">i = 100</span><br><span class="line">while i &lt; 1000 :</span><br><span class="line">    # 假设 i的百位数是a，十位数是b，个位数是c</span><br><span class="line">    a = i // 100</span><br><span class="line">    # b = i // 10 % 10</span><br><span class="line">    b = ( i- a * 100 ) // 10</span><br><span class="line">    c = i % 10</span><br><span class="line">    if a ** 3 + b ** 3 + c ** 3 == i:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="9、打印99乘法表"><a href="#9、打印99乘法表" class="headerlink" title="9、打印99乘法表"></a>9、打印99乘法表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，来控制高度</span><br><span class="line">i = 0</span><br><span class="line">while i &lt; 9:</span><br><span class="line">    i += 1</span><br><span class="line">    # 创建一个循环，来控制宽度</span><br><span class="line">    j = 0</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        j += 1</span><br><span class="line">        print(f&quot;&#123;j&#125;*&#123;i&#125;=&#123;i*j&#125; &quot;,end=&quot;&quot;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
+    <title>scrapy框架初步解析</title>
+    <url>/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p>scrapy框架是一个常用的爬虫框架，其中内嵌了许多的内容，使得爬取网页的过程不再像原生那样复杂。</p>
+<p>Scrapy的架构</p>
+<p><img src="/2021/07/21/scrapy%E6%A1%86%E6%9E%B6%E5%88%9D%E6%AD%A5%E8%A7%A3%E6%9E%90/clip_image001.png" alt="架构图"></p>
+<p>引擎：负责控制数据流在所有组件流动，并在相应动作是触发事件。可以理解为爬虫的大脑</p>
+<p>调度器：从引擎接受请求（requests）并将它们加入爬虫队列，可以理解把等待爬取的网页排队的功能</p>
+<p>下载器：负责获取页面并提供给引擎，相当于之前学的“获取网页”数据</p>
+<p>爬虫器：负责解析网页（response），提取数据，或额外跟进一些url，相当于之前的解析网页的功能。</p>
+<p>管道：负责处理被爬虫提取的数据（items），例如保存下来，相当于之前的“储存数据”功能</p>
+<p>下载器中间件：引擎的下载器中间的一个部分，处理下载器传递给引擎的数据（response），一般不做处理</p>
+<p>爬虫器中间件：引擎和爬虫器中间的一部分，处理爬虫器的输入（response）和输出（items，requests）</p>
+<p>作为一个框架，上面列出来的各种组件还是很复杂的，一不小心就处于一个懵逼的状态了。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>对应爬虫三大流程</th>
+<th>Scrapy项目是否需要修改</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>引擎</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>调度器</td>
+<td></td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>下载器</td>
+<td>获取网页（requests库）</td>
+<td>无需修改</td>
+</tr>
+<tr>
+<td>爬虫器</td>
+<td>解析网页（beautifulsoup库）</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>管道</td>
+<td>储存数据</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>下载器中间件</td>
+<td>获取网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+<tr>
+<td>爬虫器中间件</td>
+<td>解析网页（个性化部分）</td>
+<td>一般不用</td>
+</tr>
+</tbody></table>
+<p>可以看出来，使用scrapy框架之后，我们要写的内容就变得少了很多，一般来说，只需要负责好爬虫器和管道就可以了。</p>
+<p>?</p>
+<p>到底数据是怎么在scrapy中流动的呐？</p>
+<p>（1）   引擎：向爬虫器发送第一个要抓取的url</p>
+<p>（2）   爬虫器：提供www…….给引擎</p>
+<p>（3）   引擎：接收到网址，交给调度器排序入队</p>
+<p>（4）   调度器：将它处理成请求（requests）给引擎</p>
+<p>（5）   引擎：接收到request，并通过下载器中间件给下载器下载</p>
+<p>（6）   下载器：根据request下载页面，返回回应（response）给引擎</p>
+<p>（7）   引擎：接收到response，并通过爬虫器中间件给爬虫器处理</p>
+<p>（8）   爬虫器：处理response，提取内容，返回item给引擎，如果有跟进的request也会提交给引擎</p>
+<p>（9）   引擎：接收到item，交给管道，新的request交给调度器</p>
+<p>（10） 管道：储存数据</p>
+<p>从这里就可以很明显的看出来scrapy框架的优缺点。</p>
+<p>写爬虫的人，就像古代练剑一样，从开始用的木剑，到绝世好剑，最后到一草一木，爬虫也是这样，从最开始的不用框架，到使用框架，最后再到不用框架。</p>
+<p>最开始使用request和bs4的时候很方便，但是接触了scrapy之后，你就会发现，原来真正的只需要几行代码就可以实现一个爬虫，这时候你会觉得scrapy很好用，但是随着需求越来越奇怪，也就是说你需要特地的去定制化一些功能的时候，scrapy作为一种条条框框的框架已经是不能满足这些需求了，所以还是会回到原始的request和bs4上。</p>
+<p>Scrapy的优势就是并发性比较强，在做大批量的数据爬虫的时候简单易用，此外，做一些长期的爬虫项目维护管理也比较容易。</p>
+<p>相比之下，不使用框架的话，爬虫的定制化就比较高，身经百战的高手总是可以杀人无形之中，爬虫之中最关键的就是反爬虫，scrapy毕竟作为一个框架，写的太死了，固然他也有中间件可以用来使用，但是比起不用框架的各种扩展功能，scrapy功能还是不够强大。</p>
+<p>scrapy的安装</p>
+<p>在Windows下的scrapy安装非常简单，只需要pip install scrapy就可以。但是一般来说都不会这么简单。</p>
+<p>Scrapy框架是一个Python爬虫的框架没错，但是他确是要基于Twisted的，所以我们可以直接选择先安装Twisted组件，再安装Scrapy框架程序可以成功安装。</p>
+<p>组件下载完成后文件名为“Twisted-20.3.0-cp38-cp38-win_amd64.whl”。我们打开cmd命令，在dos窗口中直接输入“pip install D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”其中“D:\软件安装包\Twisted-20.3.0-cp38-cp38-win_amd64.whl”为Twisted安装文件在电脑上的存放路径</p>
+<p>使用pip安装Scrapy框架程序。</p>
+<p>在cmd命令的DOS窗口中输入“pip install scrapy”进行安装。</p>
+<p>制作爬虫</p>
+<p>制作Scrapy爬虫大致需要4步：<br> 新建项目（scrapy startproject xxx）:新建一个新的爬虫项目。<br> 明确目标（编写items.py）:明确你想要抓取的目标。<br> 制作爬虫（spiders/xxspider.py）:制作爬虫开始爬取网页。<br> 存储内容（pipelines.py）:设计管道存储爬取内容</p>
 ]]></content>
       <categories>
         <category>python</category>
@@ -1417,107 +1219,93 @@
       </tags>
   </entry>
   <entry>
-    <title>程序基础概念</title>
-    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
-<p>1、注释</p>
-<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
-<p>java里一共分为3种形式的注释</p>
-<p>单行注释</p>
-<p>多行注释</p>
-<p>文档注释</p>
-<p>2、标识符与关键字</p>
-<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
-<p>例如：类、方法、变量结构。</p>
-<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
-<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
-<p>1、尽量的不要用数字</p>
-<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
-<p>3、标识符区分大小写</p>
-<p>4、$ 美元符号有特殊含义（内部类）</p>
-<p>数据类型</p>
-<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
-<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
-<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
-<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
-<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
-<p>整型</p>
-<p>byte、short、int、long</p>
-<p>默认的数据类型是int。（整型常量）</p>
-<p>数据类型转换</p>
-<p>自动转换：范围小——范围大</p>
-<p>强制转换：大——小（数据溢出）</p>
-<p>浮点型 小数 double</p>
-<p>char</p>
-<p>16进制的unicode</p>
-<p>布尔型</p>
-<p>一种逻辑结果，true和false</p>
-<p>string</p>
-<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
-<p>转义字符：\ \ \t \n &#39; &quot;</p>
-<p>运算符</p>
-<p>&amp;&amp;      ||</p>
-<p>短路与 短路或</p>
-<p>（逻辑运算符）</p>
-<p>boolean || boolean （短路原则）（有假则假）</p>
-<p>&amp;   | （位运算符）</p>
-<p>逻辑与 逻辑或 （按位与、按位或）</p>
-<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
-<p>3 5</p>
-<p>0011 </p>
-<p>0101</p>
-<p>3 | 5  0111 7</p>
-<p>3 &amp; 5 0001 1</p>
-<p>负数的补码</p>
-<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
-<p>19 </p>
-<p>二进制：原码：0001 0011</p>
-<p>20</p>
-<p>010100</p>
-<p>按位与 都是1，就是1. </p>
-<p>按位或 有一个1，就是1</p>
-<p>异或 相同就是0，不同就是1</p>
-<p>取反</p>
-<p>-20</p>
-<p>二进制原码：1001 0100</p>
-<p>反码：1110 1011 + 1 = 补码</p>
-<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
-<p>按位取反：0001 0011（正数）</p>
-<p>19</p>
-<p>正数的补码、反码、原码都是一样的。</p>
-<p>20</p>
-<p>原码：0001 0100</p>
-<p>按位取反：1110 1011</p>
-<p>取反码：1001 0100</p>
-<p>取补码：1001 0101</p>
-<p>-21</p>
-<p>取反</p>
-<p>1、求补码</p>
-<p>2、按位取反</p>
-<p>3、求补码(最终结果)</p>
-<p>按位左移、按位右移。(负数补1，正数补0)</p>
-<p>20 &lt;&lt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0101 0000</p>
-<p>80</p>
-<p>20 &gt;&gt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0000 0101</p>
-<p>5</p>
-<p>无符号右移（全部补0）</p>
-<p>20 &gt;&gt;&gt; 2</p>
-<p>~13</p>
-<p>原码、补码：0000 1101</p>
-<p>按位取反：1111 0010</p>
-<p>取反码：1000 1101</p>
-<p>取补码：1000 1110</p>
-<p>-14</p>
-<p>~-27</p>
-<p>原码：1001 1011</p>
-<p>反码：1110 0100</p>
-<p>补码：1110 0101</p>
-<p>按位取反：0001 1010（正数）</p>
-<p>26</p>
+    <title>泛型</title>
+    <url>/2021/08/03/%E6%B3%9B%E5%9E%8B/</url>
+    <content><![CDATA[<p>泛型</p>
+<p>泛型其实不是java最开始的概念，他起源于jdk5之后，是一个新加入的特性。</p>
+<p>泛型的出现是为了解决对象强制转型之后可能出现的安全隐患问题。</p>
+<p>我们知道，为了方便参数的统一，我们会使用object类，利用此类对象可以接受所有类型的数据，包括基本数据类型和引用数据类型，但是由于其描述的数据类型过大，所以在实现中就会出现传入数据类型错误，从而引发异常classcastexception异常。</p>
+<p>例如：</p>
+<p>现在要设计一个描述坐标的类，point（包括x与y坐标轴信息），对于坐标点，允许保留整形、浮点与字符串三类数据。</p>
+<p>于是在设计point的时候，就需要考虑到x和y的具体类型，这个类型要求就可以保存以上三种类型的数据，于是最明显的就是利用object进行定义，这是因为存在以下的转换关系：</p>
+<p>整形：基本数据类型—包装为integer对象—自动向上转型为object</p>
+<p>浮点：基本数据类型——包装为double对象—自动向上转型为object</p>
+<p>字符串：string类对象——自动向上转型为object</p>
+<p>定义point坐标类：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&#123;</span><br><span class="line">    private Object x;</span><br><span class="line">    private Object y;</span><br><span class="line"></span><br><span class="line">    public Object getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(Object x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(Object y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为采用了object作为存储类型，这样就可以接受任意的数据类型，于是此时可能出现两种情况：</p>
+<p>1、使用者按照同意的数据类型设计坐标内容，并且利用向下转型获取原始坐标数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point p1 = new Point();</span><br><span class="line">        p1.setX(10);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = (Integer) p1.getX();</span><br><span class="line">        int y = (Integer) p1.getY();</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>利用基本数据类型自动装箱为包装类对象的特点向point类对象传入了x与y两个坐标信息，并且在获取坐标原始数据时，也依据设置的数据类型进行强制性的向下转型，所以可以得到正确的执行结果。</p>
+<p>2、使用者没有按照统一的数据类型设置坐标内容，读取数据时使用了错误的类型进行强制转换：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Point p2 = new Point();</span><br><span class="line">p2.setX(100);</span><br><span class="line">p2.setY(&quot;北纬20度&quot;);</span><br><span class="line"></span><br><span class="line">int x1 = (Integer) p2.getX();</span><br><span class="line">int y1 = (Integer) p2.getY();</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;x:&quot; + x + &quot;y:&quot; + y);</span><br></pre></td></tr></table></figure>
+
+<p>值得一提的是，程序完全符合语法规范，不会在编译的时候告诉开发者，而是会在执行过程中才会出现安全隐患，而造成此问题的核心就是object类型能够接收的类型过大。</p>
+<p>泛型：可以在编译时检测出程序的安全隐患，使得程序更加的健壮。</p>
+<p>如果想要解决项目中可能出现的classcastexception安全隐患，最核心的方案就是避免强制性的向下转型，所以泛型的核心思想就是，类中的属性或方法的参数与返回值的类型采用动态标记，在对象实例化的时候动态配置要使用的数据类型。</p>
+<blockquote>
+<p><strong>泛型在类上标记出以后，需要通过实例化对象进行类型的设置，而所设置的类型只能够是引用数据类型，如果要设置基本数据类型，则必须采用包装类的形式，这就是为什么jdk5之后才引入包装类对象的自动装箱和自动拆箱机制的原因。</strong></p>
+</blockquote>
+<p>在类上使用泛型：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setX(100);</span><br><span class="line">        p1.setY(20);</span><br><span class="line"></span><br><span class="line">        int x = p1.getX();</span><br><span class="line">        int y = p1.getY();</span><br><span class="line">        System.out.println(&quot;x:&quot;+x+&quot;y:&quot;+y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本程序中实例化point类对象所采用的的泛型设置为了integer，这样一类当前point类对象的x，y的属性类型就是integer，对应的方法参数和返回值也都是integer，这样不仅可以在编译的时候明确知道数据类型的错误，也避免了对象向下转型操作。</p>
+<blockquote>
+<p>7之后的jdk版本再定义泛型的时候简化了，在实例化对象时的泛型类型就通过声明时的泛型类型来定义了，但是依旧建议使用完整语法。</p>
+</blockquote>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Point&lt;Integer&gt; p1 = new Point&lt;&gt;();</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>为了照顾到最初的开发者，允许开发者在实例化对象时不设置泛型类型，这样在程序的编译时就会出现相应的警告信息，同时为了保证程序不出错，未设置的泛型类型将使用object作为默认类型。</p>
+<p>泛型虽然保证了代码的正确性。但是对于引用传递会带来参数统一问题。</p>
+<p>利用泛型类在实例化对象时进行的动态类型匹配，虽然可以有效地解决对象向下转型的安全隐患，但是在程序中实例化泛型类对象时，不同的泛型类型对象之间彼此是无法进行引用传递的。</p>
+<p>所以在进行泛型类型的引用对象时，为了可以适应所有本类的实例化对象，则可以在接收时使用“？”作为泛型通配符来使用，利用？表示的泛型类型只允许从对象中获取数据，而不允许修改数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point &lt;?&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不设置泛型类型或者设置泛型类型为object可否解决以上问题？</p>
+<p>1、public static void fun(point <object> temp){}</object></p>
+<p>2、public static void fun(point temp){}</p>
+<p>泛型需要考虑到操作类型统一性</p>
+<p>首先搞清楚一个核心问题，object可以接收一切的数据类型，但是在泛型概念里，point<string>与point<integer>这是两个不同的类型的对象。</integer></string></p>
+<p>如果采取类型1的引用，表示fun方法只接收point<object>类型的引用</object></p>
+<p>如果采取类型2的引用，实际上可以解决当前问题（不同泛型类型的对象传递），但是也会带来新的问题，允许随意修改数据</p>
+<p><strong>观察不设置泛型类型的方法参数定义：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point&lt;T&gt; &#123;</span><br><span class="line">    private T x;</span><br><span class="line">    private T y;</span><br><span class="line"></span><br><span class="line">    public T getX() &#123;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setX(T x) &#123;</span><br><span class="line">        this.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public T getY() &#123;</span><br><span class="line">        return y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setY(T y) &#123;</span><br><span class="line">        this.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo19 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Point&lt;Integer&gt; p1 = new Point&lt;Integer&gt;();</span><br><span class="line">        p1.setY(100);</span><br><span class="line">        fun(p1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun (Point temp)&#123;</span><br><span class="line">        temp.setY(199);</span><br><span class="line">        System.out.println(temp.getY());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行完程序可以发现，虽然不设置泛型类型可以实现对所有泛型类型的接收，但是无法对修改做出控制，然而使用了通配符？只允许获取，不允许修改。</p>
+</blockquote>
+<p>通配符？除了可以匹配任意的泛型类型之外，还可以通过泛型上限和下限的配置实现更加严格的类型定义。</p>
+<p>类和方法：设置泛型的上限，（？ extends 类）只能够使用当前类或者其子类设置泛型</p>
+<p>方法：设置泛型的下限，（？ super 类）只能设置指定的类或者父类。</p>
+<p>设置泛型上限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class  demo22_1 &lt;T extends Number&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo22 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo22_1&lt;Integer&gt; d1 = new demo22_1&lt;Integer&gt;();</span><br><span class="line">        d1.setContent(199);</span><br><span class="line">        fun(d1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void fun(demo22_1&lt;? extends Number&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置泛型的下限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class demo23_1&lt;T&gt;&#123;</span><br><span class="line">    private T content;</span><br><span class="line"></span><br><span class="line">    public T getContent() &#123;</span><br><span class="line">        return content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setContent(T content) &#123;</span><br><span class="line">        this.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo23 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo23_1&lt;String&gt; d1 = new demo23_1&lt;&gt;();</span><br><span class="line">        d1.setContent(&quot;i always love mm&quot;);</span><br><span class="line">        fun(d1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void fun(demo23_1&lt;? super String&gt; temp)&#123;</span><br><span class="line">        System.out.println(temp.getContent());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>泛型接口</p>
+<p>泛型可以定义在任意程序的结构体中</p>
+<p>泛型也可以定义在接口上，这样的接口叫做泛型接口。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于此时的泛型接口来说，子类定义时就有两种方式，在子类中继续声明泛型和子类中为父类设置泛型类型。</p>
+<p>1、在子类中继续声明泛型：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2&lt;S&gt; implements demo24_1&lt;S&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(S t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2&lt;String&gt;();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在定义子类声明了一个泛型标记S，并且实例化子类对象的时候，设置的泛型类型会传递到泛型接口中去。</p>
+<p>2、在子类中为父类设置泛型;</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">interface demo24_1&lt;T&gt;&#123;</span><br><span class="line">    String echo(T t1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class demo24_2 implements demo24_1&lt;String&gt;&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String echo(String t1) &#123;</span><br><span class="line">        return &quot;echo:&quot;+t1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo24 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo24_1&lt;String&gt; d1= new demo24_2();</span><br><span class="line">        System.out.println(d1.echo(&quot;i always like mm&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在子类时，没有定义泛型标记，而是为父接口设置了泛型类型为string，所以说在覆写echo方法的时候，参数类型就是string。</p>
+<p>泛型方法：对于泛型，除了可以定义在类上之外，也可以在方法上进行定义，而在方法上直接定义的泛型不一定要在类中定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class demo25 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer num [] = fun(1,2,3,4,5,6,7,8,9);</span><br><span class="line">        for (int temp: num) &#123;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static &lt;T&gt; T[] fun(T... args)&#123;</span><br><span class="line">        return args;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上，这是在一个没有泛型声明的类中定义了泛型方法，所以在fun方法声明处就必须单独定义泛型标记，此时的泛型类型由传入的参数来决定。</p>
 ]]></content>
       <categories>
         <category>java</category>
@@ -1527,68 +1315,66 @@
       </tags>
   </entry>
   <entry>
-    <title>程序逻辑控制</title>
-    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
-<p>程序逻辑</p>
-<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
-<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
-<p>顺序结构</p>
-<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
-<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
-<p>分支结构</p>
-<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
-<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
-<p>循环结构</p>
-<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
-<p>分支结构</p>
-<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
-<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>基于vm的完全分布式hadoop3-2集群搭建</title>
+    <url>/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>文章最终效果为，三台虚拟机三个namenode节点，依赖zkfc处理活跃问题，两个rm节点，同样依赖zkfc处理活跃问题。3之后的hadoop。hdfs的http端口改为了9870，也可以自行修改，yarn不变，依旧是8088。</p>
+<h2 id="1、部署环境"><a href="#1、部署环境" class="headerlink" title="1、部署环境"></a>1、部署环境</h2><p>Windows 10 家庭中文版（家庭版不存在问题）</p>
+<p>vmware 16.0 （百度到处都有激活码，可尝试下面的激活码）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
 
-<p>switch开关结构。</p>
-<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>centos 7.4  64位（linux系统，附带官网链接）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://isoredirect.centos.org/centos/7/isos/x86_64/</span><br></pre></td></tr></table></figure>
 
-<p>if可以判断布尔表达式、switch只能判断内容。</p>
-<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
-<p>循环结构</p>
-<p>while</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>jdk 1.8 （稳定版本，hadoop神器版本）</p>
+<p>hadoop 3.2.1</p>
+<p>zookeeper 3.6.2（版本不限）</p>
+<h2 id="2、准备工作"><a href="#2、准备工作" class="headerlink" title="2、准备工作"></a>2、准备工作</h2><p>1、完成ssh免密配置的三台虚拟机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">三台虚拟机生成秘钥</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">三节点拷贝到同一节点</span><br><span class="line">ssh-copy-id node1 </span><br><span class="line">将此节点上的秘钥通过scp发送到其他节点，此处可通过编写sh脚本，简化。</span><br></pre></td></tr></table></figure>
 
-<p>while需要先判断条件再执行，do先执行再判断</p>
-<p>避免死循环。（循环条件一直满足）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>2、三台安装jdk并且配置其环境变量</p>
+<p>3、三台虚拟机成功安装并且部署好zookeeper集群</p>
+<h2 id="3、配置文件"><a href="#3、配置文件" class="headerlink" title="3、配置文件"></a>3、配置文件</h2><p>1、/etc/profile</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br><span class="line"></span><br><span class="line">export ZOOKEEPER_HOME=/export/server/zookeeper</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/export/server/hadoop</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
 
-<p>for</p>
-<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>2、core-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://my01&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/export/server/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">          &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">          &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
 
-<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
-<p>}</p>
-<p>循环初始化条件：只执行一次</p>
-<p>循环判断：循环前后各执行一次</p>
-<p>循环变更：循环内语句执行完执行一次</p>
-<p>尽量不要这么去写。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>3、hdfs-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.nameservices&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;my01&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.replication&lt;/name&gt;                  </span><br><span class="line"> &lt;value&gt;3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                                 </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.namenodes.my01&lt;/name&gt;             </span><br><span class="line"> &lt;value&gt;nn1,nn2,nn3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9820&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                              </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9870&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                          </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;                                   </span><br><span class="line"> &lt;value&gt;qjournal://node1:8485;node2:8485;node3:8485/my01&lt;/value&gt;               </span><br><span class="line">&lt;/property&gt;                               </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;/export/data/hadoop/journaldata&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;     </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.client.failover.proxy.provider.my01&lt;/name&gt;                         &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;                                  </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;                   </span><br><span class="line"> &lt;value&gt;sshfence</span><br><span class="line"> shell(/bin/true)&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;                             </span><br><span class="line"> &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                      </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;30000&lt;/value&gt;                   </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;                                       </span><br><span class="line"> &lt;value&gt;100&lt;/value&gt;                           </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                          </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt; </span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; </span><br><span class="line">       &lt;value&gt;file:///export/data/hadoop/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt; </span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; </span><br><span class="line">        &lt;value&gt;file:///export/data/hadoop/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;ture&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
 
-<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
-<p>for：确定循环次数。</p>
-<p>循环控制语句</p>
-<p>continue</p>
-<p>break</p>
-<p>循环结构内，只要条件满足，就会一直执行。</p>
-<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
-<p>循环嵌套</p>
-<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、mapred-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">&lt;name&gt;mapreduce.framework.name&lt;/name&gt;                                    </span><br><span class="line">&lt;value&gt;yarn&lt;/value&gt;            </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;                               </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">        /export/server/hadoop/etc/hadoop,                                    </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/*,                           </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/lib/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/lib/*,                         </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/lib/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/lib/*                         </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line">  &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>]]></content>
+<p>5、yarn-site.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;                           </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;                      </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.automatic-failover.enabled&lt;/name&gt;       </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                                                   </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;            </span><br><span class="line">        &lt;value&gt;yarn-rm-cluster&lt;/value&gt;                  </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;        </span><br><span class="line">        &lt;value&gt;rm1,rm2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;                         </span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;                     </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                      </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;rm1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;      </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;                                                         </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;                            </span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;       </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">        &lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;yarn.application.classpath&lt;/name&gt;                                   </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">/export/server/hadoop/etc/hadoop:/export/server/hadoop//share/hadoop/common/lib/*:/export/server/hadoop//share/hadoop/co  mmon/*:/export/server/hadoop//share/hadoop/hdfs:/export/server/hadoop//share/hadoop/hdfs/lib/*:/export/server/hadoop//sh  are/hadoop/hdfs/*:/export/server/hadoop//share/hadoop/mapreduce/lib/*:/export/server/hadoop//share/hadoop/mapreduce/*:/e  xport/server/hadoop//share/hadoop/yarn:/export/server/hadoop//share/hadoop/yarn/lib/*:/export/server/hadoop//share/hadoop/yarn/*                             </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line"> &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</span><br><span class="line">&lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">         &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>6、yarn-env.sh  hadoop-env.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export HADOOP_HOME=/export/server/hadoop/</span><br></pre></td></tr></table></figure>
+
+<p>7、start-dfs.sh  stop-dfs.sh  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">HDFS_DATANODE_USER=root</span><br><span class="line">HDFS_DATANODE_SECURE_USER=hdfs </span><br><span class="line">HDFS_NAMENODE_USER=root </span><br><span class="line">HDFS_SECONDARYNAMENODE_USER=root</span><br><span class="line">HDFS_JOURNALNODE_USER=root</span><br><span class="line">HDFS_ZKFC_USER=root</span><br></pre></td></tr></table></figure>
+
+<p>8、start-yarn.sh  stop-yarn.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YARN_RESOURCEMANAGER_USER=root</span><br><span class="line">HADOOP_SECURE_DN_USER=yarn</span><br><span class="line">YARN_NODEMANAGER_USER=root</span><br></pre></td></tr></table></figure>
+
+<p>9、启动顺序</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh start</span><br><span class="line">hadoop-daemon.sh start journalnode</span><br><span class="line">hdfs namenode -format / /namenode 格式化</span><br><span class="line">hdfs zkfc -formatZK //格式化高可用</span><br><span class="line">hdfs namenode //启动namenode</span><br><span class="line">hdfs namenode -bootstrapStandby</span><br><span class="line">hadoop-daemon.sh stop namenode</span><br><span class="line">hadoop-daemon.sh stop journalnode</span><br><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>1、启动顺序一定不要乱</p>
+<p>2、格式化出错就排错</p>
+<p>3、配置文件写完之后，先开启zk集群，先status查看集群状态，确认无误之后再进行初始化操作</p>
+<p>4、zk集群状态，开启后等待半分钟左右再去查看</p>
+<p>5、如何验证集群搭好了，jps查看节点无误，向集群上传文件无误，启动wordcount实例无误。</p>
+<p>6、启动顺序，先开启zk，一键启动start-all.sh或者分别启动yarn和hdfs都可以。不需要再次格式化了。</p>
+<p>7、防火墙关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-        <category>java</category>
+        <category>hadoop</category>
       </categories>
       <tags>
-        <tag>java</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -1835,6 +1621,242 @@
       </tags>
   </entry>
   <entry>
+    <title>流程控制语句</title>
+    <url>/2021/07/20/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<h2 id="流程控制语句（练习）"><a href="#流程控制语句（练习）" class="headerlink" title="流程控制语句（练习）"></a>流程控制语句（练习）</h2><h2 id="1、获取用户输入，判断奇数还是偶数"><a href="#1、获取用户输入，判断奇数还是偶数" class="headerlink" title="1、获取用户输入，判断奇数还是偶数"></a>1、获取用户输入，判断奇数还是偶数</h2><p>​    input函数的返回值默认是字符串类型，而字符串类型是无法直接用整形的运算符的。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">num=int（input(&quot;请输入一个任意的整数：&quot;)）</span><br><span class="line">if num%2==0:</span><br><span class="line">    print(&quot;偶数！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;奇数&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、检查一个年份是否是闰年"><a href="#2、检查一个年份是否是闰年" class="headerlink" title="2、检查一个年份是否是闰年"></a>2、检查一个年份是否是闰年</h2><p>​    闰年：年份可以被4整除并且不能被100整除，或者可以被400整除，这个年份刚好就是闰年</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">year=int(input(&quot;请输入一个任意的年份：&quot;))</span><br><span class="line">if year %4==0 and year % 100==0 or year % 400 ==0:</span><br><span class="line">    print(year,&quot;是闰年&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(year,&quot;不是闰年！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"><a href="#3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？" class="headerlink" title="3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？"></a>3、我有一条狗，他叫大鹏，他今年五岁了，他相当于人类多大年龄？</h2><p>​    狗的年纪：狗的前两年的每一年相当于人类的10.5岁，然后每一年增加四岁。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dog_age=float(input(&quot;请输入狗的年龄：&quot;))</span><br><span class="line">like_person_age=0</span><br><span class="line">if dog_age&gt;0:</span><br><span class="line">    if dog_age&lt;=2:</span><br><span class="line">        like_person_age=dog_age*10.5</span><br><span class="line">    else:</span><br><span class="line">        like_person_age=2*10.5</span><br><span class="line">        like_person_age+=(dog_age-2)*4</span><br><span class="line">    print(dog_age,&quot;岁的狗，相当于人类年龄的&quot;,like_person_age,&#x27;岁&#x27;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;请输入一个合法的年龄！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、小鹏的期末成绩"><a href="#4、小鹏的期末成绩" class="headerlink" title="4、小鹏的期末成绩"></a>4、小鹏的期末成绩</h2><p>​    当成绩为100的时候，奖励一台手机</p>
+<p>​    当成绩为80到99的时候，奖励一台ps4</p>
+<p>​    当成绩为60到79的时候，奖励他一本参考书</p>
+<p>​    其他，奖励他一个大嘴巴子</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">score=int(input(&quot;请输入小鹏的成绩：&quot;))</span><br><span class="line"># 来一条华丽的分割线</span><br><span class="line">print(&quot;==&quot;*40)</span><br><span class="line"># 检查用户的输入</span><br><span class="line">if 0 &lt;= score &lt;= 100:</span><br><span class="line">    # 判断奖励</span><br><span class="line">    if score == 100:</span><br><span class="line">        print(&quot;奖励一台手机&quot;)</span><br><span class="line">    elif score &gt;= 80:</span><br><span class="line">        print(&quot;ps4，拿去玩吧！&quot;)</span><br><span class="line">    elif score &gt;= 60:</span><br><span class="line">        print(&quot;参考书！拿去！&quot;)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;大嘴巴子！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入内容不合法！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"><a href="#5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件" class="headerlink" title="5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件"></a>5、高富帅问题，小鹏要结婚了，要娶一个女孩子，但是女方家里有条件</h2><p>​    高：180dm以上，富：1000块以上，帅：颜值分250以上</p>
+<p>​    如果三个条件都满足，“一定能娶到老婆”</p>
+<p>​    如果三个条件有一个满足，“有可能娶到老婆”</p>
+<p>​    如果三个条件都不满足，“一定娶不到”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">height=int(input(&quot;请输入你的身高！&quot;))</span><br><span class="line">money=int(input(&quot;请输入你的余额！&quot;))</span><br><span class="line">face=int(input(&quot;你觉得你这张脸能打多少分！&quot;))</span><br><span class="line">if height &gt;180 and money &gt;1000 and fcae &gt; 250:</span><br><span class="line">    print(&quot;一定能娶到老婆&quot;)</span><br><span class="line">elif height &gt;180 or money &gt;1000 or face &gt; 250:</span><br><span class="line">    print(&quot;有可能娶到老婆&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;不嫁给你！&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、大鹏大战白骨精"><a href="#6、大鹏大战白骨精" class="headerlink" title="6、大鹏大战白骨精"></a>6、大鹏大战白骨精</h2><p>​    首先，你可以有两个身份，大鹏和白骨精</p>
+<p>​    其次，你有生命值和攻击力，生命值归0，那一方输了，另一方胜利。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 显示欢迎信息</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(&quot;欢迎来到大鹏大战白骨精&quot;)</span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 身份选择</span><br><span class="line"></span><br><span class="line">print(&quot;请选择你的身份！&quot;)</span><br><span class="line">print(&quot;\t 1.大鹏&quot;)</span><br><span class="line">print(&quot;\t 2.白骨精&quot;)</span><br><span class="line">player_choose=input(&quot;请选择[1|2]&quot;)</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line"></span><br><span class="line"># 提示信息</span><br><span class="line"></span><br><span class="line">if player_choose==&quot;1&quot;:</span><br><span class="line">    print(&quot;你已经选择了1，你将会用大鹏的身份来进行游戏！&quot;)</span><br><span class="line">elif player_choose==&quot;2&quot;:</span><br><span class="line">    print(&quot;你居然选了白骨精！你还是会用大鹏的身份进行游戏！&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;你的输入有问题！系统将自动分配身份！你将成为不要脸的大鹏！&quot;)</span><br><span class="line"></span><br><span class="line"># 进行游戏</span><br><span class="line"></span><br><span class="line">player_life=100</span><br><span class="line">player_attack=1000</span><br><span class="line"></span><br><span class="line">boss_life=10000</span><br><span class="line">boss_attack=10</span><br><span class="line"></span><br><span class="line"># 华丽的分割线</span><br><span class="line"></span><br><span class="line">print(&quot;+&quot;*40)</span><br><span class="line">print(f&#x27;大鹏，你的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&#x27;)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;请选择你要做的操作！&quot;)</span><br><span class="line">    print(&#x27;\t 1.练级&#x27;)</span><br><span class="line">    print(&#x27;\t 2.打boss&#x27;)</span><br><span class="line">    print(&#x27;\t 3.逃跑&#x27;)</span><br><span class="line">    game_choose=input(&quot;请选择要做的操作！&quot;)</span><br><span class="line">   if game_choose==&#x27;1&#x27;:</span><br><span class="line">    player_life+=1</span><br><span class="line">    player_attack+=1</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(f&quot;恭喜你升级了，你现在的生命值是&#123;player_life&#125;,你的攻击力是&#123;player_attack&#125;&quot;)</span><br><span class="line"></span><br><span class="line">elif game_choose==&#x27;2&#x27;:</span><br><span class="line">    boss_life-=player_attack</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏偷袭了白骨精！不讲武德！&#x27;)</span><br><span class="line">    if boss_life &lt;=0:</span><br><span class="line">        print(f&#x27;白骨精受到了&#123;player_attack&#125;点伤害，重伤不治，最终还是死了，大鹏获得了胜利！&#x27;)</span><br><span class="line">        break</span><br><span class="line">    </span><br><span class="line">    player_life-=boss_attack</span><br><span class="line">    print(&#x27;白骨精攻击了大鹏，大快人心！&#x27;)</span><br><span class="line">    if player_life &lt;=0:</span><br><span class="line">        print(f&#x27;大鹏受到了&#123;boss_attack&#125;点伤害，重伤不治，最后死了！game over!&#x27;)</span><br><span class="line">        break</span><br><span class="line">elif game_choose==&#x27;3&#x27;:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&#x27;大鹏扭头就跑！，撒腿就跑！game over!&#x27;)</span><br><span class="line">    break</span><br><span class="line">else:</span><br><span class="line">    print(&quot;+&quot;*40)</span><br><span class="line">    print(&quot;你的输入有问题&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、求1000以内的所有的质数"><a href="#7、求1000以内的所有的质数" class="headerlink" title="7、求1000以内的所有的质数"></a>7、求1000以内的所有的质数</h2><p>（质数就是除了1和他本身，不能被其他数整除的数，除数，被除数）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，求1-1000以内的质数</span><br><span class="line">i=2</span><br><span class="line">while i&lt;=1000:</span><br><span class="line">    # 创建一个变量，储存一下i的状态</span><br><span class="line">    flag=True</span><br><span class="line">    # 判断i是否为质数</span><br><span class="line">    j=2</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        if i % j == 0:</span><br><span class="line">            flag=False</span><br><span class="line">        j += 1</span><br><span class="line">    if flag:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="8、求1000以内的水仙花数"><a href="#8、求1000以内的水仙花数" class="headerlink" title="8、求1000以内的水仙花数"></a>8、求1000以内的水仙花数</h2><p>水仙花数：是一个n位数（n&gt;=3），他的每一个位上的数字的n次幂之和等于它本身<br>$$<br>153=1<strong>3+5</strong>3+3**3<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 求1000以内的水仙花数</span><br><span class="line">i = 100</span><br><span class="line">while i &lt; 1000 :</span><br><span class="line">    # 假设 i的百位数是a，十位数是b，个位数是c</span><br><span class="line">    a = i // 100</span><br><span class="line">    # b = i // 10 % 10</span><br><span class="line">    b = ( i- a * 100 ) // 10</span><br><span class="line">    c = i % 10</span><br><span class="line">    if a ** 3 + b ** 3 + c ** 3 == i:</span><br><span class="line">        print(i)</span><br><span class="line">    i += 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、打印99乘法表"><a href="#9、打印99乘法表" class="headerlink" title="9、打印99乘法表"></a>9、打印99乘法表</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建一个循环，来控制高度</span><br><span class="line">i = 0</span><br><span class="line">while i &lt; 9:</span><br><span class="line">    i += 1</span><br><span class="line">    # 创建一个循环，来控制宽度</span><br><span class="line">    j = 0</span><br><span class="line">    while j &lt; i:</span><br><span class="line">        j += 1</span><br><span class="line">        print(f&quot;&#123;j&#125;*&#123;i&#125;=&#123;i*j&#125; &quot;,end=&quot;&quot;)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>进程基础概念</title>
+    <url>/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。</p>
+<p>进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像在独占的使用硬件。而<strong>并发运行</strong>，则是说一个进程的指令和另外一个进程的指令其实是交错着在执行的。</p>
+<p>在大多数系统中，需要运行的进程数是可以多于可以运行他们的cpu个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序，这是通过处理器在进程之间切换来实现的，操作系统实现这种交错执行的机制成为<strong>上下文切换</strong>。</p>
+<p>操作系统保持跟踪进程运行所需的所有状态信息，这种状态，也就是上下文，包括许多信息，比如pc（寄存器，处理器核心（大小为一个字的储存设备））和寄存器文件的当前值，以及主存的内容。在任何一个时刻，单核处理器都只能执行一个进程的代码，当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行上下文切换，即保存当前进程的上下文，恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
+<p>一个进程到另一个进程的转换是由操作系统内核负责管理的，内核不是一个独立的进程，他是操作系统用来管理全部进程所用的代码和数据结构的集合。他是操作系统代码常驻主存的部分，当app需要操作系统的某些操作时，例如最简单的读写文件，内核就会执行一条特殊的系统调用指令，将控制权传递给内核，然后内核执行被请求的操作并返回app。</p>
+<p>现在进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作，以后会揭示这项工作的基本原理，以及app是如何创建和控制他们的进程的。</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序基础概念</title>
+    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
+<p>1、注释</p>
+<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
+<p>java里一共分为3种形式的注释</p>
+<p>单行注释</p>
+<p>多行注释</p>
+<p>文档注释</p>
+<p>2、标识符与关键字</p>
+<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
+<p>例如：类、方法、变量结构。</p>
+<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
+<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
+<p>1、尽量的不要用数字</p>
+<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
+<p>3、标识符区分大小写</p>
+<p>4、$ 美元符号有特殊含义（内部类）</p>
+<p>数据类型</p>
+<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
+<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
+<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
+<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
+<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
+<p>整型</p>
+<p>byte、short、int、long</p>
+<p>默认的数据类型是int。（整型常量）</p>
+<p>数据类型转换</p>
+<p>自动转换：范围小——范围大</p>
+<p>强制转换：大——小（数据溢出）</p>
+<p>浮点型 小数 double</p>
+<p>char</p>
+<p>16进制的unicode</p>
+<p>布尔型</p>
+<p>一种逻辑结果，true和false</p>
+<p>string</p>
+<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
+<p>转义字符：\ \ \t \n &#39; &quot;</p>
+<p>运算符</p>
+<p>&amp;&amp;      ||</p>
+<p>短路与 短路或</p>
+<p>（逻辑运算符）</p>
+<p>boolean || boolean （短路原则）（有假则假）</p>
+<p>&amp;   | （位运算符）</p>
+<p>逻辑与 逻辑或 （按位与、按位或）</p>
+<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
+<p>3 5</p>
+<p>0011 </p>
+<p>0101</p>
+<p>3 | 5  0111 7</p>
+<p>3 &amp; 5 0001 1</p>
+<p>负数的补码</p>
+<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
+<p>19 </p>
+<p>二进制：原码：0001 0011</p>
+<p>20</p>
+<p>010100</p>
+<p>按位与 都是1，就是1. </p>
+<p>按位或 有一个1，就是1</p>
+<p>异或 相同就是0，不同就是1</p>
+<p>取反</p>
+<p>-20</p>
+<p>二进制原码：1001 0100</p>
+<p>反码：1110 1011 + 1 = 补码</p>
+<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
+<p>按位取反：0001 0011（正数）</p>
+<p>19</p>
+<p>正数的补码、反码、原码都是一样的。</p>
+<p>20</p>
+<p>原码：0001 0100</p>
+<p>按位取反：1110 1011</p>
+<p>取反码：1001 0100</p>
+<p>取补码：1001 0101</p>
+<p>-21</p>
+<p>取反</p>
+<p>1、求补码</p>
+<p>2、按位取反</p>
+<p>3、求补码(最终结果)</p>
+<p>按位左移、按位右移。(负数补1，正数补0)</p>
+<p>20 &lt;&lt; 2</p>
+<p>0000 0000 0001 0100</p>
+<p>0000 0000 0101 0000</p>
+<p>80</p>
+<p>20 &gt;&gt; 2</p>
+<p>0000 0000 0001 0100</p>
+<p>0000 0000 0000 0101</p>
+<p>5</p>
+<p>无符号右移（全部补0）</p>
+<p>20 &gt;&gt;&gt; 2</p>
+<p>~13</p>
+<p>原码、补码：0000 1101</p>
+<p>按位取反：1111 0010</p>
+<p>取反码：1000 1101</p>
+<p>取补码：1000 1110</p>
+<p>-14</p>
+<p>~-27</p>
+<p>原码：1001 1011</p>
+<p>反码：1110 0100</p>
+<p>补码：1110 0101</p>
+<p>按位取反：0001 1010（正数）</p>
+<p>26</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序逻辑控制</title>
+    <url>/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
+<p>程序逻辑</p>
+<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
+<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
+<p>顺序结构</p>
+<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
+<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
+<p>分支结构</p>
+<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
+<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
+<p>循环结构</p>
+<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
+<p>分支结构</p>
+<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
+<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>switch开关结构。</p>
+<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if可以判断布尔表达式、switch只能判断内容。</p>
+<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
+<p>循环结构</p>
+<p>while</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>while需要先判断条件再执行，do先执行再判断</p>
+<p>避免死循环。（循环条件一直满足）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for</p>
+<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
+<p>}</p>
+<p>循环初始化条件：只执行一次</p>
+<p>循环判断：循环前后各执行一次</p>
+<p>循环变更：循环内语句执行完执行一次</p>
+<p>尽量不要这么去写。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
+<p>for：确定循环次数。</p>
+<p>循环控制语句</p>
+<p>continue</p>
+<p>break</p>
+<p>循环结构内，只要条件满足，就会一直执行。</p>
+<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
+<p>循环嵌套</p>
+<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>类结构扩展</title>
     <url>/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<p>类结构扩展</p>
@@ -1966,23 +1988,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>进程基础概念</title>
-    <url>/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
-    <content><![CDATA[<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。</p>
-<p>进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像在独占的使用硬件。而<strong>并发运行</strong>，则是说一个进程的指令和另外一个进程的指令其实是交错着在执行的。</p>
-<p>在大多数系统中，需要运行的进程数是可以多于可以运行他们的cpu个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序，这是通过处理器在进程之间切换来实现的，操作系统实现这种交错执行的机制成为<strong>上下文切换</strong>。</p>
-<p>操作系统保持跟踪进程运行所需的所有状态信息，这种状态，也就是上下文，包括许多信息，比如pc（寄存器，处理器核心（大小为一个字的储存设备））和寄存器文件的当前值，以及主存的内容。在任何一个时刻，单核处理器都只能执行一个进程的代码，当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行上下文切换，即保存当前进程的上下文，恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
-<p>一个进程到另一个进程的转换是由操作系统内核负责管理的，内核不是一个独立的进程，他是操作系统用来管理全部进程所用的代码和数据结构的集合。他是操作系统代码常驻主存的部分，当app需要操作系统的某些操作时，例如最简单的读写文件，内核就会执行一条特殊的系统调用指令，将控制权传递给内核，然后内核执行被请求的操作并返回app。</p>
-<p>现在进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作，以后会揭示这项工作的基本原理，以及app是如何创建和控制他们的进程的。</p>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
       </tags>
   </entry>
   <entry>
