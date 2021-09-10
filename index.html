@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/09/numpy/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/09/numpy/" class="post-title-link" itemprop="url">numpy</a>
+            <a href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="post-title-link" itemprop="url">html学习笔记01</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-09 09:26:33" itemprop="dateCreated datePublished" datetime="2021-09-09T09:26:33+08:00">2021-09-09</time>
+              <time title="创建时间：2021-09-10 09:13:27" itemprop="dateCreated datePublished" datetime="2021-09-10T09:13:27+08:00">2021-09-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/09/numpy/" class="leancloud_visitors" data-flag-title="numpy">
+             <span id="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="leancloud_visitors" data-flag-title="html学习笔记01">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/09/numpy/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/09/numpy/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>627</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,21 +293,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><p>numpy是一个python的扩展程序库，支持大量的维度数组和矩阵运算，除此之外还为数组计算提供了大量的科学库，运行速度很快，包含了一个强大的多维数组对象ndarray，广播功能函数，整合了c与c++语言的工具，还有线性代数、随机数生成等功能。</p>
-<h2 id="numpy安装"><a href="#numpy安装" class="headerlink" title="numpy安装"></a>numpy安装</h2><p>值得一提的是，python官网提供的发行版并没有包含numpy库，我们需要单独的下载，其中最简单的就是通过pip安装，安装成功后，可以使用numpy中生成对角矩阵的eye方法来检测是否安装成功。</p>
-<h2 id="NumPy-Ndarray-对象"><a href="#NumPy-Ndarray-对象" class="headerlink" title="NumPy Ndarray 对象"></a>NumPy Ndarray 对象</h2><p>这是numpy中一个重要的特性，他是同一类数据类型的集合，以0为下标开始索引。</p>
-<p>这是一个存放同类对象的多维数组，其中每个元素都有相同的区域储存，ndarray内部由一个指向数据的指针，数据类型，一个描述数组形状的数组，一个跨度元组组成。</p>
-<p><img src="/2021/09/09/numpy/image-20210909093335315.png" alt="mdarray对象内部结构">值得一提的是，跨度可以是负数，这样数组在内存之中就会产生向前移动的效果。</p>
-<p>创建这个对象只需要调用array函数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(object, dtype = None, copy = True, order = None, subok = False, ndmin = 0)</span><br></pre></td></tr></table></figure>
-
-<p>参数说明：</p>
-<p>object：数组或者嵌套的数列（也是对象中的基本元素）</p>
-<p>dtype：数组中元素的数据类型</p>
-<p>copy：数组中元素是否可复制</p>
-<p>order：数组中元素的样式，C为行方向，F为列方向，A为任意方向（默认）</p>
-<p>subok：返回一个与基本类型一样的数组</p>
-<p>ndmin：指定生成数组的最小维度</p>
+          <h2 id="1、html"><a href="#1、html" class="headerlink" title="1、html"></a>1、html</h2><p>html作为一门超文本标记语言，包括一系列的标签，它通过这些标签将网络文档结构统一化，通过浏览器进行解析与阅读。</p>
+<p>html文本是由html（htm）为后缀的由html命令组成的描述性文本，通过对标签的使用，可以描述文字，图形，动画，声音，表格，链接等等。</p>
+<h2 id="2、position"><a href="#2、position" class="headerlink" title="2、position"></a>2、position</h2><p>dom position属性。</p>
+<p>position属性把元素放置到一个静态的、相对的、绝对的、固定的的位置中去。</p>
+<p>要理解这个属性，首先应该明白什么是流？</p>
+<p>所谓的文档流，指的其实就是元素排版布局过程中，元素会自动从左到右，从上往下的流式排列。并最终窗体自上而下分成一行行，并在每行中按从左至右的排放元素。</p>
+<p>顺便说一下，除了设置position的属性值为absolute与fixed之外，float对象也会<strong>打乱这个队列</strong>，这些都会暂时多礼流的存在，clear之后才会回到流之中（单指float）。</p>
+<p>（float：right显然会打乱文档流，但是float：left也有这样的效果：其实是因为子元素设置了float属性，然而父元素没有设置（或者保持了默认的static），则子元素会从父元素中溢出，（最明显的表现就是，父元素不会随着子元素的扩大而扩大），因为当元素设置了float这个属性之后，其他没有设置float属性的盒子或者是标签会无视这个属性，也就是其他没有设置浮动的元素会和他进行叠加，这就可以当作脱离了文档流。但是要注意一点的就是，与position：absolute不同的是，其他盒子内的元素依然会为了float元素让出位置，因此不会出现互相叠加的情况。这种情况下消除浮动就可以解决）</p>
+<p>其中，默认得到html流属性其实就是static，默认布局，这种布局，是没有定位的，而且不会继承父元素的属性，w3c的文档里提到，忽略top、bottom、left、right或者z-index声明，他是存在于流里面的。除此之外还有relative，相对布局，假如父元素采用了这种布局，那么子元素就是相对于父元素的绝对定位，一般会配合到top、right、bottom、left来使用，这种布局其实也是存在于流里面的。但是fixed浮动布局，是相对于浏览器窗口的绝对布局（上下滚动页面），一般同样配合上下左右来使用，这个布局是脱离了流的存在的。（！！ie不兼容这种模式！！）</p>
+<p>absolute布局，绝对布局，相对于页面的绝对布局（上下滚动），同样配合四方使用，脱离了流的存在，最后一种我用的比较少，inherit布局，w3c的文档规定他是继承了父元素position的值。</p>
+<p><strong>如果我们想在页面上固定元素，毫无以为，选择absolute，他是以页面左上角为（0，0），更具tblr来布局的，与fixed不同，f是当前窗口布局，也是左上角为（0，0），但是会根据滚动条一起滚动，相对于当前窗口的位置不变。relative是相对位置，指的是子节点和父节点的关系，当一个子节点在父节点中的时候，默认的position就是relative，在子节点包含在父节点中，这个时候就算我们设置的子节点是absolute，也会成为relative，也就是相对于父节点的左上角排版。</strong></p>
+<p><strong>总结：在html中，永远没有绝对，只有相对。所有元素都是document的子元素。</strong></p>
+<h2 id="3、相对路径与绝对路径"><a href="#3、相对路径与绝对路径" class="headerlink" title="3、相对路径与绝对路径"></a>3、相对路径与绝对路径</h2><p><strong>参照物不同</strong>，导致的差别。</p>
+<p>在计算中，这是一个避免不了问题，无论是path环境变量还是classpath类加载路径都是源自于这两个路径的差别。他们的差别也很简单，绝对路径以磁盘为参照物，而相对路径则以当前路径为参照。</p>
 
       
     </div>
@@ -330,7 +329,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -398,20 +397,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -459,12 +458,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">129k</span>
+    <span title="站点总字数">130k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:57</span>
+    <span title="站点阅读时长">1:58</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
