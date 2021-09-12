@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/12/io%E7%BC%96%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/09/numpy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/12/io%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">io编程</a>
+            <a href="/2021/09/09/numpy/" class="post-title-link" itemprop="url">numpy</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-12 16:58:23" itemprop="dateCreated datePublished" datetime="2021-08-12T16:58:23+08:00">2021-08-12</time>
+              <time title="创建时间：2021-09-09 09:26:33" itemprop="dateCreated datePublished" datetime="2021-09-09T09:26:33+08:00">2021-09-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/08/12/io%E7%BC%96%E7%A8%8B/" class="leancloud_visitors" data-flag-title="io编程">
+             <span id="/2021/09/09/numpy/" class="leancloud_visitors" data-flag-title="numpy">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/12/io%E7%BC%96%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/12/io%E7%BC%96%E7%A8%8B/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/09/numpy/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/09/numpy/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>591</span>
+              <span>627</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,69 +293,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="io编程"><a href="#io编程" class="headerlink" title="io编程"></a>io编程</h1><p>io（input|output，输入|输出）可以实现数据的读取和写入的操作。Java针对io提供了一给工具包。</p>
-<h2 id="file文件操作"><a href="#file文件操作" class="headerlink" title="file文件操作"></a>file文件操作</h2><p>file类是一个与文件本身操作有关的类，创建、删除、重命名、取得文件大小、修改日期等常见的系统文件操作。</p>
-<h3 id="file类的基本使用"><a href="#file类的基本使用" class="headerlink" title="file类的基本使用"></a>file类的基本使用</h3><p>如果要使用file类则必须提供完整的文件操作路径，对于文件路径的设置可以通过file类的构造方法来完成。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public File(String pathname)</td>
-<td>构造</td>
-<td>给定一个操作文件的完整路径</td>
-</tr>
-<tr>
-<td>public File(String parent, String child)</td>
-<td>构造</td>
-<td>规定操作文件的完整路径和子文件名称</td>
-</tr>
-<tr>
-<td>public boolean createNewFile() throws IOException</td>
-<td>普通</td>
-<td>创建文件</td>
-</tr>
-<tr>
-<td>public boolean delete()</td>
-<td>普通</td>
-<td>删除文件</td>
-</tr>
-<tr>
-<td>public boolean exists()</td>
-<td>普通</td>
-<td>判断文件路径是否存在</td>
-</tr>
-</tbody></table>
-<h3 id="file类操作深入"><a href="#file类操作深入" class="headerlink" title="file类操作深入"></a>file类操作深入</h3><p>路径分割符：public static final String separator</p>
-<p>文件路径定义：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;E:&quot;+File.separator+&quot;demo.txt&quot;</span><br></pre></td></tr></table></figure>
+          <h1 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h1><p>numpy是一个python的扩展程序库，支持大量的维度数组和矩阵运算，除此之外还为数组计算提供了大量的科学库，运行速度很快，包含了一个强大的多维数组对象ndarray，广播功能函数，整合了c与c++语言的工具，还有线性代数、随机数生成等功能。</p>
+<h2 id="numpy安装"><a href="#numpy安装" class="headerlink" title="numpy安装"></a>numpy安装</h2><p>值得一提的是，python官网提供的发行版并没有包含numpy库，我们需要单独的下载，其中最简单的就是通过pip安装，安装成功后，可以使用numpy中生成对角矩阵的eye方法来检测是否安装成功。</p>
+<h2 id="NumPy-Ndarray-对象"><a href="#NumPy-Ndarray-对象" class="headerlink" title="NumPy Ndarray 对象"></a>NumPy Ndarray 对象</h2><p>这是numpy中一个重要的特性，他是同一类数据类型的集合，以0为下标开始索引。</p>
+<p>这是一个存放同类对象的多维数组，其中每个元素都有相同的区域储存，ndarray内部由一个指向数据的指针，数据类型，一个描述数组形状的数组，一个跨度元组组成。</p>
+<p><img src="/2021/09/09/numpy/image-20210909093335315.png" alt="mdarray对象内部结构">值得一提的是，跨度可以是负数，这样数组在内存之中就会产生向前移动的效果。</p>
+<p>创建这个对象只需要调用array函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.array(object, dtype = None, copy = True, order = None, subok = False, ndmin = 0)</span><br></pre></td></tr></table></figure>
 
-<p>file父路径操作方法</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public File getParentFile()</td>
-<td>普通</td>
-<td>获取父路径</td>
-</tr>
-<tr>
-<td>public boolean mkdirs()</td>
-<td>普通</td>
-<td>创建指定目录</td>
-</tr>
-</tbody></table>
-<h3 id="获取文件元信息"><a href="#获取文件元信息" class="headerlink" title="获取文件元信息"></a>获取文件元信息</h3><p><img src="/2021/08/12/io%E7%BC%96%E7%A8%8B/image-20210812171347514.png" alt="image-20210812171347514"></p>
-<h2 id="字节流和字符流"><a href="#字节流和字符流" class="headerlink" title="字节流和字符流"></a>字节流和字符流</h2><p><img src="/2021/08/12/io%E7%BC%96%E7%A8%8B/image-20210812171601095.png" alt="image-20210812171601095"></p>
+<p>参数说明：</p>
+<p>object：数组或者嵌套的数列（也是对象中的基本元素）</p>
+<p>dtype：数组中元素的数据类型</p>
+<p>copy：数组中元素是否可复制</p>
+<p>order：数组中元素的样式，C为行方向，F为列方向，A为任意方向（默认）</p>
+<p>subok：返回一个与基本类型一样的数组</p>
+<p>ndmin：指定生成数组的最小维度</p>
 
       
     </div>
@@ -378,7 +330,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -446,7 +398,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -507,12 +459,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:58</span>
+    <span title="站点阅读时长">2:02</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

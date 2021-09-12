@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2021-09-11T03:54:24.098Z</updated>
+  <updated>2021-09-12T02:21:44.888Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js对象高级</title>
+    <link href="http://rczmm.github.io/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/"/>
+    <id>http://rczmm.github.io/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/</id>
+    <published>2021-09-12T02:21:04.000Z</published>
+    <updated>2021-09-12T02:21:44.888Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="对象的创建模式"><a href="#对象的创建模式" class="headerlink" title="对象的创建模式"></a>对象的创建模式</h2><ul><li><p>Object构造函数模式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj.name = &#x27;Tom&#x27;</span><br><span class="line">obj.setName = function(name)&#123;this.name=name&#125;</span><br></pre></td></tr></table></figure></li><li><p>对象字面量模式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name : &#x27;Tom&#x27;,</span><br><span class="line">  setName : function(name)&#123;this.name = name&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>构造函数模式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">  this.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li><li><p>构造函数+原型的组合模式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li></ul><h2 id="继承模式"><a href="#继承模式" class="headerlink" title="继承模式"></a>继承模式</h2><ul><li><p>原型链继承 : 得到方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent()&#123;&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child()&#123;&#125;</span><br><span class="line">Child.prototype = new Parent(); // 子类型的原型指向父类型实例</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line">var child = new Child(); //有test()</span><br></pre></td></tr></table></figure></li><li><p>借用构造函数 : 得到属性</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">var child = new Child(&#x27;a&#x27;, &#x27;b&#x27;);  //child.xxx为&#x27;a&#x27;, 但child没有test()</span><br></pre></td></tr></table></figure></li><li><p>组合</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = new Parent(); //得到test()</span><br><span class="line">var child = new Child(); //child.xxx为&#x27;a&#x27;, 也有test()</span><br></pre></td></tr></table></figure></li><li><p>new一个对象背后做了些什么?</p><ul><li>创建一个空对象</li><li>给对象设置__proto__, 值为构造函数对象的prototype属性值   this.<strong>proto</strong> = Fn.prototype</li><li>执行构造函数体(给对象添加属性/方法)</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;对象的创建模式&quot;&gt;&lt;a href=&quot;#对象的创建模式&quot; class=&quot;headerlink&quot; title=&quot;对象的创建模式&quot;&gt;&lt;/a&gt;对象的创建模式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Object构造函数模式&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+      
+    
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/categories/html/"/>
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js函数高级</title>
+    <link href="http://rczmm.github.io/2021/09/12/js%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/"/>
+    <id>http://rczmm.github.io/2021/09/12/js%E5%87%BD%E6%95%B0%E9%AB%98%E7%BA%A7/</id>
+    <published>2021-09-12T02:20:15.000Z</published>
+    <updated>2021-09-12T02:20:50.483Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原型与原型链"><a href="#原型与原型链" class="headerlink" title="原型与原型链"></a>原型与原型链</h2><ul><li>所有函数都有一个特别的属性:<ul><li><code>prototype</code> : 显式原型属性</li></ul></li><li>所有实例对象都有一个特别的属性:<ul><li><code>__proto__</code> : 隐式原型属性</li></ul></li><li>显式原型与隐式原型的关系<ul><li>函数的prototype: 定义函数时被自动赋值, 值默认为{}, 即用为原型对象</li><li>实例对象的__proto__: 在创建实例对象时被自动添加, 并赋值为构造函数的prototype值</li><li>原型对象即为当前实例对象的父对象</li></ul></li><li>原型链<ul><li>所有的实例对象都有__proto__属性, 它指向的就是原型对象</li><li>这样通过__proto__属性就形成了一个链的结构—-&gt;原型链</li><li>当查找对象内部的属性/方法时, js引擎自动沿着这个原型链查找</li><li>当给对象属性赋值时不会使用原型链, 而只是在当前对象中进行操作</li></ul></li></ul><h2 id="执行上下文与执行上下文栈"><a href="#执行上下文与执行上下文栈" class="headerlink" title="执行上下文与执行上下文栈"></a>执行上下文与执行上下文栈</h2><ul><li>变量提升与函数提升<ul><li>变量提升: 在变量定义语句之前, 就可以访问到这个变量(undefined)</li><li>函数提升: 在函数定义语句之前, 就执行该函数</li><li>先有变量提升, 再有函数提升</li></ul></li><li>理解<ul><li>执行上下文: 由js引擎自动创建的对象, 包含对应作用域中的所有变量属性</li><li>执行上下文栈: 用来管理产生的多个执行上下文</li></ul></li><li>分类:<ul><li>全局: window</li><li>函数: 对程序员来说是透明的</li></ul></li><li>生命周期<ul><li>全局 : 准备执行全局代码前产生, 当页面刷新/关闭页面时死亡</li><li>函数 : 调用函数时产生, 函数执行完时死亡</li></ul></li><li>包含哪些属性:<ul><li>全局 : <ul><li>用var定义的全局变量  ==&gt;undefined</li><li>使用function声明的函数   ===&gt;function</li><li>this   ===&gt;window</li></ul></li><li>函数<ul><li>用var定义的局部变量  ==&gt;undefined</li><li>使用function声明的函数   ===&gt;function</li><li>this   ===&gt; 调用函数的对象, 如果没有指定就是window </li><li>形参变量   ===&gt;对应实参值</li><li>arguments ===&gt;实参列表的伪数组</li></ul></li></ul></li><li>执行上下文创建和初始化的过程<ul><li>全局:<ul><li>在全局代码执行前最先创建一个全局执行上下文(window)</li><li>收集一些全局变量, 并初始化</li><li>将这些变量设置为window的属性</li></ul></li><li>函数:<ul><li>在调用函数时, 在执行函数体之前先创建一个函数执行上下文</li><li>收集一些局部变量, 并初始化</li><li>将这些变量设置为执行上下文的属性</li></ul></li></ul></li></ul><h2 id="作用域与作用域链"><a href="#作用域与作用域链" class="headerlink" title="作用域与作用域链"></a>作用域与作用域链</h2><ul><li>理解:<ul><li>作用域: 一块代码区域, 在编码时就确定了, 不会再变化</li><li>作用域链: 多个嵌套的作用域形成的由内向外的结构, 用于查找变量</li></ul></li><li>分类:<ul><li>全局</li><li>函数</li><li>js没有块作用域(在ES6之前)</li></ul></li><li>作用<ul><li>作用域: 隔离变量, 可以在不同作用域定义同名的变量不冲突</li><li>作用域链: 查找变量</li></ul></li><li>区别作用域与执行上下文<ul><li>作用域: 静态的, 编码时就确定了(不是在运行时), 一旦确定就不会变化了</li><li>执行上下文: 动态的, 执行代码时动态创建, 当执行结束消失</li><li>联系: 执行上下文环境是在对应的作用域中的</li></ul></li></ul><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul><li><p>理解:</p><ul><li>当嵌套的内部函数引用了外部函数的变量时就产生了闭包</li><li>通过chrome工具得知: 闭包本质是内部函数中的一个对象, 这个对象中包含引用的变量属性</li></ul></li><li><p>作用:</p><ul><li>延长局部变量的生命周期</li><li>让函数外部能操作内部的局部变量</li></ul></li><li><p>写一个闭包程序</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function fn1() &#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  function fn2() &#123;</span><br><span class="line">    a++;</span><br><span class="line">    console.log(a);</span><br><span class="line">  &#125;</span><br><span class="line">  return fn2;</span><br><span class="line">&#125;</span><br><span class="line">var f = fn1();</span><br><span class="line">f();</span><br><span class="line">f();</span><br></pre></td></tr></table></figure></li><li><p>闭包应用:</p><ul><li>模块化: 封装一些数据以及操作数据的函数, 向外暴露一些行为</li><li>循环遍历加监听</li><li>JS框架(jQuery)大量使用了闭包</li></ul></li><li><p>缺点:</p><ul><li>变量占用内存的时间可能会过长</li><li>可能导致内存泄露</li><li>解决:<ul><li>及时释放 : f = null; //让内部函数对象成为垃圾对象</li></ul></li></ul></li></ul><h2 id="内存溢出与内存泄露"><a href="#内存溢出与内存泄露" class="headerlink" title="内存溢出与内存泄露"></a>内存溢出与内存泄露</h2><ol><li>内存溢出</li></ol><ul><li>一种程序运行出现的错误</li><li>当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误</li></ul><ol start="2"><li>内存泄露</li></ol><ul><li>占用的内存没有及时释放</li><li>内存泄露积累多了就容易导致内存溢出</li><li>常见的内存泄露:<ul><li>意外的全局变量</li><li>没有及时清理的计时器或回调函数</li><li>闭包</li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;原型与原型链&quot;&gt;&lt;a href=&quot;#原型与原型链&quot; class=&quot;headerlink&quot; title=&quot;原型与原型链&quot;&gt;&lt;/a&gt;原型与原型链&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;所有函数都有一个特别的属性:&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;prototype&lt;/code&gt; : </summary>
+      
+    
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/categories/html/"/>
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js基础总结深入</title>
+    <link href="http://rczmm.github.io/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/"/>
+    <id>http://rczmm.github.io/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/</id>
+    <published>2021-09-12T02:19:00.000Z</published>
+    <updated>2021-09-12T02:19:54.586Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据类型的分类和判断"><a href="#数据类型的分类和判断" class="headerlink" title="数据类型的分类和判断"></a>数据类型的分类和判断</h2><ul><li>基本(值)类型<ul><li>Number —– 任意数值 ——– typeof</li><li>String —– 任意字符串 —— typeof</li><li>Boolean —- true/false —– typeof</li><li>undefined — undefined —– typeof/===</li><li>null ——– null ———- ===</li></ul></li><li>对象(引用)类型<ul><li>Object —– typeof/instanceof</li><li>Array —— instanceof</li><li>Function —- typeof</li></ul></li></ul><h2 id="数据-变量-内存的理解"><a href="#数据-变量-内存的理解" class="headerlink" title="数据,变量, 内存的理解"></a>数据,变量, 内存的理解</h2><ul><li>什么是数据?<ul><li>在内存中可读的, 可传递的保存了特定信息的’东东’</li><li>一切皆数据, 函数也是数据</li><li>在内存中的所有操作的目标: 数据</li></ul></li><li>什么是变量?<ul><li>在程序运行过程中它的值是允许改变的量</li><li>一个变量对应一块小内存, 它的值保存在此内存中  </li></ul></li><li>什么是内存?<ul><li>内存条通电后产生的存储空间(临时的)</li><li>一块内存包含2个方面的数据<ul><li>内部存储的数据</li><li>地址值数据</li></ul></li><li>内存空间的分类<ul><li>栈空间: 全局变量和局部变量</li><li>堆空间: 对象 </li></ul></li></ul></li><li>内存,数据, 变量三者之间的关系<ul><li>内存是容器, 用来存储不同数据</li><li>变量是内存的标识, 通过变量我们可以操作(读/写)内存中的数据  </li></ul></li></ul><h2 id="对象的理解和使用"><a href="#对象的理解和使用" class="headerlink" title="对象的理解和使用"></a>对象的理解和使用</h2><ul><li><p>什么是对象?</p><ul><li>多个数据(属性)的集合</li><li>用来保存多个数据(属性)的容器</li></ul></li><li><p>属性组成:</p><ul><li>属性名 : 字符串(标识)</li><li>属性值 : 任意类型</li></ul></li><li><p>属性的分类:</p><ul><li>一般 : 属性值不是function  描述对象的状态</li><li>方法 : 属性值为function的属性  描述对象的行为</li></ul></li><li><p>特别的对象</p><ul><li>数组: 属性名是0,1,2,3之类的索引</li><li>函数: 可以执行的</li></ul></li><li><p>如何操作内部属性(方法)</p><ul><li><p>.属性名</p></li><li><p>[‘属性名’]: 属性名有特殊字符/属性名是一个变量</p></li></ul></li></ul><h2 id="函数的理解和使用"><a href="#函数的理解和使用" class="headerlink" title="函数的理解和使用"></a>函数的理解和使用</h2><ul><li><p>什么是函数?</p><ul><li>用来实现特定功能的, n条语句的封装体</li><li>只有函数类型的数据是可以执行的, 其它的都不可以</li></ul></li><li><p>为什么要用函数?</p><ul><li>提高复用性</li><li>便于阅读交流</li></ul></li><li><p>函数也是对象</p><ul><li>instanceof Object===true</li><li>函数有属性: prototype</li><li>函数有方法: call()/apply()</li><li>可以添加新的属性/方法</li></ul></li><li><p>函数的3种不同角色</p><ul><li>一般函数 : 直接调用</li><li>构造函数 : 通过new调用</li><li>对象 : 通过.调用内部的属性/方法</li></ul></li><li><p>函数中的this</p><ul><li>显式指定谁: obj.xxx()</li><li>通过call/apply指定谁调用: xxx.call(obj)</li><li>不指定谁调用: xxx()  : window</li><li>回调函数: 看背后是通过谁来调用的: window/其它</li></ul></li><li><p>匿名函数自调用:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(w, obj)&#123;</span><br><span class="line">  //实现代码</span><br><span class="line">&#125;)(window, obj)</span><br></pre></td></tr></table></figure><ul><li>专业术语为: IIFE (Immediately Invoked Function Expression) 立即调用函数表达式                          </li></ul></li><li><p>回调函数的理解</p><ul><li>什么函数才是回调函数?<ul><li>你定义的</li><li>你没有调用</li><li>但它最终执行了(在一定条件下或某个时刻)</li></ul></li><li>常用的回调函数<ul><li>dom事件回调函数</li><li>定时器回调函数</li><li>ajax请求回调函数(后面讲解)</li><li>生命周期回调函数(后面讲解)</li></ul></li></ul></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;数据类型的分类和判断&quot;&gt;&lt;a href=&quot;#数据类型的分类和判断&quot; class=&quot;headerlink&quot; title=&quot;数据类型的分类和判断&quot;&gt;&lt;/a&gt;数据类型的分类和判断&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;基本(值)类型&lt;ul&gt;
+&lt;li&gt;Number —– 任意数值 —</summary>
+      
+    
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/categories/html/"/>
+    
+    
+    <category term="html" scheme="http://rczmm.github.io/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>html学习笔记01</title>
@@ -462,86 +540,6 @@
 &lt;p&gt;程序逻辑&lt;/p&gt;
 &lt;p&gt;java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。&lt;/p&gt;
 &lt;p&gt;这三种结构的共同点是，他们都只拥有一个入口，也只</summary>
-      
-    
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序基础概念</title>
-    <link href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"/>
-    <id>http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</id>
-    <published>2021-07-24T07:50:18.000Z</published>
-    <updated>2021-07-26T13:51:38.834Z</updated>
-    
-    <content type="html"><![CDATA[<p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p><p>1、注释</p><p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p><p>java里一共分为3种形式的注释</p><p>单行注释</p><p>多行注释</p><p>文档注释</p><p>2、标识符与关键字</p><p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p><p>例如：类、方法、变量结构。</p><p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p><p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p><p>1、尽量的不要用数字</p><p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p><p>3、标识符区分大小写</p><p>4、$ 美元符号有特殊含义（内部类）</p><p>数据类型</p><p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p><p>java数据类型基本可以分为基本数据类型、引用数据类型</p><p>基本数据类型：byte、short、int、long、float、double、char、boolean</p><p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p><p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p><p>整型</p><p>byte、short、int、long</p><p>默认的数据类型是int。（整型常量）</p><p>数据类型转换</p><p>自动转换：范围小——范围大</p><p>强制转换：大——小（数据溢出）</p><p>浮点型 小数 double</p><p>char</p><p>16进制的unicode</p><p>布尔型</p><p>一种逻辑结果，true和false</p><p>string</p><p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p><p>转义字符：\ \ \t \n &#39; &quot;</p><p>运算符</p><p>&amp;&amp;      ||</p><p>短路与 短路或</p><p>（逻辑运算符）</p><p>boolean || boolean （短路原则）（有假则假）</p><p>&amp;   | （位运算符）</p><p>逻辑与 逻辑或 （按位与、按位或）</p><p>逻辑是从左到右全部判断、短路得到结果就停止。</p><p>3 5</p><p>0011 </p><p>0101</p><p>3 | 5  0111 7</p><p>3 &amp; 5 0001 1</p><p>负数的补码</p><p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p><p>19 </p><p>二进制：原码：0001 0011</p><p>20</p><p>010100</p><p>按位与 都是1，就是1. </p><p>按位或 有一个1，就是1</p><p>异或 相同就是0，不同就是1</p><p>取反</p><p>-20</p><p>二进制原码：1001 0100</p><p>反码：1110 1011 + 1 = 补码</p><p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p><p>按位取反：0001 0011（正数）</p><p>19</p><p>正数的补码、反码、原码都是一样的。</p><p>20</p><p>原码：0001 0100</p><p>按位取反：1110 1011</p><p>取反码：1001 0100</p><p>取补码：1001 0101</p><p>-21</p><p>取反</p><p>1、求补码</p><p>2、按位取反</p><p>3、求补码(最终结果)</p><p>按位左移、按位右移。(负数补1，正数补0)</p><p>20 &lt;&lt; 2</p><p>0000 0000 0001 0100</p><p>0000 0000 0101 0000</p><p>80</p><p>20 &gt;&gt; 2</p><p>0000 0000 0001 0100</p><p>0000 0000 0000 0101</p><p>5</p><p>无符号右移（全部补0）</p><p>20 &gt;&gt;&gt; 2</p><p>~13</p><p>原码、补码：0000 1101</p><p>按位取反：1111 0010</p><p>取反码：1000 1101</p><p>取补码：1000 1110</p><p>-14</p><p>~-27</p><p>原码：1001 1011</p><p>反码：1110 0100</p><p>补码：1110 0101</p><p>按位取反：0001 1010（正数）</p><p>26</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。&lt;/p&gt;
-&lt;p&gt;1、注释&lt;/p&gt;
-&lt;p&gt;在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的</summary>
-      
-    
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建java开发环境</title>
-    <link href="http://rczmm.github.io/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <id>http://rczmm.github.io/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</id>
-    <published>2021-07-23T14:35:53.000Z</published>
-    <updated>2021-07-23T15:17:06.335Z</updated>
-    
-    <content type="html"><![CDATA[<p>Java语言执行需要经过编译器编译，而后才可以在jvm上解释字节码程序，这些操作都需要jdk的支持才可以正常完成。</p><p>jdk java开发工具包，java专属的开发工具，也是最底层的技术支持。</p><p>开发者可以直接通过oracle官网（<a href="https://www.oracle.com/cn/java/">Java 软件 | Oracle 中国</a>）获取jdk工具。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224057138.png" alt="image-20210723224057138"></p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224120031.png" alt="image-20210723224120031"></p><p>进入java se的下载页面时会展示我们下载的jdk类型。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224213603.png" alt="image-20210723224213603"></p><p>同时，除了jdk，也提供了jre的下载。</p><p>jre java运行时环境，jdk自带。（分两类，一个是server 一个是client），jre本身不支持开发。</p><p>注意选择自己适合的系统版本。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224534162.png" alt="image-20210723224534162"></p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224859826.png" alt="image-20210723224859826"></p><p>x86 32位，x64 64位。注意根据自己的电脑系统合理选择。</p><p>jdk的安装与配置</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225353570.png" alt="image-20210723225353570"></p><p>打开我们下载的一个Windows的程序安装包，双击运行即可安装，并出现以上的界面。点击下一步。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225450635.png" alt="image-20210723225450635"></p><p>选择安装目录，不要带有中文的目录。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225543007.png" alt="image-20210723225543007"></p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225554851.png" alt="image-20210723225554851"></p><p>显示成功安装。</p><p>打开目录</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225655107.png" alt="image-20210723225655107"></p><p>打开bin目录。</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225716346.png" alt="image-20210723225716346"></p><p>在这个目录里，有两个核心的命令，java.exe and javac.exe</p><p>这两个命令本身不属于Windows本身，如果要在命令行（cmd）里直接使用，那么就必须在Windows系统中进行可执行程序的路径配置，也就是环境变量。</p><p>计算机——属性——高级系统设置</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225913817.png" alt="image-20210723225913817"></p><p>高级——环境变量——系统变量——path</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225943116.png" alt="image-20210723225943116"></p><p>添加jdk下bin的目录</p><p>E:\Program Files\java-13\bin</p><p>打开cmd窗口。</p><p>输入 java -version</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230140245.png" alt="image-20210723230140245"></p><p>出现以上内容，表示安装成功。</p><p>Windows命令行</p><p>可以直接在搜索cmd，dos，命令提示符等，</p><p>也可以win +R 打开运行</p><p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230310972.png" alt="image-20210723230310972"></p><p>搜索cmd。</p><p>如果配置了环境变量，必须重新启动命令行才能加载到最新的环境变量配置。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Java语言执行需要经过编译器编译，而后才可以在jvm上解释字节码程序，这些操作都需要jdk的支持才可以正常完成。&lt;/p&gt;
-&lt;p&gt;jdk java开发工具包，java专属的开发工具，也是最底层的技术支持。&lt;/p&gt;
-&lt;p&gt;开发者可以直接通过oracle官网（&lt;a href=&quot;</summary>
-      
-    
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
-    
-    <category term="jdk" scheme="http://rczmm.github.io/tags/jdk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java语言特点</title>
-    <link href="http://rczmm.github.io/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/"/>
-    <id>http://rczmm.github.io/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/</id>
-    <published>2021-07-23T13:53:16.000Z</published>
-    <updated>2021-07-23T14:31:55.446Z</updated>
-    
-    <content type="html"><![CDATA[<p>java语言特点</p><p>java之所以能广泛的活跃在互联网和电子设备上，主要是因为其开发语言简洁并且有完善的生态系统，是一门优秀编程语言。</p><p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=656404101,826481724&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>java不仅拥有完善的编程体系，同时也收到众多软件厂商的追捧——围绕其开发出来了大量的第三方应用，使得java的技术得以迅速的发展壮大，并且被广泛的应用，在长期的技术发展中，java语言的特性也在不断的提升。</p><p>1、简洁有效</p><p>克服了c++中所有的难以理解和容易混淆的特点，比如：头文件、指针、结构、单元、运算符重载和虚拟基础类，java更加的严谨、简洁、因此也足够简单。</p><p>2、可移植性</p><p>一次编写、处处运行。因为java的执行是基于jvm，在源代码编译后形成字节码文件，在不同的os上只需要植入与系统匹配的jvm就可以直接利用jvm的指令集解释程序运行，降低了开发难度，提高了开发效率。</p><p>3、面向对象</p><p>java是面向对象的语言，并且有着良好的程序结构定义，</p><p>4、垃圾回收</p><p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=3964968350,1272502470&fm=26&fmt=auto&gp=0.jpg" alt="img"></p><p>gc，无用的内存回收，java提供了垃圾回收机制。</p><p>5、引用传递</p><p>指针的代替品，更加简单。（指针虽然高效，但是需要较强的逻辑分析能力）</p><p>6、分布式</p><p>java适合网络编程，适合分布式程序开发，socket（套接字），还包括公共网关接口，cgi等，还有包括nio、aio等。</p><p>7、健壮性</p><p>编译时，有语法检查，异常可以避免错误产生时程序中断运行。</p><p>8、多线程</p><p>线程是轻量级的进程、juc多线程开发框架。</p><p>9、安全性</p><p>jvm安全，jdk更新，jvm也能更新。</p><p>10、函数式编程</p><p>lambda表达式编程</p><p>11、模块化支持</p><p>拉锯（代码名字）、jdk9之后的功能。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;java语言特点&lt;/p&gt;
-&lt;p&gt;java之所以能广泛的活跃在互联网和电子设备上，主要是因为其开发语言简洁并且有完善的生态系统，是一门优秀编程语言。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7</summary>
       
     
     

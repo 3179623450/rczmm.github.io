@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类与对象</a>
+            <a href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="post-title-link" itemprop="url">迭代器、生成器与装饰器</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:21:27" itemprop="dateCreated datePublished" datetime="2021-07-20T23:21:27+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-21 22:18:16" itemprop="dateCreated datePublished" datetime="2021-07-21T22:18:16+08:00">2021-07-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="leancloud_visitors" data-flag-title="类与对象">
+             <span id="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" class="leancloud_visitors" data-flag-title="迭代器、生成器与装饰器">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.1k</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -293,73 +293,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>函数</p>
-<p>python是一门面向对象的语言，万物皆是对象（一切其实皆函数（不准确，不正确））</p>
-<p>函数也是一种对象（内存中专门用来储存数据的一块区域）</p>
-<p>函数可以保存一些可执行的代码，并且，在需要的时候，这一部分代码可以重复的使用。</p>
-<p>创建函数：</p>
-<p>def 函数名（形参1，形参2…..）：</p>
-<p>​    代码块</p>
-<p>函数名的命名规范，（不能占用保留字符，可以包含字母、数字、下划线，但是不能用数字开头）</p>
-<p>函数中保存的代码不会立即执行，而是要调用才会执行（注意函数的参数）</p>
-<p>调用函数</p>
-<p>函数名（参数）</p>
-<p>函数可以没有参数，也可以有多个参数，调用时必须要符合定义的规范</p>
-<p>参数</p>
-<p>形参（就相当于在函数内部声明了一个变量），多个形参用逗号隔开</p>
-<p>实参（实际参数）调用函数的时候，传递进来的参数，实参会赋值给形参</p>
-<p>有几个形参就要几个实参</p>
-<p>函数式的编程</p>
-<p>在python中，函数式一等对象</p>
-<p>一等对象，如下特点</p>
-<p>1、对象是在运行时创建的</p>
-<p>2、能赋值给变量或者作为数据结构中的元素</p>
-<p>3、能作为参数转递</p>
-<p>4、能作为返回值返回</p>
-<p>高阶函数</p>
-<p>第一、接受一个或者多个函数作为参数</p>
-<p>第二、将函数作为返回值返回</p>
-<p>第三、装饰器</p>
-<p>类与对象</p>
-<p>面向对象</p>
-<p>所谓的面向对象、简单来说就是所有操作都可以通过对象来实现</p>
-<p>面向过程、将程序拆解成一个个的步骤</p>
-<p>大鹏上学记</p>
-<p>​    1、妈妈起床</p>
-<p>​    2、妈妈上厕所</p>
-<p>​    3、妈妈洗漱</p>
-<p>​    4、妈妈做早饭</p>
-<p>​    5、妈妈叫大鹏</p>
-<p>​    6、大鹏上厕所</p>
-<p>​    7、大鹏洗漱</p>
-<p>​    8、大鹏吃早饭</p>
-<p>​    9、背上书包</p>
-<p>​    10、上学校‘</p>
-<p>编程思想（面向过程）：将一个功能拆分成许多的小步骤</p>
-<p>只适用于一个功能，如果要实现另外一个功能，即使两个功能相差很小，但是依旧要重新写代码</p>
-<p>复用性比较低，难于维护</p>
-<p>面向对象：关注的不是过程，关注的是对象</p>
-<p>大鹏上学记</p>
-<p>​    1、大鹏妈妈叫大鹏上学</p>
-<p>编程思想（面向对象），将所有的功能保存到一个对象里</p>
-<p>比如，妈妈的功能保存到妈妈对象里，大鹏的功能保存到大鹏的对象里，要使用这个功能，直接来找对象。</p>
-<p>（要值得一提的是，作为一个功能来讲，（中小功能），面向过程写起来比较酣畅淋漓，同时比较快）</p>
-<p>简单归纳一下，面向对象的思想：1、找对象、2、搞对象（设计对象，做对象）、调用对象</p>
-<p>类（class）</p>
-<p>类和对象是什么关系</p>
-<p>类就是对象的图纸！</p>
-<p>对象是类的实例</p>
-<p>类也是一个对象（一个用来创建对象的对象）</p>
-<p>类：</p>
-<p>生活中所有的事物都可以抽象出来</p>
-<p>1、数据（属性） 变量</p>
-<p>2、行为（方法） 函数</p>
-<p>所有的这个类的实例都可以对象.属性来访问这个变量，对象.方法（）都可以来调用这个方法</p>
-<p>定义一个类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class 类名（）:</span><br><span class="line">	公共的一些属性</span><br><span class="line">	a=1</span><br><span class="line">	b=2</span><br><span class="line">	</span><br><span class="line">	对象的初始化方法</span><br><span class="line">	def __init__(self,...):</span><br><span class="line">		...</span><br><span class="line">	其他的方法</span><br><span class="line">	def method():</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
+          <p>迭代器、生成器与装饰器</p>
+<p>迭代器</p>
+<p>迭代几乎是python最强的功能之一，是访问集合元素的一种方式</p>
+<p>for i in rang(1,101)</p>
+<p>迭代器是一个可以记住遍历的位置的<strong>对象</strong></p>
+<p>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完，结束</p>
+<p>迭代器<strong>只能前进，不能后退</strong>。</p>
+<p>迭代器基本方法：iter（）和next（）</p>
+<p>迭代器用在哪儿？（字符串、列表、元组等对象都可以创建迭代器）（序列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it=iter(list)</span><br></pre></td></tr></table></figure>
 
-<p>p1=类名（）（创建了一个对象，根据类名的那个类）然后，初始化方法就会自动调用，其他方法需要手动调用。</p>
+<p>for语句遍历：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line">for i in it:</span><br><span class="line">	print(i,end=&#x27; &#x27;)</span><br></pre></td></tr></table></figure>
 
+<p>next()函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"></span><br><span class="line">list=[1,2,3,4,5]</span><br><span class="line">it =iter(list)</span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">	try:</span><br><span class="line">		print(next(it))</span><br><span class="line">	except StopIteration:</span><br><span class="line">		sys.exit()</span><br></pre></td></tr></table></figure>
+
+<p>创建一个迭代器</p>
+<p>类有一个构造函数，python中，他会在对象初始化的时候执行</p>
+<p>迭代器类里，iter()方法返回一个特殊的迭代器对象，这个迭代器对象实现了next（）并且通过StopIteration</p>
+<p>异常的标识来判断迭代是否完成</p>
+<p>next（）方法返回下一个迭代器的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        x = self.a</span><br><span class="line">        self.a+=1</span><br><span class="line">        return x</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
+
+<p>以上的代码把一个类当做了迭代器，我们不难发现，需要至少实现两个方法，iter和next。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MyNumbers:</span><br><span class="line">    def __iter__(self):</span><br><span class="line">        self.a=1</span><br><span class="line">        return self</span><br><span class="line">    def __next__(self):</span><br><span class="line">        if self.a &lt;= 3:</span><br><span class="line">            x = self.a</span><br><span class="line">            self.a+=1</span><br><span class="line">            return x</span><br><span class="line">        else:</span><br><span class="line">            raise StopIteration</span><br><span class="line">myclass=MyNumbers()</span><br><span class="line">myiter=iter(myclass)</span><br><span class="line"></span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br><span class="line">print(next(myiter))</span><br></pre></td></tr></table></figure>
+
+<p>以上代码，使用了stopiteration异常来限制了循环的次数（迭代的次数）</p>
+<p>所有的技术都要根据使用场景来。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/21/%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%A3%85%E9%A5%B0%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
  <div>
@@ -381,7 +351,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -449,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,12 +480,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:58</span>
+    <span title="站点阅读时长">2:02</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

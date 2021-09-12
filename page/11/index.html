@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/05/%E5%BC%82%E5%B8%B8-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">抽象类与接口</a>
+            <a href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="post-title-link" itemprop="url">异常-1</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-01 20:20:38" itemprop="dateCreated datePublished" datetime="2021-08-01T20:20:38+08:00">2021-08-01</time>
+              <time title="创建时间：2021-08-05 15:12:37" itemprop="dateCreated datePublished" datetime="2021-08-05T15:12:37+08:00">2021-08-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="leancloud_visitors" data-flag-title="抽象类与接口">
+             <span id="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="leancloud_visitors" data-flag-title="异常-1">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>12k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>11 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -293,36 +293,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>抽象类与接口：有效拆分大型系统，避免产生耦合。</p>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
-<p>普通类只是一个设计完善，可以直接产生实例化对象并且调用类中的属性和方法，抽象类最大特点，就是必须被子类继承，并且抽象类本身无法进行实例化。在实际项目中，往往很少设计普通类，大多都会选择继承抽象类。</p>
-<p>抽象类基本定义：抽象类是为了方法覆写而提供的类结构。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>在程序中，编译和运行是两个不同的阶段。编译主要针对的是语法检测，运行时有可能出现各种的错误导致程序中断，这些错误统一的被称为异常。</p>
+<h2 id="1、认识异常"><a href="#1、认识异常" class="headerlink" title="1、认识异常"></a>1、认识异常</h2><p>异常是在程序执行时，由于程序处理逻辑的错误导致程序中断的一种指令流（机器执行指令序列 数据流）</p>
+<p>当异常产生时，程序会在异常产生的地方被中断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(10 / 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero</span><br><span class="line">	at demo08.day5.demo01.main(demo01.java:5)</span><br></pre></td></tr></table></figure>
 
-<p>本实例中利用abstract关键字声明了抽象类与抽象方法：</p>
-<p>1、抽象方法与普通方法不一样，抽象方法不能有方法体{}</p>
-<p>2、抽象类不是一个完整的类，抽象类必须提供子类，子类继承依然用extends关键字</p>
-<p>3、子类（非抽象类）一定要覆写抽象类中的全部抽象方法</p>
-<p>4、抽象类的对象实例化可以通过子类向上转型来实现</p>
-<p>抽象类的使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02();</span><br><span class="line">        j1.setType(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序中产生了数学异常，由于程序没有对异常做任何的处理，所以默认的进行了异常信息的打印，同时会终止异常之后的代码，</p>
+<p>为了让程序出现异常后还可以正常执行，必须引入异常处理语句来完善代码编写。</p>
+<h2 id="2、异常处理"><a href="#2、异常处理" class="headerlink" title="2、异常处理"></a>2、异常处理</h2><p>try catch finally三个核心关键字用来针对异常的处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            System.out.println(&quot;这是:&quot;+e+&quot;  异常！&quot;);</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;程序执行完毕&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>抽象类最大特点的是自己无法对象实例化，所以说在实际项目中，抽象类用来当中间过渡，当我们想要使用抽象类中，往往是为了解决继承中带来的代码重复处理。</p>
-<p>抽象类的说明</p>
-<p>1、抽象类必须有子类继承，抽象方法必须被覆写，所以抽象类定义时，不允许final定义抽象类和抽象方法。</p>
-<p>2、抽象类也可以定义成员属性和普通方法，为了给抽象类的成员属性初始化，我们可以给抽象类设计构造方法，子类在继承时会调用抽象类的无参构造，如果抽象类没有提供，那么就需要super关键字。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">abstract  class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract  String getconn();</span><br><span class="line"></span><br><span class="line">    public javademo01(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line"></span><br><span class="line">    public javademo02(String type) &#123;</span><br><span class="line">        super(type);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>异常的格式组合：</p>
+<p>其实，catch和finally都是可选的，就是在这三个关键字的组成上，try是必不可少的，其次的catch和finally都是可以任何搭配的。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>抽象类中可以没有抽象方法，即使没有抽象方法，也不能使用new关键字实例化对象。</p>
-<p>抽象类中可以使用static定义静态方法，直接通过类名调用，毫无影响。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<p>获取完整异常信息，所有的异常类都提供了printStackTrace方法，这个方法可以输出异常信息，明确的告诉我们那一行代码出现了异常。</p>
+<blockquote>
+<p>提问：finally的作用是不是较小</p>
+<p>我们发现，异常处理之后的语句无论是否出现异常都可以正常运行，那么finally是不是有些冗余？</p>
+<p>答：两者执行机制不一样</p>
+<p>上述程序只是执行了一个简单的数学计算异常，并不能正常处理其他异常，而对于不能正常处理的代码，程序依然会中断执行，中断之后，后面的代码不会执行，但是finally依然会执行。在开发中finally一般用来资源释放。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input = new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;please input number:&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            int x = Integer.parseInt(input.next());</span><br><span class="line">            System.out.println(10 / x);</span><br><span class="line">        &#125;catch (ArithmeticException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;ing&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、处理多个异常："><a href="#3、处理多个异常：" class="headerlink" title="3、处理多个异常："></a>3、处理多个异常：</h2><p>使用多个catch语句进行异常处理</p>
+<h2 id="4、异常处理流程："><a href="#4、异常处理流程：" class="headerlink" title="4、异常处理流程："></a>4、异常处理流程：</h2><p>面向对象的核心设计思想就是统一标准。</p>
+<p>前面提问：每次处理异常的时候都要去考虑所有的异常，那么直接使用判断不是更好嘛？</p>
+<img src="/2021/08/05/%E5%BC%82%E5%B8%B8-1/image-20210805160039738.png" alt="异常处理流程" style="zoom:200%;">
+
+<p>核心：在于异常类的实例化对象类型。</p>
+<hr>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Throwable</span><br><span class="line">	|-java.lang.Exception</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>如上，所有异常类的最高继承类是throwable。这个类下面有两个子类，其中一个是error，jvm错误。还有一个就是exception。</p>
+<p>按照对象的引用原则，可以自动向上转型，按照这样的逻辑，所有的异常都可以用exception来处理。</p>
+<blockquote>
+<p>问题：为什么不用throwable？</p>
+<p>答：表示的范围大，用户处理error错误</p>
+<p>问题：异常一起处理好还是分开处理好？</p>
+<p>答：根据实际要求</p>
+</blockquote>
+<p><strong>注意：处理多个异常时，范围小的要放在范围大的之前。</strong></p>
+<h2 id="5、throws关键字"><a href="#5、throws关键字" class="headerlink" title="5、throws关键字"></a>5、throws关键字</h2><p>方法是类的主要操作形式。</p>
+<p>在程序执行中，更多的考虑到的是方法的调用，为了方便调用时异常的处理，往往会在方法声明时对可能出现的异常进行标记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            div(12,12);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int div(int x,int y) throws Exception&#123;</span><br><span class="line">        return x / y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>问题：以上的计算没有错误，为什么还是强制异常处理？</p>
+<p>答：设计方法的需要</p>
+</blockquote>
+<p>主方法也是方法，如果主方法进行了throws异常抛出，那么在主方法里不用强制性地进行异常处理。异常交给了jvm默认处理，程序中断执行，并且打印异常信息。</p>
+<p>注意：主方法就是程序的起点，因此所有的异常都应该在主方法里处理完成，而不应该选择向上抛出。</p>
+<h2 id="6、throw关键字"><a href="#6、throw关键字" class="headerlink" title="6、throw关键字"></a>6、throw关键字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           throw new Exception(&quot;跑着玩玩&quot;);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，所有异常类的实例化对象都会自动生成并且自动抛出，但是为了方便用户，提供了手动抛出的异常。</p>
+<blockquote>
+<p>问题：两个关键字的区别，throws与throw</p>
+<p>答：前者是在方法定义使用的，表示将方法中可能产生的异常明确的告诉调用者，由调用进行处理。后者是在代码块使用，手动进行异常对象抛出。</p>
+</blockquote>
+<h2 id="7、自定义异常类"><a href="#7、自定义异常类" class="headerlink" title="7、自定义异常类"></a>7、自定义异常类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class DemoException extends Exception&#123;</span><br><span class="line">    public DemoException(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void eat (int num) throws DemoException&#123;</span><br><span class="line">        if (num &gt;999)&#123;</span><br><span class="line">            throw new DemoException(&quot;吃撑了！&quot;);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;不怕胖，一直吃！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">          DemoException.eat(6708);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="8、assert关键字"><a href="#8、assert关键字" class="headerlink" title="8、assert关键字"></a>8、assert关键字</h2><p>断言：程序执行到一定阶段时，其结果一定是预期的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        int x = 10;</span><br><span class="line">        assert x == 100 : &quot;x no 100&quot;;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>java默认不开启断言的，如果想要启动断言，需要加入（“-ea”）选项。</p>
+<blockquote>
+<p>java -ea demo08.day5.demo02<br>Exception in thread “main” java.lang.AssertionError: x no 100<br> at demo08.day5.demo02.main(demo02.java:6)</p>
+</blockquote>
+
       
     </div>
  <div>
@@ -344,7 +385,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -412,7 +453,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -473,12 +514,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:58</span>
+    <span title="站点阅读时长">2:02</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

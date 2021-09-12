@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">基于vm的完全分布式hadoop3-2集群搭建</a>
+            <a href="/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/" class="post-title-link" itemprop="url">入门部分</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 16:04:59" itemprop="dateCreated datePublished" datetime="2021-07-20T16:04:59+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-20 22:02:36" itemprop="dateCreated datePublished" datetime="2021-07-20T22:02:36+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="基于vm的完全分布式hadoop3-2集群搭建">
+             <span id="/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/" class="leancloud_visitors" data-flag-title="入门部分">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%9F%BA%E4%BA%8Evm%E7%9A%84%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8Fhadoop3-2%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%85%A5%E9%97%A8%E9%83%A8%E5%88%86/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>9.4k</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>9 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -293,58 +293,124 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>文章最终效果为，三台虚拟机三个namenode节点，依赖zkfc处理活跃问题，两个rm节点，同样依赖zkfc处理活跃问题。3之后的hadoop。hdfs的http端口改为了9870，也可以自行修改，yarn不变，依旧是8088。</p>
-<h2 id="1、部署环境"><a href="#1、部署环境" class="headerlink" title="1、部署环境"></a>1、部署环境</h2><p>Windows 10 家庭中文版（家庭版不存在问题）</p>
-<p>vmware 16.0 （百度到处都有激活码，可尝试下面的激活码）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ZF3R0-FHED2-M80TY-8QYGC-NPKYF</span><br><span class="line">YF390-0HF8P-M81RQ-2DXQE-M2UT6</span><br><span class="line">ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br></pre></td></tr></table></figure>
-
-<p>centos 7.4  64位（linux系统，附带官网链接）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://isoredirect.centos.org/centos/7/isos/x86_64/</span><br></pre></td></tr></table></figure>
-
-<p>jdk 1.8 （稳定版本，hadoop神器版本）</p>
-<p>hadoop 3.2.1</p>
-<p>zookeeper 3.6.2（版本不限）</p>
-<h2 id="2、准备工作"><a href="#2、准备工作" class="headerlink" title="2、准备工作"></a>2、准备工作</h2><p>1、完成ssh免密配置的三台虚拟机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">三台虚拟机生成秘钥</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">三节点拷贝到同一节点</span><br><span class="line">ssh-copy-id node1 </span><br><span class="line">将此节点上的秘钥通过scp发送到其他节点，此处可通过编写sh脚本，简化。</span><br></pre></td></tr></table></figure>
-
-<p>2、三台安装jdk并且配置其环境变量</p>
-<p>3、三台虚拟机成功安装并且部署好zookeeper集群</p>
-<h2 id="3、配置文件"><a href="#3、配置文件" class="headerlink" title="3、配置文件"></a>3、配置文件</h2><p>1、/etc/profile</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar</span><br><span class="line"></span><br><span class="line">export ZOOKEEPER_HOME=/export/server/zookeeper</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$ZOOKEEPER_HOME/bin</span><br><span class="line"></span><br><span class="line">export HADOOP_HOME=/export/server/hadoop</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure>
-
-<p>2、core-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;hdfs://my01&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;/export/server/hadoop/tmp&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">                &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">                &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property&gt;</span><br><span class="line">          &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;</span><br><span class="line">          &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、hdfs-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.nameservices&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;my01&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.replication&lt;/name&gt;                  </span><br><span class="line"> &lt;value&gt;3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                                 </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.namenodes.my01&lt;/name&gt;             </span><br><span class="line"> &lt;value&gt;nn1,nn2,nn3&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9820&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.rpc-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9820&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                                              </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn1&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node1:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn2&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node2:9870&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.http-address.my01.nn3&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;node3:9870&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                          </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                                 </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;                                   </span><br><span class="line"> &lt;value&gt;qjournal://node1:8485;node2:8485;node3:8485/my01&lt;/value&gt;               </span><br><span class="line">&lt;/property&gt;                               </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;                                      </span><br><span class="line"> &lt;value&gt;/export/data/hadoop/journaldata&lt;/value&gt;                               </span><br><span class="line">&lt;/property&gt;     </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.client.failover.proxy.provider.my01&lt;/name&gt;                         &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;                                  </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;                   </span><br><span class="line"> &lt;value&gt;sshfence</span><br><span class="line"> shell(/bin/true)&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;                             </span><br><span class="line"> &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;                                        </span><br><span class="line">&lt;/property&gt;                      </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.fencing.ssh.connect-timeout&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;30000&lt;/value&gt;                   </span><br><span class="line">&lt;/property&gt;                                        </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;                                       </span><br><span class="line"> &lt;value&gt;100&lt;/value&gt;                           </span><br><span class="line">&lt;/property&gt;                    </span><br><span class="line">&lt;property&gt;                                        </span><br><span class="line"> &lt;name&gt;dfs.ha.automatic-failover.enabled&lt;/name&gt;                               </span><br><span class="line"> &lt;value&gt;true&lt;/value&gt;                          </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt; </span><br><span class="line">       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt; </span><br><span class="line">       &lt;value&gt;file:///export/data/hadoop/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt; </span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt; </span><br><span class="line">        &lt;value&gt;file:///export/data/hadoop/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;ture&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、mapred-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">&lt;name&gt;mapreduce.framework.name&lt;/name&gt;                                    </span><br><span class="line">&lt;value&gt;yarn&lt;/value&gt;            </span><br><span class="line">&lt;/property&gt; </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;mapreduce.application.classpath&lt;/name&gt;                               </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">        /export/server/hadoop/etc/hadoop,                                    </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/*,                           </span><br><span class="line">        /export/server/hadoop/share/hadoop/common/lib/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/hdfs/lib/*,                         </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/*,                       </span><br><span class="line">        /export/server/hadoop/share/hadoop/mapreduce/lib/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/*,</span><br><span class="line">        /export/server/hadoop/share/hadoop/yarn/lib/*                         </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line">  &lt;property&gt;</span><br><span class="line">  &lt;name&gt;yarn.app.mapreduce.am.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.map.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">  &lt;name&gt;mapreduce.reduce.env&lt;/name&gt;</span><br><span class="line">  &lt;value&gt;HADOOP_MAPRED_HOME=/export/server/hadoop&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>5、yarn-site.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- Site specific YARN configuration properties --&gt;                           </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.enabled&lt;/name&gt;                      </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.automatic-failover.enabled&lt;/name&gt;       </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                                                   </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.cluster-id&lt;/name&gt;            </span><br><span class="line">        &lt;value&gt;yarn-rm-cluster&lt;/value&gt;                  </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.rm-ids&lt;/name&gt;        </span><br><span class="line">        &lt;value&gt;rm1,rm2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm1&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname.rm2&lt;/name&gt;                         </span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;                                    </span><br><span class="line">&lt;/property&gt;                                    </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.recovery.enabled&lt;/name&gt;                     </span><br><span class="line">        &lt;value&gt;true&lt;/value&gt;                      </span><br><span class="line">&lt;/property&gt;   </span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.ha.id&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;rm1&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;      </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.zk-address&lt;/name&gt;                           </span><br><span class="line">        &lt;value&gt;node1:2181,node2:2181,node3:2181&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;                                                         </span><br><span class="line">&lt;property&gt;                                    </span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;                            </span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;                       </span><br><span class="line">&lt;/property&gt;       </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.store.class&lt;/name&gt;</span><br><span class="line">&lt;value&gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm1&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node1:8088&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;   </span><br><span class="line">        &lt;property&gt;                                    </span><br><span class="line">    &lt;name&gt;yarn.application.classpath&lt;/name&gt;                                   </span><br><span class="line">    &lt;value&gt;                                    </span><br><span class="line">/export/server/hadoop/etc/hadoop:/export/server/hadoop//share/hadoop/common/lib/*:/export/server/hadoop//share/hadoop/co  mmon/*:/export/server/hadoop//share/hadoop/hdfs:/export/server/hadoop//share/hadoop/hdfs/lib/*:/export/server/hadoop//sh  are/hadoop/hdfs/*:/export/server/hadoop//share/hadoop/mapreduce/lib/*:/export/server/hadoop//share/hadoop/mapreduce/*:/e  xport/server/hadoop//share/hadoop/yarn:/export/server/hadoop//share/hadoop/yarn/lib/*:/export/server/hadoop//share/hadoop/yarn/*                             </span><br><span class="line">    &lt;/value&gt;                                    </span><br><span class="line">  &lt;/property&gt;    </span><br><span class="line"> &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;</span><br><span class="line">&lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">         &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.scheduler.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.webapp.address.rm2&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;node2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-
-<p>6、yarn-env.sh  hadoop-env.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/export/server/jdk</span><br><span class="line">export HADOOP_HOME=/export/server/hadoop/</span><br></pre></td></tr></table></figure>
-
-<p>7、start-dfs.sh  stop-dfs.sh  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HDFS_DATANODE_USER=root</span><br><span class="line">HDFS_DATANODE_SECURE_USER=hdfs </span><br><span class="line">HDFS_NAMENODE_USER=root </span><br><span class="line">HDFS_SECONDARYNAMENODE_USER=root</span><br><span class="line">HDFS_JOURNALNODE_USER=root</span><br><span class="line">HDFS_ZKFC_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>8、start-yarn.sh  stop-yarn.sh</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">YARN_RESOURCEMANAGER_USER=root</span><br><span class="line">HADOOP_SECURE_DN_USER=yarn</span><br><span class="line">YARN_NODEMANAGER_USER=root</span><br></pre></td></tr></table></figure>
-
-<p>9、启动顺序</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">zkServer.sh start</span><br><span class="line">hadoop-daemon.sh start journalnode</span><br><span class="line">hdfs namenode -format / /namenode 格式化</span><br><span class="line">hdfs zkfc -formatZK //格式化高可用</span><br><span class="line">hdfs namenode //启动namenode</span><br><span class="line">hdfs namenode -bootstrapStandby</span><br><span class="line">hadoop-daemon.sh stop namenode</span><br><span class="line">hadoop-daemon.sh stop journalnode</span><br><span class="line">start-dfs.sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>1、启动顺序一定不要乱</p>
-<p>2、格式化出错就排错</p>
-<p>3、配置文件写完之后，先开启zk集群，先status查看集群状态，确认无误之后再进行初始化操作</p>
-<p>4、zk集群状态，开启后等待半分钟左右再去查看</p>
-<p>5、如何验证集群搭好了，jps查看节点无误，向集群上传文件无误，启动wordcount实例无误。</p>
-<p>6、启动顺序，先开启zk，一键启动start-all.sh或者分别启动yarn和hdfs都可以。不需要再次格式化了。</p>
-<p>7、防火墙关闭</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
-
+          <h2 id="计算机基础知识（电子计算机）"><a href="#计算机基础知识（电子计算机）" class="headerlink" title="计算机基础知识（电子计算机）"></a>计算机基础知识（电子计算机）</h2><h3 id="1、计算机是什么？"><a href="#1、计算机是什么？" class="headerlink" title="1、计算机是什么？"></a>1、计算机是什么？</h3><p>计算机就是一个用来计算的机器</p>
+<p>目前来讲，计算机智能根据人类的指令来完成各种操作，人让他干嘛他就得干嘛</p>
+<p>所以说，我们现在学习计算机，就是学习如何的去控制计算机</p>
+<h3 id="2、计算机的组成"><a href="#2、计算机的组成" class="headerlink" title="2、计算机的组成"></a>2、计算机的组成</h3><p>硬件</p>
+<p>键盘、鼠标、显示器、cpu（中央处理器）、主板（连接）、内存（运行内存、内存条）、硬盘（机械、固态…）…</p>
+<p>看得见、摸得着的东西</p>
+<p>软件</p>
+<p><strong>系统</strong>软件（操作系统）</p>
+<p>Windows、linux、macos</p>
+<p>应用软件</p>
+<p>办公软件（office、wps、xmind）、游戏、浏览器、聊天工具….</p>
+<p>看得见、但是摸不着，软件起到的作用是负责控制计算机的硬件。</p>
+<h3 id="3、计算机的使用方式"><a href="#3、计算机的使用方式" class="headerlink" title="3、计算机的使用方式"></a>3、计算机的使用方式</h3><p>必须要通过软件来完成对计算机的各种操作</p>
+<p>但是、注意一点</p>
+<p>一个软件并不是说，你下载了这个软件，你就可以使用它的全部功能。</p>
+<p>用户需要的功能：接口（interface（接口） 交互界面）来操作计算机。</p>
+<p>接口这个概念， c# java 这些编程语言当中，大多数是以一种方法集的形式，本质上说他是个类</p>
+<p>web开发，写网站。写接口（例子：修改我的密码（第一个接口）、我想充值（也是一个接口）、注册（也是一个接口））</p>
+<p>用户界面：文本交互界面（TUI） 和图形化交互界面（GUI）</p>
+<p>TUI（Windows）</p>
+<p>命令行（cmd，dos命令窗口、命令提示符、cmd窗口、shell、终端、terminal）</p>
+<p>shell编程（命令行输入指令去操作系统）</p>
+<p>终端</p>
+<p>terminal 控制台</p>
+<p>文本交互界面，指令去操作计算机</p>
+<p>任何一个计算机操作系统都拥有命令行</p>
+<h3 id="windows-命令行"><a href="#windows-命令行" class="headerlink" title="windows 命令行"></a>windows 命令行</h3><p>进入方式：1、底部搜索框 2、win键加r键，运行窗口，输入cmd</p>
+<p>结构：</p>
+<p>-版本以及版权的声明（一般没有什么用处）</p>
+<p>Microsoft Windows [版本 10.0.18363.1316]<br>(c) 2019 Microsoft Corporation。保留所有权利。</p>
+<p>-命令提示符</p>
+<p>C:\Users***  **&gt;**（命令提示符、在&gt;后面可以直接输入指令）</p>
+<p>C：</p>
+<p>​    -当前所在的磁盘的根目录</p>
+<p>​    -可以通过x：来切换盘符（x是表示你的盘符）</p>
+<p>\Users***</p>
+<p>​    -所在磁盘的路径、当前所在的文件夹</p>
+<p>​    -cd切换目录</p>
+<p>常见的dos命令</p>
+<p>dir（查看当前路径下的所有文件包括文件夹）</p>
+<p>cd（切换到指定的目录）. ..（正则表达式）</p>
+<p>.表示的当前的目录</p>
+<p>..表示的是上一级目录</p>
+<p>md 创建一个目录</p>
+<p>rd 删除一个目录</p>
+<p>del 删除文件</p>
+<p>cls 清屏</p>
+<p>小技巧：</p>
+<p>方向键上下键：会出现命令的历史记录</p>
+<p>tab键：自动补全命令</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>path（路径）</p>
+<p>Windows，path或许没有，可以手动添加</p>
+<p>path不区分大小写pAth</p>
+<p>修改完环境变量，必须重启命令行窗口</p>
+<p>多个路径必须用;（英文的分号）隔开</p>
+<h3 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h3><p>十进制（满十进一）</p>
+<p>0、1、2、3、4、5、6、7、8、9</p>
+<p>千位、百位、个位</p>
+<p>10^3  10^2    10^1</p>
+<p>二进制（计算机底层使用的进制、满二进一）</p>
+<p>01、001、01101</p>
+<p>0000011010100   1      0        1</p>
+<p>​                            2^2      2^1    2^0</p>
+<p>计算机底层储存方式，二进制方式，内存中的每一个小格子，我们称之为一个bit（位）</p>
+<p>一位（1 bit（其实就是一个1或者0））</p>
+<p>bit是计算机中最小的单位</p>
+<p>byte（字节）才是我们最小的可操作的单位</p>
+<p>1 byte=8 bit</p>
+<p>1024 byte =1 kb</p>
+<p>……</p>
+<p>八进制（一般不用）</p>
+<p>十六进制</p>
+<p>（不是给计算机底部用的，而是给我们（用户、开发者）看的）</p>
+<p>一般来讲，查看二进制数据的时候，都不会用二进制来显示，而是用提供十六进制</p>
+<h3 id="文本文件和字符集"><a href="#文本文件和字符集" class="headerlink" title="文本文件和字符集"></a>文本文件和字符集</h3><p>文本分成两种：纯文本（只能保存单一的文本内容、（字体、颜色、图片….）这些都不能保存） 富文本（可以保存文本之外的内容）</p>
+<p>但是，在开发的时候，使用的全都是纯文本</p>
+<p>纯文本在计算机底层转换成二进制保存</p>
+<p>将字符转换二进制的过程、编码</p>
+<p>二进制码转换成字符的过程、解码</p>
+<p>编码与解码、所采用的规则，叫做字符集</p>
+<p>常见：</p>
+<p>ascll 美国人</p>
+<p>iso 欧洲</p>
+<p>ltain（mysql默认的编码方式）只认英文</p>
+<p>gbk gb2312 中国</p>
+<p>unicode 编码（万国码）utf-8 、utf-16、utf-32</p>
+<h2 id="python入门"><a href="#python入门" class="headerlink" title="python入门"></a>python入门</h2><h3 id="python是什么？"><a href="#python是什么？" class="headerlink" title="python是什么？"></a>python是什么？</h3><p>计算机语言</p>
+<p>机器语言(全是二进制，执行效率高、编写太麻烦)</p>
+<p>符号语言（汇编语言）</p>
+<p>（符号来代替二进制）</p>
+<h3 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h3><p>基本跟英语语法很相似，并且和硬件的关系没有那么紧密了，而且学习起来更容易。</p>
+<p>c c++ c# java JavaScript（node.js）（本质上写服务器的时候还是用的服务器加客户端的结构，而且一般不用js写服务器，用js写中间件，因为他的并发处理）、python….</p>
+<p>高级语言又分类：编译型语言（在代码执行前，转化为二进制（机器码），然后交给计算机执行）</p>
+<p>源码——编译——机器码</p>
+<p>c语言</p>
+<p>执行速度很快，跨平台性很差</p>
+<p>解释型语言（不对代码进行编译，而是一边执行一边编译）</p>
+<p>源码–解释器–解释运行</p>
+<p>执行速度会比较慢，但是跨平台性会非常好</p>
+<p>js java python</p>
+<p>python 使用广泛、可读性强、比较简洁，用更少的代码去完成自己的想法，不管是大程序还是小程序，都让结构变得清晰明了。</p>
+<h3 id="python的用途"><a href="#python的用途" class="headerlink" title="python的用途"></a>python的用途</h3><p>web（facebook、豆瓣）</p>
+<p>爬虫</p>
+<p>科学计算</p>
+<p>大数据（数据清洗）</p>
+<p>云计算</p>
+<p>人工智能</p>
+<p>游戏</p>
+<p>…</p>
+<h3 id="python开发环境的搭建"><a href="#python开发环境的搭建" class="headerlink" title="python开发环境的搭建"></a>python开发环境的搭建</h3><p>python是有解释器的</p>
+<p>cpython（官方）</p>
+<p>用c语言（c语言直接作用在内存上）编写的python解释器</p>
+<p>大型游戏（全部都是由c或者c#编写的，为什么？因为c能够直接作用在内存上）</p>
+<p>pypy</p>
+<p>用python语言编写的Python解释器</p>
+<p>ironpython</p>
+<p>.net编写</p>
+<p>jpython</p>
 
       
     </div>
@@ -367,7 +433,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/32/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/34/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/32/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/34/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -435,7 +501,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -496,12 +562,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">130k</span>
+    <span title="站点总字数">134k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:58</span>
+    <span title="站点阅读时长">2:02</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
