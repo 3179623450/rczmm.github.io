@@ -3034,7 +3034,7 @@
       </tags>
   </entry>
   <entry>
-    <title>js基础总结深入</title>
+    <title></title>
     <url>/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/</url>
     <content><![CDATA[<h2 id="数据类型的分类和判断"><a href="#数据类型的分类和判断" class="headerlink" title="数据类型的分类和判断"></a>数据类型的分类和判断</h2><ul>
 <li>基本(值)类型<ul>
@@ -3173,19 +3173,13 @@
 <li>dom事件回调函数</li>
 <li>定时器回调函数</li>
 <li>ajax请求回调函数</li>
-<li>生命周期回调函数(后面讲解)</li>
+<li>生命周期回调函数</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 ]]></content>
-      <categories>
-        <category>html</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-      </tags>
   </entry>
   <entry>
     <title>js对象高级</title>
