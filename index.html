@@ -293,7 +293,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="使用-Apache-Atlas-进行数据治理"><a href="#使用-Apache-Atlas-进行数据治理" class="headerlink" title="使用 Apache Atlas 进行数据治理"></a>使用 Apache Atlas 进行数据治理</h1><blockquote>
+          <h1 id="使用-Apache-Atlas-进行数据治理"><a href="#使用-Apache-Atlas-进行数据治理" class="headerlink" title="使用 Apache Atlas 进行数据治理"></a>使用 Apache Atlas 进行数据治理</h1><h2 id="数据治理"><a href="#数据治理" class="headerlink" title="数据治理"></a>数据治理</h2><p>数据治理意义重大，传统的数据治理采用文档的形式进行管理，已经无法满足大数据下的数据治理需要。而适合于Hadoop大数据生态体系的数据治理就非常的重要了。</p>
+<blockquote>
+<p>大数据下的数据治理作为很多企业的一个巨大的难题，能找到的数据的解决方案并不多，但是好在近几年，很多公司已经进行了尝试并开源了出来，本文将详细分析这些数据发现平台，在国外已经有了十几种的实现方案。<br>数据发现平台可以解决的问题<br>为什么需要一个数据发现平台？<br>在数据治理过程中，经常会遇到这些问题：</p>
+<p>数据都存在哪？</p>
+<p>该如何使用这些数据？</p>
+<p>数据是做什么的？</p>
+<p>数据是如何创建的？</p>
+<p>数据是如何更新的？</p>
+</blockquote>
+<p><strong>数据发现平台的目的就是为了解决上面的问题，帮助更好的查找，理解和使用数据。</strong></p>
+<blockquote>
+<p>Facebook的Nemo就使用了全文检索技术，这样可以快速的搜索到目标数据。</p>
+<p>es（搜索引擎）</p>
+</blockquote>
+<h3 id="各平台对比"><a href="#各平台对比" class="headerlink" title="各平台对比"></a>各平台对比</h3><p><img src="/2021/09/15/alta%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86/image-20210915093419300.png" alt="image-20210915093419300"></p>
+<p>开源的有五家：Amundsen Datahub Metacat Marquez Atlas</p>
+<p>有文档的有三家：Amundsen Datahub Atlas</p>
+<p>搜索功能较强 ：Amundsen</p>
+<p>有数据血统功能：Datahub Atlas</p>
+<p>考虑到项目的周期，实施性等情况，还是建议大家从Atlas入门，打开数据治理的探索之路。</p>
+<h2 id="alta"><a href="#alta" class="headerlink" title="alta"></a>alta</h2><blockquote>
 <p>面对海量且持续增加的各式各样的数据对象，你是否有信心知道哪些数据从哪里来以及它如何随时间而变化？采用Hadoop必须考虑数据管理的实际情况，元数据与数据治理成为企业级数据湖的重要部分。</p>
 <p>为寻求数据治理的开源解决方案，Hortonworks 公司联合其他厂商与用户于2015年发起数据治理倡议，包括数据分类、集中策略引擎、数据血缘、安全和生命周期管理等方面。Apache Atlas 项目就是这个倡议的结果，社区伙伴持续的为该项目提供新的功能和特性。该项目用于管理共享元数据、数据分级、审计、安全性以及数据保护等方面，努力与Apache Ranger整合，用于数据权限控制策略。</p>
 </blockquote>
@@ -856,7 +876,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">157k</span>
+    <span title="站点总字数">158k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
