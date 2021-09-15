@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">程序基础概念</a>
+            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">程序逻辑控制</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 15:50:18" itemprop="dateCreated datePublished" datetime="2021-07-24T15:50:18+08:00">2021-07-24</time>
+              <time title="创建时间：2021-07-24 20:52:53" itemprop="dateCreated datePublished" datetime="2021-07-24T20:52:53+08:00">2021-07-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="程序基础概念">
+             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" class="leancloud_visitors" data-flag-title="程序逻辑控制">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -293,106 +293,61 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
-<p>1、注释</p>
-<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
-<p>java里一共分为3种形式的注释</p>
-<p>单行注释</p>
-<p>多行注释</p>
-<p>文档注释</p>
-<p>2、标识符与关键字</p>
-<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
-<p>例如：类、方法、变量结构。</p>
-<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
-<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
-<p>1、尽量的不要用数字</p>
-<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
-<p>3、标识符区分大小写</p>
-<p>4、$ 美元符号有特殊含义（内部类）</p>
-<p>数据类型</p>
-<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
-<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
-<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
-<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
-<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
-<p>整型</p>
-<p>byte、short、int、long</p>
-<p>默认的数据类型是int。（整型常量）</p>
-<p>数据类型转换</p>
-<p>自动转换：范围小——范围大</p>
-<p>强制转换：大——小（数据溢出）</p>
-<p>浮点型 小数 double</p>
-<p>char</p>
-<p>16进制的unicode</p>
-<p>布尔型</p>
-<p>一种逻辑结果，true和false</p>
-<p>string</p>
-<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
-<p>转义字符：\ \ \t \n &#39; &quot;</p>
-<p>运算符</p>
-<p>&amp;&amp;      ||</p>
-<p>短路与 短路或</p>
-<p>（逻辑运算符）</p>
-<p>boolean || boolean （短路原则）（有假则假）</p>
-<p>&amp;   | （位运算符）</p>
-<p>逻辑与 逻辑或 （按位与、按位或）</p>
-<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
-<p>3 5</p>
-<p>0011 </p>
-<p>0101</p>
-<p>3 | 5  0111 7</p>
-<p>3 &amp; 5 0001 1</p>
-<p>负数的补码</p>
-<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
-<p>19 </p>
-<p>二进制：原码：0001 0011</p>
-<p>20</p>
-<p>010100</p>
-<p>按位与 都是1，就是1. </p>
-<p>按位或 有一个1，就是1</p>
-<p>异或 相同就是0，不同就是1</p>
-<p>取反</p>
-<p>-20</p>
-<p>二进制原码：1001 0100</p>
-<p>反码：1110 1011 + 1 = 补码</p>
-<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
-<p>按位取反：0001 0011（正数）</p>
-<p>19</p>
-<p>正数的补码、反码、原码都是一样的。</p>
-<p>20</p>
-<p>原码：0001 0100</p>
-<p>按位取反：1110 1011</p>
-<p>取反码：1001 0100</p>
-<p>取补码：1001 0101</p>
-<p>-21</p>
-<p>取反</p>
-<p>1、求补码</p>
-<p>2、按位取反</p>
-<p>3、求补码(最终结果)</p>
-<p>按位左移、按位右移。(负数补1，正数补0)</p>
-<p>20 &lt;&lt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0101 0000</p>
-<p>80</p>
-<p>20 &gt;&gt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0000 0101</p>
-<p>5</p>
-<p>无符号右移（全部补0）</p>
-<p>20 &gt;&gt;&gt; 2</p>
-<p>~13</p>
-<p>原码、补码：0000 1101</p>
-<p>按位取反：1111 0010</p>
-<p>取反码：1000 1101</p>
-<p>取补码：1000 1110</p>
-<p>-14</p>
-<p>~-27</p>
-<p>原码：1001 1011</p>
-<p>反码：1110 0100</p>
-<p>补码：1110 0101</p>
-<p>按位取反：0001 1010（正数）</p>
-<p>26</p>
+          <p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
+<p>程序逻辑</p>
+<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
+<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
+<p>顺序结构</p>
+<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
+<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
+<p>分支结构</p>
+<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
+<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
+<p>循环结构</p>
+<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
+<p>分支结构</p>
+<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
+<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>switch开关结构。</p>
+<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>if可以判断布尔表达式、switch只能判断内容。</p>
+<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
+<p>循环结构</p>
+<p>while</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>while需要先判断条件再执行，do先执行再判断</p>
+<p>避免死循环。（循环条件一直满足）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for</p>
+<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
+<p>}</p>
+<p>循环初始化条件：只执行一次</p>
+<p>循环判断：循环前后各执行一次</p>
+<p>循环变更：循环内语句执行完执行一次</p>
+<p>尽量不要这么去写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+
+<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
+<p>for：确定循环次数。</p>
+<p>循环控制语句</p>
+<p>continue</p>
+<p>break</p>
+<p>循环结构内，只要条件满足，就会一直执行。</p>
+<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
+<p>循环嵌套</p>
+<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
  <div>
@@ -414,7 +369,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -482,7 +437,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,12 +498,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">134k</span>
+    <span title="站点总字数">157k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:02</span>
+    <span title="站点阅读时长">2:23</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
