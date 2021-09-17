@@ -297,7 +297,8 @@
 <h2 id="numpy安装"><a href="#numpy安装" class="headerlink" title="numpy安装"></a>numpy安装</h2><p>值得一提的是，python官网提供的发行版并没有包含numpy库，我们需要单独的下载，其中最简单的就是通过pip安装，安装成功后，可以使用numpy中生成对角矩阵的eye方法来检测是否安装成功。</p>
 <p>在你的计算机上安装NumPy的最快也是最简单的方法是在shell上使用以下命令：<code>pip install numpy</code>。</p>
 <p>这将在你的计算机上安装最新/最稳定的NumPy版本。通过PIP安装是安装任何Python软件包的最简单方法。</p>
-<h2 id="NumPy-Ndarray-对象"><a href="#NumPy-Ndarray-对象" class="headerlink" title="NumPy Ndarray 对象"></a>NumPy Ndarray 对象</h2><p>这是numpy中一个重要的特性，他是同一类数据类型的集合，以0为下标开始索引。</p>
+<h2 id="NumPy-Ndarray-对象"><a href="#NumPy-Ndarray-对象" class="headerlink" title="NumPy Ndarray 对象"></a>NumPy Ndarray 对象</h2><p>NumPy提供的最重要的数据结构是一个称为NumPy数组(Ndarray)的强大对象。NumPy数组是通常的Python数组的扩展。NumPy数组配备了大量的函数和运算符，可以帮助我们快速编写上面讨论过的各种类型计算的高性能代码。</p>
+<p>这是numpy中一个重要的特性，他是同一类数据类型的集合，以0为下标开始索引。</p>
 <p>这是一个存放同类对象的多维数组，其中每个元素都有相同的区域储存，ndarray内部由一个指向数据的指针，数据类型，一个描述数组形状的数组，一个跨度元组组成。</p>
 <p><img src="/2021/09/09/numpy/image-20210909093335315.png" alt="mdarray对象内部结构">值得一提的是，跨度可以是负数，这样数组在内存之中就会产生向前移动的效果。</p>
 <p>创建这个对象只需要调用array函数。            </p>
@@ -332,6 +333,28 @@
 <td>指定生成数组的最小维度</td>
 </tr>
 </tbody></table>
+<p>让我们看看如何快速定义一维NumPy数组：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">my_array = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]) </span><br><span class="line"><span class="built_in">print</span>(my_array)</span><br></pre></td></tr></table></figure>
+
+<p>在上面的简单示例中，我们首先使用import numpy作为np导入NumPy库。然后，我们创建了一个包含5个整数的简单NumPy数组，然后我们将其打印出来。继续在自己的机器上试一试。在看 “NumPy安装” 部分下面的步骤的时候，请确保已在计算机中安装了NumPy.</p>
+<p>现在让我们看看我们可以用这个特定的NumPy数组能做些什么。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> my_array.shape</span><br></pre></td></tr></table></figure>
+
+<p>它会打印我们创建的数组的形状：<code>(5, )</code>。意思就是 my_array 是一个包含5个元素的数组。</p>
+<p>我们也可以打印各个元素。就像普通的Python数组一样，NumPy数组的起始索引编号为0。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> my_array[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span> my_array[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>上述命令将分别在终端上打印1和2。我们还可以修改NumPy数组的元素。例如，假设我们编写以下2个命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_array[<span class="number">0</span>] = -<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span> my_array</span><br></pre></td></tr></table></figure>
+
+<p>我们将在屏幕上看到：<code>[-1,2,3,4,5]</code>。</p>
+<p>现在假设，我们要创建一个长度为5的NumPy数组，但所有元素都为0，我们可以这样做吗？是的。NumPy提供了一种简单的方法来做同样的事情。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_new_array = np.zeros((<span class="number">5</span>)) </span><br><span class="line"><span class="built_in">print</span> my_new_array</span><br></pre></td></tr></table></figure>
+
+<p>我们将看到输出了 <code>[0., 0., 0., 0., 0.]</code>。与 <code>np.zeros</code> 类似，我们也有 <code>np.ones</code>。  如果我们想创建一个随机值数组怎么办？</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">my_random_array = np.random.random((<span class="number">5</span>))</span><br><span class="line"><span class="built_in">print</span> my_random_array</span><br></pre></td></tr></table></figure>
+
+<p>我们得到的输出看起来像 [0.22051844 0.35278286 0.11342404 0.79671772 0.62263151] 这样的数据。你获得的输出可能会有所不同，因为我们使用的是随机函数，它为每个元素分配0到1之间的随机值。</p>
 <h2 id="NumPy-数据类型"><a href="#NumPy-数据类型" class="headerlink" title="NumPy 数据类型"></a>NumPy 数据类型</h2><p>numpy的数据类型内含，int与float由8到64位不等。</p>
 ]]></content>
       <categories>
