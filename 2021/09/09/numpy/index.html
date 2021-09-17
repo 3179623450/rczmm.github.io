@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://rczmm.github.io/2021/09/09/numpy/image-20210909093335315.png">
 <meta property="article:published_time" content="2021-09-09T01:26:33.000Z">
-<meta property="article:modified_time" content="2021-09-17T01:24:51.932Z">
+<meta property="article:modified_time" content="2021-09-17T01:31:43.905Z">
 <meta property="article:author" content="rczmm">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -280,13 +280,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>2.5k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -377,6 +377,34 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_random_array = np.random.random((<span class="number">5</span>))</span><br><span class="line"><span class="built_in">print</span> my_random_array</span><br></pre></td></tr></table></figure>
 
 <p>我们得到的输出看起来像 [0.22051844 0.35278286 0.11342404 0.79671772 0.62263151] 这样的数据。你获得的输出可能会有所不同，因为我们使用的是随机函数，它为每个元素分配0到1之间的随机值。</p>
+<p>现在让我们看看如何使用NumPy创建二维数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_2d_array = np.zeros((<span class="number">2</span>, <span class="number">3</span>)) <span class="built_in">print</span> my_2d_array</span><br></pre></td></tr></table></figure>
+
+<p>这将在屏幕上打印以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[0. 0. 0.]</span><br><span class="line"></span><br><span class="line">[0. 0. 0.]]</span><br></pre></td></tr></table></figure>
+
+<p>猜猜以下代码的输出结果如何：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_2d_array_new = np.ones((<span class="number">2</span>, <span class="number">4</span>)) <span class="built_in">print</span> my_2d_array_new</span><br></pre></td></tr></table></figure>
+
+<p>这里是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[[1. 1. 1. 1.]</span><br><span class="line"></span><br><span class="line">[1. 1. 1. 1.]]</span><br></pre></td></tr></table></figure>
+
+<p>基本上，当你使用函数<code>np.zeros()</code>或<code>np.ones()</code>时，你可以指定讨论数组大小的元组。在上面的两个例子中，我们使用以下元组，(2, 3) 和(2, 4) 分别表示2行，3列和4列。像上面那样的多维数组可以用 <code>my_array[i][j]</code> 符号来索引，其中i表示行号，j表示列号。i和j都从0开始。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array = np.array([[<span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, <span class="number">1</span>]])</span><br><span class="line"><span class="built_in">print</span> my_array[<span class="number">0</span>][<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码片段的输出是5，因为它是索引0行和索引1列中的元素。</p>
+<p>你还可以按如下方式打印my_array的形状：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> my_array.shape</span><br></pre></td></tr></table></figure>
+
+<p>输出为(2, 2)，表示数组中有2行2列。</p>
+<p>NumPy提供了一种提取多维数组的行/列的强大方法。例如，考虑我们上面定义的<code>my_array</code>的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">4</span> <span class="number">5</span>] [<span class="number">6</span> <span class="number">1</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>假设，我们想从中提取第二列（索引1）的所有元素。在这里，我们肉眼可以看出，第二列由两个元素组成：<code>5</code> 和 <code>1</code>。为此，我们可以执行以下操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_array_column_2 = my_array[:, <span class="number">1</span>] </span><br><span class="line"><span class="built_in">print</span> my_array_column_2</span><br></pre></td></tr></table></figure>
+
+<p>注意，我们使用了冒号(<code>:</code>)而不是行号，而对于列号，我们使用了值<code>1</code>，最终输出是：<code>[5, 1]</code>。</p>
+<p>我们可以类似地从多维NumPy数组中提取一行。现在，让我们看看NumPy在多个数组上执行计算时提供的强大功能。</p>
 <h2 id="NumPy-数据类型"><a href="#NumPy-数据类型" class="headerlink" title="NumPy 数据类型"></a>NumPy 数据类型</h2><p>numpy的数据类型内含，int与float由8到64位不等。</p>
 
     </div>
@@ -588,12 +616,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">159k</span>
+    <span title="站点总字数">160k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:25</span>
+    <span title="站点阅读时长">2:26</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
