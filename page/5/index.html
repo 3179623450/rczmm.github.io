@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="post-title-link" itemprop="url">html学习笔记01</a>
+            <a href="/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/" class="post-title-link" itemprop="url">js基础总结深入</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-10 09:13:27" itemprop="dateCreated datePublished" datetime="2021-09-10T09:13:27+08:00">2021-09-10</time>
+              <time title="创建时间：2021-09-12 10:20:15" itemprop="dateCreated datePublished" datetime="2021-09-12T10:20:15+08:00">2021-09-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="leancloud_visitors" data-flag-title="html学习笔记01">
+             <span id="/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/" class="leancloud_visitors" data-flag-title="js基础总结深入">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/12/js%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93%E6%B7%B1%E5%85%A5/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,20 +293,149 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1、html"><a href="#1、html" class="headerlink" title="1、html"></a>1、html</h2><p>html作为一门超文本标记语言，包括一系列的标签，它通过这些标签将网络文档结构统一化，通过浏览器进行解析与阅读。</p>
-<p>html文本是由html（htm）为后缀的由html命令组成的描述性文本，通过对标签的使用，可以描述文字，图形，动画，声音，表格，链接等等。</p>
-<h2 id="2、position"><a href="#2、position" class="headerlink" title="2、position"></a>2、position</h2><p>dom position属性。</p>
-<p>position属性把元素放置到一个静态的、相对的、绝对的、固定的的位置中去。</p>
-<p>要理解这个属性，首先应该明白什么是流？</p>
-<p>所谓的文档流，指的其实就是元素排版布局过程中，元素会自动从左到右，从上往下的流式排列。并最终窗体自上而下分成一行行，并在每行中按从左至右的排放元素。</p>
-<p>顺便说一下，除了设置position的属性值为absolute与fixed之外，float对象也会<strong>打乱这个队列</strong>，这些都会暂时脱离流的存在，clear之后才会回到流之中（单指float）。</p>
-<p>（float：right显然会打乱文档流，但是float：left也有这样的效果：其实是因为子元素设置了float属性，然而父元素没有设置（或者保持了默认的static），则子元素会从父元素中溢出，（最明显的表现就是，父元素不会随着子元素的扩大而扩大），因为当元素设置了float这个属性之后，其他没有设置float属性的盒子或者是标签会无视这个属性，也就是其他没有设置浮动的元素会和他进行叠加，这就可以当作脱离了文档流。但是要注意一点的就是，与position：absolute不同的是，其他盒子内的元素依然会为了float元素让出位置，因此不会出现互相叠加的情况。这种情况下消除浮动就可以解决）</p>
-<p>其中，默认得到html流属性其实就是static，默认布局，这种布局，是没有定位的，而且不会继承父元素的属性，w3c的文档里提到，忽略top、bottom、left、right或者z-index声明，他是存在于流里面的。除此之外还有relative，相对布局，假如父元素采用了这种布局，那么子元素就是相对于父元素的绝对定位，一般会配合到top、right、bottom、left来使用，这种布局其实也是存在于流里面的。但是fixed浮动布局，是相对于浏览器窗口的绝对布局（上下滚动页面），一般同样配合上下左右来使用，这个布局是脱离了流的存在的。（！！ie不兼容这种模式！！）</p>
-<p>absolute布局，绝对布局，相对于页面的绝对布局（上下滚动），同样配合四方使用，脱离了流的存在，最后一种我用的比较少，inherit布局，w3c的文档规定他是继承了父元素position的值。</p>
-<p><strong>如果我们想在页面上固定元素，毫无疑问，选择absolute，他是以页面左上角为（0，0），根据tblr来布局的，与fixed不同，f是当前窗口布局，也是左上角为（0，0），但是会根据滚动条一起滚动，相对于当前窗口的位置不变。relative是相对位置，指的是子节点和父节点的关系，当一个子节点在父节点中的时候，默认的position就是relative，在子节点包含在父节点中，这个时候就算我们设置的子节点是absolute，也会成为relative，也就是相对于父节点的左上角排版。</strong></p>
-<p><strong>总结：在html中，永远没有绝对，只有相对。所有元素都是document的子元素。</strong></p>
-<h2 id="3、相对路径与绝对路径"><a href="#3、相对路径与绝对路径" class="headerlink" title="3、相对路径与绝对路径"></a>3、相对路径与绝对路径</h2><p><strong>参照物不同</strong>，导致的差别。</p>
-<p>在计算机中，这是一个避免不了问题，无论是path环境变量还是classpath类加载路径都是源自于这两个路径的差别。他们的差别也很简单，绝对路径以磁盘为参照物，而相对路径则以当前路径为参照。</p>
+          <h2 id="数据类型的分类和判断"><a href="#数据类型的分类和判断" class="headerlink" title="数据类型的分类和判断"></a>数据类型的分类和判断</h2><ul>
+<li>基本(值)类型<ul>
+<li>Number —– 任意数值 ——– typeof</li>
+<li>String —– 任意字符串 —— typeof</li>
+<li>Boolean —- true/false —– typeof</li>
+<li>undefined — undefined —– typeof/===</li>
+<li>null ——– null ———- ===</li>
+</ul>
+</li>
+<li>对象(引用)类型<ul>
+<li>Object —– typeof/instanceof</li>
+<li>Array —— instanceof</li>
+<li>Function —- typeof</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据-变量-内存的理解"><a href="#数据-变量-内存的理解" class="headerlink" title="数据,变量, 内存的理解"></a>数据,变量, 内存的理解</h2><ul>
+<li>什么是数据?<ul>
+<li>在内存中可读的, 可传递的保存了特定信息的’东东’</li>
+<li>一切皆数据, 函数也是数据</li>
+<li>在内存中的所有操作的目标: 数据</li>
+</ul>
+</li>
+<li>什么是变量?<ul>
+<li>在程序运行过程中它的值是允许改变的量</li>
+<li>一个变量对应一块小内存, 它的值保存在此内存中  </li>
+</ul>
+</li>
+<li>什么是内存?<ul>
+<li>内存条通电后产生的存储空间(临时的)</li>
+<li>一块内存包含2个方面的数据<ul>
+<li>内部存储的数据</li>
+<li>地址值数据</li>
+</ul>
+</li>
+<li>内存空间的分类<ul>
+<li>栈空间: 全局变量和局部变量</li>
+<li>堆空间: 对象 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内存,数据, 变量三者之间的关系<ul>
+<li>内存是容器, 用来存储不同数据</li>
+<li>变量是内存的标识, 通过变量我们可以操作(读/写)内存中的数据  </li>
+</ul>
+</li>
+</ul>
+<h2 id="对象的理解和使用"><a href="#对象的理解和使用" class="headerlink" title="对象的理解和使用"></a>对象的理解和使用</h2><ul>
+<li><p>什么是对象?</p>
+<ul>
+<li>多个数据(属性)的集合</li>
+<li>用来保存多个数据(属性)的容器</li>
+</ul>
+</li>
+<li><p>属性组成:</p>
+<ul>
+<li>属性名 : 字符串(标识)</li>
+<li>属性值 : 任意类型</li>
+</ul>
+</li>
+<li><p>属性的分类:</p>
+<ul>
+<li>一般 : 属性值不是function  描述对象的状态</li>
+<li>方法 : 属性值为function的属性  描述对象的行为</li>
+</ul>
+</li>
+<li><p>特别的对象</p>
+<ul>
+<li>数组: 属性名是0,1,2,3之类的索引</li>
+<li>函数: 可以执行的</li>
+</ul>
+</li>
+<li><p>如何操作内部属性(方法)</p>
+<ul>
+<li><p>.属性名</p>
+</li>
+<li><p>[‘属性名’]: 属性名有特殊字符/属性名是一个变量</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数的理解和使用"><a href="#函数的理解和使用" class="headerlink" title="函数的理解和使用"></a>函数的理解和使用</h2><ul>
+<li><p>什么是函数?</p>
+<ul>
+<li>用来实现特定功能的, n条语句的封装体</li>
+<li>只有函数类型的数据是可以执行的, 其它的都不可以</li>
+</ul>
+</li>
+<li><p>为什么要用函数?</p>
+<ul>
+<li>提高复用性</li>
+<li>便于阅读交流</li>
+</ul>
+</li>
+<li><p>函数也是对象</p>
+<ul>
+<li>instanceof Object===true</li>
+<li>函数有属性: prototype</li>
+<li>函数有方法: call()/apply()</li>
+<li>可以添加新的属性/方法</li>
+</ul>
+</li>
+<li><p>函数的3种不同角色</p>
+<ul>
+<li>一般函数 : 直接调用</li>
+<li>构造函数 : 通过new调用</li>
+<li>对象 : 通过.调用内部的属性/方法</li>
+</ul>
+</li>
+<li><p>函数中的this</p>
+<ul>
+<li>显式指定谁: obj.xxx()</li>
+<li>通过call/apply指定谁调用: xxx.call(obj)</li>
+<li>不指定谁调用: xxx()  : window</li>
+<li>回调函数: 看背后是通过谁来调用的: window/其它</li>
+</ul>
+</li>
+<li><p>匿名函数自调用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(w, obj)&#123;</span><br><span class="line">  //实现代码</span><br><span class="line">&#125;)(window, obj)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>专业术语为: IIFE (Immediately Invoked Function Expression) 立即调用函数表达式                          </li>
+</ul>
+</li>
+<li><p>回调函数的理解</p>
+<ul>
+<li>什么函数才是回调函数?<ul>
+<li>你定义的</li>
+<li>你没有调用</li>
+<li>但它最终执行了(在一定条件下或某个时刻)</li>
+</ul>
+</li>
+<li>常用的回调函数<ul>
+<li>dom事件回调函数</li>
+<li>定时器回调函数</li>
+<li>ajax请求回调函数</li>
+<li>生命周期回调函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -329,7 +458,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -397,7 +526,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -458,12 +587,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">161k</span>
+    <span title="站点总字数">165k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:26</span>
+    <span title="站点阅读时长">2:30</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

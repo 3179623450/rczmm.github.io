@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="NumPy 简单入门教程NumPy是Python中的一个运算速度非常快的一个数学库，它非常重视数组。它允许你在Python中进行向量和矩阵计算，并且由于许多底层函数实际上是用C编写的，因此你可以体验在原生Python中永远无法体验到的速度。 NumPy绝对是科学Python成功的关键之一，如果你想要进入Python中的数据科学&#x2F;机器学习，你就要必须学习它。在我看来，NumPy的API设计得很好，所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy基础入门">
+<meta property="og:url" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="小小世界">
+<meta property="og:description" content="NumPy 简单入门教程NumPy是Python中的一个运算速度非常快的一个数学库，它非常重视数组。它允许你在Python中进行向量和矩阵计算，并且由于许多底层函数实际上是用C编写的，因此你可以体验在原生Python中永远无法体验到的速度。 NumPy绝对是科学Python成功的关键之一，如果你想要进入Python中的数据科学&#x2F;机器学习，你就要必须学习它。在我看来，NumPy的API设计得很好，所">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths1-1.jpg">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_2D_slicing_diagram-1.jpg">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths2-1.jpg">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_masking-1.png">
+<meta property="article:published_time" content="2021-09-17T06:18:44.000Z">
+<meta property="article:modified_time" content="2021-09-17T10:39:37.175Z">
+<meta property="article:author" content="rczmm">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths1-1.jpg">
+
+<link rel="canonical" href="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>numpy基础入门 | 小小世界</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0472c4b929e1e8b892e4063622965b6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小小世界</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">永远在路上</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rczmm">
+      <meta itemprop="description" content="你看到的不止如此">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          numpy基础入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 14:18:44" itemprop="dateCreated datePublished" datetime="2021-09-17T14:18:44+08:00">2021-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+             <span id="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="leancloud_visitors" data-flag-title="numpy基础入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                 <span class="post-meta-item-text">阅读次数：</span>
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="NumPy-简单入门教程"><a href="#NumPy-简单入门教程" class="headerlink" title="NumPy 简单入门教程"></a>NumPy 简单入门教程</h1><p>NumPy是Python中的一个运算速度非常快的一个数学库，它非常重视数组。它允许你在Python中进行向量和矩阵计算，并且由于许多底层函数实际上是用C编写的，因此你可以体验在原生Python中永远无法体验到的速度。</p>
+<p>NumPy绝对是科学Python成功的关键之一，如果你想要进入Python中的数据科学/机器学习，你就要必须学习它。在我看来，NumPy的API设计得很好，所以我们要开始使用它并不困难。</p>
+<h2 id="数组基础"><a href="#数组基础" class="headerlink" title="数组基础"></a>数组基础</h2><h3 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h3><p>NumPy围绕这些称为数组的事物展开。实际上它被称之为 <code>ndarrays</code>，你不知道没事儿。使用NumPy提供的这些数组，我们就可以以闪电般的速度执行各种有用的操作，如矢量和矩阵、线性代数等数学运算！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1D Array</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">b = np.array((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">c = np.arange(<span class="number">5</span>)</span><br><span class="line">d = np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(d) <span class="comment"># &gt;&gt;&gt;[ 0.          1.57079633  3.14159265  4.71238898  6.28318531]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">3</span>]) <span class="comment"># &gt;&gt;&gt;3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码显示了创建数组的4种不同方法。最基本的方法是将序列传递给NumPy的array()函数; 你可以传递任何序列（类数组），而不仅仅是常见的列表（list）数据类型。</p>
+<p>请注意，当我们打印具有不同长度数字的数组时，它会自动将它们填充出来。这对于查看矩阵很有用。对数组进行索引就像列表或任何其他Python序列一样。 你也可以对它们进行切片，我不打算在这里切片一维数组。</p>
+<p>上面的数组示例是如何使用NumPy表示向量的，接下来我们将看看如何使用多维数组表示矩阵和更多的信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MD Array,</span></span><br><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>,<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;25</span></span><br></pre></td></tr></table></figure>
+
+<p>为了创建一个2D（二维）数组，我们传递一个列表的列表（或者是一个序列的序列）给array()函数。如果我们想要一个3D（三维）数组，我们就要传递一个列表的列表的列表，如果是一个4D（四维）数组，那就是列表的列表的列表的列表，以此类推。</p>
+<p>请注意2D（二维）数组（在我们的朋友空格键的帮助下）是如何按行和列排列的。要索引2D（二维）数组，我们只需引用行数和列数即可。</p>
+<h3 id="它背后的一些数学知识"><a href="#它背后的一些数学知识" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>要正确理解这一点，我们应该真正了解一下矢量和矩阵是什么。</p>
+<p>矢量是具有方向和幅度的量。它们通常用于表示速度，加速度和动量等事物。向量可以用多种方式编写，尽管对我们最有用的是它们被写为n元组的形式，如（1,4,6,9）。这就是我们在NumPy中表示他们的方式。</p>
+<p>矩阵类似于矢量，除了它由行和列组成; 很像一个网格。可以通过给出它所在的行和列来引用矩阵中的值。在NumPy中，我们通过传递一系列序列来制作数组，就像我们之前所做的那样。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths1-1.jpg" alt="简单线性代数图示"></p>
+<h3 id="多维数组切片"><a href="#多维数组切片" class="headerlink" title="多维数组切片"></a>多维数组切片</h3><p>切片多维数组比1D数组复杂一点，并且在使用NumPy时你也会经常需要使用到。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>, <span class="number">1</span>:<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;[12 13 14]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">4</span>, <span class="number">0</span>]) <span class="comment"># &gt;&gt;&gt;[16 21 26]</span></span><br><span class="line"><span class="built_in">print</span>(a[::<span class="number">2</span>,::<span class="number">2</span>]) <span class="comment"># &gt;&gt;&gt;[[11 13 15]</span></span><br><span class="line">                  <span class="comment">#     [21 23 25]</span></span><br><span class="line">                  <span class="comment">#     [31 33 35]]</span></span><br><span class="line"><span class="built_in">print</span>(a[:, <span class="number">1</span>]) <span class="comment"># &gt;&gt;&gt;[12 17 22 27 32]</span></span><br></pre></td></tr></table></figure>
+
+<p>如你所见，通过对每个以逗号分隔的维度执行单独的切片，你可以对多维数组进行切片。因此，对于2D数组，我们的第一片定义了行的切片，第二片定义了列的切片。</p>
+<p>注意，只需输入数字就可以指定行或列。上面的第一个示例从数组中选择第0列。</p>
+<p>下面的图表说明了给定的示例切片是如何进行工作的。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_2D_slicing_diagram-1.jpg" alt="numpy数组切片工作原理"></p>
+<h3 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h3><p>在使用 NumPy 时，你会想知道数组的某些信息。很幸运，在这个包里边包含了很多便捷的方法，可以给你想要的信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment"># &gt;&gt;&gt;&lt;class &#x27;numpy.ndarray&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(a.dtype) <span class="comment"># &gt;&gt;&gt;int64</span></span><br><span class="line"><span class="built_in">print</span>(a.size) <span class="comment"># &gt;&gt;&gt;25</span></span><br><span class="line"><span class="built_in">print</span>(a.shape) <span class="comment"># &gt;&gt;&gt;(5, 5)</span></span><br><span class="line"><span class="built_in">print</span>(a.itemsize) <span class="comment"># &gt;&gt;&gt;8</span></span><br><span class="line"><span class="built_in">print</span>(a.ndim) <span class="comment"># &gt;&gt;&gt;2</span></span><br><span class="line"><span class="built_in">print</span>(a.nbytes) <span class="comment"># &gt;&gt;&gt;200</span></span><br></pre></td></tr></table></figure>
+
+<p>正如你在上面的代码中看到的，NumPy数组实际上被称为ndarray。我不知道为什么他妈的它叫ndarray，如果有人知道请留言！我猜它代表n维数组。</p>
+<p>数组的形状是它有多少行和列，上面的数组有5行和5列，所以它的形状是(5，5)。</p>
+<p><code>itemsize</code>属性是每个项占用的字节数。这个数组的数据类型是int 64，一个int 64中有64位，一个字节中有8位，除以64除以8，你就可以得到它占用了多少字节，在本例中是8。</p>
+<p><code>ndim</code> 属性是数组的维数。这个有2个。例如，向量只有1。</p>
+<p><code>nbytes</code> 属性是数组中的所有数据消耗掉的字节数。你应该注意到，这并不计算数组的开销，因此数组占用的实际空间将稍微大一点。</p>
+<h2 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h2><h3 id="基本操作符"><a href="#基本操作符" class="headerlink" title="基本操作符"></a>基本操作符</h3><p>只是能够从数组中创建和检索元素和属性不能满足你的需求，你有时也需要对它们进行数学运算。 你完全可以使用四则运算符 +、- 、/ 来完成运算操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Basic Operators</span></span><br><span class="line">a = np.arange(<span class="number">25</span>)</span><br><span class="line">a = a.reshape((<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">b = np.array([<span class="number">10</span>, <span class="number">62</span>, <span class="number">1</span>, <span class="number">14</span>, <span class="number">2</span>, <span class="number">56</span>, <span class="number">79</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">45</span>,</span><br><span class="line">              <span class="number">4</span>, <span class="number">92</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">63</span>, <span class="number">43</span>, <span class="number">35</span>, <span class="number">6</span>, <span class="number">53</span>, <span class="number">24</span>,</span><br><span class="line">              <span class="number">56</span>, <span class="number">3</span>, <span class="number">56</span>, <span class="number">44</span>, <span class="number">78</span>])</span><br><span class="line">b = b.reshape((<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a * b)</span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br><span class="line"><span class="built_in">print</span>(a ** <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(a &lt; b) <span class="built_in">print</span>(a &gt; b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.dot(b))</span><br></pre></td></tr></table></figure>
+
+<p>除了 dot() 之外，这些操作符都是对数组进行逐元素运算。比如 (a, b, c) + (d, e, f) 的结果就是 (a+d, b+e, c+f)。它将分别对每一个元素进行配对，然后对它们进行运算。它返回的结果是一个数组。注意，当使用逻辑运算符比如 “&lt;” 和 “&gt;” 的时候，返回的将是一个布尔型数组，这点有一个很好的用处，后边我们会提到。</p>
+<p>dot() 函数计算两个数组的点积。它返回的是一个标量（只有大小没有方向的一个值）而不是数组。</p>
+<h3 id="它背后的一些数学知识-1"><a href="#它背后的一些数学知识-1" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>dot()函数称为点积。理解这一点的最好方法是看下图，下图将表示它是如何进行计算的。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths2-1.jpg" alt="点积运算原理"></p>
+<h3 id="数组特殊运算符"><a href="#数组特殊运算符" class="headerlink" title="数组特殊运算符"></a>数组特殊运算符</h3><p>NumPy还提供了一些别的用于处理数组的好用的运算符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">sum</span>()) <span class="comment"># &gt;&gt;&gt;45</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">min</span>()) <span class="comment"># &gt;&gt;&gt;0</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">max</span>()) <span class="comment"># &gt;&gt;&gt;9</span></span><br><span class="line"><span class="built_in">print</span>(a.cumsum()) <span class="comment"># &gt;&gt;&gt;[ 0  1  3  6 10 15 21 28 36 45]</span></span><br></pre></td></tr></table></figure>
+
+<p>sum()、min()和max()函数的作用非常明显。将所有元素相加，找出最小和最大元素。</p>
+<p>然而，cumsum()函数就不那么明显了。它将像sum()这样的每个元素相加，但是它首先将第一个元素和第二个元素相加，并将计算结果存储在一个列表中，然后将该结果添加到第三个元素中，然后再将该结果存储在一个列表中。这将对数组中的所有元素执行此操作，并返回作为列表的数组之和的运行总数。</p>
+<h2 id="索引进阶"><a href="#索引进阶" class="headerlink" title="索引进阶"></a>索引进阶</h2><h3 id="花式索引"><a href="#花式索引" class="headerlink" title="花式索引"></a>花式索引</h3><p><code>花式索引</code> 是获取数组中我们想要的特定元素的有效方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Fancy indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">indices = [<span class="number">1</span>, <span class="number">5</span>, -<span class="number">1</span>]</span><br><span class="line">b = a[indices]</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40 50 60 70 80 90]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[10 50 90]</span></span><br></pre></td></tr></table></figure>
+
+<p>正如你在上面的示例中所看到的，我们使用我们想要检索的特定索引序列对数组进行索引。这反过来返回我们索引的元素的列表。</p>
+<h3 id="布尔屏蔽"><a href="#布尔屏蔽" class="headerlink" title="布尔屏蔽"></a>布尔屏蔽</h3><p>布尔屏蔽是一个有用的功能，它允许我们根据我们指定的条件检索数组中的元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Boolean masking</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">50</span>)</span><br><span class="line">b = np.sin(a)</span><br><span class="line">plt.plot(a,b)</span><br><span class="line">mask = b &gt;= <span class="number">0</span></span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">mask = (b &gt;= <span class="number">0</span>) &amp; (a &lt;= np.pi / <span class="number">2</span>)</span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;go&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例显示了如何进行布尔屏蔽。你所要做的就是将数组传递给涉及数组的条件，它将为你提供一个值的数组，为该条件返回true。</p>
+<p>该示例生成以下图：</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_masking-1.png" alt="布尔掩码结果图"></p>
+<p>我们利用这些条件来选择图上的不同点。蓝色点(在图中还包括绿点，但绿点掩盖了蓝色点)，显示值大于0的所有点。绿色点表示值大于0且小于一半π的所有点。</p>
+<h3 id="缺省索引"><a href="#缺省索引" class="headerlink" title="缺省索引"></a>缺省索引</h3><p>不完全索引是从多维数组的第一个维度获取索引或切片的一种方便方法。例如，如果数组a=[1，2，3，4，5]，[6，7，8，9，10]，那么[3]将在数组的第一个维度中给出索引为3的元素，这里是值4。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Incomplete Indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = a[:<span class="number">5</span>]</span><br><span class="line">c = a[a &gt;= <span class="number">50</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[50 60 70 80 90]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Where-函数"><a href="#Where-函数" class="headerlink" title="Where 函数"></a>Where 函数</h3><p>where() 函数是另外一个根据条件返回数组中的值的有效方法。只需要把条件传递给它，它就会返回一个使得条件为真的元素的列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Where</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = np.where(a &lt; <span class="number">50</span>) </span><br><span class="line">c = np.where(a &gt;= <span class="number">50</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;(array([0, 1, 2, 3, 4]),)</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[5 6 7 8 9]</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是NumPy，没那么难吧？当然，这篇文章只涵盖了入门的基础知识，在NumPy中你还可以做许多其他好玩的事情，当你已经熟悉了NumPy的基础知识，你就可以开始自由的探索NumPy的世界了。</p>
+
+    </div>
+ <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:24px;"><-------------文章到这里就结束了！-------------></div>
+    
+</div>
+
+      
+    </div>
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="rczmm 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="rczmm 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>rczmm
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" title="numpy基础入门">http://rczmm.github.io/2021/09/17/numpy基础入门/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/15/alta%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86/" rel="prev" title="alta数据治理">
+      <i class="fa fa-chevron-left"></i> alta数据治理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+
+
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NumPy-%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">NumPy 简单入门教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">数组基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建一个数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">它背后的一些数学知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="nav-number">1.1.3.</span> <span class="nav-text">多维数组切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.4.</span> <span class="nav-text">数组属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">使用数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E8%83%8C%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">它背后的一些数学知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%89%B9%E6%AE%8A%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.3.</span> <span class="nav-text">数组特殊运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E8%BF%9B%E9%98%B6"><span class="nav-number">1.3.</span> <span class="nav-text">索引进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%B1%E5%BC%8F%E7%B4%A2%E5%BC%95"><span class="nav-number">1.3.1.</span> <span class="nav-text">花式索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%B1%8F%E8%94%BD"><span class="nav-number">1.3.2.</span> <span class="nav-text">布尔屏蔽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%BA%E7%9C%81%E7%B4%A2%E5%BC%95"><span class="nav-number">1.3.3.</span> <span class="nav-text">缺省索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Where-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.4.</span> <span class="nav-text">Where 函数</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rczmm"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">rczmm</p>
+  <div class="site-description" itemprop="description">你看到的不止如此</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://github.com/rczmm" title="GitHub → http:&#x2F;&#x2F;github.com&#x2F;rczmm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3179623450@qq.com" title="E-Mail → mailto:3179623450@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rczmm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">165k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:30</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    访问量：<span id="busuanzi_value_site_pv"></span> 次数 |
+    访客数：<span id="busuanzi_value_site_uv"></span> 人次
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;"></span>
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#valine-comments' ,
+        verify: false,
+        notify: true,
+        appId: 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
+        appKey: 'UuxnA5liCzoSIlXGGSnWG271',
+        placeholder: '都看到这里了，真的不说两句嘛？',
+        avatar:'mm',
+        guest_info:guest,
+        meta:guest,
+        pageSize:'10' || 20,
+        visitor: true
+    });
+  </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

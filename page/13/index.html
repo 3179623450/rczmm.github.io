@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/05/%E5%BC%82%E5%B8%B8-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/" class="post-title-link" itemprop="url">类结构扩展</a>
+            <a href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="post-title-link" itemprop="url">异常-1</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-03 23:10:06" itemprop="dateCreated datePublished" datetime="2021-08-03T23:10:06+08:00">2021-08-03</time>
+              <time title="创建时间：2021-08-05 15:12:37" itemprop="dateCreated datePublished" datetime="2021-08-05T15:12:37+08:00">2021-08-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/" class="leancloud_visitors" data-flag-title="类结构扩展">
+             <span id="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="leancloud_visitors" data-flag-title="异常-1">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/%E7%B1%BB%E7%BB%93%E6%9E%84%E6%89%A9%E5%B1%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.8k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,130 +293,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>类结构扩展</p>
-<p>面向对象中核心组成是类与接口，在项目中会利用包进行一组相关类的管理，这样适用于程序代码的更新。也符合了我们面向对象封装性的概念。</p>
-<p>包</p>
-<p>可以把一个大型项目中的类分别独立出来，并且分别存在文件里，再把这些文件放到一起编译运行。这样的程序更加方便维护，避免代码开发中因为命名所造成的代码冲突。</p>
-<p>包的定义</p>
-<p>包的主要目的是把不同功能的文件进行分割，所谓的包就是文件夹，在java里可以用package定义包，此语句编写在源代码首行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">public class hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>在程序中，编译和运行是两个不同的阶段。编译主要针对的是语法检测，运行时有可能出现各种的错误导致程序中断，这些错误统一的被称为异常。</p>
+<h2 id="1、认识异常"><a href="#1、认识异常" class="headerlink" title="1、认识异常"></a>1、认识异常</h2><p>异常是在程序执行时，由于程序处理逻辑的错误导致程序中断的一种指令流（机器执行指令序列 数据流）</p>
+<p>当异常产生时，程序会在异常产生的地方被中断。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(10 / 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero</span><br><span class="line">	at demo08.day5.demo01.main(demo01.java:5)</span><br></pre></td></tr></table></figure>
 
-<p>本程序把hello类放到一个自定义包中，这样一来在程序编译后就必须将class文件保存在指定的目录中，但是手动的建立程序包目录比较麻烦，最好的就是进行打包编译处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -d(表示生成目录) .(表示当前目录下生成程序文件) hello,java</span><br></pre></td></tr></table></figure>
+<p>程序中产生了数学异常，由于程序没有对异常做任何的处理，所以默认的进行了异常信息的打印，同时会终止异常之后的代码，</p>
+<p>为了让程序出现异常后还可以正常执行，必须引入异常处理语句来完善代码编写。</p>
+<h2 id="2、异常处理"><a href="#2、异常处理" class="headerlink" title="2、异常处理"></a>2、异常处理</h2><p>try catch finally三个核心关键字用来针对异常的处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            System.out.println(&quot;这是:&quot;+e+&quot;  异常！&quot;);</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;程序执行完毕&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-<p>项目中必须提供包：在实际开发中，所有的程序类都必须放在一个包里，并且往往会设计一个总包名称和子包名称，所有字母必须小写。</p>
-<p>包的导入：<br>利用的包的定义可以将不同功能的程序类保存在不同的包中以实现不同的需要，但是不同的包中的类也可能存在这相互调用的关系，这个时候就需要使用import导入语句来导入被调用的其他包中的程序类。</p>
 <blockquote>
-<p>注意：类定义的时候必须要使用public class</p>
-<p>如果一个包中的类想被其他包中的类使用，那么这个类一定要定位为public class，而不能用class来声明，因为class声明的类只能在同一个包中使用。</p>
-<p>注意：public class与class</p>
-<p>public class：文件名与类名保持一致，在一个java文件中只能存在public class，同时一个类要想被外部包访问，就必须定义为public class</p>
-<p>class：文件名可以与类名不一致，一个java文件可以存在多个class，并且编译时会形成多个class文件，使用class定义的类只能在本包中被使用。</p>
+<p>异常的格式组合：</p>
+<p>其实，catch和finally都是可选的，就是在这三个关键字的组成上，try是必不可少的，其次的catch和finally都是可以任何搭配的。</p>
 </blockquote>
-<p>编译顺序：</p>
-<p>问题：现在import导入了一个类，问是那个类先被编译。<br>答：先编译导入的类，然后再编译主类。</p>
-<p>可以使用java自动编译。</p>
-<p>在开发中如果所有程序代码按照顺序编译，就很可怕，为了解决这个问题，java中可以用*.java的匹配模式进行编译</p>
-<p>还可以import 包名.*来导入所有的类。</p>
-<p>静态导入</p>
-<p>static</p>
-<p>当一个类中所有的方法都是静态方法的时候，就可以进行静态导入。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import static 包名.类名</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>优点：不同类的静态方法就感觉是在主类中定义一样，不需要类名称就可以调用。</p>
-<p>jar文件</p>
-<p>为了整体管理，对程序进行打包，java提供了文件jar。</p>
-<p>jar（java archive 归档文件）是java提供的一种压缩格式，即将class文件压缩为jar给用户，这样方便程序的维护。</p>
-<p>使用jar：（先编译，再打包）</p>
-<p>jar–help</p>
-<p>jar -c 创建一个新的文件</p>
-<p>jar -v 生成标准的压缩信息</p>
-<p>jar -f 由用户自己指定jar的文件名称</p>
-<p>系统常用包：</p>
-<p>9之后的版本：实际上提供的是一个jar文件。</p>
-<p>访问控制权限：</p>
-<p>面向对象：封装。（对类结构的保护）</p>
-<p>java实现封装就是通过访问控制权限。</p>
-<table>
-<thead>
-<tr>
-<th>范围</th>
-<th>private</th>
-<th>default</th>
-<th>protected</th>
-<th>public</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>同一个包的同一个类</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>同一个包不同类</td>
-<td></td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>不同包的子类</td>
-<td></td>
-<td></td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>不同包的非子类</td>
-<td></td>
-<td></td>
-<td></td>
-<td>√</td>
-</tr>
-</tbody></table>
-<p>初学者原则：属性private，方法public。</p>
-<p>构造方法私有化</p>
-<p>new实例化对象，在设计中，可以让构造方法私有来控制控制实例化对象。</p>
-<p>单例设计模式：</p>
-<p>整个系统只允许一个类提供实例化对象为，为了实现这个要求，就可以用private封装构造方法，这样子这个类就无法在外部利用new实例化对象。</p>
-<p>饿汉单例设计模式：（定义成员属性时，进行对象实例化）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">class Food&#123;</span><br><span class="line">    private static final Food INFO = new Food();</span><br><span class="line"></span><br><span class="line">    private Food() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static Food getInfo()&#123;</span><br><span class="line">        return INFO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Food f1 = null;</span><br><span class="line">        f1 = Food.getInfo();</span><br><span class="line">        f1.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取完整异常信息，所有的异常类都提供了printStackTrace方法，这个方法可以输出异常信息，明确的告诉我们那一行代码出现了异常。</p>
+<blockquote>
+<p>提问：finally的作用是不是较小</p>
+<p>我们发现，异常处理之后的语句无论是否出现异常都可以正常运行，那么finally是不是有些冗余？</p>
+<p>答：两者执行机制不一样</p>
+<p>上述程序只是执行了一个简单的数学计算异常，并不能正常处理其他异常，而对于不能正常处理的代码，程序依然会中断执行，中断之后，后面的代码不会执行，但是finally依然会执行。在开发中finally一般用来资源释放。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input = new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;please input number:&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            int x = Integer.parseInt(input.next());</span><br><span class="line">            System.out.println(10 / x);</span><br><span class="line">        &#125;catch (ArithmeticException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;ing&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>懒汉单例设计模式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">class Person&#123;</span><br><span class="line">    private static Person info;</span><br><span class="line"></span><br><span class="line">    private Person() &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    public static Person getInfo()&#123;</span><br><span class="line">        if (info == null)&#123;</span><br><span class="line">            info = new Person();</span><br><span class="line">        &#125;</span><br><span class="line">        return info;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p1 = null;</span><br><span class="line">        p1 = Person.getInfo();</span><br><span class="line">        p1.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、处理多个异常："><a href="#3、处理多个异常：" class="headerlink" title="3、处理多个异常："></a>3、处理多个异常：</h2><p>使用多个catch语句进行异常处理</p>
+<h2 id="4、异常处理流程："><a href="#4、异常处理流程：" class="headerlink" title="4、异常处理流程："></a>4、异常处理流程：</h2><p>面向对象的核心设计思想就是统一标准。</p>
+<p>前面提问：每次处理异常的时候都要去考虑所有的异常，那么直接使用判断不是更好嘛？</p>
+<img src="/2021/08/05/%E5%BC%82%E5%B8%B8-1/image-20210805160039738.png" alt="异常处理流程" style="zoom:200%;">
 
-<p>定义成员属性的时候没有实例化，而是第一次调用方法时实例化了，这样节约程序启动资源。</p>
-<p>多例设计模式：</p>
-<p>多例设计模式会定义出多个对象，例如性别类，就应该定义男和女两个对象。类似这样的类不应该由用户无限制的创造实例化对象，所以只使用有限的几个。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">class Sex&#123;</span><br><span class="line">    private static final Sex MAN = new Sex(&quot;man&quot;);</span><br><span class="line">    private static final Sex WOMAN = new Sex(&quot;woman&quot;);</span><br><span class="line">    private String sex;</span><br><span class="line"></span><br><span class="line">    private Sex(String sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Sex getInstance(String sex)&#123;</span><br><span class="line">        switch (sex)&#123;</span><br><span class="line">            case &quot;man&quot;:</span><br><span class="line">                return MAN;</span><br><span class="line">            case &quot;woman&quot;:</span><br><span class="line">                return WOMAN;</span><br><span class="line">            case &quot;男&quot;:</span><br><span class="line">                return MAN;</span><br><span class="line">            case &quot;女&quot;:</span><br><span class="line">                return WOMAN;</span><br><span class="line">            default:</span><br><span class="line">                return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(sex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo03 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Sex s1 = Sex.getInstance(&quot;男&quot;);</span><br><span class="line">        s1.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心：在于异常类的实例化对象类型。</p>
+<hr>
+<blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Throwable</span><br><span class="line">	|-java.lang.Exception</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>如上，所有异常类的最高继承类是throwable。这个类下面有两个子类，其中一个是error，jvm错误。还有一个就是exception。</p>
+<p>按照对象的引用原则，可以自动向上转型，按照这样的逻辑，所有的异常都可以用exception来处理。</p>
+<blockquote>
+<p>问题：为什么不用throwable？</p>
+<p>答：表示的范围大，用户处理error错误</p>
+<p>问题：异常一起处理好还是分开处理好？</p>
+<p>答：根据实际要求</p>
+</blockquote>
+<p><strong>注意：处理多个异常时，范围小的要放在范围大的之前。</strong></p>
+<h2 id="5、throws关键字"><a href="#5、throws关键字" class="headerlink" title="5、throws关键字"></a>5、throws关键字</h2><p>方法是类的主要操作形式。</p>
+<p>在程序执行中，更多的考虑到的是方法的调用，为了方便调用时异常的处理，往往会在方法声明时对可能出现的异常进行标记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            div(12,12);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int div(int x,int y) throws Exception&#123;</span><br><span class="line">        return x / y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>问题：以上的计算没有错误，为什么还是强制异常处理？</p>
+<p>答：设计方法的需要</p>
+</blockquote>
+<p>主方法也是方法，如果主方法进行了throws异常抛出，那么在主方法里不用强制性地进行异常处理。异常交给了jvm默认处理，程序中断执行，并且打印异常信息。</p>
+<p>注意：主方法就是程序的起点，因此所有的异常都应该在主方法里处理完成，而不应该选择向上抛出。</p>
+<h2 id="6、throw关键字"><a href="#6、throw关键字" class="headerlink" title="6、throw关键字"></a>6、throw关键字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           throw new Exception(&quot;跑着玩玩&quot;);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>默认情况下，所有异常类的实例化对象都会自动生成并且自动抛出，但是为了方便用户，提供了手动抛出的异常。</p>
+<blockquote>
+<p>问题：两个关键字的区别，throws与throw</p>
+<p>答：前者是在方法定义使用的，表示将方法中可能产生的异常明确的告诉调用者，由调用进行处理。后者是在代码块使用，手动进行异常对象抛出。</p>
+</blockquote>
+<h2 id="7、自定义异常类"><a href="#7、自定义异常类" class="headerlink" title="7、自定义异常类"></a>7、自定义异常类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class DemoException extends Exception&#123;</span><br><span class="line">    public DemoException(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void eat (int num) throws DemoException&#123;</span><br><span class="line">        if (num &gt;999)&#123;</span><br><span class="line">            throw new DemoException(&quot;吃撑了！&quot;);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;不怕胖，一直吃！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">          DemoException.eat(6708);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>枚举（一个有名字的集合）</p>
-<p>enum，利用此关键字可以实现枚举的定义。利用枚举可以简化多例设计模式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">enum Color &#123;</span><br><span class="line">    RED, GREEN, WHITE, BLACK, YELLOW, BLUE, GRAY,PURPLE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo04 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (Color c: Color.values()) &#123;</span><br><span class="line">            System.out.print(c+&quot;、&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8、assert关键字"><a href="#8、assert关键字" class="headerlink" title="8、assert关键字"></a>8、assert关键字</h2><p>断言：程序执行到一定阶段时，其结果一定是预期的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        int x = 10;</span><br><span class="line">        assert x == 100 : &quot;x no 100&quot;;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>switch操作类型：int、char、string、枚举</p>
-<p>enum类</p>
-<p>枚举不是一种新类型，它只是提供了一种方便的结构，实际上都是继承了一个父类。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Enum&lt;E extends Enum&lt;E&gt;&gt;</span><br><span class="line">        implements Comparable&lt;E&gt;, Serializable &#123;</span><br></pre></td></tr></table></figure>
+<p>java默认不开启断言的，如果想要启动断言，需要加入（“-ea”）选项。</p>
+<blockquote>
+<p>java -ea demo08.day5.demo02<br>Exception in thread “main” java.lang.AssertionError: x no 100<br> at demo08.day5.demo02.main(demo02.java:6)</p>
+</blockquote>
 
-<p>常用方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private final String name();</span><br><span class="line">public final int ordinal();</span><br><span class="line">protected Enum(String name, int ordinal)</span><br></pre></td></tr></table></figure>
-
-<p>1、获取对象名</p>
-<p>2、获取对象序号</p>
-<p>3、传入名字和序号</p>
-<p>定义枚举结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line">enum Color &#123;</span><br><span class="line">    RED(&quot;红色&quot;), GREEN(&quot;绿色&quot;);</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    private Color(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print(Color color)&#123;</span><br><span class="line">        System.out.println(color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo04 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for (Color c: Color.values()) &#123;</span><br><span class="line">            System.out.print(c.ordinal()+c.name());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>枚举对象必须写在首行。</p>
-<p>枚举应用案例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package demo08;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enum Sex1&#123;</span><br><span class="line">    MAN(&quot;男&quot;),WOMAN(&quot;女&quot;);</span><br><span class="line">    private String sex;</span><br><span class="line"></span><br><span class="line">    private Sex1(String sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return this.sex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person1&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private Sex1 sex;</span><br><span class="line"></span><br><span class="line">    public Person1(String name, int age, Sex1 sex) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return this.name+this.age+this.sex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo05 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(new Person1(&quot;mm&quot;,7,Sex1.WOMAN));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
  <div>
@@ -438,7 +385,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -506,7 +453,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -567,12 +514,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">161k</span>
+    <span title="站点总字数">165k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:26</span>
+    <span title="站点阅读时长">2:30</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
