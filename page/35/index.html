@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类与对象</a>
+            <a href="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/" class="post-title-link" itemprop="url">java语言特点</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:21:27" itemprop="dateCreated datePublished" datetime="2021-07-20T23:21:27+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-23 21:53:16" itemprop="dateCreated datePublished" datetime="2021-07-23T21:53:16+08:00">2021-07-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="leancloud_visitors" data-flag-title="类与对象">
+             <span id="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/" class="leancloud_visitors" data-flag-title="java语言特点">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.1k</span>
+              <span>652</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,72 +293,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>函数</p>
-<p>python是一门面向对象的语言，万物皆是对象（一切其实皆函数（不准确，不正确））</p>
-<p>函数也是一种对象（内存中专门用来储存数据的一块区域）</p>
-<p>函数可以保存一些可执行的代码，并且，在需要的时候，这一部分代码可以重复的使用。</p>
-<p>创建函数：</p>
-<p>def 函数名（形参1，形参2…..）：</p>
-<p>​    代码块</p>
-<p>函数名的命名规范，（不能占用保留字符，可以包含字母、数字、下划线，但是不能用数字开头）</p>
-<p>函数中保存的代码不会立即执行，而是要调用才会执行（注意函数的参数）</p>
-<p>调用函数</p>
-<p>函数名（参数）</p>
-<p>函数可以没有参数，也可以有多个参数，调用时必须要符合定义的规范</p>
-<p>参数</p>
-<p>形参（就相当于在函数内部声明了一个变量），多个形参用逗号隔开</p>
-<p>实参（实际参数）调用函数的时候，传递进来的参数，实参会赋值给形参</p>
-<p>有几个形参就要几个实参</p>
-<p>函数式的编程</p>
-<p>在python中，函数式一等对象</p>
-<p>一等对象，如下特点</p>
-<p>1、对象是在运行时创建的</p>
-<p>2、能赋值给变量或者作为数据结构中的元素</p>
-<p>3、能作为参数转递</p>
-<p>4、能作为返回值返回</p>
-<p>高阶函数</p>
-<p>第一、接受一个或者多个函数作为参数</p>
-<p>第二、将函数作为返回值返回</p>
-<p>第三、装饰器</p>
-<p>类与对象</p>
-<p>面向对象</p>
-<p>所谓的面向对象、简单来说就是所有操作都可以通过对象来实现</p>
-<p>面向过程、将程序拆解成一个个的步骤</p>
-<p>大鹏上学记</p>
-<p>​    1、妈妈起床</p>
-<p>​    2、妈妈上厕所</p>
-<p>​    3、妈妈洗漱</p>
-<p>​    4、妈妈做早饭</p>
-<p>​    5、妈妈叫大鹏</p>
-<p>​    6、大鹏上厕所</p>
-<p>​    7、大鹏洗漱</p>
-<p>​    8、大鹏吃早饭</p>
-<p>​    9、背上书包</p>
-<p>​    10、上学校‘</p>
-<p>编程思想（面向过程）：将一个功能拆分成许多的小步骤</p>
-<p>只适用于一个功能，如果要实现另外一个功能，即使两个功能相差很小，但是依旧要重新写代码</p>
-<p>复用性比较低，难于维护</p>
-<p>面向对象：关注的不是过程，关注的是对象</p>
-<p>大鹏上学记</p>
-<p>​    1、大鹏妈妈叫大鹏上学</p>
-<p>编程思想（面向对象），将所有的功能保存到一个对象里</p>
-<p>比如，妈妈的功能保存到妈妈对象里，大鹏的功能保存到大鹏的对象里，要使用这个功能，直接来找对象。</p>
-<p>（要值得一提的是，作为一个功能来讲，（中小功能），面向过程写起来比较酣畅淋漓，同时比较快）</p>
-<p>简单归纳一下，面向对象的思想：1、找对象、2、搞对象（设计对象，做对象）、调用对象</p>
-<p>类（class）</p>
-<p>类和对象是什么关系</p>
-<p>类就是对象的图纸！</p>
-<p>对象是类的实例</p>
-<p>类也是一个对象（一个用来创建对象的对象）</p>
-<p>类：</p>
-<p>生活中所有的事物都可以抽象出来</p>
-<p>1、数据（属性） 变量</p>
-<p>2、行为（方法） 函数</p>
-<p>所有的这个类的实例都可以对象.属性来访问这个变量，对象.方法（）都可以来调用这个方法</p>
-<p>定义一个类</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class 类名（）:</span><br><span class="line">	公共的一些属性</span><br><span class="line">	a=1</span><br><span class="line">	b=2</span><br><span class="line">	</span><br><span class="line">	对象的初始化方法</span><br><span class="line">	def __init__(self,...):</span><br><span class="line">		...</span><br><span class="line">	其他的方法</span><br><span class="line">	def method():</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
-
-<p>p1=类名（）（创建了一个对象，根据类名的那个类）然后，初始化方法就会自动调用，其他方法需要手动调用。</p>
+          <p>java语言特点</p>
+<p>java之所以能广泛的活跃在互联网和电子设备上，主要是因为其开发语言简洁并且有完善的生态系统，是一门优秀编程语言。</p>
+<p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=656404101,826481724&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>java不仅拥有完善的编程体系，同时也收到众多软件厂商的追捧——围绕其开发出来了大量的第三方应用，使得java的技术得以迅速的发展壮大，并且被广泛的应用，在长期的技术发展中，java语言的特性也在不断的提升。</p>
+<p>1、简洁有效</p>
+<p>克服了c++中所有的难以理解和容易混淆的特点，比如：头文件、指针、结构、单元、运算符重载和虚拟基础类，java更加的严谨、简洁、因此也足够简单。</p>
+<p>2、可移植性</p>
+<p>一次编写、处处运行。因为java的执行是基于jvm，在源代码编译后形成字节码文件，在不同的os上只需要植入与系统匹配的jvm就可以直接利用jvm的指令集解释程序运行，降低了开发难度，提高了开发效率。</p>
+<p>3、面向对象</p>
+<p>java是面向对象的语言，并且有着良好的程序结构定义，</p>
+<p>4、垃圾回收</p>
+<p><img src="/2021/07/23/java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9/u=3964968350,1272502470&fm=26&fmt=auto&gp=0.jpg" alt="img"></p>
+<p>gc，无用的内存回收，java提供了垃圾回收机制。</p>
+<p>5、引用传递</p>
+<p>指针的代替品，更加简单。（指针虽然高效，但是需要较强的逻辑分析能力）</p>
+<p>6、分布式</p>
+<p>java适合网络编程，适合分布式程序开发，socket（套接字），还包括公共网关接口，cgi等，还有包括nio、aio等。</p>
+<p>7、健壮性</p>
+<p>编译时，有语法检查，异常可以避免错误产生时程序中断运行。</p>
+<p>8、多线程</p>
+<p>线程是轻量级的进程、juc多线程开发框架。</p>
+<p>9、安全性</p>
+<p>jvm安全，jdk更新，jvm也能更新。</p>
+<p>10、函数式编程</p>
+<p>lambda表达式编程</p>
+<p>11、模块化支持</p>
+<p>拉锯（代码名字）、jdk9之后的功能。</p>
 
       
     </div>
@@ -381,7 +342,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/34/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/36/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/34/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/36/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -449,7 +410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -510,12 +471,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

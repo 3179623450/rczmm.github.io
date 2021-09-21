@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/05/%E5%BC%82%E5%B8%B8-1/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="post-title-link" itemprop="url">异常-1</a>
+            <a href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="post-title-link" itemprop="url">html学习笔记01</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-05 15:12:37" itemprop="dateCreated datePublished" datetime="2021-08-05T15:12:37+08:00">2021-08-05</time>
+              <time title="创建时间：2021-09-10 09:13:27" itemprop="dateCreated datePublished" datetime="2021-09-10T09:13:27+08:00">2021-09-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" class="leancloud_visitors" data-flag-title="异常-1">
+             <span id="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="leancloud_visitors" data-flag-title="html学习笔记01">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/05/%E5%BC%82%E5%B8%B8-1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/05/%E5%BC%82%E5%B8%B8-1/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>3.9k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>4 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -293,76 +293,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>在程序中，编译和运行是两个不同的阶段。编译主要针对的是语法检测，运行时有可能出现各种的错误导致程序中断，这些错误统一的被称为异常。</p>
-<h2 id="1、认识异常"><a href="#1、认识异常" class="headerlink" title="1、认识异常"></a>1、认识异常</h2><p>异常是在程序执行时，由于程序处理逻辑的错误导致程序中断的一种指令流（机器执行指令序列 数据流）</p>
-<p>当异常产生时，程序会在异常产生的地方被中断。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(10 / 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.ArithmeticException: / by zero</span><br><span class="line">	at demo08.day5.demo01.main(demo01.java:5)</span><br></pre></td></tr></table></figure>
-
-<p>程序中产生了数学异常，由于程序没有对异常做任何的处理，所以默认的进行了异常信息的打印，同时会终止异常之后的代码，</p>
-<p>为了让程序出现异常后还可以正常执行，必须引入异常处理语句来完善代码编写。</p>
-<h2 id="2、异常处理"><a href="#2、异常处理" class="headerlink" title="2、异常处理"></a>2、异常处理</h2><p>try catch finally三个核心关键字用来针对异常的处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            System.out.println(&quot;这是:&quot;+e+&quot;  异常！&quot;);</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;程序执行完毕&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>异常的格式组合：</p>
-<p>其实，catch和finally都是可选的，就是在这三个关键字的组成上，try是必不可少的，其次的catch和finally都是可以任何搭配的。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(10 / 0);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>获取完整异常信息，所有的异常类都提供了printStackTrace方法，这个方法可以输出异常信息，明确的告诉我们那一行代码出现了异常。</p>
-<blockquote>
-<p>提问：finally的作用是不是较小</p>
-<p>我们发现，异常处理之后的语句无论是否出现异常都可以正常运行，那么finally是不是有些冗余？</p>
-<p>答：两者执行机制不一样</p>
-<p>上述程序只是执行了一个简单的数学计算异常，并不能正常处理其他异常，而对于不能正常处理的代码，程序依然会中断执行，中断之后，后面的代码不会执行，但是finally依然会执行。在开发中finally一般用来资源释放。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner input = new Scanner(System.in);</span><br><span class="line">        System.out.println(&quot;please input number:&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            int x = Integer.parseInt(input.next());</span><br><span class="line">            System.out.println(10 / x);</span><br><span class="line">        &#125;catch (ArithmeticException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            System.out.println(&quot;ing&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;app&quot;+ &quot;ing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3、处理多个异常："><a href="#3、处理多个异常：" class="headerlink" title="3、处理多个异常："></a>3、处理多个异常：</h2><p>使用多个catch语句进行异常处理</p>
-<h2 id="4、异常处理流程："><a href="#4、异常处理流程：" class="headerlink" title="4、异常处理流程："></a>4、异常处理流程：</h2><p>面向对象的核心设计思想就是统一标准。</p>
-<p>前面提问：每次处理异常的时候都要去考虑所有的异常，那么直接使用判断不是更好嘛？</p>
-<img src="/2021/08/05/%E5%BC%82%E5%B8%B8-1/image-20210805160039738.png" alt="异常处理流程" style="zoom:200%;">
-
-<p>核心：在于异常类的实例化对象类型。</p>
-<hr>
-<blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Throwable</span><br><span class="line">	|-java.lang.Exception</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>如上，所有异常类的最高继承类是throwable。这个类下面有两个子类，其中一个是error，jvm错误。还有一个就是exception。</p>
-<p>按照对象的引用原则，可以自动向上转型，按照这样的逻辑，所有的异常都可以用exception来处理。</p>
-<blockquote>
-<p>问题：为什么不用throwable？</p>
-<p>答：表示的范围大，用户处理error错误</p>
-<p>问题：异常一起处理好还是分开处理好？</p>
-<p>答：根据实际要求</p>
-</blockquote>
-<p><strong>注意：处理多个异常时，范围小的要放在范围大的之前。</strong></p>
-<h2 id="5、throws关键字"><a href="#5、throws关键字" class="headerlink" title="5、throws关键字"></a>5、throws关键字</h2><p>方法是类的主要操作形式。</p>
-<p>在程序执行中，更多的考虑到的是方法的调用，为了方便调用时异常的处理，往往会在方法声明时对可能出现的异常进行标记。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            div(12,12);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int div(int x,int y) throws Exception&#123;</span><br><span class="line">        return x / y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>问题：以上的计算没有错误，为什么还是强制异常处理？</p>
-<p>答：设计方法的需要</p>
-</blockquote>
-<p>主方法也是方法，如果主方法进行了throws异常抛出，那么在主方法里不用强制性地进行异常处理。异常交给了jvm默认处理，程序中断执行，并且打印异常信息。</p>
-<p>注意：主方法就是程序的起点，因此所有的异常都应该在主方法里处理完成，而不应该选择向上抛出。</p>
-<h2 id="6、throw关键字"><a href="#6、throw关键字" class="headerlink" title="6、throw关键字"></a>6、throw关键字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">           throw new Exception(&quot;跑着玩玩&quot;);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>默认情况下，所有异常类的实例化对象都会自动生成并且自动抛出，但是为了方便用户，提供了手动抛出的异常。</p>
-<blockquote>
-<p>问题：两个关键字的区别，throws与throw</p>
-<p>答：前者是在方法定义使用的，表示将方法中可能产生的异常明确的告诉调用者，由调用进行处理。后者是在代码块使用，手动进行异常对象抛出。</p>
-</blockquote>
-<h2 id="7、自定义异常类"><a href="#7、自定义异常类" class="headerlink" title="7、自定义异常类"></a>7、自定义异常类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class DemoException extends Exception&#123;</span><br><span class="line">    public DemoException(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void eat (int num) throws DemoException&#123;</span><br><span class="line">        if (num &gt;999)&#123;</span><br><span class="line">            throw new DemoException(&quot;吃撑了！&quot;);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;不怕胖，一直吃！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">       try &#123;</span><br><span class="line">          DemoException.eat(6708);</span><br><span class="line">       &#125;catch (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="8、assert关键字"><a href="#8、assert关键字" class="headerlink" title="8、assert关键字"></a>8、assert关键字</h2><p>断言：程序执行到一定阶段时，其结果一定是预期的效果。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day5;</span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        int x = 10;</span><br><span class="line">        assert x == 100 : &quot;x no 100&quot;;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>java默认不开启断言的，如果想要启动断言，需要加入（“-ea”）选项。</p>
-<blockquote>
-<p>java -ea demo08.day5.demo02<br>Exception in thread “main” java.lang.AssertionError: x no 100<br> at demo08.day5.demo02.main(demo02.java:6)</p>
-</blockquote>
+          <h2 id="1、html"><a href="#1、html" class="headerlink" title="1、html"></a>1、html</h2><p>html作为一门超文本标记语言，包括一系列的标签，它通过这些标签将网络文档结构统一化，通过浏览器进行解析与阅读。</p>
+<p>html文本是由html（htm）为后缀的由html命令组成的描述性文本，通过对标签的使用，可以描述文字，图形，动画，声音，表格，链接等等。</p>
+<h2 id="2、position"><a href="#2、position" class="headerlink" title="2、position"></a>2、position</h2><p>dom position属性。</p>
+<p>position属性把元素放置到一个静态的、相对的、绝对的、固定的的位置中去。</p>
+<p>要理解这个属性，首先应该明白什么是流？</p>
+<p>所谓的文档流，指的其实就是元素排版布局过程中，元素会自动从左到右，从上往下的流式排列。并最终窗体自上而下分成一行行，并在每行中按从左至右的排放元素。</p>
+<p>顺便说一下，除了设置position的属性值为absolute与fixed之外，float对象也会<strong>打乱这个队列</strong>，这些都会暂时脱离流的存在，clear之后才会回到流之中（单指float）。</p>
+<p>（float：right显然会打乱文档流，但是float：left也有这样的效果：其实是因为子元素设置了float属性，然而父元素没有设置（或者保持了默认的static），则子元素会从父元素中溢出，（最明显的表现就是，父元素不会随着子元素的扩大而扩大），因为当元素设置了float这个属性之后，其他没有设置float属性的盒子或者是标签会无视这个属性，也就是其他没有设置浮动的元素会和他进行叠加，这就可以当作脱离了文档流。但是要注意一点的就是，与position：absolute不同的是，其他盒子内的元素依然会为了float元素让出位置，因此不会出现互相叠加的情况。这种情况下消除浮动就可以解决）</p>
+<p>其中，默认得到html流属性其实就是static，默认布局，这种布局，是没有定位的，而且不会继承父元素的属性，w3c的文档里提到，忽略top、bottom、left、right或者z-index声明，他是存在于流里面的。除此之外还有relative，相对布局，假如父元素采用了这种布局，那么子元素就是相对于父元素的绝对定位，一般会配合到top、right、bottom、left来使用，这种布局其实也是存在于流里面的。但是fixed浮动布局，是相对于浏览器窗口的绝对布局（上下滚动页面），一般同样配合上下左右来使用，这个布局是脱离了流的存在的。（！！ie不兼容这种模式！！）</p>
+<p>absolute布局，绝对布局，相对于页面的绝对布局（上下滚动），同样配合四方使用，脱离了流的存在，最后一种我用的比较少，inherit布局，w3c的文档规定他是继承了父元素position的值。</p>
+<p><strong>如果我们想在页面上固定元素，毫无疑问，选择absolute，他是以页面左上角为（0，0），根据tblr来布局的，与fixed不同，f是当前窗口布局，也是左上角为（0，0），但是会根据滚动条一起滚动，相对于当前窗口的位置不变。relative是相对位置，指的是子节点和父节点的关系，当一个子节点在父节点中的时候，默认的position就是relative，在子节点包含在父节点中，这个时候就算我们设置的子节点是absolute，也会成为relative，也就是相对于父节点的左上角排版。</strong></p>
+<p><strong>总结：在html中，永远没有绝对，只有相对。所有元素都是document的子元素。</strong></p>
+<h2 id="3、相对路径与绝对路径"><a href="#3、相对路径与绝对路径" class="headerlink" title="3、相对路径与绝对路径"></a>3、相对路径与绝对路径</h2><p><strong>参照物不同</strong>，导致的差别。</p>
+<p>在计算机中，这是一个避免不了问题，无论是path环境变量还是classpath类加载路径都是源自于这两个路径的差别。他们的差别也很简单，绝对路径以磁盘为参照物，而相对路径则以当前路径为参照。</p>
 
       
     </div>
@@ -385,7 +329,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -453,7 +397,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -514,12 +458,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

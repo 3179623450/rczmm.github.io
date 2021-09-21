@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/27/String%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/27/String%E7%B1%BB/" class="post-title-link" itemprop="url">String类</a>
+            <a href="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">多线程编程</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-27 22:59:04" itemprop="dateCreated datePublished" datetime="2021-07-27T22:59:04+08:00">2021-07-27</time>
+              <time title="创建时间：2021-08-06 21:03:56" itemprop="dateCreated datePublished" datetime="2021-08-06T21:03:56+08:00">2021-08-06</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/27/String%E7%B1%BB/" class="leancloud_visitors" data-flag-title="String类">
+             <span id="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" class="leancloud_visitors" data-flag-title="多线程编程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/27/String%E7%B1%BB/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/27/String%E7%B1%BB/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>5.3k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>5 分钟</span>
+              <span>10 分钟</span>
             </span>
 
         </div>
@@ -293,118 +293,207 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>String 类</p>
-<p>string在实际开发中，几乎是一个必须使用的程序类，也可以说是项目的核心组件类。</p>
-<p>string用“”双引号定义，可以用+实现字符串连接。</p>
-<p>1、string类对象实例化</p>
-<p>java中基本数据类型不包含string，但是考虑到程序开发的实际需要，就设计了string类，并且这个类的对象可以直接赋值进行实例化。</p>
-<p>java程序中使用双引号定义的内容，都是字符串。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public final class String</span><br><span class="line"></span><br><span class="line">private final byte[] value</span><br></pre></td></tr></table></figure>
+          <h1 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h1><p>多线程编程是java最重要的特性之一，利用多线程可以提升单位时间内的程序处理性能，也是高并发的主要设计形式。</p>
+<h2 id="1、进程和线程"><a href="#1、进程和线程" class="headerlink" title="1、进程和线程"></a>1、进程和线程</h2><p>计算机系统不断的升级，每一次升级都是在提升硬件处理性能。</p>
+<p>进程是程序的动态执行过程，包括代码加载、执行到执行完毕的一个完整过程，这个过程也是进程本身产生、发展到消亡的过程。多进程系统可以同时运行多个进程（程序），由于cpu分时机制，每一个进程都可以循环得到自己的cpu时间片(运行时间段)，由于cpu执行速度很快，看起来就像是同时运行一样。</p>
+<p>（进程在os中是调度切换执行的、每一个进程都有一个cpu时间片，在cpu时间片上运行完毕后切换到下一个进程）。</p>
+<p>Windows属于多进程的处理操作，但是这个时候依然只有一组资源，所以说在同一个时间段会有多个程序共同执行，而同一个时间点上只能有一个进程执行。</p>
+<p>多进程可以提高硬件资源的利用率，但是进程的启动与销毁依然需要大量的系统性能，导致程序执行下降，进一步提升并发操作的处理能力，在进程的基础上又提供了多线程，线程依附于指定的进程，并且可以快速启动和并发执行。</p>
+<h2 id="java多线程实现"><a href="#java多线程实现" class="headerlink" title="java多线程实现"></a>java多线程实现</h2><p>依靠一个线程的主体类，主体类定义的时候有一些特殊的要求，继承thread类，实现runnable或者callable接口来完成定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day6;</span><br><span class="line"></span><br><span class="line">class MyThread extends Thread&#123;</span><br><span class="line">    private String title;</span><br><span class="line"></span><br><span class="line">    public MyThread(String title) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for (int x = 1 ; x&lt;10;x++)&#123;</span><br><span class="line">            System.out.println(this.title+&quot;|&quot;+x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new MyThread(&quot;线程A&quot;).start();</span><br><span class="line">        new MyThread(&quot;线程B&quot;).start();</span><br><span class="line">        new MyThread(&quot;线程C&quot;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>jdk8 保存的是字符数组，jdk9之后字符串源代码实现就是字节数组。</p>
-<p>我们可以得出一个结论，string就是对数组的特殊包装应用，而对数组而言最大的问题是长度的固定。</p>
-<p>string本身是一个系统类，除了可以赋值进行对象实例化之外，还可以使用相关的构造方法来进行对象实例化。</p>
-<p>string类构造方法(之一)：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public String(String original) &#123;</span><br><span class="line">    this.value = original.value;</span><br><span class="line">    this.coder = original.coder;</span><br><span class="line">    this.hash = original.hash;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自定义了一个线程类，同时覆写了thread里的run方法，这个方法里实现了输出，多线程的执行方法都是fun中定义，但是多线程启动的时候不能直接调用run方法，由于多线程需要并发执行，因此需要调用操作系统的资源调度才可以，在java中就必须调用start方法，调用start方法时会间接的调用run方法。</p>
+<p>结果分析：多个线程之间是彼此交替运行。</p>
+<p>runnable和callable的区别：</p>
+<p>前者比较早，后者比较晚。</p>
+<p>runnable只提供了一个run方法，并且没有返回值的</p>
+<p>callable提供有call方法，并且可以有返回值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day9;</span><br><span class="line"></span><br><span class="line">class MyThread implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">    private String title;</span><br><span class="line">    public MyThread(String title) &#123;</span><br><span class="line">        this.title = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int x = 1; x &lt; 10; x++) &#123;</span><br><span class="line">            System.out.println(this.title + &quot;:   &quot; + x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Thread t1 = new Thread(new MyThread(&quot;aaa&quot;));</span><br><span class="line">        Thread t2 = new Thread(new MyThread(&quot;bbb&quot;));</span><br><span class="line">        Thread t3 = new Thread(new MyThread(&quot;ccc&quot;));</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;2222&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>runnable线程实现类结构</p>
+<p><img src="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/image-20210809211257691.png" alt="image-20210809211257691"></p>
+<p>并发资源访问（卖票程序）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day9;</span><br><span class="line"></span><br><span class="line">class MyThread implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">    private int ticket = 50;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        for (int x = 0; x &lt; 100; x++) &#123;</span><br><span class="line">            if (this.ticket &gt; 0)&#123;</span><br><span class="line">                System.out.println(&quot;卖票，ticket  &quot;+this.ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo01 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyThread m1 = new MyThread();</span><br><span class="line">        new Thread(m1).start();</span><br><span class="line">        new Thread(m1).start();</span><br><span class="line">        new Thread(m1).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如上，两种定义方式，看起来效果几乎完全一样，但实际上两者是有本质差别的。</p>
-<p>字符串比较</p>
-<p>如果是基本数据类型，在java中，可以使用==比较运算符直接进行比较。</p>
-<p>但是string属于引用数据类型，他的对象名中保存的是堆内存地址，string对象使用==比较的就不再是内容，而是堆内存地址。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str03 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;1111&quot;);</span><br><span class="line">    System.out.println(str02==str01);</span><br><span class="line">    System.out.println(str03==str01);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>关于自定义类的比较，和字符串一样，都是比较的堆内存地址。</p>
-<p>在string类里，提供了equals（）方法来比较字符串内容（区分大小写）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    String str03 = &quot;1111&quot;;</span><br><span class="line">    String str02 = new String(&quot;1111&quot;);</span><br><span class="line">    System.out.println(str01.equals(str02));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+<p>CALLABLE实现多线程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day9;</span><br><span class="line"></span><br><span class="line">import java.util.concurrent.Callable;</span><br><span class="line">import java.util.concurrent.ExecutionException;</span><br><span class="line">import java.util.concurrent.FutureTask;</span><br><span class="line"></span><br><span class="line">class mythread11 implements Callable&lt;String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String call() throws Exception &#123;</span><br><span class="line">        for (int x = 0;x&lt;10;x++)&#123;</span><br><span class="line">            System.out.println(&quot;程序执行：  &quot;+x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return &quot;www.baidu,com&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo02 &#123;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        FutureTask&lt;String&gt; task = new FutureTask&lt;&gt;(new mythread11());</span><br><span class="line">        new Thread(task).start();</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot; &quot;+task.get());</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<p>字符串常量</p>
-<p>常量就是不会修改的内容。</p>
-<p>字符串常量，严格意义上说是string类的匿名对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = &quot;1111&quot;;</span><br><span class="line">    System.out.println(&quot;1111&quot;.equals(str01));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多线程运行状态</p>
+<p>要想实现多线程，必须在主线程中创建新的线程对象。</p>
+<p>任意线程一般来说都有五种基本状态：创建、就绪、运行、阻塞、终止。</p>
+<p><img src="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/image-20210809214300501.png" alt="image-20210809214300501"></p>
+<blockquote>
+<p>基本转换状态</p>
+</blockquote>
+<p>多线程常用操作方法：</p>
+<p>1、线程的取名</p>
+<p>线程本身属于不可见的运行状态，每次操作时间是无法预料的，所以如果要想在程序中操作线程，唯一的依靠就是线程名称。</p>
+<p>获取当前线程对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static native Thread currentThread();</span><br></pre></td></tr></table></figure>
 
-<p>类中的普通方法只有对象能调用，所以我们说字符串常量是string类的匿名对象。</p>
-<p>所谓的直接赋值的操作，实际上就是给匿名对象一个名字而已。</p>
-<p>区别：string类的匿名对象是系统自动生成的，不再由用户自己创建。</p>
-<p>实际问题——字符串比较：</p>
-<p>如果我们要获取用户输入，然后进行字符串比较，但是用户没有输入。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String input = null;</span><br><span class="line">    if (input.equals(&quot;baidu&quot;))&#123;</span><br><span class="line">        System.out.println(&quot;www。baidu.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day9;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class my01 implements Runnable&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class demo03 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        my01 m1 = new my01();</span><br><span class="line">        new Thread(m1,&quot;A&quot;).start();</span><br><span class="line">        new Thread(m1,&quot;B&quot;).start();</span><br><span class="line">        new Thread(m1).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>解决途径：（回避）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String input = null;</span><br><span class="line">    if (&quot;baidu&quot;.equals(input))&#123;</span><br><span class="line">        System.out.println(&quot;www。baidu.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进程在哪里？</p>
+<p>每一个jvm运行就是一个进程（当用户执行java命令执行一个类的时候就表示启动了一个jvm进程，而主方法就是这个进程上的一个线程）</p>
+<p><img src="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/image-20210811150419324.png" alt="image-20210811150419324"></p>
+<p>如果等待子线程完成？</p>
+<p>（主线程的第n个操作任务需要子线程处理后的结果）</p>
+<p>需要引入线程等待和唤醒机制</p>
+<p>线程休眠</p>
+<p>当一个线程启动后会按照既定的结构快速的执行完毕，如果需要暂缓线程的执行速度，就可以利用thread类中提供的休眠方法完成。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static native void sleep(long millis) throws InterruptedException;</td>
+<td>普通</td>
+<td>设置线程休眠的毫秒数，时间一到自动唤醒。</td>
+</tr>
+<tr>
+<td>public static void sleep(long millis, int nanos) throws InterruptedException</td>
+<td>普通</td>
+<td>设置线程休眠的毫秒数和纳秒数，时间一到自动唤醒</td>
+</tr>
+</tbody></table>
+<p>在进行休眠的有可能产生中断异常InterruptedException，程序中必须强制性的进程该异常的捕获与处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class demo03 &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Runnable run = () -&gt; &#123;</span><br><span class="line">            for (int x = 0; x &lt; 10;x++) &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName());</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        for (int y = 0; y &lt; 5; y++) &#123;</span><br><span class="line">            new Thread(run,&quot;thread--&quot;+y).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>程序中直接调用了字符串常量“baidu”来执行。equals方法，因为字符串<strong>常量</strong>是string对象，所以永远不可能是null，而equals方法的参数又是object，因此这就避免了空指针异常。</p>
-<p>两种实例化方式的比较：</p>
-<p>1、直接赋值：</p>
-<p>在堆内存中开辟一块地址，保存字符串常量，并且栈内存直接引用这一部分的堆内存。</p>
-<p>而且，对同一字符串的多次直接赋值还可以实现对堆内存的重复利用。也就是说采用直接赋值的方式进行string对象实例化，在内容相同（字符串常量一致）的情况下，不会开辟新的堆内存空间，而会直接指向已有的堆内存。</p>
-<p>字符串对象池</p>
-<p><strong>jvm的底层的存在一个对象池</strong>（string只是对象池中的一种类型），当我们使用直接赋值的方式定义了一个string对象之后，字符串所使用的匿名对象入池保存，如果后面我们还有string对象直接赋值定义，并且采用了同一块字符串常量，也就是内容相同，那么就不会开辟新的堆内存空间，而是使用已经有的对象进行引用的分配。</p>
-<p>共享设计模式的应用：（如果有一天，你需要一把剪刀，你出去买了一把，用完之后不可以丢掉，放在家里，等下一次用的时候再继续使用，剪刀放在工具箱里，同样工具箱的东西都可以下一次继续使用）</p>
-<p>构造方法实例化：</p>
-<p>如果要明确的调用string类的构造方法进行实例化string对象，那么一定要使用new关键字，而每当使用new关键字时，就会开辟新的堆内存空间。而这块堆内存的内容就是构造方法传入的字符串常量。</p>
-<p>构造方法定义时：传入的字符串常量会创建一个匿名对象，然后new关键字会开辟一块堆内存空间，也会传入一个字符串常量。那么就相当于一共创建了两块堆内存空间，并且字符串常量也就是匿名对象创建的堆内存只负责实例化string对象，不与构造方法实例化出的string对象有关联。真正使用的堆内存是new开辟的堆内存，而之前定义字符串常量开辟的堆内存空间不会被任何栈内存引用（指向），成为垃圾空间，等待gc回收。</p>
-<p>因此，构造方法创建string对象，会开辟两份空间，并且一块空间成为垃圾。</p>
-<p>除此之外。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = new String(&quot;mm&quot;);</span><br><span class="line">    String str02 = &quot;mm&quot;;</span><br><span class="line">    System.out.println(str01 == str02);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+<p>线程中断</p>
+<p>在线程在执行过程中也可以被另外一个线程中断执行。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean isInterrupted()</td>
+<td>普通</td>
+<td>判断线程是否被中断</td>
+</tr>
+<tr>
+<td>public void interrupt()</td>
+<td>普通</td>
+<td>中断线程执行</td>
+</tr>
+</tbody></table>
+<p>eg：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">public class Threadinterrupt &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        Thread thread = new Thread(() -&gt; &#123;</span><br><span class="line">           System.out.println(&quot;准备睡觉，10秒钟之内不要打扰我我！&quot;);</span><br><span class="line">           try &#123;</span><br><span class="line">               Thread.sleep(10000);</span><br><span class="line">               System.out.println(&quot;睡醒了，开始学习！！&quot;);</span><br><span class="line">           &#125;catch (InterruptedException e)&#123;</span><br><span class="line">               System.out.println(&quot;睡觉被打扰了，好烦！！！&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        thread.start();</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        if (!thread.isInterrupted())&#123;</span><br><span class="line">            System.out.println(&quot;在你睡觉的旁边敲锣打鼓！&quot;);</span><br><span class="line">            thread.interrupt();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用构造方法定义的string对象不会自动入池保存。</p>
-<p>string对象手动入池：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str01 = new String(&quot;mm&quot;).intern();</span><br><span class="line">    String str02 = &quot;mm&quot;;</span><br><span class="line">    System.out.println(str01 == str02);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+<p>线程强制执行</p>
+<p>在多线程并发执行中每一个线程对象都会交替执行，如果这个时候某个线程对象需要优先执行完成，则可以设置为强制执行，也就是等这个线程执行完毕了再执行其他线程。</p>
+<p>线程强制执行的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public final void join() throws InterruptedException</span><br></pre></td></tr></table></figure>
 
-<p>所以，实际开发时，尽量的直接赋值定义字符串。</p>
-<p>字符串常量池</p>
-<p>为了防止字符串过多，jdk进行了结构上的优化。（本质是一个动态对象数组），所有直接赋值的字符串对象都可以自动保存在常量池中，方便下次使用。</p>
-<p>静态常量池：</p>
-<p>程序（class）在加载（不是运行）时会把字符串、常量、类、方法全部进行分配</p>
-<p>运行时常量池：</p>
-<p>加载之后，有一些字符串内容是通过拼接的，由于string对象内容可以改变，所以叫做运行时常量池。</p>
-<p>字符串修改：</p>
-<p>常量的内容一旦被定义就无法修改，但是字符串比较特殊，重新实例化来实现修改字符串内容。</p>
-<p>string类关于数据的存储是通过数组，数组本身又是定长的数据类型。实际上就代表了string对象一旦被实例化，内容就无法改变，那么字符串对象内容实际上就是通过改变引用的方式来实现的。</p>
-<p>要注意：这样会产生许多的垃圾空间。</p>
-<p>主方法组成：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String [] args) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">public class enforcement &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        Thread main = Thread.currentThread();</span><br><span class="line">        Thread thread = new Thread(() -&gt;&#123;</span><br><span class="line">            for (int x = 0;x&lt;10;x++)&#123;</span><br><span class="line">                if(x == 3)&#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        main.join();</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(200);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;执行：  &quot;+x);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,&quot;随便一个线程！&quot;);</span><br><span class="line">        thread.start();</span><br><span class="line">        for(int x=0;x&lt;10;x++)&#123;</span><br><span class="line">            Thread.sleep(100);</span><br><span class="line">            System.out.println(&quot;霸道的mian线程= &quot;+x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>public: 一种访问权限、主方法是一切程序的入口，有且只能有一个，一定是公共的。</p>
-<p>static：程序的执行是通过类，所以这个方法由类直接调用。</p>
-<p>void：主方法是一切程序的起点，程序一旦开始，不需要返回结果。</p>
-<p>main：系统定义好的方法名称，当java执行时，自动寻找。</p>
-<p>String [] args：字符串的数组，可以实现启动参数的接受。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class demo04 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        if (args.length == 0)&#123;</span><br><span class="line">            System.out.println(&quot;please input your argments:&quot;);</span><br><span class="line">            System.exit(1);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            for (String temp:args) &#123;</span><br><span class="line">                System.out.println(temp+&quot;\t&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">java demo04 one 2 3 4 5</span><br></pre></td></tr></table></figure>
+<p>本程序启动了两个线程，main和子线程，在不满足条件时，两个线程交替执行，满足时，主线程执行完毕之后再执行子线程中的内容。</p>
+<p>线程礼让</p>
+<p>满足某些条件，可以将当前调度给其他线程执行，自己等待下次调度再执行。</p>
+<p>线程礼让</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static native void yield();</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">public class Threadcomity &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        Thread thread = new Thread(()-&gt;&#123;</span><br><span class="line">           for (int x= 0;x&lt;10;x++)&#123;</span><br><span class="line">               if (x % 3==0 )&#123;</span><br><span class="line">                   Thread.yield();</span><br><span class="line">                   System.out.println(&quot;礼让！&quot;+Thread.currentThread().getName());</span><br><span class="line">               &#125;</span><br><span class="line">               try &#123;</span><br><span class="line">                   Thread.sleep(100);</span><br><span class="line">               &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               System.out.println(Thread.currentThread().getName()+&quot;执行：  &quot;+x);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;,&quot;随意的一个线程&quot;);</span><br><span class="line">        thread.start();</span><br><span class="line">        for (int x=0;x&lt;10;x++)&#123;</span><br><span class="line">            Thread.sleep(100);</span><br><span class="line">            System.out.println(&quot;main线程：&quot;+x);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>线程优先级</p>
+<p>在Java线程操作中，所有线程在运行前都是就绪状态，此时设置优先级，进行资源调度。</p>
+<table>
+<thead>
+<tr>
+<th>方法或常量</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static final int MIN_PRIORITY</td>
+<td>常量</td>
+<td>最低优先级，1</td>
+</tr>
+<tr>
+<td>public static final int NORM_PRIORITY</td>
+<td>常量</td>
+<td>中等优先级，5</td>
+</tr>
+<tr>
+<td>public static final int MAX_PRIORITY</td>
+<td>常量</td>
+<td>最高优先级，10</td>
+</tr>
+<tr>
+<td>public final void setPriority(int newPriority)</td>
+<td>方法</td>
+<td>设置线程优先级</td>
+</tr>
+<tr>
+<td>public final int getPriority()</td>
+<td>方法</td>
+<td>取得线程优先级</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">public class threadpriority &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Runnable run = () -&gt;&#123;</span><br><span class="line">            for (int x=0;x&lt;10;x++)&#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;：&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        Thread t1 = new Thread(run,&quot;线程A&quot;);</span><br><span class="line">        Thread t2 = new Thread(run,&quot;线程B&quot;);</span><br><span class="line">        Thread t3 = new Thread(run,&quot;线程C&quot;);</span><br><span class="line">        Thread t4 = new Thread(run,&quot;线程D&quot;);</span><br><span class="line">        t1.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">        t4.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line">        t3.setPriority(Thread.NORM_PRIORITY);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">        t4.start();</span><br><span class="line">        System.out.println(&quot;===========&quot;);</span><br><span class="line">        t1.getPriority();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>string类常用方法：</p>
-<p>1、字符数组转字符串（字节等同理）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char [] char01 =new char[]&#123;&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;&#125;;</span><br><span class="line">String str01 = new String(char01);</span><br><span class="line">System.out.println(str01);</span><br></pre></td></tr></table></figure>
+<p>线程同步与死锁：</p>
+<p>多线程访问同一资源，一定会出现某些问题，例如，资源操作的完整性。</p>
+<p>卖票问题：</p>
+<p>假设现在剩下最后一张票，当第一个线程满足条件时，其他的线程也满足，同时进行自减，就有可能造成负数。</p>
+<p>线程同步处理：</p>
+<p>造成并发资源访问不同步的主要原因在于没有将若干个逻辑单元进行整体锁定。也就是判断数据和修改数据时只允许一个线程进行处理，而其他线程需要等待当前线程执行完毕之后才可以继续执行，这样就使得在同一个时间段内，只允许一个线程执行操作，从而实现同步处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synchronized</span><br></pre></td></tr></table></figure>
 
-<p>2、指定范围转换（第二个参数是步长）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char [] char01 =new char[]&#123;&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;&#125;;</span><br><span class="line">String str01 = new String(char01,0,3);</span><br><span class="line">System.out.println(str01);</span><br></pre></td></tr></table></figure>
+<p>关键字实现同步处理，同步的关键时要加锁，对于锁的操作方式有两种，同步代码块，同步方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">class MyThread implements Runnable&#123;</span><br><span class="line">    private int ticket = 20;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            synchronized (this)&#123;</span><br><span class="line">                if (ticket &gt; 0)&#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        Thread.sleep(100);</span><br><span class="line">                    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(Thread.currentThread().getName()+&quot;卖票：  &quot;+this.ticket--);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    System.out.println(&quot;卖光了！！！&quot;);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Threadsynchronization &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyThread mt = new MyThread();</span><br><span class="line">        new Thread(mt,&quot;售票员A&quot;).start();</span><br><span class="line">        new Thread(mt,&quot;售票员B&quot;).start();</span><br><span class="line">        new Thread(mt,&quot;售票员C&quot;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3、获取指定索引的值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.charAt(0));</span><br></pre></td></tr></table></figure>
+<p>同步会导致性能下降</p>
+<p>同步操作的本质在于同一给时间段内只有一个线程，所以在此线程对象执行完之前其他的线程对象将处于一个就绪状态，这样就会导致性能下降。</p>
+<p>同步方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">class MyThread implements Runnable&#123;</span><br><span class="line">    private int ticket = 20;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (this.sale())&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public synchronized boolean sale()&#123;</span><br><span class="line">        if(this.ticket&gt;0)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(100);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;  &quot;+this.ticket--);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;卖光了！！&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Threadsynchronization &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyThread mt = new MyThread();</span><br><span class="line">        new Thread(mt,&quot;售票员A&quot;).start();</span><br><span class="line">        new Thread(mt,&quot;售票员B&quot;).start();</span><br><span class="line">        new Thread(mt,&quot;售票员C&quot;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>4、大小写转换</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.toLowerCase());</span><br><span class="line">System.out.println(str01.toUpperCase());</span><br></pre></td></tr></table></figure>
+<p>线程死锁：</p>
+<p>同步指的是一个线程要等待另一个线程执行完才会继续执行的一种操作，虽然同步可以保证资源共享的正确性，但是过多同步也会产生一些问题。</p>
+<p>例如：王老五想要小鹏的一本书，小鹏想要王老五的一口饭，两个人都在等待回复，最终都得不到自己想要的东西，这实际上就是死锁的概念。</p>
+<p>所谓的死锁，指的是两个线程都在等待对方先完成，造成程序的停滞，一般程序的死锁都是在小程序运行时出现的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">class Book&#123;</span><br><span class="line">    public synchronized void tell(Food food)&#123;</span><br><span class="line">        System.out.println(&quot;王老五对小鹏说，把你的书给我，我就给你一口饭吃！不给书就不给你饭吃&quot;);</span><br><span class="line">        food.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public synchronized void get()&#123;</span><br><span class="line">        System.out.println(&quot;王老五得到了小鹏的书！开始仔细阅读！发现是本无字天书！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Food&#123;</span><br><span class="line">    public synchronized void tell(Book book)&#123;</span><br><span class="line">        System.out.println(&quot;小鹏对王老五说，给我一口饭吃，我就把书给你，不给饭吃不给你书！&quot;);</span><br><span class="line">        book.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public synchronized void get()&#123;</span><br><span class="line">        System.out.println(&quot;小鹏得到了一口饭，吃的老香了！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class threaddeadlock implements Runnable&#123;</span><br><span class="line">    private Book book = new Book();</span><br><span class="line">    private Food food = new Food();</span><br><span class="line"></span><br><span class="line">    public threaddeadlock() &#123;</span><br><span class="line">        new Thread(this::run).start();</span><br><span class="line">        book.tell(food);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        food.tell(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new threaddeadlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>5、截取字符串（开始索引到结束索引）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.substring(0,10));</span><br><span class="line">System.out.println(str01.substring(0));</span><br></pre></td></tr></table></figure>
+<p>线程等待与唤醒：</p>
+<p><img src="/2021/08/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/image-20210812164151743.png" alt="image-20210812164151743"></p>
+<p>优雅的停止线程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package demo08.day11;</span><br><span class="line"></span><br><span class="line">import javax.xml.stream.FactoryConfigurationError;</span><br><span class="line"></span><br><span class="line">public class threadstop &#123;</span><br><span class="line">    public static boolean flag = true;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception&#123;</span><br><span class="line">        new Thread(() -&gt;&#123;</span><br><span class="line">           long num = 0;</span><br><span class="line">           while (flag)&#123;</span><br><span class="line">               try &#123;</span><br><span class="line">                   Thread.sleep(50);</span><br><span class="line">               &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               System.out.println(Thread.currentThread().getName()+&quot;running &quot;+num++);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;,&quot;线程AA&quot;).start();</span><br><span class="line">        Thread.sleep(1000);</span><br><span class="line">        flag = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>6、判断是否以指定字符串开头、结尾</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.startsWith(&quot;12&quot;));</span><br><span class="line">System.out.println(str01.startsWith(&quot;12&quot;,3));</span><br><span class="line">System.out.println(str01.endsWith(&quot;rf&quot;));</span><br></pre></td></tr></table></figure>
-
-<p>7、字符串替换（全部替换，替换第一个）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str01 = &quot;121e3drwcfefrf&quot;;</span><br><span class="line">System.out.println(str01.replaceAll(&quot;1&quot;,&quot;mm&quot;));</span><br><span class="line">System.out.println(str01.replaceFirst(&quot;3&quot;,&quot;mm&quot;));</span><br></pre></td></tr></table></figure>
-
-<p>………..</p>
-<p>java doc文档</p>
-<p>这是java官方提供的关于jdk相关api的文档，文档中详细描述了每一个模块中不同的包里不同的类的相关定义和相关说明信息，以及成员属性介绍，包括构造方法普通方法以及其他的说明摘要。</p>
+<p>后台守护线程：</p>
+<p>java中的线程分为两类，用户线程和守护线程。守护线程运行在后台，当全部用户线程消失，守护线程消失。</p>
+<p>Java中有一个gc自动垃圾回收机制，其实就是守护线程。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public final void setDaemon(boolean on)</td>
+<td>普通</td>
+<td>设置为守护线程</td>
+</tr>
+<tr>
+<td>public final boolean isDaemon()</td>
+<td>普通</td>
+<td>判断是否为守护线程</td>
+</tr>
+</tbody></table>
+<p>volative关键字</p>
+<p>在多线程中，线程为了实现公共资源的操作，为复制相对应的变量的副本，等待操作完成之后，再把副本和原始变量进行同步处理。开发者不希望通过怕副本数据进行操作，就可以在原始变量声明时，使用关键字。</p>
+<p>volative和同步的区别：<br>关键字无法处理同步问题，他是一种直接内存的处理避免副本操作。同步是处理并发资源访问，关键字主要在属性上使用，同步在代码块和方法体上使用。</p>
 
       
     </div>
@@ -427,7 +516,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -495,7 +584,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -556,12 +645,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">程序基础概念</a>
+            <a href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">抽象类与接口</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 15:50:18" itemprop="dateCreated datePublished" datetime="2021-07-24T15:50:18+08:00">2021-07-24</time>
+              <time title="创建时间：2021-08-01 20:20:38" itemprop="dateCreated datePublished" datetime="2021-08-01T20:20:38+08:00">2021-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="程序基础概念">
+             <span id="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="leancloud_visitors" data-flag-title="抽象类与接口">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -293,106 +293,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
-<p>1、注释</p>
-<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
-<p>java里一共分为3种形式的注释</p>
-<p>单行注释</p>
-<p>多行注释</p>
-<p>文档注释</p>
-<p>2、标识符与关键字</p>
-<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
-<p>例如：类、方法、变量结构。</p>
-<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
-<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
-<p>1、尽量的不要用数字</p>
-<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
-<p>3、标识符区分大小写</p>
-<p>4、$ 美元符号有特殊含义（内部类）</p>
-<p>数据类型</p>
-<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
-<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
-<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
-<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
-<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
-<p>整型</p>
-<p>byte、short、int、long</p>
-<p>默认的数据类型是int。（整型常量）</p>
-<p>数据类型转换</p>
-<p>自动转换：范围小——范围大</p>
-<p>强制转换：大——小（数据溢出）</p>
-<p>浮点型 小数 double</p>
-<p>char</p>
-<p>16进制的unicode</p>
-<p>布尔型</p>
-<p>一种逻辑结果，true和false</p>
-<p>string</p>
-<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
-<p>转义字符：\ \ \t \n &#39; &quot;</p>
-<p>运算符</p>
-<p>&amp;&amp;      ||</p>
-<p>短路与 短路或</p>
-<p>（逻辑运算符）</p>
-<p>boolean || boolean （短路原则）（有假则假）</p>
-<p>&amp;   | （位运算符）</p>
-<p>逻辑与 逻辑或 （按位与、按位或）</p>
-<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
-<p>3 5</p>
-<p>0011 </p>
-<p>0101</p>
-<p>3 | 5  0111 7</p>
-<p>3 &amp; 5 0001 1</p>
-<p>负数的补码</p>
-<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
-<p>19 </p>
-<p>二进制：原码：0001 0011</p>
-<p>20</p>
-<p>010100</p>
-<p>按位与 都是1，就是1. </p>
-<p>按位或 有一个1，就是1</p>
-<p>异或 相同就是0，不同就是1</p>
-<p>取反</p>
-<p>-20</p>
-<p>二进制原码：1001 0100</p>
-<p>反码：1110 1011 + 1 = 补码</p>
-<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
-<p>按位取反：0001 0011（正数）</p>
-<p>19</p>
-<p>正数的补码、反码、原码都是一样的。</p>
-<p>20</p>
-<p>原码：0001 0100</p>
-<p>按位取反：1110 1011</p>
-<p>取反码：1001 0100</p>
-<p>取补码：1001 0101</p>
-<p>-21</p>
-<p>取反</p>
-<p>1、求补码</p>
-<p>2、按位取反</p>
-<p>3、求补码(最终结果)</p>
-<p>按位左移、按位右移。(负数补1，正数补0)</p>
-<p>20 &lt;&lt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0101 0000</p>
-<p>80</p>
-<p>20 &gt;&gt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0000 0101</p>
-<p>5</p>
-<p>无符号右移（全部补0）</p>
-<p>20 &gt;&gt;&gt; 2</p>
-<p>~13</p>
-<p>原码、补码：0000 1101</p>
-<p>按位取反：1111 0010</p>
-<p>取反码：1000 1101</p>
-<p>取补码：1000 1110</p>
-<p>-14</p>
-<p>~-27</p>
-<p>原码：1001 1011</p>
-<p>反码：1110 0100</p>
-<p>补码：1110 0101</p>
-<p>按位取反：0001 1010（正数）</p>
-<p>26</p>
+          <p>抽象类与接口：有效拆分大型系统，避免产生耦合。</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>类继承主要是为了扩充已有的类功能，子类可以根据需要决定是否覆写父类中的方法，所以一个设计完善的父类是无法对子类做出任何强制性的覆写约定。为了解决这个问题，抽象类的概念就诞生了，抽象类和普通类相比唯一增加的就是抽象方法，同时抽象类在使用时要求必须被继承，而且必须全部覆写抽象类中的抽象方法。</p>
+<p>普通类只是一个设计完善，可以直接产生实例化对象并且调用类中的属性和方法，抽象类最大特点，就是必须被子类继承，并且抽象类本身无法进行实例化。在实际项目中，往往很少设计普通类，大多都会选择继承抽象类。</p>
+<p>抽象类基本定义：抽象类是为了方法覆写而提供的类结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>本实例中利用abstract关键字声明了抽象类与抽象方法：</p>
+<p>1、抽象方法与普通方法不一样，抽象方法不能有方法体{}</p>
+<p>2、抽象类不是一个完整的类，抽象类必须提供子类，子类继承依然用extends关键字</p>
+<p>3、子类（非抽象类）一定要覆写抽象类中的全部抽象方法</p>
+<p>4、抽象类的对象实例化可以通过子类向上转型来实现</p>
+<p>抽象类的使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">abstract class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract String getconn();</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02();</span><br><span class="line">        j1.setType(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类最大特点的是自己无法对象实例化，所以说在实际项目中，抽象类用来当中间过渡，当我们想要使用抽象类中，往往是为了解决继承中带来的代码重复处理。</p>
+<p>抽象类的说明</p>
+<p>1、抽象类必须有子类继承，抽象方法必须被覆写，所以抽象类定义时，不允许final定义抽象类和抽象方法。</p>
+<p>2、抽象类也可以定义成员属性和普通方法，为了给抽象类的成员属性初始化，我们可以给抽象类设计构造方法，子类在继承时会调用抽象类的无参构造，如果抽象类没有提供，那么就需要super关键字。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">abstract  class javademo01&#123;</span><br><span class="line">    private String type;</span><br><span class="line">    public abstract  String getconn();</span><br><span class="line"></span><br><span class="line">    public javademo01(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getType() &#123;</span><br><span class="line">        return type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setType(String type) &#123;</span><br><span class="line">        this.type = type;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class javademo02 extends javademo01&#123;</span><br><span class="line"></span><br><span class="line">    public javademo02(String type) &#123;</span><br><span class="line">        super(type);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getconn()&#123;</span><br><span class="line">        return super.getType();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo13  &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        javademo01 j1 = new javademo02(&quot;mm&quot;);</span><br><span class="line">        System.out.println(j1.getconn());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类中可以没有抽象方法，即使没有抽象方法，也不能使用new关键字实例化对象。</p>
+<p>抽象类中可以使用static定义静态方法，直接通过类名调用，毫无影响。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/01/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
  <div>
@@ -414,7 +344,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -482,7 +412,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,12 +473,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

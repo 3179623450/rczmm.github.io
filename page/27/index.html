@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/28/%E7%BB%A7%E6%89%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">搭建java开发环境</a>
+            <a href="/2021/07/28/%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">继承</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-23 22:35:53" itemprop="dateCreated datePublished" datetime="2021-07-23T22:35:53+08:00">2021-07-23</time>
+              <time title="创建时间：2021-07-28 22:35:30" itemprop="dateCreated datePublished" datetime="2021-07-28T22:35:30+08:00">2021-07-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="leancloud_visitors" data-flag-title="搭建java开发环境">
+             <span id="/2021/07/28/%E7%BB%A7%E6%89%BF/" class="leancloud_visitors" data-flag-title="继承">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/28/%E7%BB%A7%E6%89%BF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/28/%E7%BB%A7%E6%89%BF/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>679</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -293,50 +293,174 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Java语言执行需要经过编译器编译，而后才可以在jvm上解释字节码程序，这些操作都需要jdk的支持才可以正常完成。</p>
-<p>jdk java开发工具包，java专属的开发工具，也是最底层的技术支持。</p>
-<p>开发者可以直接通过oracle官网（<a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/">Java 软件 | Oracle 中国</a>）获取jdk工具。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224057138.png" alt="image-20210723224057138"></p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224120031.png" alt="image-20210723224120031"></p>
-<p>进入java se的下载页面时会展示我们下载的jdk类型。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224213603.png" alt="image-20210723224213603"></p>
-<p>同时，除了jdk，也提供了jre的下载。</p>
-<p>jre java运行时环境，jdk自带。（分两类，一个是server 一个是client），jre本身不支持开发。</p>
-<p>注意选择自己适合的系统版本。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224534162.png" alt="image-20210723224534162"></p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723224859826.png" alt="image-20210723224859826"></p>
-<p>x86 32位，x64 64位。注意根据自己的电脑系统合理选择。</p>
-<p>jdk的安装与配置</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225353570.png" alt="image-20210723225353570"></p>
-<p>打开我们下载的一个Windows的程序安装包，双击运行即可安装，并出现以上的界面。点击下一步。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225450635.png" alt="image-20210723225450635"></p>
-<p>选择安装目录，不要带有中文的目录。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225543007.png" alt="image-20210723225543007"></p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225554851.png" alt="image-20210723225554851"></p>
-<p>显示成功安装。</p>
-<p>打开目录</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225655107.png" alt="image-20210723225655107"></p>
-<p>打开bin目录。</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225716346.png" alt="image-20210723225716346"></p>
-<p>在这个目录里，有两个核心的命令，java.exe and javac.exe</p>
-<p>这两个命令本身不属于Windows本身，如果要在命令行（cmd）里直接使用，那么就必须在Windows系统中进行可执行程序的路径配置，也就是环境变量。</p>
-<p>计算机——属性——高级系统设置</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225913817.png" alt="image-20210723225913817"></p>
-<p>高级——环境变量——系统变量——path</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723225943116.png" alt="image-20210723225943116"></p>
-<p>添加jdk下bin的目录</p>
-<p>E:\Program Files\java-13\bin</p>
-<p>打开cmd窗口。</p>
-<p>输入 java -version</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230140245.png" alt="image-20210723230140245"></p>
-<p>出现以上内容，表示安装成功。</p>
-<p>Windows命令行</p>
-<p>可以直接在搜索cmd，dos，命令提示符等，</p>
-<p>也可以win +R 打开运行</p>
-<p><img src="/2021/07/23/%E6%90%AD%E5%BB%BAjava%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/image-20210723230310972.png" alt="image-20210723230310972"></p>
-<p>搜索cmd。</p>
-<p>如果配置了环境变量，必须重新启动命令行才能加载到最新的环境变量配置。</p>
+          <p>继承</p>
+<p>面向对象的优点：模块化设计和代码重用，而依靠单一的类与对象是很难实现效果的。</p>
+<p>（例如，学生类，人类，学生类本就属于人类，但是学生表示的范围比人又要小，因此人类是无法满足需求的）</p>
+<p>在面向对象设计中，类是基本的逻辑单元，而对于基本的逻辑单元之间需要考虑到重用的问题，所以提供了继承，来实现类的重用。</p>
+<p>严格来讲，类的继承是扩充一个类原有的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Father &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Son extends Father&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>java中，实现继承的语法。</p>
+<p>在继承结构里，很多时候会把子类叫做派生类，父类叫做超类。</p>
+<p>继承的小例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Father &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Son extends Father&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo05 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Son s1= new Son();</span><br><span class="line">        s1.setName(&quot;mm&quot;);</span><br><span class="line">        System.out.println(s1.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结：子类没有定义任何结构，但是实例化对象之后能直接调用父类的方法与属性，证明子类重用了父类中的结构，同时可以根据子类功能进行调整。</p>
+<p>在子类中扩充父类的功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Son extends Father&#123;</span><br><span class="line">    private String school;</span><br><span class="line"></span><br><span class="line">    public String getSchool() &#123;</span><br><span class="line">        return school;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSchool(String school) &#123;</span><br><span class="line">        this.school = school;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo05 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Son s1= new Son();</span><br><span class="line">        s1.setName(&quot;mm&quot;);</span><br><span class="line">        s1.setSchool(&quot;宇宙联合大学&quot;);</span><br><span class="line">        System.out.println(s1.getName()+&quot;\t&quot;+s1.getSchool());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>子类在父类基础上扩充了新的属性和方法，相比于父类，他更加的具体。</p>
+<p>子类对象实例化流程：</p>
+<p>继承关系中会产生父类和子类两种实例化对象。</p>
+<p>子类调用父类的结构，所以说在进行子类对象实例化之前，我们会默认的调用父类的无参构造方法，为父类对象实例化（属性初始化），而后再进行子类构造调用，为子类对象实例化（属性初始化）。</p>
+<p>子类对象实例化（无参构造调用）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Father1 &#123;</span><br><span class="line">    public Father1()&#123;</span><br><span class="line">        System.out.println(&quot;父类构造方法正在调用！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Son1 extends Father1&#123;</span><br><span class="line">    public Son1()&#123;</span><br><span class="line">        System.out.println(&quot;子类构造方法正在调用！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo06 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Son1 s1 = new Son1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">父类构造方法正在调用！</span><br><span class="line">子类构造方法正在调用！</span><br></pre></td></tr></table></figure>
+
+<p>总结：程序只调用了子类的构造方法，结果发现，父类构造方法会默认的调用，执行完毕之后再执行子类的构造，所以得出结论，子类对象实例化一定会实例化父类对象，实际上相当于子类的构造方法隐含了一个super()的形式。</p>
+<p>观察子类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Son1 extends Father1&#123;</span><br><span class="line">    public Son1()&#123;</span><br><span class="line">        super();</span><br><span class="line">        System.out.println(&quot;子类构造方法正在调用！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>super的作用表示在子类中明确调用父类的构造方法，不写也会默认调用，对于super在子类构造方法中的定义，要注意，一定要写在第一行。</p>
+<p>如果父类没有提供无参的构造方法，就可以通过super(参数)的形式调用指定参数的构造方法。</p>
+<p>明确调用父类构造方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Father1 &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public Father1(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Son1 extends Father1 &#123;</span><br><span class="line">    private String school;</span><br><span class="line"></span><br><span class="line">    public Son1(String name, int age, String school) &#123;</span><br><span class="line">        super(name, age);</span><br><span class="line">        this.school = school;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo06 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Son1 s1 = new Son1(&quot;mm&quot;,7,&quot;宇宙小学&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个程序里，父类就不再提供无参的构造方法了，这样在子类中就必须通过super关键字去明确子类要调用的父类结构，并且该语句必须放在首行。</p>
+<p>子类一定要调用父类构造嘛？</p>
+<p>一定的。</p>
+<p>换一种说法，先有父母，才有子女。先有父类出生，才有子类出生。</p>
+<p>继承限制</p>
+<p>虽然，继承可以实现代码重用，但是这并不代表他是没有限制的。</p>
+<p>1、单继承，一个子类只能继承一个父类。</p>
+<p>首先，其他语言中存在多继承，也就是一个子类可以继承多个父类，在java中也可以实现这样的效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class A&#123;</span><br><span class="line">    public A(String name)&#123;</span><br><span class="line">        System.out.println(&quot;name:&quot;+name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B extends A&#123;</span><br><span class="line">    public B(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C extends B&#123;</span><br><span class="line">    public C(String name) &#123;</span><br><span class="line">        super(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>C类实际上是孙类，B类继承了A类的属性，C类继承了B类的属性，这就相当于了C类继承了A和B类的属性和方法，这样的操作叫<strong>多层继承</strong>，在java中只允许多层继承，不允许多重继承。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class D extends A,B,C&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：继承层数不要太多，太多影响到代码的阅读。</p>
+<p>2、子类在继承时，会继承父类所有的属性和方法，包括私有属性。但是，对非私有的，属于显式继承（直接能用对象操作），私有的叫隐式继承（间接完成）。</p>
+<p>没有继承私有属性，但继承了getter和setter方法。（间接完成）</p>
+<p>覆写</p>
+<p>在继承关系中，父类是最基础的存在，定义的结构都是为了本类的需要，但是有时候子类有一些特殊的需要，有可能会定义和父类相同名的属性和方法，这种情况就被称为覆写。</p>
+<p>方法覆写</p>
+<p>子类继承父类的全部方法，当父类中有些方法无法满足，就可以对这个方法进行扩充，这时，子类中定义一个方法名、返回值类型、参数类型和个数完全相同的方法的时候，就被称为方法覆写。</p>
+<p>方法覆写基本实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Channel&#123;</span><br><span class="line">    public void connect()&#123;</span><br><span class="line">        System.out.println(&quot;父类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DataBaese extends Channel&#123;</span><br><span class="line">    public void connect()&#123;</span><br><span class="line">        System.out.println(&quot;子类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo08 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        DataBaese d1 = new DataBaese();</span><br><span class="line">        d1.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法覆写主要为了定义子类个性化的方法，同时保持了父类结构。</p>
+<p>如果说，我们想要调用父类被覆写之后的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import javax.xml.parsers.SAXParser;</span><br><span class="line"></span><br><span class="line">class Channel&#123;</span><br><span class="line">    public void connect()&#123;</span><br><span class="line">        System.out.println(&quot;父类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DataBaese extends Channel&#123;</span><br><span class="line">    public void connect()&#123;</span><br><span class="line">        super.connect();</span><br><span class="line">        System.out.println(&quot;子类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo08 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        DataBaese d1 = new DataBaese();</span><br><span class="line">        d1.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果此处，用this替代super则会报栈溢出的错误。</p>
+<p>Exception in thread “main” java.lang.StackOverflowError</p>
+<p>所以说，我们可以得出结论，同样是调用类结构，super不会查找自身，直接调用父类。</p>
+<p>方法覆写限制</p>
+<p>子类中覆写的方法不能比父类的方法具有更严格的控制权限。</p>
+<p>private&lt;default&lt;public</p>
+<p>子类的权限大于等于父类权限</p>
+<p>注意：父类方法定义为private时，子类无法覆写。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Channel&#123;</span><br><span class="line">    private void connect()&#123;</span><br><span class="line">        System.out.println(&quot;父类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void m1()&#123;</span><br><span class="line">        this.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DataBaese extends Channel&#123;</span><br><span class="line">    public void connect()&#123;</span><br><span class="line">        System.out.println(&quot;子类连接资源&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo08 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        DataBaese d1 = new DataBaese();</span><br><span class="line">        d1.m1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>重载与覆写：</p>
+<p>重载：方法名相同、其他可以不同、没有权限要求、发生了一个类中</p>
+<p>覆写：方法名、参数、返回值都想同、子类覆写的方法权限要大于等于父类方法、发生在继承关系中。</p>
+<p>属性覆盖</p>
+<p>子类依据自身需求对父类属性进行重命名定义。</p>
+<p>要注意：private属性无效。</p>
+<p>只需要属性名一致即可，数据类型可以不一样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class animal&#123;</span><br><span class="line">    double age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class person11 extends animal&#123;</span><br><span class="line">    private int age;</span><br><span class="line">    public void info()&#123;</span><br><span class="line">        System.out.println(this.age);</span><br><span class="line">        System.out.println(super.age);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo09 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        person11 p1 = new person11();</span><br><span class="line">        p1.info();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>super和this</p>
+<p>super：表示父类对象、父类操作，属性，方法，（）构造方法、调用父类构造，放在首行、由子类查找父类</p>
+<p>this：表示本类对象、本类操作，属性，方法，（）构造方法、调用本来构造，放在首行、从本类查找、表示当前对象</p>
+<p>final关键字</p>
+<p>为了保护父类定义</p>
+<p>final在java描述为终接器。</p>
+<p>定义不能继承的类，不能覆写的方法，常量（全局常量）。</p>
+<p>关于常量和字符串连接的问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class demo09 &#123;</span><br><span class="line"></span><br><span class="line">    public static final String str1 = &quot;mm&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str2 = &quot;ilovemm&quot;;</span><br><span class="line">        String str3 = &quot;ilove&quot;+str1;</span><br><span class="line">        System.out.println(str2==str3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>annotation注解(明确声明，为了良好的代码阅读)</p>
+<p>1、准确覆写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class F &#123;</span><br><span class="line">    public void m2() &#123;</span><br><span class="line">        System.out.println(&quot;父类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class S extends F &#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void m2() &#123;</span><br><span class="line">        System.out.println(&quot;子类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo10 &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个注解就可以在不清楚父类结构的情况下，分析哪些是覆写方法，哪些是自定义方法，此处还可以在编译时检测因为子类拼写造成的方法覆写错误。</p>
+<p>2、过期声明</p>
+<p>程序是不断更新的，有时候会有一些不再推荐使用的结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class F &#123;</span><br><span class="line">    </span><br><span class="line">    @Deprecated</span><br><span class="line">    public void m2() &#123;</span><br><span class="line">        System.out.println(&quot;父类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void m3()&#123;</span><br><span class="line">        System.out.println(&quot;父类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class S extends F &#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void m2() &#123;</span><br><span class="line">        System.out.println(&quot;子类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo10 &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>合理开发时，不要使用已经被注解之后的，弃用结构，不利于后期更新。</p>
+<p>3、压制警告</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class F &#123;</span><br><span class="line">    @Deprecated</span><br><span class="line">    public void m2() &#123;</span><br><span class="line">        System.out.println(&quot;父类正在运行&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo10 &#123;</span><br><span class="line">    @SuppressWarnings(value = &#123;&quot;deprecation&quot;&#125;)</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new F().m2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了保证代码的合理性，在编译时会抛出警告，但是有些错误不必要，为了防止这些信息出现，就可以用压制警告注解。</p>
+<p>deprecation：使用了不赞成的类或方法。</p>
+<p>多态</p>
+<p>同一种结构会根据不同形式展示出不同的效果。</p>
+<p>方法的多态性：</p>
+<p>重载：同一方法，根据传入参数不同实现不同功能</p>
+<p>覆写：同一个方法根据子类不同实现不同功能</p>
+<p>对象的多态性：</p>
+<p>父类与子类的转换</p>
+<p>向上转型：父类 父类实例 = 子类实例 （自动转换）</p>
+<p>向下转型：子类 子类实例 = （子类）父类实例 （强制转换完成）</p>
+<p>参考意见：实际的转型处理上看，向上转型用的比较多，向下转型往往都在使用子类特殊功能的时候，还有不转型使用（例如：String类）</p>
+<p>父类定义标准，子类定义个性化。（覆写）</p>
+<p>向上转型：子类对象实例化之前一定会实例化父类对象，这个时候如果我们把子类对象的实例通过父类来接受，即可实现对象的向上转型。而此时的本质还是子类实例，所以说，一旦调用子类覆写了父类的方法，调用的一定是覆写之后的方法。</p>
+<p>最大的特点在于可以通过父类对象接受子类实例，这一原则有助于实现方法接受或返回参数的统一。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class animal &#123;</span><br><span class="line">    public double age = 7;</span><br><span class="line">    public void info()&#123;</span><br><span class="line">        System.out.println(&quot;父类&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class person11 extends animal &#123;</span><br><span class="line">    public int age = 7;</span><br><span class="line"></span><br><span class="line">    public void info() &#123;</span><br><span class="line">       System.out.println(&quot;子类&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo09 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        animal a1 = new person11();</span><br><span class="line">        a1.info();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：不要看类名称，看实例化对象的类。关键看调用哪个类的构造。（new后的内容，不看左边看右边）</p>
+<p>最大的特点在于可以通过父类对象接受子类实例，这一原则有助于实现方法接受或返回参数的统一。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class kafka extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am kafka&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class mq extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am mq&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class database&#123;</span><br><span class="line">    /*</span><br><span class="line">     * 接受message对象，由于存在自动向上转型的机制，所以可以接受所有的子类实例</span><br><span class="line">     */</span><br><span class="line">    public static void m3(message m1)&#123;</span><br><span class="line">        m1.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo11 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        database.m3(new kafka());</span><br><span class="line">        database.m3(new mq());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本类中定义的m3方法，参数类型是message，这就意味着所有message以及子类对象都可以接受，相当于统一了参数类型。</p>
+<p>向上转型主要是为了实现操作标准的统一性。</p>
+<p>向下转型：保持子类实例的个性化</p>
+<p>子类继承父类之后可以对已经有的功能进行扩充（覆写，新加），对于子类之中扩充的方法只有具体的子类实例才可以调用，在这样的情况下，如果子类发生了向上转型呐？</p>
+<p>需要通过强制向下转型来实现子类扩充方法的调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class kafka extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am kafka&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print2()&#123;</span><br><span class="line">        System.out.println(&quot;i am java 11&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class mq extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am mq&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo11 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        message m1 = new kafka();</span><br><span class="line">        m1.print();</span><br><span class="line">        kafka k1 = (kafka) m1;</span><br><span class="line">        k1.print2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上，通过kafka子类接收了message对象，此时m1只能调用本类或者是m1父类的方法，如果此时需要调用子类中扩充的方法，就必须强制转换为指定的子类类型。</p>
+<p>要先发生向上转型，才可以进行向下转型。</p>
+<p>父类实例是不可能强者转换成任意子类实例的，因为两者之间没有联系。必须先通过子类实例，利用向上转型让父类对象和子类实例发生关系才可以向下转型，否则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    message m1 = new message();</span><br><span class="line">    kafka k1 = (kafka) m1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Exception in thread &quot;main&quot; java.lang.ClassCastException</span><br></pre></td></tr></table></figure>
+
+<p>这里就是message对象并没有和kafka子类产生联系，所以无法强制转换。向下转换永远都存在安全隐患。</p>
+<p>为了保证转换的安全性，给出了instanceof关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    message m1 = new kafka();</span><br><span class="line">    kafka k1 = (kafka) m1;</span><br><span class="line">    System.out.println(m1 instanceof message);</span><br><span class="line">    System.out.println(k1 instanceof message);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+<p>所以说，我们可以通过先判断再转换的方式去进行转型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class kafka extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am kafka&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print2()&#123;</span><br><span class="line">        System.out.println(&quot;i am java 11&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class mq extends message&#123;</span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i am mq&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class demo11 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        message m1 = new kafka();</span><br><span class="line">        m1.print();</span><br><span class="line">        if (m1 instanceof kafka)&#123;</span><br><span class="line">            kafka k1 = (kafka) m1;</span><br><span class="line">            k1.print2();</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            System.out.println(&quot;error&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>object类</p>
+<p>在java里是最重要的程序类，也是所有类的父类。</p>
+<p>方便操作类型的统一，方便每一个类定义一些公共操作，专门设计了一个公共的object父类，object是唯一一个没有父类的类。但是却是所有类的父类，所有利用class关键字定义的类默认都全部继承于object类，因此：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class message extends Object&#123;</span><br><span class="line">class message &#123;</span><br></pre></td></tr></table></figure>
+
+<p>这两种类定义的效果都是一样的。</p>
+<p>所有类都是object的子类，那么就代表所有类对象都可以利用向上转型为obejct类对象实例化。</p>
+<p>这样优势在于，当某些操作需要接受或者返回任意类型时候，最适合的参数类型就是object。</p>
+<p>object除了能接收所有的类实例之外，还可以接收所有的引用数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Object a1 = new int[]&#123;1,2,3&#125;;</span><br><span class="line">    if (a1 instanceof int[])&#123;</span><br><span class="line">        int data [] = (int[]) a1;</span><br><span class="line">        for (int temp: data) &#123;</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取对象信息</p>
+<p>在object类中有一个tostring（）方法，利用这个方法可以实现对象信息的获取，同时这个方法在进行对象输出被默认调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object a1 = new int[]&#123;1,2,3&#125;;</span><br><span class="line">System.out.println(a1.toString());</span><br><span class="line">System.out.println(a1);</span><br></pre></td></tr></table></figure>
+
+<p>具体中，我们可以根据需要覆写tostring方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class message &#123;</span><br><span class="line">    private int length;</span><br><span class="line"></span><br><span class="line">    public int getLength() &#123;</span><br><span class="line">        return length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setLength(int length) &#123;</span><br><span class="line">        this.length = length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public message(int length) &#123;</span><br><span class="line">        this.length = length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void print()&#123;</span><br><span class="line">        System.out.println(&quot;i love mm&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;队列长度:&quot; + this.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo11 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Object a1 = new message(12);</span><br><span class="line">        System.out.println(a1.toString());</span><br><span class="line">        System.out.println(a1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>本例中，定义了length属性，覆写了tostring方法，而后调用时，就会实现我们自己实现的方法体内的内容。</p>
+<p>对象比较</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">class demo extends Object&#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public demo(String name, int age) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean equals(Object obj)&#123;</span><br><span class="line">        if (!(obj instanceof demo))&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (obj == null)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (this == obj)&#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        demo d1 = (demo) obj;</span><br><span class="line">        return this.name.equals(d1.name) &amp;&amp; this.age == d1.age;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class demo12 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        demo d1 = new demo(&quot;mm&quot;,7);</span><br><span class="line">        demo d2 = new demo(&quot;mm&quot;,7);</span><br><span class="line">        System.out.println(d1.equals(d2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
  <div>
@@ -358,7 +482,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -426,7 +550,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -487,12 +611,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

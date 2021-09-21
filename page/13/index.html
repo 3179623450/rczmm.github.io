@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/08/12/io%E7%BC%96%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/12/io%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">io编程</a>
+            <a href="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="post-title-link" itemprop="url">js对象高级</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-12 16:58:23" itemprop="dateCreated datePublished" datetime="2021-08-12T16:58:23+08:00">2021-08-12</time>
+              <time title="创建时间：2021-09-12 10:21:04" itemprop="dateCreated datePublished" datetime="2021-09-12T10:21:04+08:00">2021-09-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/08/12/io%E7%BC%96%E7%A8%8B/" class="leancloud_visitors" data-flag-title="io编程">
+             <span id="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="leancloud_visitors" data-flag-title="js对象高级">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/12/io%E7%BC%96%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/12/io%E7%BC%96%E7%A8%8B/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>591</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,69 +293,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="io编程"><a href="#io编程" class="headerlink" title="io编程"></a>io编程</h1><p>io（input|output，输入|输出）可以实现数据的读取和写入的操作。Java针对io提供了一给工具包。</p>
-<h2 id="file文件操作"><a href="#file文件操作" class="headerlink" title="file文件操作"></a>file文件操作</h2><p>file类是一个与文件本身操作有关的类，创建、删除、重命名、取得文件大小、修改日期等常见的系统文件操作。</p>
-<h3 id="file类的基本使用"><a href="#file类的基本使用" class="headerlink" title="file类的基本使用"></a>file类的基本使用</h3><p>如果要使用file类则必须提供完整的文件操作路径，对于文件路径的设置可以通过file类的构造方法来完成。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public File(String pathname)</td>
-<td>构造</td>
-<td>给定一个操作文件的完整路径</td>
-</tr>
-<tr>
-<td>public File(String parent, String child)</td>
-<td>构造</td>
-<td>规定操作文件的完整路径和子文件名称</td>
-</tr>
-<tr>
-<td>public boolean createNewFile() throws IOException</td>
-<td>普通</td>
-<td>创建文件</td>
-</tr>
-<tr>
-<td>public boolean delete()</td>
-<td>普通</td>
-<td>删除文件</td>
-</tr>
-<tr>
-<td>public boolean exists()</td>
-<td>普通</td>
-<td>判断文件路径是否存在</td>
-</tr>
-</tbody></table>
-<h3 id="file类操作深入"><a href="#file类操作深入" class="headerlink" title="file类操作深入"></a>file类操作深入</h3><p>路径分割符：public static final String separator</p>
-<p>文件路径定义：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;E:&quot;+File.separator+&quot;demo.txt&quot;</span><br></pre></td></tr></table></figure>
-
-<p>file父路径操作方法</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public File getParentFile()</td>
-<td>普通</td>
-<td>获取父路径</td>
-</tr>
-<tr>
-<td>public boolean mkdirs()</td>
-<td>普通</td>
-<td>创建指定目录</td>
-</tr>
-</tbody></table>
-<h3 id="获取文件元信息"><a href="#获取文件元信息" class="headerlink" title="获取文件元信息"></a>获取文件元信息</h3><p><img src="/2021/08/12/io%E7%BC%96%E7%A8%8B/image-20210812171347514.png" alt="image-20210812171347514"></p>
-<h2 id="字节流和字符流"><a href="#字节流和字符流" class="headerlink" title="字节流和字符流"></a>字节流和字符流</h2><p><img src="/2021/08/12/io%E7%BC%96%E7%A8%8B/image-20210812171601095.png" alt="image-20210812171601095"></p>
+          <h2 id="对象的创建模式"><a href="#对象的创建模式" class="headerlink" title="对象的创建模式"></a>对象的创建模式</h2><ul>
+<li><p>Object构造函数模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj.name = &#x27;Tom&#x27;</span><br><span class="line">obj.setName = function(name)&#123;this.name=name&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>对象字面量模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name : &#x27;Tom&#x27;,</span><br><span class="line">  setName : function(name)&#123;this.name = name&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>构造函数模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">  this.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li>
+<li><p>构造函数+原型的组合模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="继承模式"><a href="#继承模式" class="headerlink" title="继承模式"></a>继承模式</h2><ul>
+<li><p>原型链继承 : 得到方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent()&#123;&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child()&#123;&#125;</span><br><span class="line">Child.prototype = new Parent(); // 子类型的原型指向父类型实例</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line">var child = new Child(); //有test()</span><br></pre></td></tr></table></figure></li>
+<li><p>借用构造函数 : 得到属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">var child = new Child(&#x27;a&#x27;, &#x27;b&#x27;);  //child.xxx为&#x27;a&#x27;, 但child没有test()</span><br></pre></td></tr></table></figure></li>
+<li><p>组合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = new Parent(); //得到test()</span><br><span class="line">var child = new Child(); //child.xxx为&#x27;a&#x27;, 也有test()</span><br></pre></td></tr></table></figure></li>
+<li><p>new一个对象背后做了些什么?</p>
+<ul>
+<li>创建一个空对象</li>
+<li>给对象设置__proto__, 值为构造函数对象的prototype属性值   this.<strong>proto</strong> = Fn.prototype</li>
+<li>执行构造函数体(给对象添加属性/方法)</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -378,7 +340,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -446,7 +408,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -507,12 +469,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

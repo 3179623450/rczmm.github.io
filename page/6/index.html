@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="post-title-link" itemprop="url">js对象高级</a>
+            <a href="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/" class="post-title-link" itemprop="url">numpy中的矩阵和向量</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-12 10:21:04" itemprop="dateCreated datePublished" datetime="2021-09-12T10:21:04+08:00">2021-09-12</time>
+              <time title="创建时间：2021-09-21 22:32:20" itemprop="dateCreated datePublished" datetime="2021-09-21T22:32:20+08:00">2021-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" class="leancloud_visitors" data-flag-title="js对象高级">
+             <span id="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/" class="leancloud_visitors" data-flag-title="numpy中的矩阵和向量">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/12/js%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.4k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -293,31 +293,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="对象的创建模式"><a href="#对象的创建模式" class="headerlink" title="对象的创建模式"></a>对象的创建模式</h2><ul>
-<li><p>Object构造函数模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj.name = &#x27;Tom&#x27;</span><br><span class="line">obj.setName = function(name)&#123;this.name=name&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>对象字面量模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name : &#x27;Tom&#x27;,</span><br><span class="line">  setName : function(name)&#123;this.name = name&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>构造函数模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">  this.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li>
-<li><p>构造函数+原型的组合模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setName = function(name)&#123;this.name=name;&#125;;</span><br><span class="line">new Person(&#x27;tom&#x27;, 12);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="继承模式"><a href="#继承模式" class="headerlink" title="继承模式"></a>继承模式</h2><ul>
-<li><p>原型链继承 : 得到方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent()&#123;&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child()&#123;&#125;</span><br><span class="line">Child.prototype = new Parent(); // 子类型的原型指向父类型实例</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line">var child = new Child(); //有test()</span><br></pre></td></tr></table></figure></li>
-<li><p>借用构造函数 : 得到属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">var child = new Child(&#x27;a&#x27;, &#x27;b&#x27;);  //child.xxx为&#x27;a&#x27;, 但child没有test()</span><br></pre></td></tr></table></figure></li>
-<li><p>组合</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Parent(xxx)&#123;this.xxx = xxx&#125;</span><br><span class="line">Parent.prototype.test = function()&#123;&#125;;</span><br><span class="line">function Child(xxx,yyy)&#123;</span><br><span class="line">    Parent.call(this, xxx);//借用构造函数   this.Parent(xxx)</span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = new Parent(); //得到test()</span><br><span class="line">var child = new Child(); //child.xxx为&#x27;a&#x27;, 也有test()</span><br></pre></td></tr></table></figure></li>
-<li><p>new一个对象背后做了些什么?</p>
-<ul>
-<li>创建一个空对象</li>
-<li>给对象设置__proto__, 值为构造函数对象的prototype属性值   this.<strong>proto</strong> = Fn.prototype</li>
-<li>执行构造函数体(给对象添加属性/方法)</li>
-</ul>
-</li>
-</ul>
+          <h1 id="NumPy-中的矩阵和向量"><a href="#NumPy-中的矩阵和向量" class="headerlink" title="NumPy 中的矩阵和向量"></a>NumPy 中的矩阵和向量</h1><p>numpy的<code>ndarray</code>类用于表示矩阵和向量。 要在numpy中构造矩阵，我们在列表中列出矩阵的行， 并将该列表传递给numpy数组构造函数。</p>
+<p>例如，构造与矩阵对应的numpy数组</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA1.png" alt="矩阵1"></p>
+<p>我们会这样做</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">1</span>,-<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">2</span>,<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>向量只是具有单列的数组。 例如，构建向量</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA2.png" alt="矩阵2"></p>
+<p>我们会这样做</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v = np.array([[<span class="number">2</span>],[<span class="number">1</span>],[<span class="number">3</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>更方便的方法是转置相应的行向量。 例如，为了使上面的矢量，我们可以改为转置行向量</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA3.png" alt="矩阵3"></p>
+<p>这个代码是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v = np.transpose(np.array([[<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>]]))</span><br></pre></td></tr></table></figure>
+
+<p>numpy重载数组索引和切片符号以访问矩阵的各个部分。 例如，要打印矩阵A中的右下方条目，我们会这样做</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(A[<span class="number">1</span>,<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p>要切出A矩阵中的第二列，我们会这样做</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">col = A[:,<span class="number">1</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>第一个切片选择A中的所有行，而第二个切片仅选择每行中的中间条目。</p>
+<p>要进行矩阵乘法或矩阵向量乘法，我们使用np.dot()方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w = np.dot(A,v)</span><br></pre></td></tr></table></figure>
+
+<h2 id="用numpy求解方程组"><a href="#用numpy求解方程组" class="headerlink" title="用numpy求解方程组"></a>用numpy求解方程组</h2><p>线性代数中比较常见的问题之一是求解矩阵向量方程。 这是一个例子。 我们寻找解决方程的向量x</p>
+<p><em>A</em> <strong>x</strong> = <strong>b</strong></p>
+<p>当</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA4.png" alt="矩阵4"></p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA5.png" alt="矩阵5"></p>
+<p>我们首先构建A和b的数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A = np.array([[<span class="number">2</span>,<span class="number">1</span>,-<span class="number">2</span>],[<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">1</span>,-<span class="number">1</span>]])</span><br><span class="line">b = np.transpose(np.array([[-<span class="number">3</span>,<span class="number">5</span>,-<span class="number">2</span>]]))</span><br></pre></td></tr></table></figure>
+
+<p>为了解决这个系统</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = np.linalg.solve(A,b)</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用：多元线性回归"><a href="#应用：多元线性回归" class="headerlink" title="应用：多元线性回归"></a>应用：多元线性回归</h2><p>在多元回归问题中，我们寻找一种能够将输入数据点映射到结果值的函数。 每个数据点是<em>特征向量（x1，x2，…，xm）</em>，由两个或多个捕获输入的各种特征的数据值组成。为了表示所有输入数据以及输出值的向量，我们设置了输入矩阵X和输出向量 <strong>y</strong>：</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA6.png" alt="矩阵6"></p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA7.png" alt="矩阵7"></p>
+<p>在简单的最小二乘线性回归模型中，我们寻找向量<strong>β</strong>，使得乘积Xβ最接近结果向量 <strong>y</strong>。</p>
+<p>一旦我们构建了<strong>β</strong>向量，我们就可以使用它将输入数据映射到预测结果。 给定表单中的输入向量</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA8.png" alt="矩阵8"></p>
+<p>我们可以计算预测结果值</p>
+<p><img src="/2021/09/21/numpy%E4%B8%AD%E7%9A%84%E7%9F%A9%E9%98%B5%E5%92%8C%E5%90%91%E9%87%8F/numpyLA9.png" alt="矩阵9"></p>
+<p>计算β向量的公式是</p>
+<p><strong>β</strong> = (<em>X**T</em> <em>X</em>)-1 <em>X**T</em> <strong>y</strong></p>
+<p>在我们的下一个示例程序中，我将使用numpy构造适当的矩阵和向量并求解<strong>β</strong>向量。一旦我们解决了<strong>β</strong>，我们将使用它来预测我们最初从输入数据集中遗漏的一些测试数据点。</p>
+<p>假设我们在numpy中构造了输入矩阵X和结果向量<strong>y</strong>，下面的代码将计算<strong>β</strong>向量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Xt = np.transpose(X)</span><br><span class="line">XtX = np.dot(Xt,X)</span><br><span class="line">Xty = np.dot(Xt,y)</span><br><span class="line">beta = np.linalg.solve(XtX,Xty)</span><br></pre></td></tr></table></figure>
+
+<p>最后一行使用<code>np.linalg.solve</code>计算<strong>β</strong>，因为等式是：</p>
+<p><strong>β</strong> = (<em>X**T</em> <em>X</em>)-1 <em>X**T</em> <strong>y</strong></p>
+<p>在数学上等价于方程组：</p>
+<p>(<em>X**T</em> <em>X</em>) <strong>β</strong> = <em>X**T</em> <strong>y</strong></p>
+<p>我将用于此示例的数据集是Windsor房价数据集，其中包含有关安大略省温莎市区房屋销售的信息。 输入变量涵盖了可能对房价产生影响的一系列因素，例如批量大小，卧室数量以及各种设施的存在。<a target="_blank" rel="noopener" href="http://www2.lawrence.edu/fast/GREGGJ/Python/numpy/Housing.csv">此处</a>提供具有完整数据集的CSV文件。我从<a target="_blank" rel="noopener" href="https://vincentarelbundock.github.io/Rdatasets/datasets.html">这个网站</a>下载了数据集，该网站提供了大量涵盖大量主题的数据集。</p>
+<p>这里现在是示例程序的源代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readData</span>():</span></span><br><span class="line">    X = []</span><br><span class="line">    y = []</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;Housing.csv&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        rdr = csv.reader(f)</span><br><span class="line">        <span class="comment"># Skip the header row</span></span><br><span class="line">        <span class="built_in">next</span>(rdr)</span><br><span class="line">        <span class="comment"># Read X and y</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> rdr:</span><br><span class="line">            xline = [<span class="number">1.0</span>]</span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> line[:-<span class="number">1</span>]:</span><br><span class="line">                xline.append(<span class="built_in">float</span>(s))</span><br><span class="line">            X.append(xline)</span><br><span class="line">            y.append(<span class="built_in">float</span>(line[-<span class="number">1</span>]))</span><br><span class="line">    <span class="keyword">return</span> (X,y)</span><br><span class="line"></span><br><span class="line">X0,y0 = readData()</span><br><span class="line"><span class="comment"># Convert all but the last 10 rows of the raw data to numpy arrays</span></span><br><span class="line">d = <span class="built_in">len</span>(X0)-<span class="number">10</span></span><br><span class="line">X = np.array(X0[:d])</span><br><span class="line">y = np.transpose(np.array([y0[:d]]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute beta</span></span><br><span class="line">Xt = np.transpose(X)</span><br><span class="line">XtX = np.dot(Xt,X)</span><br><span class="line">Xty = np.dot(Xt,y)</span><br><span class="line">beta = np.linalg.solve(XtX,Xty)</span><br><span class="line"><span class="built_in">print</span>(beta)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make predictions for the last 10 rows in the data set</span></span><br><span class="line"><span class="keyword">for</span> data,actual <span class="keyword">in</span> <span class="built_in">zip</span>(X0[d:],y0[d:]):</span><br><span class="line">    x = np.array([data])</span><br><span class="line">    prediction = np.dot(x,beta)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;prediction = &#x27;</span>+<span class="built_in">str</span>(prediction[<span class="number">0</span>,<span class="number">0</span>])+<span class="string">&#x27; actual = &#x27;</span>+<span class="built_in">str</span>(actual))</span><br></pre></td></tr></table></figure>
+
+<p>原始数据集包含500多个条目 为了测试线性回归模型所做预测的准确性，我们使用除最后10个数据条目之外的所有数据条目来构建回归模型并计算<strong>β</strong>。一旦我们构建了<strong>β</strong>向量，我们就用它来预测最后10个输入值，然后将预测的房价与数据集中的实际房价进行比较。</p>
+<p>以下是该计划产生的产出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[[ -<span class="number">4.14106096e+03</span>]</span><br><span class="line"> [  <span class="number">3.55197583e+00</span>]</span><br><span class="line"> [  <span class="number">1.66328263e+03</span>]</span><br><span class="line"> [  <span class="number">1.45465644e+04</span>]</span><br><span class="line"> [  <span class="number">6.77755381e+03</span>]</span><br><span class="line"> [  <span class="number">6.58750520e+03</span>]</span><br><span class="line"> [  <span class="number">4.44683380e+03</span>]</span><br><span class="line"> [  <span class="number">5.60834856e+03</span>]</span><br><span class="line"> [  <span class="number">1.27979572e+04</span>]</span><br><span class="line"> [  <span class="number">1.24091640e+04</span>]</span><br><span class="line"> [  <span class="number">4.19931185e+03</span>]</span><br><span class="line"> [  <span class="number">9.42215457e+03</span>]]</span><br><span class="line">prediction = <span class="number">97360.6550969</span> actual = <span class="number">82500.0</span></span><br><span class="line">prediction = <span class="number">71774.1659014</span> actual = <span class="number">83000.0</span></span><br><span class="line">prediction = <span class="number">92359.0891976</span> actual = <span class="number">84000.0</span></span><br><span class="line">prediction = <span class="number">77748.2742379</span> actual = <span class="number">85000.0</span></span><br><span class="line">prediction = <span class="number">91015.5903066</span> actual = <span class="number">85000.0</span></span><br><span class="line">prediction = <span class="number">97545.1179047</span> actual = <span class="number">91500.0</span></span><br><span class="line">prediction = <span class="number">97360.6550969</span> actual = <span class="number">94000.0</span></span><br><span class="line">prediction = <span class="number">106006.800756</span> actual = <span class="number">103000.0</span></span><br><span class="line">prediction = <span class="number">92451.6931269</span> actual = <span class="number">105000.0</span></span><br><span class="line">prediction = <span class="number">73458.2949381</span> actual = <span class="number">105000.0</span></span><br></pre></td></tr></table></figure>
+
+<p>总体而言，预测并不是非常好，但是一些预测有点接近正确。从这些数据中做出更好的预测将成为机器学习冬季学期教程的主题。</p>
 
       
     </div>
@@ -340,7 +379,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -408,7 +447,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -469,12 +508,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">进程基础概念</a>
+            <a href="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">numpy基础入门</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-01 15:27:13" itemprop="dateCreated datePublished" datetime="2021-09-01T15:27:13+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-17 14:18:44" itemprop="dateCreated datePublished" datetime="2021-09-17T14:18:44+08:00">2021-09-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="进程基础概念">
+             <span id="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="leancloud_visitors" data-flag-title="numpy基础入门">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>798</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -293,12 +293,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。</p>
-<p>进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像在独占的使用硬件。而<strong>并发运行</strong>，则是说一个进程的指令和另外一个进程的指令其实是交错着在执行的。</p>
-<p>在大多数系统中，需要运行的进程数是可以多于可以运行他们的cpu个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序，这是通过处理器在进程之间切换来实现的，操作系统实现这种交错执行的机制成为<strong>上下文切换</strong>。</p>
-<p>操作系统保持跟踪进程运行所需的所有状态信息，这种状态，也就是上下文，包括许多信息，比如pc（寄存器，处理器核心（大小为一个字的储存设备））和寄存器文件的当前值，以及主存的内容。在任何一个时刻，单核处理器都只能执行一个进程的代码，当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行上下文切换，即保存当前进程的上下文，恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
-<p>一个进程到另一个进程的转换是由操作系统内核负责管理的，内核不是一个独立的进程，他是操作系统用来管理全部进程所用的代码和数据结构的集合。他是操作系统代码常驻主存的部分，当app需要操作系统的某些操作时，例如最简单的读写文件，内核就会执行一条特殊的系统调用指令，将控制权传递给内核，然后内核执行被请求的操作并返回app。</p>
-<p>现在进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作，以后会揭示这项工作的基本原理，以及app是如何创建和控制他们的进程的。</p>
+          <h1 id="NumPy-简单入门教程"><a href="#NumPy-简单入门教程" class="headerlink" title="NumPy 简单入门教程"></a>NumPy 简单入门教程</h1><p>NumPy是Python中的一个运算速度非常快的一个数学库，它非常重视数组。它允许你在Python中进行向量和矩阵计算，并且由于许多底层函数实际上是用C编写的，因此你可以体验在原生Python中永远无法体验到的速度。</p>
+<p>NumPy绝对是科学Python成功的关键之一，如果你想要进入Python中的数据科学/机器学习，你就要必须学习它。在我看来，NumPy的API设计得很好，所以我们要开始使用它并不困难。</p>
+<h2 id="数组基础"><a href="#数组基础" class="headerlink" title="数组基础"></a>数组基础</h2><h3 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h3><p>NumPy围绕这些称为数组的事物展开。实际上它被称之为 <code>ndarrays</code>，你不知道没事儿。使用NumPy提供的这些数组，我们就可以以闪电般的速度执行各种有用的操作，如矢量和矩阵、线性代数等数学运算！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1D Array</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">b = np.array((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">c = np.arange(<span class="number">5</span>)</span><br><span class="line">d = np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(d) <span class="comment"># &gt;&gt;&gt;[ 0.          1.57079633  3.14159265  4.71238898  6.28318531]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">3</span>]) <span class="comment"># &gt;&gt;&gt;3</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码显示了创建数组的4种不同方法。最基本的方法是将序列传递给NumPy的array()函数; 你可以传递任何序列（类数组），而不仅仅是常见的列表（list）数据类型。</p>
+<p>请注意，当我们打印具有不同长度数字的数组时，它会自动将它们填充出来。这对于查看矩阵很有用。对数组进行索引就像列表或任何其他Python序列一样。 你也可以对它们进行切片，我不打算在这里切片一维数组。</p>
+<p>上面的数组示例是如何使用NumPy表示向量的，接下来我们将看看如何使用多维数组表示矩阵和更多的信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MD Array,</span></span><br><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>,<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;25</span></span><br></pre></td></tr></table></figure>
+
+<p>为了创建一个2D（二维）数组，我们传递一个列表的列表（或者是一个序列的序列）给array()函数。如果我们想要一个3D（三维）数组，我们就要传递一个列表的列表的列表，如果是一个4D（四维）数组，那就是列表的列表的列表的列表，以此类推。</p>
+<p>请注意2D（二维）数组（在我们的朋友空格键的帮助下）是如何按行和列排列的。要索引2D（二维）数组，我们只需引用行数和列数即可。</p>
+<h3 id="它背后的一些数学知识"><a href="#它背后的一些数学知识" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>要正确理解这一点，我们应该真正了解一下矢量和矩阵是什么。</p>
+<p>矢量是具有方向和幅度的量。它们通常用于表示速度，加速度和动量等事物。向量可以用多种方式编写，尽管对我们最有用的是它们被写为n元组的形式，如（1,4,6,9）。这就是我们在NumPy中表示他们的方式。</p>
+<p>矩阵类似于矢量，除了它由行和列组成; 很像一个网格。可以通过给出它所在的行和列来引用矩阵中的值。在NumPy中，我们通过传递一系列序列来制作数组，就像我们之前所做的那样。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths1-1.jpg" alt="简单线性代数图示"></p>
+<h3 id="多维数组切片"><a href="#多维数组切片" class="headerlink" title="多维数组切片"></a>多维数组切片</h3><p>切片多维数组比1D数组复杂一点，并且在使用NumPy时你也会经常需要使用到。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>, <span class="number">1</span>:<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;[12 13 14]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">4</span>, <span class="number">0</span>]) <span class="comment"># &gt;&gt;&gt;[16 21 26]</span></span><br><span class="line"><span class="built_in">print</span>(a[::<span class="number">2</span>,::<span class="number">2</span>]) <span class="comment"># &gt;&gt;&gt;[[11 13 15]</span></span><br><span class="line">                  <span class="comment">#     [21 23 25]</span></span><br><span class="line">                  <span class="comment">#     [31 33 35]]</span></span><br><span class="line"><span class="built_in">print</span>(a[:, <span class="number">1</span>]) <span class="comment"># &gt;&gt;&gt;[12 17 22 27 32]</span></span><br></pre></td></tr></table></figure>
+
+<p>如你所见，通过对每个以逗号分隔的维度执行单独的切片，你可以对多维数组进行切片。因此，对于2D数组，我们的第一片定义了行的切片，第二片定义了列的切片。</p>
+<p>注意，只需输入数字就可以指定行或列。上面的第一个示例从数组中选择第0列。</p>
+<p>下面的图表说明了给定的示例切片是如何进行工作的。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_2D_slicing_diagram-1.jpg" alt="numpy数组切片工作原理"></p>
+<h3 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h3><p>在使用 NumPy 时，你会想知道数组的某些信息。很幸运，在这个包里边包含了很多便捷的方法，可以给你想要的信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment"># &gt;&gt;&gt;&lt;class &#x27;numpy.ndarray&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(a.dtype) <span class="comment"># &gt;&gt;&gt;int64</span></span><br><span class="line"><span class="built_in">print</span>(a.size) <span class="comment"># &gt;&gt;&gt;25</span></span><br><span class="line"><span class="built_in">print</span>(a.shape) <span class="comment"># &gt;&gt;&gt;(5, 5)</span></span><br><span class="line"><span class="built_in">print</span>(a.itemsize) <span class="comment"># &gt;&gt;&gt;8</span></span><br><span class="line"><span class="built_in">print</span>(a.ndim) <span class="comment"># &gt;&gt;&gt;2</span></span><br><span class="line"><span class="built_in">print</span>(a.nbytes) <span class="comment"># &gt;&gt;&gt;200</span></span><br></pre></td></tr></table></figure>
+
+<p>正如你在上面的代码中看到的，NumPy数组实际上被称为ndarray。我不知道为什么他妈的它叫ndarray，如果有人知道请留言！我猜它代表n维数组。</p>
+<p>数组的形状是它有多少行和列，上面的数组有5行和5列，所以它的形状是(5，5)。</p>
+<p><code>itemsize</code>属性是每个项占用的字节数。这个数组的数据类型是int 64，一个int 64中有64位，一个字节中有8位，除以64除以8，你就可以得到它占用了多少字节，在本例中是8。</p>
+<p><code>ndim</code> 属性是数组的维数。这个有2个。例如，向量只有1。</p>
+<p><code>nbytes</code> 属性是数组中的所有数据消耗掉的字节数。你应该注意到，这并不计算数组的开销，因此数组占用的实际空间将稍微大一点。</p>
+<h2 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h2><h3 id="基本操作符"><a href="#基本操作符" class="headerlink" title="基本操作符"></a>基本操作符</h3><p>只是能够从数组中创建和检索元素和属性不能满足你的需求，你有时也需要对它们进行数学运算。 你完全可以使用四则运算符 +、- 、/ 来完成运算操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Basic Operators</span></span><br><span class="line">a = np.arange(<span class="number">25</span>)</span><br><span class="line">a = a.reshape((<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">b = np.array([<span class="number">10</span>, <span class="number">62</span>, <span class="number">1</span>, <span class="number">14</span>, <span class="number">2</span>, <span class="number">56</span>, <span class="number">79</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">45</span>,</span><br><span class="line">              <span class="number">4</span>, <span class="number">92</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">63</span>, <span class="number">43</span>, <span class="number">35</span>, <span class="number">6</span>, <span class="number">53</span>, <span class="number">24</span>,</span><br><span class="line">              <span class="number">56</span>, <span class="number">3</span>, <span class="number">56</span>, <span class="number">44</span>, <span class="number">78</span>])</span><br><span class="line">b = b.reshape((<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a * b)</span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br><span class="line"><span class="built_in">print</span>(a ** <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(a &lt; b) <span class="built_in">print</span>(a &gt; b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.dot(b))</span><br></pre></td></tr></table></figure>
+
+<p>除了 dot() 之外，这些操作符都是对数组进行逐元素运算。比如 (a, b, c) + (d, e, f) 的结果就是 (a+d, b+e, c+f)。它将分别对每一个元素进行配对，然后对它们进行运算。它返回的结果是一个数组。注意，当使用逻辑运算符比如 “&lt;” 和 “&gt;” 的时候，返回的将是一个布尔型数组，这点有一个很好的用处，后边我们会提到。</p>
+<p>dot() 函数计算两个数组的点积。它返回的是一个标量（只有大小没有方向的一个值）而不是数组。</p>
+<h3 id="它背后的一些数学知识-1"><a href="#它背后的一些数学知识-1" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>dot()函数称为点积。理解这一点的最好方法是看下图，下图将表示它是如何进行计算的。</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths2-1.jpg" alt="点积运算原理"></p>
+<h3 id="数组特殊运算符"><a href="#数组特殊运算符" class="headerlink" title="数组特殊运算符"></a>数组特殊运算符</h3><p>NumPy还提供了一些别的用于处理数组的好用的运算符。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">sum</span>()) <span class="comment"># &gt;&gt;&gt;45</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">min</span>()) <span class="comment"># &gt;&gt;&gt;0</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">max</span>()) <span class="comment"># &gt;&gt;&gt;9</span></span><br><span class="line"><span class="built_in">print</span>(a.cumsum()) <span class="comment"># &gt;&gt;&gt;[ 0  1  3  6 10 15 21 28 36 45]</span></span><br></pre></td></tr></table></figure>
+
+<p>sum()、min()和max()函数的作用非常明显。将所有元素相加，找出最小和最大元素。</p>
+<p>然而，cumsum()函数就不那么明显了。它将像sum()这样的每个元素相加，但是它首先将第一个元素和第二个元素相加，并将计算结果存储在一个列表中，然后将该结果添加到第三个元素中，然后再将该结果存储在一个列表中。这将对数组中的所有元素执行此操作，并返回作为列表的数组之和的运行总数。</p>
+<h2 id="索引进阶"><a href="#索引进阶" class="headerlink" title="索引进阶"></a>索引进阶</h2><h3 id="花式索引"><a href="#花式索引" class="headerlink" title="花式索引"></a>花式索引</h3><p><code>花式索引</code> 是获取数组中我们想要的特定元素的有效方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Fancy indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">indices = [<span class="number">1</span>, <span class="number">5</span>, -<span class="number">1</span>]</span><br><span class="line">b = a[indices]</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40 50 60 70 80 90]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[10 50 90]</span></span><br></pre></td></tr></table></figure>
+
+<p>正如你在上面的示例中所看到的，我们使用我们想要检索的特定索引序列对数组进行索引。这反过来返回我们索引的元素的列表。</p>
+<h3 id="布尔屏蔽"><a href="#布尔屏蔽" class="headerlink" title="布尔屏蔽"></a>布尔屏蔽</h3><p>布尔屏蔽是一个有用的功能，它允许我们根据我们指定的条件检索数组中的元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Boolean masking</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">50</span>)</span><br><span class="line">b = np.sin(a)</span><br><span class="line">plt.plot(a,b)</span><br><span class="line">mask = b &gt;= <span class="number">0</span></span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">mask = (b &gt;= <span class="number">0</span>) &amp; (a &lt;= np.pi / <span class="number">2</span>)</span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;go&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例显示了如何进行布尔屏蔽。你所要做的就是将数组传递给涉及数组的条件，它将为你提供一个值的数组，为该条件返回true。</p>
+<p>该示例生成以下图：</p>
+<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_masking-1.png" alt="布尔掩码结果图"></p>
+<p>我们利用这些条件来选择图上的不同点。蓝色点(在图中还包括绿点，但绿点掩盖了蓝色点)，显示值大于0的所有点。绿色点表示值大于0且小于一半π的所有点。</p>
+<h3 id="缺省索引"><a href="#缺省索引" class="headerlink" title="缺省索引"></a>缺省索引</h3><p>不完全索引是从多维数组的第一个维度获取索引或切片的一种方便方法。例如，如果数组a=[1，2，3，4，5]，[6，7，8，9，10]，那么[3]将在数组的第一个维度中给出索引为3的元素，这里是值4。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Incomplete Indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = a[:<span class="number">5</span>]</span><br><span class="line">c = a[a &gt;= <span class="number">50</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[50 60 70 80 90]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Where-函数"><a href="#Where-函数" class="headerlink" title="Where 函数"></a>Where 函数</h3><p>where() 函数是另外一个根据条件返回数组中的值的有效方法。只需要把条件传递给它，它就会返回一个使得条件为真的元素的列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Where</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = np.where(a &lt; <span class="number">50</span>) </span><br><span class="line">c = np.where(a &gt;= <span class="number">50</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;(array([0, 1, 2, 3, 4]),)</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[5 6 7 8 9]</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是NumPy，没那么难吧？当然，这篇文章只涵盖了入门的基础知识，在NumPy中你还可以做许多其他好玩的事情，当你已经熟悉了NumPy的基础知识，你就可以开始自由的探索NumPy的世界了。</p>
 
       
     </div>
@@ -321,7 +376,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -389,7 +444,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -450,12 +505,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">220k</span>
+    <span title="站点总字数">307k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:20</span>
+    <span title="站点阅读时长">4:39</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="NumPy 中的微分神经计算可微分神经计算 https:&#x2F;&#x2F;www.nature.com&#x2F;article&#x2F;nature20101 的实现尽可能接近于本文的描述。任务：char-level 预测。报告还包括简单RNN(RNN-numpy.py)和LSTM(LSTM-numpy.py)。一些外部数据(ptb、wiki)需要单独下载。 快速开始1python dnc-debug.py  这些版本已完成。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy-dnc，rnn，lstm">
+<meta property="og:url" content="http://rczmm.github.io/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/index.html">
+<meta property="og:site_name" content="小小世界">
+<meta property="og:description" content="NumPy 中的微分神经计算可微分神经计算 https:&#x2F;&#x2F;www.nature.com&#x2F;article&#x2F;nature20101 的实现尽可能接近于本文的描述。任务：char-level 预测。报告还包括简单RNN(RNN-numpy.py)和LSTM(LSTM-numpy.py)。一些外部数据(ptb、wiki)需要单独下载。 快速开始1python dnc-debug.py  这些版本已完成。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-21T14:45:16.000Z">
+<meta property="article:modified_time" content="2021-09-21T14:52:42.732Z">
+<meta property="article:author" content="rczmm">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://rczmm.github.io/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>numpy-dnc，rnn，lstm | 小小世界</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0472c4b929e1e8b892e4063622965b6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小小世界</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">永远在路上</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rczmm">
+      <meta itemprop="description" content="你看到的不止如此">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          numpy-dnc，rnn，lstm
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-21 22:45:16" itemprop="dateCreated datePublished" datetime="2021-09-21T22:45:16+08:00">2021-09-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+             <span id="/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/" class="leancloud_visitors" data-flag-title="numpy-dnc，rnn，lstm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                 <span class="post-meta-item-text">阅读次数：</span>
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="NumPy-中的微分神经计算"><a href="#NumPy-中的微分神经计算" class="headerlink" title="NumPy 中的微分神经计算"></a>NumPy 中的微分神经计算</h1><p>可微分神经计算 <a target="_blank" rel="noopener" href="https://www.nature.com/article/nature20101">https://www.nature.com/article/nature20101</a> 的实现尽可能接近于本文的描述。任务：char-level 预测。报告还包括简单RNN(RNN-numpy.py)和LSTM(LSTM-numpy.py)。一些外部数据(ptb、wiki)需要单独下载。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dnc-debug.py</span><br></pre></td></tr></table></figure>
+
+<p>这些版本已完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python rnn-numpy.py</span><br><span class="line">python lstm-numpy.py</span><br><span class="line">python dnc-numpy.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h3><p>RNN代码基于A.Karpath(min-char-rnn.py)的原始工作</p>
+<p>gist: <a target="_blank" rel="noopener" href="https://gist.github.com/karpathy/d4dee566867f8291f086">https://gist.github.com/karpathy/d4dee566867f8291f086</a></p>
+<p>文章: <a target="_blank" rel="noopener" href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a></p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>RNN版本仍然依赖numpy</li>
+<li>添加批处理</li>
+<li>将RNN修改为LSTM</li>
+<li>包括梯度检测</li>
+</ul>
+<h3 id="DNC"><a href="#DNC" class="headerlink" title="DNC"></a>DNC</h3><p><strong>实施</strong></p>
+<ul>
+<li>LSTM控制器</li>
+<li>2D存储器数组</li>
+<li>内容可寻址的读/写</li>
+</ul>
+<p><strong>问题</strong></p>
+<p>关键相似度的softmax会导致崩溃（除以0） - 如果遇到这种情况，需要重新启动</p>
+<p><strong>将要做</strong></p>
+<ul>
+<li>动态内存分配/自由</li>
+<li>更快的实现（使用PyTorch？）</li>
+<li>保存模型</li>
+<li>例子</li>
+</ul>
+<h3 id="示例输出："><a href="#示例输出：" class="headerlink" title="示例输出："></a>示例输出：</h3><p>时间，迭代，BPC（预测误差 - &gt;每个字符的位数，越低越好），处理速度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>: <span class="number">4163.009</span> s, <span class="built_in">iter</span> <span class="number">104800</span>, <span class="number">1.2808</span> BPC, <span class="number">1488.38</span> char/s</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型中的样本（alice29-txt）："><a href="#模型中的样本（alice29-txt）：" class="headerlink" title="模型中的样本（alice29.txt）："></a>模型中的样本（alice29.txt）：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> e garden <span class="keyword">as</span> she very dunced.</span><br><span class="line">                  </span><br><span class="line">  Alice fighting be it.  The breats?</span><br><span class="line">              here on likegs voice withoup.</span><br><span class="line">                                                                               </span><br><span class="line">  `You minced more hal disheze, <span class="keyword">and</span> I done hippertyou-sage, who say it<span class="string">&#x27;s a look down whales that</span></span><br><span class="line"><span class="string">his meckling moruste!&#x27;</span> said Alice<span class="string">&#x27;s can younderen, in they puzzled to them!&#x27;</span></span><br><span class="line">     </span><br><span class="line">  `Of betinkling reple bade to, punthery pormoved the piose himble, of to he see foudhed</span><br><span class="line">just rounds, seef wance side pigs, it addeal sumprked.</span><br><span class="line">                                                                                    </span><br><span class="line">  `As <span class="keyword">or</span> the Gryphon,<span class="string">&#x27; Alice said,</span></span><br><span class="line"><span class="string">Fith didn&#x27;</span>t begun, <span class="keyword">and</span> she garden <span class="keyword">as</span> <span class="keyword">in</span> a who tew.<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">  Hat hed think after as marman as much the pirly</span></span><br><span class="line"><span class="string">startares to dreaps</span></span><br><span class="line"><span class="string">was one poon it                                                                           </span></span><br><span class="line"><span class="string">out him were brived they                                                        </span></span><br><span class="line"><span class="string">proce?                                                                                    </span></span><br><span class="line"><span class="string">                                                                                 </span></span><br><span class="line"><span class="string">                                                                                          </span></span><br><span class="line"><span class="string">  CHAT, I fary,&#x27;</span> said the Hat,<span class="string">&#x27; said the Divery tionly to himpos.&#x27;</span>               </span><br><span class="line">                                                                                          </span><br><span class="line">  `Com, planere?<span class="string">&quot;&#x27;                                                               </span></span><br><span class="line"><span class="string">                                                                                          </span></span><br><span class="line"><span class="string">  `Ica--&#x27;                                                                        </span></span><br><span class="line"><span class="string">            Onlice IN&#x27;s tread!  Wonderieving again, `but her rist,&#x27; said Alice.           </span></span><br><span class="line"><span class="string">                                                                                 </span></span><br><span class="line"><span class="string">                                                                                          </span></span><br><span class="line"><span class="string">  She                                                                            </span></span><br><span class="line"><span class="string">sea do voice.                                                                             </span></span><br><span class="line"><span class="string">                                                                                 </span></span><br><span class="line"><span class="string">  `I&#x27;mm the Panthing alece of the when beaning must anquerrouted not reclow, sobs to      </span></span><br><span class="line"><span class="string">                                                                                 </span></span><br><span class="line"><span class="string">  `In of queer behind her houn&#x27;t seemed                                                   </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="检查反向传递的数值梯度（最右边的列应该具有值-lt-1e-4）"><a href="#检查反向传递的数值梯度（最右边的列应该具有值-lt-1e-4）" class="headerlink" title="检查反向传递的数值梯度（最右边的列应该具有值&lt;1e-4）;"></a>检查反向传递的数值梯度（最右边的列应该具有值&lt;1e-4）;</h3><p>中间列具有计算的分析和数值梯度范围（这些应该更多/更少）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">----</span><br><span class="line">GRAD CHECK</span><br><span class="line"></span><br><span class="line">Wxh:            n = [-<span class="number">1.828500e-02</span>, <span class="number">5.292866e-03</span>]       <span class="built_in">min</span> <span class="number">3.005175e-09</span>, <span class="built_in">max</span> <span class="number">3.505012e-07</span></span><br><span class="line">                a = [-<span class="number">1.828500e-02</span>, <span class="number">5.292865e-03</span>]       mean <span class="number">5.158434e-08</span> <span class="comment"># 10/4</span></span><br><span class="line">Whh:            n = [-<span class="number">3.614049e-01</span>, <span class="number">6.580141e-01</span>]       <span class="built_in">min</span> <span class="number">1.549311e-10</span>, <span class="built_in">max</span> <span class="number">4.349188e-08</span></span><br><span class="line">                a = [-<span class="number">3.614049e-01</span>, <span class="number">6.580141e-01</span>]       mean <span class="number">9.340821e-09</span> <span class="comment"># 10/10</span></span><br><span class="line">Why:            n = [-<span class="number">9.868277e-02</span>, <span class="number">7.518284e-02</span>]       <span class="built_in">min</span> <span class="number">2.378911e-09</span>, <span class="built_in">max</span> <span class="number">1.901067e-05</span></span><br><span class="line">                a = [-<span class="number">9.868276e-02</span>, <span class="number">7.518284e-02</span>]       mean <span class="number">1.978080e-06</span> <span class="comment"># 10/10</span></span><br><span class="line">Whr:            n = [-<span class="number">3.652128e-02</span>, <span class="number">1.372321e-01</span>]       <span class="built_in">min</span> <span class="number">5.520914e-09</span>, <span class="built_in">max</span> <span class="number">6.750276e-07</span></span><br><span class="line">                a = [-<span class="number">3.652128e-02</span>, <span class="number">1.372321e-01</span>]       mean <span class="number">1.299713e-07</span> <span class="comment"># 10/10</span></span><br><span class="line">Whv:            n = [-<span class="number">1.065475e+00</span>, <span class="number">4.634808e-01</span>]       <span class="built_in">min</span> <span class="number">6.701966e-11</span>, <span class="built_in">max</span> <span class="number">1.462031e-08</span></span><br><span class="line">                a = [-<span class="number">1.065475e+00</span>, <span class="number">4.634808e-01</span>]       mean <span class="number">4.161271e-09</span> <span class="comment"># 10/10</span></span><br><span class="line">Whw:            n = [-<span class="number">1.677826e-01</span>, <span class="number">1.803906e-01</span>]       <span class="built_in">min</span> <span class="number">5.559963e-10</span>, <span class="built_in">max</span> <span class="number">1.096433e-07</span></span><br><span class="line">                a = [-<span class="number">1.677826e-01</span>, <span class="number">1.803906e-01</span>]       mean <span class="number">2.434751e-08</span> <span class="comment"># 10/10</span></span><br><span class="line">Whe:            n = [-<span class="number">2.791997e-02</span>, <span class="number">1.487244e-02</span>]       <span class="built_in">min</span> <span class="number">3.806438e-08</span>, <span class="built_in">max</span> <span class="number">8.633199e-06</span></span><br><span class="line">                a = [-<span class="number">2.791997e-02</span>, <span class="number">1.487244e-02</span>]       mean <span class="number">1.085696e-06</span> <span class="comment"># 10/10</span></span><br><span class="line">Wrh:            n = [-<span class="number">7.319636e-02</span>, <span class="number">9.466716e-02</span>]       <span class="built_in">min</span> <span class="number">4.183225e-09</span>, <span class="built_in">max</span> <span class="number">1.369062e-07</span></span><br><span class="line">                a = [-<span class="number">7.319636e-02</span>, <span class="number">9.466716e-02</span>]       mean <span class="number">3.677372e-08</span> <span class="comment"># 10/10</span></span><br><span class="line">Wry:            n = [-<span class="number">1.191088e-01</span>, <span class="number">5.271329e-01</span>]       <span class="built_in">min</span> <span class="number">1.168224e-09</span>, <span class="built_in">max</span> <span class="number">1.568242e-04</span></span><br><span class="line">                a = [-<span class="number">1.191088e-01</span>, <span class="number">5.271329e-01</span>]       mean <span class="number">2.827306e-05</span> <span class="comment"># 10/10</span></span><br><span class="line">bh:             n = [-<span class="number">1.363950e+00</span>, <span class="number">9.144058e-01</span>]       <span class="built_in">min</span> <span class="number">2.473756e-10</span>, <span class="built_in">max</span> <span class="number">5.217119e-08</span></span><br><span class="line">                a = [-<span class="number">1.363950e+00</span>, <span class="number">9.144058e-01</span>]       mean <span class="number">7.066159e-09</span> <span class="comment"># 10/10</span></span><br><span class="line">by:             n = [-<span class="number">5.594528e-02</span>, <span class="number">5.814085e-01</span>]       <span class="built_in">min</span> <span class="number">1.604237e-09</span>, <span class="built_in">max</span> <span class="number">1.017124e-05</span></span><br><span class="line">                a = [-<span class="number">5.594528e-02</span>, <span class="number">5.814085e-01</span>]       mean <span class="number">1.026833e-06</span> <span class="comment"># 10/10</span></span><br></pre></td></tr></table></figure>
+    </div>
+ <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:24px;"><-------------文章到这里就结束了！-------------></div>
+    
+</div>
+
+      
+    </div>
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="rczmm 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="rczmm 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>rczmm
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://rczmm.github.io/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/" title="numpy-dnc，rnn，lstm">http://rczmm.github.io/2021/09/21/numpy-dnc，rnn，lstm/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/21/numpy-k%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/" rel="prev" title="numpy-k均值聚类">
+      <i class="fa fa-chevron-left"></i> numpy-k均值聚类
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+
+
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NumPy-%E4%B8%AD%E7%9A%84%E5%BE%AE%E5%88%86%E7%A5%9E%E7%BB%8F%E8%AE%A1%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">NumPy 中的微分神经计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%88%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">积分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNC"><span class="nav-number">1.1.3.</span> <span class="nav-text">DNC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="nav-number">1.1.4.</span> <span class="nav-text">示例输出：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E6%A0%B7%E6%9C%AC%EF%BC%88alice29-txt%EF%BC%89%EF%BC%9A"><span class="nav-number">1.1.5.</span> <span class="nav-text">模型中的样本（alice29.txt）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92%E7%9A%84%E6%95%B0%E5%80%BC%E6%A2%AF%E5%BA%A6%EF%BC%88%E6%9C%80%E5%8F%B3%E8%BE%B9%E7%9A%84%E5%88%97%E5%BA%94%E8%AF%A5%E5%85%B7%E6%9C%89%E5%80%BC-lt-1e-4%EF%BC%89"><span class="nav-number">1.1.6.</span> <span class="nav-text">检查反向传递的数值梯度（最右边的列应该具有值&lt;1e-4）;</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rczmm"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">rczmm</p>
+  <div class="site-description" itemprop="description">你看到的不止如此</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://github.com/rczmm" title="GitHub → http:&#x2F;&#x2F;github.com&#x2F;rczmm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3179623450@qq.com" title="E-Mail → mailto:3179623450@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rczmm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">307k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:39</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    访问量：<span id="busuanzi_value_site_pv"></span> 次数 |
+    访客数：<span id="busuanzi_value_site_uv"></span> 人次
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;"></span>
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#valine-comments' ,
+        verify: false,
+        notify: true,
+        appId: 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
+        appKey: 'UuxnA5liCzoSIlXGGSnWG271',
+        placeholder: '都看到这里了，真的不说两句嘛？',
+        avatar:'mm',
+        guest_info:guest,
+        meta:guest,
+        pageSize:'10' || 20,
+        visitor: true
+    });
+  </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
