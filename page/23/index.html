@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/25/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" class="post-title-link" itemprop="url">程序逻辑控制</a>
+            <a href="/2021/07/25/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1-1/" class="post-title-link" itemprop="url">类与对象</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 20:52:53" itemprop="dateCreated datePublished" datetime="2021-07-24T20:52:53+08:00">2021-07-24</time>
+              <time title="创建时间：2021-07-25 22:49:45" itemprop="dateCreated datePublished" datetime="2021-07-25T22:49:45+08:00">2021-07-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" class="leancloud_visitors" data-flag-title="程序逻辑控制">
+             <span id="/2021/07/25/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1-1/" class="leancloud_visitors" data-flag-title="类与对象">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/25/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1-1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/25/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1-1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>2.2k</span>
+              <span>4.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -293,61 +293,102 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>程序是一场数据的计算游戏，想要让这些数据处理更加具有逻辑性，那么就需要利用分支结构与循环结构来实现控制。</p>
-<p>程序逻辑</p>
-<p>java中的程序结构有三种：顺序结构、分支（选择）结构、循环结构。</p>
-<p>这三种结构的共同点是，他们都只拥有一个入口，也只有一个出口。单一的入口和出口可以让程序更加的易读，好维护，可以减少调试的时间。</p>
-<p>顺序结构</p>
-<p>程序自上而下<strong>逐行</strong>执行，一条语句执行完之后继续执行下一条语句，一直到程序的末尾。</p>
-<p>这是程序设计中最常的使用到的结构，在程序的世界扮演了举足轻重的角色，因为大部分的程序基本上都是按照这种由上而下的流程来设计的。</p>
-<p>分支结构</p>
-<p>选择结构是根据判断条件的成立与否再决定要执行哪些语句的一种结构。</p>
-<p>这种结构可以依据判断条件的结构来决定要执行的语句，当判断条件的值为真的时候，则执行语句，为假的时候，则执行另外的语句。</p>
-<p>循环结构</p>
-<p>根据判断条件的成立与否，决定程序段落的执行次数</p>
-<p>分支结构</p>
-<p>根据布尔表达式的判断结果来决定是否执行某段代码</p>
-<p>java里的分支结构有两种，if分支结构和switch开关结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else if(true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>类与对象</p>
+<p>面向对象，java一大特点之一。</p>
+<p>面向对象三大特性：封装、继承、多态。</p>
+<p>类：成员属性和成员方法组成的，成员属性实际上就是一个变量，方法就是操作上的行为。</p>
+<p>定义类，要根据程序语法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    String name;</span><br><span class="line">    int age;</span><br><span class="line">    </span><br><span class="line">    public void tell()&#123;</span><br><span class="line">        System.out.println(name+&quot;\t&quot;+age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>switch开关结构。</p>
-<p>switch是一种开关语句，它主要根据内容来进行判断。注意一点，switch只能判断int、枚举、string、char类型的数据。不能使用布尔表达式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">enum Demolist &#123;</span><br><span class="line">//定义一个枚举类型</span><br><span class="line">    a, b, RED</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    </span><br><span class="line">    Demolist demolist = Demolist.RED;</span><br><span class="line"></span><br><span class="line">    switch (10 | &#x27;a&#x27; | &quot;i miss mm&quot; | demolist) &#123;</span><br><span class="line">        case 1: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case 2: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        case RED: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        default: &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有一点注意，没有static。</p>
+<p>调用形式不同，主类中（public修饰的类）由主方法（main）直接调用的方法必须加static。但是现在tell方法是由对象调用的。</p>
+<p>一个类定义完成之后。并不能直接使用，因为类描述的只是一个广泛的概念，具体的操作要通过对象来执行，类属于引用数据类型。</p>
+<p>对象的定义格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p1 = new Person();</span><br></pre></td></tr></table></figure>
 
-<p>if可以判断布尔表达式、switch只能判断内容。</p>
-<p>switch语句默认的会从第一个满足的case语句开始执行全部的语句代码，直到全部执行完或者遇到了break语句。</p>
-<p>循环结构</p>
-<p>while</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">do&#123;</span><br><span class="line">    </span><br><span class="line">&#125;while (true)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类名 对象名 = new 类名（）;</p>
+<p>java里引用数据类型是需要进行内存分配，所以在定义的时候必须用new关键字来分配相对应的内存空间，这个过程也被叫实例化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(p1.name);</span><br><span class="line">System.out.println(p1.age);</span><br><span class="line">p1.tell();</span><br></pre></td></tr></table></figure>
 
-<p>while需要先判断条件再执行，do先执行再判断</p>
-<p>避免死循环。（循环条件一直满足）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line">int sum = 0;</span><br><span class="line">while (num &lt;= 100) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>对象内存分析</p>
+<p>引用数据类型必须用new开辟内存，才可以储存成员属性，在引用数据类型操作中最重要的内存有两块。</p>
+<p>heap（堆）：对象的具体信息（成员属性），new开辟的也正是堆内存</p>
+<p>stack（栈）：保存的是堆内存的地址，也就是通过地址找到堆，而后找到对象内容，简单理解就是栈里保存了对象名称。</p>
+<p>方法信息</p>
+<p>类中成员属性是对象私有的，但是方法是对象共有的，方法的信息会保存在全局方法区（公共内存）</p>
+<p>对象引用传递分析</p>
+<p>引用传递是java的核心概念。引用数据类型的核心就是在于堆内存和栈内存的分配与指向处理，同一块堆内存可以指向不同的栈内存。（一个人可以有很有名字）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person p1 = new Person();</span><br><span class="line">p1.name=&quot;mm&quot;;</span><br><span class="line">p1.age=8;</span><br><span class="line">p1.tell();</span><br><span class="line">Person p2=p1;</span><br><span class="line">p2.age=9;</span><br><span class="line">p1.tell();</span><br></pre></td></tr></table></figure>
 
-<p>for</p>
-<p>while是根据判断条件的结果来实现是否执行，for，在明确知道循环次数的情况。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0;</span><br><span class="line">for (int num = 1; num &lt;= 100; num++) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>引用传递（将p1对象的内存堆地址赋值给p2）这就相当于两个不同的栈内存指向了同一块堆内存。</p>
+<p>引用传递与垃圾产生分析</p>
+<p>内存管理，java——gc机制。</p>
+<p>一块栈只允许一个堆内存地址信息。（如果需要改变，那就存在一个丢弃原有的引用实体，更换新的引用实体的问题。）</p>
+<p>丢弃原始引用实体的时候（产生垃圾）</p>
+<p>所有的垃圾都将等待gc不定期回收释放。</p>
+<p>开发的时候尽量避免垃圾产生。</p>
+<p>成员属性封装</p>
+<p>封装性、本质上就是让内部结构对外不可见。</p>
+<p>如果没有封装，类中的所有成员属性可以直接通过实例化对象在类外部直接调用，但是这样的调用是很不安全的，这时最稳妥的就是使用private关键字对成员属性进行封装处理。</p>
+<p>当使用了private之后，是不允许外部对象直接访问成员属性的。</p>
+<p>此时，访问成员属性，需要用到getter（），setter（）方法。</p>
+<p>实际上，不仅针对成员属性封装，还有方法、内部类封装，这里只说一点点。</p>
+<p>setter和getter的目的，是为了设置和取得属性内容，有时候或许不会用到其中某一个，但是作为一种标准，我们必须全部提供。</p>
+<p>还可以在setter里添加限制条件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        if (age &gt;= 0 &amp;&amp; age &lt;= 300) &#123;</span><br><span class="line">            this.age = age;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;this age is error&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void tell() &#123;</span><br><span class="line">        System.out.println(name + &quot;\t&quot; + age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>for（循环初始化条件 ; 循环判断 ; 循环变更）{</p>
-<p>}</p>
-<p>循环初始化条件：只执行一次</p>
-<p>循环判断：循环前后各执行一次</p>
-<p>循环变更：循环内语句执行完执行一次</p>
-<p>尽量不要这么去写。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int num = 1;</span><br><span class="line"></span><br><span class="line">int sum = 0;</span><br><span class="line">for (;num &lt;= 100;) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    num++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(&quot;result:&quot; + sum);</span><br></pre></td></tr></table></figure>
+<p>构造方法与匿名对象</p>
+<p>构造方法是实例化的时候一种重要的结构，一种特殊的方法。在new这个类的时候，默认调用构造方法，功能：主要是为了完成成员属性的初始化操作。</p>
+<p>构造方法名和类名一样，构造方法没有返回值<strong>类型</strong>。</p>
+<p>其实，对象实例化一定要求有构造方法的，java提供了一个默认的构造方法。（这个方法没有参数、没有返回值，如果我们定义了，那就不会生成。）一个类中至少存在一个构造方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Person()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>while：不确定循环次数的情况下、确定循环结束条件的时候用。</p>
-<p>for：确定循环次数。</p>
-<p>循环控制语句</p>
-<p>continue</p>
-<p>break</p>
-<p>循环结构内，只要条件满足，就会一直执行。</p>
-<p>这程序内，提供了两个停止的控制语句，一个continue（退出本次循环），一个break（退出整个循环）。</p>
-<p>循环嵌套</p>
-<p>循环结构可以在内部嵌入若干个循环结构。这样可以实现更加复杂的循环。（注意，时间复杂度）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int x = 1; x &lt;= 9; x++) &#123;</span><br><span class="line">    for (int y = 1; y &lt;= x; y++) &#123;</span><br><span class="line">        System.out.print(y + &quot;*&quot; + x + &quot;=&quot; + (x * y) + &quot;\t&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>默认的构造方法。</p>
+<p>构造方法虽然特殊，但还是方法，就存在重载。不过构造方法重载的时候只需要考虑参数的类型个数就可以了。</p>
+<p>对象实例化的时候，new关键字主要是进行开辟堆内存，对象名称是为了对堆内存的引用，这样一是为了防止堆内存变成垃圾空间。</p>
+<p>有了构造方法之后，在堆内存开辟的同时就可以对对象进行实例化处理，也就是即使没有栈内存指向，也就是没有对象名称，但是对象至少可以使用一次，对于这种没有指向的对象就叫做匿名对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class demo01 &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new Person(&quot;mm&quot;,7).tell();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public Person(String tempname,int tempage)&#123;</span><br><span class="line">        name = tempname;</span><br><span class="line">        age = tempage;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person(int i)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        if (age &gt;= 0 &amp;&amp; age &lt;= 300) &#123;</span><br><span class="line">            this.age = age;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;this age is error&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void tell() &#123;</span><br><span class="line">        System.out.println(name + &quot;\t&quot; + age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> int line =10;</span><br><span class="line">        for (int x =0;x&lt;line;x++)&#123;</span><br><span class="line">            for(int y =0;y&lt;line-x;y++)&#123;</span><br><span class="line">//                输出空格</span><br><span class="line">                System.out.print(&quot; &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int y =0;y&lt;x;y++)&#123;</span><br><span class="line">                System.out.print(&quot;* &quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>此程序，因为没有栈内存的指向，所以这个对象在使用了一次之后将成为垃圾空间。</p>
+<p>匿名对象相当于一个一次性饭盒，使用一次就被定义为垃圾空间，等待gc回收，普通对象存在一个引用关系，所以就可以反复操作。</p>
+<p>this关键字</p>
+<p>this描述的是本类结构调用的关键字，java里this可以描述3种结构</p>
+<p>1、类的属性</p>
+<p>2、类的方法</p>
+<p>3、当前对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    char sex;</span><br><span class="line"></span><br><span class="line">    public Person(String name,int age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person(int i)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        if (age &gt;= 0 &amp;&amp; age &lt;= 300) &#123;</span><br><span class="line">            this.age = age;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;this age is error&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void tell() &#123;</span><br><span class="line">        System.out.println(this.name + &quot;\t&quot; + this.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>明确的标注了本类属性。</p>
+<p>在日后，为了避免不必要的bug，只要是调用成员属性时，最好加this。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public Person(String name,int age)&#123;</span><br><span class="line">    this.setName(name);</span><br><span class="line">    setAge(age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里对于是否使用this没有明确要求，但是从标准出发，采用this.方法名（）</p>
+<p>但一个程序出现多个构造方法时。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public Person(String name,int age)&#123;\</span><br><span class="line">    this();</span><br><span class="line">    this.setName(name);</span><br><span class="line">    setAge(age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Person()&#123;</span><br><span class="line">    System.out.println(&quot;this is a person&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是，要注意，这里为了避免出现死循环（递归调用），要注意留一个出口。</p>
+<p>this当前对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Person p1 = new Person();</span><br><span class="line">    p1.tell();</span><br><span class="line">    Person p2 = new Person();</span><br><span class="line">    p2.tell();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public void tell() &#123;</span><br><span class="line">        System.out.println(this.name + &quot;\t&quot; + this.age);</span><br><span class="line">        System.out.println(this);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里实例化了两个person对象，分别调用了tell方法，通过执行结果得出，this会随着对象不同而表现出不同的实例。</p>
+<p>this.属性，严格意义上来说，这一操作执行的是当前对象的属性。</p>
+<p>static关键字</p>
+<p>属性、方法、代码块</p>
+<p>类的成员，属性和方法，静态的和非静态的。</p>
+<p>对象不同，各自的属性内容也不同。</p>
+<p>静态的含义：类中的某个属性变成公共的。（所有对象都可以去使用），则在声明前加上static关键字。</p>
+<p>static关键字声明后，this调用不了。</p>
+<p>static属性属于类，而不属于对象。</p>
+<p>所以在调用的时候，直接用类名访问。</p>
+<p>static属性存在（全局数据区）</p>
+<p>static方法</p>
+<p>static定义方法时，通过类名来调用。（方法体不能含有当前对象的属性或方法也就是this调用的属性或者方法。）</p>
+<p>static代码块</p>
+<p>主类</p>
+<p>优于主方法执行</p>
+<p>非主类</p>
+<p>优于构造代码块执行</p>
+
       
     </div>
  <div>
@@ -369,7 +410,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -437,7 +478,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -498,12 +539,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">187k</span>
+    <span title="站点总字数">220k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:50</span>
+    <span title="站点阅读时长">3:20</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

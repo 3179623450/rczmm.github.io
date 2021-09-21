@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/25/%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">程序基础概念</a>
+            <a href="/2021/07/25/%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">方法</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-24 15:50:18" itemprop="dateCreated datePublished" datetime="2021-07-24T15:50:18+08:00">2021-07-24</time>
+              <time title="创建时间：2021-07-25 22:19:54" itemprop="dateCreated datePublished" datetime="2021-07-25T22:19:54+08:00">2021-07-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="程序基础概念">
+             <span id="/2021/07/25/%E6%96%B9%E6%B3%95/" class="leancloud_visitors" data-flag-title="方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/24/%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/25/%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/25/%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,106 +293,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>程序都有其各自的代码结构，所以对于代码的命名就需要通过标识符来完成，但是一个完整的程序的核心意义在于数据的处理、那么掌握数据类型的定义以及运算就是最重要的基础知识。</p>
-<p>1、注释</p>
-<p>在程序中，基本组成都是代码，所以考虑到程序可维护性的特点，在编写代码的时候在每段代码上增加若干说明文字，即注释。注释本身不需要被编译器编译。</p>
-<p>java里一共分为3种形式的注释</p>
-<p>单行注释</p>
-<p>多行注释</p>
-<p>文档注释</p>
-<p>2、标识符与关键字</p>
-<p>程序本质是一个逻辑结果的综合体，在java里有很多不同的结构。</p>
-<p>例如：类、方法、变量结构。</p>
-<p>对于这些不同的结构一定要有不同的说明，这些说明就被称为标识符，所以在进行标识的时候一定要采取有意义的名称。</p>
-<p>java中定义标识符的原则，字母、数字、下划线、$美元符号，不能用数字开头、不能使用保留的关键字。</p>
-<p>1、尽量的不要用数字</p>
-<p>2、命名尽量有意义，不要使用类似x y之类的简单标识符。</p>
-<p>3、标识符区分大小写</p>
-<p>4、$ 美元符号有特殊含义（内部类）</p>
-<p>数据类型</p>
-<p>程序严格来讲都是一个数据处理游戏，所有数据的保存就必须有严格的限制，具体就体现在数据类型的划分上。也就是不同的数据类型的保存不同的的数据内容。</p>
-<p>java数据类型基本可以分为基本数据类型、引用数据类型</p>
-<p>基本数据类型：byte、short、int、long、float、double、char、boolean</p>
-<p>引用数据类型在操作的时候必须进行内存的开辟。基本数据类型不牵扯内存分配的问题。</p>
-<p>考虑到语言的严谨性，java需要对每一个变量进行数据类型的定义，这样才方便开辟内存空间，同时在进行变量定义的时候可以通过赋值表达式对变量设置初始化内容。</p>
-<p>整型</p>
-<p>byte、short、int、long</p>
-<p>默认的数据类型是int。（整型常量）</p>
-<p>数据类型转换</p>
-<p>自动转换：范围小——范围大</p>
-<p>强制转换：大——小（数据溢出）</p>
-<p>浮点型 小数 double</p>
-<p>char</p>
-<p>16进制的unicode</p>
-<p>布尔型</p>
-<p>一种逻辑结果，true和false</p>
-<p>string</p>
-<p>string是java提供一个系统类，这个类比较特殊，不是基本数据类型，但是可以像基本数据类型一样直接定义并且使用。</p>
-<p>转义字符：\ \ \t \n &#39; &quot;</p>
-<p>运算符</p>
-<p>&amp;&amp;      ||</p>
-<p>短路与 短路或</p>
-<p>（逻辑运算符）</p>
-<p>boolean || boolean （短路原则）（有假则假）</p>
-<p>&amp;   | （位运算符）</p>
-<p>逻辑与 逻辑或 （按位与、按位或）</p>
-<p>逻辑是从左到右全部判断、短路得到结果就停止。</p>
-<p>3 5</p>
-<p>0011 </p>
-<p>0101</p>
-<p>3 | 5  0111 7</p>
-<p>3 &amp; 5 0001 1</p>
-<p>负数的补码</p>
-<p>&lt;&lt; &gt;&gt; 按位左移 按位右移</p>
-<p>19 </p>
-<p>二进制：原码：0001 0011</p>
-<p>20</p>
-<p>010100</p>
-<p>按位与 都是1，就是1. </p>
-<p>按位或 有一个1，就是1</p>
-<p>异或 相同就是0，不同就是1</p>
-<p>取反</p>
-<p>-20</p>
-<p>二进制原码：1001 0100</p>
-<p>反码：1110 1011 + 1 = 补码</p>
-<p>补码：1110 1100（将原码求反码，每一位不包含符号位第一位，加一）</p>
-<p>按位取反：0001 0011（正数）</p>
-<p>19</p>
-<p>正数的补码、反码、原码都是一样的。</p>
-<p>20</p>
-<p>原码：0001 0100</p>
-<p>按位取反：1110 1011</p>
-<p>取反码：1001 0100</p>
-<p>取补码：1001 0101</p>
-<p>-21</p>
-<p>取反</p>
-<p>1、求补码</p>
-<p>2、按位取反</p>
-<p>3、求补码(最终结果)</p>
-<p>按位左移、按位右移。(负数补1，正数补0)</p>
-<p>20 &lt;&lt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0101 0000</p>
-<p>80</p>
-<p>20 &gt;&gt; 2</p>
-<p>0000 0000 0001 0100</p>
-<p>0000 0000 0000 0101</p>
-<p>5</p>
-<p>无符号右移（全部补0）</p>
-<p>20 &gt;&gt;&gt; 2</p>
-<p>~13</p>
-<p>原码、补码：0000 1101</p>
-<p>按位取反：1111 0010</p>
-<p>取反码：1000 1101</p>
-<p>取补码：1000 1110</p>
-<p>-14</p>
-<p>~-27</p>
-<p>原码：1001 1011</p>
-<p>反码：1110 0100</p>
-<p>补码：1110 0101</p>
-<p>按位取反：0001 1010（正数）</p>
-<p>26</p>
+          <p>方法（method，有时候也被叫做函数），指的是一段可以被重复调用的代码块，利用方法可以实现程序的拆分</p>
+<p>public static void main(String [] args){}</p>
+<p>公共的 静态的 返回值类型 方法名（参数）{</p>
+<p>方法体</p>
+<p>return【返回值】</p>
+<p>}</p>
+<p>定义一个无参数，且无返回值的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void method1()&#123;</span><br><span class="line">    System.out.println(&quot;i am method1&quot;);</span><br><span class="line">&#125;</span><br><span class="line">method1();</span><br></pre></td></tr></table></figure>
 
+<p>return结束方法调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    method1(10);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void method1(int num)&#123;</span><br><span class="line">    if (num &lt;= 10)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;i am method1&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法重载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    method1(10);</span><br><span class="line">    method1();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void method1(int num)&#123;</span><br><span class="line">    if (num &lt;= 10)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;i am method1&quot;);</span><br><span class="line">&#125;</span><br><span class="line">public static void method1()&#123;</span><br><span class="line">    System.out.println(&quot;i am method1&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>特点：方法名相同，但是参数不同（个数、类型）、返回值类型不同。</p>
+<p>（为了统一标准，一般来说都用同一种返回值类型，当然也可以不用）</p>
+<p>方法递归调用</p>
+<p>一种特殊的方法嵌套形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    method1(100);</span><br><span class="line">    System.out.println(method1(100));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static int method1(int num)&#123;</span><br><span class="line">    if (num==1)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return num + method1(num-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>求阶乘和。（由于计算结果过大，所以使用了double类型）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    method1(100);</span><br><span class="line">    System.out.println(method1(100));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static double method1(int num)&#123;</span><br><span class="line">    if (num==1)&#123;</span><br><span class="line">        return method2(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return method2(num) + method1(num-1);</span><br><span class="line">&#125;</span><br><span class="line">public static double method2(int num)&#123;</span><br><span class="line">    if (num==1)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return num * method2(num-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
  <div>
@@ -414,7 +337,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -482,7 +405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,12 +466,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">187k</span>
+    <span title="站点总字数">220k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:50</span>
+    <span title="站点阅读时长">3:20</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

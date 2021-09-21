@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ssm框架原理（一）作用：ssm框架实际上就是一个框架整合，包含了spring、spring mvc以及mybatis框架。是一种标准的mvc模式的体现，ssm框架将系统划分为表现层、控制层、服务层、以及DAO层。其中，我们使用spring mvc负责请求的转发和视图管理、spring实现业务对象管理、mybatis作为数据持久化引擎。（db） 原理：SpringMVC：1.客户端发送请求到Dis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssm框架（一）">
+<meta property="og:url" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="小小世界">
+<meta property="og:description" content="ssm框架原理（一）作用：ssm框架实际上就是一个框架整合，包含了spring、spring mvc以及mybatis框架。是一种标准的mvc模式的体现，ssm框架将系统划分为表现层、控制层、服务层、以及DAO层。其中，我们使用spring mvc负责请求的转发和视图管理、spring实现业务对象管理、mybatis作为数据持久化引擎。（db） 原理：SpringMVC：1.客户端发送请求到Dis">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20151118190949363?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213621372.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213640935.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213714443.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828185304219-909517504.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190251437-403272735.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190448875-2048839166.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190629703-89662533.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190819234-882295285.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829203627344-2088280037.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204010922-1975818603.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204215719-809768030.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204454765-1161572702.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204928656-1589383472.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204944172-1087694389.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204953047-22835249.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205005375-1380967534.png">
+<meta property="og:image" content="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205515859-847674917.png">
+<meta property="article:published_time" content="2021-09-21T13:21:44.000Z">
+<meta property="article:modified_time" content="2021-09-21T13:44:58.960Z">
+<meta property="article:author" content="rczmm">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20151118190949363?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+
+<link rel="canonical" href="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ssm框架（一） | 小小世界</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0472c4b929e1e8b892e4063622965b6c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小小世界</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">永远在路上</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="rczmm">
+      <meta itemprop="description" content="你看到的不止如此">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小世界">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ssm框架（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-21 21:21:44" itemprop="dateCreated datePublished" datetime="2021-09-21T21:21:44+08:00">2021-09-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+             <span id="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" class="leancloud_visitors" data-flag-title="ssm框架（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+                 <span class="post-meta-item-text">阅读次数：</span>
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ssm框架原理（一）"><a href="#ssm框架原理（一）" class="headerlink" title="ssm框架原理（一）"></a>ssm框架原理（一）</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>ssm框架实际上就是一个框架整合，包含了spring、spring mvc以及mybatis框架。是一种标准的mvc模式的体现，ssm框架将系统划分为表现层、控制层、服务层、以及DAO层。其中，我们使用spring mvc负责请求的转发和视图管理、spring实现业务对象管理、mybatis作为数据持久化引擎。（db）</p>
+<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><h3 id="SpringMVC："><a href="#SpringMVC：" class="headerlink" title="SpringMVC："></a>SpringMVC：</h3><p>1.客户端发送请求到DispacherServlet（分发器）</p>
+<p>2.由DispacherServlet控制器查询HanderMapping，找到处理请求的Controller</p>
+<p>3.Controller调用业务逻辑处理后，返回ModelAndView</p>
+<p>4.DispacherSerclet查询视图解析器，找到ModelAndView指定的视图</p>
+<p>5.视图负责将结果显示到客户端<br><img src="https://img-blog.csdn.net/20151118190949363?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<h3 id="Spring："><a href="#Spring：" class="headerlink" title="Spring："></a>Spring：</h3><p>我们平时开发接触最多的估计就是IOC容器，它可以装载bean（也就是我们Java中的类，当然也包括service dao里面的），有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。</p>
+<h3 id="Mybatis："><a href="#Mybatis：" class="headerlink" title="Mybatis："></a>Mybatis：</h3><p>mybatis是对jdbc的封装，它让数据库底层操作变的透明。mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。在每次与数据库交互时，通过sqlSessionFactory拿到一个sqlSession，再执行sql命令。</p>
+<h3 id="要完成一个功能："><a href="#要完成一个功能：" class="headerlink" title="要完成一个功能："></a>要完成一个功能：</h3><p>先写实体类entity，定义对象的属性，（可以参照数据库中表的字段来设置，数据库的设计应该在所有编码开始之前）。<br>写Mapper.xml（Mybatis），其中定义你的功能，对应要对数据库进行的那些操作，比如 insert、selectAll、select ByKey、delete、update等。<br>写Mapper.java，将Mapper.xml中的操作按照id映射成Java函数。<br>写Service.java，为控制层提供服务，接受控制层的参数，完成相应的功能，并返回给控制层。<br>写Controller.java，连接页面请求和服务层，获取页面请求的参数，通过自动装配，映射不同的URL到相应的处理函数，并获取参数，对参数进行处理，之后传给服务层。<br>写JSP页面调用，请求哪些参数，需要获取什么数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataBase ===&gt; Entity ===&gt; Mapper.xml ===&gt; Mapper.Java ===&gt; Service.java ===&gt; Controller.java ===&gt; Jsp.  </span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><p>拥有控制器，作用跟Struts类似，接收外部请求，解析参数传给服务层<br>Spring 容器属于协调上下文，管理对象间的依赖，提供事务机制<br>mybatis 属于orm持久层框架，将业务实体 与数据表联合 起来</p>
+<p>Spring MVC  控制层，想当与 Struts的作用<br>Spring 控制反转和依赖注入  创建对象交由容器管理，达到了解耦的作用<br>mybatis 主要用来操作数据库（数据库的增删改查）</p>
+<h3 id="IOC-控制反转"><a href="#IOC-控制反转" class="headerlink" title="IOC:控制反转"></a>IOC:控制反转</h3><p>是一种降低对象之间耦合关系的设计思想，面试的时候最好能说出来个例子，加深理解。例子：租房子，以前租房子需要一个房子一个房子找，费时费力，然后现在加入一个房屋中介，把你需要的房型告诉中介，就可以直接选到需要的房子，中介就相当于spring容器。</p>
+<h3 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP:面向切面编程"></a>AOP:面向切面编程</h3><p>是面向对象开发的一种补充，它允许开发人员在不改变原来模型的基础上动态的修改模型以满足新的需求，如：动态的增加日志、安全或异常处理等。AOP使业务逻辑各部分间的耦合度降低，提高程序可重用性，提高开发效率。</p>
+<h3 id="持久层：DAO层（mapper）"><a href="#持久层：DAO层（mapper）" class="headerlink" title="持久层：DAO层（mapper）"></a>持久层：DAO层（mapper）</h3><p>DAO层：DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，<br>DAO层的设计首先是设计DAO的接口，<br>然后在Spring的配置文件中定义此接口的实现类，<br>然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，<br>DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。</p>
+<h3 id="业务层：Service层"><a href="#业务层：Service层" class="headerlink" title="业务层：Service层"></a>业务层：Service层</h3><p>Service层：Service层主要负责业务模块的逻辑应用设计。<br>首先设计接口，再设计其实现的类<br>接着再在Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。<br>Service层的业务实现，具体要调用到已定义的DAO层的接口，<br>封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。</p>
+<h3 id="表现层：Controller层（Handler层）"><a href="#表现层：Controller层（Handler层）" class="headerlink" title="表现层：Controller层（Handler层）"></a>表现层：Controller层（Handler层）</h3><p>Controller层:Controller层负责具体的业务模块流程的控制，<br>在此层里面要调用Service层的接口来控制业务流程，<br>控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。</p>
+<h3 id="View层"><a href="#View层" class="headerlink" title="View层"></a>View层</h3><p>View层 此层与控制层结合比较紧密，需要二者结合起来协同工发。View层主要负责前台jsp页面的表示.</p>
+<h3 id="各层联系"><a href="#各层联系" class="headerlink" title="各层联系"></a>各层联系</h3><p>DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势<br>Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。这样，在层与层之前我们只需要知道接口的定义，调用接口即可完成所需要的逻辑单元应用，一切显得非常清晰简单。</p>
+<h3 id="Service逻辑层设计"><a href="#Service逻辑层设计" class="headerlink" title="Service逻辑层设计"></a>Service逻辑层设计</h3><p>Service层是建立在DAO层之上的，建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。</p>
+<h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><p>​        Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。 简单来说，Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</p>
+<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><p>​        Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，这种分离让它们更容易进行定制。</p>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>​       MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。MyBatis是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。MyBatis 使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。</p>
+<h2 id="开发环境搭建以及创建Maven-Web项目"><a href="#开发环境搭建以及创建Maven-Web项目" class="headerlink" title="开发环境搭建以及创建Maven Web项目"></a>开发环境搭建以及创建Maven Web项目</h2><blockquote>
+<p>Eclipse+Tomcat+MAVEN+SVN项目完整环境搭建</p>
+</blockquote>
+<h3 id="1-JDK的安装"><a href="#1-JDK的安装" class="headerlink" title="1.JDK的安装"></a>1.JDK的安装</h3><p>​    首先下载JDK，这个从sun公司官网可以下载，根据自己的系统选择64位还是32位，安装过程就是next一路到底。安装完成之后当然要配置环境变量了。</p>
+<p>——————————————————————————————————————————————</p>
+<blockquote>
+<p>1.1新建变量名：JAVA_HOME  变量值：E:\Java\jdk1.6.0_43（这是我的jdk安装路径）</p>
+<p>1.2编辑变量名：Path 在后面加上：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
+<p>1.3 新建变量名：CLASSPATH 变量值： .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
+</blockquote>
+<p>（注意：在设置变量的末尾时不要加上“；”）</p>
+<p>——————————————————————————————————————————————</p>
+<p>设置完成之后我们当然需要测试，打开“运行”–&gt;输入“CMD”–&gt;在命令行上面输入：java，然后回车；输入javac，回车，输入java -version，回车，如果出现下列三个画面，那么JDK配置成功，否则就需要检查环境变量的配置。</p>
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213621372.png" alt="image-20210921213621372" style="zoom:50%;">
+
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213640935.png" alt="image-20210921213640935" style="zoom:50%;">
+
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213714443.png" alt="image-20210921213714443" style="zoom:50%;">
+
+<h3 id="2-Eclipse的安装"><a href="#2-Eclipse的安装" class="headerlink" title="2.Eclipse的安装"></a>2.Eclipse的安装</h3><p>   下载地址：<a target="_blank" rel="noopener" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a>  版本自行选择  </p>
+<p>   完成之后我们启动Eclipse，设置好工作路径，也可以直接默认。我们打开window–&gt;preference输入jre，安装下图。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828185304219-909517504.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190251437-403272735.png" alt="img"></p>
+<p> 此时我们可以随便建立一个JAVA项目，然后编写一个helloworld来测试一下是否正确。</p>
+<h3 id="Tomcat8的安装"><a href="#Tomcat8的安装" class="headerlink" title="Tomcat8的安装"></a>Tomcat8的安装</h3><p>​    Tomcat使用的版本是8，大家可以到apache的官网上去下载，<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-80.cgi">http://tomcat.apache.org</a>，下载直接解压就行。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190448875-2048839166.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190629703-89662533.png" alt="img"></p>
+<h3 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h3><h4 id="maven配置环境变量"><a href="#maven配置环境变量" class="headerlink" title="maven配置环境变量"></a>maven配置环境变量</h4><p> 下载maven，就是一个包：apache-maven-3.2.1，我用的版本是3.2.1，解压到一个路径，然后配置环境变量：</p>
+<p>——————————————————————————————————————————————————</p>
+<blockquote>
+<p>   5.1 新建变量名：MAVEN_HOME  变量值：D:\server\apache-maven-3.2.1（这是我的MAVEN路径）</p>
+<p>   编辑变量名：Path 在最前面加上：%MAVEN_HOME%\bin;（注意，最后要有个”;”作为分隔符）</p>
+</blockquote>
+<p>——————————————————————————————————————————————</p>
+<p>完成之后，在命令行输入：mvn -version查看是否有以下内容，如果有表示配置成功。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190819234-882295285.png" alt="img"></p>
+<h4 id="Maven数据仓库的配置"><a href="#Maven数据仓库的配置" class="headerlink" title="Maven数据仓库的配置"></a>Maven数据仓库的配置</h4><p>MAVEN中还有一个重要的配置就是数据仓库的路径配置，我们找到MAVEN的安装路径，进入conf–&gt;打开settings.xml，找到localRepository标签，此时是被注释掉的，我们解除注释，然后配置一个路径，例如：E:\Dev\Java\maven\repo，这样以后MAVEN管理下载的jar包都会在这个路径下。当然我们需要建这样一个目录结构，然后还要讲settings.xml复制一份到E:\Dev\Java\maven下，这个在与Eclipse集成时会用到。<strong>修改默认保存路径</strong></p>
+<p><strong><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829203627344-2088280037.png" alt="img"></strong></p>
+<h3 id="Eclipse中集成Maven"><a href="#Eclipse中集成Maven" class="headerlink" title="Eclipse中集成Maven"></a>Eclipse中集成Maven</h3><p>在preferences中进行配置，如图：</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204010922-1975818603.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204215719-809768030.png" alt="img"></p>
+<p> 此时，点击File–&gt;new–&gt;other–&gt;输入maven–&gt;–&gt;Maven Project，如果可以看到这些，证明配置成功，已经可以建立Maven项目了。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204454765-1161572702.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204928656-1589383472.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204944172-1087694389.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204953047-22835249.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205005375-1380967534.png" alt="img"></p>
+<p>如果indexjsp 提示有错误需要在pom.xml中导入  javaee-api.jar</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;7.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SVN安装"><a href="#SVN安装" class="headerlink" title="SVN安装"></a>SVN安装</h3><p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205515859-847674917.png" alt="img"></p>
+
+    </div>
+ <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #555;font-size:24px;"><-------------文章到这里就结束了！-------------></div>
+    
+</div>
+
+      
+    </div>
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="rczmm 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="rczmm 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>rczmm
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" title="ssm框架（一）">http://rczmm.github.io/2021/09/21/ssm框架（一）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/18/numpy%E6%95%99%E7%A8%8B/" rel="prev" title="numpy教程">
+      <i class="fa fa-chevron-left"></i> numpy教程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="ssm框架（二）">
+      ssm框架（二） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+
+
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">ssm框架原理（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">原理：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">SpringMVC：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">Spring：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis%EF%BC%9A"><span class="nav-number">1.2.3.</span> <span class="nav-text">Mybatis：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E5%AE%8C%E6%88%90%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-number">1.2.4.</span> <span class="nav-text">要完成一个功能：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-MVC"><span class="nav-number">1.2.5.</span> <span class="nav-text">Spring MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOC-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC"><span class="nav-number">1.2.6.</span> <span class="nav-text">IOC:控制反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP-%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B"><span class="nav-number">1.2.7.</span> <span class="nav-text">AOP:面向切面编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%B1%82%EF%BC%9ADAO%E5%B1%82%EF%BC%88mapper%EF%BC%89"><span class="nav-number">1.2.8.</span> <span class="nav-text">持久层：DAO层（mapper）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E5%B1%82%EF%BC%9AService%E5%B1%82"><span class="nav-number">1.2.9.</span> <span class="nav-text">业务层：Service层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%8E%B0%E5%B1%82%EF%BC%9AController%E5%B1%82%EF%BC%88Handler%E5%B1%82%EF%BC%89"><span class="nav-number">1.2.10.</span> <span class="nav-text">表现层：Controller层（Handler层）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View%E5%B1%82"><span class="nav-number">1.2.11.</span> <span class="nav-text">View层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E5%B1%82%E8%81%94%E7%B3%BB"><span class="nav-number">1.2.12.</span> <span class="nav-text">各层联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E9%80%BB%E8%BE%91%E5%B1%82%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.2.13.</span> <span class="nav-text">Service逻辑层设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">基本概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring"><span class="nav-number">1.3.1.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.3.2.</span> <span class="nav-text">SpringMVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis"><span class="nav-number">1.3.3.</span> <span class="nav-text">MyBatis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%8F%8A%E5%88%9B%E5%BB%BAMaven-Web%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.4.</span> <span class="nav-text">开发环境搭建以及创建Maven Web项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JDK%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.JDK的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Eclipse%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.Eclipse的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat8%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.3.</span> <span class="nav-text">Tomcat8的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.4.</span> <span class="nav-text">Maven安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">maven配置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">Maven数据仓库的配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eclipse%E4%B8%AD%E9%9B%86%E6%88%90Maven"><span class="nav-number">1.4.5.</span> <span class="nav-text">Eclipse中集成Maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.6.</span> <span class="nav-text">SVN安装</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="rczmm"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">rczmm</p>
+  <div class="site-description" itemprop="description">你看到的不止如此</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="http://github.com/rczmm" title="GitHub → http:&#x2F;&#x2F;github.com&#x2F;rczmm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3179623450@qq.com" title="E-Mail → mailto:3179623450@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">rczmm</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">220k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:20</span>
+
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    访问量：<span id="busuanzi_value_site_pv"></span> 次数 |
+    访客数：<span id="busuanzi_value_site_uv"></span> 人次
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;"></span>
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#valine-comments' ,
+        verify: false,
+        notify: true,
+        appId: 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
+        appKey: 'UuxnA5liCzoSIlXGGSnWG271',
+        placeholder: '都看到这里了，真的不说两句嘛？',
+        avatar:'mm',
+        guest_info:guest,
+        meta:guest,
+        pageSize:'10' || 20,
+        visitor: true
+    });
+  </script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
