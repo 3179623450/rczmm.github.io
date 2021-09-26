@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://rczmm.github.io/2021/09/15/alta%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86/</loc>
+    
+    <lastmod>2021-09-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rczmm.github.io/about/index.html</loc>
     
     <lastmod>2021-09-26</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://rczmm.github.io/2021/09/09/numpy/</loc>
     
     <lastmod>2021-09-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rczmm.github.io/2021/09/15/alta%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86/</loc>
-    
-    <lastmod>2021-09-15</lastmod>
     
   </url>
   
@@ -504,6 +504,13 @@
   
   <url>
     <loc>http://rczmm.github.io/categories/html/</loc>
+    <lastmod>2021-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://rczmm.github.io/categories/hadoop-%E8%BD%AC%E8%BD%BD/</loc>
     <lastmod>2021-09-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
