@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">numpy基础入门</a>
+            <a href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">ssm框架（一）</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-17 14:18:44" itemprop="dateCreated datePublished" datetime="2021-09-17T14:18:44+08:00">2021-09-17</time>
+              <time title="创建时间：2021-09-21 21:21:44" itemprop="dateCreated datePublished" datetime="2021-09-21T21:21:44+08:00">2021-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" class="leancloud_visitors" data-flag-title="numpy基础入门">
+             <span id="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" class="leancloud_visitors" data-flag-title="ssm框架（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.6k</span>
+              <span>5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -293,67 +293,79 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="NumPy-简单入门教程"><a href="#NumPy-简单入门教程" class="headerlink" title="NumPy 简单入门教程"></a>NumPy 简单入门教程</h1><p>NumPy是Python中的一个运算速度非常快的一个数学库，它非常重视数组。它允许你在Python中进行向量和矩阵计算，并且由于许多底层函数实际上是用C编写的，因此你可以体验在原生Python中永远无法体验到的速度。</p>
-<p>NumPy绝对是科学Python成功的关键之一，如果你想要进入Python中的数据科学/机器学习，你就要必须学习它。在我看来，NumPy的API设计得很好，所以我们要开始使用它并不困难。</p>
-<h2 id="数组基础"><a href="#数组基础" class="headerlink" title="数组基础"></a>数组基础</h2><h3 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h3><p>NumPy围绕这些称为数组的事物展开。实际上它被称之为 <code>ndarrays</code>，你不知道没事儿。使用NumPy提供的这些数组，我们就可以以闪电般的速度执行各种有用的操作，如矢量和矩阵、线性代数等数学运算！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1D Array</span></span><br><span class="line">a = np.array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">b = np.array((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">c = np.arange(<span class="number">5</span>)</span><br><span class="line">d = np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[0 1 2 3 4]</span></span><br><span class="line"><span class="built_in">print</span>(d) <span class="comment"># &gt;&gt;&gt;[ 0.          1.57079633  3.14159265  4.71238898  6.28318531]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">3</span>]) <span class="comment"># &gt;&gt;&gt;3</span></span><br></pre></td></tr></table></figure>
+          <h1 id="ssm框架原理（一）"><a href="#ssm框架原理（一）" class="headerlink" title="ssm框架原理（一）"></a>ssm框架原理（一）</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>ssm框架实际上就是一个框架整合，包含了spring、spring mvc以及mybatis框架。是一种标准的mvc模式的体现，ssm框架将系统划分为表现层、控制层、服务层、以及DAO层。其中，我们使用spring mvc负责请求的转发和视图管理、spring实现业务对象管理、mybatis作为数据持久化引擎。（db）</p>
+<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><h3 id="SpringMVC："><a href="#SpringMVC：" class="headerlink" title="SpringMVC："></a>SpringMVC：</h3><p>1.客户端发送请求到DispacherServlet（分发器）</p>
+<p>2.由DispacherServlet控制器查询HanderMapping，找到处理请求的Controller</p>
+<p>3.Controller调用业务逻辑处理后，返回ModelAndView</p>
+<p>4.DispacherSerclet查询视图解析器，找到ModelAndView指定的视图</p>
+<p>5.视图负责将结果显示到客户端<br><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/20151118190949363.png" alt="img"></p>
+<h3 id="Spring："><a href="#Spring：" class="headerlink" title="Spring："></a>Spring：</h3><p>我们平时开发接触最多的估计就是IOC容器，它可以装载bean（也就是我们Java中的类，当然也包括service dao里面的），有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。</p>
+<h3 id="Mybatis："><a href="#Mybatis：" class="headerlink" title="Mybatis："></a>Mybatis：</h3><p>mybatis是对jdbc的封装，它让数据库底层操作变的透明。mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。在每次与数据库交互时，通过sqlSessionFactory拿到一个sqlSession，再执行sql命令。</p>
+<h3 id="要完成一个功能："><a href="#要完成一个功能：" class="headerlink" title="要完成一个功能："></a>要完成一个功能：</h3><p>先写实体类entity，定义对象的属性，（可以参照数据库中表的字段来设置，数据库的设计应该在所有编码开始之前）。<br>写Mapper.xml（Mybatis），其中定义你的功能，对应要对数据库进行的那些操作，比如 insert、selectAll、select ByKey、delete、update等。<br>写Mapper.java，将Mapper.xml中的操作按照id映射成Java函数。<br>写Service.java，为控制层提供服务，接受控制层的参数，完成相应的功能，并返回给控制层。<br>写Controller.java，连接页面请求和服务层，获取页面请求的参数，通过自动装配，映射不同的URL到相应的处理函数，并获取参数，对参数进行处理，之后传给服务层。<br>写JSP页面调用，请求哪些参数，需要获取什么数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataBase ===&gt; Entity ===&gt; Mapper.xml ===&gt; Mapper.Java ===&gt; Service.java ===&gt; Controller.java ===&gt; Jsp.  </span><br></pre></td></tr></table></figure>
 
-<p>上面的代码显示了创建数组的4种不同方法。最基本的方法是将序列传递给NumPy的array()函数; 你可以传递任何序列（类数组），而不仅仅是常见的列表（list）数据类型。</p>
-<p>请注意，当我们打印具有不同长度数字的数组时，它会自动将它们填充出来。这对于查看矩阵很有用。对数组进行索引就像列表或任何其他Python序列一样。 你也可以对它们进行切片，我不打算在这里切片一维数组。</p>
-<p>上面的数组示例是如何使用NumPy表示向量的，接下来我们将看看如何使用多维数组表示矩阵和更多的信息。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MD Array,</span></span><br><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">2</span>,<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;25</span></span><br></pre></td></tr></table></figure>
+<h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><p>拥有控制器，作用跟Struts类似，接收外部请求，解析参数传给服务层<br>Spring 容器属于协调上下文，管理对象间的依赖，提供事务机制<br>mybatis 属于orm持久层框架，将业务实体 与数据表联合 起来</p>
+<p>Spring MVC  控制层，想当与 Struts的作用<br>Spring 控制反转和依赖注入  创建对象交由容器管理，达到了解耦的作用<br>mybatis 主要用来操作数据库（数据库的增删改查）</p>
+<h3 id="IOC-控制反转"><a href="#IOC-控制反转" class="headerlink" title="IOC:控制反转"></a>IOC:控制反转</h3><p>是一种降低对象之间耦合关系的设计思想，面试的时候最好能说出来个例子，加深理解。例子：租房子，以前租房子需要一个房子一个房子找，费时费力，然后现在加入一个房屋中介，把你需要的房型告诉中介，就可以直接选到需要的房子，中介就相当于spring容器。</p>
+<h3 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP:面向切面编程"></a>AOP:面向切面编程</h3><p>是面向对象开发的一种补充，它允许开发人员在不改变原来模型的基础上动态的修改模型以满足新的需求，如：动态的增加日志、安全或异常处理等。AOP使业务逻辑各部分间的耦合度降低，提高程序可重用性，提高开发效率。</p>
+<h3 id="持久层：DAO层（mapper）"><a href="#持久层：DAO层（mapper）" class="headerlink" title="持久层：DAO层（mapper）"></a>持久层：DAO层（mapper）</h3><p>DAO层：DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，<br>DAO层的设计首先是设计DAO的接口，<br>然后在Spring的配置文件中定义此接口的实现类，<br>然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，<br>DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。</p>
+<h3 id="业务层：Service层"><a href="#业务层：Service层" class="headerlink" title="业务层：Service层"></a>业务层：Service层</h3><p>Service层：Service层主要负责业务模块的逻辑应用设计。<br>首先设计接口，再设计其实现的类<br>接着再在Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。<br>Service层的业务实现，具体要调用到已定义的DAO层的接口，<br>封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。</p>
+<h3 id="表现层：Controller层（Handler层）"><a href="#表现层：Controller层（Handler层）" class="headerlink" title="表现层：Controller层（Handler层）"></a>表现层：Controller层（Handler层）</h3><p>Controller层:Controller层负责具体的业务模块流程的控制，<br>在此层里面要调用Service层的接口来控制业务流程，<br>控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。</p>
+<h3 id="View层"><a href="#View层" class="headerlink" title="View层"></a>View层</h3><p>View层 此层与控制层结合比较紧密，需要二者结合起来协同工发。View层主要负责前台jsp页面的表示.</p>
+<h3 id="各层联系"><a href="#各层联系" class="headerlink" title="各层联系"></a>各层联系</h3><p>DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势<br>Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。这样，在层与层之前我们只需要知道接口的定义，调用接口即可完成所需要的逻辑单元应用，一切显得非常清晰简单。</p>
+<h3 id="Service逻辑层设计"><a href="#Service逻辑层设计" class="headerlink" title="Service逻辑层设计"></a>Service逻辑层设计</h3><p>Service层是建立在DAO层之上的，建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。</p>
+<h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><p>​        Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。 简单来说，Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</p>
+<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><p>​        Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，这种分离让它们更容易进行定制。</p>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>​       MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。MyBatis是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。MyBatis 使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。</p>
+<h2 id="开发环境搭建以及创建Maven-Web项目"><a href="#开发环境搭建以及创建Maven-Web项目" class="headerlink" title="开发环境搭建以及创建Maven Web项目"></a>开发环境搭建以及创建Maven Web项目</h2><blockquote>
+<p>Eclipse+Tomcat+MAVEN+SVN项目完整环境搭建</p>
+</blockquote>
+<h3 id="1-JDK的安装"><a href="#1-JDK的安装" class="headerlink" title="1.JDK的安装"></a>1.JDK的安装</h3><p>​    首先下载JDK，这个从sun公司官网可以下载，根据自己的系统选择64位还是32位，安装过程就是next一路到底。安装完成之后当然要配置环境变量了。</p>
+<p>——————————————————————————————————————————————</p>
+<blockquote>
+<p>1.1新建变量名：JAVA_HOME  变量值：E:\Java\jdk1.6.0_43（这是我的jdk安装路径）</p>
+<p>1.2编辑变量名：Path 在后面加上：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
+<p>1.3 新建变量名：CLASSPATH 变量值： .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
+</blockquote>
+<p>（注意：在设置变量的末尾时不要加上“；”）</p>
+<p>——————————————————————————————————————————————</p>
+<p>设置完成之后我们当然需要测试，打开“运行”–&gt;输入“CMD”–&gt;在命令行上面输入：java，然后回车；输入javac，回车，输入java -version，回车，如果出现下列三个画面，那么JDK配置成功，否则就需要检查环境变量的配置。</p>
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213621372.png" alt="image-20210921213621372" style="zoom:50%;">
 
-<p>为了创建一个2D（二维）数组，我们传递一个列表的列表（或者是一个序列的序列）给array()函数。如果我们想要一个3D（三维）数组，我们就要传递一个列表的列表的列表，如果是一个4D（四维）数组，那就是列表的列表的列表的列表，以此类推。</p>
-<p>请注意2D（二维）数组（在我们的朋友空格键的帮助下）是如何按行和列排列的。要索引2D（二维）数组，我们只需引用行数和列数即可。</p>
-<h3 id="它背后的一些数学知识"><a href="#它背后的一些数学知识" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>要正确理解这一点，我们应该真正了解一下矢量和矩阵是什么。</p>
-<p>矢量是具有方向和幅度的量。它们通常用于表示速度，加速度和动量等事物。向量可以用多种方式编写，尽管对我们最有用的是它们被写为n元组的形式，如（1,4,6,9）。这就是我们在NumPy中表示他们的方式。</p>
-<p>矩阵类似于矢量，除了它由行和列组成; 很像一个网格。可以通过给出它所在的行和列来引用矩阵中的值。在NumPy中，我们通过传递一系列序列来制作数组，就像我们之前所做的那样。</p>
-<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths1-1.jpg" alt="简单线性代数图示"></p>
-<h3 id="多维数组切片"><a href="#多维数组切片" class="headerlink" title="多维数组切片"></a>多维数组切片</h3><p>切片多维数组比1D数组复杂一点，并且在使用NumPy时你也会经常需要使用到。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">0</span>, <span class="number">1</span>:<span class="number">4</span>]) <span class="comment"># &gt;&gt;&gt;[12 13 14]</span></span><br><span class="line"><span class="built_in">print</span>(a[<span class="number">1</span>:<span class="number">4</span>, <span class="number">0</span>]) <span class="comment"># &gt;&gt;&gt;[16 21 26]</span></span><br><span class="line"><span class="built_in">print</span>(a[::<span class="number">2</span>,::<span class="number">2</span>]) <span class="comment"># &gt;&gt;&gt;[[11 13 15]</span></span><br><span class="line">                  <span class="comment">#     [21 23 25]</span></span><br><span class="line">                  <span class="comment">#     [31 33 35]]</span></span><br><span class="line"><span class="built_in">print</span>(a[:, <span class="number">1</span>]) <span class="comment"># &gt;&gt;&gt;[12 17 22 27 32]</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213640935.png" alt="image-20210921213640935" style="zoom:50%;">
 
-<p>如你所见，通过对每个以逗号分隔的维度执行单独的切片，你可以对多维数组进行切片。因此，对于2D数组，我们的第一片定义了行的切片，第二片定义了列的切片。</p>
-<p>注意，只需输入数字就可以指定行或列。上面的第一个示例从数组中选择第0列。</p>
-<p>下面的图表说明了给定的示例切片是如何进行工作的。</p>
-<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_2D_slicing_diagram-1.jpg" alt="numpy数组切片工作原理"></p>
-<h3 id="数组属性"><a href="#数组属性" class="headerlink" title="数组属性"></a>数组属性</h3><p>在使用 NumPy 时，你会想知道数组的某些信息。很幸运，在这个包里边包含了很多便捷的方法，可以给你想要的信息。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([[<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">              [<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">              [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>],</span><br><span class="line">              [<span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span> ,<span class="number">29</span>, <span class="number">30</span>],</span><br><span class="line">              [<span class="number">31</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)) <span class="comment"># &gt;&gt;&gt;&lt;class &#x27;numpy.ndarray&#x27;&gt;</span></span><br><span class="line"><span class="built_in">print</span>(a.dtype) <span class="comment"># &gt;&gt;&gt;int64</span></span><br><span class="line"><span class="built_in">print</span>(a.size) <span class="comment"># &gt;&gt;&gt;25</span></span><br><span class="line"><span class="built_in">print</span>(a.shape) <span class="comment"># &gt;&gt;&gt;(5, 5)</span></span><br><span class="line"><span class="built_in">print</span>(a.itemsize) <span class="comment"># &gt;&gt;&gt;8</span></span><br><span class="line"><span class="built_in">print</span>(a.ndim) <span class="comment"># &gt;&gt;&gt;2</span></span><br><span class="line"><span class="built_in">print</span>(a.nbytes) <span class="comment"># &gt;&gt;&gt;200</span></span><br></pre></td></tr></table></figure>
+<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213714443.png" alt="image-20210921213714443" style="zoom:50%;">
 
-<p>正如你在上面的代码中看到的，NumPy数组实际上被称为ndarray。我不知道为什么他妈的它叫ndarray，如果有人知道请留言！我猜它代表n维数组。</p>
-<p>数组的形状是它有多少行和列，上面的数组有5行和5列，所以它的形状是(5，5)。</p>
-<p><code>itemsize</code>属性是每个项占用的字节数。这个数组的数据类型是int 64，一个int 64中有64位，一个字节中有8位，除以64除以8，你就可以得到它占用了多少字节，在本例中是8。</p>
-<p><code>ndim</code> 属性是数组的维数。这个有2个。例如，向量只有1。</p>
-<p><code>nbytes</code> 属性是数组中的所有数据消耗掉的字节数。你应该注意到，这并不计算数组的开销，因此数组占用的实际空间将稍微大一点。</p>
-<h2 id="使用数组"><a href="#使用数组" class="headerlink" title="使用数组"></a>使用数组</h2><h3 id="基本操作符"><a href="#基本操作符" class="headerlink" title="基本操作符"></a>基本操作符</h3><p>只是能够从数组中创建和检索元素和属性不能满足你的需求，你有时也需要对它们进行数学运算。 你完全可以使用四则运算符 +、- 、/ 来完成运算操作。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Basic Operators</span></span><br><span class="line">a = np.arange(<span class="number">25</span>)</span><br><span class="line">a = a.reshape((<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line">b = np.array([<span class="number">10</span>, <span class="number">62</span>, <span class="number">1</span>, <span class="number">14</span>, <span class="number">2</span>, <span class="number">56</span>, <span class="number">79</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">45</span>,</span><br><span class="line">              <span class="number">4</span>, <span class="number">92</span>, <span class="number">5</span>, <span class="number">55</span>, <span class="number">63</span>, <span class="number">43</span>, <span class="number">35</span>, <span class="number">6</span>, <span class="number">53</span>, <span class="number">24</span>,</span><br><span class="line">              <span class="number">56</span>, <span class="number">3</span>, <span class="number">56</span>, <span class="number">44</span>, <span class="number">78</span>])</span><br><span class="line">b = b.reshape((<span class="number">5</span>,<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"><span class="built_in">print</span>(a * b)</span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br><span class="line"><span class="built_in">print</span>(a ** <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(a &lt; b) <span class="built_in">print</span>(a &gt; b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.dot(b))</span><br></pre></td></tr></table></figure>
+<h3 id="2-Eclipse的安装"><a href="#2-Eclipse的安装" class="headerlink" title="2.Eclipse的安装"></a>2.Eclipse的安装</h3><p>   下载地址：<a target="_blank" rel="noopener" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a>  版本自行选择  </p>
+<p>   完成之后我们启动Eclipse，设置好工作路径，也可以直接默认。我们打开window–&gt;preference输入jre，安装下图。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828185304219-909517504.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190251437-403272735.png" alt="img"></p>
+<p> 此时我们可以随便建立一个JAVA项目，然后编写一个helloworld来测试一下是否正确。</p>
+<h3 id="Tomcat8的安装"><a href="#Tomcat8的安装" class="headerlink" title="Tomcat8的安装"></a>Tomcat8的安装</h3><p>​    Tomcat使用的版本是8，大家可以到apache的官网上去下载，<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-80.cgi">http://tomcat.apache.org</a>，下载直接解压就行。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190448875-2048839166.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190629703-89662533.png" alt="img"></p>
+<h3 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h3><h4 id="maven配置环境变量"><a href="#maven配置环境变量" class="headerlink" title="maven配置环境变量"></a>maven配置环境变量</h4><p> 下载maven，就是一个包：apache-maven-3.2.1，我用的版本是3.2.1，解压到一个路径，然后配置环境变量：</p>
+<p>——————————————————————————————————————————————————</p>
+<blockquote>
+<p>   5.1 新建变量名：MAVEN_HOME  变量值：D:\server\apache-maven-3.2.1（这是我的MAVEN路径）</p>
+<p>   编辑变量名：Path 在最前面加上：%MAVEN_HOME%\bin;（注意，最后要有个”;”作为分隔符）</p>
+</blockquote>
+<p>——————————————————————————————————————————————</p>
+<p>完成之后，在命令行输入：mvn -version查看是否有以下内容，如果有表示配置成功。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190819234-882295285.png" alt="img"></p>
+<h4 id="Maven数据仓库的配置"><a href="#Maven数据仓库的配置" class="headerlink" title="Maven数据仓库的配置"></a>Maven数据仓库的配置</h4><p>MAVEN中还有一个重要的配置就是数据仓库的路径配置，我们找到MAVEN的安装路径，进入conf–&gt;打开settings.xml，找到localRepository标签，此时是被注释掉的，我们解除注释，然后配置一个路径，例如：E:\Dev\Java\maven\repo，这样以后MAVEN管理下载的jar包都会在这个路径下。当然我们需要建这样一个目录结构，然后还要讲settings.xml复制一份到E:\Dev\Java\maven下，这个在与Eclipse集成时会用到。<strong>修改默认保存路径</strong></p>
+<p><strong><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829203627344-2088280037.png" alt="img"></strong></p>
+<h3 id="Eclipse中集成Maven"><a href="#Eclipse中集成Maven" class="headerlink" title="Eclipse中集成Maven"></a>Eclipse中集成Maven</h3><p>在preferences中进行配置，如图：</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204010922-1975818603.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204215719-809768030.png" alt="img"></p>
+<p> 此时，点击File–&gt;new–&gt;other–&gt;输入maven–&gt;–&gt;Maven Project，如果可以看到这些，证明配置成功，已经可以建立Maven项目了。</p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204454765-1161572702.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204928656-1589383472.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204944172-1087694389.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204953047-22835249.png" alt="img"></p>
+<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205005375-1380967534.png" alt="img"></p>
+<p>如果indexjsp 提示有错误需要在pom.xml中导入  javaee-api.jar</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;7.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<p>除了 dot() 之外，这些操作符都是对数组进行逐元素运算。比如 (a, b, c) + (d, e, f) 的结果就是 (a+d, b+e, c+f)。它将分别对每一个元素进行配对，然后对它们进行运算。它返回的结果是一个数组。注意，当使用逻辑运算符比如 “&lt;” 和 “&gt;” 的时候，返回的将是一个布尔型数组，这点有一个很好的用处，后边我们会提到。</p>
-<p>dot() 函数计算两个数组的点积。它返回的是一个标量（只有大小没有方向的一个值）而不是数组。</p>
-<h3 id="它背后的一些数学知识-1"><a href="#它背后的一些数学知识-1" class="headerlink" title="它背后的一些数学知识"></a>它背后的一些数学知识</h3><p>dot()函数称为点积。理解这一点的最好方法是看下图，下图将表示它是如何进行计算的。</p>
-<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_maths2-1.jpg" alt="点积运算原理"></p>
-<h3 id="数组特殊运算符"><a href="#数组特殊运算符" class="headerlink" title="数组特殊运算符"></a>数组特殊运算符</h3><p>NumPy还提供了一些别的用于处理数组的好用的运算符。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">sum</span>()) <span class="comment"># &gt;&gt;&gt;45</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">min</span>()) <span class="comment"># &gt;&gt;&gt;0</span></span><br><span class="line"><span class="built_in">print</span>(a.<span class="built_in">max</span>()) <span class="comment"># &gt;&gt;&gt;9</span></span><br><span class="line"><span class="built_in">print</span>(a.cumsum()) <span class="comment"># &gt;&gt;&gt;[ 0  1  3  6 10 15 21 28 36 45]</span></span><br></pre></td></tr></table></figure>
-
-<p>sum()、min()和max()函数的作用非常明显。将所有元素相加，找出最小和最大元素。</p>
-<p>然而，cumsum()函数就不那么明显了。它将像sum()这样的每个元素相加，但是它首先将第一个元素和第二个元素相加，并将计算结果存储在一个列表中，然后将该结果添加到第三个元素中，然后再将该结果存储在一个列表中。这将对数组中的所有元素执行此操作，并返回作为列表的数组之和的运行总数。</p>
-<h2 id="索引进阶"><a href="#索引进阶" class="headerlink" title="索引进阶"></a>索引进阶</h2><h3 id="花式索引"><a href="#花式索引" class="headerlink" title="花式索引"></a>花式索引</h3><p><code>花式索引</code> 是获取数组中我们想要的特定元素的有效方法。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Fancy indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">indices = [<span class="number">1</span>, <span class="number">5</span>, -<span class="number">1</span>]</span><br><span class="line">b = a[indices]</span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40 50 60 70 80 90]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[10 50 90]</span></span><br></pre></td></tr></table></figure>
-
-<p>正如你在上面的示例中所看到的，我们使用我们想要检索的特定索引序列对数组进行索引。这反过来返回我们索引的元素的列表。</p>
-<h3 id="布尔屏蔽"><a href="#布尔屏蔽" class="headerlink" title="布尔屏蔽"></a>布尔屏蔽</h3><p>布尔屏蔽是一个有用的功能，它允许我们根据我们指定的条件检索数组中的元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Boolean masking</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">a = np.linspace(<span class="number">0</span>, <span class="number">2</span> * np.pi, <span class="number">50</span>)</span><br><span class="line">b = np.sin(a)</span><br><span class="line">plt.plot(a,b)</span><br><span class="line">mask = b &gt;= <span class="number">0</span></span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;bo&#x27;</span>)</span><br><span class="line">mask = (b &gt;= <span class="number">0</span>) &amp; (a &lt;= np.pi / <span class="number">2</span>)</span><br><span class="line">plt.plot(a[mask], b[mask], <span class="string">&#x27;go&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>上面的示例显示了如何进行布尔屏蔽。你所要做的就是将数组传递给涉及数组的条件，它将为你提供一个值的数组，为该条件返回true。</p>
-<p>该示例生成以下图：</p>
-<p><img src="/2021/09/17/numpy%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/numpy_masking-1.png" alt="布尔掩码结果图"></p>
-<p>我们利用这些条件来选择图上的不同点。蓝色点(在图中还包括绿点，但绿点掩盖了蓝色点)，显示值大于0的所有点。绿色点表示值大于0且小于一半π的所有点。</p>
-<h3 id="缺省索引"><a href="#缺省索引" class="headerlink" title="缺省索引"></a>缺省索引</h3><p>不完全索引是从多维数组的第一个维度获取索引或切片的一种方便方法。例如，如果数组a=[1，2，3，4，5]，[6，7，8，9，10]，那么[3]将在数组的第一个维度中给出索引为3的元素，这里是值4。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Incomplete Indexing</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = a[:<span class="number">5</span>]</span><br><span class="line">c = a[a &gt;= <span class="number">50</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;[ 0 10 20 30 40]</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[50 60 70 80 90]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Where-函数"><a href="#Where-函数" class="headerlink" title="Where 函数"></a>Where 函数</h3><p>where() 函数是另外一个根据条件返回数组中的值的有效方法。只需要把条件传递给它，它就会返回一个使得条件为真的元素的列表。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Where</span></span><br><span class="line">a = np.arange(<span class="number">0</span>, <span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">b = np.where(a &lt; <span class="number">50</span>) </span><br><span class="line">c = np.where(a &gt;= <span class="number">50</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># &gt;&gt;&gt;(array([0, 1, 2, 3, 4]),)</span></span><br><span class="line"><span class="built_in">print</span>(c) <span class="comment"># &gt;&gt;&gt;[5 6 7 8 9]</span></span><br></pre></td></tr></table></figure>
-
-<p>这就是NumPy，没那么难吧？当然，这篇文章只涵盖了入门的基础知识，在NumPy中你还可以做许多其他好玩的事情，当你已经熟悉了NumPy的基础知识，你就可以开始自由的探索NumPy的世界了。</p>
+<h3 id="SVN安装"><a href="#SVN安装" class="headerlink" title="SVN安装"></a>SVN安装</h3><p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205515859-847674917.png" alt="img"></p>
 
       
     </div>
@@ -376,7 +388,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -444,7 +456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -505,12 +517,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">307k</span>
+    <span title="站点总字数">314k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:39</span>
+    <span title="站点阅读时长">4:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

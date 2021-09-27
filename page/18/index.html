@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">进程基础概念</a>
+            <a href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="post-title-link" itemprop="url">html学习笔记01</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-01 15:27:13" itemprop="dateCreated datePublished" datetime="2021-09-01T15:27:13+08:00">2021-09-01</time>
+              <time title="创建时间：2021-09-10 09:13:27" itemprop="dateCreated datePublished" datetime="2021-09-10T09:13:27+08:00">2021-09-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                  <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="进程基础概念">
+             <span id="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" class="leancloud_visitors" data-flag-title="html学习笔记01">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/01/%E8%BF%9B%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/10/html%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B001/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>798</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,12 +293,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><p>一般地，现代程序在现代系统上运行时，操作系统会提供一种假象，就好像系统上只有这个程序在运行。程序看上去是独占地使用处理器、主存和io设备。处理器看上去就像在不间断的一条接一条地执行程序中的指令，即该程序的代码和数据是系统内存中唯一的对象。这些假象就是通过进程的概念来实现的，进程是计算机科学中最重要和最成功的的概念之一。</p>
-<p>进程是操作系统对一个正在运行的程序的一种抽象，在一个系统上可以同时运行多个进程，而每个进程都好像在独占的使用硬件。而<strong>并发运行</strong>，则是说一个进程的指令和另外一个进程的指令其实是交错着在执行的。</p>
-<p>在大多数系统中，需要运行的进程数是可以多于可以运行他们的cpu个数的。传统系统在一个时刻只能执行一个程序，而先进的多核处理器同时能够执行多个程序，这是通过处理器在进程之间切换来实现的，操作系统实现这种交错执行的机制成为<strong>上下文切换</strong>。</p>
-<p>操作系统保持跟踪进程运行所需的所有状态信息，这种状态，也就是上下文，包括许多信息，比如pc（寄存器，处理器核心（大小为一个字的储存设备））和寄存器文件的当前值，以及主存的内容。在任何一个时刻，单核处理器都只能执行一个进程的代码，当操作系统决定要把控制权从当前进程转移到某个新进程时，就会进行上下文切换，即保存当前进程的上下文，恢复新进程的上下文，然后将控制权传递到新进程。新进程就会从它上次停止的地方开始。</p>
-<p>一个进程到另一个进程的转换是由操作系统内核负责管理的，内核不是一个独立的进程，他是操作系统用来管理全部进程所用的代码和数据结构的集合。他是操作系统代码常驻主存的部分，当app需要操作系统的某些操作时，例如最简单的读写文件，内核就会执行一条特殊的系统调用指令，将控制权传递给内核，然后内核执行被请求的操作并返回app。</p>
-<p>现在进程这个抽象概念需要低级硬件和操作系统软件之间的紧密合作，以后会揭示这项工作的基本原理，以及app是如何创建和控制他们的进程的。</p>
+          <h2 id="1、html"><a href="#1、html" class="headerlink" title="1、html"></a>1、html</h2><p>html作为一门超文本标记语言，包括一系列的标签，它通过这些标签将网络文档结构统一化，通过浏览器进行解析与阅读。</p>
+<p>html文本是由html（htm）为后缀的由html命令组成的描述性文本，通过对标签的使用，可以描述文字，图形，动画，声音，表格，链接等等。</p>
+<h2 id="2、position"><a href="#2、position" class="headerlink" title="2、position"></a>2、position</h2><p>dom position属性。</p>
+<p>position属性把元素放置到一个静态的、相对的、绝对的、固定的的位置中去。</p>
+<p>要理解这个属性，首先应该明白什么是流？</p>
+<p>所谓的文档流，指的其实就是元素排版布局过程中，元素会自动从左到右，从上往下的流式排列。并最终窗体自上而下分成一行行，并在每行中按从左至右的排放元素。</p>
+<p>顺便说一下，除了设置position的属性值为absolute与fixed之外，float对象也会<strong>打乱这个队列</strong>，这些都会暂时脱离流的存在，clear之后才会回到流之中（单指float）。</p>
+<p>（float：right显然会打乱文档流，但是float：left也有这样的效果：其实是因为子元素设置了float属性，然而父元素没有设置（或者保持了默认的static），则子元素会从父元素中溢出，（最明显的表现就是，父元素不会随着子元素的扩大而扩大），因为当元素设置了float这个属性之后，其他没有设置float属性的盒子或者是标签会无视这个属性，也就是其他没有设置浮动的元素会和他进行叠加，这就可以当作脱离了文档流。但是要注意一点的就是，与position：absolute不同的是，其他盒子内的元素依然会为了float元素让出位置，因此不会出现互相叠加的情况。这种情况下消除浮动就可以解决）</p>
+<p>其中，默认得到html流属性其实就是static，默认布局，这种布局，是没有定位的，而且不会继承父元素的属性，w3c的文档里提到，忽略top、bottom、left、right或者z-index声明，他是存在于流里面的。除此之外还有relative，相对布局，假如父元素采用了这种布局，那么子元素就是相对于父元素的绝对定位，一般会配合到top、right、bottom、left来使用，这种布局其实也是存在于流里面的。但是fixed浮动布局，是相对于浏览器窗口的绝对布局（上下滚动页面），一般同样配合上下左右来使用，这个布局是脱离了流的存在的。（！！ie不兼容这种模式！！）</p>
+<p>absolute布局，绝对布局，相对于页面的绝对布局（上下滚动），同样配合四方使用，脱离了流的存在，最后一种我用的比较少，inherit布局，w3c的文档规定他是继承了父元素position的值。</p>
+<p><strong>如果我们想在页面上固定元素，毫无疑问，选择absolute，他是以页面左上角为（0，0），根据tblr来布局的，与fixed不同，f是当前窗口布局，也是左上角为（0，0），但是会根据滚动条一起滚动，相对于当前窗口的位置不变。relative是相对位置，指的是子节点和父节点的关系，当一个子节点在父节点中的时候，默认的position就是relative，在子节点包含在父节点中，这个时候就算我们设置的子节点是absolute，也会成为relative，也就是相对于父节点的左上角排版。</strong></p>
+<p><strong>总结：在html中，永远没有绝对，只有相对。所有元素都是document的子元素。</strong></p>
+<h2 id="3、相对路径与绝对路径"><a href="#3、相对路径与绝对路径" class="headerlink" title="3、相对路径与绝对路径"></a>3、相对路径与绝对路径</h2><p><strong>参照物不同</strong>，导致的差别。</p>
+<p>在计算机中，这是一个避免不了问题，无论是path环境变量还是classpath类加载路径都是源自于这两个路径的差别。他们的差别也很简单，绝对路径以磁盘为参照物，而相对路径则以当前路径为参照。</p>
 
       
     </div>
@@ -321,7 +329,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -389,7 +397,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -450,12 +458,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">307k</span>
+    <span title="站点总字数">314k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:39</span>
+    <span title="站点阅读时长">4:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

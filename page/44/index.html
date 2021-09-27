@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">安装和几个概念</a>
+            <a href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">类与对象</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-20 23:17:48" itemprop="dateCreated datePublished" datetime="2021-07-20T23:17:48+08:00">2021-07-20</time>
+              <time title="创建时间：2021-07-20 23:21:27" itemprop="dateCreated datePublished" datetime="2021-07-20T23:21:27+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
             </span>
 
           
-             <span id="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/" class="leancloud_visitors" data-flag-title="安装和几个概念">
+             <span id="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" class="leancloud_visitors" data-flag-title="类与对象">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,7 +275,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.5k</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -293,46 +293,73 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>python的安装</p>
-<p><a target="_blank" rel="noopener" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
-<p>python   2和3两个版本，这两个版本是并行，而且差距还有点大</p>
-<p>idle python自带的一个开发工具（tab 自动补全）</p>
-<p>交互界面去完成一些简单的测试</p>
-<p>一般将python代码保存到一个py文件里，然后通过python指令来执行文件中的代码。</p>
-<p> 几个概念</p>
-<p>1、表达式</p>
-<p>表达式就是类似于数学公式的东西</p>
-<p>表达式一般仅仅用来计算，不会对程序有什么实质性影响，如果说你在交互模式直接输入表达式，那么解释器会自动的表达式的值输出。</p>
-<p>2、语句</p>
-<p>语句，一般需要他完成某种功能</p>
-<p>print 打印一些信息</p>
-<p>input  获取信息</p>
-<p>a=1  为变量赋值</p>
-<p>……</p>
-<p>语句的执行一般来说都会对程序造成一定的影响</p>
-<p>在交互模式中不一定会输出语句的结果</p>
-<p>3、程序</p>
-<p>程序是由一条一条的语句和一条条的表达式构成的</p>
-<p>4、函数</p>
-<p>函数也是一种语句，来完成特定的功能</p>
-<p>函数：xx（）</p>
-<p>函数的分类：</p>
-<p>​    内置函数：</p>
-<p>​        由解释器提供的函数：print（）</p>
-<p>​    自定义函数：</p>
-<p>​        由开发者自己创建的函数</p>
-<p>函数有两个要素：参数（），括号中的内容就是参数</p>
-<p>​        函数可以没有参数，也可以有很多个参数，多个参数用，隔开</p>
-<p>​    返回值</p>
-<p>​        返回值就是函数的返回结果，不是所有的函数都有返回值</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/20/%E5%AE%89%E8%A3%85%E5%92%8C%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>函数</p>
+<p>python是一门面向对象的语言，万物皆是对象（一切其实皆函数（不准确，不正确））</p>
+<p>函数也是一种对象（内存中专门用来储存数据的一块区域）</p>
+<p>函数可以保存一些可执行的代码，并且，在需要的时候，这一部分代码可以重复的使用。</p>
+<p>创建函数：</p>
+<p>def 函数名（形参1，形参2…..）：</p>
+<p>​    代码块</p>
+<p>函数名的命名规范，（不能占用保留字符，可以包含字母、数字、下划线，但是不能用数字开头）</p>
+<p>函数中保存的代码不会立即执行，而是要调用才会执行（注意函数的参数）</p>
+<p>调用函数</p>
+<p>函数名（参数）</p>
+<p>函数可以没有参数，也可以有多个参数，调用时必须要符合定义的规范</p>
+<p>参数</p>
+<p>形参（就相当于在函数内部声明了一个变量），多个形参用逗号隔开</p>
+<p>实参（实际参数）调用函数的时候，传递进来的参数，实参会赋值给形参</p>
+<p>有几个形参就要几个实参</p>
+<p>函数式的编程</p>
+<p>在python中，函数式一等对象</p>
+<p>一等对象，如下特点</p>
+<p>1、对象是在运行时创建的</p>
+<p>2、能赋值给变量或者作为数据结构中的元素</p>
+<p>3、能作为参数转递</p>
+<p>4、能作为返回值返回</p>
+<p>高阶函数</p>
+<p>第一、接受一个或者多个函数作为参数</p>
+<p>第二、将函数作为返回值返回</p>
+<p>第三、装饰器</p>
+<p>类与对象</p>
+<p>面向对象</p>
+<p>所谓的面向对象、简单来说就是所有操作都可以通过对象来实现</p>
+<p>面向过程、将程序拆解成一个个的步骤</p>
+<p>大鹏上学记</p>
+<p>​    1、妈妈起床</p>
+<p>​    2、妈妈上厕所</p>
+<p>​    3、妈妈洗漱</p>
+<p>​    4、妈妈做早饭</p>
+<p>​    5、妈妈叫大鹏</p>
+<p>​    6、大鹏上厕所</p>
+<p>​    7、大鹏洗漱</p>
+<p>​    8、大鹏吃早饭</p>
+<p>​    9、背上书包</p>
+<p>​    10、上学校‘</p>
+<p>编程思想（面向过程）：将一个功能拆分成许多的小步骤</p>
+<p>只适用于一个功能，如果要实现另外一个功能，即使两个功能相差很小，但是依旧要重新写代码</p>
+<p>复用性比较低，难于维护</p>
+<p>面向对象：关注的不是过程，关注的是对象</p>
+<p>大鹏上学记</p>
+<p>​    1、大鹏妈妈叫大鹏上学</p>
+<p>编程思想（面向对象），将所有的功能保存到一个对象里</p>
+<p>比如，妈妈的功能保存到妈妈对象里，大鹏的功能保存到大鹏的对象里，要使用这个功能，直接来找对象。</p>
+<p>（要值得一提的是，作为一个功能来讲，（中小功能），面向过程写起来比较酣畅淋漓，同时比较快）</p>
+<p>简单归纳一下，面向对象的思想：1、找对象、2、搞对象（设计对象，做对象）、调用对象</p>
+<p>类（class）</p>
+<p>类和对象是什么关系</p>
+<p>类就是对象的图纸！</p>
+<p>对象是类的实例</p>
+<p>类也是一个对象（一个用来创建对象的对象）</p>
+<p>类：</p>
+<p>生活中所有的事物都可以抽象出来</p>
+<p>1、数据（属性） 变量</p>
+<p>2、行为（方法） 函数</p>
+<p>所有的这个类的实例都可以对象.属性来访问这个变量，对象.方法（）都可以来调用这个方法</p>
+<p>定义一个类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class 类名（）:</span><br><span class="line">	公共的一些属性</span><br><span class="line">	a=1</span><br><span class="line">	b=2</span><br><span class="line">	</span><br><span class="line">	对象的初始化方法</span><br><span class="line">	def __init__(self,...):</span><br><span class="line">		...</span><br><span class="line">	其他的方法</span><br><span class="line">	def method():</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
+
+<p>p1=类名（）（创建了一个对象，根据类名的那个类）然后，初始化方法就会自动调用，其他方法需要手动调用。</p>
+
       
     </div>
  <div>
@@ -354,7 +381,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/43/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/45/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/43/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/45/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -422,7 +449,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -483,12 +510,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">307k</span>
+    <span title="站点总字数">314k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:39</span>
+    <span title="站点阅读时长">4:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>

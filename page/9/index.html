@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +226,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">ssm框架（一）</a>
+            <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F/" class="post-title-link" itemprop="url">numpy数组的不同方式</a>
         </h2>
 
         <div class="post-meta">
@@ -236,7 +236,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-21 21:21:44" itemprop="dateCreated datePublished" datetime="2021-09-21T21:21:44+08:00">2021-09-21</time>
+              <time title="创建时间：2021-09-21 22:30:02" itemprop="dateCreated datePublished" datetime="2021-09-21T22:30:02+08:00">2021-09-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,12 +244,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-             <span id="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" class="leancloud_visitors" data-flag-title="ssm框架（一）">
+             <span id="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F/" class="leancloud_visitors" data-flag-title="numpy数组的不同方式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -265,8 +265,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -275,13 +275,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>5k</span>
+              <span>2.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>5 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -293,79 +293,156 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="ssm框架原理（一）"><a href="#ssm框架原理（一）" class="headerlink" title="ssm框架原理（一）"></a>ssm框架原理（一）</h1><h2 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h2><p>ssm框架实际上就是一个框架整合，包含了spring、spring mvc以及mybatis框架。是一种标准的mvc模式的体现，ssm框架将系统划分为表现层、控制层、服务层、以及DAO层。其中，我们使用spring mvc负责请求的转发和视图管理、spring实现业务对象管理、mybatis作为数据持久化引擎。（db）</p>
-<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><h3 id="SpringMVC："><a href="#SpringMVC：" class="headerlink" title="SpringMVC："></a>SpringMVC：</h3><p>1.客户端发送请求到DispacherServlet（分发器）</p>
-<p>2.由DispacherServlet控制器查询HanderMapping，找到处理请求的Controller</p>
-<p>3.Controller调用业务逻辑处理后，返回ModelAndView</p>
-<p>4.DispacherSerclet查询视图解析器，找到ModelAndView指定的视图</p>
-<p>5.视图负责将结果显示到客户端<br><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/20151118190949363.png" alt="img"></p>
-<h3 id="Spring："><a href="#Spring：" class="headerlink" title="Spring："></a>Spring：</h3><p>我们平时开发接触最多的估计就是IOC容器，它可以装载bean（也就是我们Java中的类，当然也包括service dao里面的），有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。</p>
-<h3 id="Mybatis："><a href="#Mybatis：" class="headerlink" title="Mybatis："></a>Mybatis：</h3><p>mybatis是对jdbc的封装，它让数据库底层操作变的透明。mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。在每次与数据库交互时，通过sqlSessionFactory拿到一个sqlSession，再执行sql命令。</p>
-<h3 id="要完成一个功能："><a href="#要完成一个功能：" class="headerlink" title="要完成一个功能："></a>要完成一个功能：</h3><p>先写实体类entity，定义对象的属性，（可以参照数据库中表的字段来设置，数据库的设计应该在所有编码开始之前）。<br>写Mapper.xml（Mybatis），其中定义你的功能，对应要对数据库进行的那些操作，比如 insert、selectAll、select ByKey、delete、update等。<br>写Mapper.java，将Mapper.xml中的操作按照id映射成Java函数。<br>写Service.java，为控制层提供服务，接受控制层的参数，完成相应的功能，并返回给控制层。<br>写Controller.java，连接页面请求和服务层，获取页面请求的参数，通过自动装配，映射不同的URL到相应的处理函数，并获取参数，对参数进行处理，之后传给服务层。<br>写JSP页面调用，请求哪些参数，需要获取什么数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataBase ===&gt; Entity ===&gt; Mapper.xml ===&gt; Mapper.Java ===&gt; Service.java ===&gt; Controller.java ===&gt; Jsp.  </span><br></pre></td></tr></table></figure>
+          <h1 id="创建-Numpy-数组的不同方式"><a href="#创建-Numpy-数组的不同方式" class="headerlink" title="创建 Numpy 数组的不同方式"></a>创建 Numpy 数组的不同方式</h1><p>Numpy库的核心是数组对象或ndarray对象（n维数组）。你将使用Numpy数组执行逻辑，统计和傅里叶变换等运算。作为使用Numpy的一部分，你要做的第一件事就是创建Numpy数组。本指南的主要目的是帮助数据科学爱好者了解可用于创建Numpy数组的不同方式。</p>
+<p>创建Numpy数组有三种不同的方法：</p>
+<ol>
+<li>使用Numpy内部功能函数</li>
+<li>从列表等其他Python的结构进行转换</li>
+<li>使用特殊的库函数</li>
+</ol>
+<h2 id="使用Numpy内部功能函数"><a href="#使用Numpy内部功能函数" class="headerlink" title="使用Numpy内部功能函数"></a>使用Numpy内部功能函数</h2><p>Numpy具有用于创建数组的内置函数。 我们将在本指南中介绍其中一些内容。</p>
+<h3 id="创建一个一维的数组"><a href="#创建一个一维的数组" class="headerlink" title="创建一个一维的数组"></a>创建一个一维的数组</h3><p>首先，让我们创建一维数组或rank为1的数组。<code>arange</code>是一种广泛使用的函数，用于快速创建数组。将值20传递给<code>arange</code>函数会创建一个值范围为0到19的数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">20</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
 
-<h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><p>拥有控制器，作用跟Struts类似，接收外部请求，解析参数传给服务层<br>Spring 容器属于协调上下文，管理对象间的依赖，提供事务机制<br>mybatis 属于orm持久层框架，将业务实体 与数据表联合 起来</p>
-<p>Spring MVC  控制层，想当与 Struts的作用<br>Spring 控制反转和依赖注入  创建对象交由容器管理，达到了解耦的作用<br>mybatis 主要用来操作数据库（数据库的增删改查）</p>
-<h3 id="IOC-控制反转"><a href="#IOC-控制反转" class="headerlink" title="IOC:控制反转"></a>IOC:控制反转</h3><p>是一种降低对象之间耦合关系的设计思想，面试的时候最好能说出来个例子，加深理解。例子：租房子，以前租房子需要一个房子一个房子找，费时费力，然后现在加入一个房屋中介，把你需要的房型告诉中介，就可以直接选到需要的房子，中介就相当于spring容器。</p>
-<h3 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP:面向切面编程"></a>AOP:面向切面编程</h3><p>是面向对象开发的一种补充，它允许开发人员在不改变原来模型的基础上动态的修改模型以满足新的需求，如：动态的增加日志、安全或异常处理等。AOP使业务逻辑各部分间的耦合度降低，提高程序可重用性，提高开发效率。</p>
-<h3 id="持久层：DAO层（mapper）"><a href="#持久层：DAO层（mapper）" class="headerlink" title="持久层：DAO层（mapper）"></a>持久层：DAO层（mapper）</h3><p>DAO层：DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此，<br>DAO层的设计首先是设计DAO的接口，<br>然后在Spring的配置文件中定义此接口的实现类，<br>然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰，<br>DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。</p>
-<h3 id="业务层：Service层"><a href="#业务层：Service层" class="headerlink" title="业务层：Service层"></a>业务层：Service层</h3><p>Service层：Service层主要负责业务模块的逻辑应用设计。<br>首先设计接口，再设计其实现的类<br>接着再在Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。<br>Service层的业务实现，具体要调用到已定义的DAO层的接口，<br>封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。</p>
-<h3 id="表现层：Controller层（Handler层）"><a href="#表现层：Controller层（Handler层）" class="headerlink" title="表现层：Controller层（Handler层）"></a>表现层：Controller层（Handler层）</h3><p>Controller层:Controller层负责具体的业务模块流程的控制，<br>在此层里面要调用Service层的接口来控制业务流程，<br>控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。</p>
-<h3 id="View层"><a href="#View层" class="headerlink" title="View层"></a>View层</h3><p>View层 此层与控制层结合比较紧密，需要二者结合起来协同工发。View层主要负责前台jsp页面的表示.</p>
-<h3 id="各层联系"><a href="#各层联系" class="headerlink" title="各层联系"></a>各层联系</h3><p>DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势<br>Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。这样，在层与层之前我们只需要知道接口的定义，调用接口即可完成所需要的逻辑单元应用，一切显得非常清晰简单。</p>
-<h3 id="Service逻辑层设计"><a href="#Service逻辑层设计" class="headerlink" title="Service逻辑层设计"></a>Service逻辑层设计</h3><p>Service层是建立在DAO层之上的，建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。</p>
-<h2 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><p>​        Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架，由Rod Johnson 在其著作Expert One-On-One J2EE Development and Design中阐述的部分理念和原型衍生而来。它是为了解决企业应用开发的复杂性而创建的。Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而，Spring的用途不仅限于服务器端的开发。从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。 简单来说，Spring是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</p>
-<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><p>​        Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。Spring MVC 分离了控制器、模型对象、分派器以及处理程序对象的角色，这种分离让它们更容易进行定制。</p>
-<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>​       MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。MyBatis是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）MyBatis 消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。MyBatis 使用简单的 XML或注解用于配置和原始映射，将接口和 Java 的POJOs（Plain Old Java Objects，普通的 Java对象）映射成数据库中的记录。</p>
-<h2 id="开发环境搭建以及创建Maven-Web项目"><a href="#开发环境搭建以及创建Maven-Web项目" class="headerlink" title="开发环境搭建以及创建Maven Web项目"></a>开发环境搭建以及创建Maven Web项目</h2><blockquote>
-<p>Eclipse+Tomcat+MAVEN+SVN项目完整环境搭建</p>
-</blockquote>
-<h3 id="1-JDK的安装"><a href="#1-JDK的安装" class="headerlink" title="1.JDK的安装"></a>1.JDK的安装</h3><p>​    首先下载JDK，这个从sun公司官网可以下载，根据自己的系统选择64位还是32位，安装过程就是next一路到底。安装完成之后当然要配置环境变量了。</p>
-<p>——————————————————————————————————————————————</p>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>,</span><br><span class="line">       <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>,</span><br><span class="line">       <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>,</span><br><span class="line">       <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>])</span><br></pre></td></tr></table></figure>
+
+<p>要验证此数组的维度，请使用shape属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">20</span>,)</span><br></pre></td></tr></table></figure>
+
+<p>由于逗号后面没有值，因此这是一维数组。 要访问此数组中的值，请指定非负索引。 与其他编程语言一样，索引从零开始。 因此，要访问数组中的第四个元素，请使用索引3。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>Numpy的数组是可变的，这意味着你可以在初始化数组后更改数组中元素的值。 使用print函数查看数组的内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array[<span class="number">3</span>] = <span class="number">100</span></span><br><span class="line"><span class="built_in">print</span>(array)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[  <span class="number">0</span>   <span class="number">1</span>   <span class="number">2</span> <span class="number">100</span></span><br><span class="line">   <span class="number">4</span>   <span class="number">5</span>   <span class="number">6</span>   <span class="number">7</span></span><br><span class="line">   <span class="number">8</span>   <span class="number">9</span>  <span class="number">10</span>  <span class="number">11</span></span><br><span class="line">   <span class="number">12</span>  <span class="number">13</span>  <span class="number">14</span>  <span class="number">15</span></span><br><span class="line">   <span class="number">16</span>  <span class="number">17</span>  <span class="number">18</span>  <span class="number">19</span>]</span><br></pre></td></tr></table></figure>
+
+<p>与Python列表不同，Numpy数组的内容是同质的。 因此，如果你尝试将字符串值分配给数组中的元素，其数据类型为int，则会出现错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array[<span class="number">3</span>] =<span class="string">&#x27;Numpy&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ValueError: invalid literal <span class="keyword">for</span> <span class="built_in">int</span>() <span class="keyword">with</span> base <span class="number">10</span>: <span class="string">&#x27;Numpy&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建一个二维数组"><a href="#创建一个二维数组" class="headerlink" title="创建一个二维数组"></a>创建一个二维数组</h3><p>我们来谈谈创建一个二维数组。 如果只使用arange函数，它将输出一维数组。 要使其成为二维数组，请使用reshape函数链接其输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">20</span>).reshape(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>,  <span class="number">4</span>],</span><br><span class="line">       [ <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>,  <span class="number">9</span>],</span><br><span class="line">       [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>],</span><br><span class="line">       [<span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>首先，将创建20个整数，然后将数组转换为具有4行和5列的二维数组。 我们来检查一下这个数组的维数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于我们得到两个值，这是一个二维数组。 要访问二维数组中的元素，需要为行和列指定索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array[<span class="number">3</span>][<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">19</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建三维数组及更多维度"><a href="#创建三维数组及更多维度" class="headerlink" title="创建三维数组及更多维度"></a>创建三维数组及更多维度</h3><p>要创建三维数组，请为重塑形状函数指定3个参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">27</span>).reshape(<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>],</span><br><span class="line">        [ <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>],</span><br><span class="line">        [ <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>]],</span><br><span class="line"></span><br><span class="line">       [[ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">        [<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>],</span><br><span class="line">        [<span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">        [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>],</span><br><span class="line">        [<span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>]]])</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是：数组中元素的数量（27）必须是其尺寸（3 * 3 * 3）的乘积。 要交叉检查它是否是三维数组，可以使用shape属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此外，使用<code>arange</code>函数，你可以创建一个在定义的起始值和结束值之间具有特定序列的数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">10</span>, <span class="number">35</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">10</span>, <span class="number">13</span>, <span class="number">16</span>, <span class="number">19</span>, <span class="number">22</span>, <span class="number">25</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">34</span>])</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用其他Numpy函数"><a href="#使用其他Numpy函数" class="headerlink" title="使用其他Numpy函数"></a>使用其他Numpy函数</h3><p>除了arange函数之外，你还可以使用其他有用的函数（如 <code>zeros</code> 和 <code>ones</code>）来快速创建和填充数组。</p>
+<p>使用<code>zeros</code>函数创建一个填充零的数组。函数的参数表示行数和列数（或其维数）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((<span class="number">2</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>ones</code>函数创建一个填充了1的数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.ones((<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">       [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>],</span><br><span class="line">       [<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure>
+
+<p><code>empty</code>函数创建一个数组。它的初始内容是随机的，取决于内存的状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.empty((<span class="number">2</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">0.65670626</span>, <span class="number">0.52097334</span>, <span class="number">0.99831087</span>],</span><br><span class="line">       [<span class="number">0.07280136</span>, <span class="number">0.4416958</span> , <span class="number">0.06185705</span>]])</span><br></pre></td></tr></table></figure>
+
+<p><code>full</code>函数创建一个填充给定值的n * n数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.full((<span class="number">2</span>,<span class="number">2</span>), <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">3</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">3</span>, <span class="number">3</span>]])</span><br></pre></td></tr></table></figure>
+
+<p><code>eye</code>函数可以创建一个n * n矩阵，对角线为1s，其他为0。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.eye(<span class="number">3</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>],</span><br><span class="line">       [<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>函数<code>linspace</code>在指定的时间间隔内返回均匀间隔的数字。 例如，下面的函数返回0到10之间的四个等间距数字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">0</span>, <span class="number">10</span>, num=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([ <span class="number">0.</span>, <span class="number">3.33333333</span>, <span class="number">6.66666667</span>, <span class="number">10.</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="从Python列表转换"><a href="#从Python列表转换" class="headerlink" title="从Python列表转换"></a>从Python列表转换</h2><p>除了使用Numpy函数之外，你还可以直接从Python列表创建数组。将Python列表传递给数组函数以创建Numpy数组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.array([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br></pre></td></tr></table></figure>
+
+<p>你还可以创建Python列表并传递其变量名以创建Numpy数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">array = np.array(<span class="built_in">list</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])</span><br></pre></td></tr></table></figure>
+
+<p>你可以确认变量<code>array</code>和<code>list</code>分别是Python列表和Numpy数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>1.1新建变量名：JAVA_HOME  变量值：E:\Java\jdk1.6.0_43（这是我的jdk安装路径）</p>
-<p>1.2编辑变量名：Path 在后面加上：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</p>
-<p>1.3 新建变量名：CLASSPATH 变量值： .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</p>
+<p>list</p>
 </blockquote>
-<p>（注意：在设置变量的末尾时不要加上“；”）</p>
-<p>——————————————————————————————————————————————</p>
-<p>设置完成之后我们当然需要测试，打开“运行”–&gt;输入“CMD”–&gt;在命令行上面输入：java，然后回车；输入javac，回车，输入java -version，回车，如果出现下列三个画面，那么JDK配置成功，否则就需要检查环境变量的配置。</p>
-<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213621372.png" alt="image-20210921213621372" style="zoom:50%;">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(array)</span><br></pre></td></tr></table></figure>
 
-<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213640935.png" alt="image-20210921213640935" style="zoom:50%;">
-
-<img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/image-20210921213714443.png" alt="image-20210921213714443" style="zoom:50%;">
-
-<h3 id="2-Eclipse的安装"><a href="#2-Eclipse的安装" class="headerlink" title="2.Eclipse的安装"></a>2.Eclipse的安装</h3><p>   下载地址：<a target="_blank" rel="noopener" href="http://www.eclipse.org/downloads/">http://www.eclipse.org/downloads/</a>  版本自行选择  </p>
-<p>   完成之后我们启动Eclipse，设置好工作路径，也可以直接默认。我们打开window–&gt;preference输入jre，安装下图。</p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828185304219-909517504.png" alt="img"></p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190251437-403272735.png" alt="img"></p>
-<p> 此时我们可以随便建立一个JAVA项目，然后编写一个helloworld来测试一下是否正确。</p>
-<h3 id="Tomcat8的安装"><a href="#Tomcat8的安装" class="headerlink" title="Tomcat8的安装"></a>Tomcat8的安装</h3><p>​    Tomcat使用的版本是8，大家可以到apache的官网上去下载，<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-80.cgi">http://tomcat.apache.org</a>，下载直接解压就行。</p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190448875-2048839166.png" alt="img"></p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190629703-89662533.png" alt="img"></p>
-<h3 id="Maven安装配置"><a href="#Maven安装配置" class="headerlink" title="Maven安装配置"></a>Maven安装配置</h3><h4 id="maven配置环境变量"><a href="#maven配置环境变量" class="headerlink" title="maven配置环境变量"></a>maven配置环境变量</h4><p> 下载maven，就是一个包：apache-maven-3.2.1，我用的版本是3.2.1，解压到一个路径，然后配置环境变量：</p>
-<p>——————————————————————————————————————————————————</p>
 <blockquote>
-<p>   5.1 新建变量名：MAVEN_HOME  变量值：D:\server\apache-maven-3.2.1（这是我的MAVEN路径）</p>
-<p>   编辑变量名：Path 在最前面加上：%MAVEN_HOME%\bin;（注意，最后要有个”;”作为分隔符）</p>
+<p>Numpy.ndarray</p>
 </blockquote>
-<p>——————————————————————————————————————————————</p>
-<p>完成之后，在命令行输入：mvn -version查看是否有以下内容，如果有表示配置成功。</p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150828190819234-882295285.png" alt="img"></p>
-<h4 id="Maven数据仓库的配置"><a href="#Maven数据仓库的配置" class="headerlink" title="Maven数据仓库的配置"></a>Maven数据仓库的配置</h4><p>MAVEN中还有一个重要的配置就是数据仓库的路径配置，我们找到MAVEN的安装路径，进入conf–&gt;打开settings.xml，找到localRepository标签，此时是被注释掉的，我们解除注释，然后配置一个路径，例如：E:\Dev\Java\maven\repo，这样以后MAVEN管理下载的jar包都会在这个路径下。当然我们需要建这样一个目录结构，然后还要讲settings.xml复制一份到E:\Dev\Java\maven下，这个在与Eclipse集成时会用到。<strong>修改默认保存路径</strong></p>
-<p><strong><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829203627344-2088280037.png" alt="img"></strong></p>
-<h3 id="Eclipse中集成Maven"><a href="#Eclipse中集成Maven" class="headerlink" title="Eclipse中集成Maven"></a>Eclipse中集成Maven</h3><p>在preferences中进行配置，如图：</p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204010922-1975818603.png" alt="img"></p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204215719-809768030.png" alt="img"></p>
-<p> 此时，点击File–&gt;new–&gt;other–&gt;输入maven–&gt;–&gt;Maven Project，如果可以看到这些，证明配置成功，已经可以建立Maven项目了。</p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204454765-1161572702.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204928656-1589383472.png" alt="img"></p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204944172-1087694389.png" alt="img"><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829204953047-22835249.png" alt="img"></p>
-<p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205005375-1380967534.png" alt="img"></p>
-<p>如果indexjsp 提示有错误需要在pom.xml中导入  javaee-api.jar</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;javax&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;7.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>要创建二维数组，请将一系列列表传递给数组函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.array([(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>), (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)])</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
 
-<h3 id="SVN安装"><a href="#SVN安装" class="headerlink" title="SVN安装"></a>SVN安装</h3><p><img src="/2021/09/21/ssm%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%EF%BC%89/441423-20150829205515859-847674917.png" alt="img"></p>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">       [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(2, 3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用特殊的库函数"><a href="#使用特殊的库函数" class="headerlink" title="使用特殊的库函数"></a>使用特殊的库函数</h2><p>你还可以使用特殊库函数来创建数组。例如，要创建一个填充0到1之间随机值的数组，请使用<code>random</code>函数。这对于需要随机状态才能开始的问题特别有用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.random.random((<span class="number">2</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[<span class="number">0.1632794</span> , <span class="number">0.34567049</span>],</span><br><span class="line">       [<span class="number">0.03463241</span>, <span class="number">0.70687903</span>]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>创建和填充Numpy数组是使用Numpy执行快速数值数组计算的第一步。使用不同的方式创建数组，你现在可以很好地执行基本的数组操作。</p>
 
       
     </div>
@@ -388,7 +465,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -456,7 +533,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -517,12 +594,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">307k</span>
+    <span title="站点总字数">314k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:39</span>
+    <span title="站点阅读时长">4:45</span>
 
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
