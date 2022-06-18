@@ -1,858 +1,2344 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
+  <!-- meta/link... -->
+  
+
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"rczmm.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="你看到的不止如此">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小小世界">
-<meta property="og:url" content="http://rczmm.github.io/page/5/index.html">
-<meta property="og:site_name" content="小小世界">
-<meta property="og:description" content="你看到的不止如此">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="rczmm">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://rczmm.github.io/page/5/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
 
   <title>小小世界</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
 
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?0472c4b929e1e8b892e4063622965b6c";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
 
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
 
-
-
-  <noscript>
+  
   <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+    
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
 
-<link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  
+
+  
+    
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
     </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">小小世界</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">永远在路上</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
     </div>
+    <div class="loading-word">加载中...</div>
   </div>
 </div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="calendar fa-fw"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="sitemap fa-fw"></i>站点地图</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://rczmm.github.io/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="rczmm">
-      <meta itemprop="description" content="你看到的不止如此">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小小世界">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">numpy数组编程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-21 22:44:46" itemprop="dateCreated datePublished" datetime="2021-09-21T22:44:46+08:00">2021-09-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
-                </span>
-            </span>
-
-          
-             <span id="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" class="leancloud_visitors" data-flag-title="numpy数组编程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-                 <span class="post-meta-item-text">阅读次数：</span>
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span>20k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span>18 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="使用-NumPy-进行数组编程"><a href="#使用-NumPy-进行数组编程" class="headerlink" title="使用 NumPy 进行数组编程"></a>使用 NumPy 进行数组编程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>人们有时会说，与C++这种低级语言相比，Python以运行速度为代价改善了开发时间和效率。幸运的是，有一些方法可以在不牺牲易用性的情况下加速Python中的操作运行时。适用于快速数值运算的一个选项是NumPy，它当之无愧地将自己称为使用Python进行科学计算的基本软件包。</p>
-<p>当然，很少有人将50微秒（百万分之五十秒）的东西归类为“慢”。然而，计算机可能会有所不同。运行50微秒（50微秒）的运行时属于微执行领域，可以松散地定义为运行时间在1微秒和1毫秒之间的运算。</p>
-<p>为什么速度很重要？微观性能值得监控的原因是运行时的小差异会随着重复的函数调用而放大：增量50μs的开销，重复超过100万次函数调用，转换为50秒的增量运行时间。</p>
-<p>在计算方面，实际上有三个概念为NumPy提供了强大的功能：</p>
-<ul>
-<li>矢量化</li>
-<li>广播</li>
-<li>索引</li>
-</ul>
-<p>在本教程中，你将逐步了解<strong>如何利用矢量化和广播</strong>，以便你可以充分使用NumPy。虽然你在这里将使用一些索引，但NumPy的完整索引原理图(它扩展了Python的<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/article/advanced/(https://docs.python.org/3/reference/expressions.html?highlight=slice#slicings)">切片语法</a>)是它们自己的工具。如果你想了解有关<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/array_objects/indexing.html">NumPy索引</a>的更多信息，请喝点咖啡，然后前往NumPy文档中的索引部分。</p>
-<h2 id="进入状态：介绍NumPy数组"><a href="#进入状态：介绍NumPy数组" class="headerlink" title="进入状态：介绍NumPy数组"></a>进入状态：介绍NumPy数组</h2><p>NumPy的基本对象是它的ndarray（或numpy.array），这是一个n维数组，它也以某种形式出现在面向数组的语言中，如Fortran 90、R和MATLAB，以及以前的 APL 和 J。</p>
-<p>让我们从形成一个包含36个元素的三维数组开始：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr = np.arange(<span class="number">36</span>).reshape(<span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr</span><br><span class="line">array([[[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>],</span><br><span class="line">        [ <span class="number">3</span>,  <span class="number">4</span>,  <span class="number">5</span>],</span><br><span class="line">        [ <span class="number">6</span>,  <span class="number">7</span>,  <span class="number">8</span>],</span><br><span class="line">        [ <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>],</span><br><span class="line">        [<span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>],</span><br><span class="line">        [<span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">        [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>],</span><br><span class="line">        [<span class="number">27</span>, <span class="number">28</span>, <span class="number">29</span>],</span><br><span class="line">        [<span class="number">30</span>, <span class="number">31</span>, <span class="number">32</span>],</span><br><span class="line">        [<span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>]]])</span><br></pre></td></tr></table></figure>
-
-<p>在二维中描绘高维数组可能会比较困难。考虑数组形状的一种直观方法是简单地“从左到右读取它”。arr 是一个3乘4乘3的数组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.shape</span><br><span class="line">(<span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在视觉上，arr可以被认为是三个4x3网格（或矩形棱镜）的容器，看起来像这样：</p>
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/arr3d.7442cd4e11c6.jpg" alt="NumPy三维数组"></p>
-<p>更高维度的数组可能更难以用图像表达出来，但它们仍将遵循这种“数组内的数组”模式。</p>
-<p>你在哪里可以看到超过两个维度的数据？</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Panel_data">面板数据</a>可以用三维表示。跟踪个体群组（群体）随时间变化的数据可以被构造为（受访者，日期，属性）。 1979年<a target="_blank" rel="noopener" href="https://www.nlsinfo.org/content/cohorts/nlsy79">全国青年纵向调查（iq调查）</a>对27岁以上的12,686名受访者进行了调查。假设每个人每年有大约500个直接询问或派生的数据点，这些数据将具有形状（12686,27,500），总共177,604,000个数据点。</li>
-<li>用于多幅图像的彩色图像数据通常存储在四个维度中。每个图像是一个三维数组(高度、宽度、通道)，通道通常是红色、绿色和蓝色(RGB)值。然后，图像的集合就是(图像数、高度、宽度、通道)。1，000张256x256 RGB图像将具有形状(1000，256，256，3)。(扩展的表示是RGBA，其中A-alpha-表示不透明的级别。)。</li>
-</ul>
-<h2 id="什么是矢量化？"><a href="#什么是矢量化？" class="headerlink" title="什么是矢量化？"></a>什么是矢量化？</h2><p>矢量化是NumPy中的一种强大功能，可以将操作表达为在整个数组上而不是在各个元素上发生。以下是Wes McKinney的简明定义：</p>
-<blockquote>
-<p>这种用数组表达式替换显式循环的做法通常称为向量化。通常，矢量化数组操作通常比其纯Python等价物快一个或两个（或更多）数量级，在任何类型的数值计算中都具有最大的影响。</p>
-</blockquote>
-<p>在Python中循环数组或任何数据结构时，会涉及很多开销。 NumPy中的向量化操作将内部循环委托给高度优化的C和Fortran函数，从而实现更清晰，更快速的Python代码。</p>
-<h3 id="计数-简单的如：1-2-3…"><a href="#计数-简单的如：1-2-3…" class="headerlink" title="计数: 简单的如：1, 2, 3…"></a>计数: 简单的如：1, 2, 3…</h3><p>作为示例，考虑一个True和False的一维向量，你要为其计算序列中“False to True”转换的数量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.seed(<span class="number">444</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = np.random.choice([<span class="literal">False</span>, <span class="literal">True</span>], size=<span class="number">100000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">array([ <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>, ...,  <span class="literal">True</span>, <span class="literal">False</span>,  <span class="literal">True</span>])</span><br></pre></td></tr></table></figure>
-
-<p>使用Python for循环，一种方法是成对地评估序列中每个元素的<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">真值</a>以及紧随其后的元素：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">count_transitions</span>(<span class="params">x</span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line"><span class="meta">... </span>    count = <span class="number">0</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> i, j <span class="keyword">in</span> <span class="built_in">zip</span>(x[:-<span class="number">1</span>], x[<span class="number">1</span>:]):</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">if</span> j <span class="keyword">and</span> <span class="keyword">not</span> i:</span><br><span class="line"><span class="meta">... </span>            count += <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> count</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>count_transitions(x)</span><br><span class="line"><span class="number">24984</span></span><br></pre></td></tr></table></figure>
-
-<p>在矢量化形式中，没有明确的for循环或直接引用各个元素：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.count_nonzero(x[:-<span class="number">1</span>] &lt; x[<span class="number">1</span>:])</span><br><span class="line"><span class="number">24984</span></span><br></pre></td></tr></table></figure>
-
-<p>这两个等效函数在性能方面有何比较？ 在这种特殊情况下，向量化的NumPy调用胜出约70倍：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> timeit <span class="keyword">import</span> timeit</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>setup = <span class="string">&#x27;from __main__ import count_transitions, x; import numpy as np&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num = <span class="number">1000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t1 = timeit(<span class="string">&#x27;count_transitions(x)&#x27;</span>, setup=setup, number=num)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t2 = timeit(<span class="string">&#x27;np.count_nonzero(x[:-1] &lt; x[1:])&#x27;</span>, setup=setup, number=num)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;Speed difference: &#123;:0.1f&#125;x&#x27;</span>.<span class="built_in">format</span>(t1 / t2))</span><br><span class="line">Speed difference: <span class="number">71.0</span>x</span><br></pre></td></tr></table></figure>
-
-<p><strong>技术细节</strong>: 另一个术语是<a target="_blank" rel="noopener" href="https://blogs.msdn.microsoft.com/nativeconcurrency/2012/04/12/what-is-vectorization/">矢量处理器</a>，它与计算机的硬件有关。 当我在这里谈论矢量化时，我指的是用数组表达式替换显式for循环的概念，在这种情况下，可以使用低级语言在内部计算。</p>
-<h3 id="买低，卖高"><a href="#买低，卖高" class="headerlink" title="买低，卖高"></a>买低，卖高</h3><p>这是另一个激发你胃口的例子。考虑以下经典技术面试问题：</p>
-<blockquote>
-<p>假定一只股票的历史价格是一个序列，假设你只允许进行一次购买和一次出售，那么可以获得的最大利润是多少？例如，假设价格=(20，18，14，17，20，21，15)，最大利润将是7，从14买到21卖。</p>
-</blockquote>
-<p>(对所有金融界人士说：不，卖空是不允许的。)</p>
-<p>存在具有n平方<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/article/advanced/(https://en.wikipedia.org/wiki/Time_complexity)">时间复杂度</a>的解决方案，其包括采用两个价格的每个组合，其中第二价格“在第一个之后”并且确定最大差异。</p>
-<p>然而，还有一个O(n)解决方案，它包括迭代序列一次，找出每个价格和运行最小值之间的差异。 它是这样的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">profit</span>(<span class="params">prices</span>):</span></span><br><span class="line"><span class="meta">... </span>    max_px = <span class="number">0</span></span><br><span class="line"><span class="meta">... </span>    min_px = prices[<span class="number">0</span>]</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> px <span class="keyword">in</span> prices[<span class="number">1</span>:]:</span><br><span class="line"><span class="meta">... </span>        min_px = <span class="built_in">min</span>(min_px, px)</span><br><span class="line"><span class="meta">... </span>        max_px = <span class="built_in">max</span>(px - min_px, max_px)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> max_px</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices = (<span class="number">20</span>, <span class="number">18</span>, <span class="number">14</span>, <span class="number">17</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">15</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>profit(prices)</span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-<p>这可以用NumPy实现吗？行!没问题。但首先，让我们构建一个准现实的例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create mostly NaN array with a few &#x27;turning points&#x27; (local min/max).</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices = np.full(<span class="number">100</span>, fill_value=np.nan)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices[[<span class="number">0</span>, <span class="number">25</span>, <span class="number">60</span>, -<span class="number">1</span>]] = [<span class="number">80.</span>, <span class="number">30.</span>, <span class="number">75.</span>, <span class="number">50.</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linearly interpolate the missing values and add some noise.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = np.arange(<span class="built_in">len</span>(prices))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>is_valid = ~np.isnan(prices)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices = np.interp(x=x, xp=x[is_valid], fp=prices[is_valid])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>prices += np.random.randn(<span class="built_in">len</span>(prices)) * <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<p>下面是matplotlib的示例。俗话说：买低(绿)，卖高(红)：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Warning! This isn&#x27;t a fully correct solution, but it works for now.</span></span><br><span class="line"><span class="comment"># If the absolute min came after the absolute max, you&#x27;d have trouble.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mn = np.argmin(prices)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mx = mn + np.argmax(prices[mn:])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>kwargs = &#123;<span class="string">&#x27;markersize&#x27;</span>: <span class="number">12</span>, <span class="string">&#x27;linestyle&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fig, ax = plt.subplots()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.plot(prices)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_title(<span class="string">&#x27;Price History&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_xlabel(<span class="string">&#x27;Time&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_ylabel(<span class="string">&#x27;Price&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.plot(mn, prices[mn], color=<span class="string">&#x27;green&#x27;</span>, **kwargs)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.plot(mx, prices[mx], color=<span class="string">&#x27;red&#x27;</span>, **kwargs)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/prices.664958f44799.png" alt="以序列形式显示股票价格历史的图解"></p>
-<p>NumPy实现是什么样的？ 虽然没有np.cummin() “直接”，但NumPy的<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/ufuncs/index.html">通用函数（ufuncs）</a>都有一个accumulate()方法，它的名字暗示了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cummin = np.minimum.accumulate</span><br></pre></td></tr></table></figure>
-
-<p>从纯Python示例扩展逻辑，你可以找到每个价格和运行最小值（元素方面）之间的差异，然后获取此序列的最大值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">profit_with_numpy</span>(<span class="params">prices</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="string">&quot;&quot;&quot;Price minus cumulative minimum price, element-wise.&quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">... </span>    prices = np.asarray(prices)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> np.<span class="built_in">max</span>(prices - cummin(prices))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>profit_with_numpy(prices)</span><br><span class="line"><span class="number">44.2487532293278</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.allclose(profit_with_numpy(prices), profit(prices))</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>这两个具有相同理论时间复杂度的操作如何在实际运行时进行比较？ 首先，让我们采取更长的序列。（此时不一定需要是股票价格的时间序列。）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>seq = np.random.randint(<span class="number">0</span>, <span class="number">100</span>, size=<span class="number">100000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>seq</span><br><span class="line">array([ <span class="number">3</span>, <span class="number">23</span>,  <span class="number">8</span>, <span class="number">67</span>, <span class="number">52</span>, <span class="number">12</span>, <span class="number">54</span>, <span class="number">72</span>, <span class="number">41</span>, <span class="number">10</span>, ..., <span class="number">46</span>,  <span class="number">8</span>, <span class="number">90</span>, <span class="number">95</span>, <span class="number">93</span>,</span><br><span class="line">       <span class="number">28</span>, <span class="number">24</span>, <span class="number">88</span>, <span class="number">24</span>, <span class="number">49</span>])</span><br></pre></td></tr></table></figure>
-
-<p>现在，对于一个有点不公平的比较：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>setup = (<span class="string">&#x27;from __main__ import profit_with_numpy, profit, seq;&#x27;</span></span><br><span class="line"><span class="meta">... </span>         <span class="string">&#x27; import numpy as np&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num = <span class="number">250</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pytime = timeit(<span class="string">&#x27;profit(seq)&#x27;</span>, setup=setup, number=num)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nptime = timeit(<span class="string">&#x27;profit_with_numpy(seq)&#x27;</span>, setup=setup, number=num)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;Speed difference: &#123;:0.1f&#125;x&#x27;</span>.<span class="built_in">format</span>(pytime / nptime))</span><br><span class="line">Speed difference: <span class="number">76.0</span>x</span><br></pre></td></tr></table></figure>
-
-<p>在上面，将profit_with_numpy() 视为伪代码（不考虑NumPy的底层机制），实际上有三个遍历序列：</p>
-<ul>
-<li>cummin(prices) 具有O(n)时间复杂度</li>
-<li>prices - cummin(prices) 是 O(n)的时间复杂度</li>
-<li>max(…) 是O(n)的时间复杂度</li>
-</ul>
-<p>这就减少到O(n)，因为O(3n)只剩下O(n)-当n接近无穷大时，n “占主导地位”。</p>
-<p>因此，这两个函数具有等价的最坏情况时间复杂度。(不过，顺便提一下，NumPy函数的空间复杂度要高得多。)。但这可能是最不重要的内容。这里我们有一个教训是：虽然理论上的时间复杂性是一个重要的考虑因素，运行时机制也可以发挥很大的作用。NumPy不仅可以委托给C，而且通过一些元素操作和线性代数，它还可以利用多线程中的计算。但是这里有很多因素在起作用，包括所使用的底层库(BLAS/LAPACK/Atlas)，而这些细节完全是另一篇文章的全部内容。</p>
-<h2 id="Intermezzo：理解轴符号"><a href="#Intermezzo：理解轴符号" class="headerlink" title="Intermezzo：理解轴符号"></a>Intermezzo：理解轴符号</h2><p>在NumPy中，轴指向多维数组的单个维度：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line"><span class="meta">... </span>                [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.<span class="built_in">sum</span>(axis=<span class="number">0</span>)</span><br><span class="line">array([<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br><span class="line">array([ <span class="number">6</span>, <span class="number">60</span>])</span><br></pre></td></tr></table></figure>
-
-<p>围绕轴的术语和描述它们的方式可能有点不直观。在Pandas(在NumPy之上构建的库)的文档中，你可能经常看到如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axis : &#123;&#x27;index&#x27; (0), &#x27;columns&#x27; (1)&#125;</span><br></pre></td></tr></table></figure>
-
-<p>根据这一描述，你可以争辩说，上面的结果应该是“反向的”。但是，关键是轴指向调用函数的轴。杰克·范德普拉斯很好地阐述了这一点：</p>
-<blockquote>
-<p>此处指定轴的方式可能会让来自其他语言的用户感到困惑。AXIS关键字指定将折叠的数组的维度，而不是将要返回的维度。因此，指定Axis=0意味着第一个轴将折叠：对于二维数组，这意味着每列中的值将被聚合。</p>
-</blockquote>
-<p>换句话说，如果将AXIS=0的数组相加，则会使用按列计算的方式折叠数组的行。</p>
-<p>考虑到这一区别，让我们继续探讨广播的概念。</p>
-<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><p>广播是另一个重要的NumPy抽象。你已经看到了两个NumPy数组(大小相等)之间的操作是按元素操作的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">1.5</span>, <span class="number">2.5</span>, <span class="number">3.5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([<span class="number">10.</span>, <span class="number">5.</span>, <span class="number">1.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a / b</span><br><span class="line">array([<span class="number">0.15</span>, <span class="number">0.5</span> , <span class="number">3.5</span> ])</span><br></pre></td></tr></table></figure>
-
-<p>但是，大小不相等的数组呢？这就是广播的意义所在：</p>
-<blockquote>
-<p>术语广播描述了在算术运算期间NumPy如何处理具有不同形状的数组。受某些约束条件的限制，较小的数组会在较大的数组中“广播”，以便它们具有兼容的形状。广播提供了一种向量化数组操作的方法，因此循环是在C而不是Python中进行的。</p>
-</blockquote>
-<p>当使用两个以上的数组时，广播的实现方式可能会变得乏味。但是，如果只有两个数组，那么可以用两条简短的规则来描述它们的广播能力：</p>
-<blockquote>
-<p>在对两个数组进行操作时，NumPy按元素对它们的形状进行比较。它从尾随维度开始，然后继续前进。两个维度在下列情况下是兼容的：</p>
-<ul>
-<li>他们是平等的，或者</li>
-<li>其中一个是1</li>
-</ul>
-</blockquote>
-<p>非那样做不行。</p>
-<p>让我们以一个例子为例，我们想要减去数组的每个列的平均值，元素的平均值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample = np.random.normal(loc=[<span class="number">2.</span>, <span class="number">20.</span>], scale=[<span class="number">1.</span>, <span class="number">3.5</span>],</span><br><span class="line"><span class="meta">... </span>                          size=(<span class="number">3</span>, <span class="number">2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample</span><br><span class="line">array([[ <span class="number">1.816</span> , <span class="number">23.703</span> ],</span><br><span class="line">       [ <span class="number">2.8395</span>, <span class="number">12.2607</span>],</span><br><span class="line">       [ <span class="number">3.5901</span>, <span class="number">24.2115</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>在统计术语中，样本由两个独立于两个总体的样本(列)组成，平均值分别为2和20。按列分列的方法应该近似于总体方法(尽管是粗略的，因为样本很小)：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mu = sample.mean(axis=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mu</span><br><span class="line">array([ <span class="number">2.7486</span>, <span class="number">20.0584</span>])</span><br></pre></td></tr></table></figure>
-
-<p>现在，减去列意义是很简单的，因为广播规则检查出来了：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;sample:&#x27;</span>, sample.shape, <span class="string">&#x27;| means:&#x27;</span>, mu.shape)</span><br><span class="line">sample: (<span class="number">3</span>, <span class="number">2</span>) | means: (<span class="number">2</span>,)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample - mu</span><br><span class="line">array([[-<span class="number">0.9325</span>,  <span class="number">3.6446</span>],</span><br><span class="line">       [ <span class="number">0.091</span> , -<span class="number">7.7977</span>],</span><br><span class="line">       [ <span class="number">0.8416</span>,  <span class="number">4.1531</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>下面是一个减去列意义的示例，其中较小的数组被“拉伸”，以便从较大的数组的每一行中减去它：</p>
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/broadcasting.084a0e28dea8.jpg" alt="NumPy数组广播"></p>
-<p><strong>技术细节</strong>：较小的数组或标量不是按字面意义上在内存中展开的：重复的是计算本身。</p>
-<p>这扩展到<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Standard_score">标准化</a>每个列，使每个单元格相对于其各自的列具有z-score：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>(sample - sample.mean(axis=<span class="number">0</span>)) / sample.std(axis=<span class="number">0</span>)</span><br><span class="line">array([[-<span class="number">1.2825</span>,  <span class="number">0.6605</span>],</span><br><span class="line">       [ <span class="number">0.1251</span>, -<span class="number">1.4132</span>],</span><br><span class="line">       [ <span class="number">1.1574</span>,  <span class="number">0.7527</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>但是，如果出于某种原因，要减去行最小值，该怎么办？你会遇到这样的麻烦：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample - sample.<span class="built_in">min</span>(axis=<span class="number">1</span>)</span><br><span class="line">ValueError: operands could <span class="keyword">not</span> be broadcast together <span class="keyword">with</span> shapes (<span class="number">3</span>,<span class="number">2</span>) (<span class="number">3</span>,)</span><br></pre></td></tr></table></figure>
-
-<p>这里的问题是，较小的数组，在其目前的形式，不能“伸展”，以形状与样本兼容。实际上，你需要扩展它的维度，以满足上面的广播规则：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample.<span class="built_in">min</span>(axis=<span class="number">1</span>)[:, <span class="literal">None</span>]  <span class="comment"># 3 minimums across 3 rows</span></span><br><span class="line">array([[<span class="number">1.816</span> ],</span><br><span class="line">       [<span class="number">2.8395</span>],</span><br><span class="line">       [<span class="number">3.5901</span>]])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sample - sample.<span class="built_in">min</span>(axis=<span class="number">1</span>)[:, <span class="literal">None</span>]</span><br><span class="line">array([[ <span class="number">0.</span>    , <span class="number">21.887</span> ],</span><br><span class="line">       [ <span class="number">0.</span>    ,  <span class="number">9.4212</span>],</span><br><span class="line">       [ <span class="number">0.</span>    , <span class="number">20.6214</span>]])</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>: [:, None]是一种扩展数组维度的方法，用于创建长度为1的轴。<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/array_objects/indexing.html#numpy.newaxis">np.newaxis</a>是None的别名。</p>
-<p>还有一些更为复杂的案例。下面是任何形状的任意数量的数组可以一起广播的更严格的定义：</p>
-<blockquote>
-<p>如果以下规则产生有效结果，则一组数组被称为“可广播”到相同的形状，这意味着 <strong>以下之一为真</strong> 时：</p>
-<ol>
-<li>矩阵都具有完全相同的形状。</li>
-<li>矩阵都具有相同数量的维度，每个维度的长度是公共长度或1。</li>
-<li>具有太少尺寸的矩列可以使其形状前面具有长度为1的尺寸以满足属性＃2。 </li>
-</ol>
-</blockquote>
-<p>这更容易一步一步走。假设你有以下四个数组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.sin(np.arange(<span class="number">10</span>)[:, <span class="literal">None</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.random.randn(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = np.full_like(a, <span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d = <span class="number">8</span></span><br></pre></td></tr></table></figure>
-
-<p>在检查形状之前，NumPy首先将标量转换为具有一个元素的数组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arrays = [np.atleast_1d(arr) <span class="keyword">for</span> arr <span class="keyword">in</span> (a, b, c, d)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> arr <span class="keyword">in</span> arrays:</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(arr.shape)</span><br><span class="line">...</span><br><span class="line">(<span class="number">10</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">(<span class="number">10</span>, <span class="number">1</span>)</span><br><span class="line">(<span class="number">1</span>,)</span><br></pre></td></tr></table></figure>
-
-<p>现在我们可以检查标准＃1。如果所有数组具有相同的形状，则它们的一组形状将缩减为一个元素，因为set() 构造函数有效地从其输入中删除重复项。这里显然没有达到这个标准：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="built_in">set</span>(arr.shape <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)) == <span class="number">1</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>标准＃2的第一部分也失败了，这意味着整个标准失败：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">len</span>(<span class="built_in">set</span>((arr.ndim) <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)) == <span class="number">1</span></span><br><span class="line"><span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<p>最后一个标准更复杂一些：</p>
-<blockquote>
-<p>具有太少尺寸的矩列可以使其形状前面具有长度为1的尺寸以满足属性＃2。</p>
-</blockquote>
-<p>为了对此进行编码，你可以首先确定最高维数组的维度，然后将其添加到每个形状元组，直到所有数组具有相同的维度：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>maxdim = <span class="built_in">max</span>(arr.ndim <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)  <span class="comment"># Maximum dimensionality</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shapes = np.array([(<span class="number">1</span>,) * (maxdim - arr.ndim) + arr.shape</span><br><span class="line"><span class="meta">... </span>                   <span class="keyword">for</span> arr <span class="keyword">in</span> arrays])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shapes</span><br><span class="line">array([[<span class="number">10</span>,  <span class="number">1</span>],</span><br><span class="line">       [ <span class="number">1</span>, <span class="number">10</span>],</span><br><span class="line">       [<span class="number">10</span>,  <span class="number">1</span>],</span><br><span class="line">       [ <span class="number">1</span>,  <span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>最后，你需要测试每个维度的长度是否是公共长度，或是1。这样做的一个技巧是首先在“等于”的位置屏蔽“shape-tuples”数组。然后，你可以检查 peak-to-peak（np.ptp()）列方差是否都为零：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>masked = np.ma.masked_where(shapes == <span class="number">1</span>, shapes)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.<span class="built_in">all</span>(masked.ptp(axis=<span class="number">0</span>) == <span class="number">0</span>)  <span class="comment"># ptp: max - min</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>这个逻辑封装在单个函数中，如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">can_broadcast</span>(<span class="params">*arrays</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line"><span class="meta">... </span>    arrays = [np.atleast_1d(arr) <span class="keyword">for</span> arr <span class="keyword">in</span> arrays]</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>(arr.shape <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)) == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>((arr.ndim) <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)) == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="meta">... </span>    maxdim = <span class="built_in">max</span>(arr.ndim <span class="keyword">for</span> arr <span class="keyword">in</span> arrays)</span><br><span class="line"><span class="meta">... </span>    shapes = np.array([(<span class="number">1</span>,) * (maxdim - arr.ndim) + arr.shape</span><br><span class="line"><span class="meta">... </span>                       <span class="keyword">for</span> arr <span class="keyword">in</span> arrays])</span><br><span class="line"><span class="meta">... </span>    masked = np.ma.masked_where(shapes == <span class="number">1</span>, shapes)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> np.<span class="built_in">all</span>(masked.ptp(axis=<span class="number">0</span>) == <span class="number">0</span>)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>can_broadcast(a, b, c, d)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>幸运的是，你可以选择一个快捷方式并使用np.cast()来进行这种健全性检查，尽管它并不是为此目的而显式设计的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">can_broadcast</span>(<span class="params">*arrays</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">try</span>:</span><br><span class="line"><span class="meta">... </span>        np.broadcast(*arrays)</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">except</span> ValueError:</span><br><span class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>can_broadcast(a, b, c, d)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>对于那些有兴趣深入挖掘的人来说，<a target="_blank" rel="noopener" href="https://github.com/numpy/numpy/blob/7dcee7a469ad1bbfef1cd8980dc18bf5869c5391/numpy/core/src/multiarray/iterators.c#L1274">PyArray_Broadcast</a>是封装广播规则的底层C函数。</p>
-<h2 id="矩阵编程实际应用：示例"><a href="#矩阵编程实际应用：示例" class="headerlink" title="矩阵编程实际应用：示例"></a>矩阵编程实际应用：示例</h2><p>在以下3个示例中，你将使用矢量化和广播来处理一些实际应用程序。</p>
-<h3 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h3><p>机器学习是一个可以经常利用矢量化和广播的领域。 假设你有三角形的顶点（每行是x，y坐标）：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tri = np.array([[<span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line"><span class="meta">... </span>                [<span class="number">3</span>, <span class="number">1</span>],</span><br><span class="line"><span class="meta">... </span>                [<span class="number">2</span>, <span class="number">3</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>这个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Centroid">“簇”</a>的质心是(x, y)坐标，它是每列的算术平均值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroid = tri.mean(axis=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroid</span><br><span class="line">array([<span class="number">2.</span>    , <span class="number">1.6667</span>])</span><br></pre></td></tr></table></figure>
-
-<p>可视化这有助于：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>trishape = plt.Polygon(tri, edgecolor=<span class="string">&#x27;r&#x27;</span>, alpha=<span class="number">0.2</span>, lw=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>_, ax = plt.subplots(figsize=(<span class="number">4</span>, <span class="number">4</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.add_patch(trishape)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_ylim([<span class="number">.5</span>, <span class="number">3.5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_xlim([<span class="number">.5</span>, <span class="number">3.5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.scatter(*centroid, color=<span class="string">&#x27;g&#x27;</span>, marker=<span class="string">&#x27;D&#x27;</span>, s=<span class="number">70</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.scatter(*tri.T, color=<span class="string">&#x27;b&#x27;</span>,  s=<span class="number">70</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/tri.521228ffdca0.png" alt="三角形的图像"></p>
-<p>许多<a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/clustering.html">聚类算法</a>利用点集合的欧几里德距离，或者指向原点，或者相对于它们的质心。</p>
-<p>在笛卡尔坐标下，p点和q点之间的欧几里德距离是：</p>
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/euclid.ffdfd280d315.png" alt="点之间欧氏距离的计算公式"></p>
-<p>因此，对于上面的三坐标集，每个点到原点(0, 0) 的欧几里德距离是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.<span class="built_in">sum</span>(tri**<span class="number">2</span>, axis=<span class="number">1</span>) ** <span class="number">0.5</span>  <span class="comment"># Or: np.sqrt(np.sum(np.square(tri), 1))</span></span><br><span class="line">array([<span class="number">1.4142</span>, <span class="number">3.1623</span>, <span class="number">3.6056</span>])</span><br></pre></td></tr></table></figure>
-
-<p>你可能会认识到我们实际上只是在寻找附和欧几里德的规则：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.linalg.norm(tri, axis=<span class="number">1</span>)</span><br><span class="line">array([<span class="number">1.4142</span>, <span class="number">3.1623</span>, <span class="number">3.6056</span>])</span><br></pre></td></tr></table></figure>
-
-<p>你也可以找到相对于三角形质心的每个点的范数，而不是参考原点：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.linalg.norm(tri - centroid, axis=<span class="number">1</span>)</span><br><span class="line">array([<span class="number">1.2019</span>, <span class="number">1.2019</span>, <span class="number">1.3333</span>])</span><br></pre></td></tr></table></figure>
-
-<p>最后，让我们更进一步：假设你有一个二维数组X和一个多个(x, y) “建议”质心的二维数组。诸如<a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">K-Means聚类的算法</a>)通过随机分配初始“建议”质心，然后将每个数据点重新分配到其最接近的质心来工作。从那里开始，计算新的质心，一旦重新生成的标签（质心的编码）在迭代之间不变，算法就会收敛于解。这个个迭代过程的一部分需要计算每个质心中每个点的欧几里德距离：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = np.repeat([[<span class="number">5</span>, <span class="number">5</span>], [<span class="number">10</span>, <span class="number">10</span>]], [<span class="number">5</span>, <span class="number">5</span>], axis=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X = X + np.random.randn(*X.shape)  <span class="comment"># 2 distinct &quot;blobs&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroids = np.array([[<span class="number">5</span>, <span class="number">5</span>], [<span class="number">10</span>, <span class="number">10</span>]])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X</span><br><span class="line">array([[ <span class="number">3.3955</span>,  <span class="number">3.682</span> ],</span><br><span class="line">       [ <span class="number">5.9224</span>,  <span class="number">5.785</span> ],</span><br><span class="line">       [ <span class="number">5.9087</span>,  <span class="number">4.5986</span>],</span><br><span class="line">       [ <span class="number">6.5796</span>,  <span class="number">3.8713</span>],</span><br><span class="line">       [ <span class="number">3.8488</span>,  <span class="number">6.7029</span>],</span><br><span class="line">       [<span class="number">10.1698</span>,  <span class="number">9.2887</span>],</span><br><span class="line">       [<span class="number">10.1789</span>,  <span class="number">9.8801</span>],</span><br><span class="line">       [ <span class="number">7.8885</span>,  <span class="number">8.7014</span>],</span><br><span class="line">       [ <span class="number">8.6206</span>,  <span class="number">8.2016</span>],</span><br><span class="line">       [ <span class="number">8.851</span> , <span class="number">10.0091</span>]])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroids</span><br><span class="line">array([[ <span class="number">5</span>,  <span class="number">5</span>],</span><br><span class="line">       [<span class="number">10</span>, <span class="number">10</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>换句话说，我们想回答这个问题，X中的每个点所属的质心是什么？ 为了计算X中每个点与质心中每个点之间的欧几里德距离，我们需要进行一些重构以在此处启用广播：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroids[:, <span class="literal">None</span>]</span><br><span class="line">array([[[ <span class="number">5</span>,  <span class="number">5</span>]],</span><br><span class="line"></span><br><span class="line">       [[<span class="number">10</span>, <span class="number">10</span>]]])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>centroids[:, <span class="literal">None</span>].shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-<p>这使我们能够使用一个数组<strong>行的组合乘积</strong>，从另一个数组中清清楚楚地减掉这些数组：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.linalg.norm(X - centroids[:, <span class="literal">None</span>], axis=<span class="number">2</span>).<span class="built_in">round</span>(<span class="number">2</span>)</span><br><span class="line">array([[<span class="number">2.08</span>, <span class="number">1.21</span>, <span class="number">0.99</span>, <span class="number">1.94</span>, <span class="number">2.06</span>, <span class="number">6.72</span>, <span class="number">7.12</span>, <span class="number">4.7</span> , <span class="number">4.83</span>, <span class="number">6.32</span>],</span><br><span class="line">       [<span class="number">9.14</span>, <span class="number">5.86</span>, <span class="number">6.78</span>, <span class="number">7.02</span>, <span class="number">6.98</span>, <span class="number">0.73</span>, <span class="number">0.22</span>, <span class="number">2.48</span>, <span class="number">2.27</span>, <span class="number">1.15</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>换句话说，X-质心[:, None]的形状是(2，10，2)，本质上表示两个堆叠的数组，每个数组的大小都为X。接下来，我们希望每个最近的质心的标签(索引号)，从上面的数组找出第0轴上的最小距离：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmin(np.linalg.norm(X - centroids[:, <span class="literal">None</span>], axis=<span class="number">2</span>), axis=<span class="number">0</span>)</span><br><span class="line">array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-
-<p>你可以将所有这些以函数形式组合在一起：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">get_labels</span>(<span class="params">X, centroids</span>) -&gt; np.ndarray:</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> np.argmin(np.linalg.norm(X - centroids[:, <span class="literal">None</span>], axis=<span class="number">2</span>),</span><br><span class="line"><span class="meta">... </span>                     axis=<span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>labels = get_labels(X, centroids)</span><br></pre></td></tr></table></figure>
-
-<p>让我们来直观地检查一下，用一个颜色映射来绘制两个集群和它们指定的标签：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>c1, c2 = [<span class="string">&#x27;#bc13fe&#x27;</span>, <span class="string">&#x27;#be0119&#x27;</span>]  <span class="comment"># https://xkcd.com/color/rgb/</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>llim, ulim  = np.trunc([X.<span class="built_in">min</span>() * <span class="number">0.9</span>, X.<span class="built_in">max</span>() * <span class="number">1.1</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>_, ax = plt.subplots(figsize=(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.scatter(*X.T, c=np.where(labels, c2, c1), alpha=<span class="number">0.4</span>, s=<span class="number">80</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.scatter(*centroids.T, c=[c1, c2], marker=<span class="string">&#x27;s&#x27;</span>, s=<span class="number">95</span>,</span><br><span class="line"><span class="meta">... </span>           edgecolor=<span class="string">&#x27;yellow&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_ylim([llim, ulim])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_xlim([llim, ulim])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.set_title(<span class="string">&#x27;One K-Means Iteration: Predicted Classes&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/classes.cdaa3e38d62f.png" alt="预测类颜色映射"></p>
-<h3 id="摊还（分期）表"><a href="#摊还（分期）表" class="headerlink" title="摊还（分期）表"></a>摊还（分期）表</h3><p>矢量化也适用于金融领域。</p>
-<p>给定年利率，支付频率（每年的次数），初始贷款余额和贷款期限，你可以以矢量化方式创建包含月贷款余额和付款的摊还表。让我们先设置一些标量常量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>freq = <span class="number">12</span>     <span class="comment"># 12 months per year</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rate = <span class="number">.0675</span>  <span class="comment"># 6.75% annualized</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nper = <span class="number">30</span>     <span class="comment"># 30 years</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pv = <span class="number">200000</span>   <span class="comment"># Loan face value</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>rate /= freq  <span class="comment"># Monthly basis</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>nper *= freq  <span class="comment"># 360 months</span></span><br></pre></td></tr></table></figure>
-
-<p>NumPy预装了一些<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/routines/financial.html">财务函数</a>，与<a target="_blank" rel="noopener" href="http://www.tvmcalcs.com/index.php/calculators/apps/excel_loan_amortization">Excel表兄弟</a>不同，它们能够以矢量的形式输出。</p>
-<p>债务人（或承租人）每月支付一笔由本金和利息部分组成的固定金额。由于未偿还的贷款余额下降，总付款的利息部分随之下降。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>periods = np.arange(<span class="number">1</span>, nper + <span class="number">1</span>, dtype=<span class="built_in">int</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>principal = np.ppmt(rate, periods, nper, pv)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>interest = np.ipmt(rate, periods, nper, pv)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pmt = principal + interest  <span class="comment"># Or: pmt = np.pmt(rate, nper, pv)</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来，你需要计算每月的余额，包括支付前和付款后的余额，可以定义为<a target="_blank" rel="noopener" href="http://financeformulas.net/Remaining_Balance_Formula.html">原始余额的未来价值减去年金(支付流)的未来价值</a>，使用折扣因子d：</p>
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/fv.7346eb669ac7.png" alt="原始余额未来价值计算的财务公式图"></p>
-<p>从功能上看，如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">balance</span>(<span class="params">pv, rate, nper, pmt</span>) -&gt; np.ndarray:</span></span><br><span class="line"><span class="meta">... </span>    d = (<span class="number">1</span> + rate) ** nper  <span class="comment"># Discount factor</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> pv * d - pmt * (d - <span class="number">1</span>) / rate</span><br></pre></td></tr></table></figure>
-
-<p>最后，你可以使用Pandas 的 <a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html">DataFrame</a> 将其放到表格格式中。小心这里的标志。从债务人的角度看，PMT是一种流出。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cols = [<span class="string">&#x27;beg_bal&#x27;</span>, <span class="string">&#x27;prin&#x27;</span>, <span class="string">&#x27;interest&#x27;</span>, <span class="string">&#x27;end_bal&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = [balance(pv, rate, periods - <span class="number">1</span>, -pmt),</span><br><span class="line"><span class="meta">... </span>        principal,</span><br><span class="line"><span class="meta">... </span>        interest,</span><br><span class="line"><span class="meta">... </span>        balance(pv, rate, periods, -pmt)]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>table = pd.DataFrame(data, columns=periods, index=cols).T</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>table.index.name = <span class="string">&#x27;month&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> pd.option_context(<span class="string">&#x27;display.max_rows&#x27;</span>, <span class="number">6</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="comment"># Note: Using floats for $$ in production-level code = bad</span></span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(table.<span class="built_in">round</span>(<span class="number">2</span>))</span><br><span class="line">...</span><br><span class="line">         beg_bal     prin  interest    end_bal</span><br><span class="line">month</span><br><span class="line"><span class="number">1</span>      <span class="number">200000.00</span>  -<span class="number">172.20</span>  -<span class="number">1125.00</span>  <span class="number">199827.80</span></span><br><span class="line"><span class="number">2</span>      <span class="number">199827.80</span>  -<span class="number">173.16</span>  -<span class="number">1124.03</span>  <span class="number">199654.64</span></span><br><span class="line"><span class="number">3</span>      <span class="number">199654.64</span>  -<span class="number">174.14</span>  -<span class="number">1123.06</span>  <span class="number">199480.50</span></span><br><span class="line"><span class="meta">... </span>         ...      ...       ...        ...</span><br><span class="line"><span class="number">358</span>      <span class="number">3848.22</span> -<span class="number">1275.55</span>    -<span class="number">21.65</span>    <span class="number">2572.67</span></span><br><span class="line"><span class="number">359</span>      <span class="number">2572.67</span> -<span class="number">1282.72</span>    -<span class="number">14.47</span>    <span class="number">1289.94</span></span><br><span class="line"><span class="number">360</span>      <span class="number">1289.94</span> -<span class="number">1289.94</span>     -<span class="number">7.26</span>      -<span class="number">0.00</span></span><br></pre></td></tr></table></figure>
-
-<p>At the end of year 30, the loan is paid off:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>final_month = periods[-<span class="number">1</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.allclose(table.loc[final_month, <span class="string">&#x27;end_bal&#x27;</span>], <span class="number">0</span>)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>: 虽然使用浮点数代表资金对于脚本环境中的概念说明非常有用，但在生产环境中使用Python浮点数进行财务计算可能会导致计算在某些情况下损失一两分钱。</p>
-<h3 id="图像特征提取"><a href="#图像特征提取" class="headerlink" title="图像特征提取"></a>图像特征提取</h3><p>在最后一个例子中，我们将处理1941年10月莱克星顿号航空母舰(CV-2)的<a target="_blank" rel="noopener" href="https://www.history.navy.mil/our-collections/photography/numerical-list-of-images/nara-series/80-g/80-G-410000/80-G-416362.html">照片</a>，这艘船的残骸是2018年3月在澳大利亚海岸外发现的。首先，我们可以将图像映射到它的像素值的NumPy数组中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> skimage <span class="keyword">import</span> io</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>url = (<span class="string">&#x27;https://www.history.navy.mil/bin/imageDownload?image=/&#x27;</span></span><br><span class="line"><span class="meta">... </span>       <span class="string">&#x27;content/dam/nhhc/our-collections/photography/images/&#x27;</span></span><br><span class="line"><span class="meta">... </span>       <span class="string">&#x27;80-G-410000/80-G-416362&amp;rendition=cq5dam.thumbnail.319.319.png&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img = io.imread(url, as_grey=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fig, ax = plt.subplots()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.imshow(img, cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.grid(<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/lex.77b7efabdb0c.png" alt="列克星敦号航空母舰的图像"></p>
-<p>为了简单起见，图像是以灰度加载的，结果是一个由64位浮点数组成的2d数组，而不是一个三维mxnx4rgba数组，更低的值表示暗点：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>img.shape</span><br><span class="line">(<span class="number">254</span>, <span class="number">319</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img.<span class="built_in">min</span>(), img.<span class="built_in">max</span>()</span><br><span class="line">(<span class="number">0.027450980392156862</span>, <span class="number">1.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img[<span class="number">0</span>, :<span class="number">10</span>]  <span class="comment"># First ten cells of the first row</span></span><br><span class="line">array([<span class="number">0.8078</span>, <span class="number">0.7961</span>, <span class="number">0.7804</span>, <span class="number">0.7882</span>, <span class="number">0.7961</span>, <span class="number">0.8078</span>, <span class="number">0.8039</span>, <span class="number">0.7922</span>,</span><br><span class="line">       <span class="number">0.7961</span>, <span class="number">0.7961</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img[-<span class="number">1</span>, -<span class="number">10</span>:]  <span class="comment"># Last ten cells of the last row</span></span><br><span class="line">array([<span class="number">0.0784</span>, <span class="number">0.0784</span>, <span class="number">0.0706</span>, <span class="number">0.0706</span>, <span class="number">0.0745</span>, <span class="number">0.0706</span>, <span class="number">0.0745</span>, <span class="number">0.0784</span>,</span><br><span class="line">       <span class="number">0.0784</span>, <span class="number">0.0824</span>])</span><br></pre></td></tr></table></figure>
-
-<p>在图像分析中，一种常用的中间步骤是贴片提取。顾名思义，这包括从较大的数组中提取较小的重叠子数组，并可用于有利于“去噪”或模糊图像的情况。</p>
-<p>这一概念也扩展到其他领域。例如，你可以通过使用具有多个特性(变量)的时间序列的“滚动”窗口来做类似的事情。它甚至对构建<a target="_blank" rel="noopener" href="https://bitstorm.org/gameoflife/">康威的“生命游戏”</a>很有用。(不过，与3x3内核的<a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve.html">卷积</a>是一种更直接的方法。)</p>
-<p>在这里，我们将找到 img 中每个重叠的10x10修补的平均值。以一个微型示例为例，img左上角的第一个3x3修补程序矩阵将是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>img[:<span class="number">3</span>, :<span class="number">3</span>]</span><br><span class="line">array([[<span class="number">0.8078</span>, <span class="number">0.7961</span>, <span class="number">0.7804</span>],</span><br><span class="line">       [<span class="number">0.8039</span>, <span class="number">0.8157</span>, <span class="number">0.8078</span>],</span><br><span class="line">       [<span class="number">0.7882</span>, <span class="number">0.8</span>   , <span class="number">0.7961</span>]])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img[:<span class="number">3</span>, :<span class="number">3</span>].mean()</span><br><span class="line"><span class="number">0.7995642701525054</span></span><br></pre></td></tr></table></figure>
-
-<p>用于创建滑动修复方式的纯Python方法将涉及嵌套的for循环。你需要考虑最右边补丁的起始索引是在索引 n - 3 + 1，其中n是数组的宽度。换句话说，如果你从名为arr的10x10数组中提取3x3修复，那么最后一个修复将来自arr[7: 10, 7: 10]。 还要记住，Python的range()不包含其stop参数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>size = <span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m, n = img.shape</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mm, nn = m - size + <span class="number">1</span>, n - size + <span class="number">1</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>patch_means = np.empty((mm, nn))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(mm):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(nn):</span><br><span class="line"><span class="meta">... </span>        patch_means[i, j] = img[i: i+size, j: j+size].mean()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fig, ax = plt.subplots()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.imshow(patch_means, cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ax.grid(<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/lexblur.0f886a01be97.png" alt="莱克星顿号航空母舰的模糊图像"></p>
-<p>有了这个循环，你就会执行很多Python调用。</p>
-<p>另一种可扩展到更大RGB或RGBA图像的替代方案是NumPy的stride_tricks。</p>
-<p>一个有益的第一步是在给定修补大小和图像形状的情况下，可视化更高维度的修复矩阵。我们有一个2d数组img形状(254, 319)和一个(10, 10)2d 修复。这意味着我们的输出形状（在取每个“内部”* 10x10 *数组的平均值之前）将是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>shape = (img.shape[<span class="number">0</span>] - size + <span class="number">1</span>, img.shape[<span class="number">1</span>] - size + <span class="number">1</span>, size, size)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>shape</span><br><span class="line">(<span class="number">245</span>, <span class="number">310</span>, <span class="number">10</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-<p>你还需要指定新数组的<strong>步长</strong>。数组的步长是一个字节元组，用于在沿数组移动时跳转到每个维度。IMG中的每个像素都是64位(8字节)的浮点，这意味着总的图像大小为<em>254×319×8 = 648, 208</em>字节。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>img.dtype</span><br><span class="line">dtype(<span class="string">&#x27;float64&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>img.nbytes</span><br><span class="line"><span class="number">648208</span></span><br></pre></td></tr></table></figure>
-
-<p>在内部，IMG作为一个连续的648，208字节块保存在内存中。因此，STEAMS是一种类似“元数据”的属性，它告诉我们需要向前跳转多少字节才能沿着每个轴移动到下一个位置。我们沿着行以8字节为单位移动，但需要遍历<em>8x319=2，552</em>字节才能将“向下”从一行移动到另一行。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>img.strides</span><br><span class="line">(<span class="number">2552</span>, <span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-
-<p>在我们的示例中，生成的修复程序的步调只会重复img的两次步调：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>strides = <span class="number">2</span> * img.strides</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>strides</span><br><span class="line">(<span class="number">2552</span>, <span class="number">8</span>, <span class="number">2552</span>, <span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-
-<p>现在，让我们将这些部分与NumPy的<a target="_blank" rel="noopener" href="https://www.numpy.org.cn/reference/routines/indexing.html#%E7%B1%BB%E4%BC%BC%E7%B4%A2%E5%BC%95%E7%9A%84%E6%93%8D%E4%BD%9C">stride_tricks</a>结合起来：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> numpy.lib <span class="keyword">import</span> stride_tricks</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>patches = stride_tricks.as_strided(img, shape=shape, strides=strides)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>patches.shape</span><br><span class="line">(<span class="number">245</span>, <span class="number">310</span>, <span class="number">10</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Here’s the first <em>10x10</em> patch:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patches[<span class="number">0</span>, <span class="number">0</span>].<span class="built_in">round</span>(<span class="number">2</span>)</span><br><span class="line">array([[<span class="number">0.81</span>, <span class="number">0.8</span> , <span class="number">0.78</span>, <span class="number">0.79</span>, <span class="number">0.8</span> , <span class="number">0.81</span>, <span class="number">0.8</span> , <span class="number">0.79</span>, <span class="number">0.8</span> , <span class="number">0.8</span> ],</span><br><span class="line">       [<span class="number">0.8</span> , <span class="number">0.82</span>, <span class="number">0.81</span>, <span class="number">0.79</span>, <span class="number">0.79</span>, <span class="number">0.79</span>, <span class="number">0.78</span>, <span class="number">0.81</span>, <span class="number">0.81</span>, <span class="number">0.8</span> ],</span><br><span class="line">       [<span class="number">0.79</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.79</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.82</span>, <span class="number">0.83</span>, <span class="number">0.79</span>, <span class="number">0.81</span>],</span><br><span class="line">       [<span class="number">0.8</span> , <span class="number">0.79</span>, <span class="number">0.81</span>, <span class="number">0.81</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.78</span>, <span class="number">0.76</span>, <span class="number">0.8</span> , <span class="number">0.79</span>],</span><br><span class="line">       [<span class="number">0.78</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.78</span>, <span class="number">0.8</span> , <span class="number">0.79</span>, <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.79</span>, <span class="number">0.79</span>],</span><br><span class="line">       [<span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.81</span>, <span class="number">0.79</span>],</span><br><span class="line">       [<span class="number">0.78</span>, <span class="number">0.77</span>, <span class="number">0.78</span>, <span class="number">0.76</span>, <span class="number">0.77</span>, <span class="number">0.8</span> , <span class="number">0.8</span> , <span class="number">0.77</span>, <span class="number">0.8</span> , <span class="number">0.8</span> ],</span><br><span class="line">       [<span class="number">0.79</span>, <span class="number">0.76</span>, <span class="number">0.77</span>, <span class="number">0.78</span>, <span class="number">0.77</span>, <span class="number">0.77</span>, <span class="number">0.79</span>, <span class="number">0.78</span>, <span class="number">0.77</span>, <span class="number">0.76</span>],</span><br><span class="line">       [<span class="number">0.78</span>, <span class="number">0.75</span>, <span class="number">0.76</span>, <span class="number">0.76</span>, <span class="number">0.73</span>, <span class="number">0.75</span>, <span class="number">0.78</span>, <span class="number">0.76</span>, <span class="number">0.77</span>, <span class="number">0.77</span>],</span><br><span class="line">       [<span class="number">0.78</span>, <span class="number">0.79</span>, <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.78</span>, <span class="number">0.77</span>, <span class="number">0.76</span>, <span class="number">0.77</span>, <span class="number">0.77</span>]])</span><br></pre></td></tr></table></figure>
-
-<p>最后一步很棘手。 为了得到每个内部10x10数组的矢量化平均值，我们需要仔细考虑我们现在拥有的维数。结果应该折叠最后两个维度，以便我们留下一个245x310数组。</p>
-<p>一种（次优）方式是首先重塑修复，将内部2d数组展平为长度为100的向量，然后计算最终轴上的均值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>veclen = size ** <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>patches.reshape(*patches.shape[:<span class="number">2</span>], veclen).mean(axis=-<span class="number">1</span>).shape</span><br><span class="line">(<span class="number">245</span>, <span class="number">310</span>)</span><br></pre></td></tr></table></figure>
-
-<p>但是，你也可以将轴指定为元组，计算最后两个轴的平均值，这应该比重新整形更有效：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>patches.mean(axis=(-<span class="number">1</span>, -<span class="number">2</span>)).shape</span><br><span class="line">(<span class="number">245</span>, <span class="number">310</span>)</span><br></pre></td></tr></table></figure>
-
-<p>让我们通过比较与循环版本的相等性来确保检查。它确实如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>strided_means = patches.mean(axis=(-<span class="number">1</span>, -<span class="number">2</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.allclose(patch_means, strided_means)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<p>如果大步幅的概念让你感到兴奋，请不要激动：Scikit-Learn已经在其feature_extraction模块中很好地<a target="_blank" rel="noopener" href="http://scikit-learn.org/stable/modules/feature_extraction.html#image-feature-extraction">嵌入了整个过程</a>。</p>
-<h2 id="临别赠言：不要过度优化"><a href="#临别赠言：不要过度优化" class="headerlink" title="临别赠言：不要过度优化"></a>临别赠言：不要过度优化</h2><p>在本文中，我们讨论了利用NumPy中的数组编程来优化运行时。在处理大型数据集时，注意微观性能非常重要。</p>
-<p>但是，有一部分案例无法避免使用本机Python for循环。正如Donald Knuth<a target="_blank" rel="noopener" href="http://web.archive.org/web/20130731202547/http://pplab.snu.ac.kr/courses/adv_pl05/papers/p261-knuth.pdf">所说</a>，“过早优化是所有邪恶的根源。”程序员可能错误地预测他们的代码中会出现瓶颈的地方，花费数小时试图完全矢量化操作，这将导致运行时相对不显着的改进。</p>
-<p>在这里或那里都放上for循环也没有任何问题。通常，考虑在更高的抽象级别优化整个脚本的流程和结构，可能会更有效率。</p>
-<h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h2><p>书籍：</p>
-<ul>
-<li>Travis Oliphant’s <a target="_blank" rel="noopener" href="https://realpython.com/asins/151730007X/">Guide to NumPy, 2nd ed</a>. (特拉维斯是NumPy的主要创建者。)</li>
-<li>Chapter 2 (“Introduction to NumPy”) of Jake VanderPlas’ <a target="_blank" rel="noopener" href="https://realpython.com/asins/1491912057/">Python数据科学手册</a></li>
-<li>Chapter 4 (“NumPy Basics”) and Chapter 12 (“Advanced NumPy”) of Wes McKinney’s <a target="_blank" rel="noopener" href="https://realpython.com/asins/B075X4LT6K/">Python for Data Analysis 2nd ed</a>.</li>
-<li>Chapter 2 (“The Mathematical Building Blocks of Neural Networks”) from François Chollet’s <a target="_blank" rel="noopener" href="https://realpython.com/asins/1617294438/">Deep Learning with Python</a></li>
-<li>Robert Johansson’s <a target="_blank" rel="noopener" href="https://realpython.com/asins/1484205545/">Numerical Python</a></li>
-<li>Ivan Idris: <a target="_blank" rel="noopener" href="https://realpython.com/asins/1785281968/">Numpy Beginner’s Guide, 3rd ed</a>.</li>
-</ul>
-<p>其他资源:</p>
-<ul>
-<li>维基百科: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Array_programming">数组编程</a></li>
-<li>SciPy 课堂讲义: <a target="_blank" rel="noopener" href="http://www.scipy-lectures.org/intro/numpy/index.html">Basic</a> and <a target="_blank" rel="noopener" href="http://www.scipy-lectures.org/advanced/advanced_numpy/index.html">Advanced</a> NumPy</li>
-<li>EricsBroadcastingDoc: <a target="_blank" rel="noopener" href="http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc">NumPy中的数组广播</a></li>
-<li>SciPy Cookbook: <a target="_blank" rel="noopener" href="http://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html">NumPy中的视图与副本</a></li>
-<li>Nicolas Rougier: <a target="_blank" rel="noopener" href="http://www.labri.fr/perso/nrougier/from-python-to-numpy/">从Python到Numpy</a> and <a target="_blank" rel="noopener" href="http://www.labri.fr/perso/nrougier/teaching/numpy.100/index.html">100 NumPy练习</a></li>
-<li>TensorFlow 文档: <a target="_blank" rel="noopener" href="https://www.tensorflow.org/performance/xla/broadcasting">广播语法</a></li>
-<li>Theano 文档: <a target="_blank" rel="noopener" href="http://deeplearning.net/software/theano/tutorial/broadcasting.html">广播</a></li>
-<li>Eli Bendersky: <a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2015/broadcasting-arrays-in-numpy/">用Numpy广播数组</a></li>
-</ul>
-
-      
-    </div>
- <div>
-      
-    </div>
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-
-
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
   }
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+</script> 
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="rczmm"
-      src="/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">rczmm</p>
-  <div class="site-description" itemprop="description">你看到的不止如此</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
         
-          <span class="site-state-item-count">51</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">小小世界</h3>
+      <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </div>
-  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
-    Chat
-  </a>
-  </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="http://github.com/rczmm" title="GitHub → http:&#x2F;&#x2F;github.com&#x2F;rczmm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:3179623450@qq.com" title="E-Mail → mailto:3179623450@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
 
-
-
-      </div>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">小小世界</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
       </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">rczmm</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
-    </span>
-    <span title="站点总字数">314k</span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">4:45</span>
-
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    访问量：<span id="busuanzi_value_site_pv"></span> 次数 |
-    访客数：<span id="busuanzi_value_site_uv"></span> 人次
+    </div>
+  </transition>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
   </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;"></span>
-      <span class="post-meta-item-icon">
-        <i class="user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
+  <!-- 首页轮播 -->
+  
+
+  <link href="/js/vue-typed-js/index.css" rel="stylesheet">
+
+
+
+
+
+
+<div class="swiper-length" style="display: none;">0</div>
+<div id="appSwiper"
+  class="swiper-no-swiping"
+  @mouseenter="stopAutoPlay()" 
+  @mouseleave="startAutoPlay()"
+>
+  <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
+    
+      <swiper-slide>
+        <div class="item swiper-lazy" data-background="https://img11.360buyimg.com/ddimg/jfs/t1/160978/33/20686/2476596/6083e62dEa588862b/63f8f2163ab61b2f.png" style="background-size: 300000px; 
+          background-position: left center;" style="position: relative;">
+          <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
+            <div class="flag">
+              
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://img11.360buyimg.com/ddimg/jfs/t1/160978/33/20686/2476596/6083e62dEa588862b/63f8f2163ab61b2f.png" style="height: 100%; background-size: cover; 
+                background-position: center center;">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
+              </div>
+              <div class="flag-text">
+                <div class="flag-text-content">
+                  <div class="title ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s">青墨书晚风</div>
+                  
+                      <div class="excerpt ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"></div>
+                    
+                </div>
+                <div style="display: flex;" class="flag-text-btns">
+                  
+                    <div class="ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"><a target="_blank" rel="noopener" href="https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/" class="read-more swiper-btn-color" style="display: inline-block; z-index:1;">阅读文档</a></div>
+                  
+                  
+                    <div class="ani animated" style="margin-left: 10px;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"><a target="_blank" rel="noopener" href="https://gitee.com/yuang01/hexo-theme-bamboo/repository/archive/dev.zip" class="read-more swiper-btn-color2" style="display: inline-block; z-index:1;border: 1px solid white;">下载主题</a></div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      </swiper-slide>
+    
+  </swiper>
+  
+    <div id="scroll-down" @click="toPostContent()">
+      <a href="javascript:;">
+        <i class="fas fa-angle-down scroll-down-effects"></i>
+      </a>
+    </div>
+  
+  <canvas id="header_canvas"style="position:absolute;bottom:0;width:100%;pointer-events:none;"></canvas>
+  
+    <svg class="hans-container" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"><defs><path id="hans-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="hans-parallax"><use xlink:href="#hans-wave" x="50" y="0" fill="rgba(224,233,239,.5)"></use><use xlink:href="#hans-wave" x="50" y="3" fill="rgba(224,233,239,.5)"></use><use xlink:href="#hans-wave" x="50" y="6" fill="rgba(224,233,239,.5)"></use></g></svg>
+    
 </div>
 
 
+<style>.hans-parallax>use{animation:hans-wave-move 12s linear infinite}.hans-parallax>use:nth-child(1){animation-delay:-2s}.hans-parallax>use:nth-child(2){animation-delay:-2s;animation-duration:5s}.hans-parallax>use:nth-child(3){animation-delay:-4s;animation-duration:3s}@keyframes hans-wave-move{0%{transform:translate(-90px,0)}100%{transform:translate(85px,0)}}</style>
+<style>
+  .hans-container {
+    position: absolute!important;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 100;
+    pointer-events:none;
+  }
+</style>
+
+
+<script>
+  var autoplay = JSON.parse('false');
+  var delay = '5000';
+  var loop = JSON.parse('true') ? false : JSON.parse('true');
+  var effect = 'slide';
+  var swiperLength = parseInt(document.querySelector(".swiper-length").innerText);
+  var defaultDesc = '';
+  defaultDesc = defaultDesc.split(',');
+  var defaultDescTypedLoop = JSON.parse('true');
+  var vm = new Vue({
+    el: '#appSwiper',
+    data: {
+      defaultDesc: defaultDesc,
+      defaultDescTypedLoop,
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true // 允许点击小圆点跳转
+        },
+        loop: loop ? true : false,
+        effect, // fade
+        autoplay: (autoplay && swiperLength > 1) ? {
+  　　　　delay,
+  　　　　disableOnInteraction: false // 手动切换之后继续自动轮播
+    　　} : false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        lazy: {
+          loadPrevNext: true,
+        },
+        on:{
+          init: function() {
+            swiperAnimateCache(this); //隐藏动画元素 
+            swiperAnimate(this); //初始化完成开始动画
+          }, 
+          slideChangeTransitionEnd: function(){ 
+            swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          } 
+        }
+        // Some Swiper option/callback...
+      }
+    },
+    computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
+    },
+    mounted() {
+      // console.log('Current Swiper instance object', this.swiper)
+      // this.swiper.slideTo(0, 1000, false)
+    },
+    methods: {
+      stopAutoPlay() {
+        (autoplay && swiperLength > 1) && this.swiper.autoplay.stop();
+      },
+      startAutoPlay() {
+        (autoplay && swiperLength > 1) && this.swiper.autoplay.start();
+      },
+      slideChangeTransitionEnd() {
+        console.log('1');
+      },
+      toPostContent() {
+        const fullHeight = $(window).height() - 60;
+        $('html,body').animate({scrollTop: fullHeight},500);
+      }
+    },
+    created() {}
+  })
+</script>
+
+  <script src="/js/bubble/homeBubble.js"></script>
+
+<style>
+#appSwiper {
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+}
+.default-excerpt {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+}
+.bottom-one-btn {
+  margin-top: 15px;
+}
+.swiper-container {
+  overflow: hidden;
+  z-index: 0;
+}
+.swiper-slide {
+  height: 350px;
+  position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 10px 10px;
+  transition: background 0.2s;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.swiper-slide .item {
+  width: 100%;
+  height: 100%;
+}
+.flag {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  color: #ffffff;
+  height: 100%;
+  background: #000;
+}
+.flag img {
+  min-height: 100%;
+}
+.flag-text {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 80%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+}
+.flag-text .title {
+  font-size: 1.8rem;
+  font-family: Long Cang,cursive;
+}
+.flag-text .title a {
+  color: #fff;
+  transition: color 0.3s;
+}
+.flag-text .title a:hover {
+  color: #42b983;
+}
+.flag-text .excerpt {
+  color: #eee;
+  font-family: Ubuntu,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  width: 70%;
+  line-height: 30px;
+  height: 150px;
+  margin-top: 2%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #42b983;
+}
+.img-mask {
+  opacity:0.6; filter: alpha(opacity=60);
+}
+.flag-text .read-more {
+  margin-bottom: 30px;
+  padding: 5px 15px;
+  color: #ffffff;
+  border-radius: 20px;
+}
+#scroll-down {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+#scroll-down a {
+  color: #fff;
+}
+@-webkit-keyframes rightan
+  {
+  
+  0%
+  {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}
+.scroll-down-effects {
+  animation: rightan 1.5s infinite;
+}
+/* 当头部导航设置为背景透明的时候 */
+
+  .swiper-slide {
+    height: 400px;
+  }
+  .flag-text {
+    top: 80px;
+  }
+
+
+@media (min-width: 992px) {
+  .swiper-button-prev {
+    margin-left: 15%;
+    transform: translateX(-180%);
+  }
+  .swiper-button-next {
+    margin-right: 15%;
+    transform: translateX(180%);
+  }
+  .flag-text .title {
+    width: 80%;
+    line-height: 35px;
+    max-height: 70px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 1200px) { 
+  .flag {
+    width: 80%;
+  }
+  .swiper-button-prev {
+    margin-left: 10%;
+    transform: translateX(-180%);
+  }
+  .swiper-button-next {
+    margin-right: 10%;
+    transform: translateX(180%);
+  }
+}
+@media (max-width: 992px) {
+  .flag {
+    width: 100%;
+  }
+  .flag-text .title {
+    font-size: 1.5rem;
+    margin-top: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .flag-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .flag-text .excerpt {
+    width: 100%;
+    line-height: 25px;
+    height: 125px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+  .flag-text .read-more {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 992px) and (min-width: 551px) {
+  .flag-text .excerpt {
+    width: 70%;
+  }
+}
+@media (max-width: 551px) {
+  .swiper-slide {
+    height: 250px;
+  }
+  .flag-text .title {
+    line-height: 30px;
+    max-height: 60px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .flag-text .excerpt {
+    font-size: 1rem;
+    line-height: 20px;
+    height: 80px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+  .flag-text .excerpt { 
+    margin-top: 10px;
+  }
+  .flag-text .read-more {
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    transform: scale(0.5);
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+}
+/* 当头部导航设置为背景透明的时候 */
+
+  @media (max-width: 992px) {
+    .flag-text {
+      top: 60px;
+      height: 80%;
+    }
+  }
+  @media (max-width: 551px) {
+    .swiper-slide {
+      height: 310px;
+    }
+  }
+
+
+/* 文字或者按钮居中显示 */
+
+  .flag-text {
+    left: 10%;
+  }
+  .flag-text .flag-text-content {
+    width: 100%;
+    text-align: center;
+  }
+  .flag-text .title {
+    width: 100%;
+    text-align: center;
+  }
+  .flag-text .excerpt { 
+    width: 100%;
+    text-align: center;
+  }
+  .bottom-one-btn {
+    display: flex;
+    justify-content: center;
+  }
+  .default-excerpt {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+  }
+  .flag-text-btns {
+    justify-content: center;
+  }
+  @media (min-width: 992px) {
+    .flag-text .excerpt {
+      line-height: 30px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
+  }
+  @media (max-width: 992px) {
+    .flag-text {
+      margin-left: 0;
+      transform: translateX(0);
+    }
+  }
 
 
 
 
+/* 全屏显示 */
+
+  .flag {
+    width: 100%;
+  }
+  .swiper-slide {
+    height: calc(100vh - 60px);
+    
+      height: 100vh;
+    
+  }
+  .flag-text {
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+    width: 70%;
+    height: auto;
+  }
+  .flag-text .title {
+    font-size: 2.8rem;
+    line-height: 1.5em;
+    max-height: none;
+    /* overflow: visible; */
+  }
+  .flag-text .excerpt {
+    font-size: 1.25rem;
+    height: 150px;
+  }
+  .flag-text .read-more {
+    margin-top: 10px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    margin-top: -60px!important;
+  }
+  .swiper-btn-color,
+  .swiper-btn-color2 {
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+  .swiper-btn-color:hover,
+  .swiper-btn-color2:hover {
+    background-color: #42b983;
+    border: 1px solid #42b983!important;
+  }
+  .flag-text-btns {
+    justify-content: center;
+  }
+  .swiper-button-prev {
+    margin-left: 10px;
+    transform: translateX(0);
+    border-radius: 50%;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+  }
+  .swiper-button-next {
+    margin-right: 10px;
+    transform: translateX(0);
+    border-radius: 50%;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 992px) {
+    .flag-text .excerpt {
+      line-height: 35px;
+      height: 175px;
+    }
+    .default-excerpt {
+      min-height: 150px;
+    }
+    .typed-element {
+      align-items: unset;
+    }
+  }
+  @media (max-width: 992px) {
+    .flag-text {
+      margin-left: 0;
+      height: 60%;
+      top: 55%;
+    }
+    .flag-text .title {
+      font-size: 2.4rem;
+      margin-top: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .flag-text .excerpt {
+      line-height: 35px;
+      height: 185px;
+    }
+    .flag-text .read-more {
+      margin-top: 20px;
+    }
+  }
+  @media (max-width: 551px) {
+    .flag-text {
+      height: 60%;
+    }
+    .flag-text .title {
+      font-size: 2.2rem;
+    }
+    .flag-text .excerpt {
+      line-height: 30px;
+    }
+    .flag-text .read-more {
+      margin-top: 50px;
+      padding: 10px 30px;
+    }
+    .swiper-button-prev {
+      margin-left: 0;
+    }
+    .swiper-button-next {
+      margin-right: 0;
+    }
+    .default-excerpt {
+      margin-top: 1rem;
+    }
+  }
 
 
+/* video */
+.swiper-video {
+  width: 100%;
+  height: 100%;
+}
+.swiper-video video {
+  pointer-events: none;
+}
+.swiper-video-maskBox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.2;
+  z-index: 1;
+}
+@media (min-width: 992px) {
+  
+    .swiper-video {
+      display: none;
+    }
+    .swiper-default-bgImg {
+      display: block;  
+    }
+  
+}
+@media (max-width: 992px) {
+  .swiper-video {
+    display: none;
+  }
+  .swiper-default-bgImg {
+    display: block;  
+  }
+}
+/* video-end */
+</style>
+
+
+<div id="l_main">
+  <div class="l_content">
+    <!-- 自定义的内容 -->
+    
+    <!-- 首页座右铭 -->
+    
+    <!-- 首页公告 -->
+    
+    <!-- 首页文章置顶 -->
+    
+
+
+
+    <div class="bg-floor" id="home-bg-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+    <!-- 每一篇文章卡片 -->
+    <!-- hash算法 -->
+
+<section class="posts">
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2021-09-21</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/">numpy数组编程</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag">转载</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="/medias/7.jpg" class="lazyload placeholder" data-srcset="/medias/7.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            使用 NumPy 进行数组编程前言人们有时会说，与C++这种低级语言相比，Python以运行速度为代价改善了开发时间和效率。幸运的是，有一些方法可以在不牺牲易用性的情况下加速Python中的操作运行时。适用于快速数值运算的一个选项是NumP
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
       </div>
-    </footer>
+      <div class="post-img">
+        <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="/medias/7.jpg" class="lazyload placeholder" data-srcset="/medias/7.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
+    <!-- 翻页 -->
+    
+  <!-- <nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+  </nav> -->
+  <div class="page-nav">
+    
+      <a href="/page/4/"
+         class="page-nav-pre">
+         <i class="fas fa-angle-left"></i><span class="ml-5">上一页</span>
+      </a>
+    
+    <div class="page-info">
+        <div class="page-info-text">5 / 52</div>
+    </div>
+    
+      <a href="/page/6/"
+         class="page-nav-next">
+          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
+      </a>
+      
+  </div>
+
   </div>
 
   
+<aside id='l_side'>
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+    
+      
+        <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='http://api.btstu.cn/sjtx/api.php?lx=c1&format=images'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>青墨书晚风</h2>
+        
+        
+          <p>我是副标题</p>
 
-<script src="/js/utils.js"></script>
+        
+        
+          <p><span id="jinrishici-sentence">小小世界</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:me@xxx.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=你的qq号码"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-<script src="/js/bookmark.js"></script>
-
-
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-
-
+      
+    
+  
+  
   
 
+  <div class="layout_sticky">
+    
+      
+    <section class="widget side_category">
+      
+  <header>
+    
+      <a style="color: " href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
 
 
+      <div class='content'>
+        <ul class="entry navigation">
+          
+            <li><a class="flat-box"
+              title="/categories/hadoop/" href="/categories/hadoop/"
+              id="categorieshadoop"
+              ><div class='name'>hadoop</div><div class='badge'>(2)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/html/" href="/categories/html/"
+              id="categorieshtml"
+              ><div class='name'>html</div><div class='badge'>(4)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/java/" href="/categories/java/"
+              id="categoriesjava"
+              ><div class='name'>java</div><div class='badge'>(19)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/python/" href="/categories/python/"
+              id="categoriespython"
+              ><div class='name'>python</div><div class='badge'>(22)</div></a></li>
+          
+            <li><a class="flat-box child"
+              title="/categories/python/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/categories/python/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
+              id="categoriespythonE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
+              ><div class='name'>数据结构与算法</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/%E6%8A%80%E6%9C%AF/" href="/categories/%E6%8A%80%E6%9C%AF/"
+              id="categoriesE68A80E69CAF"
+              ><div class='name'>技术</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+              id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
+              ><div class='name'>操作系统</div><div class='badge'>(2)</div></a></li>
+          
+        </ul>
+      </div>
+    </section>
+  
+  
+    
+    
+      
+<section class="widget side_tagcloud">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+    <a href="/tags/hadoop/" style="font-size: 16px; color: #8b8b8b">hadoop</a> <a href="/tags/html/" style="font-size: 18px; color: #7e7e7e">html</a> <a href="/tags/java/" style="font-size: 22px; color: #636363">java</a> <a href="/tags/jdk/" style="font-size: 14px; color: #999">jdk</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/%E6%82%A6%E8%AF%BB/" style="font-size: 14px; color: #999">悦读</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 16px; color: #8b8b8b">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">数据结构算法</a> <a href="/tags/%E8%BD%AC%E8%BD%BD/" style="font-size: 20px; color: #707070">转载</a>
+    </div>
+</section>
 
   
-<script src="/js/local-search.js"></script>
+    
+    
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
 
 
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
 
+            <div class="post-img-box">
+              <a href="/2021/09/27/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E8%AF%BE%E5%B7%A5%E5%9C%BA%E4%BE%8B/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/medias/5.jpg" class="lazyload placeholder" data-srcset="/medias/5.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-27</span>
+                
+              </div>
+              <a class="post-title" href="/2021/09/27/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E8%AF%BE%E5%B7%A5%E5%9C%BA%E4%BE%8B/">数据分析之课工场例</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
 
+            <div class="post-img-box">
+              <a href="/2021/09/26/pandas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/medias/2.jpg" class="lazyload placeholder" data-srcset="/medias/2.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-26</span>
+                
+              </div>
+              <a class="post-title" href="/2021/09/26/pandas%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">pandas学习笔记</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
 
+            <div class="post-img-box">
+              <a href="/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/medias/13.jpg" class="lazyload placeholder" data-srcset="/medias/13.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-21</span>
+                
+              </div>
+              <a class="post-title" href="/2021/09/21/numpy-dnc%EF%BC%8Crnn%EF%BC%8Clstm/">numpy-dnc，rnn，lstm</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
 
+            <div class="post-img-box">
+              <a href="/2021/09/21/numpy-k%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/medias/11.jpg" class="lazyload placeholder" data-srcset="/medias/11.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-21</span>
+                
+              </div>
+              <a class="post-title" href="/2021/09/21/numpy-k%E5%9D%87%E5%80%BC%E8%81%9A%E7%B1%BB/">numpy-k均值聚类</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
 
+            <div class="post-img-box">
+              <a href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="/medias/7.jpg" class="lazyload placeholder" data-srcset="/medias/7.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">09-21</span>
+                
+              </div>
+              <a class="post-title" href="/2021/09/21/numpy%E6%95%B0%E7%BB%84%E7%BC%96%E7%A8%8B/">numpy数组编程</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
 
+    
+  <section class="widget side_archives">
+    
+    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">20</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">23</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2018/12/"><span class="card-archive-list-date">十二月 2018</span><span class="card-archive-list-count">1</span></a></li></ul></div>
+  </section>
 
-
-
-
-
+    <section class="widget side_webinfo">
   
+  <header>
+    
+      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
+    
+  </header>
 
-  
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>52 篇</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2020/01/01'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
+        </script>
+      
+
+
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+          
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+          
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sat Jun 18 2022 15:46:54 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-06-18 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
+          }
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2022-06-18 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
+    
+  </div>
+</aside>
+
+</div>
+<!-- 花瓣和雪花飘落 -->
+<!-- 雪花和花瓣特效 -->
+
+
+
+<!-- 灯笼 -->
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
   
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#42b983';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/yuang01">yuang01</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
     });
-    new Valine({
-        el: '#valine-comments' ,
-        verify: false,
-        notify: true,
-        appId: 'tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va',
-        appKey: 'UuxnA5liCzoSIlXGGSnWG271',
-        placeholder: '都看到这里了，真的不说两句嘛？',
-        avatar:'mm',
-        guest_info:guest,
-        meta:guest,
-        pageSize:'10' || 20,
-        visitor: true
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
     });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
   </script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
