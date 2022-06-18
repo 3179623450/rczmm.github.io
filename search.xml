@@ -1,32 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>反射与注解</title>
-      <link href="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"/>
-      <url>/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</url>
-      
-        <content type="html"><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p><p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p><h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p><p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p><p>那么“反”，其实就是根据对象来反推出其类型。</p><p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p><p>1、利用Object类的getClass（）方法</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p><p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.util.Date"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>反射与注解</title>
+    <url>/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p>
+<p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p>
+<p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p>
+<p>那么“反”，其实就是根据对象来反推出其类型。</p>
+<p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p>
+<p>1、利用Object类的getClass（）方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
+<span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p>
+<p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.util.Date"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>
+<p>当然，在使用forName的时候，请务必确保类存在。否则异常如下。</p>
+<p><img src="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" class="lazyload placeholder" data-srcset="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220618211522778"></p>
+<p>要注意，类存在更多指的是CLASSPATH环境属性中有该类。</p>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="认识注解"><a href="#认识注解" class="headerlink" title="认识注解"></a>认识注解</h3><p>注解是java对元数据的支持。</p>
+<p>简单的来说，注解与注释相似，他们都不是程序本身，而是对程序做出解释，不同的是，注释是给开发者看的，而注解是用于编译器或者其他程序读取的。</p>
+<p>javaSE中三类常见注解：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span><span class="token comment">//重写注解</span>
+<span class="token annotation punctuation">@Deprecated</span><span class="token comment">//不推荐使用注解，可以使用但是有风险或者有更好的方式（被淘汰）</span>
+<span class="token annotation punctuation">@SuppressWarnings</span> <span class="token comment">//“镇压”警告注解（不推介使用）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>除了系统定义的，如同以上三类注解之外，用户也可以自定义注解。</p>
+<p>java中自定义注解，需要用@interface进行标记，同时也可以用@Target等元注解来对自定义的注解类型做说明。</p>
+<ul>
+<li>@Target：用于描述注解的使用范围</li>
+<li>@Retention：用于表示需要在什么级别保存注解信息，用于描述注解的声明周期，（SOURCE&lt;CLASS&lt;RUNTIME）</li>
+<li>@Document：说明该注解将被包含在javadoc中</li>
+<li>@Inherited：说明子类可以继承父类中的该注解</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span>TYPE<span class="token punctuation">,</span> <span class="token class-name">ElementType</span><span class="token punctuation">.</span>METHOD<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@interface</span> <span class="token class-name">Defaultannotion</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> <span class="token function">title</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"1111111"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Message</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Defaultannotion</span><span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"sss"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1111"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       <categories>
-          
-          <category> java </category>
-          
+        <category>java</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> javase </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>javase</tag>
+      </tags>
+  </entry>
 </search>
