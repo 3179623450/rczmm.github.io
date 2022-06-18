@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小小世界</title>
+  
+  <subtitle>永远在路上</subtitle>
+  <link href="http://rczmm.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://rczmm.github.io/"/>
+  <updated>2022-06-18T08:43:48.949Z</updated>
+  <id>http://rczmm.github.io/</id>
+  
+  <author>
+    <name>rczmm</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>反射与注解</title>
+    <link href="http://rczmm.github.io/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://rczmm.github.io/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</id>
+    <published>2022-06-18T08:21:08.000Z</published>
+    <updated>2022-06-18T08:43:48.949Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;反射与注解&quot;&gt;&lt;a href=&quot;#反射与注解&quot; class=&quot;headerlink&quot; title=&quot;反射与注解&quot;&gt;&lt;/a&gt;反射与注解&lt;/h1&gt;&lt;p&gt;jdk</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+  </entry>
+  
+</feed>
