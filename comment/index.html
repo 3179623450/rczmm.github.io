@@ -303,16 +303,27 @@
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                <a href="/comment" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(7)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(7)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                <ul class="drawer-sub-menu" v-if="isOpen(7)">
                   
                   <li>
                     <a href="/gallery">
@@ -486,6 +497,17 @@
                 <a href="/friends" class="menu-item-link" title="友情链接">
                   
                   <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/comment" class="menu-item-link" title="留言板">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
                 </a>
               
             </li>
@@ -707,7 +729,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 25 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 56 |
           </span>
   
           <span class="min2read">
@@ -748,11 +770,13 @@
     <h1>
     念两句诗</h1>
     <p id="poem">
-    叙别梦、扬州一觉。</p>
+    鹤冲天·黄金榜上
+    宋|柳永</p>
     <p id="info">
-    【宋代】吴文英《夜游宫·人去西楼雁杳》</p>
+    黄金榜上。偶失龙头望。明代暂遗贤，如何向。未遂风云便，争不恣狂荡。何须论得丧。才子词人，自是白衣卿相。</p>
   </div>
 </div>
+
 
       </div>
       <div class="post-tags-categories">
