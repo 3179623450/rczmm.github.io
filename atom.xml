@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-06-18T08:43:48.949Z</updated>
+  <updated>2022-06-18T12:13:30.954Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://rczmm.github.io/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"/>
     <id>http://rczmm.github.io/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</id>
     <published>2022-06-18T08:21:08.000Z</published>
-    <updated>2022-06-18T08:43:48.949Z</updated>
+    <updated>2022-06-18T12:13:30.954Z</updated>
     
     
       
@@ -34,8 +34,10 @@
     
     
     
+    <category term="java" scheme="http://rczmm.github.io/categories/java/"/>
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+    <category term="javase" scheme="http://rczmm.github.io/tags/javase/"/>
     
   </entry>
   

@@ -9,28 +9,33 @@
 <p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p>
 <p>那么“反”，其实就是根据对象来反推出其类型。</p>
 <p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p>
-<pre><code class="java">Date date = new Date();   // 正 获取对象
-System.out.println(date.getClass());  //  反 由对象获取类信息
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p>
 <p>1、利用Object类的getClass（）方法</p>
-<pre><code class="java">Date date = new Date();   // 正 获取对象
-Class&lt;?&gt; a = date.getClass();
-System.out.println(a);  //  反 由对象获取类信息
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
+<span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p>
-<pre><code class="java">Class&lt;?&gt; a = Date.class;
-System.out.println(a);
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p>
 <p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p>
-<pre><code class="java">Class&lt;?&gt; a = Class.forName(&quot;java.util.Date&quot;);
-System.out.println(a);
-</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.util.Date"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
-        <tag>java</tag>
+        <tag>javase</tag>
       </tags>
   </entry>
 </search>
