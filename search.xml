@@ -68,4 +68,50 @@
         <tag>javase</tag>
       </tags>
   </entry>
+  <entry>
+    <title>高等数学</title>
+    <url>/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</url>
+    <content><![CDATA[<h1 id="高等数学学习笔记"><a href="#高等数学学习笔记" class="headerlink" title="高等数学学习笔记"></a>高等数学学习笔记</h1><h2 id="函数与极限"><a href="#函数与极限" class="headerlink" title="函数与极限"></a>函数与极限</h2><h3 id="函数的几个性质"><a href="#函数的几个性质" class="headerlink" title="函数的几个性质"></a>函数的几个性质</h3><h4 id="奇偶性"><a href="#奇偶性" class="headerlink" title="奇偶性"></a>奇偶性</h4><p>奇函数：关于原点对称</p>
+<p>偶函数：关于y轴对称</p>
+<p>我们来看一下，x<sup>2</sup>的函数图像。</p>
+<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619104941327.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619104941327.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220619104941327" style="zoom: 33%;">
+
+<p>x<sup>3</sup>的图像。</p>
+<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619105046331.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619105046331.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220619105046331" style="zoom:33%;">
+
+<p>函数的奇偶性在代数上可以大致表示为：</p>
+<p>奇函数：f（x） = -f（-x）</p>
+<p>偶函数：f（x） = f(-x)</p>
+<p>四则运算中函数的奇偶性：</p>
+<p>加减 同类不变 异类未知</p>
+<p>乘除 同偶异奇</p>
+<p>复合函数的奇偶性：</p>
+<p>内偶则偶，内奇则外</p>
+<h4 id="周期性"><a href="#周期性" class="headerlink" title="周期性"></a>周期性</h4><p>函数sinx图像：</p>
+<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619105712982.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619105712982.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220619105712982" style="zoom:33%;">
+
+<p>诸如此类，函数值在定义域内有规律的重复的出现，就被称为周期函数。</p>
+<p>代数上的表示:f(x)=f(x+T)恒成立。</p>
+<h4 id="连续性"><a href="#连续性" class="headerlink" title="连续性"></a>连续性</h4><p>简单的说，当函数图像呈现出“一笔画”的样子时，我们就称作这个函数图像是连续的。</p>
+<p>我们判断连续的方法是：函数在x点处的左极限等于右极限等于函数值。</p>
+<h3 id="极限"><a href="#极限" class="headerlink" title="极限"></a>极限</h3><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619110736997.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220619110736997.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220619110736997" style="zoom:33%;">
+
+<p>这是函数1/x的函数图像。</p>
+<p>由于分母不能为0，我们发现，在函数x不断增长时，函数图像越来越靠近x轴，即y近似于0.</p>
+<p>在这里，就体现出了极限的重要思想，即趋势。</p>
+<p>我们通过一连串数不清的近似值的趋向与走势，将一个量的值确定了下来。</p>
+<p>上述例子里，我们讨论了当x不断增长，或者不断减小时，y的变化趋势，是近似于0的。</p>
+<p>这其实就是在讨论当x趋近于无穷的时候，函数的极限。</p>
+<p>而当我们讨论，当x趋近于0时，我们发现，函数图像的趋势是不断延展，即y的值越来越大（小），得不到一个具体的值，而只能得出，一个不断延展的趋势。</p>
+<p>我们将x趋近于0时的极限定义为无穷。</p>
+<h4 id="左极限与右极限"><a href="#左极限与右极限" class="headerlink" title="左极限与右极限"></a>左极限与右极限</h4><p>当我们将视线，全转移到右边，即x&gt;0的部分时，我们再讨论x趋近于0的函数值，发现，此时的y越来越大，我们用正无穷来表示此时函数的极限值。</p>
+<p>这就是函数的右极限，当自变量x从右边趋近于x<sub>0</sub>时,函数趋近于a，那么a就是函数的右极限，左极限同理。</p>
+]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>高数</tag>
+      </tags>
+  </entry>
 </search>

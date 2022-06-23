@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-06-18T13:39:47.492Z</updated>
+  <updated>2022-06-19T03:27:14.052Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高等数学</title>
+    <link href="http://rczmm.github.io/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"/>
+    <id>http://rczmm.github.io/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</id>
+    <published>2022-06-19T02:38:38.000Z</published>
+    <updated>2022-06-19T03:27:14.052Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;高等数学学习笔记&quot;&gt;&lt;a href=&quot;#高等数学学习笔记&quot; class=&quot;headerlink&quot; title=&quot;高等数学学习笔记&quot;&gt;&lt;/a&gt;高等数学学习笔记&lt;/h1&gt;&lt;h2 id=&quot;函数与极限&quot;&gt;&lt;a href=&quot;#函数与极限&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数学" scheme="http://rczmm.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="高数" scheme="http://rczmm.github.io/tags/%E9%AB%98%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>反射与注解</title>
