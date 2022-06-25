@@ -277,15 +277,6 @@
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="/friends" class="drawer-menu-item-link">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
                 <a href="/comment" class="drawer-menu-item-link">
                   
                     <i class="fas fa-comment-dots" aria-hidden="true"></i>
@@ -297,43 +288,16 @@
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(7)">
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(7)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(7)">
-                  
-                  <li>
-                    <a href="/gallery">
-                      
-                      <i class="fas fa-music" style="margin-top: -20px;"></i>
-                      
-                      <span>图库</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/huoban">
-                      
-                      <i class="fas fa-film" style="margin-top: -20px;"></i>
-                      
-                      <span>友情连接</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/me">
-                      
-                      <i class="fas fa-film" style="margin-top: -20px;"></i>
-                      
-                      <span>关于我</span>
-                    </a>
-                  </li>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
                   
                   <li>
                     <a target="_blank" rel="noopener" href="http://baidu.com">
@@ -477,15 +441,6 @@
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/friends" class="menu-item-link" title="友情链接">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
                 <a href="/comment" class="menu-item-link" title="留言板">
                   
                     <i class="fas fa-comment-dots" aria-hidden="true"></i>
@@ -505,33 +460,6 @@
                   <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
                 </a>
                 <ul class="sub-menu">
-                  
-                  <li>
-                    <a href="/gallery">
-                      
-                      <i class="fas fa-music" style="margin-top: -20px;"></i>
-                      
-                      <span>图库</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/huoban">
-                      
-                      <i class="fas fa-film" style="margin-top: -20px;"></i>
-                      
-                      <span>友情连接</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/me">
-                      
-                      <i class="fas fa-film" style="margin-top: -20px;"></i>
-                      
-                      <span>关于我</span>
-                    </a>
-                  </li>
                   
                   <li>
                     <a target="_blank" rel="noopener" href="http://baidu.com">
