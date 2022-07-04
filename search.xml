@@ -1,166 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>反射与注解</title>
-    <url>/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p>
-<p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p>
-<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p>
-<p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p>
-<p>那么“反”，其实就是根据对象来反推出其类型。</p>
-<p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-<h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p>
-<p>1、利用Object类的getClass（）方法</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span>
-<span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p>
-<p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.util.Date"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>
-<p>当然，在使用forName的时候，请务必确保类存在。否则异常如下。</p>
-<p><img src="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" class="lazyload placeholder" data-srcset="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220618211522778"></p>
-<p>要注意，类存在更多指的是CLASSPATH环境属性中有该类。</p>
-<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="认识注解"><a href="#认识注解" class="headerlink" title="认识注解"></a>认识注解</h3><p>注解是java对元数据的支持。</p>
-<p>简单的来说，注解与注释相似，他们都不是程序本身，而是对程序做出解释，不同的是，注释是给开发者看的，而注解是用于编译器或者其他程序读取的。</p>
-<p>javaSE中三类常见注解：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span><span class="token comment">//重写注解</span>
-<span class="token annotation punctuation">@Deprecated</span><span class="token comment">//不推荐使用注解，可以使用但是有风险或者有更好的方式（被淘汰）</span>
-<span class="token annotation punctuation">@SuppressWarnings</span> <span class="token comment">//“镇压”警告注解（不推介使用）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>除了系统定义的，如同以上三类注解之外，用户也可以自定义注解。</p>
-<p>java中自定义注解，需要用@interface进行标记，同时也可以用@Target等元注解来对自定义的注解类型做说明。</p>
-<ul>
-<li>@Target：用于描述注解的使用范围</li>
-<li>@Retention：用于表示需要在什么级别保存注解信息，用于描述注解的声明周期，（SOURCE&lt;CLASS&lt;RUNTIME）</li>
-<li>@Document：说明该注解将被包含在javadoc中</li>
-<li>@Inherited：说明子类可以继承父类中的该注解</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span>TYPE<span class="token punctuation">,</span> <span class="token class-name">ElementType</span><span class="token punctuation">.</span>METHOD<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@interface</span> <span class="token class-name">Defaultannotion</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">String</span> <span class="token function">title</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"1111111"</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Message</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Defaultannotion</span><span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"sss"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1111"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>高等数学</title>
+      <link href="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"/>
+      <url>/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="高等数学学习笔记"><a href="#高等数学学习笔记" class="headerlink" title="高等数学学习笔记"></a>高等数学学习笔记</h1><h2 id="微积分概念"><a href="#微积分概念" class="headerlink" title="微积分概念"></a>微积分概念</h2><p>微积分到底是什么？</p><p>微分与积分的关系是什么？</p><p>回想高数的学习历程，最后发现好像对于微积分来说，除了课本上习题册上的题目，其他的我就完全不知道了，甚至于再过些时间，这些题目我也做不了了。</p><p>我的看法是，当我们学习或者是掌握了一门学科或者是一门技术之后，我们应当对它有提纲挈领的认知。</p><p><strong>微积分关心的是瞬时的情况。</strong></p><p>首先，让我们来看一个实际例子，我们用最常见的时间、速度、路程函数。</p><p>假设，一辆汽车，当然也可以是一个人或者你想要假设的任何东西，现在它以20km每小时的速度向前行驶，三个小时过后。让我们看看时间与速度、时间与路程的关系。</p><p>时间与速度：</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;"><p>时间与路程：</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与路程" style="zoom:33%;"><p>如上，我们得到了时间与速度的关系，时间与路程的关系。</p><p>如果我们再试着想象一下，速度如果不是匀速？</p><p>时间与速度：</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;"><p>时间与路程：</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624150325333" style="zoom:33%;"><p>虽然在图像上，好像两个路程函数看起来差不多，但是从y轴，也就是distance的值上，我们明显的感觉到，因为速度的变化，路程函数发生了变化。</p><p>同样的，如何我们改变路程函数，那么速度函数也会发生改变。</p><p>而微积分研究的本质上就是两个函数的关系。</p><p>其中从速度到路程，是积分的过程，而从路程到速度，是微分的过程。</p><p>或者说，我们再举一个例子。</p><p>当你出生的时候，你的年龄为0岁，这时候你大概有10公斤，当然我也不知道，瞎编了一个数字。而后当你10岁的时候，你已经37公斤了，当你18岁的时候，你已经49公斤了，而后等你30岁的时候，你已经59公斤了，此时你来到你人生体重最高点，再往后，50岁的时候，你就只有58公斤了，一直到62岁，你就只有52公斤了。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624151515813" style="zoom:33%;"><p>如图，简单的把以上提到的点描成这样的图。</p><p>那么？新的问题来了，能否根据它得出体重的增长率呐？</p><h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><p>关于导数，首先应该区分开一个概念。</p><p>那就是可导与可微，前者表示的是变化率的极限，而后者表示的是局部线性化。</p><p>斜率，如果你还记得他，那么再好不过。</p><p>在生活中，我们用斜率来表示倾斜角度，回到函数图像上，其实他也同样如此。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155740453" style="zoom:33%;"><p>如图，这是函数x<sup>2</sup>的函数图像。</p><p>这样的曲线，我们是如何求斜率的呐？</p><p>如果这不是曲线，而是直线，例如y = 2x呢。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155958257" style="zoom:33%;"><p>我们直接利用垂直距离差比上水平距离差，就可以解出斜率。</p> <img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624192633829" style="zoom:33%;"><p>这时候，∆y与∆x的比值，也就是θ角的正切就是斜率。</p><p>再次回到曲线的问题，只看x轴右半轴，假设这是一个表示路程的函数，那么在这里我们就可以得到任意的时间段内，这个车或者是其他的什么东西在这个时间段内的平均速度，这很简单，还未涉及微积分。<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624195456195" style="zoom:33%;"></p><p>那么这段时间的速度，我们就应该用路程差比时间差，反应在图像中，就是垂直距离差比水平距离差。</p><p>微积分只关心瞬时情况，不如我就从x = 0这一点开始，当x=0的时候，这一点的斜率是怎么样的？</p><p>x = 0，y = 0.这是原点，可以发现此时虽然曲线依然在上升，但是有点像是刚刚起步，此时速度为0，因此这一点斜率为0，曲线水平。</p><p>实际上，求最低点也是微积分的主要应用之一，通过求斜率为0，可以求出最低点，这一点不上升也不下降，斜率为0。</p><p>这时，我们可以选一个离原点距离极小的点，标记为∆x，这个∆单纯的就是为了表示“小”的意思，他代表一个极小极小的变化。那么这时候从原点到∆x这一小段的平均速度是多少？平均斜率？</p><p>水平距离是∆x，曲线是简单的x<sup>2</sup>,垂直距离很明显。</p><p>平均斜率还是垂直比水平。即∆y / ∆x</p><p>虽然∆x已经非常非常小了，但是这里他依旧是平均值，我想让他减少到0，取极限，让这一段不断的减小，从而无限接近某个瞬间的情况，这样就能得到斜率，这样就能得到0点处的斜率。</p><p>这里的情形很简单，可以看到∆x<sup>2</sup> / ∆x的比值∆x会非常的小。因此平均斜率非常之小，沿着这种逐渐变小的思路，我将得到x = 0处的瞬时斜率。</p><p>让∆x逐渐减小，最后到0。</p><p>相当于行驶从静止开始，然后慢慢加速，这时候斜率很明显就不是0了。</p><p>来看一下任意点的斜率。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" style="zoom:33%;"><p>微积分的要义，取一小段距离∆x,移动到x+∆x处，这样的y就会移动到曲线上另外一点，这一点的值为y + ∆y或者是（x+∆x）<sup>2</sup>,因为此时的曲线还是y = x<sup>2</sup></p><p>此时的水平距离与垂直距离各自是∆x与∆y。</p><p>此时的∆y 比 ∆x应当为 (（x+∆x）<sup>2</sup> - x<sup>2</sup>)  /  ∆x</p><p>继续进行代数运算，我们得到了2x+∆x的结果，也就是说，此时的∆y比∆x的结果为2x + ∆x。</p><p>当然，到目前为止，这依然是小范围的平均值，还不是瞬时的情形。</p><p>当微积分开始介入，dy / dx。</p><p>如果说前面是小 / 小，那么这就是极小 / 极小。</p><p>这里的d，小的可以说已经无法分辨，小的已经无法把dy或者dx作为分开距离来考虑。</p><p>要注意，这里其实不是真正的除法了，因为在除法中，是不允许0 / 0的。而此处的0 / 0其实就是上面这种情况（∆y / ∆x）的极限。</p><p>这就是从代数走进微积分最关键的一步，这就得到了某一点上的瞬时情形。</p><p>再看上面的结论，取∆x趋近于0，那么结果就是2x。</p><p>因此最终的结论是，导数为2x。</p><p>因此这就是我们所说的函数二，也就是斜率函数，或者说是速度函数。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625174451687" style="zoom:33%;"><p>再来看，此时如果我们取（1,1）与（2,4）这两个点来讨论斜率。</p><p>那么自然而然的就会得到，斜率为3.</p><p>但实际上，这只是一条弦，这里跳了一大步。</p><p>我们在讨论∆x时，只是前进了一小步，更别说趋近于0时的dx了，这就成了无限小的一步。</p><p>因此实际的斜率，可以认为是过某一点的切线。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625175138540" style="zoom:33%;"><p>那么这一点的斜率，实际上就是把x =1 代入到我们的斜率函数也就是2x里。</p><p>因为我们可以通过斜率判断函数图像的走向，当斜率为负时，函数呈现下降趋势，当斜率很大的时候，函数图像往往更加陡峭，反之，当斜率为正时，函数图像成上升趋势，斜率很小的时候，函数图像更加平滑。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204426879.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204426879.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625204426879" style="zoom:33%;"><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204433564.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204433564.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625204433564" style="zoom:33%;"><p>这是sinx与cosx的函数图像，当然可能坐标轴有些陌生。</p><p>sinx的导数是cosx，那么比较这两个图像，增长，下降，快，慢，极大值，极小值。这些都体现了导数的重要性和实用性。</p><h2 id="二阶导数与极值"><a href="#二阶导数与极值" class="headerlink" title="二阶导数与极值"></a>二阶导数与极值</h2><p>二阶导数：也就是导数的导数。</p><p>在实际中，很少提到导数的导数，或者说更加高阶的导数，但是二阶导数对于处理极大、极小值时作用很大。</p><p>我们经常需要定位极值点，并且判断是极大值还是极小值。</p><p>定位极值点是一阶导数的职责，一阶导数为0的点就是极值点，如果函数存在极大值或者是极小值，要找到这个极值点的位置，就可以通过导数=0来寻找，此时函数图像趋于水平，根据它向下还是向上弯曲，得到极大值或者是极小值。</p><p>而判断极值点是极大值还是极小值就是二阶导数的职责了。</p><p>二阶导数表明，函数朝上还是朝下弯曲。</p><p>原函数，导函数，二阶导函数，现在的函数组就扩充为三个。</p><p>回到实际问题，依旧是路程，时间，速度的关系，二阶导函数其实表示的就是加速度。</p><p>我们知道路程求速度，只需要求导数就可以了，现在我们要求速度的导数，也就是二阶导数，加速度，也就是速度的变化率，加速或者减速的率。</p><p>先来看看x<sup>2</sup>的原函数，导函数与二阶导函数。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625210639471.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625210639471.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625210639471" style="zoom:33%;"><p>依旧是x<sup>2</sup>，表示函数高度，2x表示斜率，而2表示二阶导数，表示弯曲性，这表明斜率正在逐渐增加，函数图像向上弯曲。</p><img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625211737687.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625211737687.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625211737687" style="zoom:33%;"><p>在看看sinx的原函数、导函数与二阶导函数的图像。</p><p>事实上，图像上包含的信息可比说的信息多的多了，在0-π/2区间内，我们发现，sinx的二阶导数小于0的，也就是说此时的原函数向下弯曲，导函数应当呈现下降趋势。</p><p>引入“凹凸”的概念，事实上，我个人觉得，向上弯曲与向下弯曲的描述比凹凸更好。</p><p>sinx就是一个很经典的例子，在图像中，我们发现0-π/2区间内，即使图像向下弯曲，但是同样呈现在不断增长。</p><p>原函数 导函数 二阶导函数的关系也明了了。</p><p>二阶导函数大于零，表示导函数上升，毕竟对于导函数来说，二阶导数就是它的导数，原函数向上弯曲，反之。</p><p>x = π时，二阶导数变号了，而此时原函数开始向上弯曲。这个点就是拐点，二阶导数为0的点。</p>]]></content>
+      
+      
       <categories>
-        <category>java</category>
+          
+          <category> 数学 </category>
+          
       </categories>
-      <tags>
-        <tag>javase</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高等数学</title>
-    <url>/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</url>
-    <content><![CDATA[<h1 id="高等数学学习笔记"><a href="#高等数学学习笔记" class="headerlink" title="高等数学学习笔记"></a>高等数学学习笔记</h1><h2 id="微积分概念"><a href="#微积分概念" class="headerlink" title="微积分概念"></a>微积分概念</h2><p>微积分到底是什么？</p>
-<p>微分与积分的关系是什么？</p>
-<p>回想高数的学习历程，最后发现好像对于微积分来说，除了课本上习题册上的题目，其他的我就完全不知道了，甚至于再过些时间，这些题目我也做不了了。</p>
-<p>我的看法是，当我们学习或者是掌握了一门学科或者是一门技术之后，我们应当对它有提纲挈领的认知。</p>
-<p><strong>微积分关心的是瞬时的情况。</strong></p>
-<p>首先，让我们来看一个实际例子，我们用最常见的时间、速度、路程函数。</p>
-<p>假设，一辆汽车，当然也可以是一个人或者你想要假设的任何东西，现在它以20km每小时的速度向前行驶，三个小时过后。让我们看看时间与速度、时间与路程的关系。</p>
-<p>时间与速度：</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;">
-
-<p>时间与路程：</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与路程" style="zoom:33%;">
-
-<p>如上，我们得到了时间与速度的关系，时间与路程的关系。</p>
-<p>如果我们再试着想象一下，速度如果不是匀速？</p>
-<p>时间与速度：</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;">
-
-<p>时间与路程：</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624150325333" style="zoom:33%;">
-
-<p>虽然在图像上，好像两个路程函数看起来差不多，但是从y轴，也就是distance的值上，我们明显的感觉到，因为速度的变化，路程函数发生了变化。</p>
-<p>同样的，如何我们改变路程函数，那么速度函数也会发生改变。</p>
-<p>而微积分研究的本质上就是两个函数的关系。</p>
-<p>其中从速度到路程，是积分的过程，而从路程到速度，是微分的过程。</p>
-<p>或者说，我们再举一个例子。</p>
-<p>当你出生的时候，你的年龄为0岁，这时候你大概有10公斤，当然我也不知道，瞎编了一个数字。而后当你10岁的时候，你已经37公斤了，当你18岁的时候，你已经49公斤了，而后等你30岁的时候，你已经59公斤了，此时你来到你人生体重最高点，再往后，50岁的时候，你就只有58公斤了，一直到62岁，你就只有52公斤了。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624151515813" style="zoom:33%;">
-
-<p>如图，简单的把以上提到的点描成这样的图。</p>
-<p>那么？新的问题来了，能否根据它得出体重的增长率呐？</p>
-<h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><p>关于导数，首先应该区分开一个概念。</p>
-<p>那就是可导与可微，前者表示的是变化率的极限，而后者表示的是局部线性化。</p>
-<p>斜率，如果你还记得他，那么再好不过。</p>
-<p>在生活中，我们用斜率来表示倾斜角度，回到函数图像上，其实他也同样如此。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155740453" style="zoom:33%;">
-
-<p>如图，这是函数x<sup>2</sup>的函数图像。</p>
-<p>这样的曲线，我们是如何求斜率的呐？</p>
-<p>如果这不是曲线，而是直线，例如y = 2x呢。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155958257" style="zoom:33%;">
-
-<p>我们直接利用垂直距离差比上水平距离差，就可以解出斜率。</p>
- <img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624192633829" style="zoom:33%;">
-
-<p>这时候，∆y与∆x的比值，也就是θ角的正切就是斜率。</p>
-<p>再次回到曲线的问题，只看x轴右半轴，假设这是一个表示路程的函数，那么在这里我们就可以得到任意的时间段内，这个车或者是其他的什么东西在这个时间段内的平均速度，这很简单，还未涉及微积分。<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624195456195" style="zoom:33%;"></p>
-<p>那么这段时间的速度，我们就应该用路程差比时间差，反应在图像中，就是垂直距离差比水平距离差。</p>
-<p>微积分只关心瞬时情况，不如我就从x = 0这一点开始，当x=0的时候，这一点的斜率是怎么样的？</p>
-<p>x = 0，y = 0.这是原点，可以发现此时虽然曲线依然在上升，但是有点像是刚刚起步，此时速度为0，因此这一点斜率为0，曲线水平。</p>
-<p>实际上，求最低点也是微积分的主要应用之一，通过求斜率为0，可以求出最低点，这一点不上升也不下降，斜率为0。</p>
-<p>这时，我们可以选一个离原点距离极小的点，标记为∆x，这个∆单纯的就是为了表示“小”的意思，他代表一个极小极小的变化。那么这时候从原点到∆x这一小段的平均速度是多少？平均斜率？</p>
-<p>水平距离是∆x，曲线是简单的x<sup>2</sup>,垂直距离很明显。</p>
-<p>平均斜率还是垂直比水平。即∆y / ∆x</p>
-<p>虽然∆x已经非常非常小了，但是这里他依旧是平均值，我想让他减少到0，取极限，让这一段不断的减小，从而无限接近某个瞬间的情况，这样就能得到斜率，这样就能得到0点处的斜率。</p>
-<p>这里的情形很简单，可以看到∆x<sup>2</sup> / ∆x的比值∆x会非常的小。因此平均斜率非常之小，沿着这种逐渐变小的思路，我将得到x = 0处的瞬时斜率。</p>
-<p>让∆x逐渐减小，最后到0。</p>
-<p>相当于行驶从静止开始，然后慢慢加速，这时候斜率很明显就不是0了。</p>
-<p>来看一下任意点的斜率。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" style="zoom:33%;">
-
-<p>微积分的要义，取一小段距离∆x,移动到x+∆x处，这样的y就会移动到曲线上另外一点，这一点的值为y + ∆y或者是（x+∆x）<sup>2</sup>,因为此时的曲线还是y = x<sup>2</sup></p>
-<p>此时的水平距离与垂直距离各自是∆x与∆y。</p>
-<p>此时的∆y 比 ∆x应当为 (（x+∆x）<sup>2</sup> - x<sup>2</sup>)  /  ∆x</p>
-<p>继续进行代数运算，我们得到了2x+∆x的结果，也就是说，此时的∆y比∆x的结果为2x + ∆x。</p>
-<p>当然，到目前为止，这依然是小范围的平均值，还不是瞬时的情形。</p>
-<p>当微积分开始介入，dy / dx。</p>
-<p>如果说前面是小 / 小，那么这就是极小 / 极小。</p>
-<p>这里的d，小的可以说已经无法分辨，小的已经无法把dy或者dx作为分开距离来考虑。</p>
-<p>要注意，这里其实不是真正的除法了，因为在除法中，是不允许0 / 0的。而此处的0 / 0其实就是上面这种情况（∆y / ∆x）的极限。</p>
-<p>这就是从代数走进微积分最关键的一步，这就得到了某一点上的瞬时情形。</p>
-<p>再看上面的结论，取∆x趋近于0，那么结果就是2x。</p>
-<p>因此最终的结论是，导数为2x。</p>
-<p>因此这就是我们所说的函数二，也就是斜率函数，或者说是速度函数。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625174451687" style="zoom:33%;">
-
-<p>再来看，此时如果我们取（1,1）与（2,4）这两个点来讨论斜率。</p>
-<p>那么自然而然的就会得到，斜率为3.</p>
-<p>但实际上，这只是一条弦，这里跳了一大步。</p>
-<p>我们在讨论∆x时，只是前进了一小步，更别说趋近于0时的dx了，这就成了无限小的一步。</p>
-<p>因此实际的斜率，可以认为是过某一点的切线。</p>
-<img src="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" class="lazyload placeholder" data-srcset="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625175138540" style="zoom:33%;">
-
-<p>那么这一点的斜率，实际上就是把x =1 代入到我们的斜率函数也就是2x里。</p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 高数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>反射与注解</title>
+      <link href="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/"/>
+      <url>/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p><p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p><h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p><p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p><p>那么“反”，其实就是根据对象来反推出其类型。</p><p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p><p>1、利用Object类的getClass（）方法</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 正 获取对象</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  反 由对象获取类信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p><p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> a <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.util.Date"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p><p>当然，在使用forName的时候，请务必确保类存在。否则异常如下。</p><p><img src="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" class="lazyload placeholder" data-srcset="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220618211522778"></p><p>要注意，类存在更多指的是CLASSPATH环境属性中有该类。</p><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="认识注解"><a href="#认识注解" class="headerlink" title="认识注解"></a>认识注解</h3><p>注解是java对元数据的支持。</p><p>简单的来说，注解与注释相似，他们都不是程序本身，而是对程序做出解释，不同的是，注释是给开发者看的，而注解是用于编译器或者其他程序读取的。</p><p>javaSE中三类常见注解：</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span><span class="token comment">//重写注解</span><span class="token annotation punctuation">@Deprecated</span><span class="token comment">//不推荐使用注解，可以使用但是有风险或者有更好的方式（被淘汰）</span><span class="token annotation punctuation">@SuppressWarnings</span> <span class="token comment">//“镇压”警告注解（不推介使用）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>除了系统定义的，如同以上三类注解之外，用户也可以自定义注解。</p><p>java中自定义注解，需要用@interface进行标记，同时也可以用@Target等元注解来对自定义的注解类型做说明。</p><ul><li>@Target：用于描述注解的使用范围</li><li>@Retention：用于表示需要在什么级别保存注解信息，用于描述注解的声明周期，（SOURCE&lt;CLASS&lt;RUNTIME）</li><li>@Document：说明该注解将被包含在javadoc中</li><li>@Inherited：说明子类可以继承父类中的该注解</li></ul><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token class-name">ElementType</span><span class="token punctuation">.</span>TYPE<span class="token punctuation">,</span> <span class="token class-name">ElementType</span><span class="token punctuation">.</span>METHOD<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token annotation punctuation">@interface</span> <span class="token class-name">Defaultannotion</span> <span class="token punctuation">&#123;</span>    <span class="token class-name">String</span> <span class="token function">title</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">"1111111"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">class</span> <span class="token class-name">Message</span> <span class="token punctuation">&#123;</span>    <span class="token annotation punctuation">@Defaultannotion</span><span class="token punctuation">(</span>title <span class="token operator">=</span> <span class="token string">"sss"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1111"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
       <categories>
-        <category>数学</category>
+          
+          <category> java </category>
+          
       </categories>
-      <tags>
-        <tag>高数</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> javase </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
