@@ -610,12 +610,12 @@
   <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
     
       <swiper-slide>
-        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-16.png" style="background-size: 300000px; 
+        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%905.jpg" style="background-size: 300000px; 
           background-position: left center;" style="position: relative;">
           <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
             <div class="flag">
               
-              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-16.png" style="height: 100%; background-size: cover; 
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%905.jpg" style="height: 100%; background-size: cover; 
                 background-position: center center;">
                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
               </div>
@@ -1235,6 +1235,28 @@
       </div>
   </div>
   
+    <div class="widget welcome" id="welcome" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: blue" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class='name'>便利贴</span></a>
+        
+      </header>
+      <div class="content">
+         <div id="note"></div> <script src="/note/index.js"></script>
+      </div>
+  </div>
+  
+    <div class="widget video" id="video" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: blue" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class='name'>雪景球</span></a>
+        
+      </header>
+      <div class="content">
+        <iframe src="//player.bilibili.com/player.html?aid=898762590&bvid=BV1MN4y177PB&cid=783037295&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe> 
+      </div>
+  </div>
+  
 
     <!-- 首页座右铭 -->
     
@@ -1372,6 +1394,25 @@
 	<div class="articles">
 		
 			
+				<div class="article-link">
+					
+					<div class="article" style="background-size: cover; 
+						background-position: center center;">
+						<img class="lazyload lazyload placeholder" src="/images/%E6%95%B0%E5%AD%A6.jpg" class="lazyload placeholder" data-srcset="/images/%E6%95%B0%E5%AD%A6.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+					</div>
+					<div class="text">
+						<div class="text-main">
+							<div class="title"><a href="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a></div>
+							<div class="content">
+								高等数学学习笔记函数在高等数学里，微积分无疑是极为重要的，但是如果没有函数去研究微积分，这其实很没有意义，在微积分的世界
+							</div>
+						</div>
+						<a href="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="more">
+							<i class="fas fa-eye" aria-hidden="true"></i>阅读更多
+						</a>
+					</div>
+				</div>
+			
 		
 			
 		
@@ -1422,10 +1463,8 @@
             </a>
           </div>
           <div class="post-content">
-            高等数学学习笔记微积分概念微积分到底是什么？
-微分与积分的关系是什么？
-回想高数的学习历程，最后发现好像对于微积分来说，除了课本上习题册上的题目，其他的我就完全不知道了，甚至于再过些时间，这些题目我也做不了了。
-我的看法是，当我们学习或者是
+            高等数学学习笔记函数在高等数学里，微积分无疑是极为重要的，但是如果没有函数去研究微积分，这其实很没有意义，在微积分的世界里，函数在参与排行榜绝对排行第一。
+函数概念函数是什么？在很多教材或者课外读本上都有规范或者是特殊的定义，我更加喜欢普林
           </div>
         </div>
         <div class="post-more">
@@ -1697,7 +1736,7 @@
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>4.2k 字</div>
+          <div>5.9k 字</div>
         </div>
       
 
@@ -1723,8 +1762,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Jul 28 2022 13:35:35 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2022-07-28 日</div>
+            <div id="last-update" style="display: none;">Sun Aug 07 2022 20:11:02 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-08-07 日</div>
           
         </div>
         
@@ -1774,7 +1813,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2022-07-28 日';
+            document.getElementById('last-update-show').innerHTML = '2022-08-07 日';
           }
         </script>
         

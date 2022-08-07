@@ -610,12 +610,12 @@
   <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
     
       <swiper-slide>
-        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-18.png" style="background-size: 300000px; 
+        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-21.png" style="background-size: 300000px; 
           background-position: left center;" style="position: relative;">
           <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
             <div class="flag">
               
-              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-18.png" style="height: 100%; background-size: cover; 
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-21.png" style="height: 100%; background-size: cover; 
                 background-position: center center;">
                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
               </div>
@@ -1235,6 +1235,28 @@
       </div>
   </div>
   
+    <div class="widget welcome" id="welcome" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: blue" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class='name'>便利贴</span></a>
+        
+      </header>
+      <div class="content">
+         <div id="note"></div> <script src="/note/index.js"></script>
+      </div>
+  </div>
+  
+    <div class="widget video" id="video" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: blue" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class='name'>雪景球</span></a>
+        
+      </header>
+      <div class="content">
+        <iframe src="//player.bilibili.com/player.html?aid=898762590&bvid=BV1MN4y177PB&cid=783037295&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe> 
+      </div>
+  </div>
+  
 
     <!-- 首页座右铭 -->
     
@@ -1562,7 +1584,7 @@
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>4.2k 字</div>
+          <div>5.9k 字</div>
         </div>
       
 
@@ -1588,8 +1610,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Thu Jul 28 2022 13:35:35 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2022-07-28 日</div>
+            <div id="last-update" style="display: none;">Sun Aug 07 2022 20:11:02 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-08-07 日</div>
           
         </div>
         
@@ -1639,7 +1661,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2022-07-28 日';
+            document.getElementById('last-update-show').innerHTML = '2022-08-07 日';
           }
         </script>
         
