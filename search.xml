@@ -1093,4 +1093,124 @@ python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3
         <tag>python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>基于Python的QT（二）</title>
+    <url>/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><p>首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。</p>
+<p>qtbase就是大多数模块的基础组件，比例qtcore、qtgui、qtwidgets、qtnetworks，这些模块里当然都有一些直接可以实例化的类。</p>
+<p>因此在编程中，我们可以直接使用他们，用他们来创建应用程序、处理文件、网络连接、正则表达式、文本编码等。</p>
+<p>值得一提的是qtwidgets模块，该模块用于图形化程序，这在qt中是核心的部分。</p>
+<p>当然还有一些其他的模块，在qt中，有着qml的存在，使得我们可以使用javascript来处理一些命令式的部分，官网是这样描述的，所谓的命令式，即计算机how的过程。之所以用到js，在我看来是为了更好的兼容与扩展，这一点在qt可以使用c++扩展和连接代码就可以看出。</p>
+<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><p>在qt中，除了py文件之外，还存在着用户界面定义文件ui文件，以及资源收集的qrc文件和qt建模语言文件qml。</p>
+<p>当然还有项目文件pyproject。</p>
+<h2 id="信号和槽"><a href="#信号和槽" class="headerlink" title="信号和槽"></a>信号和槽</h2><p>这其实直接放在helloworld后面会好一些。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+
+<span class="token keyword">from</span> PySide6 <span class="token keyword">import</span> QtWidgets<span class="token punctuation">,</span> QtCore<span class="token punctuation">,</span>QtGui
+<span class="token keyword">from</span> PySide6<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> Slot
+
+
+<span class="token keyword">class</span> <span class="token class-name">MyWidget</span><span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QWidget<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>hello <span class="token operator">=</span> <span class="token string">'hello Tom'</span>
+
+        self<span class="token punctuation">.</span>button <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QPushButton<span class="token punctuation">(</span><span class="token string">'点我'</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>text <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QLabel<span class="token punctuation">(</span><span class="token string">'helloworld'</span><span class="token punctuation">,</span> alignment<span class="token operator">=</span>QtCore<span class="token punctuation">.</span>Qt<span class="token punctuation">.</span>AlignCenter<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QVBoxLayout<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>button<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>self<span class="token punctuation">.</span>say<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@Slot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">magic</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>text<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>self<span class="token punctuation">.</span>hello<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@Slot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">say</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Button clicked"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QApplication<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    widget <span class="token operator">=</span> MyWidget<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这是helloworld的代码，我们忽略那些定义和创建的内容，我们会发现，程序本质上定义了一个按钮，并且在按钮按下的时候，调用了一个方法。</p>
+<p>这看起来似乎很简单，但是在qt中，在按钮按下到执行对应内容的机制，被称为信号和槽，同时这也是qt的核心特性。</p>
+<p>信号，在上述代码中，当我们单击按钮的时候，这就是一个信号，所谓的槽也就是信号传出时发生的情况，或者说信号的接收者。</p>
+<p>信号和插槽不是按钮的专属，事实上所有继承了qobject的子类都可以包含信号和插槽，信号由对象发出。要注意的是，信号仅仅承担发出，并不关心接受的问题。这看起来似乎有点不负责任，但是封装的很好。</p>
+<p>插槽用来接受信号，但实际上他们本质上只是最普通的函数，槽同样的只负责接受，他不知道有什么信号能连接到它。</p>
+<p>这样的看起来紧密，却随时可以断开连接，互相连接就导致了qt可以创建真正的独立组件。</p>
+<p>一个例子，我们可以创建很多的信号，这些信号都连接到一个插槽，或者多个插槽，甚至我们可以把一个信号连接到一个信号。</p>
+<p>当然在qt中，有一些预定义的信号和插槽。</p>
+<p>关于信号，在 Python 中编写类时，信号被声明为 class 的类级变量<code>QtCore.Signal()</code></p>
+<p>关于槽，由装饰器指示 <code>@QtCore.Slot()</code>，<code>Slot()</code>也接受一个<code>name</code>和一个<code>result</code>关键字。<code>result</code>关键字定义将返回的类型，可以是 C 或 Python 类型。关键字的<code>name</code>行为方式与<code>Signal()</code>. 如果没有作为名称传递，则新插槽将与正在装饰的函数具有相同的名称。</p>
+<p>在例子中，我们能发现，我们自定义了一个插槽，却没有定义信号，其实此处是利用了qt的预定义信号。</p>
+<p>下面自定义信号，并且实现信号与槽的连接。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+
+
+<span class="token keyword">from</span> PySide6 <span class="token keyword">import</span> QtWidgets<span class="token punctuation">,</span> QtCore<span class="token punctuation">,</span>QtGui
+<span class="token keyword">from</span> PySide6<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> Slot<span class="token punctuation">,</span>Signal
+
+
+<span class="token keyword">class</span> <span class="token class-name">MyWidget</span><span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QWidget<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    signal1 <span class="token operator">=</span> Signal<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>hello <span class="token operator">=</span> <span class="token string">'hello Tom'</span>
+
+        self<span class="token punctuation">.</span>button <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QPushButton<span class="token punctuation">(</span><span class="token string">'点我'</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>text <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QLabel<span class="token punctuation">(</span><span class="token string">'helloworld'</span><span class="token punctuation">,</span> alignment<span class="token operator">=</span>QtCore<span class="token punctuation">.</span>Qt<span class="token punctuation">.</span>AlignCenter<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QVBoxLayout<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>button<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>self<span class="token punctuation">.</span>magic<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>signal1<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>self<span class="token punctuation">.</span>say<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@Slot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">magic</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>text<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>self<span class="token punctuation">.</span>hello<span class="token punctuation">)</span>
+        sign <span class="token operator">=</span> MyWidget<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        sign<span class="token punctuation">.</span>signal1<span class="token punctuation">.</span>emit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">def</span> <span class="token function">say</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Button clicked"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QApplication<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    widget <span class="token operator">=</span> MyWidget<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
 </search>
