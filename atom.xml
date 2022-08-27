@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-08-26T15:48:58.975Z</updated>
+  <updated>2022-08-27T12:29:43.670Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot+vue（3）</title>
+    <link href="http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%883%EF%BC%89/"/>
+    <id>http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%883%EF%BC%89/</id>
+    <published>2022-08-27T12:12:56.000Z</published>
+    <updated>2022-08-27T12:29:43.670Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;静态资源访问&quot;&gt;&lt;a href=&quot;#静态资源访问&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot+vue（2）</title>
