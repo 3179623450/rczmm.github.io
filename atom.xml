@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-08-26T04:56:57.631Z</updated>
+  <updated>2022-08-26T15:48:58.975Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot+vue（2）</title>
+    <link href="http://rczmm.github.io/2022/08/26/springboot-vue%EF%BC%882%EF%BC%89/"/>
+    <id>http://rczmm.github.io/2022/08/26/springboot-vue%EF%BC%882%EF%BC%89/</id>
+    <published>2022-08-26T14:37:31.000Z</published>
+    <updated>2022-08-26T15:48:58.975Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;写点基础的东西。&lt;/p&gt;
+&lt;h2 id=&quot;Web入门&quot;&gt;&lt;a href=&quot;#Web入门&quot; class=&quot;headerlink&quot; title=&quot;Web入门&quot;&gt;&lt;/a&gt;Web入门&lt;/h2&gt;&lt;p&gt;Spring</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="http://rczmm.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Python装饰器</title>
@@ -46,7 +70,7 @@
     <link href="http://rczmm.github.io/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/"/>
     <id>http://rczmm.github.io/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/</id>
     <published>2022-08-24T12:47:53.000Z</published>
-    <updated>2022-08-24T13:35:24.079Z</updated>
+    <updated>2022-08-26T14:37:06.452Z</updated>
     
     
       

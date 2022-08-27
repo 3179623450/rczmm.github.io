@@ -642,7 +642,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 708 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 784 |
           </span>
   
           <span class="min2read">
@@ -707,12 +707,18 @@
 <p>devtools会监控classpath下的文件，触发restart类加载器重新加载这个类，从而实现类文件和属性文件的热部署。</p>
 <p>注意的是，也不是什么都需要重启应用，可以通过设置属性来制定一些目录或文件的修改不用重启。</p>
 <p>引入依赖</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212747137.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212747137.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212747137"></p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826222051160"></p>
 <p>其中optional的含义是，依赖不会传递，也就是其他项目如果引入这个项目的jar包，不会包含这个devtools。</p>
 <p>引入依赖后，记得刷一下maven。</p>
 <p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212809166"></p>
 <p>如果你找不到这个按钮。</p>
 <p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824213521794"></p>
+<p>在引入了依赖之后，我们需要在idea中手动配置。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220434604"></p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220943295"></p>
+<p>重启idea后生效。</p>
+<p>但是这其实并不是真正的热部署，但是好在他可以实现快速重启。</p>
+<p>如果你觉得这不够快，你可以使用**<a href="https://link.zhihu.com/?target=https://jrebel.com/software/jrebel/">JRebel</a>**插件，只是说它要收费。</p>
 
       </div>
       <div class="post-tags-categories">
