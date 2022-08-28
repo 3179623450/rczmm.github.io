@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-08-28T06:47:17.053Z</updated>
+  <updated>2022-08-28T06:53:54.999Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -17,11 +17,24 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>springboot+vue（6）</title>
+    <link href="http://rczmm.github.io/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/"/>
+    <id>http://rczmm.github.io/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/</id>
+    <published>2022-08-28T06:53:54.000Z</published>
+    <updated>2022-08-28T06:53:54.999Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>springboot+vue（5）</title>
     <link href="http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/"/>
     <id>http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</id>
     <published>2022-08-27T13:42:53.000Z</published>
-    <updated>2022-08-28T06:47:17.053Z</updated>
+    <updated>2022-08-28T06:56:40.466Z</updated>
     
     
       
@@ -35,7 +48,9 @@
     
     
     
-    <category term="java.springboot" scheme="http://rczmm.github.io/tags/java-springboot/"/>
+    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    
+    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
     
   </entry>
   
