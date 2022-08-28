@@ -175,7 +175,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   color: #fff;
 }
 .bg-floor {
-  background: url(/images/背景1.png);
+  background: url(https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/背景1.png);
   background-size: cover;
   transition: all 0.3s;
 }
