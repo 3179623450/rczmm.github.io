@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++自学笔记（1）</title>
+    <url>/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<p>C++很重要，很重要，很重要。</p>
+<h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 头文件引入
+#include &lt;iostream&gt;
+&#x2F;&#x2F; 使用名为std的命名空间
+using namespace std;
+&#x2F;&#x2F; main方法，程序开始的地方，返回值为整形
+int main()&#123;
+    &#x2F;&#x2F; 打印消息hello！
+    cout&lt;&lt;&quot;hello!&quot;;
+    &#x2F;&#x2F; 返回0，终止main函数，并且向调用进程返回0
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>分号 &amp; 语句块</p>
+<p>在c++里，分号是语句的结束符，并且每一条语句都必须以分号结尾。</p>
+<p>语句块是一组用大括号包含起来的语句。</p>
+<p>c++里，你可以在一行里写多条语句，只要他们在结尾时使用分号。</p>
+<p>标识符 &amp; 关键字</p>
+<p>标识符用来标识变量、函数、类、模块或者其他的自定义的名称，标识符的组成是大小写字母、数字以及下划线，但是要注意的是，数字不能开头。</p>
+<p>同时，c++内严格区分大小写。</p>
+<p>关键字是c++的保留字，这些保留字无法作为常量名、变量、函数等其他标识符的名称。</p>
+<p>三字符序列 &amp; 空格</p>
+<p>三字符序列，用于表示另一个字符的三个字符组成的序列，这些序列总是以两个问号开头。</p>
+<p>这并不常见，但是c++允许这样的表示，为了表示键盘上没有的字符。值得注意的是，三字符序列可以出现在任何的地方，包括字符串、字符序列、注释和预处理指令。</p>
+<p>当然如果希望在源码中有两个连续的问号，并且不希望他们被替换掉，可以使用转义字符或者是字符串自动拼接。</p>
+<p>空格也是必要的符号，空格用于描述空白符、制表符、换行符和注释，同时它也起到了分割语句各个部分的作用。有时候，为了增加一些可读性，我们也会主动的添加一些不是必要的空格。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>c++的注释是解释性的语句，在c++中支持单行和多行两种注释。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 我是单行注释
+
+&#x2F;*
+  
+  我是多行注释内的内容！！
+&#x2F;&#x2F;  我是单行注释
+  
+*&#x2F; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>单行注释，从//开始，直到一行结束</p>
+<p>多行注释，在/* 到 */的内容都是多行注释的内容，并且可以在其中添加单行注释，实现注释的嵌套。</p>
+<p>注意的是，多行中无法嵌套多行。</p>
+<p>除此之外，还可以通过条件编译在实现注释：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if 0
+cout&lt;&lt;&quot;hello&quot;;
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>c++为程序员提供了七种基本数据类型。</p>
+<p>布尔（bool）、字符（char）、整形（int）、浮点（float）、双浮点（double）、宽字符（wchar_1）、无类型（void）。</p>
+<p>一些基本类型可以使用一个或者多个卡类型修饰符进行修饰。</p>
+<p>signed、unsigned、short、long</p>
+<p>这些修饰符可以改变数据类型所能存储的最大值和最小值。</p>
+<p>其中，各个类型的大小和系统的位数有关。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;limits&gt;
+
+using namespace std;
+
+int main() &#123;
+    cout &lt;&lt; &quot;type: \t\t&quot; &lt;&lt; &quot;************size**************&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;bool: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(bool);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;bool&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;bool&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;char: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;signed char: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(signed char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;signed char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;signed char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned char: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;wchar_t: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(wchar_t);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;wchar_t&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;wchar_t&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;short: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(short);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;short&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;short&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;int: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(int);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;int&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;int&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;long: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(long);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;long&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;long&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned long: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned long);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned long&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned long&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;double: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(double);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;double&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;double&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;long double: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(long double);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;long double&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;long double&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;float: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(float);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;float&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;float&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;size_t: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(size_t);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;size_t&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;size_t&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;string: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(string) &lt;&lt; endl;
+    cout &lt;&lt; &quot;type: \t\t&quot; &lt;&lt; &quot;************size**************&quot; &lt;&lt; endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>变量的大小会编译器所在的系统有所不同，上面的实例会输出你实际电脑上各种类型的大小。</p>
+<p>其中，endl，这会在每一行后插入换行符，&lt;&lt;运算度可以向平复传送多个值，sizeof（）可以获取各个数据类型的大小。</p>
+<p>typedef声明 &amp; 枚举类型</p>
+<p>可以使用typedef为一个已有的类型取一个新的名字。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef int id;
+id student_id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如上的声明就完全合法。</p>
+<p>枚举是一种派生的数据类型，他是由用户定义的若干枚举类型常量的集合。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum sex&#123;man&#x3D;1,woman&#x3D;0&#125; xiaoming;
+xiaoming &#x3D; man;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>默认的，如果不设置整形常数，他会根据顺序赋值，从0开始，但是可以给一些特殊的值，默认的，每个名称都会比前一个名称大一，因此如果你设置了man等于3，那么woman等于4。</p>
+<p>变量类型 &amp; 作用域</p>
+<p>变量是程序可操作的存储区的名称，每一个变量都应该有指定的类型，类型决定了变量的大小和布局，这个范围内的值都可以存储在内存中。</p>
+<p>变量名称遵循标识符的命名规范，由字母、数字、下划线组成，数字不能开头。</p>
+<p>变量定义</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int age &#x3D; 10;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如上的语句就可以声明一个变量，并且赋值为10。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int age;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>extern关键字可以任何一个地方声明变量，当使用多个文件，但是只在一个文件内定义变量的时候，就可以使用它。</p>
+<p>当然，虽然可以在c++中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</p>
+<p><img src="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220830120553453.png" class="lazyload placeholder" data-srcset="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220830120553453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220830120553453"></p>
+<p>如上，即使类型不一样，但依旧无法被定义，并且编译器报错。</p>
+]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python装饰器</title>
     <url>/2022/08/26/Python%E8%A3%85%E9%A5%B0%E5%99%A8/</url>
     <content><![CDATA[<h1 id="Python-装饰器"><a href="#Python-装饰器" class="headerlink" title="Python 装饰器"></a>Python 装饰器</h1><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在Python中，函数也是一个对象，可以被当做参数传递，可以在另一个函数中调用，也可以实现函数的嵌套。</p>
@@ -374,71 +514,6 @@ function<span class="token punctuation">(</span><span class="token number">4</sp
       </tags>
   </entry>
   <entry>
-    <title>springboot+vue（5）</title>
-    <url>/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><p>ORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。</p>
-<p>MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。</p>
-<p>MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原生信息，能够轻松地将Java的POJO（Plain Ordinary Java Object，普通的Java对象）与数据库中的表和字段进行映射关联。</p>
-<p>MyBatis-Plus是一个 MyBatis 的增强工具，在 MyBatis 的基础上做了增强，简化了开发。</p>
-<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--        mybatis plus--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-<span class="token comment">&lt;!--        mysql driver--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">"com.mysql.cj.jdbc.Driver"</span>
-<span class="token attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token attr-value">"jdbc:mysql://localhost:3306/milk?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"</span>
-<span class="token attr-name">spring.datasource.name</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span>
-<span class="token attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>配置数据库信息之后，在启动类上添加MapperScan注解，参数为Mapper包。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">MapperScan</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">SpringBootApplication</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">springfox<span class="token punctuation">.</span>documentation<span class="token punctuation">.</span>swagger2<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">EnableSwagger2</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"top.rczmm.springboot1.Mapper"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Springboot1Application</span> <span class="token punctuation">&#123;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Springboot1Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Insert</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>poji<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@Mapper</span>
-<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into users values(#&#123;id&#125;,#&#123;name&#125;) "</span><span class="token punctuation">)</span>
-    <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>CRUD，可以通过注释来写，也可以配置xml文件。</p>
-<p>除此之外，MybatisPLus也提供了一些注解：</p>
-<p>@TableName，当表名与实体类名称不一致时，可以使用@TableName注解进行关联。</p>
-<p>n@TableField，当表中字段名称与实体类属性不一致时，使用@TableField进行关联</p>
-<p>@TableId，用于标记表中的主键字段，MybatisPlus也提供了主键生成策略</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>springboot+vue（4）</title>
     <url>/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/</url>
     <content><![CDATA[<h2 id="RESTful"><a href="#RESTful" class="headerlink" title="RESTful"></a>RESTful</h2><p>这是目前比较流行的互联网软件服务架构设计风格。</p>
@@ -542,6 +617,71 @@ function<span class="token punctuation">(</span><span class="token number">4</sp
 <p>此时访问路径为：<a href="http://localhost:8080/swagger-ui/index.html">http://localhost:8080/swagger-ui/index.html</a></p>
 <p>注意，文档中Swagger为3.0。</p>
 <p><img src="/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/image-20220827214240354.png" class="lazyload placeholder" data-srcset="/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/image-20220827214240354.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220827214240354"></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot+vue（5）</title>
+    <url>/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><p>ORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。</p>
+<p>MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。</p>
+<p>MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原生信息，能够轻松地将Java的POJO（Plain Ordinary Java Object，普通的Java对象）与数据库中的表和字段进行映射关联。</p>
+<p>MyBatis-Plus是一个 MyBatis 的增强工具，在 MyBatis 的基础上做了增强，简化了开发。</p>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--        mybatis plus--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!--        mysql driver--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">"com.mysql.cj.jdbc.Driver"</span>
+<span class="token attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token attr-value">"jdbc:mysql://localhost:3306/milk?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"</span>
+<span class="token attr-name">spring.datasource.name</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span>
+<span class="token attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置数据库信息之后，在启动类上添加MapperScan注解，参数为Mapper包。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">MapperScan</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">SpringBootApplication</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">springfox<span class="token punctuation">.</span>documentation<span class="token punctuation">.</span>swagger2<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">EnableSwagger2</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"top.rczmm.springboot1.Mapper"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Springboot1Application</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Springboot1Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Insert</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>poji<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Mapper</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into users values(#&#123;id&#125;,#&#123;name&#125;) "</span><span class="token punctuation">)</span>
+    <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>CRUD，可以通过注释来写，也可以配置xml文件。</p>
+<p>除此之外，MybatisPLus也提供了一些注解：</p>
+<p>@TableName，当表名与实体类名称不一致时，可以使用@TableName注解进行关联。</p>
+<p>n@TableField，当表中字段名称与实体类属性不一致时，使用@TableField进行关联</p>
+<p>@TableId，用于标记表中的主键字段，MybatisPlus也提供了主键生成策略</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -1813,6 +1953,105 @@ python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3
       </categories>
       <tags>
         <tag>高数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MtaLab笔记</title>
+    <url>/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x <span class="token operator">=</span> <span class="token function">linspace</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">% create a vector x between 0 and 6</span>
+y1 <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">*</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+y2 <span class="token operator">=</span> <span class="token function">sin</span><span class="token punctuation">(</span>x<span class="token operator">.^</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+y3 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">sin</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">.^</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token function">plot</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>matlab很强大，很强大。</p>
+<p>退出和中断</p>
+<p>exit、quit 结束matlab会话，程序完成，如果没有明确的保存，则变量中的数据会丢失。</p>
+<p>Ctrl+C 中断一个matlab任务</p>
+<p>在matlab中，矩阵是数据的基本格式。</p>
+<p>二维矩阵是一个以行列排列的矩形表，例如一个m行、n列的矩阵大小就是m*n，多维矩阵的维数大于2，就是说大小为m *  n *…p</p>
+<p>当行列为1时，此时只有一个量，也就是标量，只有一个数。</p>
+<p>一个变量可以通过分配一个值来定义他。</p>
+<p>二维矩阵的实现</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">A <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+B <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span>
+    <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>简单的两种方式，前者用分号作为一行的结束，后者直接写出来。</p>
+<p>定义行向量与列向量</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">row_l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+column_l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token number">2</span><span class="token punctuation">;</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>逐个元素的分配矩阵：</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token function">C</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token function">C</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token function">C</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> 
+<span class="token function">C</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> 
+<span class="token function">C</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token function">C</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+C<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于三维矩阵，一般的理解为在自变量中依次使用行、列和页维数次序，对于多维矩阵有两个索引原理，最自然的就是矩阵索引，他给出了每个元素在每一维的一个位置。</p>
+<p>另外一个索引原理是线性索引，一些命令把整个索引说明为一个长列元素，如果所有元素都在一行上，那么对于各个元素给定的一个线性索引号说明了一个指定矩阵的索引给出的某个位置。</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">D <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">;</span><span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">F</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> A<span class="token punctuation">;</span>
+<span class="token function">F</span><span class="token punctuation">(</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token operator">:</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> B<span class="token punctuation">;</span>
+F
+<span class="token function">F</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+F<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>用两个二维矩阵构建一个三维矩阵，再修改一下三维矩阵内一个元素。</p>
+<p>matlab允许在一行上定义多个变量，也可以在换行时使用三个点来在下一行继续输入。</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">m <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>n <span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>z <span class="token operator">=</span> <span class="token number">0.1212121312</span><span class="token punctuation">;</span>
+A_1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span> <span class="token number">7</span><span class="token punctuation">;</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span> <span class="token number">7</span> <span class="token number">8</span><span class="token punctuation">;</span> <span class="token punctuation">...</span>
+    <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">8</span> <span class="token number">6</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>为了获取变量的维数，可以使用size和length。</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token function">size</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span>
+<span class="token function">length</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>size，输出顺序为行数、列数、页数等。</p>
+<p>（3 ，7）</p>
+<p>length，给出一个向量的长度。行向量就给出列数，列向量就给出行数。</p>
+<p>（7）</p>
+<p>如果此时，简单的嵌套：</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token function">length</span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">ndims</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>（2）</p>
+<p>就能顺利的得到维数。当然使用ndims函数也能快速的得到维数。</p>
+<p>sub2ind()特殊的函数，首先在matlab之中，数据有索引，即使是矩阵。</p>
+<p>但是数据是按列的方式存储，所以是按照列来计算索引的。</p>
+<p>sub2ind就是把下标转化为索引。</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token function">sub2ind</span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如图，A_1是一个3 * 7的矩阵，那么这段语句的含义就是求一个3 * 7矩阵的第2行第3列的索引。</p>
+<p>ind2sub() 将线性索引转化为下标。</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token punctuation">[</span><span class="token number">i</span><span class="token punctuation">,</span><span class="token number">j</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">ind2sub</span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span>A_1<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也就是，求一个3 * 7矩阵索引为2的元素在第几行第几列。</p>
+<p>多维矩阵的转换：</p>
+<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab"><span class="token function">sub2ind</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span> <span class="token number">3</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将一个三行、三列、两页的矩阵的第一行、第二列、第二页的元素转化为索引：13。</p>
+]]></content>
+      <tags>
+        <tag>MatLab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法笔记</title>
+    <url>/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>旅行商人问题</p>
+<p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
+<p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
+<p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
+<p>矩阵相乘</p>
+]]></content>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>

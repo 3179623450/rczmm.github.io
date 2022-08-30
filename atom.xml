@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-08-28T07:25:39.690Z</updated>
+  <updated>2022-08-30T17:26:20.518Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MtaLab笔记</title>
+    <link href="http://rczmm.github.io/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/"/>
+    <id>http://rczmm.github.io/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-08-30T10:45:13.000Z</published>
+    <updated>2022-08-30T17:26:20.518Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-matlab&quot; data-language=&quot;matlab&quot;&gt;&lt;code class=&quot;language-matlab&quot;&gt;x &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MatLab" scheme="http://rczmm.github.io/tags/MatLab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法笔记</title>
+    <link href="http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+    <id>http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-08-30T04:34:10.000Z</published>
+    <updated>2022-08-30T10:44:20.735Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;旅行商人问题&lt;/p&gt;
+&lt;p&gt;假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。&lt;/p&gt;
+&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="算法" scheme="http://rczmm.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++自学笔记（1）</title>
+    <link href="http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
+    <id>http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</id>
+    <published>2022-08-29T14:35:09.000Z</published>
+    <updated>2022-08-30T04:19:57.210Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;C++很重要，很重要，很重要。&lt;/p&gt;
+&lt;h2 id=&quot;HelloWorld&quot;&gt;&lt;a href=&quot;#HelloWorld&quot; class=&quot;headerlink&quot; title=&quot;HelloWorld&quot;&gt;&lt;/a&gt;HelloWorld&lt;/h2&gt;&lt;pre</summary>
+        
+      
+    
+    
+    
+    
+    <category term="c++" scheme="http://rczmm.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>springboot+vue（6）</title>

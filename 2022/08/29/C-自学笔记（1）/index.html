@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档 | 小小世界</title>
+  <title>C++自学笔记（1） | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -590,190 +590,724 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-13.png')">
-  <div class="archive-header-title">
-    全部文章
-  </div>
-  <div class="archive-header-desc">
-  
-  <span class="title" id="archive-header-desc"></span>
-  <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
-  
-  </div>
-  <div class="mask-box"></div>
-</div>
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
 
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    全部文章
-  </div>
-  <div class="video-header-desc">
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        C++自学笔记（1）
+      </span>
+    </div>
+    
+    
       
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-08-29 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 2.1k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 9分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
   </div>
-  <div class="mask-box"></div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
 </div>
 
-<!-- hash算法 -->
 
 
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p>C++很重要，很重要，很重要。</p>
+<h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 头文件引入
+#include &lt;iostream&gt;
+&#x2F;&#x2F; 使用名为std的命名空间
+using namespace std;
+&#x2F;&#x2F; main方法，程序开始的地方，返回值为整形
+int main()&#123;
+    &#x2F;&#x2F; 打印消息hello！
+    cout&lt;&lt;&quot;hello!&quot;;
+    &#x2F;&#x2F; 返回0，终止main函数，并且向调用进程返回0
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>分号 &amp; 语句块</p>
+<p>在c++里，分号是语句的结束符，并且每一条语句都必须以分号结尾。</p>
+<p>语句块是一组用大括号包含起来的语句。</p>
+<p>c++里，你可以在一行里写多条语句，只要他们在结尾时使用分号。</p>
+<p>标识符 &amp; 关键字</p>
+<p>标识符用来标识变量、函数、类、模块或者其他的自定义的名称，标识符的组成是大小写字母、数字以及下划线，但是要注意的是，数字不能开头。</p>
+<p>同时，c++内严格区分大小写。</p>
+<p>关键字是c++的保留字，这些保留字无法作为常量名、变量、函数等其他标识符的名称。</p>
+<p>三字符序列 &amp; 空格</p>
+<p>三字符序列，用于表示另一个字符的三个字符组成的序列，这些序列总是以两个问号开头。</p>
+<p>这并不常见，但是c++允许这样的表示，为了表示键盘上没有的字符。值得注意的是，三字符序列可以出现在任何的地方，包括字符串、字符序列、注释和预处理指令。</p>
+<p>当然如果希望在源码中有两个连续的问号，并且不希望他们被替换掉，可以使用转义字符或者是字符串自动拼接。</p>
+<p>空格也是必要的符号，空格用于描述空白符、制表符、换行符和注释，同时它也起到了分割语句各个部分的作用。有时候，为了增加一些可读性，我们也会主动的添加一些不是必要的空格。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>c++的注释是解释性的语句，在c++中支持单行和多行两种注释。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 我是单行注释
+
+&#x2F;*
+  
+  我是多行注释内的内容！！
+&#x2F;&#x2F;  我是单行注释
+  
+*&#x2F; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>单行注释，从//开始，直到一行结束</p>
+<p>多行注释，在/* 到 */的内容都是多行注释的内容，并且可以在其中添加单行注释，实现注释的嵌套。</p>
+<p>注意的是，多行中无法嵌套多行。</p>
+<p>除此之外，还可以通过条件编译在实现注释：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if 0
+cout&lt;&lt;&quot;hello&quot;;
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>c++为程序员提供了七种基本数据类型。</p>
+<p>布尔（bool）、字符（char）、整形（int）、浮点（float）、双浮点（double）、宽字符（wchar_1）、无类型（void）。</p>
+<p>一些基本类型可以使用一个或者多个卡类型修饰符进行修饰。</p>
+<p>signed、unsigned、short、long</p>
+<p>这些修饰符可以改变数据类型所能存储的最大值和最小值。</p>
+<p>其中，各个类型的大小和系统的位数有关。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;limits&gt;
+
+using namespace std;
+
+int main() &#123;
+    cout &lt;&lt; &quot;type: \t\t&quot; &lt;&lt; &quot;************size**************&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;bool: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(bool);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;bool&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;bool&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;char: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;signed char: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(signed char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;signed char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;signed char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned char: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned char);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned char&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned char&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;wchar_t: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(wchar_t);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;wchar_t&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;wchar_t&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;short: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(short);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;short&gt;::max)();
+    cout &lt;&lt; &quot;\t\t最小值：&quot; &lt;&lt; (numeric_limits&lt;short&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;int: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(int);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;int&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;int&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;long: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(long);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;long&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;long&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;unsigned long: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(unsigned long);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;unsigned long&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;unsigned long&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;double: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(double);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;double&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;double&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;long double: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(long double);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;long double&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;long double&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;float: \t\t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(float);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;float&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;float&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;size_t: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(size_t);
+    cout &lt;&lt; &quot;\t最大值：&quot; &lt;&lt; (numeric_limits&lt;size_t&gt;::max)();
+    cout &lt;&lt; &quot;\t最小值：&quot; &lt;&lt; (numeric_limits&lt;size_t&gt;::min)() &lt;&lt; endl;
+    cout &lt;&lt; &quot;string: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(string) &lt;&lt; endl;
+    cout &lt;&lt; &quot;type: \t\t&quot; &lt;&lt; &quot;************size**************&quot; &lt;&lt; endl;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>变量的大小会编译器所在的系统有所不同，上面的实例会输出你实际电脑上各种类型的大小。</p>
+<p>其中，endl，这会在每一行后插入换行符，&lt;&lt;运算度可以向平复传送多个值，sizeof（）可以获取各个数据类型的大小。</p>
+<p>typedef声明 &amp; 枚举类型</p>
+<p>可以使用typedef为一个已有的类型取一个新的名字。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef int id;
+id student_id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如上的声明就完全合法。</p>
+<p>枚举是一种派生的数据类型，他是由用户定义的若干枚举类型常量的集合。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum sex&#123;man&#x3D;1,woman&#x3D;0&#125; xiaoming;
+xiaoming &#x3D; man;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>默认的，如果不设置整形常数，他会根据顺序赋值，从0开始，但是可以给一些特殊的值，默认的，每个名称都会比前一个名称大一，因此如果你设置了man等于3，那么woman等于4。</p>
+<p>变量类型 &amp; 作用域</p>
+<p>变量是程序可操作的存储区的名称，每一个变量都应该有指定的类型，类型决定了变量的大小和布局，这个范围内的值都可以存储在内存中。</p>
+<p>变量名称遵循标识符的命名规范，由字母、数字、下划线组成，数字不能开头。</p>
+<p>变量定义</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int age &#x3D; 10;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如上的语句就可以声明一个变量，并且赋值为10。</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int age;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>extern关键字可以任何一个地方声明变量，当使用多个文件，但是只在一个文件内定义变量的时候，就可以使用它。</p>
+<p>当然，虽然可以在c++中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</p>
+<p><img src="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220830120553453.png" class="lazyload placeholder" data-srcset="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220830120553453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220830120553453"></p>
+<p>如上，即使类型不一样，但依旧无法被定义，并且编译器报错。</p>
+
+      </div>
+      <div class="post-tags-categories">
         
-        
+        <div class="tags">
           
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
+            <a href="/tags/c/" class="">
+              c++
+            </a>
           
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-24</span>
-              </div>
-              <a class="post-title" href="/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/">基于Python的QT（二）</a>
-            </div>
-          </li>
+        </div>
         
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/19/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-19</span>
-              </div>
-              <a class="post-title" href="/2022/08/19/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/">基于python的QT（一）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/08/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/images/java.jpg" class="lazyload placeholder" data-srcset="/images/java.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-08</span>
-              </div>
-              <a class="post-title" href="/2022/08/08/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">入门项目——学生成绩管理系统（demo）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/images/%E6%95%B0%E5%AD%A6.jpg" class="lazyload placeholder" data-srcset="/images/%E6%95%B0%E5%AD%A6.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">06-19</span>
-              </div>
-              <a class="post-title" href="/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="/images/java.jpg" class="lazyload placeholder" data-srcset="/images/java.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">06-18</span>
-              </div>
-              <a class="post-title" href="/2022/06/18/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/">反射与注解</a>
-            </div>
-          </li>
-        
-      </ul>
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>rczmm</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2022/08/29/C-自学笔记（1）/" target="_blank" title="C++自学笔记（1）">http://rczmm.github.io/2022/08/29/C-自学笔记（1）/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav> -->
-  <div class="page-nav">
-    
-      <a href="/archives/"
-         class="page-nav-pre">
-         <i class="fas fa-angle-left"></i><span class="ml-5">上一页</span>
-      </a>
-    
-    <div class="page-info">
-        <div class="page-info-text">2 / 2</div>
-    </div>
-    
+    <a href="/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">算法笔记</div>
+      </div>
+      
+      <!-- <div class="content">
+        旅行商人问题
+假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓
+      </div> -->
+    </a>
   </div>
 
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">springboot+vue（6）</div>
+      </div>
+      <!-- <div class="content">
+        多表查询和分页查询多表
+实现复杂关系映射，可以使用@Results注解，@Result注解，@One注解，@Many注解
+      </div> -->
+    </a>
   </div>
+
 </div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
