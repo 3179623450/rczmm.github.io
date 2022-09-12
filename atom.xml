@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-09-01T18:10:10.099Z</updated>
+  <updated>2022-09-11T03:15:34.451Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>概率论笔记</title>
+    <link href="http://rczmm.github.io/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
+    <id>http://rczmm.github.io/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-09-10T03:03:17.000Z</published>
+    <updated>2022-09-11T03:15:34.451Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;罗素悖论&lt;/p&gt;
+&lt;p&gt;令 P(x) 表示 x ∉ x. 也就是说，对 x 而言，如果 P(x) 是真的， 那么 x 就不是自身的元素; 但如果 P(x) 为假，那么 x 就是 x 中的元素。&lt;/p&gt;
+&lt;p&gt;那么 R</summary>
+        
+      
+    
+    
+    
+    
+    <category term="高数" scheme="http://rczmm.github.io/tags/%E9%AB%98%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>MtaLab笔记</title>
@@ -69,7 +94,7 @@
     <link href="http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
     <id>http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</id>
     <published>2022-08-29T14:35:09.000Z</published>
-    <updated>2022-08-31T01:13:50.888Z</updated>
+    <updated>2022-09-10T01:32:08.800Z</updated>
     
     
       
