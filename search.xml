@@ -1143,6 +1143,60 @@ function<span class="token punctuation">(</span><span class="token number">4</sp
       </tags>
   </entry>
   <entry>
+    <title>springboot+vue（1）</title>
+    <url>/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>JavaEE：Springboot+MybatisPlus</p>
+<p>Web前端：Vue+ELementUi</p>
+<h2 id="Web基础"><a href="#Web基础" class="headerlink" title="Web基础"></a>Web基础</h2><p>主要的软件架构模式：BS（浏览器|服务器） 与 CS（客户端|服务器）</p>
+<p>Web主要的架构模式：BS（维护方便，开发简单、成本低、更新快等）</p>
+<p>程序的逻辑和数据都在服务端，浏览器求请求服务器，获取web页面，并把web页面展示给用户。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>JDK 1.8以上就可以（环境变量配置）</p>
+<p>IDEA 什么版本都可以</p>
+<p>Maven（项目管理工具）处理java项目的自动化构建（编译、运行、打包、文档）和依赖的管理。</p>
+<h2 id="Springboot介绍"><a href="#Springboot介绍" class="headerlink" title="Springboot介绍"></a>Springboot介绍</h2><p>基于Spring的全新框架，简化spring的搭建和开发，比ssm的配置简单了很多，省略了很多xml文档。</p>
+<p>约定优于配置，默认配置较多，只需要很少的配置。</p>
+<p>内嵌了tomcat、jetty，不需要war包。</p>
+<p>提供了定制化的启动器Starters，简化了maven（定制了maven的配置，帮助我们简化了配置），开箱就用。</p>
+<p>纯java、没有xml和代码生成。</p>
+<p>提供了监控方案，安全、服务健康等。</p>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824210539414"></p>
+<p>在idea中选择的时候，注意jdk的版本等信息。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824210802751"></p>
+<p>此处可选择springboot的版本信息，以及要导入的依赖。</p>
+<p>此时等待一段时间即可。</p>
+<p>目录结构：</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824211339566"></p>
+<p>java下存放java代码，resource下的static和template用来存放公共资源，一般的，我们把js、css、图片等信息存放到static下，将页面放到template下，访问时，static的优先级是要大于template的，并且template下的页面不用thymeleaf映射和controller是无法直接url访问的。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824211737361"></p>
+<p>写一个Controller，注解声明一下，这个类就可以去接受请求，而后写一个方法，加一个注解getmapping，这表明浏览器发一个get请求，字符串内的内容是url。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212119510"></p>
+<p>此时，运行启动器，打开网页，访问hello，就可以看到我们定义的返回值。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212210339"></p>
+<p>一般的，默认的端口是8080，可自定义。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212243749"></p>
+<h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p>在实际开发中，我们会经常的修改后台文件，导致重新编译、启动等，非常麻烦。</p>
+<p>springboot提供了devtools组件，让我们不用手动重启应用也可以重新编译、启动。</p>
+<p>devtools会监控classpath下的文件，触发restart类加载器重新加载这个类，从而实现类文件和属性文件的热部署。</p>
+<p>注意的是，也不是什么都需要重启应用，可以通过设置属性来制定一些目录或文件的修改不用重启。</p>
+<p>引入依赖</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826222051160"></p>
+<p>其中optional的含义是，依赖不会传递，也就是其他项目如果引入这个项目的jar包，不会包含这个devtools。</p>
+<p>引入依赖后，记得刷一下maven。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212809166"></p>
+<p>如果你找不到这个按钮。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824213521794"></p>
+<p>在引入了依赖之后，我们需要在idea中手动配置。</p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220434604"></p>
+<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220943295"></p>
+<p>重启idea后生效。</p>
+<p>但是这其实并不是真正的热部署，但是好在他可以实现快速重启。</p>
+<p>如果你觉得这不够快，你可以使用**<a href="https://link.zhihu.com/?target=https://jrebel.com/software/jrebel/">JRebel</a>**插件，只是说它要收费。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>springboot+vue（2）</title>
     <url>/2022/08/26/springboot-vue%EF%BC%882%EF%BC%89/</url>
     <content><![CDATA[<p>写点基础的东西。</p>
@@ -1341,6 +1395,125 @@ function<span class="token punctuation">(</span><span class="token number">4</sp
 <p>此时访问路径为：<a href="http://localhost:8080/swagger-ui/index.html">http://localhost:8080/swagger-ui/index.html</a></p>
 <p>注意，文档中Swagger为3.0。</p>
 <p><img src="/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/image-20220827214240354.png" class="lazyload placeholder" data-srcset="/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/image-20220827214240354.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220827214240354"></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot+vue（5）</title>
+    <url>/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><p>ORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。</p>
+<p>MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。</p>
+<p>MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原生信息，能够轻松地将Java的POJO（Plain Ordinary Java Object，普通的Java对象）与数据库中的表和字段进行映射关联。</p>
+<p>MyBatis-Plus是一个 MyBatis 的增强工具，在 MyBatis 的基础上做了增强，简化了开发。</p>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--        mybatis plus--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!--        mysql driver--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">"com.mysql.cj.jdbc.Driver"</span>
+<span class="token attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token attr-value">"jdbc:mysql://localhost:3306/milk?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"</span>
+<span class="token attr-name">spring.datasource.name</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span>
+<span class="token attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>配置数据库信息之后，在启动类上添加MapperScan注解，参数为Mapper包。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">MapperScan</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">SpringBootApplication</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">springfox<span class="token punctuation">.</span>documentation<span class="token punctuation">.</span>swagger2<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">EnableSwagger2</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"top.rczmm.springboot1.Mapper"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Springboot1Application</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Springboot1Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Insert</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>poji<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Mapper</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into users values(#&#123;id&#125;,#&#123;name&#125;) "</span><span class="token punctuation">)</span>
+    <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>CRUD，可以通过注释来写，也可以配置xml文件。</p>
+<p>除此之外，MybatisPLus也提供了一些注解：</p>
+<p>@TableName，当表名与实体类名称不一致时，可以使用@TableName注解进行关联。</p>
+<p>n@TableField，当表中字段名称与实体类属性不一致时，使用@TableField进行关联</p>
+<p>@TableId，用于标记表中的主键字段，MybatisPlus也提供了主键生成策略</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot+vue（6）</title>
+    <url>/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="多表查询和分页查询"><a href="#多表查询和分页查询" class="headerlink" title="多表查询和分页查询"></a>多表查询和分页查询</h2><p>多表</p>
+<p>实现复杂关系映射，可以使用@Results注解，@Result注解，@One注解，@Many注解组合完成复杂关系的配置。</p>
+<p><img src="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/image-20220828145912038.png" class="lazyload placeholder" data-srcset="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/image-20220828145912038.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220828145912038"></p>
+<p>（MybatisPLus对多表无变化，以上为Mybatis的注解。）</p>
+<p>测试</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from t_user"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Results</span><span class="token punctuation">(</span>
+        <span class="token punctuation">&#123;</span>
+                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span> property <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"password"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"message"</span><span class="token punctuation">,</span>javaType <span class="token operator">=</span> <span class="token class-name">List</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+                many <span class="token operator">=</span> <span class="token annotation punctuation">@Many</span><span class="token punctuation">(</span>select<span class="token operator">=</span><span class="token string">"top.rczmm.springboot1.Mapper.MessageMapper.selectById"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">selectAllUsersMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>分页</p>
+<p>编写配置文件</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>configuration</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">DbType</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span></span><span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>inner<span class="token punctuation">.</span></span><span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisPlusConfig</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">MybatisPlusInterceptor</span> <span class="token function">paginationInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">MybatisPlusInterceptor</span> interceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">PaginationInnerInterceptor</span> paginationInnerInterceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">(</span><span class="token class-name">DbType</span><span class="token punctuation">.</span>MYSQL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        interceptor<span class="token punctuation">.</span><span class="token function">addInnerInterceptor</span><span class="token punctuation">(</span>paginationInnerInterceptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> interceptor<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>测试</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"findAll"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">IPage</span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> page <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token class-name"><span class="token namespace">userMapper<span class="token punctuation">.</span></span>SelectPage</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -2130,215 +2303,6 @@ function<span class="token punctuation">(</span><span class="token number">4</sp
       </tags>
   </entry>
   <entry>
-    <title>springboot+vue（1）</title>
-    <url>/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>JavaEE：Springboot+MybatisPlus</p>
-<p>Web前端：Vue+ELementUi</p>
-<h2 id="Web基础"><a href="#Web基础" class="headerlink" title="Web基础"></a>Web基础</h2><p>主要的软件架构模式：BS（浏览器|服务器） 与 CS（客户端|服务器）</p>
-<p>Web主要的架构模式：BS（维护方便，开发简单、成本低、更新快等）</p>
-<p>程序的逻辑和数据都在服务端，浏览器求请求服务器，获取web页面，并把web页面展示给用户。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>JDK 1.8以上就可以（环境变量配置）</p>
-<p>IDEA 什么版本都可以</p>
-<p>Maven（项目管理工具）处理java项目的自动化构建（编译、运行、打包、文档）和依赖的管理。</p>
-<h2 id="Springboot介绍"><a href="#Springboot介绍" class="headerlink" title="Springboot介绍"></a>Springboot介绍</h2><p>基于Spring的全新框架，简化spring的搭建和开发，比ssm的配置简单了很多，省略了很多xml文档。</p>
-<p>约定优于配置，默认配置较多，只需要很少的配置。</p>
-<p>内嵌了tomcat、jetty，不需要war包。</p>
-<p>提供了定制化的启动器Starters，简化了maven（定制了maven的配置，帮助我们简化了配置），开箱就用。</p>
-<p>纯java、没有xml和代码生成。</p>
-<p>提供了监控方案，安全、服务健康等。</p>
-<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824210539414"></p>
-<p>在idea中选择的时候，注意jdk的版本等信息。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824210802751"></p>
-<p>此处可选择springboot的版本信息，以及要导入的依赖。</p>
-<p>此时等待一段时间即可。</p>
-<p>目录结构：</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824211339566"></p>
-<p>java下存放java代码，resource下的static和template用来存放公共资源，一般的，我们把js、css、图片等信息存放到static下，将页面放到template下，访问时，static的优先级是要大于template的，并且template下的页面不用thymeleaf映射和controller是无法直接url访问的。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824211737361"></p>
-<p>写一个Controller，注解声明一下，这个类就可以去接受请求，而后写一个方法，加一个注解getmapping，这表明浏览器发一个get请求，字符串内的内容是url。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212119510"></p>
-<p>此时，运行启动器，打开网页，访问hello，就可以看到我们定义的返回值。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212210339"></p>
-<p>一般的，默认的端口是8080，可自定义。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212243749"></p>
-<h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p>在实际开发中，我们会经常的修改后台文件，导致重新编译、启动等，非常麻烦。</p>
-<p>springboot提供了devtools组件，让我们不用手动重启应用也可以重新编译、启动。</p>
-<p>devtools会监控classpath下的文件，触发restart类加载器重新加载这个类，从而实现类文件和属性文件的热部署。</p>
-<p>注意的是，也不是什么都需要重启应用，可以通过设置属性来制定一些目录或文件的修改不用重启。</p>
-<p>引入依赖</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826222051160"></p>
-<p>其中optional的含义是，依赖不会传递，也就是其他项目如果引入这个项目的jar包，不会包含这个devtools。</p>
-<p>引入依赖后，记得刷一下maven。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824212809166"></p>
-<p>如果你找不到这个按钮。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220824213521794"></p>
-<p>在引入了依赖之后，我们需要在idea中手动配置。</p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220434604"></p>
-<p><img src="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" class="lazyload placeholder" data-srcset="/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220826220943295"></p>
-<p>重启idea后生效。</p>
-<p>但是这其实并不是真正的热部署，但是好在他可以实现快速重启。</p>
-<p>如果你觉得这不够快，你可以使用**<a href="https://link.zhihu.com/?target=https://jrebel.com/software/jrebel/">JRebel</a>**插件，只是说它要收费。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>springboot+vue（5）</title>
-    <url>/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h2><p>ORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。</p>
-<p>MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。</p>
-<p>MyBatis能够非常灵活地实现动态SQL，可以使用XML或注解来配置和映射原生信息，能够轻松地将Java的POJO（Plain Ordinary Java Object，普通的Java对象）与数据库中的表和字段进行映射关联。</p>
-<p>MyBatis-Plus是一个 MyBatis 的增强工具，在 MyBatis 的基础上做了增强，简化了开发。</p>
-<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!--        mybatis plus--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-<span class="token comment">&lt;!--        mysql driver--></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token attr-name">spring.datasource.driver-class-name</span><span class="token punctuation">=</span><span class="token attr-value">"com.mysql.cj.jdbc.Driver"</span>
-<span class="token attr-name">spring.datasource.url</span><span class="token punctuation">=</span><span class="token attr-value">"jdbc:mysql://localhost:3306/milk?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"</span>
-<span class="token attr-name">spring.datasource.name</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span>
-<span class="token attr-name">spring.datasource.password</span><span class="token punctuation">=</span><span class="token attr-value">"root"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>配置数据库信息之后，在启动类上添加MapperScan注解，参数为Mapper包。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">MapperScan</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span></span><span class="token class-name">SpringBootApplication</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">springfox<span class="token punctuation">.</span>documentation<span class="token punctuation">.</span>swagger2<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">EnableSwagger2</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"top.rczmm.springboot1.Mapper"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Springboot1Application</span> <span class="token punctuation">&#123;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Springboot1Application</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Insert</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Mapper</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>poji<span class="token punctuation">.</span></span><span class="token class-name">User</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@Mapper</span>
-<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into users values(#&#123;id&#125;,#&#123;name&#125;) "</span><span class="token punctuation">)</span>
-    <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>CRUD，可以通过注释来写，也可以配置xml文件。</p>
-<p>除此之外，MybatisPLus也提供了一些注解：</p>
-<p>@TableName，当表名与实体类名称不一致时，可以使用@TableName注解进行关联。</p>
-<p>n@TableField，当表中字段名称与实体类属性不一致时，使用@TableField进行关联</p>
-<p>@TableId，用于标记表中的主键字段，MybatisPlus也提供了主键生成策略</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>概率论笔记</title>
-    <url>/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>罗素悖论</p>
-<p>令 P(x) 表示 x ∉ x. 也就是说，对 x 而言，如果 P(x) 是真的， 那么 x 就不是自身的元素; 但如果 P(x) 为假，那么 x 就是 x 中的元素。</p>
-<p>那么 R 是集合吗？如果是，它的元素是什么？</p>
-<p>如果你在考虑 R ∉ R 是否正确， 那就开始走上正轨了。 </p>
-<p>我们要用到表达式 x ∉ x， 这意味着要对 x 有所选择。</p>
-<p>x = R 很自然地成为一个被考察的候选对象， 因为它涉及我们要研究的东西 (并且在分析 中研究是很不错的尝试)。</p>
-<p> 这里有两种可能的情况：</p>
-<p>要么 R 在 R 中， 要么 R 不在 R 中. </p>
-<p>• 首先， 假设 R 在 R 中. 由于我们假设 R ∉ R， 并且 R 是由那些不属于自身 的对象构成的， 所以由 R 的定义可知， R ∈ R. 但这是很荒谬的. R ∉ R 和 R ∈ R 怎么可能同时成立呢？因此， 假设 R 在 R 中是错误的. </p>
-<p>• 唯一可能的情况是 R 不在 R 中。现在来讨论这种情况。 正如我们已经说过 的， R 是由全体不属于自身的东西构成的集合。我们现在假设 R ∉ R， 但是 从定义上来看， 这正是 R 中元素所满足的条件！同样地， 我们得到了荒谬的 结论， 即 R ∈ R 和 R ∉ R 同时成立. 换句话说， 在任何一种情况下， 我们都得到了奇怪的情形：当 R ∉ R 时恰有 R ∈ R. 这意味着什么呢？这意味着， 我们可以用集合做什么的观念 —— 更具体地说， 我们如何从旧集合中构造新集合的观念 —— 具有致命的缺陷。 这一悖论的解决为现代集合论奠定了基础。 从罗素悖论中可以推出一个结论， 那就是我们无法通过简单地收集具有给定性质的所有对象来形成集合。 </p>
-<p>幸运的是， 我们在概率论中遇到的绝大多数集合都没有这个问题， 但重要的是意识到潜在的危险， 并且要正确、 认真地理解证明。 </p>
-<p>事件的概率必然涉及大型集对子集指定概率的问题。但是，没有一种通用的方法可以将概率分配给每个子集，并且使得概率函数满足某些条件。这涉及到巴拿赫-塔尔斯基悖论。</p>
-<p>为了防止不能把概率一致地分给所有可能的子集，必须留意要考察的事件。</p>
-<p>笛卡尔积：全体A、B的有序集对（a，b）</p>
-<p>幂集：集合所有子集的集合</p>
-]]></content>
-      <tags>
-        <tag>高数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法笔记</title>
-    <url>/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>旅行商人问题</p>
-<p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
-<p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
-<p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
-<p>矩阵相乘</p>
-]]></content>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>springboot+vue（6）</title>
-    <url>/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="多表查询和分页查询"><a href="#多表查询和分页查询" class="headerlink" title="多表查询和分页查询"></a>多表查询和分页查询</h2><p>多表</p>
-<p>实现复杂关系映射，可以使用@Results注解，@Result注解，@One注解，@Many注解组合完成复杂关系的配置。</p>
-<p><img src="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/image-20220828145912038.png" class="lazyload placeholder" data-srcset="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/image-20220828145912038.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220828145912038"></p>
-<p>（MybatisPLus对多表无变化，以上为Mybatis的注解。）</p>
-<p>测试</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from t_user"</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Results</span><span class="token punctuation">(</span>
-        <span class="token punctuation">&#123;</span>
-                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span> property <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"password"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                <span class="token annotation punctuation">@Result</span><span class="token punctuation">(</span>column <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span>property <span class="token operator">=</span> <span class="token string">"message"</span><span class="token punctuation">,</span>javaType <span class="token operator">=</span> <span class="token class-name">List</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>
-                many <span class="token operator">=</span> <span class="token annotation punctuation">@Many</span><span class="token punctuation">(</span>select<span class="token operator">=</span><span class="token string">"top.rczmm.springboot1.Mapper.MessageMapper.selectById"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token punctuation">&#125;</span>
-<span class="token punctuation">)</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">selectAllUsersMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>分页</p>
-<p>编写配置文件</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">top<span class="token punctuation">.</span>rczmm<span class="token punctuation">.</span>springboot1<span class="token punctuation">.</span>configuration</span><span class="token punctuation">;</span>
-
-
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">DbType</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span></span><span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>inner<span class="token punctuation">.</span></span><span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisPlusConfig</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> <span class="token class-name">MybatisPlusInterceptor</span> <span class="token function">paginationInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">MybatisPlusInterceptor</span> interceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">PaginationInnerInterceptor</span> paginationInnerInterceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">(</span><span class="token class-name">DbType</span><span class="token punctuation">.</span>MYSQL<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        interceptor<span class="token punctuation">.</span><span class="token function">addInnerInterceptor</span><span class="token punctuation">(</span>paginationInnerInterceptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> interceptor<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>测试</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"findAll"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token class-name">IPage</span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> page <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Page</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token class-name"><span class="token namespace">userMapper<span class="token punctuation">.</span></span>SelectPage</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>springboot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于Python的QT（二）</title>
     <url>/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><p>首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。</p>
@@ -2549,6 +2513,93 @@ python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3
 ]]></content>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>操作系统</p>
+<p>一个正在运行的程序是什么样的？</p>
+<p>首先处理器从内存中读取指令，指令被读取，而后经过解码，开始执行。</p>
+<p>这就是冯诺伊曼计算模型的基本概念。</p>
+<p>事实上，因为操作系统的存在，使得程序的运行变得更加容易，甚至可以运行多个程序，当然现在这已经很常见了。</p>
+<p>虚拟化</p>
+<p>要想做到如上的描述，OS主要利用一种名为虚拟化的通用技术，OS将物理资源（处理器、磁盘、内存等）转换为更加通用更加容易使用的虚拟形式，因此OS有时候也叫作虚拟机。</p>
+<p>为了让用户更方便的与OS进行交互，OS会提供很多的接口，让程序调用，从而更好的利用物理资源，因此有时候也说，OS为程序提供了一个标准库。</p>
+<p>因为虚拟化，许多的程序可以同时运行，同时访问指令和数据，所以在很多时候，操作系统也被称之为资源管理器。</p>
+<p>虚拟化CPU</p>
+<p>当我们的电脑只有一个处理器，开始运行一个程序时，当程序本身没有错误时，我们大概率能得到我们所预期的结果。但是现在我们如果同时运行这一个程序的不同实例，这相当于调用四次函数，传入不同的参数，此时得到的结果很有趣，看起来就像是四个程序同时在执行一样，但是事实是我们只有一个处理器。</p>
+<p>在硬件的帮助下，OS负责提供这种假象，也就是系统拥有非常多CPU的假象，把单个的CPU看成无限数量的CPU，从而让许多程序看似同时运行。</p>
+<p>一次运行多个程序也会遇到很多问题，如果指定了多个程序运行的时间，并且时间都是一致的，那么到底在特定的时间里，运行那一个的问题就变得十分关键了，当然对此操作系统有自己对应的策略。</p>
+<p>虚拟化内存</p>
+<p>物理内存由机器提供，现代机器提供的模型十分简单，本质上就是一个字节数组，要读取内存，需要指定一个地址，就可以访问数据。</p>
+<p>因此，程序在执行时，必须一直访问内存，程序将所有的数据结构都保存在内存里，并通过各种的指令来访问他。</p>
+<p>如果我们此时再一次运行一个程序的多个实例，就会发现，每一个程序都在相同的内存地址分配了内存，但是每一个地址似乎都独立的更新了值，就好像每一个正在运行的程序都有自己的虚拟内存一样。</p>
+<p>这就是虚拟内存的情况，每一个进程访问自己的私有虚拟地址空间，OS将他们映射到真实的物理内存上，一个正在运行的程序不影响其他进程或者操作系统本身的地址空间，对于正在运行的程序，他完全拥有自己的物理内存。</p>
+<p>但实际上，物理内存是由操作系统管理的共享资源。</p>
+<p>并发</p>
+<p>操作系统首先运行一个进程，然后再运行一个进程，这实际上会导致一些问题。</p>
+<p>并发并不局限于OS本身，多线程线程也存在相同的问题。</p>
+<p>将线程看做是与其他函数在同一内存空间中运行的函数，并且每次都有多个线程处于活动的状态。</p>
+<p>事实证明，当多线程程序执行时，出现的不同寻常的、奇怪的结果和指令的如何执行有关，指令从内存到寄存器，经过处理，重新回到内存，指令每次执行一条，但是我们的程序不可能只拥有一条指令，而指令的执行又是非原子性的，因此奇怪的事情会经常发生。</p>
+<p>持久性</p>
+<p>在OS内存中，数据是十分容易丢失的，因为像DRAM这样的设备是非常容易丢失数据的，其中除去断电之外，系统崩溃也会导致数据丢失。</p>
+<p>因此，我们需要使用硬件和软件来持久化的存储数据，这样的存储对于所有的系统都很重要。</p>
+<p>硬件主要是以IO设备的形式出现，硬盘驱动器是主要的存储库。</p>
+<p>OS将管理磁盘的软件称之为文件系统，他可以以可靠和高效的方式，将创建的文件存储在物理内存上。</p>
+<p>不像操作系统为CPU和内存提供的抽象，操作系统不会为应用程序创建专用的虚拟磁盘。因为用户经常需要共享文件中的信息。</p>
+<p>例如，一个c文件的创建个运行，我们可能需要Emacs来创建一个c文件，而后我们需要使用编译器将源代码转化为可执行文件，然后我们运行这个可执行文件。</p>
+<p>在这样的过程中，不难发现，一个文件经过了许多的进程。</p>
+<p>OS为了实际写入磁盘：首先确定新数据将驻留在磁盘上的哪个位置，然后在文件系统所维护的各种结构中进行记录，这样做需要向底层存储设备发出IO请求，以读取现有结构或者更新他们。</p>
+<p>当然还有很多的细节，出于性能上的原因，大多数文件系统首先会延迟这些写操作一段时间，希望将其分为较大的组，为了处理写入期间系统奔溃的问题，大多数文件系统都包含某种复杂的写入协议，如日志或写时赋值，仔细排序写入磁盘的操作，以确保如果写入序列期间发生故障，系统可以在之后恢复到合理的状态。为了使不同的通用操作更加高效，文件系统采用了许多不同的数据结构和访问方法，从简单的列表到复杂的B树。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>概率论笔记</title>
+    <url>/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>罗素悖论</p>
+<p>令 P(x) 表示 x ∉ x. 也就是说，对 x 而言，如果 P(x) 是真的， 那么 x 就不是自身的元素; 但如果 P(x) 为假，那么 x 就是 x 中的元素。</p>
+<p>那么 R 是集合吗？如果是，它的元素是什么？</p>
+<p>如果你在考虑 R ∉ R 是否正确， 那就开始走上正轨了。 </p>
+<p>我们要用到表达式 x ∉ x， 这意味着要对 x 有所选择。</p>
+<p>x = R 很自然地成为一个被考察的候选对象， 因为它涉及我们要研究的东西 (并且在分析 中研究是很不错的尝试)。</p>
+<p> 这里有两种可能的情况：</p>
+<p>要么 R 在 R 中， 要么 R 不在 R 中. </p>
+<p>• 首先， 假设 R 在 R 中. 由于我们假设 R ∉ R， 并且 R 是由那些不属于自身 的对象构成的， 所以由 R 的定义可知， R ∈ R. 但这是很荒谬的. R ∉ R 和 R ∈ R 怎么可能同时成立呢？因此， 假设 R 在 R 中是错误的. </p>
+<p>• 唯一可能的情况是 R 不在 R 中。现在来讨论这种情况。 正如我们已经说过 的， R 是由全体不属于自身的东西构成的集合。我们现在假设 R ∉ R， 但是 从定义上来看， 这正是 R 中元素所满足的条件！同样地， 我们得到了荒谬的 结论， 即 R ∈ R 和 R ∉ R 同时成立. 换句话说， 在任何一种情况下， 我们都得到了奇怪的情形：当 R ∉ R 时恰有 R ∈ R. 这意味着什么呢？这意味着， 我们可以用集合做什么的观念 —— 更具体地说， 我们如何从旧集合中构造新集合的观念 —— 具有致命的缺陷。 这一悖论的解决为现代集合论奠定了基础。 从罗素悖论中可以推出一个结论， 那就是我们无法通过简单地收集具有给定性质的所有对象来形成集合。 </p>
+<p>幸运的是， 我们在概率论中遇到的绝大多数集合都没有这个问题， 但重要的是意识到潜在的危险， 并且要正确、 认真地理解证明。 </p>
+<p>事件的概率必然涉及大型集对子集指定概率的问题。但是，没有一种通用的方法可以将概率分配给每个子集，并且使得概率函数满足某些条件。这涉及到巴拿赫-塔尔斯基悖论。</p>
+<p>为了防止不能把概率一致地分给所有可能的子集，必须留意要考察的事件。</p>
+<p>笛卡尔积：全体A、B的有序集对（a，b）</p>
+<p>幂集：集合所有子集的集合</p>
+]]></content>
+      <tags>
+        <tag>高数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法笔记</title>
+    <url>/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>旅行商人问题</p>
+<p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
+<p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
+<p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
+<p>所谓的算法，就是任何定义良好的计算过程，但是在学习算法的时候，它通常是与数据结构结合在一起的。</p>
+<p>他拥有输入和输出，算法就是一系列的计算步骤，用来把输入转换为输出。算法还可以看成是一种工具，用来解决一个说明严格的计算问题。</p>
+<p>首先是排序问题，很多的程序中它都是一种中间步骤，因此，到目前为止，有许多优秀的排序算法，用来应对特定的问题来说，需要选择最佳的算法，要考虑许多方面的因素。</p>
+<p>算法的表示可以用许多的语言来表述，在编程语言上，更是有许多的选择，但无论采用哪一种形式，唯一的要求就是算法的规格说明必须提供关于待执行的计算过程的精确描述。</p>
+<p>数据结构，也就是存储和组织数据的一种方式，他的目的是为了对数据方便的进行访问和修改，没有任何一种数据结构适合所有的用途和目的，因此对数据结构的掌握极为重要。</p>
+<p>衡量算法效率的常用标准是速度，也就是一个算法从输出到输入所需要的时间，但是有一些问题还没有已知的有效算法，就比如NP完全问题。</p>
+<p>当然算法最终是作用在计算机上，如果计算机的储存无限大并且是免费的，计算机的运算速度也是无限快，在这么一种情况下，任何一种能得到正确结果的算法都是一样的，但是正因为硬件的限制，因此算法的选择也变得尤其的重要，因此计算的时间和存储的空间都是一种十分有限的资源，这些有限的资源应该被有效的使用。</p>
+<p>并且即使硬件的功能已经足够的强大，但是算法上的差距依旧巨大。</p>
+<p>尽管在一些简单的应用上看上去对于算法没有什么需求，但是大多数问题对于算法的要求还是很巨大的。</p>
+<p>1、插入排序</p>
+<p>输入：n个任意值的数字</p>
+<p>输出：输入序列的一个排序（升序或者降序）</p>
+<p>插入排序是一个对少量元素进行排序的有效算法，插入排序在逻辑上就和我们打牌时，整理手上的牌一样。开始的时候，我们的一只手是空的，我们每一次摸起一张牌，并且把它放到空手上，放到合适的位置上，接着继续摸牌，把它插入到正确的位置上，为了找到这张牌的正确位置，要把它和每一张牌都进行一次比较，因此无论在什么时候，我用来存储牌的手上，每一张牌都是排好序的，这些牌也都是原来桌子上那些洗好的最顶上的一些牌。</p>
+]]></content>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>

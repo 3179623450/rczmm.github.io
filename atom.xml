@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-09-11T03:15:34.451Z</updated>
+  <updated>2022-09-18T08:12:29.137Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://rczmm.github.io/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://rczmm.github.io/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</id>
+    <published>2022-09-18T06:00:55.156Z</published>
+    <updated>2022-09-18T08:12:29.137Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;操作系统&lt;/p&gt;
+&lt;p&gt;一个正在运行的程序是什么样的？&lt;/p&gt;
+&lt;p&gt;首先处理器从内存中读取指令，指令被读取，而后经过解码，开始执行。&lt;/p&gt;
+&lt;p&gt;这就是冯诺伊曼计算模型的基本概念。&lt;/p&gt;
+&lt;p&gt;事实上，因为操作系统的存在，使得程序的运行变得更加容易，甚至可以运行多个程</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>概率论笔记</title>
@@ -69,7 +94,7 @@
     <link href="http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     <id>http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</id>
     <published>2022-08-30T04:34:10.000Z</published>
-    <updated>2022-08-30T10:44:20.735Z</updated>
+    <updated>2022-09-23T12:00:59.189Z</updated>
     
     
       
