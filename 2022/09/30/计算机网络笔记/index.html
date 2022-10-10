@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档: 2022 | 小小世界</title>
+  <title>计算机网络笔记 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -590,275 +590,738 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-13.png')">
-  <div class="archive-header-title">
-    全部文章
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-  <span class="title" id="archive-header-desc"></span>
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        计算机网络笔记
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-09-30 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 5.7k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 19分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p><strong>说明</strong></p>
+<p>教材是谢希仁的计算机网络第八版，但是在写笔记阶段已经学完了以及一些其他的原因，所以笔者想用自上而下的方式。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221003152310810"></p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>互联网</strong></p>
+<p>局域网和广域网连在一起就是互联网，也就是说互联网不是单个网络，而是多个网络的组合。</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a><strong>网络</strong></h3><p>一组具有通信能力的设备连接在一起就是网络，他们可以是两台主机（host），也可以是一台主机和一台打印机，甚至是平常距离日常很遥远的路由器，交换机，调制解调器。</p>
+<p>路由器，连接网络和网络。</p>
+<p>交换机，用来连接设备。</p>
+<p> 调制解调器，用来交换数据形式。</p>
+<p>当一台路由器（即插即用）连接两台电脑时，这时候一个局域网就组建成功了。</p>
+<p><strong>局域网</strong></p>
+<p>在局域网中，每一台主机都有一个标识符（地址），用来在这个局域网中定义这台主机。这台主机向另一台主机发送的数据包里就包含了源和目的主机的地址。</p>
+<p>在过去的一段时间，一个网络中的所有主机都用一条电缆连接，一台主机发送的数据其他的主机都可以接受到，这时候由这些主机选择接收还是丢弃这些数据包，目标主机就选择保存这个数据包。现在多数的局域网采用交换机，他可以识别数据包的目的地址并引导数据包达到他的目的地而不必发送到其他的主机。</p>
+<p>交换机减轻了局域网中的流量，如果不是共同的源主机和目的主机，那么交换机允许同一时刻多对主机之间同时互相通信。</p>
+<p><strong>广域网</strong></p>
+<p>同样是由具有通信能力的设备相互连接而成的，但是不同的是，广域网的地理覆盖范围很广，通常的局域网值覆盖一个大楼或者是一个校园，但是广域网则十分的大，可能是一个城市，一个省，一个国家等。</p>
+<p>局域网互联主机，但广域网互联交换机、路由器、调制解调器等连接设备。</p>
+<p><strong>点到点广域网</strong></p>
+<p>这种广域网通过传输介质来连接两个通信设备。</p>
+<p><strong>交换式广域网</strong></p>
+<p>交换式广域网具有多个端点，可以说交换式广域网是交换机连接几个点到点的广域网而形成的。</p>
+<p><strong>互联网络</strong></p>
+<p>现在很少有单独的局域网或者广域网，他们都互相连接在一起的，当两个或多个网络连接在一起时，它们就形成了一个互联网络，或者互联网。 </p>
+<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a><strong>交换</strong></h3><p>互联网是由链路和交换机组成的，实际上互联网是一个交换式的网络，其中一台交换机至少将两条链路连接的一起，在需要的时候，交换机需要将数据从一条链路转发到另一条链路，交换式网络最常见的类型为电路交换网络和分组交换网络。</p>
+<p><strong>电路交换网络</strong></p>
+<p>在电路交换网络中，两个网络之间总是存在一条专用的连接（电路），交换机只能让他变成活跃或者非活跃状态。</p>
+<p>这样的模式存在一个弊端：电路容量必须足够的大，以便于在两个网络所有主机通信时，不至于通信失败，但是这样的情况并不是每时每刻都在发生的，在一般的场景下，工作时，可能只有部分的容量被占用，因此这种模式的效率是低下的。</p>
+<p>此处的效率低下指的是，高容量的电路使用率不足，并非通信效率不佳。</p>
+<p><strong>分组交换网络</strong></p>
+<p>在一个计算机网络中，两个端点之间使用被称为分组（packet）的数据块进行通信，也就是说，两个计算机交换的是独立的数据分组，由于分组能够被存储和发送时是一个独立的实体，因此这种机制允许我们实施存储转发的交换功能。</p>
+<p>分组交换网络中的路由器具有能够存储和转发分组的队列，如果现在需要发送的分组大于了线路的容量，那么此时的分组会在路由器存储并且进行排队的状态，他的效率看上去比电路要高了，但是分组可能也会在大规模使用时遇到延迟。</p>
+<h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a><strong>因特网</strong></h3><p>这是最著名的互联网了，它是由成千上万个相互连接的网络组成。</p>
+<p>概念上的因特网由一系列主干、提供者网络和客户网络组成，主干是最高层次，是一些通信公司拥有的大型网络，主干网络通过对等点的复杂交换系统进行连接，一些小的提供者网络处于第二个层次，这些网络通过付费使用主干网络服务，提供这网络连接主干网络，有时提供网络之间也相互连接，客户网络是因特网边缘的网络，他们使用因特网提供的服务，为了接收服务，客户网络需要像提供者网络付费。</p>
+<p>主干和提供者网络其实都是服务提供商，主干常常称为国际ISP，提供者网络常常被称为国家或地区ISP。</p>
+<h3 id="访问因特网"><a href="#访问因特网" class="headerlink" title="访问因特网"></a><strong>访问因特网</strong></h3><p>因特网允许任何用户成为他的一部分，但是还需要用户在物理上连接到一个ISP。物理连接通常利用一条点到点的广域网实现。</p>
+<p><strong>电话网络</strong></p>
+<p>具有电话服务的客户，大多数电话网络自身就已经连接到因特网，因此这些客户可以选择把他们和电话中心的语音线路转换成点到点的广域网。</p>
+<p>实现方式有两种：</p>
+<p>拨号服务，在电话线路中增加将数据转换成语音的调制解调器，安装在计算机中的软件拨打ISP的号码，形成一条电话连接。但是拨号服务很慢，同时线路用于因特网连接的时候，线路无法进行电话连接，因此这种方式只对偶尔访问因特网的客户有效。</p>
+<p>DSL，将电话线路升级，可以同时使用语音服务。</p>
+<p>除此之外还可以通过：有线电视网络、无线网络、直连Internet（将自身变成一个ISP）</p>
+<h3 id="协议分层"><a href="#协议分层" class="headerlink" title="协议分层"></a><strong>协议分层</strong></h3><p>协议定义了发送者、接受者和所有中间设备为了高效通信需要遵循的规则。通信复杂时，我们需要把任务划分到不同层，不同层需要不同的协议。</p>
+<p><strong>协议分层原则</strong></p>
+<p>1、双方双向通信，每一层都能执行两个相反的任务，每个方向上一个</p>
+<p>2、两端中，每一层的两个对象都应该相同。</p>
+<p><strong>逻辑连接</strong></p>
+<p>每层之间拥有逻辑上的连接，这意味着我们可以拥有层与层之间的通信，这是为了方便理解。</p>
+<h3 id="TCP-IP协议簇"><a href="#TCP-IP协议簇" class="headerlink" title="TCP|IP协议簇"></a>TCP|IP<strong>协议簇</strong></h3><p>不同层次组织的协议集——协议簇。</p>
+<p>这是一个相互交互的模块组成的一个层次结构协议，层次意味着上层的协议需要得到一个或者多个较下层的协议提供的服务支持。</p>
+<p>初始的TCP|IP提供了四个层次，但通常的它应当是一个五层模型。</p>
+<p>层次：应用层、传输层、网络层、数据链路层、物理层</p>
+<p>对等体：消息、段或用户数据报、数据报、帧、bit位</p>
+<p>采用逻辑连接使得每一层的任务变得简单，其中应用层、传输层和网络层的任务都是从端到端的，但是数据链路层和物理层的任务是从点到点的。换句话说，高层次的任务范围是互联网，而低层次也就是下两层的任务范围是链路。</p>
+<p>还可以从每一层的数据单元出发，上三层的分组（packet）不应该被任何路由器或者链路层的交换机改变，在下两层，主机创建的分组仅仅被路由器不改变，链路层交换机不改变任何东西。</p>
+<p><strong>各层描述</strong></p>
+<p><strong>应用层</strong></p>
+<p>逻辑连接是端到端的，两个应用层之间好像有一架桥梁负责交换消息，但实际上通信要经历所有的层次才能完成。</p>
+<p>应用层的通信处于两个进程之间，一个进程发送请求，接受另一个进程的响应，进程到进程的通信就是应用层的任务，在因特网上，应用层包含了许多的协议（HTTP、WWW、FTP、SSH与TELNET、DNS）</p>
+<p><strong>传输层</strong></p>
+<p>端到端，源主机的传输层从应用层得到消息，封装为传输层的分组（段或数据报，不同协议叫法不同。）然后进行发送，通过逻辑连接，到达目的主机的传输层。</p>
+<p>传输层向应用层提供服务，，从运行于应用层的程序得到消息，并将它投递到目的主机相应的应用程序。（主要原因是为了分割任务和责任），传输层也有很多协议，每一个都是为了一些特定的任务设计的。（TCP、UDP）</p>
+<p><strong>网络层</strong></p>
+<p>主机到主机，源主机到目的主机之间可能存在多个路由器，因此路径上的路由器负责为每一个分组选择最好的路径（IP）</p>
+<p><strong>数据链路层</strong></p>
+<p>互联网是由多个链路通过路由连接而成的，当主机传输数据报到目的地可能存在多个交叠的链路集，路由器负责挑选最好的链路进行传输，当路由器决定好了链路之后，数据链路层开始接管这个数据报并且让他穿过这条链路，这条链路可以是无线网、有线网，对于不同的链路类型存在不同的协议，无论什么情况，链路层都要负责通过链路传输分组。</p>
+<p>TCP/IP没有为了数据链路层定义任何协议，因此它支持所有所有私有和标准的协议能接管数据报并且携带它穿过链路的任意协议都能满足网络层的要求，链路层接管数据报并且封装在一个称为帧的分组中。</p>
+<p><strong>物理层</strong></p>
+<p>物理层负责携带一个帧中单独的比特穿过链路，尽管物理层已经位于协议簇的最底层，但是在物理层之下还存在一个隐藏的传输介质层，因此物理层之间的还是逻辑通信，两个设备通过可以携带电信号或者光信号的介质到达目的地。将一个bit转换为电信号或者光信号存在多个协议。</p>
+<p><strong>封装和解封装</strong></p>
+<p>在Internet协议分层中，一个重要的概念是封装和解封装。</p>
+<p>在链路层交换机中没有封装和解封装发生。</p>
+<p>应用层，交换的数据称为消息，消息一般的不包含头部和尾部，即使包含了这些，我们也称其为消息，消息会被传递到传输层。</p>
+<p>传输层，把这个消息称为有效载荷，该载荷是传输应该关注的负载，传输层增加了传输层头部，其中包含了希望进行通信的源和目的程序的标识符和一些投递消息的更多信息，例如：流量控制、差错控制和拥塞控制需要的信息，结果为一个传输层分组。在TCP中称为段、在UDP中成为用户数据报，然后传输到网络层</p>
+<p>网络层，把传输层分组作为数据或者有效载荷，并且加上自己的头部，包含源和目的主机的地址，以及用于差错检查、分片的信息和一些其他的信息，结果为一个称为数据报的网络层分组，然后网络层投递到数据链路层。</p>
+<p>数据链路层，把网络层分组作为数据或者有效载荷并且添加上自己的头部，包含主机或者下一跳步（路由器）的链路层地址，结果为一个称为帧的链路层分组，投递到物理层进行传输。</p>
+<p><strong>路由器的解封装与封装</strong></p>
+<p>路由器连接多个链路，因此路由器也存在解封装与封装的问题。</p>
+<p>在比特集被投递到数据链路层之后，这一层从帧中解封装出数据报并把它投递到网络层。</p>
+<p>在网络层只检查数据报头部的源地址和目的地址，查阅它的转发表以寻找数据报将要被投递的下一跳步。除非数据报太大需要分片，数据报的内容不应该被网络层改变。</p>
+<p>下一链路的链路层将数据报封装为一个帧，将其放到物理层进行传输。</p>
+<p><strong>目的主机的解封装</strong></p>
+<p>目的主机端，每一层都只解封装接收到的分组，移出有效载荷，并将有效的载荷移至上一层，直到消息到达应用层，目的主机中的解封装包含差错检查。、</p>
+<p><strong>地址</strong></p>
+<p>看起来，似乎这个模型的每一层都需要逻辑通信，那么每一层之间就都需要一对地址，但是因为物理层不需要地址（介质连接），因此只需要四对地址。</p>
+<p>在应用层，一般的是域名定义提供服务的站点，或者是电子邮件地址，在传输层，地址是端口号，端口号指的是源和目的地的进程，端口号是本地地址，用于区分同一时间运行的几个程序，网络层地址是全局的，涵盖了整个Internet，链路层地址有时叫做MAC地址，是本地定义的地址，每个链路层地址在网络中定义一个特定的主机或路由器。</p>
+<p><strong>多路复用与多路分解</strong></p>
+<p>协议簇在一些层次使用多个协议，因此我们在源进行多路复用（一个协议能封装多个来自上层协议的分组，一次一个），在目的端进行多路分解（一个协议可以解封装并且将分组投递到上层协议，一次一个）。</p>
+<h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a><strong>OSI</strong></h3><p>应用层</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>传输层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<p>看起来似乎比TCP/IP更加好一些，但实际上，表示层和会话层没有定义协议，并且模型完成较晚，并且在实际的应用上，并没有想象中的高效。</p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>整个Internet、硬件和软件的设计和开发都是为了为应用层提供服务。</p>
+<p>因特网提供服务的本质以及两个应用类型：传统客户—服务器模式，以及新类型对等模式</p>
+<h3 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a><strong>提供服务</strong></h3><p>应用层是唯一向因特网用户提供服务的层次，因此它十分的灵活，新的协议可以随时加入Internet。</p>
+<p>标准和非标准协议</p>
+<p>描述的都是具体的程序，前者是被管理机构标准化和归档化的内容，后者是自己定义的内容，例如在自己写的程序。</p>
+<h3 id="应用层模式"><a href="#应用层模式" class="headerlink" title="应用层模式"></a><strong>应用层模式</strong></h3><p>传统：客户—服务器</p>
+<p>这种模式对服务器负担较大，要求服务器一直保持开启阶段，为了让客户机随时都可以访问他，并且当许多客户一起访问服务器，对服务器的考验十分巨大。</p>
+<p>通信负荷集中在服务器上，WWW、HTTP、FTP、SSH以及电子邮件还是这样的模式。</p>
+<p>新模式：对等模式</p>
+<p>P2P，不存在客户和服务器，两者是对等结点，最经典的是网络电话，没有一方需要等待另一方呼叫，还有计算机的文件共享。</p>
+<p>对等模式不用一直维护服务器，容易扩展并且经济划算，但是依旧存在问题，安全性部署困难，适用性不高（并不是所有应用都可以应用对等模式。）</p>
+<p>混合模式</p>
+<p>结合了两种模式优点来吧这二者混合起来，比如轻量级的客户和服务器可以用来寻找对等结点的地址，当实际服务时，是从对等结点中获得。</p>
+<h3 id="API应用程序接口"><a href="#API应用程序接口" class="headerlink" title="API应用程序接口"></a>API<strong>应用程序接口</strong></h3><p>一个计算机程序通常是由预定义了指令集的计算机语言编写的，这个指令集告诉计算机要做什么，如果我们需要使得进程之间通信，那么就需要一个新的指令集，这就是API。</p>
+<p>此时API连接了两个实体，OS与程序，其中OS封装了TCP/IP协议簇的前四层。</p>
+<p>通信API：套接字、传输层接口TLI、STREAM。</p>
+<h3 id="WWW与HTTP"><a href="#WWW与HTTP" class="headerlink" title="WWW与HTTP"></a>WWW与HTTP</h3><p>万维网（WWW）又叫WEB，今天它是信息宝库，其中网页文档在全世界发布，分布式允许web无限增长，链接使得网页之间出现引用。（超文本）</p>
+<p>WWW是一个分布式客户—服务器模式，使用浏览器的用户可以访问一个正在服务器上运行的服务，服务分布在不同的site上。</p>
+<p>浏览器通常包含三个部分：控制程序、客户协议和解释程序。</p>
+<p><strong>网络服务器</strong></p>
+<p>URL，统一资源定位符，（协议+主机+端口+路径）来定位文档。</p>
+<p>网上文档：静态文档（用户只能得到副本的文档，html等）、动态文档（返回的响应文档）、活动文档（在客户站点运行的脚本或程序，js等）</p>
+<p>HTTP，超文本传输协议，用来定义客户服务器程序如何编写和如何获取网页的协议，一个用户发送请求，服务器返回响应，服务器使用80端口，客户使用临时端口，HTTP使用TCP服务。</p>
+<p><strong>非持续与持续连接</strong></p>
+<p>获取一个对象就创建一个连接的模式就是非持续的，创建一个连接获取所有对象就是持续的。其中这些对象应该位于同一台服务器。</p>
+<p><strong>报文格式</strong></p>
+<p>HTTP定义了请求报文和响应报文的格式，每一种报文由四个部分组成。</p>
+<p><strong>请求报文</strong></p>
+<p>第一行：请求行</p>
+<p>由方法、URL和版本构成。</p>
+<p>方法定义了请求类型（GET、POST、PUT等），URL定义了相关网页的地址和名称，版本给出了协议的版本（常用1.1）</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求方法"></p>
+<p>请求行之后有一个或者多个请求头部，从客户端向服务端发送额外的信息。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求头部名称"></p>
+<p><strong>响应报文</strong></p>
+<p>包含状态行、头部行有时候包含主体。</p>
+<p>状态行：http协议的版本、状态码</p>
+<p>状态码：100范围内只代表一个报告，200范围内表示这是一个成功的请求，300内表示把客户端重定向到另一个URL，400范围内表示客户端发生错误，500范围内表示错误发生在服务端。</p>
+<p>响应头部行，发送额外信息。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="响应头部名称"></p>
+<p>主体包含了服务器发送给客户的文档，除非响应是一个错误报文，否则主体是存在的。</p>
+<p>条件请求:客户在请求中加入条件</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>WWW起初被设计为无状态实体，客户发送请求，服务器响应，二者关系结束。</p>
+<p>Cookie的创建和存储与实现有关，然而它的原理是相同的。<br>1．当服务器从客户端接收到请求后，它将客户端的信息存储在文件或字符串中。这些信息可能包含客户端的域名、cookie内容（服务器收集到的关于客户端的信息，如主机名、注册号等)、时间戳,以及与实现有关的其他信息。<br>2．服务器在响应中包含了它发送给客户端的cookie。<br>3．当客户端接收到响应后，浏览在cookie目录中查询是否有从那个服务器使用Cookie，当客户向服务器发送请求时，浏览器在cookie目录中查询是否有从那个服务器发送过来的cookie。如果有，则在请求中包含这个cookie。当服务器接收到这个请求后，它就知道了这是一个老客户，而不是新的。注意，cookie的内容从来不让浏览器读取或者透露给用户，只由服务器创建并回收cookie。</p>
+<h3 id="WWW高速缓存、代理服务器"><a href="#WWW高速缓存、代理服务器" class="headerlink" title="WWW高速缓存、代理服务器"></a>WWW高速缓存、代理服务器</h3><p>代理服务器是一台计算机，可以保存最近请求的响应的副本，客户端向代理服务器发请求，代理服务器检查本地高速缓存，如果高速缓存中不存在响应正文，那么代理服务器就向相应的服务器发送请求，返回的响应会发送到代理服务器中，并且进行存储，以用于其他客户端将来的请求。</p>
+<p>代理服务器可以降低负载，减少通信量，并且降低延迟，但是，为了使用代理，必须配置客户端。</p>
+<p>代理服务器既是服务又是客户，通常位于客户节点。</p>
+<p>缓存更新，一个响应应该在被改变前，在代理服务器保留多长时间，第一个策略是保存站点列表，保存一段时间，另一个建议是加入头部信息显示最近修改时间，代理服务器可以从时间猜测他们在多长时间内是有效的。</p>
+<h3 id="HTTP安全"><a href="#HTTP安全" class="headerlink" title="HTTP安全"></a>HTTP安全</h3><p>其实，http不提供安全，但是http可以在安全套接层（STL）上运行，此时HTTP称为HTTPS，它提供保密性、客户和服务器鉴别，以及数据完整性。</p>
+<h3 id="FTP-文件传输协议"><a href="#FTP-文件传输协议" class="headerlink" title="FTP 文件传输协议"></a>FTP 文件传输协议</h3><h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" class="">
+              笔记
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>rczmm</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/2022/09/30/计算机网络笔记/" target="_blank" title="计算机网络笔记">http://rczmm.github.io/2022/09/30/计算机网络笔记/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">CLion中配置CMake运行多个main函数</div>
+      </div>
+      
+      <!-- <div class="content">
+        CLion中配置CMake运行多个main函数
+简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text"></div>
+      </div>
+      <!-- <div class="content">
+        操作系统
+一个正在运行的程序是什么样的？
+首先处理器从内存中读取指令，指令被读取，而后经过解码，开始执行。
+这就是冯诺伊
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    全部文章
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/10/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">10-08</span>
-              </div>
-              <a class="post-title" href="/2022/10/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">10-07</span>
-              </div>
-              <a class="post-title" href="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/">CLion中配置CMake运行多个main函数</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">09-30</span>
-              </div>
-              <a class="post-title" href="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">计算机网络笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">09-18</span>
-              </div>
-              <a class="post-title" href="/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"></a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-24.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-24.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">09-10</span>
-              </div>
-              <a class="post-title" href="/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/">概率论笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-30</span>
-              </div>
-              <a class="post-title" href="/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/">MtaLab笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-30</span>
-              </div>
-              <a class="post-title" href="/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-29</span>
-              </div>
-              <a class="post-title" href="/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/">C++自学笔记（1）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-28</span>
-              </div>
-              <a class="post-title" href="/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/">springboot+vue（6）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-27</span>
-              </div>
-              <a class="post-title" href="/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/">springboot+vue（5）</a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/">2</a><a class="extend next" rel="next" href="/archives/2022/page/2/">下一页</a>
-  </nav> -->
-  <div class="page-nav">
-    
-    <div class="page-info">
-        <div class="page-info-text">1 / 2</div>
-    </div>
-    
-      <a href="/archives/2022/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>

@@ -596,7 +596,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 921 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 2.2k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 3分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 8分钟 |
           </span>
   
           
@@ -673,7 +673,7 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>旅行商人问题</p>
+        <h1 id="算法笔记"><a href="#算法笔记" class="headerlink" title="算法笔记"></a>算法笔记</h1><p>旅行商人问题</p>
 <p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
 <p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
 <p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
@@ -686,10 +686,133 @@
 <p>当然算法最终是作用在计算机上，如果计算机的储存无限大并且是免费的，计算机的运算速度也是无限快，在这么一种情况下，任何一种能得到正确结果的算法都是一样的，但是正因为硬件的限制，因此算法的选择也变得尤其的重要，因此计算的时间和存储的空间都是一种十分有限的资源，这些有限的资源应该被有效的使用。</p>
 <p>并且即使硬件的功能已经足够的强大，但是算法上的差距依旧巨大。</p>
 <p>尽管在一些简单的应用上看上去对于算法没有什么需求，但是大多数问题对于算法的要求还是很巨大的。</p>
-<p>1、插入排序</p>
-<p>输入：n个任意值的数字</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>输入：n个任意值的数字</p>
 <p>输出：输入序列的一个排序（升序或者降序）</p>
 <p>插入排序是一个对少量元素进行排序的有效算法，插入排序在逻辑上就和我们打牌时，整理手上的牌一样。开始的时候，我们的一只手是空的，我们每一次摸起一张牌，并且把它放到空手上，放到合适的位置上，接着继续摸牌，把它插入到正确的位置上，为了找到这张牌的正确位置，要把它和每一张牌都进行一次比较，因此无论在什么时候，我用来存储牌的手上，每一张牌都是排好序的，这些牌也都是原来桌子上那些洗好的最顶上的一些牌。</p>
+<p>python 实现</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">insertionsort_up</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        key <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token comment"># 数组索引</span>
+        j <span class="token operator">=</span> i <span class="token operator">-</span> <span class="token number">1</span>
+
+        <span class="token comment"># 当第二个数小于第一个数时</span>
+        <span class="token keyword">while</span> key <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">and</span> j <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token comment"># 将第二个值赋值给第一个值</span>
+            arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            <span class="token comment"># 索引减一，继续比较</span>
+            j <span class="token operator">-=</span> <span class="token number">1</span>
+
+        <span class="token comment"># 关键值交换</span>
+        arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> key
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"the resluts is &#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序完全按照了分治的模式。</p>
+<p>在对子序列进行排序的时候，其长度为1时递归结束，单个元素被视为已经排好序的。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">mergesort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 治（归并）</span>
+    <span class="token keyword">def</span> <span class="token function">merge</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> left<span class="token punctuation">,</span> m<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 前数组长度</span>
+        n_front <span class="token operator">=</span> m <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token comment"># 后数组长度</span>
+        n_after <span class="token operator">=</span> right <span class="token operator">-</span> m
+
+        <span class="token comment"># 生成两个临时数组，两种方式</span>
+        L <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n_front
+        R <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_after<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 拷贝数组内容</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_front<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>left <span class="token operator">+</span> i<span class="token punctuation">]</span>
+
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n_after<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            R<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>m <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> j<span class="token punctuation">]</span>
+
+        i <span class="token operator">=</span> <span class="token number">0</span>
+        j <span class="token operator">=</span> <span class="token number">0</span>
+        k <span class="token operator">=</span> left
+
+        <span class="token keyword">while</span> i <span class="token operator">&lt;</span> n_front <span class="token keyword">and</span> j <span class="token operator">&lt;</span> n_after<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> R<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+                j <span class="token operator">+=</span> <span class="token number">1</span>
+            k <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token comment"># 拷贝L的保留元素</span>
+        <span class="token keyword">while</span> i <span class="token operator">&lt;</span> n_front<span class="token punctuation">:</span>
+            nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+            k <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token comment"># 拷贝R的保留元素</span>
+        <span class="token keyword">while</span> j <span class="token operator">&lt;</span> n_after<span class="token punctuation">:</span>
+            nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> R<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>
+            k <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token comment"># 分（分离）</span>
+    <span class="token keyword">def</span> <span class="token function">separate</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> left_index<span class="token punctuation">,</span> right_index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># print(left_index,right_index)</span>
+
+        <span class="token keyword">if</span> left_index <span class="token operator">&lt;</span> right_index<span class="token punctuation">:</span>
+            <span class="token comment"># 分离数列大小</span>
+            m <span class="token operator">=</span> <span class="token punctuation">(</span>left_index <span class="token operator">+</span> right_index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span>
+            m <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+
+            <span class="token comment"># 分离数列前半部分</span>
+            separate<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> left_index<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+            <span class="token comment"># 分离数列后半部分</span>
+            separate<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right_index<span class="token punctuation">)</span>
+            <span class="token comment"># 治，把分开的元素进行合并</span>
+            merge<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> left_index<span class="token punctuation">,</span> m<span class="token punctuation">,</span> right_index<span class="token punctuation">)</span>
+
+    separate<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="厕所坑位问题"><a href="#厕所坑位问题" class="headerlink" title="厕所坑位问题"></a>厕所坑位问题</h2><p>额。。。非恶搞、真思考。</p>
+<p>一层宿舍楼内，有公共厕所两间，厕所内有六个坑位，假定每人每天平均上一次厕所，一次三分钟，求一层楼多少人才能使得上厕所不会拥挤的概率超过百分之70？</p>
+<p>拥挤？即三分钟内有至少13个人上厕所。一天二十四小时，共计1440分钟。</p>
+<p>假设，只有一个坑位，一个人，那么无论如何也不会产生拥挤问题，当一个坑位，两个人时，此时有可能就会产生拥挤问题。此时一天的总时长为1440分钟，第一个人一天上厕所所花的时间为3分钟，那么此时的第二个人只能在1437分钟里上厕所才不会发生拥挤，此时拥挤的概率应当为3 / 1440。当坑位扩展，意味着可以同时容纳多人上厕所，例如两个坑位，两个人就不会出现拥挤的情况。</p>
+<p>用几何的角度想一想，一天的总时长是个圆，他的面积是1440，现在在圆里有两个面积为3的阴影，问两个阴影不重叠的概率是多少。</p>
+<p>1 * 1437 / 1440。很容易得到的答案。</p>
+<p>三个人呐？</p>
+<p>1 * 1437 / 1440 * 1434 / 1440</p>
+<p>如果按照这样的逻辑，481人时，不拥挤的概率一定为0，但实际上480人时，不拥挤的概率已经是一个十分小的数字，我们规定不拥挤的概率应当超过百分之七十。</p>
+<p>对于这样的计算，使用一个简单的程序来帮助我们无疑要愉快的多。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">result <span class="token operator">=</span> <span class="token number">1</span>
+nums <span class="token operator">=</span> <span class="token number">1440</span>
+temp <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> nums <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    result <span class="token operator">*=</span> nums <span class="token operator">/</span> <span class="token number">1440</span>
+    <span class="token keyword">if</span> result <span class="token operator">>=</span> <span class="token number">0.7</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'不拥挤的概率为：'</span><span class="token punctuation">,</span> result<span class="token punctuation">,</span> <span class="token string">'此时的人数：'</span><span class="token punctuation">,</span> temp<span class="token punctuation">)</span>
+    nums <span class="token operator">-=</span> <span class="token number">3</span>
+    temp <span class="token operator">+=</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结论是，18个人时，不拥挤的概率约为72%，达到标准。</p>
+<p>即当有18个人时，如果二十四小时内，每一分钟上厕所的概率相等，那么一个坑位就可以大致满足需求。</p>
+<p>一个坑位当人数达到12时，不拥挤的概率约为87%，那么问题中的12个坑位呐？</p>
+<p>实际上，只有当上厕所人数达到13人时，才会出现拥挤的情况。此时每进来一个人，相当于多了面积为3的阴影。因此在上述的代码描述，只需要调整最初时的人数就可以了。</p>
+<p>结果为29人，当人数达到29人时，不拥挤的概率就只有72%</p>
+<p>这个结果正确嘛？如果正确的话，似乎有些不合理了。但实际上，代码描述的是一天二十四小时内，每个人随时都可能上厕所，并且在每分钟上厕所的概率都是相等的，都是独立事件，一个坑位在三分钟内拥有两个主人的情况为拥挤，但在现实情况下，上厕所具有时段性，某个时间段，可能很多人上厕所，并且还有往返时间，上厕所的时间每个人也各不相同，有的人只需要2分钟，有的人却要10分钟。</p>
+<p>这个问题其实是生日问题的翻版，他的目的只有一个，告诉你，去厕所别憋着，因为下一个厕所随时都可能会挤。</p>
+<p>1、</p>
+<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前 <em><code>numRows</code></em> 行。</p>
+<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ret <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+numRows <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"input your nums:"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>numRows<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    row <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> j <span class="token operator">==</span> <span class="token number">0</span> <span class="token keyword">or</span> j <span class="token operator">==</span> i<span class="token punctuation">:</span>
+            row<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            row<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ret<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> ret<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>row<span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>append<span class="token punctuation">(</span>row<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
       <div class="post-tags-categories">
