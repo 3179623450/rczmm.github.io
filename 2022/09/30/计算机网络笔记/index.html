@@ -642,7 +642,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 8.6k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 8.8k |
           </span>
   
           <span class="min2read">
@@ -880,7 +880,10 @@
 <p>标识、标记以及分段偏移（字节为单位）：数据报大于底层网络可以携带的大小时，这三个字段和IP数据报的分段有关。</p>
 <p>生存时间：存储一个数字，大约是任意量主机之间路由数量最大值的两倍，每个处理数据报的路由器把这个值减1，如果数值为0，路由器就丢弃它。</p>
 <p>协议：TCP|IP中，分组的数据段称为负载。一个数据报可以携带任意属于传输层协议的分组。</p>
-<p>头部校验和：IP是不可靠的，</p>
+<p>头部校验和：IP是不可靠的，头部校验和来检查头部，但是不检查负载，校验需要在每一个路由器重新计算，因为从一个路由器到另一个路由器头部的某些字段（TTL）会发生改变。</p>
+<p>源和目的地址：这个段的值在整个过程中应当表示不变，并且在链路上的路由也应该知道这个值。</p>
+<p>选项：这个选项多达40个字节，用来进行网络的测试和调试，他不是必需部分，因此头部只需要20字节，但是选项是ip软件必需的，选项给数据报处理增加了一些负担。</p>
+<p>负载：负载就是数据，来自使用IP服务的其他协议的分组，数据报中负载就是内容，头部就是包裹。</p>
 <h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="思科模拟器"><a href="#思科模拟器" class="headerlink" title="思科模拟器"></a>思科模拟器</h2><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主界面" style="zoom:50%;">
 
 <p>这是思科模拟器的逻辑空间，还可以切换到物理空间，此处不讨论。</p>
