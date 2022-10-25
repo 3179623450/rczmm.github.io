@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 8.3k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 8.6k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 28分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 29分钟 |
           </span>
   
           
@@ -881,7 +881,48 @@
 <p>生存时间：存储一个数字，大约是任意量主机之间路由数量最大值的两倍，每个处理数据报的路由器把这个值减1，如果数值为0，路由器就丢弃它。</p>
 <p>协议：TCP|IP中，分组的数据段称为负载。一个数据报可以携带任意属于传输层协议的分组。</p>
 <p>头部校验和：IP是不可靠的，</p>
-<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="思科模拟器"><a href="#思科模拟器" class="headerlink" title="思科模拟器"></a>思科模拟器</h2><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主界面" style="zoom:50%;">
+
+<p>这是思科模拟器的逻辑空间，还可以切换到物理空间，此处不讨论。</p>
+<p>在右下角选择添加的设备，按住CTRL键并且鼠标左键选中点击，就可以连续添加，添加完成之后，esc键退出模式。</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器连接的四台主机" style="zoom:50%;">
+
+<p>此处，使用通用集线器连接了四台主机，在线缆的选择中，一般的选择自动类型会容易的多。</p>
+<h3 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主机界面" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP配置" style="zoom:50%;">
+
+<p>设置好ip之后，很简单的就可以实现几台主机之间的互联，通过ping ip地址的方式。当然这是因为集线器把他们连接到一起的原因。</p>
+<h3 id="使用数据包来观察"><a href="#使用数据包来观察" class="headerlink" title="使用数据包来观察"></a>使用数据包来观察</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="新建一般的分组" style="zoom:50%;">
+
+<p>创建一个数据报，例如从PC7发送到PC9。选择左下角，将事件改为模拟或仿真。观察数据包行为。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="正在发送数据包"></p>
+<p>此处，在发送的时候，无法直接发送，因为源端没有目的端的MAC与IP之间的映射关系，于是需要发送ARP广播请求。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到集线器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发到其他主机，其他主机判断会否需要"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="接受主机响应集线器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发响应"></p>
+<p>数据包信息</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="过程描述" style="zoom:50%;">
+
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组封装"></p>
+<h3 id="访问web服务器"><a href="#访问web服务器" class="headerlink" title="访问web服务器"></a>访问web服务器</h3><p>选择一台主机和服务器，简单的使用交叉线连起来，建一个数据报，观察。</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="创建分组" style="zoom:50%;">
+
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到服务器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器返回响应"></p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="web浏览器请求服务器" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终返回的响应报文内容" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终到达主机的数据报响应信息" style="zoom:50%;">
+
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>利用交换机，搭建一个简单的局域网，并且使用DHCP动态分配ip地址。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP动态分配ip"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器配置"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP配置，注意保存"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP自动分配"></p>
+
       </div>
       <div class="post-tags-categories">
         
@@ -1651,58 +1692,6 @@
 
     
     <!-- 渲染左下角音乐播放器 -->
-    
-      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
-<style>
-.aplayer .aplayer-lrc p {
-  
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 16px !important;
-}
-
-.aplayer .aplayer-lrc p.aplayer-lrc-current {
-  
-  font-size: 15px;
-  color: #42b983;
-}
-
-
-.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-  left: -66px !important;
-}
-
-.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-  left: 0px !important;
-}
-
-
-</style>
-<meting-js  
-  class=""
-  server="tencent"
-  type="playlist"
-  id="8062553743"
-  fixed='true'
-  autoplay='false'
-  theme='#42b983'
-  loop='all'
-  order='random'
-  preload='auto'
-  volume='0.7'
-  list-folded='true'
->
-</meting-js>
-
-<!-- <style>
-  #aplayer {
-    position: fixed;
-    left: 0;
-    bottom: 300px;
-  }
-</style> -->
-<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
-<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
     
 
     <!-- 图片放大 -->
