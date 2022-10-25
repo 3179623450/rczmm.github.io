@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CLion中配置CMake运行多个main函数</title>
-    <url>/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>CLion中配置CMake运行多个main函数</p>
-<p>简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可以实现，为了简化，添加了一个插件。</p>
-<p>项目目录</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202631044"></p>
-<p>添加我们新建的目录src，在src下新建CMakeLists.txt文件。</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202727079"></p>
-<p>添加信息。</p>
-<p>但是一般的，我们都是先创建好文件，再去配置，这样的话显然有一些不愉快了。</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202835314"></p>
-<p>这个插件可以帮助我们自动的更新CMakeLists.txt文件，但是值得一提的是，他并不强大，因为在涉及到目录时，他无法解决，依然需要手动配置。</p>
-<p>对于配置好目录信息后，就可以直接创建文件，右键直接添加执行文件了。</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007203125621"></p>
-<p>最终效果</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007203213953"></p>
-<p>值得一提的是，其实不需要在src目录中配置CMakeLists文件。</p>
-<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221008145425011"></p>
-<p>在最外层的CMakeLists文件中这样描述就可以了。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>C++自学笔记（1）</title>
     <url>/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</url>
     <content><![CDATA[<p>C++很重要，很重要，很重要。</p>
@@ -659,6 +637,28 @@ name::code;  &#x2F;&#x2F; code 可以是变量或函数<span aria-hidden="true" 
       <tags>
         <tag>c++</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>CLion中配置CMake运行多个main函数</title>
+    <url>/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>CLion中配置CMake运行多个main函数</p>
+<p>简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可以实现，为了简化，添加了一个插件。</p>
+<p>项目目录</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202631044"></p>
+<p>添加我们新建的目录src，在src下新建CMakeLists.txt文件。</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202727079"></p>
+<p>添加信息。</p>
+<p>但是一般的，我们都是先创建好文件，再去配置，这样的话显然有一些不愉快了。</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007202835314"></p>
+<p>这个插件可以帮助我们自动的更新CMakeLists.txt文件，但是值得一提的是，他并不强大，因为在涉及到目录时，他无法解决，依然需要手动配置。</p>
+<p>对于配置好目录信息后，就可以直接创建文件，右键直接添加执行文件了。</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007203125621"></p>
+<p>最终效果</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221007203213953"></p>
+<p>值得一提的是，其实不需要在src目录中配置CMakeLists文件。</p>
+<p><img src="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" class="lazyload placeholder" data-srcset="/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221008145425011"></p>
+<p>在最外层的CMakeLists文件中这样描述就可以了。</p>
+]]></content>
   </entry>
   <entry>
     <title>MtaLab笔记</title>
@@ -3056,339 +3056,6 @@ numRows <span class="token operator">=</span> <span class="token builtin">int</s
       </tags>
   </entry>
   <entry>
-    <title>计算机系统-程序的机器级表示</title>
-    <url>/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/</url>
-    <content><![CDATA[<h1 id="程序的机器级表示"><a href="#程序的机器级表示" class="headerlink" title="程序的机器级表示"></a>程序的机器级表示</h1><p>计算机执行机器代码。编译器基于编程语言、目标机器的指令集以及操作系统，生成机器代码。</p>
-<p>汇编代码是机器代码的文本表示。</p>
-<p>对于严谨的程序员来说，能阅读和理解汇编代码形式是一项重要的技能。</p>
-<p>对于处理器的机器语言，比较常见的就是x86-64，IA32是他的32位前身。</p>
-<h2 id="摩尔定律"><a href="#摩尔定律" class="headerlink" title="摩尔定律"></a>摩尔定律</h2><p>各类处理器中的晶体管数量与他们出现的年份呈现正比例增长的趋势，晶体管基本每26个月都会翻一番。</p>
-<p>预测未来10年，芯片上的晶体管每年都会翻一番，这个预测就是摩尔定律。</p>
-<h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p>GCC C编译器，这是linux上的默认编译器，实际上GCC调用了一整套的程序，将源代码转化为可执行代码。</p>
-<p>首先，C预处理器扩展源代码，插入所有#include命令指定的文件，并扩展所有用#include声明的宏。</p>
-<p>其次，编译器会产生两个源文件的汇编代码，后缀为.s。</p>
-<p>接下来，汇编器会将汇编代码转化为二进制目标代码文件，后缀为.o。（目标代码是机器代码的一种形式，它包含所有指令的二进制表示，但是还没有填入全局值的地址。）</p>
-<p>最后，链接器将两个目标代码文件与实现库函数（例如printf）的代码合并，并产生最终的可执行代码文件。</p>
-<h3 id="机器级代码"><a href="#机器级代码" class="headerlink" title="机器级代码"></a>机器级代码</h3><p>计算机系统使用了不同形式的抽象，利用更简单的抽象模型来隐藏实现的细节。</p>
-<p>ISA指令集体系结构或者指令集架构来定义机器级程序的格式和行为，他定义处理器状态、指令的格式，以及每条指令对状态的影响。</p>
-<p>机器级程序使用的内存地址是虚拟地址，提供的内存模型看上去一个非常大的字节数组。</p>
-<p>在整个编译过程中，编译器完成大部分的工作，汇编代码非常接近于机器代码，他的主要特点是他的可读性更好。</p>
-<p>x86-64的机器代码与C代码差别很大，一些通常对C程序员隐藏的处理器状态都是可见。</p>
-<p>PC（计数器，在%rip来表示）给出将要执行的下一条指令在内存中的地址。</p>
-<p>整数寄存器，包含16个命名的位置，分别存储64位的值，这些寄存器可以存储地址或整数数据，有些寄存器被用来记录重要的程序状态，其他的寄存器用来保存临时数据。</p>
-<p>条件码寄存器，保存最近执行的算术或逻辑指令的状态信息。</p>
-<p>向量寄存器，存放一个或多个整数或浮点数值。</p>
-<p>程序内存包括：用来管理过程调用和返回的运行时栈，以及用户分配的内存块。</p>
-<p>一条机器指令只执行一个非常基本的操作。</p>
-<p>在C语言程序经过预处理与编译之后，就能得到汇编文件，代码中已经出去了所有的局部变量名或数据类型的信息。</p>
-<p>但是机器执行的程序只是一个简单的字节序列，它是对一系列指令的编码，机器对产生这些指令的源代码几乎一无所知。</p>
-<p>要查看机器代码的内容，反汇编器的程序就有作用，他会根据机器代码产生一种类似汇编代码的格式。并且不会去访问汇编代码或者源代码。</p>
-<h3 id="关于格式的注解"><a href="#关于格式的注解" class="headerlink" title="关于格式的注解"></a>关于格式的注解</h3><pre class="line-numbers language-none"><code class="language-none">    .file  &quot;Node.c&quot;
-   .text
-   .globl InitList
-   .def   InitList;  .scl   2; .type  32;    .endef
-   .seh_proc  InitList
-InitList:
-   subq   $40, %rsp
-   .seh_stackalloc    40
-   .seh_endprologue
-   movl   $16, %ecx
-   call   malloc
-   movq   $0, 8(%rax)
-   addq   $40, %rsp
-   ret
-   .seh_endproc
-   .section .rdata,&quot;dr&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>如上是一段C语言代码经过GCC编译后的内容，它包含我们不需要关心的信息，另一方面，他不提供任何程序的描述或者他如何工作的描述。</p>
-<p>所有以“.”开头的行都是知道汇编器和链接器工作的伪指令，通常可以忽略掉他们。</p>
-<p>一种汇编语言程序员的代码风格是，只会给出与讨论内容相关的代码行，每一行的左边有行号提供引用，右边是注释。</p>
-<p>还有网络旁注，提供一些资料，一个网络旁注者描述的是IA32的机器代码，有了x86-64的背景，学习IA32会相当简单，除此之外，它还描述了在C语言中插入汇编语言的方法。</p>
-<h3 id="ATT与Intel汇编格式"><a href="#ATT与Intel汇编格式" class="headerlink" title="ATT与Intel汇编格式"></a>ATT与Intel汇编格式</h3><p>一般的表示，包括如上的表示都是AT&amp;T的，这也是很多工具的默认的编码格式，其他的一些编程工具，都是Intel的，这两种格式在许多的方面有所不同。</p>
-<p><img src="/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/image-20221013144105321.png" class="lazyload placeholder" data-srcset="/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/image-20221013144105321.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221013144105321"></p>
-<pre class="line-numbers language-none"><code class="language-none">    .file  &quot;Node.c&quot;
-   .intel_syntax noprefix
-   .text
-   .globl InitList
-   .def   InitList;  .scl   2; .type  32;    .endef
-   .seh_proc  InitList
-InitList:
-   sub    rsp, 40
-   .seh_stackalloc    40
-   .seh_endprologue
-   mov    ecx, 16
-   call   malloc
-   mov    QWORD PTR 8[rax], 0
-   add    rsp, 40
-   ret
-   .seh_endproc
-   .section .rdata,&quot;dr&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>使用如上的命令行，GCC可以产生Intel格式的代码。</p>
-<p>Intel代码省略了指示大小的后缀。</p>
-<p>Intel代码省略了寄存器名字前面的“%”符号。</p>
-<p>Intel代码用不同的方式来描述在内存中的位置。</p>
-<p>在带有多个操作数的指令情况下，列出操作数的顺序相反。</p>
-<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>32位的体系结构是由16位扩展而来的，在Intel中用术语“字（word）”来表述16位数据类型，因此，32位数据类型成为双字，64位数称为四字。</p>
-<p>C语言数据类型在x86-64中的大小。</p>
-<table>
-<thead>
-<tr>
-<th>C声明</th>
-<th>Intel数据类型</th>
-<th>汇编代码后缀</th>
-<th>大小（字节）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>char</td>
-<td>字节</td>
-<td>b</td>
-<td>1</td>
-</tr>
-<tr>
-<td>short</td>
-<td>字</td>
-<td>w</td>
-<td>2</td>
-</tr>
-<tr>
-<td>int</td>
-<td>双字</td>
-<td>l</td>
-<td>4</td>
-</tr>
-<tr>
-<td>long</td>
-<td>四字</td>
-<td>q</td>
-<td>8</td>
-</tr>
-<tr>
-<td>char*</td>
-<td>四字</td>
-<td>q</td>
-<td>8</td>
-</tr>
-<tr>
-<td>float</td>
-<td>单精度</td>
-<td>s</td>
-<td>4</td>
-</tr>
-<tr>
-<td>double</td>
-<td>双精度</td>
-<td>l</td>
-<td>8</td>
-</tr>
-</tbody></table>
-<p>住：指针在64位的系统中，长8个字节。</p>
-<p>大多数GCC产生的汇编代码指令中都有一个字符的后缀，表明操作数的大小，例如数据传送指令的变种：movb（字节）、movw（字）、movl（双字）、movq（四字）。</p>
-<h2 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h2><p>一个x86-64的CPU包含一组16个存储64位值的通用目的寄存器，这些寄存器用来存储整数数据和指针，他们都以%r开头，最初的8086中有8个16位的寄存器，扩展到IA32时，这些寄存器也扩展为32位寄存器，标号从%eax到%ebp。</p>
-<table>
-<thead>
-<tr>
-<th>64位</th>
-<th>32位</th>
-<th>16位</th>
-<th>8位</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%rax</td>
-<td>%eax</td>
-<td>%ax</td>
-<td>%al</td>
-<td>返回值</td>
-</tr>
-<tr>
-<td>%rbx</td>
-<td>%ebx</td>
-<td>%bx</td>
-<td>%bl</td>
-<td>被调用者保存</td>
-</tr>
-<tr>
-<td>%rcx</td>
-<td>%ecx</td>
-<td>%cx</td>
-<td>%cl</td>
-<td>第4个参数</td>
-</tr>
-<tr>
-<td>%rdx</td>
-<td>%edx</td>
-<td>%dx</td>
-<td>%dl</td>
-<td>第3个参数</td>
-</tr>
-<tr>
-<td>%rsi</td>
-<td>%esi</td>
-<td>%si</td>
-<td>%sil</td>
-<td>第2个参数</td>
-</tr>
-<tr>
-<td>%rdi</td>
-<td>%edi</td>
-<td>%di</td>
-<td>%dil</td>
-<td>第1个参数</td>
-</tr>
-<tr>
-<td>%rbp</td>
-<td>%ebp</td>
-<td>%bp</td>
-<td>%bpl</td>
-<td>被调用者保存</td>
-</tr>
-<tr>
-<td>%rsp</td>
-<td>%esp</td>
-<td>%sp</td>
-<td>%spl</td>
-<td>栈指针</td>
-</tr>
-<tr>
-<td>%r8</td>
-<td>%r8d</td>
-<td>%r8w</td>
-<td>%r8b</td>
-<td>第5个参数</td>
-</tr>
-<tr>
-<td>%r9</td>
-<td>%r9d</td>
-<td>%r9w</td>
-<td>%r9b</td>
-<td>第6个参数</td>
-</tr>
-<tr>
-<td>%r10</td>
-<td>%r10d</td>
-<td>%r10w</td>
-<td>%r10b</td>
-<td>调用者保存</td>
-</tr>
-<tr>
-<td>%r11</td>
-<td>%r11d</td>
-<td>%r11w</td>
-<td>%r11b</td>
-<td>调用者保存</td>
-</tr>
-<tr>
-<td>%r12</td>
-<td>%r12d</td>
-<td>%r12w</td>
-<td>%r12b</td>
-<td>被调用者保存</td>
-</tr>
-<tr>
-<td>%r13</td>
-<td>%r13d</td>
-<td>%r13w</td>
-<td>%r13b</td>
-<td>被调用者保存</td>
-</tr>
-<tr>
-<td>%r14</td>
-<td>%r14d</td>
-<td>%r14w</td>
-<td>%r14b</td>
-<td>被调用者保存</td>
-</tr>
-<tr>
-<td>%r15</td>
-<td>%r15d</td>
-<td>%r15w</td>
-<td>%r15b</td>
-<td>被调用者保存</td>
-</tr>
-</tbody></table>
-<p>整数寄存器，所有16个寄存器的低位部分都可以作为字节、字、双字和四字来访问。</p>
-<h3 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h3><p>大多数指令都有一个或多个操作数，指示出一个操作中要使用的源数据值，以及放置结果的目的位置。</p>
-<p>操作数被分为三种类型：</p>
-<p>​    立即数：表示常数值，在AT&amp;T中，立即数的书写方式是“$”后面跟一个标准C表示法表示的整数。</p>
-<p>​    寄存器：表示某个寄存器内的内容。</p>
-<p>​    内存引用：根据计算出来的地址访问某个的内存位置。</p>
-<p>有多种不同的寻址方式，其中比例变址寻址比较常见，Imm（rb，ri，s），Imm表示立即数偏移，rb表示基址寄存器，ri表示变址寄存器和一个比例因子s。</p>
-<h3 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h3><p>最频繁的指令是将数据从一个位置让复制到另一个位置的指令。</p>
-<p>最简单形式的数据传送指令是——MOV类，这些指令把数据从源位置复制到目的位置，不做任何变化。</p>
-<p>movb、movw、movl、movq组成了MOV类，这些指令都执行相同的操作，区别在于他们操作的数据大小不同，分别为1 2 4 8字节。</p>
-<p>源操作数指定的值是一个立即数，存储在寄存器中或者内存中，目的操作数指定一个位置，要么是一个寄存器，要么是一个内存地址，传送指令的两个操作数不能都指向内存地址。</p>
-<p>这些指令的寄存器数可以是16个寄存器有标号部分中的任意一个，寄存器部分的大小必须与指令最后一个字符指定的大小相匹配，MOV指令只会更新目的操作数指令的那些寄存器字节或内存位置，唯一的例外是movl指令以寄存器作为目的时，他会把该寄存器的高位4字节设置为0。</p>
-<p>在做数据传送时，常常会遇到将较小的源传送到较大的目的，对此MOV有两类数据移动指令。</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>效果</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>MOVZ S R</td>
-<td>R 零扩展S</td>
-<td>以零扩展进行传送</td>
-</tr>
-<tr>
-<td>movzbw</td>
-<td></td>
-<td>将做了零扩展的字节传送到字</td>
-</tr>
-<tr>
-<td>movzbl</td>
-<td></td>
-<td>字节传送到双字</td>
-</tr>
-<tr>
-<td>movzwl</td>
-<td></td>
-<td>字传送到双字</td>
-</tr>
-<tr>
-<td>movzbq</td>
-<td></td>
-<td>字节传送到四字</td>
-</tr>
-<tr>
-<td>movzwq</td>
-<td></td>
-<td>字传送到四字</td>
-</tr>
-<tr>
-<td>MOVS S R</td>
-<td>R 符号扩展S</td>
-<td>传送符号扩展的字节</td>
-</tr>
-<tr>
-<td>movsbw</td>
-<td></td>
-<td>字节传送到字</td>
-</tr>
-<tr>
-<td>movsbl</td>
-<td></td>
-<td>字节传送到双字</td>
-</tr>
-<tr>
-<td>cltp</td>
-<td>%rax——（符号扩展）%eax</td>
-<td>把%eax符号扩展到%rax</td>
-</tr>
-</tbody></table>
-<p>如上的表省略了部分。</p>
-<h3 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h3><p>两个数据传送操作可以将数据先压入栈中，再从栈中弹出。</p>
-<p>pushq 压栈</p>
-<p>popq 弹栈</p>
-<p>将一个四字值压入栈中，首先要将栈指针减8，然后将值写到新的栈顶地址。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>计算机基础</title>
     <url>/2022/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="计算机基础（备考版）"><a href="#计算机基础（备考版）" class="headerlink" title="计算机基础（备考版）"></a>计算机基础（备考版）</h1><h2 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h2><h3 id="1、1-ENIAC"><a href="#1、1-ENIAC" class="headerlink" title="1、1  ENIAC"></a>1、1  ENIAC</h3><p>1946年2月，世界上第一台电子数字积分计算机在美国宾夕法尼亚大学诞生，取名为ENIAC(中文名称为“埃尼阿克”)。</p>
@@ -3994,264 +3661,337 @@ InitList:
       </categories>
   </entry>
   <entry>
-    <title>计算机网络笔记</title>
-    <url>/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><strong>说明</strong></p>
-<p>教材是谢希仁的计算机网络第八版，但是在写笔记阶段已经学完了以及一些其他的原因，所以笔者想用自上而下的方式。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221003152310810"></p>
-<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>互联网</strong></p>
-<p>局域网和广域网连在一起就是互联网，也就是说互联网不是单个网络，而是多个网络的组合。</p>
-<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a><strong>网络</strong></h3><p>一组具有通信能力的设备连接在一起就是网络，他们可以是两台主机（host），也可以是一台主机和一台打印机，甚至是平常距离日常很遥远的路由器，交换机，调制解调器。</p>
-<p>路由器，连接网络和网络。</p>
-<p>交换机，用来连接设备。</p>
-<p> 调制解调器，用来交换数据形式。</p>
-<p>当一台路由器（即插即用）连接两台电脑时，这时候一个局域网就组建成功了。</p>
-<p><strong>局域网</strong></p>
-<p>在局域网中，每一台主机都有一个标识符（地址），用来在这个局域网中定义这台主机。这台主机向另一台主机发送的数据包里就包含了源和目的主机的地址。</p>
-<p>在过去的一段时间，一个网络中的所有主机都用一条电缆连接，一台主机发送的数据其他的主机都可以接受到，这时候由这些主机选择接收还是丢弃这些数据包，目标主机就选择保存这个数据包。现在多数的局域网采用交换机，他可以识别数据包的目的地址并引导数据包达到他的目的地而不必发送到其他的主机。</p>
-<p>交换机减轻了局域网中的流量，如果不是共同的源主机和目的主机，那么交换机允许同一时刻多对主机之间同时互相通信。</p>
-<p><strong>广域网</strong></p>
-<p>同样是由具有通信能力的设备相互连接而成的，但是不同的是，广域网的地理覆盖范围很广，通常的局域网值覆盖一个大楼或者是一个校园，但是广域网则十分的大，可能是一个城市，一个省，一个国家等。</p>
-<p>局域网互联主机，但广域网互联交换机、路由器、调制解调器等连接设备。</p>
-<p><strong>点到点广域网</strong></p>
-<p>这种广域网通过传输介质来连接两个通信设备。</p>
-<p><strong>交换式广域网</strong></p>
-<p>交换式广域网具有多个端点，可以说交换式广域网是交换机连接几个点到点的广域网而形成的。</p>
-<p><strong>互联网络</strong></p>
-<p>现在很少有单独的局域网或者广域网，他们都互相连接在一起的，当两个或多个网络连接在一起时，它们就形成了一个互联网络，或者互联网。 </p>
-<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a><strong>交换</strong></h3><p>互联网是由链路和交换机组成的，实际上互联网是一个交换式的网络，其中一台交换机至少将两条链路连接的一起，在需要的时候，交换机需要将数据从一条链路转发到另一条链路，交换式网络最常见的类型为电路交换网络和分组交换网络。</p>
-<p><strong>电路交换网络</strong></p>
-<p>在电路交换网络中，两个网络之间总是存在一条专用的连接（电路），交换机只能让他变成活跃或者非活跃状态。</p>
-<p>这样的模式存在一个弊端：电路容量必须足够的大，以便于在两个网络所有主机通信时，不至于通信失败，但是这样的情况并不是每时每刻都在发生的，在一般的场景下，工作时，可能只有部分的容量被占用，因此这种模式的效率是低下的。</p>
-<p>此处的效率低下指的是，高容量的电路使用率不足，并非通信效率不佳。</p>
-<p><strong>分组交换网络</strong></p>
-<p>在一个计算机网络中，两个端点之间使用被称为分组（packet）的数据块进行通信，也就是说，两个计算机交换的是独立的数据分组，由于分组能够被存储和发送时是一个独立的实体，因此这种机制允许我们实施存储转发的交换功能。</p>
-<p>分组交换网络中的路由器具有能够存储和转发分组的队列，如果现在需要发送的分组大于了线路的容量，那么此时的分组会在路由器存储并且进行排队的状态，他的效率看上去比电路要高了，但是分组可能也会在大规模使用时遇到延迟。</p>
-<h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a><strong>因特网</strong></h3><p>这是最著名的互联网了，它是由成千上万个相互连接的网络组成。</p>
-<p>概念上的因特网由一系列主干、提供者网络和客户网络组成，主干是最高层次，是一些通信公司拥有的大型网络，主干网络通过对等点的复杂交换系统进行连接，一些小的提供者网络处于第二个层次，这些网络通过付费使用主干网络服务，提供这网络连接主干网络，有时提供网络之间也相互连接，客户网络是因特网边缘的网络，他们使用因特网提供的服务，为了接收服务，客户网络需要像提供者网络付费。</p>
-<p>主干和提供者网络其实都是服务提供商，主干常常称为国际ISP，提供者网络常常被称为国家或地区ISP。</p>
-<h3 id="访问因特网"><a href="#访问因特网" class="headerlink" title="访问因特网"></a><strong>访问因特网</strong></h3><p>因特网允许任何用户成为他的一部分，但是还需要用户在物理上连接到一个ISP。物理连接通常利用一条点到点的广域网实现。</p>
-<p><strong>电话网络</strong></p>
-<p>具有电话服务的客户，大多数电话网络自身就已经连接到因特网，因此这些客户可以选择把他们和电话中心的语音线路转换成点到点的广域网。</p>
-<p>实现方式有两种：</p>
-<p>拨号服务，在电话线路中增加将数据转换成语音的调制解调器，安装在计算机中的软件拨打ISP的号码，形成一条电话连接。但是拨号服务很慢，同时线路用于因特网连接的时候，线路无法进行电话连接，因此这种方式只对偶尔访问因特网的客户有效。</p>
-<p>DSL，将电话线路升级，可以同时使用语音服务。</p>
-<p>除此之外还可以通过：有线电视网络、无线网络、直连Internet（将自身变成一个ISP）</p>
-<h3 id="协议分层"><a href="#协议分层" class="headerlink" title="协议分层"></a><strong>协议分层</strong></h3><p>协议定义了发送者、接受者和所有中间设备为了高效通信需要遵循的规则。通信复杂时，我们需要把任务划分到不同层，不同层需要不同的协议。</p>
-<p><strong>协议分层原则</strong></p>
-<p>1、双方双向通信，每一层都能执行两个相反的任务，每个方向上一个</p>
-<p>2、两端中，每一层的两个对象都应该相同。</p>
-<p><strong>逻辑连接</strong></p>
-<p>每层之间拥有逻辑上的连接，这意味着我们可以拥有层与层之间的通信，这是为了方便理解。</p>
-<h3 id="TCP-IP协议簇"><a href="#TCP-IP协议簇" class="headerlink" title="TCP|IP协议簇"></a>TCP|IP<strong>协议簇</strong></h3><p>不同层次组织的协议集——协议簇。</p>
-<p>这是一个相互交互的模块组成的一个层次结构协议，层次意味着上层的协议需要得到一个或者多个较下层的协议提供的服务支持。</p>
-<p>初始的TCP|IP提供了四个层次，但通常的它应当是一个五层模型。</p>
-<p>层次：应用层、传输层、网络层、数据链路层、物理层</p>
-<p>对等体：消息、段或用户数据报、数据报、帧、bit位</p>
-<p>采用逻辑连接使得每一层的任务变得简单，其中应用层、传输层和网络层的任务都是从端到端的，但是数据链路层和物理层的任务是从点到点的。换句话说，高层次的任务范围是互联网，而低层次也就是下两层的任务范围是链路。</p>
-<p>还可以从每一层的数据单元出发，上三层的分组（packet）不应该被任何路由器或者链路层的交换机改变，在下两层，主机创建的分组仅仅被路由器不改变，链路层交换机不改变任何东西。</p>
-<p><strong>各层描述</strong></p>
-<p><strong>应用层</strong></p>
-<p>逻辑连接是端到端的，两个应用层之间好像有一架桥梁负责交换消息，但实际上通信要经历所有的层次才能完成。</p>
-<p>应用层的通信处于两个进程之间，一个进程发送请求，接受另一个进程的响应，进程到进程的通信就是应用层的任务，在因特网上，应用层包含了许多的协议（HTTP、WWW、FTP、SSH与TELNET、DNS）</p>
-<p><strong>传输层</strong></p>
-<p>端到端，源主机的传输层从应用层得到消息，封装为传输层的分组（段或数据报，不同协议叫法不同。）然后进行发送，通过逻辑连接，到达目的主机的传输层。</p>
-<p>传输层向应用层提供服务，，从运行于应用层的程序得到消息，并将它投递到目的主机相应的应用程序。（主要原因是为了分割任务和责任），传输层也有很多协议，每一个都是为了一些特定的任务设计的。（TCP、UDP）</p>
-<p><strong>网络层</strong></p>
-<p>主机到主机，源主机到目的主机之间可能存在多个路由器，因此路径上的路由器负责为每一个分组选择最好的路径（IP）</p>
-<p><strong>数据链路层</strong></p>
-<p>互联网是由多个链路通过路由连接而成的，当主机传输数据报到目的地可能存在多个交叠的链路集，路由器负责挑选最好的链路进行传输，当路由器决定好了链路之后，数据链路层开始接管这个数据报并且让他穿过这条链路，这条链路可以是无线网、有线网，对于不同的链路类型存在不同的协议，无论什么情况，链路层都要负责通过链路传输分组。</p>
-<p>TCP/IP没有为了数据链路层定义任何协议，因此它支持所有所有私有和标准的协议能接管数据报并且携带它穿过链路的任意协议都能满足网络层的要求，链路层接管数据报并且封装在一个称为帧的分组中。</p>
-<p><strong>物理层</strong></p>
-<p>物理层负责携带一个帧中单独的比特穿过链路，尽管物理层已经位于协议簇的最底层，但是在物理层之下还存在一个隐藏的传输介质层，因此物理层之间的还是逻辑通信，两个设备通过可以携带电信号或者光信号的介质到达目的地。将一个bit转换为电信号或者光信号存在多个协议。</p>
-<p><strong>封装和解封装</strong></p>
-<p>在Internet协议分层中，一个重要的概念是封装和解封装。</p>
-<p>在链路层交换机中没有封装和解封装发生。</p>
-<p>应用层，交换的数据称为消息，消息一般的不包含头部和尾部，即使包含了这些，我们也称其为消息，消息会被传递到传输层。</p>
-<p>传输层，把这个消息称为有效载荷，该载荷是传输应该关注的负载，传输层增加了传输层头部，其中包含了希望进行通信的源和目的程序的标识符和一些投递消息的更多信息，例如：流量控制、差错控制和拥塞控制需要的信息，结果为一个传输层分组。在TCP中称为段、在UDP中成为用户数据报，然后传输到网络层</p>
-<p>网络层，把传输层分组作为数据或者有效载荷，并且加上自己的头部，包含源和目的主机的地址，以及用于差错检查、分片的信息和一些其他的信息，结果为一个称为数据报的网络层分组，然后网络层投递到数据链路层。</p>
-<p>数据链路层，把网络层分组作为数据或者有效载荷并且添加上自己的头部，包含主机或者下一跳步（路由器）的链路层地址，结果为一个称为帧的链路层分组，投递到物理层进行传输。</p>
-<p><strong>路由器的解封装与封装</strong></p>
-<p>路由器连接多个链路，因此路由器也存在解封装与封装的问题。</p>
-<p>在比特集被投递到数据链路层之后，这一层从帧中解封装出数据报并把它投递到网络层。</p>
-<p>在网络层只检查数据报头部的源地址和目的地址，查阅它的转发表以寻找数据报将要被投递的下一跳步。除非数据报太大需要分片，数据报的内容不应该被网络层改变。</p>
-<p>下一链路的链路层将数据报封装为一个帧，将其放到物理层进行传输。</p>
-<p><strong>目的主机的解封装</strong></p>
-<p>目的主机端，每一层都只解封装接收到的分组，移出有效载荷，并将有效的载荷移至上一层，直到消息到达应用层，目的主机中的解封装包含差错检查。、</p>
-<p><strong>地址</strong></p>
-<p>看起来，似乎这个模型的每一层都需要逻辑通信，那么每一层之间就都需要一对地址，但是因为物理层不需要地址（介质连接），因此只需要四对地址。</p>
-<p>在应用层，一般的是域名定义提供服务的站点，或者是电子邮件地址，在传输层，地址是端口号，端口号指的是源和目的地的进程，端口号是本地地址，用于区分同一时间运行的几个程序，网络层地址是全局的，涵盖了整个Internet，链路层地址有时叫做MAC地址，是本地定义的地址，每个链路层地址在网络中定义一个特定的主机或路由器。</p>
-<p><strong>多路复用与多路分解</strong></p>
-<p>协议簇在一些层次使用多个协议，因此我们在源进行多路复用（一个协议能封装多个来自上层协议的分组，一次一个），在目的端进行多路分解（一个协议可以解封装并且将分组投递到上层协议，一次一个）。</p>
-<h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a><strong>OSI</strong></h3><p>应用层</p>
-<p>表示层</p>
-<p>会话层</p>
-<p>传输层</p>
-<p>网络层</p>
-<p>数据链路层</p>
-<p>物理层</p>
-<p>看起来似乎比TCP/IP更加好一些，但实际上，表示层和会话层没有定义协议，并且模型完成较晚，并且在实际的应用上，并没有想象中的高效。</p>
-<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>整个Internet、硬件和软件的设计和开发都是为了为应用层提供服务。</p>
-<p>因特网提供服务的本质以及两个应用类型：传统客户—服务器模式，以及新类型对等模式</p>
-<h3 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a><strong>提供服务</strong></h3><p>应用层是唯一向因特网用户提供服务的层次，因此它十分的灵活，新的协议可以随时加入Internet。</p>
-<p>标准和非标准协议</p>
-<p>描述的都是具体的程序，前者是被管理机构标准化和归档化的内容，后者是自己定义的内容，例如在自己写的程序。</p>
-<h3 id="应用层模式"><a href="#应用层模式" class="headerlink" title="应用层模式"></a><strong>应用层模式</strong></h3><p>传统：客户—服务器</p>
-<p>这种模式对服务器负担较大，要求服务器一直保持开启阶段，为了让客户机随时都可以访问他，并且当许多客户一起访问服务器，对服务器的考验十分巨大。</p>
-<p>通信负荷集中在服务器上，WWW、HTTP、FTP、SSH以及电子邮件还是这样的模式。</p>
-<p>新模式：对等模式</p>
-<p>P2P，不存在客户和服务器，两者是对等结点，最经典的是网络电话，没有一方需要等待另一方呼叫，还有计算机的文件共享。</p>
-<p>对等模式不用一直维护服务器，容易扩展并且经济划算，但是依旧存在问题，安全性部署困难，适用性不高（并不是所有应用都可以应用对等模式。）</p>
-<p>混合模式</p>
-<p>结合了两种模式优点来吧这二者混合起来，比如轻量级的客户和服务器可以用来寻找对等结点的地址，当实际服务时，是从对等结点中获得。</p>
-<h3 id="API应用程序接口"><a href="#API应用程序接口" class="headerlink" title="API应用程序接口"></a>API<strong>应用程序接口</strong></h3><p>一个计算机程序通常是由预定义了指令集的计算机语言编写的，这个指令集告诉计算机要做什么，如果我们需要使得进程之间通信，那么就需要一个新的指令集，这就是API。</p>
-<p>此时API连接了两个实体，OS与程序，其中OS封装了TCP/IP协议簇的前四层。</p>
-<p>通信API：套接字、传输层接口TLI、STREAM。</p>
-<h3 id="WWW与HTTP"><a href="#WWW与HTTP" class="headerlink" title="WWW与HTTP"></a>WWW与HTTP</h3><p>万维网（WWW）又叫WEB，今天它是信息宝库，其中网页文档在全世界发布，分布式允许web无限增长，链接使得网页之间出现引用。（超文本）</p>
-<p>WWW是一个分布式客户—服务器模式，使用浏览器的用户可以访问一个正在服务器上运行的服务，服务分布在不同的site上。</p>
-<p>浏览器通常包含三个部分：控制程序、客户协议和解释程序。</p>
-<p><strong>网络服务器</strong></p>
-<p>URL，统一资源定位符，（协议+主机+端口+路径）来定位文档。</p>
-<p>网上文档：静态文档（用户只能得到副本的文档，html等）、动态文档（返回的响应文档）、活动文档（在客户站点运行的脚本或程序，js等）</p>
-<p>HTTP，超文本传输协议，用来定义客户服务器程序如何编写和如何获取网页的协议，一个用户发送请求，服务器返回响应，服务器使用80端口，客户使用临时端口，HTTP使用TCP服务。</p>
-<p><strong>非持续与持续连接</strong></p>
-<p>获取一个对象就创建一个连接的模式就是非持续的，创建一个连接获取所有对象就是持续的。其中这些对象应该位于同一台服务器。</p>
-<p><strong>报文格式</strong></p>
-<p>HTTP定义了请求报文和响应报文的格式，每一种报文由四个部分组成。</p>
-<p><strong>请求报文</strong></p>
-<p>第一行：请求行</p>
-<p>由方法、URL和版本构成。</p>
-<p>方法定义了请求类型（GET、POST、PUT等），URL定义了相关网页的地址和名称，版本给出了协议的版本（常用1.1）</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求方法"></p>
-<p>请求行之后有一个或者多个请求头部，从客户端向服务端发送额外的信息。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求头部名称"></p>
-<p><strong>响应报文</strong></p>
-<p>包含状态行、头部行有时候包含主体。</p>
-<p>状态行：http协议的版本、状态码</p>
-<p>状态码：100范围内只代表一个报告，200范围内表示这是一个成功的请求，300内表示把客户端重定向到另一个URL，400范围内表示客户端发生错误，500范围内表示错误发生在服务端。</p>
-<p>响应头部行，发送额外信息。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="响应头部名称"></p>
-<p>主体包含了服务器发送给客户的文档，除非响应是一个错误报文，否则主体是存在的。</p>
-<p>条件请求:客户在请求中加入条件</p>
-<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>WWW起初被设计为无状态实体，客户发送请求，服务器响应，二者关系结束。</p>
-<p>Cookie的创建和存储与实现有关，然而它的原理是相同的。<br>1．当服务器从客户端接收到请求后，它将客户端的信息存储在文件或字符串中。这些信息可能包含客户端的域名、cookie内容（服务器收集到的关于客户端的信息，如主机名、注册号等)、时间戳,以及与实现有关的其他信息。<br>2．服务器在响应中包含了它发送给客户端的cookie。<br>3．当客户端接收到响应后，浏览在cookie目录中查询是否有从那个服务器使用Cookie，当客户向服务器发送请求时，浏览器在cookie目录中查询是否有从那个服务器发送过来的cookie。如果有，则在请求中包含这个cookie。当服务器接收到这个请求后，它就知道了这是一个老客户，而不是新的。注意，cookie的内容从来不让浏览器读取或者透露给用户，只由服务器创建并回收cookie。</p>
-<h3 id="WWW高速缓存、代理服务器"><a href="#WWW高速缓存、代理服务器" class="headerlink" title="WWW高速缓存、代理服务器"></a>WWW高速缓存、代理服务器</h3><p>代理服务器是一台计算机，可以保存最近请求的响应的副本，客户端向代理服务器发请求，代理服务器检查本地高速缓存，如果高速缓存中不存在响应正文，那么代理服务器就向相应的服务器发送请求，返回的响应会发送到代理服务器中，并且进行存储，以用于其他客户端将来的请求。</p>
-<p>代理服务器可以降低负载，减少通信量，并且降低延迟，但是，为了使用代理，必须配置客户端。</p>
-<p>代理服务器既是服务又是客户，通常位于客户节点。</p>
-<p>缓存更新，一个响应应该在被改变前，在代理服务器保留多长时间，第一个策略是保存站点列表，保存一段时间，另一个建议是加入头部信息显示最近修改时间，代理服务器可以从时间猜测他们在多长时间内是有效的。</p>
-<h3 id="HTTP安全"><a href="#HTTP安全" class="headerlink" title="HTTP安全"></a>HTTP安全</h3><p>其实，http不提供安全，但是http可以在安全套接层（STL）上运行，此时HTTP称为HTTPS，它提供保密性、客户和服务器鉴别，以及数据完整性。</p>
-<h3 id="FTP-文件传输协议"><a href="#FTP-文件传输协议" class="headerlink" title="FTP 文件传输协议"></a>FTP 文件传输协议</h3><h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层提供了包括分组、路由以及转发的服务，网络层中的内容主要包括分组交换、网络层性能、网络层拥塞以及路由器结构。</p>
-<h3 id="网络层服务"><a href="#网络层服务" class="headerlink" title="网络层服务"></a>网络层服务</h3><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>这是网络层的首要责任，packet。在源端将负载封装进网络层packet中并在目的端解封装。</p>
-<p>源从上层协议接受分组，加入一个头部，头部包含源和目的地址以及其他网络层协议所需要的信息。</p>
-<p>并且将其传送到数据链路层，源端不改变负载的内容，除非负载过大不能传递才需要分段处理。</p>
-<p>目的主机从数据链路层接受网络层分组、解封分组并且将负载传递到相对应的上层协议。如果分组在源或者在沿途被分段，那么网络层负责等待，直到所有的分组都到达，他同时负责重组分组并且将它们传递到上层协议。路径上的路由器不可以解封它们接受到的分组，除非它们接受到的分组需要被分段，也不允许路由器改变地址，无论是源或者是目的。路由器能做的仅仅是检查和、转发，当然如果需要分段的情况，路由器会复制头部并且做出一些改变。</p>
-<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>网络层的另一个责任就是路径选择，这就是路由。网络层寻找最佳的路由，但是如何定义最佳，网络层需要一些特定的策略。</p>
-<p>在现在，有一些专业的路由协议可以帮助路由器很快的实现这一点。</p>
-<h4 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h4><p>路由应用一些策略并运行某些路由协议来为每个路由创建决策表，那么转发可以定义为当packet到达路由器的一个端口时，路由器所采取的决策表有时也被叫做转发表。路由器根据它来实施行为，当接受到一个packet时，他需要将分组转发到另一个或多个所连接的网络上。一个与多个的区别就区分了单播和多播路由。为了做出这样的决策，路由器使用packet头部的一个信息片段来找到转发表中相应的输出接口号。</p>
-<h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><p>尽管差错控制可以在网络层中实现，但是网络层的设计者似乎忽略了携带数据中的差错问题，因为数据有可能会被分段，因此差错控制的效率会变得非常低。但是网络层的设计者将校验的字段加入到了头部中，用来校验头部的好坏，这个校验和可能防止两跳之间以端与端之间的数据报头部的改变或损坏。</p>
-<p>但是如果数据报被丢弃或者在头部中含有未知信息，ICMP这样的辅助协议来提供某种差错控制。</p>
-<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p>源端可以发送但不会淹没接收方的数据量，如果源端计算机上层产生数据的速度比目的端极端及上层消耗数据的速度快，那么接收方会被数据所淹没，为了控制数据流量，接收方需要发送一些反馈给发送方，从而通知后者接收方被数据淹没了。</p>
-<p>但是网络层中没有提供任何的流量控制，当准备好时，数据报被发送方发送，而不考虑接收方是否准备好了。</p>
-<p>网络层设计中缺乏流量控制的原因有这么一些：这一层没有差错控制，接受端网络层的工作是很简单的，以致于它很少被淹没。当准备好时，利用网络层服务的上层可以实现缓冲区，用它来从网络层接受数据，而无需一接受数据的速度消耗数据。流量控制被提供给绝大多数使用网络层服务的上层协议，因此另一级流量控制使得网络层更复杂且整个系统低效。</p>
-<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>网络层的另外一个事件是拥塞控制，网络层的拥塞控制是某一个区域出现过多的数据报的情况，如果源计算机发送的数据报数量超过了网络或者路由器的容量，那么就可能发生拥塞，在这种情况下一些路由器可能丢弃一些数据报，然后随着更多的数据报被丢弃，这种情况会变得更加槽糕，由于上层的差错控制，发送方可能发送丢失分组的副本，如果拥塞继续，那么有时可能导致系统崩溃。</p>
-<h4 id="服务质量"><a href="#服务质量" class="headerlink" title="服务质量"></a>服务质量</h4><p>Qos（通信服务质量）变得十分重要，为了保证网络层不变，一般的这些服务通常在上层实现。</p>
-<h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><p>这是绕不开的事件，在最开始设计的时候，并没有考虑安全，网络层的设计本身就是不安全的，为了给无连接的网络层提供安全，我们需要另一个虚拟层将无连接服务变成面向连接服务，这个虚拟层成为IPSec。</p>
-<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p>交换发生在网络层，事实上，路由器是一个创建了输入端口和输出端口连接的交换机，就像将输入连接连接到输出让电流流动的开关。</p>
-<p>数据通信技术分为两部分，电路交换与分组交换，但是在网络层只使用分组交换，因为这一层数据单位是分组。</p>
-<p>分组交换网络的连接装置仍然决定如何将分组路由到最终的目的端，如今分组交换网络使用两种不同的方法，数据报方法和虚电路方法。</p>
-<h4 id="数据报方法"><a href="#数据报方法" class="headerlink" title="数据报方法"></a>数据报方法</h4><p>无连接服务，转发分组基于分组的目的地址。每个分组都是独立的实体。</p>
-<h4 id="虚电路方法"><a href="#虚电路方法" class="headerlink" title="虚电路方法"></a>虚电路方法</h4><p>面向连接服务，同一报文的分组存在着连接，分组包含流标号，定义了分组应该经过的路径。转发决策基于标签的值或者虚电路标识符。</p>
-<p>创建面向连接服务：建立、数据交换和拆除。</p>
-<h3 id="网络层性能"><a href="#网络层性能" class="headerlink" title="网络层性能"></a>网络层性能</h3><p>延迟、吞吐量、分组丢失来度量网络层性能。</p>
-<p>延迟：发送延迟、传播延迟、处理延迟以及排队延迟</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送延迟"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="传播延迟"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="处理延迟"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="排队延迟"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="总延迟"></p>
-<p>吞吐量：一秒内通过这个点的位的数量，由最小的路径以及平均路径来决定。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="吞吐量"></p>
-<p>分组丢失：缓冲区满造成丢失。</p>
-<h3 id="网络层拥塞"><a href="#网络层拥塞" class="headerlink" title="网络层拥塞"></a>网络层拥塞</h3><p>网络层的拥塞和两个问题有关，吞吐量和延迟。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组延迟和吞吐量的负载函数"></p>
-<p>当负载远远小于网络容量时，延迟是最小的，这一部分延迟只有处理延迟和传播延迟，某种程度上说，这可以忽略。让负载容量增长，此时就需要排队延迟。</p>
-<p>吞吐量会随着负载的大小而增加，但是路由器丢弃分组，当负载超过网络容量时，队列变满路由器必须丢弃一些分组，这不会减少分组数量，因为当分组没有到达目的端，源端使用超时机制重发分组。</p>
-<h4 id="拥塞控制机制"><a href="#拥塞控制机制" class="headerlink" title="拥塞控制机制"></a>拥塞控制机制</h4><p>开环拥塞控制（预防）</p>
-<p>预防策略，源端和目的端都可以处理拥塞控制。</p>
-<p>重传策略</p>
-<p>发送方认为一个分组损坏或者是丢失，分组就需要重发，重传会增加拥塞。但是好的重传可以预防拥塞。优化设计重传策略和重传定时器，使之具有高效率。</p>
-<p>窗口策略</p>
-<p>发送方窗口的类型会影响拥塞。</p>
-<p>确认策略</p>
-<p>丢弃策略</p>
-<p>许可策略</p>
-<p>闭环拥塞控制（消除）</p>
-<p>背压、抑制分组、隐含信令、显式信令</p>
-<h3 id="路由器的结构"><a href="#路由器的结构" class="headerlink" title="路由器的结构"></a>路由器的结构</h3><p>元件：输入端口、输出端口、路由器处理器以及交换结构。</p>
-<p>交换结构：纵横制交换机、榕树交换机、Batcher榕树交换机。</p>
-<h3 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h3><p>第四版网络层主要为一个主要协议和三个辅助协议。</p>
-<p>主要协议为：ipv4负责网络层的分组、转发以及传递。控制报文协议ICMP帮助IPv4处理一些网络层传递中可能发生的错误。组管理协议IGMP用于帮助IPV4多播。在网络层地址映射到链路层地址当中，地址解析协议ARP用来将网络和链路层联合起来。</p>
-<p>Ipv4 不可靠且无连接的数据报协议，一个尽力而为的传递服务。</p>
-<p>分组可以被破坏、丢弃、失序、延迟，也可能造成拥塞，因此Ipv4必须和TCP搭配。</p>
-<p>数据报独立处理，意味着数据报也可能被破坏等，因此Ipv4依赖高层协议处理这些问题。</p>
-<h3 id="IPv4数据报格式"><a href="#IPv4数据报格式" class="headerlink" title="IPv4数据报格式"></a>IPv4数据报格式</h3><p>IP使用的分组叫做数据报，数据报长度可变，由头部和数据组成，头部由20-60个字节组成，包含路由选择和传输相关的重要信息，习惯上以4个字节表示头部。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP数据报"></p>
-<p>版本号：4位版本号定义IPv4的版本。</p>
-<p>头部长度：HLEN字段以4字节定义数据报头部的总长度，IP数据报有变长头部。</p>
-<p>服务类型：他定义了数据报如何被处理，这个字段也被定义为差分服务。</p>
-<p>总长：定义了一个以字节计算的IP数据报总长度。</p>
-<p>标识、标记以及分段偏移（字节为单位）：数据报大于底层网络可以携带的大小时，这三个字段和IP数据报的分段有关。</p>
-<p>生存时间：存储一个数字，大约是任意量主机之间路由数量最大值的两倍，每个处理数据报的路由器把这个值减1，如果数值为0，路由器就丢弃它。</p>
-<p>协议：TCP|IP中，分组的数据段称为负载。一个数据报可以携带任意属于传输层协议的分组。</p>
-<p>头部校验和：IP是不可靠的，头部校验和来检查头部，但是不检查负载，校验需要在每一个路由器重新计算，因为从一个路由器到另一个路由器头部的某些字段（TTL）会发生改变。</p>
-<p>源和目的地址：这个段的值在整个过程中应当表示不变，并且在链路上的路由也应该知道这个值。</p>
-<p>选项：这个选项多达40个字节，用来进行网络的测试和调试，他不是必需部分，因此头部只需要20字节，但是选项是ip软件必需的，选项给数据报处理增加了一些负担。</p>
-<p>负载：负载就是数据，来自使用IP服务的其他协议的分组，数据报中负载就是内容，头部就是包裹。</p>
-<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="思科模拟器"><a href="#思科模拟器" class="headerlink" title="思科模拟器"></a>思科模拟器</h2><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主界面" style="zoom:50%;">
+    <title>计算机系统-程序的机器级表示</title>
+    <url>/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="程序的机器级表示"><a href="#程序的机器级表示" class="headerlink" title="程序的机器级表示"></a>程序的机器级表示</h1><p>计算机执行机器代码。编译器基于编程语言、目标机器的指令集以及操作系统，生成机器代码。</p>
+<p>汇编代码是机器代码的文本表示。</p>
+<p>对于严谨的程序员来说，能阅读和理解汇编代码形式是一项重要的技能。</p>
+<p>对于处理器的机器语言，比较常见的就是x86-64，IA32是他的32位前身。</p>
+<h2 id="摩尔定律"><a href="#摩尔定律" class="headerlink" title="摩尔定律"></a>摩尔定律</h2><p>各类处理器中的晶体管数量与他们出现的年份呈现正比例增长的趋势，晶体管基本每26个月都会翻一番。</p>
+<p>预测未来10年，芯片上的晶体管每年都会翻一番，这个预测就是摩尔定律。</p>
+<h2 id="程序编码"><a href="#程序编码" class="headerlink" title="程序编码"></a>程序编码</h2><p>GCC C编译器，这是linux上的默认编译器，实际上GCC调用了一整套的程序，将源代码转化为可执行代码。</p>
+<p>首先，C预处理器扩展源代码，插入所有#include命令指定的文件，并扩展所有用#include声明的宏。</p>
+<p>其次，编译器会产生两个源文件的汇编代码，后缀为.s。</p>
+<p>接下来，汇编器会将汇编代码转化为二进制目标代码文件，后缀为.o。（目标代码是机器代码的一种形式，它包含所有指令的二进制表示，但是还没有填入全局值的地址。）</p>
+<p>最后，链接器将两个目标代码文件与实现库函数（例如printf）的代码合并，并产生最终的可执行代码文件。</p>
+<h3 id="机器级代码"><a href="#机器级代码" class="headerlink" title="机器级代码"></a>机器级代码</h3><p>计算机系统使用了不同形式的抽象，利用更简单的抽象模型来隐藏实现的细节。</p>
+<p>ISA指令集体系结构或者指令集架构来定义机器级程序的格式和行为，他定义处理器状态、指令的格式，以及每条指令对状态的影响。</p>
+<p>机器级程序使用的内存地址是虚拟地址，提供的内存模型看上去一个非常大的字节数组。</p>
+<p>在整个编译过程中，编译器完成大部分的工作，汇编代码非常接近于机器代码，他的主要特点是他的可读性更好。</p>
+<p>x86-64的机器代码与C代码差别很大，一些通常对C程序员隐藏的处理器状态都是可见。</p>
+<p>PC（计数器，在%rip来表示）给出将要执行的下一条指令在内存中的地址。</p>
+<p>整数寄存器，包含16个命名的位置，分别存储64位的值，这些寄存器可以存储地址或整数数据，有些寄存器被用来记录重要的程序状态，其他的寄存器用来保存临时数据。</p>
+<p>条件码寄存器，保存最近执行的算术或逻辑指令的状态信息。</p>
+<p>向量寄存器，存放一个或多个整数或浮点数值。</p>
+<p>程序内存包括：用来管理过程调用和返回的运行时栈，以及用户分配的内存块。</p>
+<p>一条机器指令只执行一个非常基本的操作。</p>
+<p>在C语言程序经过预处理与编译之后，就能得到汇编文件，代码中已经出去了所有的局部变量名或数据类型的信息。</p>
+<p>但是机器执行的程序只是一个简单的字节序列，它是对一系列指令的编码，机器对产生这些指令的源代码几乎一无所知。</p>
+<p>要查看机器代码的内容，反汇编器的程序就有作用，他会根据机器代码产生一种类似汇编代码的格式。并且不会去访问汇编代码或者源代码。</p>
+<h3 id="关于格式的注解"><a href="#关于格式的注解" class="headerlink" title="关于格式的注解"></a>关于格式的注解</h3><pre class="line-numbers language-none"><code class="language-none">    .file  &quot;Node.c&quot;
+   .text
+   .globl InitList
+   .def   InitList;  .scl   2; .type  32;    .endef
+   .seh_proc  InitList
+InitList:
+   subq   $40, %rsp
+   .seh_stackalloc    40
+   .seh_endprologue
+   movl   $16, %ecx
+   call   malloc
+   movq   $0, 8(%rax)
+   addq   $40, %rsp
+   ret
+   .seh_endproc
+   .section .rdata,&quot;dr&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>这是思科模拟器的逻辑空间，还可以切换到物理空间，此处不讨论。</p>
-<p>在右下角选择添加的设备，按住CTRL键并且鼠标左键选中点击，就可以连续添加，添加完成之后，esc键退出模式。</p>
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器连接的四台主机" style="zoom:50%;">
+<p>如上是一段C语言代码经过GCC编译后的内容，它包含我们不需要关心的信息，另一方面，他不提供任何程序的描述或者他如何工作的描述。</p>
+<p>所有以“.”开头的行都是知道汇编器和链接器工作的伪指令，通常可以忽略掉他们。</p>
+<p>一种汇编语言程序员的代码风格是，只会给出与讨论内容相关的代码行，每一行的左边有行号提供引用，右边是注释。</p>
+<p>还有网络旁注，提供一些资料，一个网络旁注者描述的是IA32的机器代码，有了x86-64的背景，学习IA32会相当简单，除此之外，它还描述了在C语言中插入汇编语言的方法。</p>
+<h3 id="ATT与Intel汇编格式"><a href="#ATT与Intel汇编格式" class="headerlink" title="ATT与Intel汇编格式"></a>ATT与Intel汇编格式</h3><p>一般的表示，包括如上的表示都是AT&amp;T的，这也是很多工具的默认的编码格式，其他的一些编程工具，都是Intel的，这两种格式在许多的方面有所不同。</p>
+<p><img src="/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/image-20221013144105321.png" class="lazyload placeholder" data-srcset="/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/image-20221013144105321.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221013144105321"></p>
+<pre class="line-numbers language-none"><code class="language-none">    .file  &quot;Node.c&quot;
+   .intel_syntax noprefix
+   .text
+   .globl InitList
+   .def   InitList;  .scl   2; .type  32;    .endef
+   .seh_proc  InitList
+InitList:
+   sub    rsp, 40
+   .seh_stackalloc    40
+   .seh_endprologue
+   mov    ecx, 16
+   call   malloc
+   mov    QWORD PTR 8[rax], 0
+   add    rsp, 40
+   ret
+   .seh_endproc
+   .section .rdata,&quot;dr&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>此处，使用通用集线器连接了四台主机，在线缆的选择中，一般的选择自动类型会容易的多。</p>
-<h3 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主机界面" style="zoom:50%;">
-
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP配置" style="zoom:50%;">
-
-<p>设置好ip之后，很简单的就可以实现几台主机之间的互联，通过ping ip地址的方式。当然这是因为集线器把他们连接到一起的原因。</p>
-<h3 id="使用数据包来观察"><a href="#使用数据包来观察" class="headerlink" title="使用数据包来观察"></a>使用数据包来观察</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="新建一般的分组" style="zoom:50%;">
-
-<p>创建一个数据报，例如从PC7发送到PC9。选择左下角，将事件改为模拟或仿真。观察数据包行为。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="正在发送数据包"></p>
-<p>此处，在发送的时候，无法直接发送，因为源端没有目的端的MAC与IP之间的映射关系，于是需要发送ARP广播请求。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到集线器"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发到其他主机，其他主机判断会否需要"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="接受主机响应集线器"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发响应"></p>
-<p>数据包信息</p>
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="过程描述" style="zoom:50%;">
-
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组封装"></p>
-<h3 id="访问web服务器"><a href="#访问web服务器" class="headerlink" title="访问web服务器"></a>访问web服务器</h3><p>选择一台主机和服务器，简单的使用交叉线连起来，建一个数据报，观察。</p>
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="创建分组" style="zoom:50%;">
-
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到服务器"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器返回响应"></p>
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="web浏览器请求服务器" style="zoom:50%;">
-
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终返回的响应报文内容" style="zoom:50%;">
-
-<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终到达主机的数据报响应信息" style="zoom:50%;">
-
-<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>利用交换机，搭建一个简单的局域网，并且使用DHCP动态分配ip地址。</p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP动态分配ip"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器配置"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP配置，注意保存"></p>
-<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP自动分配"></p>
+<p>使用如上的命令行，GCC可以产生Intel格式的代码。</p>
+<p>Intel代码省略了指示大小的后缀。</p>
+<p>Intel代码省略了寄存器名字前面的“%”符号。</p>
+<p>Intel代码用不同的方式来描述在内存中的位置。</p>
+<p>在带有多个操作数的指令情况下，列出操作数的顺序相反。</p>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><p>32位的体系结构是由16位扩展而来的，在Intel中用术语“字（word）”来表述16位数据类型，因此，32位数据类型成为双字，64位数称为四字。</p>
+<p>C语言数据类型在x86-64中的大小。</p>
+<table>
+<thead>
+<tr>
+<th>C声明</th>
+<th>Intel数据类型</th>
+<th>汇编代码后缀</th>
+<th>大小（字节）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>字节</td>
+<td>b</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>字</td>
+<td>w</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>双字</td>
+<td>l</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>四字</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>char*</td>
+<td>四字</td>
+<td>q</td>
+<td>8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度</td>
+<td>s</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度</td>
+<td>l</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>住：指针在64位的系统中，长8个字节。</p>
+<p>大多数GCC产生的汇编代码指令中都有一个字符的后缀，表明操作数的大小，例如数据传送指令的变种：movb（字节）、movw（字）、movl（双字）、movq（四字）。</p>
+<h2 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h2><p>一个x86-64的CPU包含一组16个存储64位值的通用目的寄存器，这些寄存器用来存储整数数据和指针，他们都以%r开头，最初的8086中有8个16位的寄存器，扩展到IA32时，这些寄存器也扩展为32位寄存器，标号从%eax到%ebp。</p>
+<table>
+<thead>
+<tr>
+<th>64位</th>
+<th>32位</th>
+<th>16位</th>
+<th>8位</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%rax</td>
+<td>%eax</td>
+<td>%ax</td>
+<td>%al</td>
+<td>返回值</td>
+</tr>
+<tr>
+<td>%rbx</td>
+<td>%ebx</td>
+<td>%bx</td>
+<td>%bl</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>%rcx</td>
+<td>%ecx</td>
+<td>%cx</td>
+<td>%cl</td>
+<td>第4个参数</td>
+</tr>
+<tr>
+<td>%rdx</td>
+<td>%edx</td>
+<td>%dx</td>
+<td>%dl</td>
+<td>第3个参数</td>
+</tr>
+<tr>
+<td>%rsi</td>
+<td>%esi</td>
+<td>%si</td>
+<td>%sil</td>
+<td>第2个参数</td>
+</tr>
+<tr>
+<td>%rdi</td>
+<td>%edi</td>
+<td>%di</td>
+<td>%dil</td>
+<td>第1个参数</td>
+</tr>
+<tr>
+<td>%rbp</td>
+<td>%ebp</td>
+<td>%bp</td>
+<td>%bpl</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>%rsp</td>
+<td>%esp</td>
+<td>%sp</td>
+<td>%spl</td>
+<td>栈指针</td>
+</tr>
+<tr>
+<td>%r8</td>
+<td>%r8d</td>
+<td>%r8w</td>
+<td>%r8b</td>
+<td>第5个参数</td>
+</tr>
+<tr>
+<td>%r9</td>
+<td>%r9d</td>
+<td>%r9w</td>
+<td>%r9b</td>
+<td>第6个参数</td>
+</tr>
+<tr>
+<td>%r10</td>
+<td>%r10d</td>
+<td>%r10w</td>
+<td>%r10b</td>
+<td>调用者保存</td>
+</tr>
+<tr>
+<td>%r11</td>
+<td>%r11d</td>
+<td>%r11w</td>
+<td>%r11b</td>
+<td>调用者保存</td>
+</tr>
+<tr>
+<td>%r12</td>
+<td>%r12d</td>
+<td>%r12w</td>
+<td>%r12b</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>%r13</td>
+<td>%r13d</td>
+<td>%r13w</td>
+<td>%r13b</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>%r14</td>
+<td>%r14d</td>
+<td>%r14w</td>
+<td>%r14b</td>
+<td>被调用者保存</td>
+</tr>
+<tr>
+<td>%r15</td>
+<td>%r15d</td>
+<td>%r15w</td>
+<td>%r15b</td>
+<td>被调用者保存</td>
+</tr>
+</tbody></table>
+<p>整数寄存器，所有16个寄存器的低位部分都可以作为字节、字、双字和四字来访问。</p>
+<h3 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h3><p>大多数指令都有一个或多个操作数，指示出一个操作中要使用的源数据值，以及放置结果的目的位置。</p>
+<p>操作数被分为三种类型：</p>
+<p>​    立即数：表示常数值，在AT&amp;T中，立即数的书写方式是“$”后面跟一个标准C表示法表示的整数。</p>
+<p>​    寄存器：表示某个寄存器内的内容。</p>
+<p>​    内存引用：根据计算出来的地址访问某个的内存位置。</p>
+<p>有多种不同的寻址方式，其中比例变址寻址比较常见，Imm（rb，ri，s），Imm表示立即数偏移，rb表示基址寄存器，ri表示变址寄存器和一个比例因子s。</p>
+<h3 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h3><p>最频繁的指令是将数据从一个位置让复制到另一个位置的指令。</p>
+<p>最简单形式的数据传送指令是——MOV类，这些指令把数据从源位置复制到目的位置，不做任何变化。</p>
+<p>movb、movw、movl、movq组成了MOV类，这些指令都执行相同的操作，区别在于他们操作的数据大小不同，分别为1 2 4 8字节。</p>
+<p>源操作数指定的值是一个立即数，存储在寄存器中或者内存中，目的操作数指定一个位置，要么是一个寄存器，要么是一个内存地址，传送指令的两个操作数不能都指向内存地址。</p>
+<p>这些指令的寄存器数可以是16个寄存器有标号部分中的任意一个，寄存器部分的大小必须与指令最后一个字符指定的大小相匹配，MOV指令只会更新目的操作数指令的那些寄存器字节或内存位置，唯一的例外是movl指令以寄存器作为目的时，他会把该寄存器的高位4字节设置为0。</p>
+<p>在做数据传送时，常常会遇到将较小的源传送到较大的目的，对此MOV有两类数据移动指令。</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>效果</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MOVZ S R</td>
+<td>R 零扩展S</td>
+<td>以零扩展进行传送</td>
+</tr>
+<tr>
+<td>movzbw</td>
+<td></td>
+<td>将做了零扩展的字节传送到字</td>
+</tr>
+<tr>
+<td>movzbl</td>
+<td></td>
+<td>字节传送到双字</td>
+</tr>
+<tr>
+<td>movzwl</td>
+<td></td>
+<td>字传送到双字</td>
+</tr>
+<tr>
+<td>movzbq</td>
+<td></td>
+<td>字节传送到四字</td>
+</tr>
+<tr>
+<td>movzwq</td>
+<td></td>
+<td>字传送到四字</td>
+</tr>
+<tr>
+<td>MOVS S R</td>
+<td>R 符号扩展S</td>
+<td>传送符号扩展的字节</td>
+</tr>
+<tr>
+<td>movsbw</td>
+<td></td>
+<td>字节传送到字</td>
+</tr>
+<tr>
+<td>movsbl</td>
+<td></td>
+<td>字节传送到双字</td>
+</tr>
+<tr>
+<td>cltp</td>
+<td>%rax——（符号扩展）%eax</td>
+<td>把%eax符号扩展到%rax</td>
+</tr>
+</tbody></table>
+<p>如上的表省略了部分。</p>
+<h3 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h3><p>两个数据传送操作可以将数据先压入栈中，再从栈中弹出。</p>
+<p>pushq 压栈</p>
+<p>popq 弹栈</p>
+<p>将一个四字值压入栈中，首先要将栈指针减8，然后将值写到新的栈顶地址。</p>
 ]]></content>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
   </entry>
   <entry>
     <title>高等数学</title>
@@ -4469,6 +4209,310 @@ InitList:
       </categories>
       <tags>
         <tag>高数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络笔记</title>
+    <url>/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><strong>说明</strong></p>
+<p>教材是谢希仁的计算机网络第八版，但是在写笔记阶段已经学完了以及一些其他的原因，所以笔者想用自上而下的方式。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221003152310810"></p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>互联网</strong></p>
+<p>局域网和广域网连在一起就是互联网，也就是说互联网不是单个网络，而是多个网络的组合。</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a><strong>网络</strong></h3><p>一组具有通信能力的设备连接在一起就是网络，他们可以是两台主机（host），也可以是一台主机和一台打印机，甚至是平常距离日常很遥远的路由器，交换机，调制解调器。</p>
+<p>路由器，连接网络和网络。</p>
+<p>交换机，用来连接设备。</p>
+<p> 调制解调器，用来交换数据形式。</p>
+<p>当一台路由器（即插即用）连接两台电脑时，这时候一个局域网就组建成功了。</p>
+<p><strong>局域网</strong></p>
+<p>在局域网中，每一台主机都有一个标识符（地址），用来在这个局域网中定义这台主机。这台主机向另一台主机发送的数据包里就包含了源和目的主机的地址。</p>
+<p>在过去的一段时间，一个网络中的所有主机都用一条电缆连接，一台主机发送的数据其他的主机都可以接受到，这时候由这些主机选择接收还是丢弃这些数据包，目标主机就选择保存这个数据包。现在多数的局域网采用交换机，他可以识别数据包的目的地址并引导数据包达到他的目的地而不必发送到其他的主机。</p>
+<p>交换机减轻了局域网中的流量，如果不是共同的源主机和目的主机，那么交换机允许同一时刻多对主机之间同时互相通信。</p>
+<p><strong>广域网</strong></p>
+<p>同样是由具有通信能力的设备相互连接而成的，但是不同的是，广域网的地理覆盖范围很广，通常的局域网值覆盖一个大楼或者是一个校园，但是广域网则十分的大，可能是一个城市，一个省，一个国家等。</p>
+<p>局域网互联主机，但广域网互联交换机、路由器、调制解调器等连接设备。</p>
+<p><strong>点到点广域网</strong></p>
+<p>这种广域网通过传输介质来连接两个通信设备。</p>
+<p><strong>交换式广域网</strong></p>
+<p>交换式广域网具有多个端点，可以说交换式广域网是交换机连接几个点到点的广域网而形成的。</p>
+<p><strong>互联网络</strong></p>
+<p>现在很少有单独的局域网或者广域网，他们都互相连接在一起的，当两个或多个网络连接在一起时，它们就形成了一个互联网络，或者互联网。 </p>
+<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a><strong>交换</strong></h3><p>互联网是由链路和交换机组成的，实际上互联网是一个交换式的网络，其中一台交换机至少将两条链路连接的一起，在需要的时候，交换机需要将数据从一条链路转发到另一条链路，交换式网络最常见的类型为电路交换网络和分组交换网络。</p>
+<p><strong>电路交换网络</strong></p>
+<p>在电路交换网络中，两个网络之间总是存在一条专用的连接（电路），交换机只能让他变成活跃或者非活跃状态。</p>
+<p>这样的模式存在一个弊端：电路容量必须足够的大，以便于在两个网络所有主机通信时，不至于通信失败，但是这样的情况并不是每时每刻都在发生的，在一般的场景下，工作时，可能只有部分的容量被占用，因此这种模式的效率是低下的。</p>
+<p>此处的效率低下指的是，高容量的电路使用率不足，并非通信效率不佳。</p>
+<p><strong>分组交换网络</strong></p>
+<p>在一个计算机网络中，两个端点之间使用被称为分组（packet）的数据块进行通信，也就是说，两个计算机交换的是独立的数据分组，由于分组能够被存储和发送时是一个独立的实体，因此这种机制允许我们实施存储转发的交换功能。</p>
+<p>分组交换网络中的路由器具有能够存储和转发分组的队列，如果现在需要发送的分组大于了线路的容量，那么此时的分组会在路由器存储并且进行排队的状态，他的效率看上去比电路要高了，但是分组可能也会在大规模使用时遇到延迟。</p>
+<h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a><strong>因特网</strong></h3><p>这是最著名的互联网了，它是由成千上万个相互连接的网络组成。</p>
+<p>概念上的因特网由一系列主干、提供者网络和客户网络组成，主干是最高层次，是一些通信公司拥有的大型网络，主干网络通过对等点的复杂交换系统进行连接，一些小的提供者网络处于第二个层次，这些网络通过付费使用主干网络服务，提供这网络连接主干网络，有时提供网络之间也相互连接，客户网络是因特网边缘的网络，他们使用因特网提供的服务，为了接收服务，客户网络需要像提供者网络付费。</p>
+<p>主干和提供者网络其实都是服务提供商，主干常常称为国际ISP，提供者网络常常被称为国家或地区ISP。</p>
+<h3 id="访问因特网"><a href="#访问因特网" class="headerlink" title="访问因特网"></a><strong>访问因特网</strong></h3><p>因特网允许任何用户成为他的一部分，但是还需要用户在物理上连接到一个ISP。物理连接通常利用一条点到点的广域网实现。</p>
+<p><strong>电话网络</strong></p>
+<p>具有电话服务的客户，大多数电话网络自身就已经连接到因特网，因此这些客户可以选择把他们和电话中心的语音线路转换成点到点的广域网。</p>
+<p>实现方式有两种：</p>
+<p>拨号服务，在电话线路中增加将数据转换成语音的调制解调器，安装在计算机中的软件拨打ISP的号码，形成一条电话连接。但是拨号服务很慢，同时线路用于因特网连接的时候，线路无法进行电话连接，因此这种方式只对偶尔访问因特网的客户有效。</p>
+<p>DSL，将电话线路升级，可以同时使用语音服务。</p>
+<p>除此之外还可以通过：有线电视网络、无线网络、直连Internet（将自身变成一个ISP）</p>
+<h3 id="协议分层"><a href="#协议分层" class="headerlink" title="协议分层"></a><strong>协议分层</strong></h3><p>协议定义了发送者、接受者和所有中间设备为了高效通信需要遵循的规则。通信复杂时，我们需要把任务划分到不同层，不同层需要不同的协议。</p>
+<p><strong>协议分层原则</strong></p>
+<p>1、双方双向通信，每一层都能执行两个相反的任务，每个方向上一个</p>
+<p>2、两端中，每一层的两个对象都应该相同。</p>
+<p><strong>逻辑连接</strong></p>
+<p>每层之间拥有逻辑上的连接，这意味着我们可以拥有层与层之间的通信，这是为了方便理解。</p>
+<h3 id="TCP-IP协议簇"><a href="#TCP-IP协议簇" class="headerlink" title="TCP|IP协议簇"></a>TCP|IP<strong>协议簇</strong></h3><p>不同层次组织的协议集——协议簇。</p>
+<p>这是一个相互交互的模块组成的一个层次结构协议，层次意味着上层的协议需要得到一个或者多个较下层的协议提供的服务支持。</p>
+<p>初始的TCP|IP提供了四个层次，但通常的它应当是一个五层模型。</p>
+<p>层次：应用层、传输层、网络层、数据链路层、物理层</p>
+<p>对等体：消息、段或用户数据报、数据报、帧、bit位</p>
+<p>采用逻辑连接使得每一层的任务变得简单，其中应用层、传输层和网络层的任务都是从端到端的，但是数据链路层和物理层的任务是从点到点的。换句话说，高层次的任务范围是互联网，而低层次也就是下两层的任务范围是链路。</p>
+<p>还可以从每一层的数据单元出发，上三层的分组（packet）不应该被任何路由器或者链路层的交换机改变，在下两层，主机创建的分组仅仅被路由器不改变，链路层交换机不改变任何东西。</p>
+<p><strong>各层描述</strong></p>
+<p><strong>应用层</strong></p>
+<p>逻辑连接是端到端的，两个应用层之间好像有一架桥梁负责交换消息，但实际上通信要经历所有的层次才能完成。</p>
+<p>应用层的通信处于两个进程之间，一个进程发送请求，接受另一个进程的响应，进程到进程的通信就是应用层的任务，在因特网上，应用层包含了许多的协议（HTTP、WWW、FTP、SSH与TELNET、DNS）</p>
+<p><strong>传输层</strong></p>
+<p>端到端，源主机的传输层从应用层得到消息，封装为传输层的分组（段或数据报，不同协议叫法不同。）然后进行发送，通过逻辑连接，到达目的主机的传输层。</p>
+<p>传输层向应用层提供服务，，从运行于应用层的程序得到消息，并将它投递到目的主机相应的应用程序。（主要原因是为了分割任务和责任），传输层也有很多协议，每一个都是为了一些特定的任务设计的。（TCP、UDP）</p>
+<p><strong>网络层</strong></p>
+<p>主机到主机，源主机到目的主机之间可能存在多个路由器，因此路径上的路由器负责为每一个分组选择最好的路径（IP）</p>
+<p><strong>数据链路层</strong></p>
+<p>互联网是由多个链路通过路由连接而成的，当主机传输数据报到目的地可能存在多个交叠的链路集，路由器负责挑选最好的链路进行传输，当路由器决定好了链路之后，数据链路层开始接管这个数据报并且让他穿过这条链路，这条链路可以是无线网、有线网，对于不同的链路类型存在不同的协议，无论什么情况，链路层都要负责通过链路传输分组。</p>
+<p>TCP/IP没有为了数据链路层定义任何协议，因此它支持所有所有私有和标准的协议能接管数据报并且携带它穿过链路的任意协议都能满足网络层的要求，链路层接管数据报并且封装在一个称为帧的分组中。</p>
+<p><strong>物理层</strong></p>
+<p>物理层负责携带一个帧中单独的比特穿过链路，尽管物理层已经位于协议簇的最底层，但是在物理层之下还存在一个隐藏的传输介质层，因此物理层之间的还是逻辑通信，两个设备通过可以携带电信号或者光信号的介质到达目的地。将一个bit转换为电信号或者光信号存在多个协议。</p>
+<p><strong>封装和解封装</strong></p>
+<p>在Internet协议分层中，一个重要的概念是封装和解封装。</p>
+<p>在链路层交换机中没有封装和解封装发生。</p>
+<p>应用层，交换的数据称为消息，消息一般的不包含头部和尾部，即使包含了这些，我们也称其为消息，消息会被传递到传输层。</p>
+<p>传输层，把这个消息称为有效载荷，该载荷是传输应该关注的负载，传输层增加了传输层头部，其中包含了希望进行通信的源和目的程序的标识符和一些投递消息的更多信息，例如：流量控制、差错控制和拥塞控制需要的信息，结果为一个传输层分组。在TCP中称为段、在UDP中成为用户数据报，然后传输到网络层</p>
+<p>网络层，把传输层分组作为数据或者有效载荷，并且加上自己的头部，包含源和目的主机的地址，以及用于差错检查、分片的信息和一些其他的信息，结果为一个称为数据报的网络层分组，然后网络层投递到数据链路层。</p>
+<p>数据链路层，把网络层分组作为数据或者有效载荷并且添加上自己的头部，包含主机或者下一跳步（路由器）的链路层地址，结果为一个称为帧的链路层分组，投递到物理层进行传输。</p>
+<p><strong>路由器的解封装与封装</strong></p>
+<p>路由器连接多个链路，因此路由器也存在解封装与封装的问题。</p>
+<p>在比特集被投递到数据链路层之后，这一层从帧中解封装出数据报并把它投递到网络层。</p>
+<p>在网络层只检查数据报头部的源地址和目的地址，查阅它的转发表以寻找数据报将要被投递的下一跳步。除非数据报太大需要分片，数据报的内容不应该被网络层改变。</p>
+<p>下一链路的链路层将数据报封装为一个帧，将其放到物理层进行传输。</p>
+<p><strong>目的主机的解封装</strong></p>
+<p>目的主机端，每一层都只解封装接收到的分组，移出有效载荷，并将有效的载荷移至上一层，直到消息到达应用层，目的主机中的解封装包含差错检查。、</p>
+<p><strong>地址</strong></p>
+<p>看起来，似乎这个模型的每一层都需要逻辑通信，那么每一层之间就都需要一对地址，但是因为物理层不需要地址（介质连接），因此只需要四对地址。</p>
+<p>在应用层，一般的是域名定义提供服务的站点，或者是电子邮件地址，在传输层，地址是端口号，端口号指的是源和目的地的进程，端口号是本地地址，用于区分同一时间运行的几个程序，网络层地址是全局的，涵盖了整个Internet，链路层地址有时叫做MAC地址，是本地定义的地址，每个链路层地址在网络中定义一个特定的主机或路由器。</p>
+<p><strong>多路复用与多路分解</strong></p>
+<p>协议簇在一些层次使用多个协议，因此我们在源进行多路复用（一个协议能封装多个来自上层协议的分组，一次一个），在目的端进行多路分解（一个协议可以解封装并且将分组投递到上层协议，一次一个）。</p>
+<h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a><strong>OSI</strong></h3><p>应用层</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>传输层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<p>看起来似乎比TCP/IP更加好一些，但实际上，表示层和会话层没有定义协议，并且模型完成较晚，并且在实际的应用上，并没有想象中的高效。</p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>整个Internet、硬件和软件的设计和开发都是为了为应用层提供服务。</p>
+<p>因特网提供服务的本质以及两个应用类型：传统客户—服务器模式，以及新类型对等模式</p>
+<h3 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a><strong>提供服务</strong></h3><p>应用层是唯一向因特网用户提供服务的层次，因此它十分的灵活，新的协议可以随时加入Internet。</p>
+<p>标准和非标准协议</p>
+<p>描述的都是具体的程序，前者是被管理机构标准化和归档化的内容，后者是自己定义的内容，例如在自己写的程序。</p>
+<h3 id="应用层模式"><a href="#应用层模式" class="headerlink" title="应用层模式"></a><strong>应用层模式</strong></h3><p>传统：客户—服务器</p>
+<p>这种模式对服务器负担较大，要求服务器一直保持开启阶段，为了让客户机随时都可以访问他，并且当许多客户一起访问服务器，对服务器的考验十分巨大。</p>
+<p>通信负荷集中在服务器上，WWW、HTTP、FTP、SSH以及电子邮件还是这样的模式。</p>
+<p>新模式：对等模式</p>
+<p>P2P，不存在客户和服务器，两者是对等结点，最经典的是网络电话，没有一方需要等待另一方呼叫，还有计算机的文件共享。</p>
+<p>对等模式不用一直维护服务器，容易扩展并且经济划算，但是依旧存在问题，安全性部署困难，适用性不高（并不是所有应用都可以应用对等模式。）</p>
+<p>混合模式</p>
+<p>结合了两种模式优点来吧这二者混合起来，比如轻量级的客户和服务器可以用来寻找对等结点的地址，当实际服务时，是从对等结点中获得。</p>
+<h3 id="API应用程序接口"><a href="#API应用程序接口" class="headerlink" title="API应用程序接口"></a>API<strong>应用程序接口</strong></h3><p>一个计算机程序通常是由预定义了指令集的计算机语言编写的，这个指令集告诉计算机要做什么，如果我们需要使得进程之间通信，那么就需要一个新的指令集，这就是API。</p>
+<p>此时API连接了两个实体，OS与程序，其中OS封装了TCP/IP协议簇的前四层。</p>
+<p>通信API：套接字、传输层接口TLI、STREAM。</p>
+<h3 id="WWW与HTTP"><a href="#WWW与HTTP" class="headerlink" title="WWW与HTTP"></a>WWW与HTTP</h3><p>万维网（WWW）又叫WEB，今天它是信息宝库，其中网页文档在全世界发布，分布式允许web无限增长，链接使得网页之间出现引用。（超文本）</p>
+<p>WWW是一个分布式客户—服务器模式，使用浏览器的用户可以访问一个正在服务器上运行的服务，服务分布在不同的site上。</p>
+<p>浏览器通常包含三个部分：控制程序、客户协议和解释程序。</p>
+<p><strong>网络服务器</strong></p>
+<p>URL，统一资源定位符，（协议+主机+端口+路径）来定位文档。</p>
+<p>网上文档：静态文档（用户只能得到副本的文档，html等）、动态文档（返回的响应文档）、活动文档（在客户站点运行的脚本或程序，js等）</p>
+<p>HTTP，超文本传输协议，用来定义客户服务器程序如何编写和如何获取网页的协议，一个用户发送请求，服务器返回响应，服务器使用80端口，客户使用临时端口，HTTP使用TCP服务。</p>
+<p><strong>非持续与持续连接</strong></p>
+<p>获取一个对象就创建一个连接的模式就是非持续的，创建一个连接获取所有对象就是持续的。其中这些对象应该位于同一台服务器。</p>
+<p><strong>报文格式</strong></p>
+<p>HTTP定义了请求报文和响应报文的格式，每一种报文由四个部分组成。</p>
+<p><strong>请求报文</strong></p>
+<p>第一行：请求行</p>
+<p>由方法、URL和版本构成。</p>
+<p>方法定义了请求类型（GET、POST、PUT等），URL定义了相关网页的地址和名称，版本给出了协议的版本（常用1.1）</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求方法"></p>
+<p>请求行之后有一个或者多个请求头部，从客户端向服务端发送额外的信息。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求头部名称"></p>
+<p><strong>响应报文</strong></p>
+<p>包含状态行、头部行有时候包含主体。</p>
+<p>状态行：http协议的版本、状态码</p>
+<p>状态码：100范围内只代表一个报告，200范围内表示这是一个成功的请求，300内表示把客户端重定向到另一个URL，400范围内表示客户端发生错误，500范围内表示错误发生在服务端。</p>
+<p>响应头部行，发送额外信息。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="响应头部名称"></p>
+<p>主体包含了服务器发送给客户的文档，除非响应是一个错误报文，否则主体是存在的。</p>
+<p>条件请求:客户在请求中加入条件</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>WWW起初被设计为无状态实体，客户发送请求，服务器响应，二者关系结束。</p>
+<p>Cookie的创建和存储与实现有关，然而它的原理是相同的。<br>1．当服务器从客户端接收到请求后，它将客户端的信息存储在文件或字符串中。这些信息可能包含客户端的域名、cookie内容（服务器收集到的关于客户端的信息，如主机名、注册号等)、时间戳,以及与实现有关的其他信息。<br>2．服务器在响应中包含了它发送给客户端的cookie。<br>3．当客户端接收到响应后，浏览在cookie目录中查询是否有从那个服务器使用Cookie，当客户向服务器发送请求时，浏览器在cookie目录中查询是否有从那个服务器发送过来的cookie。如果有，则在请求中包含这个cookie。当服务器接收到这个请求后，它就知道了这是一个老客户，而不是新的。注意，cookie的内容从来不让浏览器读取或者透露给用户，只由服务器创建并回收cookie。</p>
+<h3 id="WWW高速缓存、代理服务器"><a href="#WWW高速缓存、代理服务器" class="headerlink" title="WWW高速缓存、代理服务器"></a>WWW高速缓存、代理服务器</h3><p>代理服务器是一台计算机，可以保存最近请求的响应的副本，客户端向代理服务器发请求，代理服务器检查本地高速缓存，如果高速缓存中不存在响应正文，那么代理服务器就向相应的服务器发送请求，返回的响应会发送到代理服务器中，并且进行存储，以用于其他客户端将来的请求。</p>
+<p>代理服务器可以降低负载，减少通信量，并且降低延迟，但是，为了使用代理，必须配置客户端。</p>
+<p>代理服务器既是服务又是客户，通常位于客户节点。</p>
+<p>缓存更新，一个响应应该在被改变前，在代理服务器保留多长时间，第一个策略是保存站点列表，保存一段时间，另一个建议是加入头部信息显示最近修改时间，代理服务器可以从时间猜测他们在多长时间内是有效的。</p>
+<h3 id="HTTP安全"><a href="#HTTP安全" class="headerlink" title="HTTP安全"></a>HTTP安全</h3><p>其实，http不提供安全，但是http可以在安全套接层（STL）上运行，此时HTTP称为HTTPS，它提供保密性、客户和服务器鉴别，以及数据完整性。</p>
+<h3 id="FTP-文件传输协议"><a href="#FTP-文件传输协议" class="headerlink" title="FTP 文件传输协议"></a>FTP 文件传输协议</h3><h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层提供了包括分组、路由以及转发的服务，网络层中的内容主要包括分组交换、网络层性能、网络层拥塞以及路由器结构。</p>
+<h3 id="网络层服务"><a href="#网络层服务" class="headerlink" title="网络层服务"></a>网络层服务</h3><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>这是网络层的首要责任，packet。在源端将负载封装进网络层packet中并在目的端解封装。</p>
+<p>源从上层协议接受分组，加入一个头部，头部包含源和目的地址以及其他网络层协议所需要的信息。</p>
+<p>并且将其传送到数据链路层，源端不改变负载的内容，除非负载过大不能传递才需要分段处理。</p>
+<p>目的主机从数据链路层接受网络层分组、解封分组并且将负载传递到相对应的上层协议。如果分组在源或者在沿途被分段，那么网络层负责等待，直到所有的分组都到达，他同时负责重组分组并且将它们传递到上层协议。路径上的路由器不可以解封它们接受到的分组，除非它们接受到的分组需要被分段，也不允许路由器改变地址，无论是源或者是目的。路由器能做的仅仅是检查和、转发，当然如果需要分段的情况，路由器会复制头部并且做出一些改变。</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>网络层的另一个责任就是路径选择，这就是路由。网络层寻找最佳的路由，但是如何定义最佳，网络层需要一些特定的策略。</p>
+<p>在现在，有一些专业的路由协议可以帮助路由器很快的实现这一点。</p>
+<h4 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h4><p>路由应用一些策略并运行某些路由协议来为每个路由创建决策表，那么转发可以定义为当packet到达路由器的一个端口时，路由器所采取的决策表有时也被叫做转发表。路由器根据它来实施行为，当接受到一个packet时，他需要将分组转发到另一个或多个所连接的网络上。一个与多个的区别就区分了单播和多播路由。为了做出这样的决策，路由器使用packet头部的一个信息片段来找到转发表中相应的输出接口号。</p>
+<h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><p>尽管差错控制可以在网络层中实现，但是网络层的设计者似乎忽略了携带数据中的差错问题，因为数据有可能会被分段，因此差错控制的效率会变得非常低。但是网络层的设计者将校验的字段加入到了头部中，用来校验头部的好坏，这个校验和可能防止两跳之间以端与端之间的数据报头部的改变或损坏。</p>
+<p>但是如果数据报被丢弃或者在头部中含有未知信息，ICMP这样的辅助协议来提供某种差错控制。</p>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p>源端可以发送但不会淹没接收方的数据量，如果源端计算机上层产生数据的速度比目的端极端及上层消耗数据的速度快，那么接收方会被数据所淹没，为了控制数据流量，接收方需要发送一些反馈给发送方，从而通知后者接收方被数据淹没了。</p>
+<p>但是网络层中没有提供任何的流量控制，当准备好时，数据报被发送方发送，而不考虑接收方是否准备好了。</p>
+<p>网络层设计中缺乏流量控制的原因有这么一些：这一层没有差错控制，接受端网络层的工作是很简单的，以致于它很少被淹没。当准备好时，利用网络层服务的上层可以实现缓冲区，用它来从网络层接受数据，而无需一接受数据的速度消耗数据。流量控制被提供给绝大多数使用网络层服务的上层协议，因此另一级流量控制使得网络层更复杂且整个系统低效。</p>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>网络层的另外一个事件是拥塞控制，网络层的拥塞控制是某一个区域出现过多的数据报的情况，如果源计算机发送的数据报数量超过了网络或者路由器的容量，那么就可能发生拥塞，在这种情况下一些路由器可能丢弃一些数据报，然后随着更多的数据报被丢弃，这种情况会变得更加槽糕，由于上层的差错控制，发送方可能发送丢失分组的副本，如果拥塞继续，那么有时可能导致系统崩溃。</p>
+<h4 id="服务质量"><a href="#服务质量" class="headerlink" title="服务质量"></a>服务质量</h4><p>Qos（通信服务质量）变得十分重要，为了保证网络层不变，一般的这些服务通常在上层实现。</p>
+<h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><p>这是绕不开的事件，在最开始设计的时候，并没有考虑安全，网络层的设计本身就是不安全的，为了给无连接的网络层提供安全，我们需要另一个虚拟层将无连接服务变成面向连接服务，这个虚拟层成为IPSec。</p>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p>交换发生在网络层，事实上，路由器是一个创建了输入端口和输出端口连接的交换机，就像将输入连接连接到输出让电流流动的开关。</p>
+<p>数据通信技术分为两部分，电路交换与分组交换，但是在网络层只使用分组交换，因为这一层数据单位是分组。</p>
+<p>分组交换网络的连接装置仍然决定如何将分组路由到最终的目的端，如今分组交换网络使用两种不同的方法，数据报方法和虚电路方法。</p>
+<h4 id="数据报方法"><a href="#数据报方法" class="headerlink" title="数据报方法"></a>数据报方法</h4><p>无连接服务，转发分组基于分组的目的地址。每个分组都是独立的实体。</p>
+<h4 id="虚电路方法"><a href="#虚电路方法" class="headerlink" title="虚电路方法"></a>虚电路方法</h4><p>面向连接服务，同一报文的分组存在着连接，分组包含流标号，定义了分组应该经过的路径。转发决策基于标签的值或者虚电路标识符。</p>
+<p>创建面向连接服务：建立、数据交换和拆除。</p>
+<h3 id="网络层性能"><a href="#网络层性能" class="headerlink" title="网络层性能"></a>网络层性能</h3><p>延迟、吞吐量、分组丢失来度量网络层性能。</p>
+<p>延迟：发送延迟、传播延迟、处理延迟以及排队延迟</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送延迟"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="传播延迟"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="处理延迟"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="排队延迟"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="总延迟"></p>
+<p>吞吐量：一秒内通过这个点的位的数量，由最小的路径以及平均路径来决定。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="吞吐量"></p>
+<p>分组丢失：缓冲区满造成丢失。</p>
+<h3 id="网络层拥塞"><a href="#网络层拥塞" class="headerlink" title="网络层拥塞"></a>网络层拥塞</h3><p>网络层的拥塞和两个问题有关，吞吐量和延迟。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组延迟和吞吐量的负载函数"></p>
+<p>当负载远远小于网络容量时，延迟是最小的，这一部分延迟只有处理延迟和传播延迟，某种程度上说，这可以忽略。让负载容量增长，此时就需要排队延迟。</p>
+<p>吞吐量会随着负载的大小而增加，但是路由器丢弃分组，当负载超过网络容量时，队列变满路由器必须丢弃一些分组，这不会减少分组数量，因为当分组没有到达目的端，源端使用超时机制重发分组。</p>
+<h4 id="拥塞控制机制"><a href="#拥塞控制机制" class="headerlink" title="拥塞控制机制"></a>拥塞控制机制</h4><p>开环拥塞控制（预防）</p>
+<p>预防策略，源端和目的端都可以处理拥塞控制。</p>
+<p>重传策略</p>
+<p>发送方认为一个分组损坏或者是丢失，分组就需要重发，重传会增加拥塞。但是好的重传可以预防拥塞。优化设计重传策略和重传定时器，使之具有高效率。</p>
+<p>窗口策略</p>
+<p>发送方窗口的类型会影响拥塞。</p>
+<p>确认策略</p>
+<p>丢弃策略</p>
+<p>许可策略</p>
+<p>闭环拥塞控制（消除）</p>
+<p>背压、抑制分组、隐含信令、显式信令</p>
+<h3 id="路由器的结构"><a href="#路由器的结构" class="headerlink" title="路由器的结构"></a>路由器的结构</h3><p>元件：输入端口、输出端口、路由器处理器以及交换结构。</p>
+<p>交换结构：纵横制交换机、榕树交换机、Batcher榕树交换机。</p>
+<h3 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h3><p>第四版网络层主要为一个主要协议和三个辅助协议。</p>
+<p>主要协议为：ipv4负责网络层的分组、转发以及传递。控制报文协议ICMP帮助IPv4处理一些网络层传递中可能发生的错误。组管理协议IGMP用于帮助IPV4多播。在网络层地址映射到链路层地址当中，地址解析协议ARP用来将网络和链路层联合起来。</p>
+<p>Ipv4 不可靠且无连接的数据报协议，一个尽力而为的传递服务。</p>
+<p>分组可以被破坏、丢弃、失序、延迟，也可能造成拥塞，因此Ipv4必须和TCP搭配。</p>
+<p>数据报独立处理，意味着数据报也可能被破坏等，因此Ipv4依赖高层协议处理这些问题。</p>
+<h3 id="IPv4数据报格式"><a href="#IPv4数据报格式" class="headerlink" title="IPv4数据报格式"></a>IPv4数据报格式</h3><p>IP使用的分组叫做数据报，数据报长度可变，由头部和数据组成，头部由20-60个字节组成，包含路由选择和传输相关的重要信息，习惯上以4个字节表示头部。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP数据报"></p>
+<p>版本号：4位版本号定义IPv4的版本。</p>
+<p>头部长度：HLEN字段以4字节定义数据报头部的总长度，IP数据报有变长头部。</p>
+<p>服务类型：他定义了数据报如何被处理，这个字段也被定义为差分服务。</p>
+<p>总长：定义了一个以字节计算的IP数据报总长度。</p>
+<p>标识、标记以及分段偏移（字节为单位）：数据报大于底层网络可以携带的大小时，这三个字段和IP数据报的分段有关。</p>
+<p>生存时间：存储一个数字，大约是任意量主机之间路由数量最大值的两倍，每个处理数据报的路由器把这个值减1，如果数值为0，路由器就丢弃它。</p>
+<p>协议：TCP|IP中，分组的数据段称为负载。一个数据报可以携带任意属于传输层协议的分组。</p>
+<p>头部校验和：IP是不可靠的，头部校验和来检查头部，但是不检查负载，校验需要在每一个路由器重新计算，因为从一个路由器到另一个路由器头部的某些字段（TTL）会发生改变。</p>
+<p>源和目的地址：这个段的值在整个过程中应当表示不变，并且在链路上的路由也应该知道这个值。</p>
+<p>选项：这个选项多达40个字节，用来进行网络的测试和调试，他不是必需部分，因此头部只需要20字节，但是选项是ip软件必需的，选项给数据报处理增加了一些负担。</p>
+<p>负载：负载就是数据，来自使用IP服务的其他协议的分组，如同邮件一样，数据报中负载就是内容，头部就是包裹。</p>
+<p>分段</p>
+<p>IP根据链路所使用的协议将数据报封装成帧，这其中就包括了负载的最大长度。也就是最大传输单元MTU（MTV）。IP数据报的总长度必须小于这个长度，这是计算机网络中的硬件和软件决定的。</p>
+<p>为了让IP独立出来，设计者决定把IP数据报的最大长度定义为65535个字节。但是对于其他物理链路来说，我们必须分割数据报，这个分割的过程就是分段。</p>
+<p>当数据报被分段，每个段都需要自己的头部，虽然头部中有些字段是重复的，但是有一些会被改变 ，如果一个数据报出现再次分段的情况，这时候这些看似重复的头部就能发挥作用了。</p>
+<p>虽然是在路由器上，但是重组必须是在目的主机上，因为分段的独立性，无法控制数据报的每一个分段都到达，更强的一个目的是，在传输期间重组会带来效率的降低。</p>
+<p>标识：16位，发送数据报时，使用一个计数器来保证唯一性，并且这个值被复制到标识字段内，标识号在分段时会被复制到所有的分段之中，这使得所有分段和原始数据段有相同的标识号。方便目的端重组。</p>
+<p>标记：3位，他定义了3个标识，最左侧是保留位不使用，第二位是不分段位，如果为1，那么机器不能对他进行分段，如果数据报不分段无法传输，那么就丢弃这个报文，第三位是多分段位。为0表示他是最后或者唯一的分段。</p>
+<p>段偏移：13位，表示这个分段在数据报中的相对位置，他是原始数据报中的数据偏移量，因此要注意分段之后的头部对他的影响，以8字节为单位。（13位较短）</p>
+<p>因此，分段后的第一个字节标号能被8整除就很关键。</p>
+<p>因此，即使是分段失序，最终目的主机也可以重组（没有丢失）原始数据报。</p>
+<p>第一个分段偏移量为0，将第一个分段长度除8，结果就是第二个分段的偏移值，将第一个和第二个分段总长度除8，就是第三分段的偏移值，继续过程，最后一个分组的M位的值为0。</p>
+<h3 id="IPV4数据报安全"><a href="#IPV4数据报安全" class="headerlink" title="IPV4数据报安全"></a>IPV4数据报安全</h3><p> 安全问题：分组嗅探，分组修改，IP欺骗。</p>
+<p>前两者都是劫持分组，前者拷贝一个分组，这很难被发现，目前的解决措施是分组加密，是的被劫持也无法解密其中内容。分组修改是修改分组内容，一般的利用数据完整性机制来发现这类型攻击。在打开并使用报文的内容之前，接收方可以在发送阶段使用这个机制来确定分组没有被改变。</p>
+<p>IP欺骗，是攻击者可以伪装成其他人并创建一个IP分组，他携带另一个电脑的源地址。这类型的攻击可以使用源鉴别机制来预防。</p>
+<p>IPSec（IP安全）的协议以免遭到之前提到的攻击。这个协议与IP协议一起使用，在两个实体之间创建一个面向连接服务。IPSec提供四种服务：定义算法和秘钥，分组加密，数据完整性，源鉴别。</p>
+<h3 id="IPV4地址"><a href="#IPV4地址" class="headerlink" title="IPV4地址"></a>IPV4地址</h3><p>IP是连接的地址，不是主机或路由器的地址。IPv4地址是唯一的，这表示每一个地址定位了一个且唯一一个连接到因特网上的设备。</p>
+<p>地址空间</p>
+<p>地址空间是系统能使用的地址个数，IPV4是用32位地址。这意味着有2的32次方个设备可以连接到因特网上。</p>
+<p>IPV4地址表示方法，二进制、点份十进制、十六进制。一般的点份十进制更易阅读。</p>
+<p>一个32位的IPv4地址是有层次结果的，第一部分是前缀，他定义了网络，第二部分是后缀，他定义了代码。</p>
+<p>前缀可以是固定长度也可以是变长的，起初是定长的，但是现在被废弃了。</p>
+<h3 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h3><p>前缀定长的情况，三种长度的前缀（8,16,24）。整个地址空间分为五类，ABCDE，这个方案称为分类寻址。</p>
+<p>前三类符合三种长度，D类不分前缀和后缀，他是多播地址，E类地址是保留地址，不分前缀和后缀。</p>
+<p>地址耗尽，这是分类寻址被废弃的原因，地址没有被合适的分配，A类地址的结点太多，C类地址过小，E类几乎不使用。</p>
+<p>为了减轻这种情况，提出了子网化和超网化，子网化特就是将某类网络划分为子网，每个子网有一个10的前缀。超网化可以将几个小类地址组合成一个较大的块，但是这让分组路由更困难。</p>
+<p>虽然他有很多问题，但是他有一个优势，给定一个地址，我们可以轻易的找到这个地址的类。</p>
+<p>无类寻址，长期的解决方案是IPV6，但是短期的解决方案是为了补偿地址被耗尽，类特权被从分配中消除。还是为了ISP，扩大个人与中小型组织的市场。</p>
+<p>在无类寻址中，前缀是变长块，地址的前缀定义了块。</p>
+<p>前缀长度：斜杠标记法。无类域间路由或CIDR策略。</p>
+<p>对于一个网络，下面三条信息至关重要，地址数量，首尾地址。</p>
+<p>斜杠后的n，可以得出这些。</p>
+<p>数量：2的32-n次方、首地址，左n位不变，右侧32-n位变成0,，尾地址，左n位不变，右侧32-n位全变1。</p>
+<p>另外一种方式是地址掩码，他也是32位数字，最左边n位是1，右边32-n位是0。计算机可以很容易的找到地址掩码，因为他是2的32-n次方-1的补码。</p>
+<p>计算机程序可以使用非、与、或简单的得到上述三条信息。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025183923197.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025183923197.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="使用子网掩码"></p>
+<p>块分配</p>
+<p>请求地址数量必须是2的整数次幂，请求块被分配时，地址空间要有连续的可用地址，首地址必须可以被块中地址数量整除。</p>
+<p>在划分子网时，也是如上的逻辑。</p>
+<p>地址聚合</p>
+<p>基于更大的前缀就可以完成这一点。</p>
+<p>特殊地址：本地主机地址，0.0.0.0/32，有限广播地址：255.255.255.255/32，回送地址：127.0.0.0/8，私有地址：10.0.0.0/8,172.16.0.0/16,192.168.0.0/16,192.254.0.0/16，多播地址：224.0.0.0/4.</p>
+<h3 id="DHCP动态主机配置协议"><a href="#DHCP动态主机配置协议" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h3><p>将一个块的地址自动分配给设备，DHCP是应用层程序，使用客户—服务端来帮助网络层上的TCP-IP。</p>
+<p>他经常被称为即插即用协议。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025184804277.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025184804277.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP报文格式"></p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="思科模拟器"><a href="#思科模拟器" class="headerlink" title="思科模拟器"></a>思科模拟器</h2><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主界面" style="zoom:50%;">
+
+<p>这是思科模拟器的逻辑空间，还可以切换到物理空间，此处不讨论。</p>
+<p>在右下角选择添加的设备，按住CTRL键并且鼠标左键选中点击，就可以连续添加，添加完成之后，esc键退出模式。</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器连接的四台主机" style="zoom:50%;">
+
+<p>此处，使用通用集线器连接了四台主机，在线缆的选择中，一般的选择自动类型会容易的多。</p>
+<h3 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主机界面" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP配置" style="zoom:50%;">
+
+<p>设置好ip之后，很简单的就可以实现几台主机之间的互联，通过ping ip地址的方式。当然这是因为集线器把他们连接到一起的原因。</p>
+<h3 id="使用数据包来观察"><a href="#使用数据包来观察" class="headerlink" title="使用数据包来观察"></a>使用数据包来观察</h3><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="新建一般的分组" style="zoom:50%;">
+
+<p>创建一个数据报，例如从PC7发送到PC9。选择左下角，将事件改为模拟或仿真。观察数据包行为。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="正在发送数据包"></p>
+<p>此处，在发送的时候，无法直接发送，因为源端没有目的端的MAC与IP之间的映射关系，于是需要发送ARP广播请求。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到集线器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发到其他主机，其他主机判断会否需要"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="接受主机响应集线器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发响应"></p>
+<p>数据包信息</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="过程描述" style="zoom:50%;">
+
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组封装"></p>
+<h3 id="访问web服务器"><a href="#访问web服务器" class="headerlink" title="访问web服务器"></a>访问web服务器</h3><p>选择一台主机和服务器，简单的使用交叉线连起来，建一个数据报，观察。</p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="创建分组" style="zoom:50%;">
+
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到服务器"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器返回响应"></p>
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="web浏览器请求服务器" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终返回的响应报文内容" style="zoom:50%;">
+
+<img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终到达主机的数据报响应信息" style="zoom:50%;">
+
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>利用交换机，搭建一个简单的局域网，并且使用DHCP动态分配ip地址。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP动态分配ip"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器配置"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP配置，注意保存"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP自动分配"></p>
+]]></content>
+      <tags>
+        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
