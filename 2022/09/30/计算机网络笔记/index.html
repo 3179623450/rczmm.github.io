@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 10.7k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 11.1k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 36分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 37分钟 |
           </span>
   
           
@@ -969,6 +969,26 @@
 <p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器配置"></p>
 <p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP配置，注意保存"></p>
 <p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP自动分配"></p>
+<h3 id="静态路由实现网络互通"><a href="#静态路由实现网络互通" class="headerlink" title="静态路由实现网络互通"></a>静态路由实现网络互通</h3><p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194556839.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194556839.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="网络拓扑"></p>
+<p> 在拓扑结构之中，路由器的接口可以简单的看做是一台设备，路由器的作用是连接网络，做的是网络与网络之间的连接。</p>
+<p>上述的拓扑图中，三台路由器组成的环路，此时三台主机是无法彼此通信的。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026193448137.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026193448137.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="路由器1的路由表"></p>
+<p>如图路由表中只有pc0网络的信息。</p>
+<p>此时，在拓扑图中，设备之间端口正常开启，但是PC之间还是无法通信，因为默认的，路由只知道和自己直接连接的设备信息，如同PC0想要连接PC1，但是发送的报文到达路由器1之后，路由器1无法解析出PC1所在的网段在哪里，因此返回发送失败。</p>
+<p>对此，我们可以手动的配置静态路由来更新路由表来解决。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194022409.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194022409.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="添加静态路由"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194042809.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194042809.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="命令行形式"></p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194102186.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194102186.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="此时路由器1的路由表"></p>
+<p>但仅仅配置了路由器1，只能保证数据报文到达PC1，但是PC1需要返回一个响应，因此还需要配置路由器0。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194237303.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194237303.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="路由器0添加静态路由"></p>
+<p>发送ICMP数据报或者ping对方主机，发现网络互通。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194815825.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194815825.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="连接成功"></p>
+<h3 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h3><p>这是一个基于RIP路由向量选择的协议，总的来说，他需要和路由器直连的网络，然后自行发送请求，获得与路由器相关联的网络信息，保存在路由表之中。类似于路由器自己寻找网段，自动更新路由表。配置较为简单。</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195021581.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195021581.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="配置Rip"></p>
+<h3 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h3><p>这也是一类路由选择协议，和RIP不同，这是基于链路的协议，重点在于以邻居链表为前提生成最短路径树更新路由表。</p>
+<p>配置稍复杂</p>
+<p><img src="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195314412.png" class="lazyload placeholder" data-srcset="/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195314412.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="ospf的配置"></p>
+<p>如图，OSPF是一个进程，因此需要进程号，而后，分为主干与枝干，分区域添加网络，注意的是，此时的子网掩码需要取反。</p>
 
       </div>
       <div class="post-tags-categories">
