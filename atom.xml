@@ -6,7 +6,7 @@
   <link href="http://rczmm.github.io/atom.xml" rel="self"/>
   
   <link href="http://rczmm.github.io/"/>
-  <updated>2022-10-14T05:51:08.903Z</updated>
+  <updated>2022-10-27T12:24:37.065Z</updated>
   <id>http://rczmm.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机算术</title>
+    <link href="http://rczmm.github.io/2022/10/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/"/>
+    <id>http://rczmm.github.io/2022/10/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/</id>
+    <published>2022-10-27T04:31:51.000Z</published>
+    <updated>2022-10-27T12:24:37.065Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;计算机算术&quot;&gt;&lt;a href=&quot;#计算机算术&quot; class=&quot;headerlink&quot; title=&quot;计算机算术&quot;&gt;&lt;/a&gt;计算机算术&lt;/h1&gt;&lt;h2 id=&quot;数据是什么&quot;&gt;&lt;a href=&quot;#数据是什么&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>计算机系统-程序的机器级表示</title>
@@ -475,31 +496,6 @@
     <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
     
     <category term="项目" scheme="http://rczmm.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>高等数学</title>
-    <link href="http://rczmm.github.io/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/"/>
-    <id>http://rczmm.github.io/2022/06/19/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/</id>
-    <published>2022-06-19T02:38:38.000Z</published>
-    <updated>2022-08-07T12:54:52.757Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;高等数学学习笔记&quot;&gt;&lt;a href=&quot;#高等数学学习笔记&quot; class=&quot;headerlink&quot; title=&quot;高等数学学习笔记&quot;&gt;&lt;/a&gt;高等数学学习笔记&lt;/h1&gt;&lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="数学" scheme="http://rczmm.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-    <category term="高数" scheme="http://rczmm.github.io/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
