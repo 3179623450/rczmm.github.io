@@ -58,6 +58,8 @@
     <!-- import script -->
     
         
+            <script src = "/js/index/slowflow.js"></script>
+        
             
         
             
@@ -738,8 +740,6 @@
     created() {}
   })
 </script>
-
-  <script src="/js/bubble/homeBubble.js"></script>
 
 <style>
 #appSwiper {
@@ -1785,8 +1785,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Fri Oct 28 2022 23:23:56 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2022-10-28 日</div>
+            <div id="last-update" style="display: none;">Sat Oct 29 2022 11:17:26 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-10-29 日</div>
           
         </div>
         
@@ -1836,7 +1836,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2022-10-28 日';
+            document.getElementById('last-update-show').innerHTML = '2022-10-29 日';
           }
         </script>
         
@@ -1876,6 +1876,16 @@
 </div>
 <!-- 花瓣和雪花飘落 -->
 <!-- 雪花和花瓣特效 -->
+
+  
+    <script type="text/javascript">
+      //只在桌面版网页启用特效
+      var windowWidth = $(window).width();
+      if (windowWidth > 768) {
+        loadScript('/js/falling/snow.js');
+      }
+    </script>
+  
 
 
 

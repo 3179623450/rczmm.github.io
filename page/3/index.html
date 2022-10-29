@@ -58,6 +58,8 @@
     <!-- import script -->
     
         
+            <script src = "/js/index/slowflow.js"></script>
+        
             
         
             
@@ -610,12 +612,12 @@
   <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
     
       <swiper-slide>
-        <div class="item swiper-lazy" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" style="background-size: 300000px; 
+        <div class="item swiper-lazy" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" style="background-size: 300000px; 
           background-position: left center;" style="position: relative;">
           <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
             <div class="flag">
               
-              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" style="height: 100%; background-size: cover; 
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" style="height: 100%; background-size: cover; 
                 background-position: center center;">
                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
               </div>
@@ -738,8 +740,6 @@
     created() {}
   })
 </script>
-
-  <script src="/js/bubble/homeBubble.js"></script>
 
 <style>
 #appSwiper {
@@ -1887,8 +1887,8 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Fri Oct 28 2022 23:23:56 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2022-10-28 日</div>
+            <div id="last-update" style="display: none;">Sat Oct 29 2022 11:17:26 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-10-29 日</div>
           
         </div>
         
@@ -1938,7 +1938,7 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2022-10-28 日';
+            document.getElementById('last-update-show').innerHTML = '2022-10-29 日';
           }
         </script>
         
@@ -1978,6 +1978,16 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
 </div>
 <!-- 花瓣和雪花飘落 -->
 <!-- 雪花和花瓣特效 -->
+
+  
+    <script type="text/javascript">
+      //只在桌面版网页启用特效
+      var windowWidth = $(window).width();
+      if (windowWidth > 768) {
+        loadScript('/js/falling/snow.js');
+      }
+    </script>
+  
 
 
 
