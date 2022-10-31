@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>计算机网络笔记 | 小小世界</title>
+
+  <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="/js/valine/index.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            <script src = "/js/index/slowflow.js"></script>
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">加载中...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">小小世界</h3>
+      <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/comment" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">小小世界</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/about" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/comment" class="menu-item-link" title="留言板">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
+  
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        计算机网络笔记
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-09-30 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 11.1k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 37分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p><strong>说明</strong></p>
+<p>教材是谢希仁的计算机网络第八版，但是在写笔记阶段已经学完了以及一些其他的原因，所以笔者想用自上而下的方式。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221003152310810.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221003152310810"></p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p><strong>互联网</strong></p>
+<p>局域网和广域网连在一起就是互联网，也就是说互联网不是单个网络，而是多个网络的组合。</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a><strong>网络</strong></h3><p>一组具有通信能力的设备连接在一起就是网络，他们可以是两台主机（host），也可以是一台主机和一台打印机，甚至是平常距离日常很遥远的路由器，交换机，调制解调器。</p>
+<p>路由器，连接网络和网络。</p>
+<p>交换机，用来连接设备。</p>
+<p> 调制解调器，用来交换数据形式。</p>
+<p>当一台路由器（即插即用）连接两台电脑时，这时候一个局域网就组建成功了。</p>
+<p><strong>局域网</strong></p>
+<p>在局域网中，每一台主机都有一个标识符（地址），用来在这个局域网中定义这台主机。这台主机向另一台主机发送的数据包里就包含了源和目的主机的地址。</p>
+<p>在过去的一段时间，一个网络中的所有主机都用一条电缆连接，一台主机发送的数据其他的主机都可以接受到，这时候由这些主机选择接收还是丢弃这些数据包，目标主机就选择保存这个数据包。现在多数的局域网采用交换机，他可以识别数据包的目的地址并引导数据包达到他的目的地而不必发送到其他的主机。</p>
+<p>交换机减轻了局域网中的流量，如果不是共同的源主机和目的主机，那么交换机允许同一时刻多对主机之间同时互相通信。</p>
+<p><strong>广域网</strong></p>
+<p>同样是由具有通信能力的设备相互连接而成的，但是不同的是，广域网的地理覆盖范围很广，通常的局域网值覆盖一个大楼或者是一个校园，但是广域网则十分的大，可能是一个城市，一个省，一个国家等。</p>
+<p>局域网互联主机，但广域网互联交换机、路由器、调制解调器等连接设备。</p>
+<p><strong>点到点广域网</strong></p>
+<p>这种广域网通过传输介质来连接两个通信设备。</p>
+<p><strong>交换式广域网</strong></p>
+<p>交换式广域网具有多个端点，可以说交换式广域网是交换机连接几个点到点的广域网而形成的。</p>
+<p><strong>互联网络</strong></p>
+<p>现在很少有单独的局域网或者广域网，他们都互相连接在一起的，当两个或多个网络连接在一起时，它们就形成了一个互联网络，或者互联网。 </p>
+<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a><strong>交换</strong></h3><p>互联网是由链路和交换机组成的，实际上互联网是一个交换式的网络，其中一台交换机至少将两条链路连接的一起，在需要的时候，交换机需要将数据从一条链路转发到另一条链路，交换式网络最常见的类型为电路交换网络和分组交换网络。</p>
+<p><strong>电路交换网络</strong></p>
+<p>在电路交换网络中，两个网络之间总是存在一条专用的连接（电路），交换机只能让他变成活跃或者非活跃状态。</p>
+<p>这样的模式存在一个弊端：电路容量必须足够的大，以便于在两个网络所有主机通信时，不至于通信失败，但是这样的情况并不是每时每刻都在发生的，在一般的场景下，工作时，可能只有部分的容量被占用，因此这种模式的效率是低下的。</p>
+<p>此处的效率低下指的是，高容量的电路使用率不足，并非通信效率不佳。</p>
+<p><strong>分组交换网络</strong></p>
+<p>在一个计算机网络中，两个端点之间使用被称为分组（packet）的数据块进行通信，也就是说，两个计算机交换的是独立的数据分组，由于分组能够被存储和发送时是一个独立的实体，因此这种机制允许我们实施存储转发的交换功能。</p>
+<p>分组交换网络中的路由器具有能够存储和转发分组的队列，如果现在需要发送的分组大于了线路的容量，那么此时的分组会在路由器存储并且进行排队的状态，他的效率看上去比电路要高了，但是分组可能也会在大规模使用时遇到延迟。</p>
+<h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a><strong>因特网</strong></h3><p>这是最著名的互联网了，它是由成千上万个相互连接的网络组成。</p>
+<p>概念上的因特网由一系列主干、提供者网络和客户网络组成，主干是最高层次，是一些通信公司拥有的大型网络，主干网络通过对等点的复杂交换系统进行连接，一些小的提供者网络处于第二个层次，这些网络通过付费使用主干网络服务，提供这网络连接主干网络，有时提供网络之间也相互连接，客户网络是因特网边缘的网络，他们使用因特网提供的服务，为了接收服务，客户网络需要像提供者网络付费。</p>
+<p>主干和提供者网络其实都是服务提供商，主干常常称为国际ISP，提供者网络常常被称为国家或地区ISP。</p>
+<h3 id="访问因特网"><a href="#访问因特网" class="headerlink" title="访问因特网"></a><strong>访问因特网</strong></h3><p>因特网允许任何用户成为他的一部分，但是还需要用户在物理上连接到一个ISP。物理连接通常利用一条点到点的广域网实现。</p>
+<p><strong>电话网络</strong></p>
+<p>具有电话服务的客户，大多数电话网络自身就已经连接到因特网，因此这些客户可以选择把他们和电话中心的语音线路转换成点到点的广域网。</p>
+<p>实现方式有两种：</p>
+<p>拨号服务，在电话线路中增加将数据转换成语音的调制解调器，安装在计算机中的软件拨打ISP的号码，形成一条电话连接。但是拨号服务很慢，同时线路用于因特网连接的时候，线路无法进行电话连接，因此这种方式只对偶尔访问因特网的客户有效。</p>
+<p>DSL，将电话线路升级，可以同时使用语音服务。</p>
+<p>除此之外还可以通过：有线电视网络、无线网络、直连Internet（将自身变成一个ISP）</p>
+<h3 id="协议分层"><a href="#协议分层" class="headerlink" title="协议分层"></a><strong>协议分层</strong></h3><p>协议定义了发送者、接受者和所有中间设备为了高效通信需要遵循的规则。通信复杂时，我们需要把任务划分到不同层，不同层需要不同的协议。</p>
+<p><strong>协议分层原则</strong></p>
+<p>1、双方双向通信，每一层都能执行两个相反的任务，每个方向上一个</p>
+<p>2、两端中，每一层的两个对象都应该相同。</p>
+<p><strong>逻辑连接</strong></p>
+<p>每层之间拥有逻辑上的连接，这意味着我们可以拥有层与层之间的通信，这是为了方便理解。</p>
+<h3 id="TCP-IP协议簇"><a href="#TCP-IP协议簇" class="headerlink" title="TCP|IP协议簇"></a>TCP|IP<strong>协议簇</strong></h3><p>不同层次组织的协议集——协议簇。</p>
+<p>这是一个相互交互的模块组成的一个层次结构协议，层次意味着上层的协议需要得到一个或者多个较下层的协议提供的服务支持。</p>
+<p>初始的TCP|IP提供了四个层次，但通常的它应当是一个五层模型。</p>
+<p>层次：应用层、传输层、网络层、数据链路层、物理层</p>
+<p>对等体：消息、段或用户数据报、数据报、帧、bit位</p>
+<p>采用逻辑连接使得每一层的任务变得简单，其中应用层、传输层和网络层的任务都是从端到端的，但是数据链路层和物理层的任务是从点到点的。换句话说，高层次的任务范围是互联网，而低层次也就是下两层的任务范围是链路。</p>
+<p>还可以从每一层的数据单元出发，上三层的分组（packet）不应该被任何路由器或者链路层的交换机改变，在下两层，主机创建的分组仅仅被路由器不改变，链路层交换机不改变任何东西。</p>
+<p><strong>各层描述</strong></p>
+<p><strong>应用层</strong></p>
+<p>逻辑连接是端到端的，两个应用层之间好像有一架桥梁负责交换消息，但实际上通信要经历所有的层次才能完成。</p>
+<p>应用层的通信处于两个进程之间，一个进程发送请求，接受另一个进程的响应，进程到进程的通信就是应用层的任务，在因特网上，应用层包含了许多的协议（HTTP、WWW、FTP、SSH与TELNET、DNS）</p>
+<p><strong>传输层</strong></p>
+<p>端到端，源主机的传输层从应用层得到消息，封装为传输层的分组（段或数据报，不同协议叫法不同。）然后进行发送，通过逻辑连接，到达目的主机的传输层。</p>
+<p>传输层向应用层提供服务，，从运行于应用层的程序得到消息，并将它投递到目的主机相应的应用程序。（主要原因是为了分割任务和责任），传输层也有很多协议，每一个都是为了一些特定的任务设计的。（TCP、UDP）</p>
+<p><strong>网络层</strong></p>
+<p>主机到主机，源主机到目的主机之间可能存在多个路由器，因此路径上的路由器负责为每一个分组选择最好的路径（IP）</p>
+<p><strong>数据链路层</strong></p>
+<p>互联网是由多个链路通过路由连接而成的，当主机传输数据报到目的地可能存在多个交叠的链路集，路由器负责挑选最好的链路进行传输，当路由器决定好了链路之后，数据链路层开始接管这个数据报并且让他穿过这条链路，这条链路可以是无线网、有线网，对于不同的链路类型存在不同的协议，无论什么情况，链路层都要负责通过链路传输分组。</p>
+<p>TCP&#x2F;IP没有为了数据链路层定义任何协议，因此它支持所有所有私有和标准的协议能接管数据报并且携带它穿过链路的任意协议都能满足网络层的要求，链路层接管数据报并且封装在一个称为帧的分组中。</p>
+<p><strong>物理层</strong></p>
+<p>物理层负责携带一个帧中单独的比特穿过链路，尽管物理层已经位于协议簇的最底层，但是在物理层之下还存在一个隐藏的传输介质层，因此物理层之间的还是逻辑通信，两个设备通过可以携带电信号或者光信号的介质到达目的地。将一个bit转换为电信号或者光信号存在多个协议。</p>
+<p><strong>封装和解封装</strong></p>
+<p>在Internet协议分层中，一个重要的概念是封装和解封装。</p>
+<p>在链路层交换机中没有封装和解封装发生。</p>
+<p>应用层，交换的数据称为消息，消息一般的不包含头部和尾部，即使包含了这些，我们也称其为消息，消息会被传递到传输层。</p>
+<p>传输层，把这个消息称为有效载荷，该载荷是传输应该关注的负载，传输层增加了传输层头部，其中包含了希望进行通信的源和目的程序的标识符和一些投递消息的更多信息，例如：流量控制、差错控制和拥塞控制需要的信息，结果为一个传输层分组。在TCP中称为段、在UDP中成为用户数据报，然后传输到网络层</p>
+<p>网络层，把传输层分组作为数据或者有效载荷，并且加上自己的头部，包含源和目的主机的地址，以及用于差错检查、分片的信息和一些其他的信息，结果为一个称为数据报的网络层分组，然后网络层投递到数据链路层。</p>
+<p>数据链路层，把网络层分组作为数据或者有效载荷并且添加上自己的头部，包含主机或者下一跳步（路由器）的链路层地址，结果为一个称为帧的链路层分组，投递到物理层进行传输。</p>
+<p><strong>路由器的解封装与封装</strong></p>
+<p>路由器连接多个链路，因此路由器也存在解封装与封装的问题。</p>
+<p>在比特集被投递到数据链路层之后，这一层从帧中解封装出数据报并把它投递到网络层。</p>
+<p>在网络层只检查数据报头部的源地址和目的地址，查阅它的转发表以寻找数据报将要被投递的下一跳步。除非数据报太大需要分片，数据报的内容不应该被网络层改变。</p>
+<p>下一链路的链路层将数据报封装为一个帧，将其放到物理层进行传输。</p>
+<p><strong>目的主机的解封装</strong></p>
+<p>目的主机端，每一层都只解封装接收到的分组，移出有效载荷，并将有效的载荷移至上一层，直到消息到达应用层，目的主机中的解封装包含差错检查。、</p>
+<p><strong>地址</strong></p>
+<p>看起来，似乎这个模型的每一层都需要逻辑通信，那么每一层之间就都需要一对地址，但是因为物理层不需要地址（介质连接），因此只需要四对地址。</p>
+<p>在应用层，一般的是域名定义提供服务的站点，或者是电子邮件地址，在传输层，地址是端口号，端口号指的是源和目的地的进程，端口号是本地地址，用于区分同一时间运行的几个程序，网络层地址是全局的，涵盖了整个Internet，链路层地址有时叫做MAC地址，是本地定义的地址，每个链路层地址在网络中定义一个特定的主机或路由器。</p>
+<p><strong>多路复用与多路分解</strong></p>
+<p>协议簇在一些层次使用多个协议，因此我们在源进行多路复用（一个协议能封装多个来自上层协议的分组，一次一个），在目的端进行多路分解（一个协议可以解封装并且将分组投递到上层协议，一次一个）。</p>
+<h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a><strong>OSI</strong></h3><p>应用层</p>
+<p>表示层</p>
+<p>会话层</p>
+<p>传输层</p>
+<p>网络层</p>
+<p>数据链路层</p>
+<p>物理层</p>
+<p>看起来似乎比TCP&#x2F;IP更加好一些，但实际上，表示层和会话层没有定义协议，并且模型完成较晚，并且在实际的应用上，并没有想象中的高效。</p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>整个Internet、硬件和软件的设计和开发都是为了为应用层提供服务。</p>
+<p>因特网提供服务的本质以及两个应用类型：传统客户—服务器模式，以及新类型对等模式</p>
+<h3 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a><strong>提供服务</strong></h3><p>应用层是唯一向因特网用户提供服务的层次，因此它十分的灵活，新的协议可以随时加入Internet。</p>
+<p>标准和非标准协议</p>
+<p>描述的都是具体的程序，前者是被管理机构标准化和归档化的内容，后者是自己定义的内容，例如在自己写的程序。</p>
+<h3 id="应用层模式"><a href="#应用层模式" class="headerlink" title="应用层模式"></a><strong>应用层模式</strong></h3><p>传统：客户—服务器</p>
+<p>这种模式对服务器负担较大，要求服务器一直保持开启阶段，为了让客户机随时都可以访问他，并且当许多客户一起访问服务器，对服务器的考验十分巨大。</p>
+<p>通信负荷集中在服务器上，WWW、HTTP、FTP、SSH以及电子邮件还是这样的模式。</p>
+<p>新模式：对等模式</p>
+<p>P2P，不存在客户和服务器，两者是对等结点，最经典的是网络电话，没有一方需要等待另一方呼叫，还有计算机的文件共享。</p>
+<p>对等模式不用一直维护服务器，容易扩展并且经济划算，但是依旧存在问题，安全性部署困难，适用性不高（并不是所有应用都可以应用对等模式。）</p>
+<p>混合模式</p>
+<p>结合了两种模式优点来吧这二者混合起来，比如轻量级的客户和服务器可以用来寻找对等结点的地址，当实际服务时，是从对等结点中获得。</p>
+<h3 id="API应用程序接口"><a href="#API应用程序接口" class="headerlink" title="API应用程序接口"></a>API<strong>应用程序接口</strong></h3><p>一个计算机程序通常是由预定义了指令集的计算机语言编写的，这个指令集告诉计算机要做什么，如果我们需要使得进程之间通信，那么就需要一个新的指令集，这就是API。</p>
+<p>此时API连接了两个实体，OS与程序，其中OS封装了TCP&#x2F;IP协议簇的前四层。</p>
+<p>通信API：套接字、传输层接口TLI、STREAM。</p>
+<h3 id="WWW与HTTP"><a href="#WWW与HTTP" class="headerlink" title="WWW与HTTP"></a>WWW与HTTP</h3><p>万维网（WWW）又叫WEB，今天它是信息宝库，其中网页文档在全世界发布，分布式允许web无限增长，链接使得网页之间出现引用。（超文本）</p>
+<p>WWW是一个分布式客户—服务器模式，使用浏览器的用户可以访问一个正在服务器上运行的服务，服务分布在不同的site上。</p>
+<p>浏览器通常包含三个部分：控制程序、客户协议和解释程序。</p>
+<p><strong>网络服务器</strong></p>
+<p>URL，统一资源定位符，（协议+主机+端口+路径）来定位文档。</p>
+<p>网上文档：静态文档（用户只能得到副本的文档，html等）、动态文档（返回的响应文档）、活动文档（在客户站点运行的脚本或程序，js等）</p>
+<p>HTTP，超文本传输协议，用来定义客户服务器程序如何编写和如何获取网页的协议，一个用户发送请求，服务器返回响应，服务器使用80端口，客户使用临时端口，HTTP使用TCP服务。</p>
+<p><strong>非持续与持续连接</strong></p>
+<p>获取一个对象就创建一个连接的模式就是非持续的，创建一个连接获取所有对象就是持续的。其中这些对象应该位于同一台服务器。</p>
+<p><strong>报文格式</strong></p>
+<p>HTTP定义了请求报文和响应报文的格式，每一种报文由四个部分组成。</p>
+<p><strong>请求报文</strong></p>
+<p>第一行：请求行</p>
+<p>由方法、URL和版本构成。</p>
+<p>方法定义了请求类型（GET、POST、PUT等），URL定义了相关网页的地址和名称，版本给出了协议的版本（常用1.1）</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215743478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求方法"></p>
+<p>请求行之后有一个或者多个请求头部，从客户端向服务端发送额外的信息。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004215844724.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="请求头部名称"></p>
+<p><strong>响应报文</strong></p>
+<p>包含状态行、头部行有时候包含主体。</p>
+<p>状态行：http协议的版本、状态码</p>
+<p>状态码：100范围内只代表一个报告，200范围内表示这是一个成功的请求，300内表示把客户端重定向到另一个URL，400范围内表示客户端发生错误，500范围内表示错误发生在服务端。</p>
+<p>响应头部行，发送额外信息。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221004220200461.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="响应头部名称"></p>
+<p>主体包含了服务器发送给客户的文档，除非响应是一个错误报文，否则主体是存在的。</p>
+<p>条件请求:客户在请求中加入条件</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>WWW起初被设计为无状态实体，客户发送请求，服务器响应，二者关系结束。</p>
+<p>Cookie的创建和存储与实现有关，然而它的原理是相同的。<br>1．当服务器从客户端接收到请求后，它将客户端的信息存储在文件或字符串中。这些信息可能包含客户端的域名、cookie内容（服务器收集到的关于客户端的信息，如主机名、注册号等)、时间戳,以及与实现有关的其他信息。<br>2．服务器在响应中包含了它发送给客户端的cookie。<br>3．当客户端接收到响应后，浏览在cookie目录中查询是否有从那个服务器使用Cookie，当客户向服务器发送请求时，浏览器在cookie目录中查询是否有从那个服务器发送过来的cookie。如果有，则在请求中包含这个cookie。当服务器接收到这个请求后，它就知道了这是一个老客户，而不是新的。注意，cookie的内容从来不让浏览器读取或者透露给用户，只由服务器创建并回收cookie。</p>
+<h3 id="WWW高速缓存、代理服务器"><a href="#WWW高速缓存、代理服务器" class="headerlink" title="WWW高速缓存、代理服务器"></a>WWW高速缓存、代理服务器</h3><p>代理服务器是一台计算机，可以保存最近请求的响应的副本，客户端向代理服务器发请求，代理服务器检查本地高速缓存，如果高速缓存中不存在响应正文，那么代理服务器就向相应的服务器发送请求，返回的响应会发送到代理服务器中，并且进行存储，以用于其他客户端将来的请求。</p>
+<p>代理服务器可以降低负载，减少通信量，并且降低延迟，但是，为了使用代理，必须配置客户端。</p>
+<p>代理服务器既是服务又是客户，通常位于客户节点。</p>
+<p>缓存更新，一个响应应该在被改变前，在代理服务器保留多长时间，第一个策略是保存站点列表，保存一段时间，另一个建议是加入头部信息显示最近修改时间，代理服务器可以从时间猜测他们在多长时间内是有效的。</p>
+<h3 id="HTTP安全"><a href="#HTTP安全" class="headerlink" title="HTTP安全"></a>HTTP安全</h3><p>其实，http不提供安全，但是http可以在安全套接层（STL）上运行，此时HTTP称为HTTPS，它提供保密性、客户和服务器鉴别，以及数据完整性。</p>
+<h3 id="FTP-文件传输协议"><a href="#FTP-文件传输协议" class="headerlink" title="FTP 文件传输协议"></a>FTP 文件传输协议</h3><h2 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h2><h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层提供了包括分组、路由以及转发的服务，网络层中的内容主要包括分组交换、网络层性能、网络层拥塞以及路由器结构。</p>
+<h3 id="网络层服务"><a href="#网络层服务" class="headerlink" title="网络层服务"></a>网络层服务</h3><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>这是网络层的首要责任，packet。在源端将负载封装进网络层packet中并在目的端解封装。</p>
+<p>源从上层协议接受分组，加入一个头部，头部包含源和目的地址以及其他网络层协议所需要的信息。</p>
+<p>并且将其传送到数据链路层，源端不改变负载的内容，除非负载过大不能传递才需要分段处理。</p>
+<p>目的主机从数据链路层接受网络层分组、解封分组并且将负载传递到相对应的上层协议。如果分组在源或者在沿途被分段，那么网络层负责等待，直到所有的分组都到达，他同时负责重组分组并且将它们传递到上层协议。路径上的路由器不可以解封它们接受到的分组，除非它们接受到的分组需要被分段，也不允许路由器改变地址，无论是源或者是目的。路由器能做的仅仅是检查和、转发，当然如果需要分段的情况，路由器会复制头部并且做出一些改变。</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>网络层的另一个责任就是路径选择，这就是路由。网络层寻找最佳的路由，但是如何定义最佳，网络层需要一些特定的策略。</p>
+<p>在现在，有一些专业的路由协议可以帮助路由器很快的实现这一点。</p>
+<h4 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h4><p>路由应用一些策略并运行某些路由协议来为每个路由创建决策表，那么转发可以定义为当packet到达路由器的一个端口时，路由器所采取的决策表有时也被叫做转发表。路由器根据它来实施行为，当接受到一个packet时，他需要将分组转发到另一个或多个所连接的网络上。一个与多个的区别就区分了单播和多播路由。为了做出这样的决策，路由器使用packet头部的一个信息片段来找到转发表中相应的输出接口号。</p>
+<h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><p>尽管差错控制可以在网络层中实现，但是网络层的设计者似乎忽略了携带数据中的差错问题，因为数据有可能会被分段，因此差错控制的效率会变得非常低。但是网络层的设计者将校验的字段加入到了头部中，用来校验头部的好坏，这个校验和可能防止两跳之间以端与端之间的数据报头部的改变或损坏。</p>
+<p>但是如果数据报被丢弃或者在头部中含有未知信息，ICMP这样的辅助协议来提供某种差错控制。</p>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p>源端可以发送但不会淹没接收方的数据量，如果源端计算机上层产生数据的速度比目的端极端及上层消耗数据的速度快，那么接收方会被数据所淹没，为了控制数据流量，接收方需要发送一些反馈给发送方，从而通知后者接收方被数据淹没了。</p>
+<p>但是网络层中没有提供任何的流量控制，当准备好时，数据报被发送方发送，而不考虑接收方是否准备好了。</p>
+<p>网络层设计中缺乏流量控制的原因有这么一些：这一层没有差错控制，接受端网络层的工作是很简单的，以致于它很少被淹没。当准备好时，利用网络层服务的上层可以实现缓冲区，用它来从网络层接受数据，而无需一接受数据的速度消耗数据。流量控制被提供给绝大多数使用网络层服务的上层协议，因此另一级流量控制使得网络层更复杂且整个系统低效。</p>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>网络层的另外一个事件是拥塞控制，网络层的拥塞控制是某一个区域出现过多的数据报的情况，如果源计算机发送的数据报数量超过了网络或者路由器的容量，那么就可能发生拥塞，在这种情况下一些路由器可能丢弃一些数据报，然后随着更多的数据报被丢弃，这种情况会变得更加槽糕，由于上层的差错控制，发送方可能发送丢失分组的副本，如果拥塞继续，那么有时可能导致系统崩溃。</p>
+<h4 id="服务质量"><a href="#服务质量" class="headerlink" title="服务质量"></a>服务质量</h4><p>Qos（通信服务质量）变得十分重要，为了保证网络层不变，一般的这些服务通常在上层实现。</p>
+<h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><p>这是绕不开的事件，在最开始设计的时候，并没有考虑安全，网络层的设计本身就是不安全的，为了给无连接的网络层提供安全，我们需要另一个虚拟层将无连接服务变成面向连接服务，这个虚拟层成为IPSec。</p>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p>交换发生在网络层，事实上，路由器是一个创建了输入端口和输出端口连接的交换机，就像将输入连接连接到输出让电流流动的开关。</p>
+<p>数据通信技术分为两部分，电路交换与分组交换，但是在网络层只使用分组交换，因为这一层数据单位是分组。</p>
+<p>分组交换网络的连接装置仍然决定如何将分组路由到最终的目的端，如今分组交换网络使用两种不同的方法，数据报方法和虚电路方法。</p>
+<h4 id="数据报方法"><a href="#数据报方法" class="headerlink" title="数据报方法"></a>数据报方法</h4><p>无连接服务，转发分组基于分组的目的地址。每个分组都是独立的实体。</p>
+<h4 id="虚电路方法"><a href="#虚电路方法" class="headerlink" title="虚电路方法"></a>虚电路方法</h4><p>面向连接服务，同一报文的分组存在着连接，分组包含流标号，定义了分组应该经过的路径。转发决策基于标签的值或者虚电路标识符。</p>
+<p>创建面向连接服务：建立、数据交换和拆除。</p>
+<h3 id="网络层性能"><a href="#网络层性能" class="headerlink" title="网络层性能"></a>网络层性能</h3><p>延迟、吞吐量、分组丢失来度量网络层性能。</p>
+<p>延迟：发送延迟、传播延迟、处理延迟以及排队延迟</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134555368.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送延迟"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134613117.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="传播延迟"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134621560.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="处理延迟"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134631761.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="排队延迟"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134643722.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="总延迟"></p>
+<p>吞吐量：一秒内通过这个点的位的数量，由最小的路径以及平均路径来决定。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134755259.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="吞吐量"></p>
+<p>分组丢失：缓冲区满造成丢失。</p>
+<h3 id="网络层拥塞"><a href="#网络层拥塞" class="headerlink" title="网络层拥塞"></a>网络层拥塞</h3><p>网络层的拥塞和两个问题有关，吞吐量和延迟。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016134954440.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组延迟和吞吐量的负载函数"></p>
+<p>当负载远远小于网络容量时，延迟是最小的，这一部分延迟只有处理延迟和传播延迟，某种程度上说，这可以忽略。让负载容量增长，此时就需要排队延迟。</p>
+<p>吞吐量会随着负载的大小而增加，但是路由器丢弃分组，当负载超过网络容量时，队列变满路由器必须丢弃一些分组，这不会减少分组数量，因为当分组没有到达目的端，源端使用超时机制重发分组。</p>
+<h4 id="拥塞控制机制"><a href="#拥塞控制机制" class="headerlink" title="拥塞控制机制"></a>拥塞控制机制</h4><p>开环拥塞控制（预防）</p>
+<p>预防策略，源端和目的端都可以处理拥塞控制。</p>
+<p>重传策略</p>
+<p>发送方认为一个分组损坏或者是丢失，分组就需要重发，重传会增加拥塞。但是好的重传可以预防拥塞。优化设计重传策略和重传定时器，使之具有高效率。</p>
+<p>窗口策略</p>
+<p>发送方窗口的类型会影响拥塞。</p>
+<p>确认策略</p>
+<p>丢弃策略</p>
+<p>许可策略</p>
+<p>闭环拥塞控制（消除）</p>
+<p>背压、抑制分组、隐含信令、显式信令</p>
+<h3 id="路由器的结构"><a href="#路由器的结构" class="headerlink" title="路由器的结构"></a>路由器的结构</h3><p>元件：输入端口、输出端口、路由器处理器以及交换结构。</p>
+<p>交换结构：纵横制交换机、榕树交换机、Batcher榕树交换机。</p>
+<h3 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h3><p>第四版网络层主要为一个主要协议和三个辅助协议。</p>
+<p>主要协议为：ipv4负责网络层的分组、转发以及传递。控制报文协议ICMP帮助IPv4处理一些网络层传递中可能发生的错误。组管理协议IGMP用于帮助IPV4多播。在网络层地址映射到链路层地址当中，地址解析协议ARP用来将网络和链路层联合起来。</p>
+<p>Ipv4 不可靠且无连接的数据报协议，一个尽力而为的传递服务。</p>
+<p>分组可以被破坏、丢弃、失序、延迟，也可能造成拥塞，因此Ipv4必须和TCP搭配。</p>
+<p>数据报独立处理，意味着数据报也可能被破坏等，因此Ipv4依赖高层协议处理这些问题。</p>
+<h3 id="IPv4数据报格式"><a href="#IPv4数据报格式" class="headerlink" title="IPv4数据报格式"></a>IPv4数据报格式</h3><p>IP使用的分组叫做数据报，数据报长度可变，由头部和数据组成，头部由20-60个字节组成，包含路由选择和传输相关的重要信息，习惯上以4个字节表示头部。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221016145747587.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP数据报"></p>
+<p>版本号：4位版本号定义IPv4的版本。</p>
+<p>头部长度：HLEN字段以4字节定义数据报头部的总长度，IP数据报有变长头部。</p>
+<p>服务类型：他定义了数据报如何被处理，这个字段也被定义为差分服务。</p>
+<p>总长：定义了一个以字节计算的IP数据报总长度。</p>
+<p>标识、标记以及分段偏移（字节为单位）：数据报大于底层网络可以携带的大小时，这三个字段和IP数据报的分段有关。</p>
+<p>生存时间：存储一个数字，大约是任意量主机之间路由数量最大值的两倍，每个处理数据报的路由器把这个值减1，如果数值为0，路由器就丢弃它。</p>
+<p>协议：TCP|IP中，分组的数据段称为负载。一个数据报可以携带任意属于传输层协议的分组。</p>
+<p>头部校验和：IP是不可靠的，头部校验和来检查头部，但是不检查负载，校验需要在每一个路由器重新计算，因为从一个路由器到另一个路由器头部的某些字段（TTL）会发生改变。</p>
+<p>源和目的地址：这个段的值在整个过程中应当表示不变，并且在链路上的路由也应该知道这个值。</p>
+<p>选项：这个选项多达40个字节，用来进行网络的测试和调试，他不是必需部分，因此头部只需要20字节，但是选项是ip软件必需的，选项给数据报处理增加了一些负担。</p>
+<p>负载：负载就是数据，来自使用IP服务的其他协议的分组，如同邮件一样，数据报中负载就是内容，头部就是包裹。</p>
+<p>分段</p>
+<p>IP根据链路所使用的协议将数据报封装成帧，这其中就包括了负载的最大长度。也就是最大传输单元MTU（MTV）。IP数据报的总长度必须小于这个长度，这是计算机网络中的硬件和软件决定的。</p>
+<p>为了让IP独立出来，设计者决定把IP数据报的最大长度定义为65535个字节。但是对于其他物理链路来说，我们必须分割数据报，这个分割的过程就是分段。</p>
+<p>当数据报被分段，每个段都需要自己的头部，虽然头部中有些字段是重复的，但是有一些会被改变 ，如果一个数据报出现再次分段的情况，这时候这些看似重复的头部就能发挥作用了。</p>
+<p>虽然是在路由器上，但是重组必须是在目的主机上，因为分段的独立性，无法控制数据报的每一个分段都到达，更强的一个目的是，在传输期间重组会带来效率的降低。</p>
+<p>标识：16位，发送数据报时，使用一个计数器来保证唯一性，并且这个值被复制到标识字段内，标识号在分段时会被复制到所有的分段之中，这使得所有分段和原始数据段有相同的标识号。方便目的端重组。</p>
+<p>标记：3位，他定义了3个标识，最左侧是保留位不使用，第二位是不分段位，如果为1，那么机器不能对他进行分段，如果数据报不分段无法传输，那么就丢弃这个报文，第三位是多分段位。为0表示他是最后或者唯一的分段。</p>
+<p>段偏移：13位，表示这个分段在数据报中的相对位置，他是原始数据报中的数据偏移量，因此要注意分段之后的头部对他的影响，以8字节为单位。（13位较短）</p>
+<p>因此，分段后的第一个字节标号能被8整除就很关键。</p>
+<p>因此，即使是分段失序，最终目的主机也可以重组（没有丢失）原始数据报。</p>
+<p>第一个分段偏移量为0，将第一个分段长度除8，结果就是第二个分段的偏移值，将第一个和第二个分段总长度除8，就是第三分段的偏移值，继续过程，最后一个分组的M位的值为0。</p>
+<h3 id="IPV4数据报安全"><a href="#IPV4数据报安全" class="headerlink" title="IPV4数据报安全"></a>IPV4数据报安全</h3><p> 安全问题：分组嗅探，分组修改，IP欺骗。</p>
+<p>前两者都是劫持分组，前者拷贝一个分组，这很难被发现，目前的解决措施是分组加密，是的被劫持也无法解密其中内容。分组修改是修改分组内容，一般的利用数据完整性机制来发现这类型攻击。在打开并使用报文的内容之前，接收方可以在发送阶段使用这个机制来确定分组没有被改变。</p>
+<p>IP欺骗，是攻击者可以伪装成其他人并创建一个IP分组，他携带另一个电脑的源地址。这类型的攻击可以使用源鉴别机制来预防。</p>
+<p>IPSec（IP安全）的协议以免遭到之前提到的攻击。这个协议与IP协议一起使用，在两个实体之间创建一个面向连接服务。IPSec提供四种服务：定义算法和秘钥，分组加密，数据完整性，源鉴别。</p>
+<h3 id="IPV4地址"><a href="#IPV4地址" class="headerlink" title="IPV4地址"></a>IPV4地址</h3><p>IP是连接的地址，不是主机或路由器的地址。IPv4地址是唯一的，这表示每一个地址定位了一个且唯一一个连接到因特网上的设备。</p>
+<p>地址空间</p>
+<p>地址空间是系统能使用的地址个数，IPV4是用32位地址。这意味着有2的32次方个设备可以连接到因特网上。</p>
+<p>IPV4地址表示方法，二进制、点份十进制、十六进制。一般的点份十进制更易阅读。</p>
+<p>一个32位的IPv4地址是有层次结果的，第一部分是前缀，他定义了网络，第二部分是后缀，他定义了代码。</p>
+<p>前缀可以是固定长度也可以是变长的，起初是定长的，但是现在被废弃了。</p>
+<h3 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h3><p>前缀定长的情况，三种长度的前缀（8,16,24）。整个地址空间分为五类，ABCDE，这个方案称为分类寻址。</p>
+<p>前三类符合三种长度，D类不分前缀和后缀，他是多播地址，E类地址是保留地址，不分前缀和后缀。</p>
+<p>地址耗尽，这是分类寻址被废弃的原因，地址没有被合适的分配，A类地址的结点太多，C类地址过小，E类几乎不使用。</p>
+<p>为了减轻这种情况，提出了子网化和超网化，子网化特就是将某类网络划分为子网，每个子网有一个10的前缀。超网化可以将几个小类地址组合成一个较大的块，但是这让分组路由更困难。</p>
+<p>虽然他有很多问题，但是他有一个优势，给定一个地址，我们可以轻易的找到这个地址的类。</p>
+<p>无类寻址，长期的解决方案是IPV6，但是短期的解决方案是为了补偿地址被耗尽，类特权被从分配中消除。还是为了ISP，扩大个人与中小型组织的市场。</p>
+<p>在无类寻址中，前缀是变长块，地址的前缀定义了块。</p>
+<p>前缀长度：斜杠标记法。无类域间路由或CIDR策略。</p>
+<p>对于一个网络，下面三条信息至关重要，地址数量，首尾地址。</p>
+<p>斜杠后的n，可以得出这些。</p>
+<p>数量：2的32-n次方、首地址，左n位不变，右侧32-n位变成0,，尾地址，左n位不变，右侧32-n位全变1。</p>
+<p>另外一种方式是地址掩码，他也是32位数字，最左边n位是1，右边32-n位是0。计算机可以很容易的找到地址掩码，因为他是2的32-n次方-1的补码。</p>
+<p>计算机程序可以使用非、与、或简单的得到上述三条信息。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025183923197.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025183923197.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="使用子网掩码"></p>
+<p>块分配</p>
+<p>请求地址数量必须是2的整数次幂，请求块被分配时，地址空间要有连续的可用地址，首地址必须可以被块中地址数量整除。</p>
+<p>在划分子网时，也是如上的逻辑。</p>
+<p>地址聚合</p>
+<p>基于更大的前缀就可以完成这一点。</p>
+<p>特殊地址：本地主机地址，0.0.0.0&#x2F;32，有限广播地址：255.255.255.255&#x2F;32，回送地址：127.0.0.0&#x2F;8，私有地址：10.0.0.0&#x2F;8,172.16.0.0&#x2F;16,192.168.0.0&#x2F;16,192.254.0.0&#x2F;16，多播地址：224.0.0.0&#x2F;4.</p>
+<h3 id="DHCP动态主机配置协议"><a href="#DHCP动态主机配置协议" class="headerlink" title="DHCP动态主机配置协议"></a>DHCP动态主机配置协议</h3><p>将一个块的地址自动分配给设备，DHCP是应用层程序，使用客户—服务端来帮助网络层上的TCP-IP。</p>
+<p>他经常被称为即插即用协议。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025184804277.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025184804277.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP报文格式"></p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><h2 id="思科模拟器"><a href="#思科模拟器" class="headerlink" title="思科模拟器"></a>思科模拟器</h2><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222228563.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主界面" style="zoom:50%;">
+
+<p>这是思科模拟器的逻辑空间，还可以切换到物理空间，此处不讨论。</p>
+<p>在右下角选择添加的设备，按住CTRL键并且鼠标左键选中点击，就可以连续添加，添加完成之后，esc键退出模式。</p>
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222418571.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器连接的四台主机" style="zoom:50%;">
+
+<p>此处，使用通用集线器连接了四台主机，在线缆的选择中，一般的选择自动类型会容易的多。</p>
+<h3 id="配置主机IP"><a href="#配置主机IP" class="headerlink" title="配置主机IP"></a>配置主机IP</h3><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222625806.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="主机界面" style="zoom:50%;">
+
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022222637730.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="IP配置" style="zoom:50%;">
+
+<p>设置好ip之后，很简单的就可以实现几台主机之间的互联，通过ping ip地址的方式。当然这是因为集线器把他们连接到一起的原因。</p>
+<h3 id="使用数据包来观察"><a href="#使用数据包来观察" class="headerlink" title="使用数据包来观察"></a>使用数据包来观察</h3><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223314480.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="新建一般的分组" style="zoom:50%;">
+
+<p>创建一个数据报，例如从PC7发送到PC9。选择左下角，将事件改为模拟或仿真。观察数据包行为。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223441518.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="正在发送数据包"></p>
+<p>此处，在发送的时候，无法直接发送，因为源端没有目的端的MAC与IP之间的映射关系，于是需要发送ARP广播请求。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223511271.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到集线器"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223544198.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发到其他主机，其他主机判断会否需要"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223617629.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="接受主机响应集线器"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223638528.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="集线器转发响应"></p>
+<p>数据包信息</p>
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223852706.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="过程描述" style="zoom:50%;">
+
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022223955313.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="分组封装"></p>
+<h3 id="访问web服务器"><a href="#访问web服务器" class="headerlink" title="访问web服务器"></a>访问web服务器</h3><p>选择一台主机和服务器，简单的使用交叉线连起来，建一个数据报，观察。</p>
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225219060.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="创建分组" style="zoom:50%;">
+
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225444106.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="发送到服务器"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225505540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器返回响应"></p>
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225648185.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="web浏览器请求服务器" style="zoom:50%;">
+
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225905053.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终返回的响应报文内容" style="zoom:50%;">
+
+<img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221022225944309.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最终到达主机的数据报响应信息" style="zoom:50%;">
+
+<h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p>利用交换机，搭建一个简单的局域网，并且使用DHCP动态分配ip地址。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120450496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP动态分配ip"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120535597.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="服务器配置"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120619513.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP配置，注意保存"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221025120804174.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="DHCP自动分配"></p>
+<h3 id="静态路由实现网络互通"><a href="#静态路由实现网络互通" class="headerlink" title="静态路由实现网络互通"></a>静态路由实现网络互通</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194556839.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194556839.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="网络拓扑"></p>
+<p> 在拓扑结构之中，路由器的接口可以简单的看做是一台设备，路由器的作用是连接网络，做的是网络与网络之间的连接。</p>
+<p>上述的拓扑图中，三台路由器组成的环路，此时三台主机是无法彼此通信的。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026193448137.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026193448137.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="路由器1的路由表"></p>
+<p>如图路由表中只有pc0网络的信息。</p>
+<p>此时，在拓扑图中，设备之间端口正常开启，但是PC之间还是无法通信，因为默认的，路由只知道和自己直接连接的设备信息，如同PC0想要连接PC1，但是发送的报文到达路由器1之后，路由器1无法解析出PC1所在的网段在哪里，因此返回发送失败。</p>
+<p>对此，我们可以手动的配置静态路由来更新路由表来解决。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194022409.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194022409.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="添加静态路由"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194042809.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194042809.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="命令行形式"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194102186.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194102186.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="此时路由器1的路由表"></p>
+<p>但仅仅配置了路由器1，只能保证数据报文到达PC1，但是PC1需要返回一个响应，因此还需要配置路由器0。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194237303.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194237303.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="路由器0添加静态路由"></p>
+<p>发送ICMP数据报或者ping对方主机，发现网络互通。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194815825.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026194815825.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="连接成功"></p>
+<h3 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h3><p>这是一个基于RIP路由向量选择的协议，总的来说，他需要和路由器直连的网络，然后自行发送请求，获得与路由器相关联的网络信息，保存在路由表之中。类似于路由器自己寻找网段，自动更新路由表。配置较为简单。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195021581.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195021581.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="配置Rip"></p>
+<h3 id="OSPF协议"><a href="#OSPF协议" class="headerlink" title="OSPF协议"></a>OSPF协议</h3><p>这也是一类路由选择协议，和RIP不同，这是基于链路的协议，重点在于以邻居链表为前提生成最短路径树更新路由表。</p>
+<p>配置稍复杂</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195314412.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/image-20221026195314412.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="ospf的配置"></p>
+<p>如图，OSPF是一个进程，因此需要进程号，而后，分为主干与枝干，分区域添加网络，注意的是，此时的子网掩码需要取反。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%AC%94%E8%AE%B0/" class="">
+              笔记
+            </a>
+          
+        </div>
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">CLion中配置CMake运行多个main函数</div>
+      </div>
+      
+      <!-- <div class="content">
+        CLion中配置CMake运行多个main函数
+简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text"></div>
+      </div>
+      <!-- <div class="content">
+        操作系统
+一个正在运行的程序是什么样的？
+首先处理器从内存中读取指令，指令被读取，而后经过解码，开始执行。
+这就是冯诺伊
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#D4E8FA';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ab7d7aa60540766a526409151b0325fc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "这么垃圾的代码也要copy？？？？",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+
+    <script type="text/javascript">
+  loadScript("https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js")
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.reveal', {
+      distance: '120px',
+      duration: '400',
+      interval: '30',
+      scale: '1',
+      origin: 'bottom', // 动画开始的方向
+      easing: 'ease'
+    });
+  }
+  $(function () {
+    var checkScrollReveal = setInterval(function () {
+      if ($("#safearea").css("display") != "block") return
+      if (typeof ScrollReveal == "undefined") return
+      clearInterval(checkScrollReveal)
+      pjax_scrollrebeal();
+    }, 100)
+  });
+  document.addEventListener('pjax:complete', function () {
+    pjax_scrollrebeal();
+  })
+</script>
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = '';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va",
+        app_key: "UuxnA5liCzoSIlXGGSnWG271",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

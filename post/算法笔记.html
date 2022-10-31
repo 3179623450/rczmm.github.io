@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>算法笔记 | 小小世界</title>
+
+  <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="/js/valine/index.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            <script src = "/js/index/slowflow.js"></script>
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">加载中...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">小小世界</h3>
+      <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/comment" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">小小世界</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/about" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/comment" class="menu-item-link" title="留言板">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
+  
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        算法笔记
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-08-30 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 7.3k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 26分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="算法笔记"><a href="#算法笔记" class="headerlink" title="算法笔记"></a>算法笔记</h1><p>旅行商人问题</p>
+<p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
+<p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
+<p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
+<p>所谓的算法，就是任何定义良好的计算过程，但是在学习算法的时候，它通常是与数据结构结合在一起的。</p>
+<p>他拥有输入和输出，算法就是一系列的计算步骤，用来把输入转换为输出。算法还可以看成是一种工具，用来解决一个说明严格的计算问题。</p>
+<p>首先是排序问题，很多的程序中它都是一种中间步骤，因此，到目前为止，有许多优秀的排序算法，用来应对特定的问题来说，需要选择最佳的算法，要考虑许多方面的因素。</p>
+<p>算法的表示可以用许多的语言来表述，在编程语言上，更是有许多的选择，但无论采用哪一种形式，唯一的要求就是算法的规格说明必须提供关于待执行的计算过程的精确描述。</p>
+<p>数据结构，也就是存储和组织数据的一种方式，他的目的是为了对数据方便的进行访问和修改，没有任何一种数据结构适合所有的用途和目的，因此对数据结构的掌握极为重要。</p>
+<p>衡量算法效率的常用标准是速度，也就是一个算法从输出到输入所需要的时间，但是有一些问题还没有已知的有效算法，就比如NP完全问题。</p>
+<p>当然算法最终是作用在计算机上，如果计算机的储存无限大并且是免费的，计算机的运算速度也是无限快，在这么一种情况下，任何一种能得到正确结果的算法都是一样的，但是正因为硬件的限制，因此算法的选择也变得尤其的重要，因此计算的时间和存储的空间都是一种十分有限的资源，这些有限的资源应该被有效的使用。</p>
+<p>并且即使硬件的功能已经足够的强大，但是算法上的差距依旧巨大。</p>
+<p>尽管在一些简单的应用上看上去对于算法没有什么需求，但是大多数问题对于算法的要求还是很巨大的。</p>
+<h2 id="算法入门"><a href="#算法入门" class="headerlink" title="算法入门"></a>算法入门</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>输入：n个任意值的数字</p>
+<p>输出：输入序列的一个排序（升序或者降序）</p>
+<p>插入排序是一个对少量元素进行排序的有效算法，插入排序在逻辑上就和我们打牌时，整理手上的牌一样。开始的时候，我们的一只手是空的，我们每一次摸起一张牌，并且把它放到空手上，放到合适的位置上，接着继续摸牌，把它插入到正确的位置上，为了找到这张牌的正确位置，要把它和每一张牌都进行一次比较，因此无论在什么时候，我用来存储牌的手上，每一张牌都是排好序的，这些牌也都是原来桌子上那些洗好的最顶上的一些牌。</p>
+<p>python 实现</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def insertionsort_up(arr):
+    for i in range(1, len(arr)):
+        key &#x3D; arr[i]
+        # 数组索引
+        j &#x3D; i - 1
+
+        # 当第二个数小于第一个数时
+        while key &lt; arr[j] and j &gt;&#x3D; 0:
+            # 将第二个值赋值给第一个值
+            arr[j + 1] &#x3D; arr[j]
+            # 索引减一，继续比较
+            j -&#x3D; 1
+
+        # 关键值交换
+        arr[j + 1] &#x3D; key
+
+    print(&quot;the resluts is &#123;&#125;&quot;.format(arr))</code></pre>
+
+<h3 id="循环不变式与算法的正确性"><a href="#循环不变式与算法的正确性" class="headerlink" title="循环不变式与算法的正确性"></a>循环不变式与算法的正确性</h3><p>算法导论里的描述真的应该多加思考，这一步往往被我所忽略，因此产生了很多的问题。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="快速排序"></p>
+<p>这幅图展示了插入排序的工作流程，数组下标出现在矩阵的上方，数据中各个位置存储的数字出现在矩形中。</p>
+<p>循环不变式主要用来帮助我们理解算法的正确性。对于循环不变式，必须证明它的三个性质:</p>
+<p>初始化:它在循环的第一轮迭代开始之前，应该是正确的。</p>
+<p>保持:如果在循环的某一次迭代开始之前它是正确的，那么，在下一次迭代开始之前，它也应该保持正确。</p>
+<p>终止:当循环结束时，不变式给了我们一个有用的性质，它有助于表明算法是正确的。</p>
+<p>当头两个性质成立时，就能保证循环不变式在循环的每一轮迭代开始之前，都是正确的。请注意这儿的推理与数学归纳法的相似性。在数学归纳法中，要证明某一性质是成立的﹔必须首先证明其基本情况和一个归纳步骤都是成立的。这儿，证明不变式在第一轮迭代开始之前是成立的，就有点类似于归纳法中对基本情况的证明﹔证明不变式在各次迭代之间保持成立，就有点类似于归纳法中的归纳步骤的证明。</p>
+<p>有关循环不变式的第三项性质可能是最重要的，因为我们主要是用不变式来证明算法正确性的。此外，它与数学归纳法的常见用法也是不同的:在归纳法中，归纳步骤是无穷地使用的;在这儿,当循环结束时，即终止“归纳”。</p>
+<p>对插入排序，这些性质也一样成立。</p>
+<p>初始化;首先，先证明在第一轮迭代开始之前，循环不变式是成立的。此时，j&#x3D;2，而子数组为A[1..j一1]。亦即，它只包含一个元素A[1]，实际上就是最初在A[1]中的那个元素。这个子数组是已排序的(这一点是显然的)，这样就证明了循环不变式在循环的第一轮迭代开始之前是成立的。<br>保持:接下来，我们来考虑第二个性质:证明每一轮循环都能使循环不变式保持成立。从非形式化的意义上来看，在外层for循环的循环体中，要将A[j一1]、A[j–2]、A[j一3]等元素向右移–个位置，直到找到A[j的适当位置时为止(第4~7行)，这时将A[j]的值插入(第8行)。如果要更形式化地证明第二个性质成立的话，就需要陈述并证明对内层 while循环也有一个循环不变式成立。但是，此处我们更倾向于暂时不陷入过于形式化的细节之中，而是依赖于非形式化的分析，来证明第二个性质对于外层循环是成立的。<br>终止:最后，分析一下循环结束时的情况。对插人排序来说，当j大于n时(即当j&#x3D;n十1时)，外层for循环结束。在循环不变式中，将j替换为n+1，就有子数组A[1..n]包含了原先A[1..n]中的元素，但现在已排好序了。但是，子数组A[1..n]其实就是整个数组!因此，整个数组就排好序了，这意味着算法是正确的。</p>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p><strong>算法分析即指对一个算法所需要的资源进行预测</strong>。硬件资源偶尔会是我们主要关心的，但通常，资源是指我们希望测度的计算时间。一般来说，对于一个给定的问题，通过分析几种候选算法，可以很容易地从中选出一个最有效的算法。这种分析的结果可能是找出了不止一个的候选算法，但在这一过程中，通常都要去掉几个较差的算法。<br>在分析一个算法之前，要建立有关实现技术的模型，包括描述所用资源的及代价的模型。这里采用导论里一种通用的单处理器、随机存取机( random-access machine，RAM)计算模型来作为实现技术。</p>
+<p>当然，虽然采取这种模型，但是严格的去定义指令和代价是完全没必要的，毕竟主题还是理解算法的设计与分析。</p>
+<p>在RAM模型中，即使是描述最简单的加法器都会异常的繁琐，因为这涉及到真实的算术指令，数据移动指令和控制指令等，其中还涉及到操作数数据精度的问题，总之在算法的设计与分析中，我们会忽略这些问题，把注意力和精力更多的放在具体的算法过程中去。</p>
+<h3 id="插入排序算法分析"><a href="#插入排序算法分析" class="headerlink" title="插入排序算法分析"></a>插入排序算法分析</h3><p>插入排序过程的时间开销与输入有关:排序1000个数的时间比排序三个数的时间要长。还有，即使排序两个相同长度的输人序列，所需的时间也可能不同。这取决于它们已排序的程度。一般来说，算法所需时间是与输入规模同步增长的，因而常常将一个程序的运行时间表示为其输人的函数。这就要求对术语“运行时间”和“输人规模”更仔细地加以定义。</p>
+<p>输入规模的概念与具体问题有关。对许多问题来说(如排序或计算离散傅里叶变换)，最自然的度量标准是输入中的元素个数，例如，待排序数组的大小n。对另一些问题(如两个整数相乘)，其输入规模的最佳度量是输人数在二进制表示下的位数。有时，用两个数(而不是一个)来表示输人可能更合适。例如，某一算法的输入是个图，则输人规模可以由图中顶点数和边数来表示。在下面讨论的每一个问题中，我们都将指明所用的度量标准。<br>算法的运行时间是指在特定输入时，所执行的基本操作数(或步数)。可以很方便地定义独立于具体机器的“步骤”概念。目前，先采用以下观点，每执行一行伪代码都要花一定量的时间。虽然每一行所花的时间可能不同，但我们假定每次执行第i行所花的时间都是常量c<sup>i</sup>。这种观点与RAM模型是一致的，同时也反映出了伪代码在多数真实计算机上是如何实现的。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="插入排序"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="计算总运行时间"></p>
+<p>即使是同样规模的输入，一个算法的运行时间同样的也可能依赖于给定的规模下的输入类型。例如，如果说在插入排序中，输入的规模是已经排好序的，就会出现最佳的情况，当然一个等值的输入数组也会出现最佳的情况。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最佳代价"></p>
+<p>最坏的情况是随时都有可能发生的，在插入排序中，如果数组是完全逆序的，那么就会出现最坏的情况。必须把A[j]与子数组的每一个元素进行比较才能得出结果，因此此时的时间复杂度是最高的。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="求和式"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最坏情况"></p>
+<p>最优时，an+b这是大体的时间复杂度，这是一个一次函数，但是最坏情况时,结果变成了一个二次函数。</p>
+<p>一般的，对于给定的输入，算法的运行时间会是固定的（硬件可能会造成一些影响，但差距不会太大），但是有一些很有意思的随机化算法，对于固定的输入，算法的效率是有变化的，当然对于插入排序来说，他并没有这样的特点。</p>
+<h3 id="最坏和平均情况分析"><a href="#最坏和平均情况分析" class="headerlink" title="最坏和平均情况分析"></a>最坏和平均情况分析</h3><p>一般的，对于某一个算法的考察，我们都会考虑最坏的情况。</p>
+<p>一个算法的最坏情况运行时间是在任何输人下运行时间的一个上界。知道了这一点，就能确保算法的运行时间不会比这一时间更长。也就是说，我们不需要对运行时间做某种复杂的猜测，并期望它不会变得更坏了。<br>对于某些算法来说，最坏情况出现得还是相当频繁的。例如，当在数据库中检索一条信息时，当要找的信息不在数据库中时，检索算法的最坏情况就会经常出现。在有些检索应用中，要检索的信息常常是数据库中没有的。<br>大致上看来，“平均情况”通常与最坏情况一样差。假定我们随机地选择n个数，并利用插入排序算法对它们进行排序。要决定应该在在子数组A[1..j-1]中的哪一个位置上插人元素A[j]，需要多长时间?在平均情况下，A[1..j一1]中的一半元素小于A[i]，一半的元素大于A[j]。于是，在平均情况下，要检查子数组A[1..j–1]中一半的元素，因而有t<sup>j</sup>&#x3D;j&#x2F;2。如果求–下平均情况下运行时间的话，会发现它是输人规模的一个二次函数，这与最坏情况下的运行时间是一样的。</p>
+<p>但是这并不意味着平均情况分析就毫无价值，在很多时候，我们都对一个算法的平均情况或期望的运行时间感兴趣，这就是概率分析，他可以用来确定一个算法期望的运行时间，但是这存在着一个问题，平均的定义不太明晰，通常，我们假定某一规模的所有输入都是等可能的。在实践中，这可能并不成立，有时候我们采用随机化算法，他可以给出随机的选择，从而让对算法进行概率分析。</p>
+<h3 id="增长的量级"><a href="#增长的量级" class="headerlink" title="增长的量级"></a>增长的量级</h3><p>可以发现，对插入排序的最佳和最坏情况进行分析的时候，我们采用了一些抽象的概念，简化了每一条语句真实的代价，而且实际上，我们还做了进一步的抽象，使得最佳情况表述为：an+b。</p>
+<p>再做进一步抽象，也就是运行时间的增长率，或者是增长的量级，这样我们就只用考虑公式中的最高次项，常数项甚至可以直接忽略，同时就算常数项系数都可以忽略掉，这是得益于硬件的发展，毕竟在较大规模之中，相对于增长率来说，系数都是次要的。</p>
+<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>算法的设计方式有很多，插入排序使用的是增量法，在排列好子数组之后，将新元素插入，再对新数组进行排列，直到原数组完全排列成功。</p>
+<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><p>有很多算法在结构上是递归的:为了解决一个给定的问题，算法要一次或多次地递归调用其自身来解决相关的子问题。这些算法通常采用分治策略:将原问题划分成n个规模较小而结构与原问题相似的子问题;递归地解决这些子问题，然后再合并其结果，就得到原问题的解。</p>
+<p>分治模式在每一层递归上都有三个步骤:<br>分解(Divide):将原问题分解威一系列子问题<br>解决(Conquer):递归地解各子问题。若子问题足够小，则直接求解</p>
+<p>合并(Combine):将子问题的结果合并成原问题的解。<br>合并排序(merge sort)算法完全依照了上述模式，直观地操作如下:</p>
+<p>分解:将n个元素分成各含n&#x2F;2个元素的子序列;<br>解决:用合并排序法对两个子序列递归地排序</p>
+<p>合并:合并两个已排序的子序列以得到排序结果。<br>在对子序列排序时，其长度为1时递归结束。单个元素被视为是已排好序的。</p>
+<p>其中，引入一个辅助的过程，也就是合并的过程，它的作用是把已经分好的子数组组合成一个排好序的子数组来代替当前子数组。</p>
+<p>再举扑克牌这个例子，假设有两堆牌面朝上地放在桌上，每一堆都是已排序的，最小的牌在最上面。我们希望把这两堆牌合并成一个排好序的输出堆，面朝下地放在桌上。基本步骤包括在面朝上的两堆牌中，选取顶上两张中较小的一张，将其取出后(它所在堆的顶端又会露出一张新的牌)面朝下地放到输出堆中。重复这个步骤，直到某-输入堆为空时为止。这时，把输人堆中余下的牌面朝下地放入输出堆中即可。从计算的角度来看，每一个基本步骤所花时间是个常量，因为只是查看顶上的牌，最多进行n次比较，所以合并排序的时间为O(n)。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="合并排序"></p>
+<p>PDF的图片可能比较模糊。</p>
+<p>在调用MERGE(A，9，12，16)的第10到17行的操作中，当子数组A[9..16]包含序列(2，4,5，7，1，2，3，6)时的情况。在复制和插入了哨兵后，数组L包含了(2，4，5，7，∞)，数组R包含了〈1，2，3，6，∞)。A中的浅阴影位置包含了它们的最终值，L和R中的浅阴影位置包含了有待于被复制回A中的值。合起来看，浅阴影的位置始终包含了最初在A[9..16]中的值，再加上两个哨兵。A中的深阴影位置包含了将被覆盖的值，而L和R中深阴影位置包含了已被复制回A中的值。a)到h)在第12到17行中循环的每一轮迭代开始之前，数组A、L和R以及它们各自的下标k、i和j 的情况。i)终止时各数组及其下标的情况。此时，A[9..16]中的子数组已排好序了，L和R中的两个哨兵是这两个数组中，仅有的两个未被复制回A中的元素.</p>
+<p>python实现</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mergesort(nums):
+   # 治（归并）
+  def merge(nums, left, m, right):
+    # 前数组长度
+    n_front &#x3D; m - left + 1
+    # 后数组长度
+    n_after &#x3D; right - m # 生成两个临时数组，两种方式
+    L &#x3D; [0] * n_front
+    R &#x3D; [0 for i in range(n_after)]
+
+    # 拷贝数组内容
+    for i in range(n_front):
+        L[i] &#x3D; nums[left + i]
+
+    for j in range(n_after):
+        R[j] &#x3D; nums[m + 1 + j]
+
+    i &#x3D; 0
+    j &#x3D; 0
+    k &#x3D; left
+
+    while i &lt; n_front and j &lt; n_after:
+        if L[i] &lt;&#x3D; R[j]:
+            nums[k] &#x3D; L[i]
+            i +&#x3D; 1
+        else:
+            nums[k] &#x3D; R[j]
+            j +&#x3D; 1
+        k +&#x3D; 1
+
+    # 拷贝L的保留元素
+    while i &lt; n_front:
+        nums[k] &#x3D; L[i]
+        i +&#x3D; 1
+        k +&#x3D; 1
+
+    # 拷贝R的保留元素
+    while j &lt; n_after:
+        nums[k] &#x3D; R[j]
+        j +&#x3D; 1
+        k +&#x3D; 1
+
+# 分（分离）
+def separate(nums, left_index, right_index):
+    # print(left_index,right_index)
+
+    if left_index &lt; right_index:
+        # 分离数列大小
+        m &#x3D; (left_index + right_index - 1) &#x2F; 2
+        m &#x3D; int(m)
+
+        # 分离数列前半部分
+        separate(nums, left_index, m)
+        # 分离数列后半部分
+        separate(nums, m + 1, right_index)
+        # 治，把分开的元素进行合并
+        merge(nums, left_index, m, right_index)
+
+separate(nums, 0, len(nums) - 1)</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="合并排序"></p>
+<h3 id="分治法分析"><a href="#分治法分析" class="headerlink" title="分治法分析"></a>分治法分析</h3><p>当一个算法中含有对其自身的递归调用时，其运行时间可以用一个递归方程(或递归式)来表示。该方程通过描述子问题与原问题的关系，来给出总的运行时间。我们可以利用数学工具来解递归式，并给出算法性能的界。<br>分治算法中的递归式是基于基本模式中的三个步骤的。如先前一样，设T(n)为一个规模为n的问题的运行时间。如果问题的规模足够地小，如n≤c(c为一个常量)，则得到它的直接解的时间为常量，写作O(1)。假设我们把原问题分解成α个子问题，每–个的大小是原问题的1&#x2F;b。(对于合并排序，a和b都是2，但在许多分治法中，a≠b。)如果分解该问题和合并解的时间各为D(n)和C(n)，则得到递归式:</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归式"></p>
+<h3 id="合并排序算法的分析"><a href="#合并排序算法的分析" class="headerlink" title="合并排序算法的分析"></a>合并排序算法的分析</h3><p>合并排序的代码在元素为奇数个时能正确地工作，而此处我们为了简化对基于递归的算法的分析，就假定原问题的规模是2的幂次，这样每一次分解所产生的子序列的长度就恰好为n&#x2F;2。<br>以下给出递归形式的T(n)即最坏情况下合并排序n个数的运行时间。合并排序一个元素的时间是个常量。当n&gt;1时，将运行时间如下分解:<br>分解:这一步仅仅是计算出子数组的中间位置，需要常量时间，因而D(n)&#x3D;O(1)。</p>
+<p>解决:递归地解两个规模为n&#x2F;2的子问题,时间为2T(n&#x2F;2)。<br>合并:我们已经注意到，在一个含有n个元素的子数组上，MERGE过程的运行时间为e(n)，则C(n)&#x3D;O(n)。<br>当我们在合并排序算法的分析中，将函数D(n)和C(n)相加时，我们是在将一个时间复杂度为O(1)函数与另一个O（n）函数进行相加，相加的和是一个线性函数。</p>
+<p>此时归并排序的最坏情况运行时间的递归表示为：</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归表达式"></p>
+<p>接下来，我们要处理T(n) &#x3D; n*logn的问题，可以用主定理来证明，此处对数的底数为2，但是这里不用主定理，也可以直观理解。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="重写递归式"></p>
+<p>其中常量c代表规模为1的问题所需的时间，也是在“解决”和“合并”步骤中处理每个数组元素所需的时间。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归树"></p>
+<p>如何解递归式。出于方便性的考虑，假设n是2的整数幂。T(n)，它被扩展成递归式的一种等价树形表示。cn项是树根(即顶层递归的代价)，根的两棵子树是两个更小一点的递归式T(n&#x2F;2)。图示出了这-过程在将T(n&#x2F;2)扩展后的情况。在第二层递归的两个子结点中，每一个结点的代价都是cn&#x2F;2。继续在树中扩展每个结点，即将其分解成由递归式所决定的各个组成部分，直到问题的规模降到了1，这时每个问题的代价为c。图示出了最终的树。<br>接下来给这棵树的每一层加上代价。最顶层的总代价为cn，下一层的总代价为c(n&#x2F;2)十c(n&#x2F;2)&#x3D;cn，再往下去一层，总代价为c(n&#x2F;4)+ c(n&#x2F;4)+c(n&#x2F;4)+ c(n&#x2F;4)&#x3D;cn，等等。一般来说、最顶层之下的第i层有2<sub>i</sub>个结点，每一个的代价都是c(n&#x2F;2<sub>i</sub>)，于是，顶层之下的第i层的总代价为2<sub>i</sub>c(n&#x2F;2<sub>i</sub>)&#x3D;cn。在最底层，共有n个结点，每一个结点的代价为c，该层的总代价为cn。</p>
+<p>在图中，“递归树”中总的层数为lgn+1。只要做一个非正式的归纳推理，就很容易理解这一事实。n&#x3D;1为归纳的基本前提情况，此时递归树中只有一层。由于 lg1&#x3D;0，有 lgn+1给出了正确的层数。现在，我们进行归纳假设，即假设一棵有2i个结点的递归树中，共有lg2<sub>i</sub>＋1&#x3D;i+1层(由于对任何i值，都有lg2<sub>i</sub>&#x3D;i)。因为我们假设初始的输入规模是2的整数次幂，因而，下一个要考虑的输入规模应该是2<sub>i</sub>+1。一棵具有2<sub>i</sub>+1个结点的树比具有2<sub>i</sub>个结点的树要多一层，因此，其总的层数为(i＋1)＋1&#x3D;lg2<sub>i+1</sub>+1。<br>要计算递归式给出的总代价，只要将递归树中各层的代价加起来就可以了。在该树中，总共有 lgn十1层，每一层的代价都是cn，于是，整棵树的总代价就是cn(lgn+1)&#x3D;cnlgn+cn。忽略低阶项和常量c，即得到结果e(n lgn)。</p>
+<p>函数增长</p>
+<p>递归</p>
+<p>概率分析与随机算法</p>
+<h2 id="厕所坑位问题"><a href="#厕所坑位问题" class="headerlink" title="厕所坑位问题"></a>厕所坑位问题</h2><p>额。。。非恶搞、真思考。</p>
+<p>一层宿舍楼内，有公共厕所两间，厕所内有六个坑位，假定每人每天平均上一次厕所，一次三分钟，求一层楼多少人才能使得上厕所不会拥挤的概率超过百分之70？</p>
+<p>拥挤？即三分钟内有至少13个人上厕所。一天二十四小时，共计1440分钟。</p>
+<p>假设，只有一个坑位，一个人，那么无论如何也不会产生拥挤问题，当一个坑位，两个人时，此时有可能就会产生拥挤问题。此时一天的总时长为1440分钟，第一个人一天上厕所所花的时间为3分钟，那么此时的第二个人只能在1437分钟里上厕所才不会发生拥挤，此时拥挤的概率应当为3 &#x2F; 1440。当坑位扩展，意味着可以同时容纳多人上厕所，例如两个坑位，两个人就不会出现拥挤的情况。</p>
+<p>用几何的角度想一想，一天的总时长是个圆，他的面积是1440，现在在圆里有两个面积为3的阴影，问两个阴影不重叠的概率是多少。</p>
+<p>1 * 1437 &#x2F; 1440。很容易得到的答案。</p>
+<p>三个人呐？</p>
+<p>1 * 1437 &#x2F; 1440 * 1434 &#x2F; 1440</p>
+<p>如果按照这样的逻辑，481人时，不拥挤的概率一定为0，但实际上480人时，不拥挤的概率已经是一个十分小的数字，我们规定不拥挤的概率应当超过百分之七十。</p>
+<p>对于这样的计算，使用一个简单的程序来帮助我们无疑要愉快的多。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">result &#x3D; 1
+nums &#x3D; 1440
+temp &#x3D; 1
+while nums &gt;&#x3D; 0:
+    result *&#x3D; nums &#x2F; 1440
+    if result &gt;&#x3D; 0.7:
+        print(&#39;不拥挤的概率为：&#39;, result, &#39;此时的人数：&#39;, temp)
+    nums -&#x3D; 3
+    temp +&#x3D; 1</code></pre>
+
+<p>结论是，18个人时，不拥挤的概率约为72%，达到标准。</p>
+<p>即当有18个人时，如果二十四小时内，每一分钟上厕所的概率相等，那么一个坑位就可以大致满足需求。</p>
+<p>一个坑位当人数达到12时，不拥挤的概率约为87%，那么问题中的12个坑位呐？</p>
+<p>实际上，只有当上厕所人数达到13人时，才会出现拥挤的情况。此时每进来一个人，相当于多了面积为3的阴影。因此在上述的代码描述，只需要调整最初时的人数就可以了。</p>
+<p>结果为29人，当人数达到29人时，不拥挤的概率就只有72%</p>
+<p>这个结果正确嘛？如果正确的话，似乎有些不合理了。但实际上，代码描述的是一天二十四小时内，每个人随时都可能上厕所，并且在每分钟上厕所的概率都是相等的，都是独立事件，一个坑位在三分钟内拥有两个主人的情况为拥挤，但在现实情况下，上厕所具有时段性，某个时间段，可能很多人上厕所，并且还有往返时间，上厕所的时间每个人也各不相同，有的人只需要2分钟，有的人却要10分钟。</p>
+<p>这个问题其实是生日问题的翻版，他的目的只有一个，告诉你，去厕所别憋着，因为下一个厕所随时都可能会挤。</p>
+<p>1、</p>
+<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前 <em><code>numRows</code></em> 行。</p>
+<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">ret &#x3D; list()
+numRows &#x3D; int(input(&quot;input your nums:&quot;))
+for i in range(numRows):
+    row &#x3D; list()
+    for j in range(0, i + 1):
+        if j &#x3D;&#x3D; 0 or j &#x3D;&#x3D; i:
+            row.append(1)
+        else:
+            row.append(ret[i - 1][j] + ret[i - 1][j - 1])
+    print(row)
+    ret.append(row)</code></pre>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" class="">
+              算法
+            </a>
+          
+        </div>
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/post/MtaLab%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">MtaLab笔记</div>
+      </div>
+      
+      <!-- <div class="content">
+        x&#x3D;linspace(0,6);%createavectorxbetween0and6
+y1&#x3D;sin
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">C++自学笔记（1）</div>
+      </div>
+      <!-- <div class="content">
+        C++很重要，很重要，很重要。
+HelloWorld&#x2F;&#x2F; 头文件引入
+#include &lt;io
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#D4E8FA';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ab7d7aa60540766a526409151b0325fc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "这么垃圾的代码也要copy？？？？",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+
+    <script type="text/javascript">
+  loadScript("https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js")
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.reveal', {
+      distance: '120px',
+      duration: '400',
+      interval: '30',
+      scale: '1',
+      origin: 'bottom', // 动画开始的方向
+      easing: 'ease'
+    });
+  }
+  $(function () {
+    var checkScrollReveal = setInterval(function () {
+      if ($("#safearea").css("display") != "block") return
+      if (typeof ScrollReveal == "undefined") return
+      clearInterval(checkScrollReveal)
+      pjax_scrollrebeal();
+    }, 100)
+  });
+  document.addEventListener('pjax:complete', function () {
+    pjax_scrollrebeal();
+  })
+</script>
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = '';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va",
+        app_key: "UuxnA5liCzoSIlXGGSnWG271",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

@@ -3,11 +3,11 @@
   <title>小小世界</title>
   
   <subtitle>永远在路上</subtitle>
-  <link href="http://rczmm.github.io/atom.xml" rel="self"/>
+  <link href="http://rczmm.top/atom.xml" rel="self"/>
   
-  <link href="http://rczmm.github.io/"/>
-  <updated>2022-10-27T12:24:37.065Z</updated>
-  <id>http://rczmm.github.io/</id>
+  <link href="http://rczmm.top/"/>
+  <updated>2022-10-31T07:39:21.349Z</updated>
+  <id>http://rczmm.top/</id>
   
   <author>
     <name>rczmm</name>
@@ -17,9 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>英语习题多练</title>
+    <link href="http://rczmm.top/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html"/>
+    <id>http://rczmm.top/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html</id>
+    <published>2022-10-31T07:24:24.000Z</published>
+    <updated>2022-10-31T07:39:21.349Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;虚拟语气&quot;&gt;&lt;a href=&quot;#虚拟语气&quot; class=&quot;headerlink&quot; title=&quot;虚拟语气&quot;&gt;&lt;/a&gt;虚拟语气&lt;/h2&gt;&lt;p&gt;1、—Tom is always making so many mistakes in his English</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>计算机算术</title>
-    <link href="http://rczmm.github.io/2022/10/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/"/>
-    <id>http://rczmm.github.io/2022/10/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/</id>
+    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html"/>
+    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</id>
     <published>2022-10-27T04:31:51.000Z</published>
     <updated>2022-10-27T12:24:37.065Z</updated>
     
@@ -39,8 +60,8 @@
   
   <entry>
     <title>计算机系统-程序的机器级表示</title>
-    <link href="http://rczmm.github.io/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/"/>
-    <id>http://rczmm.github.io/2022/10/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/</id>
+    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html"/>
+    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html</id>
     <published>2022-10-12T04:18:07.000Z</published>
     <updated>2022-10-14T05:51:08.903Z</updated>
     
@@ -60,8 +81,8 @@
   
   <entry>
     <title>数据结构</title>
-    <link href="http://rczmm.github.io/2022/10/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>http://rczmm.github.io/2022/10/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <link href="http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"/>
+    <id>http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</id>
     <published>2022-10-08T11:07:47.000Z</published>
     <updated>2022-10-10T04:35:45.461Z</updated>
     
@@ -81,8 +102,8 @@
   
   <entry>
     <title>CLion中配置CMake运行多个main函数</title>
-    <link href="http://rczmm.github.io/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/"/>
-    <id>http://rczmm.github.io/2022/10/07/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/</id>
+    <link href="http://rczmm.top/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html"/>
+    <id>http://rczmm.top/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html</id>
     <published>2022-10-07T12:24:09.000Z</published>
     <updated>2022-10-08T06:54:41.867Z</updated>
     
@@ -105,8 +126,8 @@
   
   <entry>
     <title>计算机网络笔记</title>
-    <link href="http://rczmm.github.io/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/"/>
-    <id>http://rczmm.github.io/2022/09/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-09-30T08:53:05.000Z</published>
     <updated>2022-10-26T11:54:07.793Z</updated>
     
@@ -124,14 +145,14 @@
     
     
     
-    <category term="笔记" scheme="http://rczmm.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="http://rczmm.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="http://rczmm.github.io/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://rczmm.github.io/2022/09/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</id>
+    <link href="http://rczmm.top/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html"/>
+    <id>http://rczmm.top/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F.html</id>
     <published>2022-09-18T06:00:55.156Z</published>
     <updated>2022-09-18T08:12:29.137Z</updated>
     
@@ -155,8 +176,8 @@
   
   <entry>
     <title>概率论笔记</title>
-    <link href="http://rczmm.github.io/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
-    <id>http://rczmm.github.io/2022/09/10/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://rczmm.top/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.top/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-09-10T03:03:17.000Z</published>
     <updated>2022-09-11T03:15:34.451Z</updated>
     
@@ -174,14 +195,14 @@
     
     
     
-    <category term="高数" scheme="http://rczmm.github.io/tags/%E9%AB%98%E6%95%B0/"/>
+    <category term="高数" scheme="http://rczmm.top/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
   <entry>
     <title>MtaLab笔记</title>
-    <link href="http://rczmm.github.io/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/"/>
-    <id>http://rczmm.github.io/2022/08/30/MtaLab%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://rczmm.top/post/MtaLab%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.top/post/MtaLab%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-08-30T10:45:13.937Z</published>
     <updated>2022-09-01T18:10:10.099Z</updated>
     
@@ -190,23 +211,23 @@
       
         
         
-    <summary type="html">&lt;pre class=&quot;line-numbers language-matlab&quot; data-language=&quot;matlab&quot;&gt;&lt;code class=&quot;language-matlab&quot;&gt;x&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span</summary>
+    <summary type="html">&lt;pre class=&quot;line-numbers language-matlab&quot; data-language=&quot;matlab&quot;&gt;&lt;code</summary>
         
       
     
     
     
     
-    <category term="MatLab" scheme="http://rczmm.github.io/tags/MatLab/"/>
+    <category term="MatLab" scheme="http://rczmm.top/tags/MatLab/"/>
     
   </entry>
   
   <entry>
     <title>算法笔记</title>
-    <link href="http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
-    <id>http://rczmm.github.io/2022/08/30/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://rczmm.top/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.top/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-08-30T04:34:10.000Z</published>
-    <updated>2022-10-07T08:30:27.318Z</updated>
+    <updated>2022-10-31T11:19:52.703Z</updated>
     
     
       
@@ -220,14 +241,14 @@
     
     
     
-    <category term="算法" scheme="http://rczmm.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="http://rczmm.top/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>C++自学笔记（1）</title>
-    <link href="http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/29/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html</id>
     <published>2022-08-29T14:35:09.000Z</published>
     <updated>2022-09-10T01:32:08.800Z</updated>
     
@@ -244,14 +265,14 @@
     
     
     
-    <category term="c++" scheme="http://rczmm.github.io/tags/c/"/>
+    <category term="c++" scheme="http://rczmm.top/tags/c/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（6）</title>
-    <link href="http://rczmm.github.io/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/28/springboot-vue%EF%BC%886%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%886%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%886%EF%BC%89.html</id>
     <published>2022-08-28T06:53:54.000Z</published>
     <updated>2022-08-28T07:25:39.690Z</updated>
     
@@ -267,16 +288,16 @@
     
     
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    <category term="java" scheme="http://rczmm.top/tags/java/"/>
     
-    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
+    <category term="springboot" scheme="http://rczmm.top/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（5）</title>
-    <link href="http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%885%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%885%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%885%EF%BC%89.html</id>
     <published>2022-08-27T13:42:53.000Z</published>
     <updated>2022-08-28T06:56:40.466Z</updated>
     
@@ -292,16 +313,16 @@
     
     
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    <category term="java" scheme="http://rczmm.top/tags/java/"/>
     
-    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
+    <category term="springboot" scheme="http://rczmm.top/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（4）</title>
-    <link href="http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%884%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%884%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%884%EF%BC%89.html</id>
     <published>2022-08-27T12:35:15.000Z</published>
     <updated>2022-08-27T13:42:42.402Z</updated>
     
@@ -317,16 +338,16 @@
     
     
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    <category term="java" scheme="http://rczmm.top/tags/java/"/>
     
-    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
+    <category term="springboot" scheme="http://rczmm.top/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（3）</title>
-    <link href="http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%883%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/27/springboot-vue%EF%BC%883%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%883%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%883%EF%BC%89.html</id>
     <published>2022-08-27T12:12:56.000Z</published>
     <updated>2022-08-27T12:29:43.670Z</updated>
     
@@ -342,16 +363,16 @@
     
     
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    <category term="java" scheme="http://rczmm.top/tags/java/"/>
     
-    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
+    <category term="springboot" scheme="http://rczmm.top/tags/springboot/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（2）</title>
-    <link href="http://rczmm.github.io/2022/08/26/springboot-vue%EF%BC%882%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/26/springboot-vue%EF%BC%882%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%882%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%882%EF%BC%89.html</id>
     <published>2022-08-26T14:37:31.000Z</published>
     <updated>2022-08-26T15:48:58.975Z</updated>
     
@@ -368,14 +389,14 @@
     
     
     
-    <category term="Java" scheme="http://rczmm.github.io/tags/Java/"/>
+    <category term="Java" scheme="http://rczmm.top/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Python装饰器</title>
-    <link href="http://rczmm.github.io/2022/08/26/Python%E8%A3%85%E9%A5%B0%E5%99%A8/"/>
-    <id>http://rczmm.github.io/2022/08/26/Python%E8%A3%85%E9%A5%B0%E5%99%A8/</id>
+    <link href="http://rczmm.top/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html"/>
+    <id>http://rczmm.top/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html</id>
     <published>2022-08-26T04:01:08.071Z</published>
     <updated>2022-08-26T04:56:57.631Z</updated>
     
@@ -390,17 +411,17 @@
     
     
     
-    <category term="python" scheme="http://rczmm.github.io/categories/python/"/>
+    <category term="python" scheme="http://rczmm.top/categories/python/"/>
     
     
-    <category term="python" scheme="http://rczmm.github.io/tags/python/"/>
+    <category term="python" scheme="http://rczmm.top/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>springboot+vue（1）</title>
-    <link href="http://rczmm.github.io/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/24/springboot-vue%EF%BC%881%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/springboot-vue%EF%BC%881%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/springboot-vue%EF%BC%881%EF%BC%89.html</id>
     <published>2022-08-24T12:47:53.000Z</published>
     <updated>2022-08-26T14:37:06.452Z</updated>
     
@@ -418,14 +439,14 @@
     
     
     
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
+    <category term="java" scheme="http://rczmm.top/tags/java/"/>
     
   </entry>
   
   <entry>
     <title>基于Python的QT（二）</title>
-    <link href="http://rczmm.github.io/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/24/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html</id>
     <published>2022-08-23T17:09:44.000Z</published>
     <updated>2022-08-23T18:04:45.903Z</updated>
     
@@ -441,14 +462,14 @@
     
     
     
-    <category term="python" scheme="http://rczmm.github.io/tags/python/"/>
+    <category term="python" scheme="http://rczmm.top/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>基于python的QT（一）</title>
-    <link href="http://rczmm.github.io/2022/08/19/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://rczmm.github.io/2022/08/19/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <link href="http://rczmm.top/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html"/>
+    <id>http://rczmm.top/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html</id>
     <published>2022-08-19T02:43:18.000Z</published>
     <updated>2022-08-19T03:29:30.753Z</updated>
     
@@ -466,36 +487,7 @@
     
     
     
-    <category term="python" scheme="http://rczmm.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>入门项目——学生成绩管理系统（demo）</title>
-    <link href="http://rczmm.github.io/2022/08/08/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://rczmm.github.io/2022/08/08/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</id>
-    <published>2022-08-08T11:06:55.000Z</published>
-    <updated>2022-08-19T05:59:23.469Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;学生成绩管理系统&quot;&gt;&lt;a href=&quot;#学生成绩管理系统&quot; class=&quot;headerlink&quot; title=&quot;学生成绩管理系统&quot;&gt;&lt;/a&gt;学生成绩管理系统&lt;/h1&gt;&lt;h2 id=&quot;项目环境&quot;&gt;&lt;a href=&quot;#项目环境&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="项目" scheme="http://rczmm.github.io/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="java" scheme="http://rczmm.github.io/tags/java/"/>
-    
-    <category term="springboot" scheme="http://rczmm.github.io/tags/springboot/"/>
-    
-    <category term="项目" scheme="http://rczmm.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    <category term="python" scheme="http://rczmm.top/tags/python/"/>
     
   </entry>
   

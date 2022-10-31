@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>计算机算术 | 小小世界</title>
+
+  <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="/js/valine/index.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            <script src = "/js/index/slowflow.js"></script>
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">加载中...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">小小世界</h3>
+      <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/comment" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">小小世界</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/about" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/comment" class="menu-item-link" title="留言板">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
+  
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        计算机算术
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-10-27 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 4.8k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 17分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="计算机算术"><a href="#计算机算术" class="headerlink" title="计算机算术"></a>计算机算术</h1><h2 id="数据是什么"><a href="#数据是什么" class="headerlink" title="数据是什么"></a>数据是什么</h2><p>各种各样的信息，数字、文本、程序、音乐、符号等。信息可以是能够被计算机存储和处理的任何事物。</p>
+<h3 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h3><p>计算机存储和处理信息的最小单位是位（bit），一个比特表示0或1。</p>
+<p>数字计算机将信息以一组或一串比特成为字保存在存储器中。</p>
+<p>计算机通过高低电压来存储0或1。</p>
+<p>计算机对一组二进制位进行操作，8个二进制位为一个字节（byte），一些计算机制造商用术语“字”表示16位的值，长字表示32位的值，还有一些制造商用字表示32位的值，用半字表示16位的值。</p>
+<h3 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="位树——（计算机组成原理）"></p>
+<p>每当数字增加1位，路径的总数将翻一倍。一个n位的字将得到2n条不同路径或位模式。如，一个8位的字节将得到2<sub>8</sub>&#x3D;256个可能的值。</p>
+<p>为了用二进制数表示任何一个拥有最多n个值的量，应找到一个使不等式n&lt;&#x3D;2<sub>m</sub>成立的最小位数m。</p>
+<h3 id="信息表示"><a href="#信息表示" class="headerlink" title="信息表示"></a>信息表示</h3><p>一个n位的二进制什么也表示不了。因为一个由二进制1和0组成的串没有任何内在含义。需要程序员赋予它何种含义。</p>
+<p>一个二进制串可以表示的对象有：</p>
+<p>指令</p>
+<p>字长为32位或更长的计算机用一个字来表示CPU能够完成的操作（8位或16位计算机用多个字表示一条指令）。指令的二进制编码与其功能之间的关系由计算机设计者决定。如，一台计算机上表示“A加B”的二进制序列可能与另一台计算机上的完全不同。</p>
+<p>数量</p>
+<p>一个字或多个字都可以用来表示数量。数可以被表示为多种格式，如有符号、无符号二进制整数、二进制浮点数、整数复数等等。</p>
+<p>字符</p>
+<p>字符是一个叫作“字母表”的集合中元素。拉丁或罗马字母表中的字母、数字字符（A-Z，a-z，0-9）和*、-、+、？等符号都被分配了二进制值，因此可以在计算机内存储和处理。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="ASCII码表—（计算机组成原理）"></p>
+<p>ASCII码表用7位表示一个字符，一共可以表示27&#x3D;128个不同的字符。其中96个字符是可打印字符。其余32个是不可打印字符，用于完成回车、退格、换行等特殊功能。</p>
+<p>扩展的ASCII码表：8位的ISO 8859-1拉丁编码。将7位的ISO&#x2F;ASCII字符集扩展为8位，可以得到两个128个字符的字符集，如果字符的最高位为0,则其余7位代表128个标准ISO&#x2F;ASCII字符中的一个，如果字符最高位为1，其余7位将表示128个新字符中的任意一个。</p>
+<p>图像、声音和视觉</p>
+<p>数字计算机处理大量表示声音、静态图像和视频的数据。</p>
+<p>组成照片的基本单位是像素，每个像素的大小可以是8位（单色）或24位（三基）。</p>
+<p>视频作为一串静态图像依次传输，每秒发送60次。</p>
+<p>声音通过对波形信号采样。</p>
+<p>无损压缩和有损压缩。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用来计数的数字（即1,2,3,4…）被称作自然数。我们用十进制计数，因为它有0~9共10个符号。并非所有数字都是自然数，还有负数、实数等</p>
+<p>现代数字系统中，使用位置记数法表示十进制数，每个数位的值或权取决于它在数字中的位置。</p>
+<p>按照位置记数法，一个n位的整数N的形式表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="n位整数-（位置计数法）"></p>
+<p>用小数点将整数部分和小数部分分开，可以对位置记数法进行扩展，使其能表示实数。</p>
+<p>一个用基数b的位置记数法表示的数的值被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="基数为b的位置计数法"></p>
+<p>采用位置记数法，一个数的数值等于它各位值的总和，而每一位的值则是该位的数值乘以它在数中的位置所对应的权。</p>
+<p>如：</p>
+<p>十进制数1982 &#x3D; 1 x 10<sub>3</sub> + 9 x 10<sub>2</sub> + 8 x 10<sub>1</sub> + 2 x 10<sub>0</sub></p>
+<p>二进制数10110.11 &#x3D; 1x2<sub>4</sub> + 0x2<sub>3</sub> + 1x2<sub>2</sub> + 1x2<sub>1</sub> + 0x2<sub>0</sub> + 1x2<sub>-1</sub> + 1x2<sub>-2</sub> </p>
+<p>十进制位置记数法不能精确表示所有小数，如1&#x2F;3是0.3333333…33，二进制也是如此，如0.1<sup>10</sup> 不能被精确转换为二进制形式。</p>
+<h2 id="二进制运算"><a href="#二进制运算" class="headerlink" title="二进制运算"></a>二进制运算</h2><p>二进制算术运算规则与十进制基本相同，区别是基数不同。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="二进制的四则运算规则"></p>
+<p>两个位相加可能产生进位或借位，和十进制运算规则相同。</p>
+<p>下面描述了011010012（乘数）与010010012（被乘数）相乘的过程，两个n位字相乘将产生一个2n位的积：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="两个二进制数相乘"></p>
+<p>但是计算机并没有按照这种方式进行计算。</p>
+<h3 id="有符号整数"><a href="#有符号整数" class="headerlink" title="有符号整数"></a>有符号整数</h3><p>负数可以用多种不同的方式表示，计算机设计者选择了3种方法：符号及值表示法、二进制补码表示法、移码表示法，每种方法都有各自的优缺点。</p>
+<h4 id="符号及值表示法"><a href="#符号及值表示法" class="headerlink" title="符号及值表示法"></a>符号及值表示法</h4><p>一个n位字可以表示从0~2<sub>n-1</sub>共2<sub>n</sub>个可能的值。如，一个8位的字可以表示0,1，…，254,255。表示负数的方法是用它的最高位表示符号，通常符号位为0表示正数，符号位为1表示负数。</p>
+<p>下面两个8位有符号二进制00001101和10001101的值为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="有符号二进制数字"></p>
+<p>n位有符号的表示范围为-(2<sub>n-1</sub>-1) ~ +(2<sub>n-1</sub>-1)。一个8位有符号数的表示-127（11111111）~ +127（01111111）之间的整数。</p>
+<p>有人反对该系统的一个原因是它有两个值都表示0：</p>
+<p>00000000 &#x3D; +0 和 10000000 &#x3D; -0</p>
+<p>符号及值表示法没有被用于整数算术运算中，因为它的加、减法运行需要分别用加法器和减法器实现。符号及值表示法用于浮点算术运算中。</p>
+<h4 id="二进制补码运算"><a href="#二进制补码运算" class="headerlink" title="二进制补码运算"></a>二进制补码运算</h4><p>微处理器用二进制补码系统表示有符号整数，它可以将减法运算转换为对减数的补码的加法运算。</p>
+<p>一个数与它的补码之和是一个常数。如，一个一位十进制数与它的补码之和总是9。2的补码是7，因为2+7&#x3D;9。在n位二进制算术中，数P的补码为Q且P+Q&#x3D;2<sub>n</sub>。</p>
+<p>在二进制算术中，求一个数的补码的方法是将其各位取反并加1。</p>
+<p>如：01100101的补码为10011010+1&#x3D;10011011。</p>
+<p>一个n位二进制数N的二进制补码定义为2<sub>n</sub>-N。如果N&#x3D;5&#x3D;00000101（8位二进制数），则N的补码为2<sub>8</sub>-00000101&#x3D;100000000-00000101&#x3D;11111011</p>
+<p>下面说明了8位二进制数的补码运算过程，将4个数+5、-5、+7、-7转换为补码：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="补码"></p>
+<p>将7与5的补码相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="补码相加"></p>
+<p>结果为9位二进制数100000010。如果忽略最左边一位（进位位），结果为00000010<sup>2</sup>&#x3D;+2，正是希望得到的结果。</p>
+<p>将-7加5：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="补码相加"></p>
+<p>结果为11111110（进位位为0）。也是希望得到的结果-2，即2<sub>8</sub>-2&#x3D;100000000-00000010&#x3D;11111110</p>
+<p>n位二进制算术运算Z&#x3D;X-Y，用X加上Y的补码完成运算：Y的补码为2<sub>n</sub>-Y，则Z&#x3D;X+(2<sub>n</sub>-Y)&#x3D;2<sub>n</sub>+(X-Y)。我们得到了需要的结果，X-Y，以及位于最左边的一个并不需要的进位（即2<sub>n</sub>），而这个进位被丢弃了。</p>
+<p>一个数两次求补码得到该数本身。如-5&#x3D;28-00000101&#x3D;11111011。</p>
+<p>即-x&#x3D;2<sub>n</sub>-x且-(-x)&#x3D;2<sub>n</sub>-(2<sub>n</sub>-x)&#x3D;x。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="加法实例"></p>
+<h4 id="求补运算"><a href="#求补运算" class="headerlink" title="求补运算"></a>求补运算</h4><p>一个n位的二进制数N的补码，被定义为2<sub>n</sub>-N，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="补码"></p>
+<p>如，8位（n&#x3D;8）时有：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="n=8时"></p>
+<p>表达式11111111-N的值很容易计算，对N的第i位n<sup>i</sup>，若n<sup>i</sup>&#x3D;0，则1-0&#x3D;1，若n<sup>i</sup>&#x3D;1，则1-1&#x3D;0。显然：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>所以计算N的补码就是将N的每一位取反加1。</p>
+<p>之所以使用这种求补码的方式，是因为在硬件上它十分容易实现。</p>
+<h4 id="补码的特点"><a href="#补码的特点" class="headerlink" title="补码的特点"></a>补码的特点</h4><p>补码互补因为X+-X &#x3D; 0</p>
+<p>补码被表示为000….000，是唯一的</p>
+<p>补码的最高位为符号位，符号位为0，则该数为正，符号位为1，该数位负。</p>
+<p>n位二进制位的补码表示范围为-2<sub>n</sub>-1—2<sub>n</sub>+1，对于8位，是-127-128。</p>
+<p>补码的加减法使用同样的硬件完成，因为补码的减法由被减数的补码实现。</p>
+<h4 id="运算溢出"><a href="#运算溢出" class="headerlink" title="运算溢出"></a>运算溢出</h4><p>溢出的问题，主要是补码表示范围的限制。如果两个数运算后结果的值不在范围内，那么就会溢出，并且如果操作数的两个符号位相同，但是结果的符号位与他们不同，同样也会发生溢出。</p>
+<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p>计算机必须实现乘除法，但是相对来说，这比加减法要复杂的多。</p>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>首先是二进制的算术移位运算，进行移位运算时，一个数的所有位都会向左或者向右移动n位，有些计算机可以一次移动多个位。</p>
+<p><strong>二进制补码正数左移移位等于乘2。（正数的补码原码反码一致）</strong></p>
+<p>算术左移：最低位补0，最高位被复制到进位标志中，如11000101左移一位得到10001010</p>
+<p>算术右移：最高位补符号位，所有位右移一位。最低位复制到进位标志中。如00100101右移一位得到00010010。11100101右移一位得到11110010。</p>
+<p><strong>二进制右移一位相当于除以2。</strong></p>
+<h4 id="无符号二进制乘法"><a href="#无符号二进制乘法" class="headerlink" title="无符号二进制乘法"></a>无符号二进制乘法</h4><p>计算机从乘数的最低位开始，每次检查一位，判断它是否为0，如果乘数的当前位为1则写下被乘数，若该位为0则写下n个0。接下来检查乘数的下一位，这时应从上一位数的左边一位开始写下被乘数或0。被写下的这一组数叫作部分积。得到所有的部分积后，加到一起，得到乘法结果：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="无符号二进制乘法"></p>
+<p>两个二进制数相乘得到一个2n位的积。</p>
+<p>但是计算机并没有实现上面的算法，这种算法要求计算机存储n个部分积，然后将它们同时相加。更好的做法是每得到一个部分积就做一次加法。</p>
+<p>下面给出了一个计算两个n位无符号二进制数相乘的算法：</p>
+<p>步骤a：将计数器的值置为n</p>
+<p>步骤b：将2n位的部分积寄存器清零</p>
+<p>步骤c：检查乘数的最右位（即最低位），将被乘数与部分积的最低位n位相加</p>
+<p>步骤d：将部分积右移一位</p>
+<p>步骤e：将乘数右移一位（乘数的最右位被丢弃）</p>
+<p>步骤f：将计数器的值减1，重复步骤c直到n个周期后计数器的值变为0。部分积寄存器的内容就是乘积结果。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="无符号二进制乘法"></p>
+<h4 id="快速乘法"><a href="#快速乘法" class="headerlink" title="快速乘法"></a>快速乘法</h4><p>通过移位和加法实现的乘法速度很慢，实际的计算机采用了多种方法加快乘法运算的速度。</p>
+<p>有些程序员使用移位和加法等速度相对较快的操作避免使用乘法。</p>
+<p>考虑P乘以10和P乘以9的两个例子：</p>
+<p> 10P&#x3D; 2x(2x2xP+P) ，即将P左移2次，加上P，再将和左移一次</p>
+<p> 9P&#x3D; 2x2x2xP + P，即将P左移3次，加上P得到结果</p>
+<p>乘法运算也可以借助查找表（look-up table）实现，这种方法将两个数相乘所有可能的积都保存在一个只读存储器内。这样只需简单的用X和Y的值找到表中的对应项就可以得到X和Y的乘积。如，两个8位二进制乘法需要一个16位地址、2<sub>16</sub>项的查找表，每项记录一个16位的积。</p>
+<p>缺点：太占空间了。</p>
+<p>可以用一个简单方法来减少查找表的大小：假设计算两个16位数A与B的乘积，可以将16位数A拆分为两个8位数A<sup>u</sup>和A<sup>l</sup>，A<sup>u</sup>是A的高8位，A<sup>l</sup>是A的低8位。如</p>
+<p>果A&#x3D;1111000010101010，则A<sup>u</sup>&#x3D;11110000，A<sup>l</sup>&#x3D;10101010。A可被表示为A<sup>u</sup> x 256+A<sup>l</sup>，B可被表示为B<sup>u</sup> x 256+B<sup>l</sup>，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221027200737262"></p>
+<p>这样可以用8位乘法和4个加法来完成16位乘法。</p>
+<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p>除法是通过被除数不断地减去除数直到结果为0或小于除数来实现的。减去除数的次数称作商，最后一次减法的差称作余数。</p>
+<p>  被除数&#x2F;除数 &#x3D; 商 + 余数&#x2F;除数</p>
+<p>下面描述了575除以25的过程：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>将被除数的下一个数字5移到7的后面，并比较除数和75，由于75正好是25的整数倍，因此在商的下一位上写下3：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>因为已经处理到被除数的最后一位且75正好是测试的整数倍。除法结束，商为23，余数为0。</p>
+<p>考虑用无符号二进制除法完成同样的例子： </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>被除数的前5位比除数小，因此商的最高位为0并将除数与被除数的前6位比较</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>被除数的前6位中有一个除数，减法后得到新的部分被除数为001010（1111），将被除数的下一位移下来</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>新的部分被除数小于除数，因此商的下一位为0，后续除法过程如下：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>除法结果商为10111，余数为0。 </p>
+<h4 id="恢复余数除法"><a href="#恢复余数除法" class="headerlink" title="恢复余数除法"></a>恢复余数除法</h4><p>刚刚讨论的除法方法，用计算机实现，需要修改的就是除数与部分被除数的比较方法，计算机减去并检测结果的符号位。如果减法的结果为正，则商1，如果结果为负，则商0并将部分被除数与除数相加，将其恢复为原先的值。</p>
+<p>恢复余数除法算法：</p>
+<p>1）将除数的最高位与被除数的最高位对齐</p>
+<p>2）从部分被除数中减去除数，得到新的部分被除数</p>
+<p>3）如果新的部分被除数为负数，则商0并用新的部分被除数加上除数，恢复原先的部分被除数</p>
+<p>4）如果新的部分被除数为正，则商1</p>
+<p>5）判断除法是否结束，如果除数的最低位与部分被除数的最低位对齐，则除法结束，最后的部分被除数就是余数。否则，执行第6步</p>
+<p>6）将除数右移一位，从第2步继续执行 </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="英文版"></p>
+<h4 id="不恢复余数除法"><a href="#不恢复余数除法" class="headerlink" title="不恢复余数除法"></a>不恢复余数除法</h4><p>不恢复余数除法与恢复余数除法基本相同，唯一区别在于取消了恢复余数的操作。</p>
+<p>在恢复余数除法中，在部分被除数与除数相加恢复部分被除数之后的一个周期，部分被除数将减去除数的二分之一。每个将除数右移的操作等价于将除数除以2。当前周期恢复部分被除数以及下个周期减去除数一半的操作等价于部分被除数加上除数的一半。即D – D&#x2F;2 &#x3D; +D&#x2F;2，D为除数。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>部分被除数减去除数之后，将检测新的部分被除数的符号位。若为负，则商左移1位，商的最低位补0，并将部分被除数加上除数的二分之一。若为正，则商左移1位，商的最低位补1，并将部分被除数减去除数的二分之一。</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数即实数，实数是所有有理数和无理数的集合。</p>
+<p>之所以叫作浮点数，是因为小数点在数中的位置并不是固定的。一个浮点数值分为两部分存储 ：数值以及小数点在数值中的位置。</p>
+<p>计算机中的浮点运算的计算结果一般是不确定的，一块芯片上的浮点计算结果也许与另一块芯片上的不同。</p>
+<p>科学计数法：来表示很大或很小的数。</p>
+<p>十进制浮点数可以被表示为：尾数x10<sub>指数</sub>，如1.2345x10<sub>20</sub></p>
+<p>二进制浮点数可以被表示为：尾数x2<sub>指数</sub>，如1.0111x2<sub>5</sub></p>
+<p>IEEE 754浮点数标准提供3种浮点数表示：32位单精度浮点数、64位双精度浮点数、128位四精度浮点数</p>
+<p>IEEE 754浮点数的尾数总是规格化的，其范围为1.000…0x2<sub>e</sub>到1.111…1x2<sub>e</sub>，e为指数。</p>
+<p>规格化浮点数的最高位总是1，规格化使尾数的所有位都是有效的，因而尾数精度最高。</p>
+<p>如：</p>
+<p> 0.10…x2<sub>e</sub>规格化为1.10…x2<sub>e-1</sub></p>
+<p> 10.1…2<sub>e</sub>规格化为1.01…x2<sub>e+1</sub></p>
+<p>尾数规格化充分利用了可用的最大精度。如，一个8位非规格化的尾数0.0000101只能有4位有效位，而规格化后的8位尾数1.0100011则有8位有效位。</p>
+<p>IEEE 754浮点数的尾数被表示为符号及值的形式，即用一个符号位表示它是正数还是负数。它的指数则用偏置方式表示，即给真正的指数加上一个常数。</p>
+<p>假定所用的指数为8位，偏置值为127。如果一个数的指数为0，则被保存为0 + 127&#x3D;127。如果指数为-2，则被保存为-2 + 127 &#x3D; 125。</p>
+<p>实数1010.1111规格化的结果为+1.010111x2<sub>3</sub>，指数为+3，将被保存为3+127&#x3D;130，即130<sup>10</sup>用二进制表示为10000010。</p>
+<p>这种用偏置表示指数的方法优点在于，最小的负指数被表示为0，如果不采用这种方法，0的浮点表示为0.0…0x2<sub>最小负指数</sub>。采用偏置指数，0就可以用尾数0和指数0表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>一个32位IEEE 754单精度浮点数可以被表示为下面的二进制串：</p>
+<p>S EEEEEEEE 1.MMMMMMMMMMMMMMMMMMMMMMM</p>
+<p>S为符号位，指明这个数是正数还是负数</p>
+<p>E为8位偏置指数，指出了小数点的位置</p>
+<p>M为23位尾数</p>
+<p>下图描述了32位浮点数的结构：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>S位为符号位，决定了数的符号，若S&#x3D;0，则为正数，若S&#x3D;1，则为负数。</p>
+<p>指数E将浮点数的尾数扩大或缩小2<sub>E</sub>倍，并且偏置值为127。</p>
+<p>如浮点数+1.11001…0x2<sub>12</sub>的指数为12+127&#x3D;139<sub>10</sub>&#x3D;10001011<sub>2</sub> 。</p>
+<p> IEEE浮点数的尾数总是规格化的，其值范围在1.0000..00~1.1111..11，除非这个浮点数是0，此时尾数为0.000..00。</p>
+<p>由于尾数总是规格化的，且最高位总是为1，因此将尾数存入存储器时没有必要保存最高位的1。所以，一个非0的IEEE 754浮点数可被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" class="lazyload placeholder" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p>S：符号位</p>
+<p>E：偏置量为B的指数</p>
+<p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
+<p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
+<p>浮点运算</p>
+<p>浮点运算和我们</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">英语习题多练</div>
+      </div>
+      
+      <!-- <div class="content">
+        虚拟语气1、—Tom is always making so many mistakes in his English 
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">计算机系统-程序的机器级表示</div>
+      </div>
+      <!-- <div class="content">
+        程序的机器级表示计算机执行机器代码。编译器基于编程语言、目标机器的指令集以及操作系统，生成机器代码。
+汇编代码是机器代码
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#D4E8FA';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ab7d7aa60540766a526409151b0325fc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "这么垃圾的代码也要copy？？？？",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+
+    <script type="text/javascript">
+  loadScript("https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js")
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.reveal', {
+      distance: '120px',
+      duration: '400',
+      interval: '30',
+      scale: '1',
+      origin: 'bottom', // 动画开始的方向
+      easing: 'ease'
+    });
+  }
+  $(function () {
+    var checkScrollReveal = setInterval(function () {
+      if ($("#safearea").css("display") != "block") return
+      if (typeof ScrollReveal == "undefined") return
+      clearInterval(checkScrollReveal)
+      pjax_scrollrebeal();
+    }, 100)
+  });
+  document.addEventListener('pjax:complete', function () {
+    pjax_scrollrebeal();
+  })
+</script>
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = '';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va",
+        app_key: "UuxnA5liCzoSIlXGGSnWG271",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

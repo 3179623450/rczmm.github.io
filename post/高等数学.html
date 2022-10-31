@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>高等数学 | 小小世界</title>
+
+  <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="/js/valine/index.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            <script src = "/js/index/slowflow.js"></script>
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+</head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  
+    
+<script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+
+  
+
+  
+    
+<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+  
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="/js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">加载中...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header   " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">小小世界</h3>
+      <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/comment" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">小小世界</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/about" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">关于</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/comment" class="menu-item-link" title="留言板">
+                  
+                    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                  
+                  <span class="name">留言板</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>百度</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-dark.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
+  
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/images/%E6%95%B0%E5%AD%A6.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        高等数学
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-06-19 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-detail-header_category">
+              数学
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 5.4k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 18分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="高等数学学习笔记"><a href="#高等数学学习笔记" class="headerlink" title="高等数学学习笔记"></a>高等数学学习笔记</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>在高等数学里，微积分无疑是极为重要的，但是如果没有函数去研究微积分，这其实很没有意义，在微积分的世界里，函数在参与排行榜绝对排行第一。</p>
+<h3 id="函数概念"><a href="#函数概念" class="headerlink" title="函数概念"></a>函数概念</h3><p>函数是什么？在很多教材或者课外读本上都有规范或者是特殊的定义，我更加喜欢普林斯顿微积分的描述，<strong>函数是将一个对象转化为另一个对象的规则。</strong></p>
+<p>这听起来似乎和工厂、程序之类的概念类似，而且一点也不数学。</p>
+<p>首先要说的是，函数是一个变换规则，例如f（x），说 “f (x) 是 一个函数”其实是不正确的, 应该说 “f 是一个函数“。</p>
+<p>其次，每一个函数都有输入与输出，对于输入而言，应当是有效的，如同f（x） &#x3D; x-2这样函数表达式，如果我们输入一个“人”，这显然没有任何意义。</p>
+<p>然后，对于函数而言，如果只有输入而没有输出就会显得毫无意义，因此，<strong>一个函数必须给每一个有效的输入指定唯一的输出。</strong></p>
+<h3 id="区间表示"><a href="#区间表示" class="headerlink" title="区间表示"></a>区间表示</h3><p>我们在说明输入的有效与输出的范围时，会使用定义域与值域，但实际上，在普林斯顿里，还有上域与下域的说法。在描述这样的范围时，区间的表示会让我们做的更好。</p>
+<p>我们约定 [a, b] 是指从 a 到 b 端点间的所有实数, 包括 a 和 b。类似这样的称作闭区间。 如果你不想包括端点, 把方括号变为圆括号就行了，这样的成为开区间，当然如果你想包含一边又不要一边的端点，你就可以一边方括号一边圆括号，这样的就是半开区间。</p>
+<h3 id="求定义域"><a href="#求定义域" class="headerlink" title="求定义域"></a>求定义域</h3><p>很多时候，函数的定义会包括定义域，但是有些时候，函数的定义域没有给出，通常，定义域包含实数集R以及尽可能多的部分。</p>
+<p>但是在某些时候，例如负数的平方根，这就会出现问题，它的定义域一定是非负数。</p>
+<p>还有一些常见的情况：</p>
+<p>分数的分母不能为0。（tan 90不成立）</p>
+<p>不能取一个负数的偶次方根。</p>
+<p>不能取到一个负数或者是0的对数。</p>
+<h3 id="求值域"><a href="#求值域" class="headerlink" title="求值域"></a>求值域</h3><p>如果可以，我们将一个函数画出图像后，我们会发现，无论是定义域还是值域似乎都变得容易起来，我们甚至还可以从图像上观察出最值，变化趋势等等很多的内容。</p>
+<p>函数的值域，在我们画出图像后，我们不妨假设此此刻有左右的光束射入光束，而后在y轴上留上影子，这个影子的并集就是值域。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802150538282.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802150538282.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="普林斯顿微积分图1-1" style="zoom:33%;">
+
+<p>感谢普林斯顿，在看到这一幅图的时候，想必你对某些教材上关于函数与映射的描述也能清晰几分。</p>
+<p>检验函数成立</p>
+<p>上面的例子里，我们用横线来模拟光照得到了值域，如果我们使用竖线呐？</p>
+<p>这很帮助我们确定函数是否成立。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802150809227.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802150809227.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220802150809227" style="zoom:33%;">
+
+<p>如图的画，我们发现对于某些竖线，圆与它有超过一个以上的交点，这就违反了函数中，一个输入得到唯一输出的原则。</p>
+<h3 id="反函数"><a href="#反函数" class="headerlink" title="反函数"></a>反函数</h3><p>对于函数而言，你给一个输入就可以得到一个输出，前提是在定义域与值域之内。如果我们把过程倒过来，你选一个输出，那么说明样的输入能得到这个输出呐？</p>
+<p>这其实就是一个逆转变换的过程，从输出出发，发现一个新的函数，这个函数就是原函数的反函数。f<sub>-1</sub>这就是他的写法。</p>
+<p>对于这样的情形有一些总结：</p>
+<p>反函数的定义域和原函数的值域相同.</p>
+<p>原函数的定义域和反函数的值域相同。</p>
+<p>反函数更加像是原函数的撤销按钮，从x出发你可以得到y，从y出发，你可以逆转这个过程，重新得到x。</p>
+<p>但是并不是所有的原函数都可以得到反函数的。</p>
+<p>我们知道函数成立的基本条件就是，一个输入得到一个唯一确定的输出。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802151604787.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802151604787.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220802151604787" style="zoom:50%;">
+
+<p>如上的函数，我们通过他的图像不难发现，一个输出对应了两个输入。</p>
+<p>如果对于他的定义域不加以限制，那么反函数就会出现一个输入对应两个输出的情况。</p>
+<p>对于什么样的函数能得到反函数，可以使用水平线的方式检验。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802151750935.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802151750935.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220802151750935" style="zoom:33%;">
+
+<p>如上，每一条水平线与函数至多只有一个交点，那么这样的函数就可以得到反函数。</p>
+<p>求反函数</p>
+<p>这看起来似乎很困难，但其实只要得到表达式，我们根据表达式，直接解出x就好了。</p>
+<p>在图像上，反函数其实类似于镜面反射，在坐标轴中，这个镜面指的就是y&#x3D;x这一第一、第三象限的分界线。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802152103114.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802152103114.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220802152103114" style="zoom:33%;">
+
+<p>限制定义域</p>
+<p>这是为了没有通过水平线检验的函数准备的，通过限制定义域的方式，相当于擦去了一部分图像，来得到反函数。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802152244347.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220802152244347.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220802152244347" style="zoom:33%;">
+
+<p>但是要注意原函数限制了定义域，那么反函数的值域也就得到了限制。</p>
+<p>反函数的反函数</p>
+<p>既然反函数是对原函数的撤销，那么反函数的反函数其实就是原函数，但是要注意定义域。</p>
+<p>复合函数</p>
+<p>有一个表达式为 g(x) &#x3D; x<sub>2 </sub>的函数g。 你可以将 x 替换成任何使函数有意义的对象，这样的复合函数可能包含两个或者更多的基本函数。</p>
+<p>复合函数有一个很简单也很重要的例子，将函数f(x)&#x3D;x<sub>2</sub>和函数g(x)&#x3D;x-a(a是常数)进行复合。这时得到的函数在形状上看起来与函数f是一样的，只不过是原函数图像向右平移了a个单位。（假设，向左平移3个单位与向右平移-3个单位是一样的。）</p>
+<p>奇函数和偶函数</p>
+<p>有的函数在图像上具有对称的特性，这很方便对他们进行讨论。</p>
+<p>偶函数的图像关于y轴对称，而奇函数关于原点有180<sub>o</sub>对称</p>
+<h2 id="微积分概念"><a href="#微积分概念" class="headerlink" title="微积分概念"></a>微积分概念</h2><p>微积分到底是什么？</p>
+<p>微分与积分的关系是什么？</p>
+<p>回想高数的学习历程，最后发现好像对于微积分来说，除了课本上习题册上的题目，其他的我就完全不知道了，甚至于再过些时间，这些题目我也做不了了。</p>
+<p>我的看法是，当我们学习或者是掌握了一门学科或者是一门技术之后，我们应当对它有提纲挈领的认知。</p>
+<p><strong>微积分关心的是瞬时的情况。</strong></p>
+<p>首先，让我们来看一个实际例子，我们用最常见的时间、速度、路程函数。</p>
+<p>假设，一辆汽车，当然也可以是一个人或者你想要假设的任何东西，现在它以20km每小时的速度向前行驶，三个小时过后。让我们看看时间与速度、时间与路程的关系。</p>
+<p>时间与速度：</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144454251.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;">
+
+<p>时间与路程：</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624144804969.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与路程" style="zoom:33%;">
+
+<p>如上，我们得到了时间与速度的关系，时间与路程的关系。</p>
+<p>如果我们再试着想象一下，速度如果不是匀速？</p>
+<p>时间与速度：</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624145428032.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="时间与速度" style="zoom:33%;">
+
+<p>时间与路程：</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624150325333.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624150325333" style="zoom:33%;">
+
+<p>虽然在图像上，好像两个路程函数看起来差不多，但是从y轴，也就是distance的值上，我们明显的感觉到，因为速度的变化，路程函数发生了变化。</p>
+<p>同样的，如何我们改变路程函数，那么速度函数也会发生改变。</p>
+<p>而微积分研究的本质上就是两个函数的关系。</p>
+<p>其中从速度到路程，是积分的过程，而从路程到速度，是微分的过程。</p>
+<p>或者说，我们再举一个例子。</p>
+<p>当你出生的时候，你的年龄为0岁，这时候你大概有10公斤，当然我也不知道，瞎编了一个数字。而后当你10岁的时候，你已经37公斤了，当你18岁的时候，你已经49公斤了，而后等你30岁的时候，你已经59公斤了，此时你来到你人生体重最高点，再往后，50岁的时候，你就只有58公斤了，一直到62岁，你就只有52公斤了。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624151515813.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624151515813" style="zoom:33%;">
+
+<p>如图，简单的把以上提到的点描成这样的图。</p>
+<p>那么？新的问题来了，能否根据它得出体重的增长率呐？</p>
+<h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><p>关于导数，首先应该区分开一个概念。</p>
+<p>那就是可导与可微，前者表示的是变化率的极限，而后者表示的是局部线性化。</p>
+<p>斜率，如果你还记得他，那么再好不过。</p>
+<p>在生活中，我们用斜率来表示倾斜角度，回到函数图像上，其实他也同样如此。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155740453" style="zoom:33%;">
+
+<p>如图，这是函数x<sub>2</sub>的函数图像。</p>
+<p>这样的曲线，我们是如何求斜率的呐？</p>
+<p>如果这不是曲线，而是直线，例如y &#x3D; 2x呢。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155958257.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624155958257" style="zoom:33%;">
+
+<p>我们直接利用垂直距离差比上水平距离差，就可以解出斜率。</p>
+ <img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624192633829.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624192633829" style="zoom:33%;">
+
+<p>这时候，∆y与∆x的比值，也就是θ角的正切就是斜率。</p>
+<p>再次回到曲线的问题，只看x轴右半轴，假设这是一个表示路程的函数，那么在这里我们就可以得到任意的时间段内，这个车或者是其他的什么东西在这个时间段内的平均速度，这很简单，还未涉及微积分。<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624195456195.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220624195456195" style="zoom:33%;"></p>
+<p>那么这段时间的速度，我们就应该用路程差比时间差，反应在图像中，就是垂直距离差比水平距离差。</p>
+<p>微积分只关心瞬时情况，不如我就从x &#x3D; 0这一点开始，当x&#x3D;0的时候，这一点的斜率是怎么样的？</p>
+<p>x &#x3D; 0，y &#x3D; 0.这是原点，可以发现此时虽然曲线依然在上升，但是有点像是刚刚起步，此时速度为0，因此这一点斜率为0，曲线水平。</p>
+<p>实际上，求最低点也是微积分的主要应用之一，通过求斜率为0，可以求出最低点，这一点不上升也不下降，斜率为0。</p>
+<p>这时，我们可以选一个离原点距离极小的点，标记为∆x，这个∆单纯的就是为了表示“小”的意思，他代表一个极小极小的变化。那么这时候从原点到∆x这一小段的平均速度是多少？平均斜率？</p>
+<p>水平距离是∆x，曲线是简单的x<sub>2</sub>,垂直距离很明显。</p>
+<p>平均斜率还是垂直比水平。即∆y &#x2F; ∆x</p>
+<p>虽然∆x已经非常非常小了，但是这里他依旧是平均值，我想让他减少到0，取极限，让这一段不断的减小，从而无限接近某个瞬间的情况，这样就能得到斜率，这样就能得到0点处的斜率。</p>
+<p>这里的情形很简单，可以看到∆x<sub>2</sub> &#x2F; ∆x的比值∆x会非常的小。因此平均斜率非常之小，沿着这种逐渐变小的思路，我将得到x &#x3D; 0处的瞬时斜率。</p>
+<p>让∆x逐渐减小，最后到0。</p>
+<p>相当于行驶从静止开始，然后慢慢加速，这时候斜率很明显就不是0了。</p>
+<p>来看一下任意点的斜率。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624193632932.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" style="zoom:33%;">
+
+<p>微积分的要义，取一小段距离∆x,移动到x+∆x处，这样的y就会移动到曲线上另外一点，这一点的值为y + ∆y或者是（x+∆x）<sub>2</sub>,因为此时的曲线还是y &#x3D; x<sub>2</sub></p>
+<p>此时的水平距离与垂直距离各自是∆x与∆y。</p>
+<p>此时的∆y 比 ∆x应当为 (（x+∆x）<sub>2</sub> - x<sub>2</sub>)  &#x2F;  ∆x</p>
+<p>继续进行代数运算，我们得到了2x+∆x的结果，也就是说，此时的∆y比∆x的结果为2x + ∆x。</p>
+<p>当然，到目前为止，这依然是小范围的平均值，还不是瞬时的情形。</p>
+<p>当微积分开始介入，dy &#x2F; dx。</p>
+<p>如果说前面是小 &#x2F; 小，那么这就是极小 &#x2F; 极小。</p>
+<p>这里的d，小的可以说已经无法分辨，小的已经无法把dy或者dx作为分开距离来考虑。</p>
+<p>要注意，这里其实不是真正的除法了，因为在除法中，是不允许0 &#x2F; 0的。而此处的0 &#x2F; 0其实就是上面这种情况（∆y &#x2F; ∆x）的极限。</p>
+<p>这就是从代数走进微积分最关键的一步，这就得到了某一点上的瞬时情形。</p>
+<p>再看上面的结论，取∆x趋近于0，那么结果就是2x。</p>
+<p>因此最终的结论是，导数为2x。</p>
+<p>因此这就是我们所说的函数二，也就是斜率函数，或者说是速度函数。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625174451687.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625174451687" style="zoom:33%;">
+
+<p>再来看，此时如果我们取（1,1）与（2,4）这两个点来讨论斜率。</p>
+<p>那么自然而然的就会得到，斜率为3.</p>
+<p>但实际上，这只是一条弦，这里跳了一大步。</p>
+<p>我们在讨论∆x时，只是前进了一小步，更别说趋近于0时的dx了，这就成了无限小的一步。</p>
+<p>因此实际的斜率，可以认为是过某一点的切线。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625175138540.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625175138540" style="zoom:33%;">
+
+<p>那么这一点的斜率，实际上就是把x &#x3D;1 代入到我们的斜率函数也就是2x里。</p>
+<p>因为我们可以通过斜率判断函数图像的走向，当斜率为负时，函数呈现下降趋势，当斜率很大的时候，函数图像往往更加陡峭，反之，当斜率为正时，函数图像成上升趋势，斜率很小的时候，函数图像更加平滑。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204426879.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204426879.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625204426879" style="zoom:33%;">
+
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204433564.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625204433564.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625204433564" style="zoom:33%;">
+
+<p>这是sinx与cosx的函数图像，当然可能坐标轴有些陌生。</p>
+<p>sinx的导数是cosx，那么比较这两个图像，增长，下降，快，慢，极大值，极小值。这些都体现了导数的重要性和实用性。</p>
+<h2 id="二阶导数与极值"><a href="#二阶导数与极值" class="headerlink" title="二阶导数与极值"></a>二阶导数与极值</h2><p>二阶导数：也就是导数的导数。</p>
+<p>在实际中，很少提到导数的导数，或者说更加高阶的导数，但是二阶导数对于处理极大、极小值时作用很大。</p>
+<p>我们经常需要定位极值点，并且判断是极大值还是极小值。</p>
+<p>定位极值点是一阶导数的职责，一阶导数为0的点就是极值点，如果函数存在极大值或者是极小值，要找到这个极值点的位置，就可以通过导数&#x3D;0来寻找，此时函数图像趋于水平，根据它向下还是向上弯曲，得到极大值或者是极小值。</p>
+<p>而判断极值点是极大值还是极小值就是二阶导数的职责了。</p>
+<p>二阶导数表明，函数朝上还是朝下弯曲。</p>
+<p>原函数，导函数，二阶导函数，现在的函数组就扩充为三个。</p>
+<p>回到实际问题，依旧是路程，时间，速度的关系，二阶导函数其实表示的就是加速度。</p>
+<p>我们知道路程求速度，只需要求导数就可以了，现在我们要求速度的导数，也就是二阶导数，加速度，也就是速度的变化率，加速或者减速的率。</p>
+<p>先来看看x<sub>2</sub>的原函数，导函数与二阶导函数。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625210639471.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625210639471.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625210639471" style="zoom:33%;">
+
+<p>依旧是x<sub>2</sub>，表示函数高度，2x表示斜率，而2表示二阶导数，表示弯曲性，这表明斜率正在逐渐增加，函数图像向上弯曲。</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625211737687.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220625211737687.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220625211737687" style="zoom:33%;">
+
+<p>在看看sinx的原函数、导函数与二阶导函数的图像。</p>
+<p>事实上，图像上包含的信息可比说的信息多的多了，在0-π&#x2F;2区间内，我们发现，sinx的二阶导数小于0的，也就是说此时的原函数向下弯曲，导函数应当呈现下降趋势。</p>
+<p>引入“凹凸”的概念，事实上，我个人觉得，向上弯曲与向下弯曲的描述比凹凸更好。</p>
+<p>sinx就是一个很经典的例子，在图像中，我们发现0-π&#x2F;2区间内，即使图像向下弯曲，但是同样呈现在不断增长。</p>
+<p>原函数 导函数 二阶导函数的关系也明了了。</p>
+<p>二阶导函数大于零，表示导函数上升，毕竟对于导函数来说，二阶导数就是它的导数，原函数向上弯曲，反之。</p>
+<p>x &#x3D; π时，二阶导数变号了，而此时原函数开始向上弯曲。这个点就是拐点，二阶导数为0的点。</p>
+<p>拐点意味着，二阶导数穿过0，即原函数的图像弯曲性发生改变。这一点在图像里很重要，当然没有极大值和极小值那么显眼。</p>
+<p>y &#x3D; x<sub>3</sub> - x<sub>2</sub> </p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220705145615431.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220705145615431.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220705145615431" style="zoom:33%;">
+
+<p>首先求导：3x<sub>2</sub>-2x ,二阶导数：6x -2</p>
+<p>极值点：令一阶导数为0，将所有的极值点一网打尽，之后通过二阶导数判断极大值与极小值。</p>
+<p>那些点上，函数停止住了，既不上升，也不下降</p>
+<p>在图像上，很容易找到，代数也很容易求出，一元二次方程的两个解。</p>
+<p>不同的是，看图像很容易得到极大值与极小值，之所以不是最值，是因为图像明显的，会在x趋近于正无穷时，趋近于正无穷，因为该点只在其附近（领域内）是最大值，因此称作极大值或者局部最大值。极大值处会有什么性质？</p>
+<img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220705150148722.png" class="lazyload placeholder" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220705150148722.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220705150148722" style="zoom:33%;">
+
+<p>x &#x3D; 0处，此时明显的，斜率应该为0，二阶导数为-2，此时二阶导数表示，图像向下弯曲，即凸。因此，此处是极大值而不是极小值。</p>
+<p>另一个极值点，x &#x3D; 2&#x2F;3处，斜率为0，二阶导数为2，此时二阶导数表示图像向上弯曲，即凹，因此此处是极小值点。当然它也不是最小值，导数只能解释点周围很小很小范围内（领域内）的情况，这一点的导数无法连接，函数左会无限下降，函数右会无限上升。</p>
+<p>知道函数后就能求出极大值点和极小值点，但最好还能找到拐点（弯曲方向变化的分界点）。</p>
+<p>令二阶导数为0，或者通过图像，得出当x &#x3D; 1&#x2F;3的时候，这是一个拐点。</p>
+<p>现在，就基本上找齐了函数上的所有特殊点，这些点其实都是有实际意义的。</p>
+<p>假设你是一个经济学家，你正在分析某个地区的经济统计数据，你发现曲线的斜率一直为负，即经济一直在不断的下降，但是突然你发现近两年有经济复苏的现象，因为此时的图像向上弯曲，即二阶导数为正，数据虽然继续下降，但是速度开始变慢，在某一点上，到达最低点，触底反弹，一定是拐点后某一点。</p>
+<p>极值点，可以说是导数最重要的应用之一，设导数为0，找到极大值和极小值点，微积分里大多数应用问题都要令导数等于0。</p>
+<h2 id="指数函数"><a href="#指数函数" class="headerlink" title="指数函数"></a>指数函数</h2><p>y &#x3D; e<sub>x</sub></p>
+<p>这种函数用代数的方法无法建立，只有用微积分才能得到，因为要得到e<sub>x</sub>，要用到一些极限的步骤， 有些量趋于0，有些量趋于无穷。虽然有各种方法来得到e的x次方，但这些方法都会涉及极限的过程。</p>
+<p>而对于极限</p>
+<p>指数函数最重要的性质就是，他的导数就是他自身，这就是指数函数与众不同的地方。</p>
+<p>对于指数函数，y &#x3D; dy &#x2F; dx</p>
+<p>这其实就是一个简单的微分方程，同时包含函数和函数导数。</p>
+<p>首先，任何数的0次方都等于1，因此指数函数从1开始。</p>
+<p>y(x) &#x3D; 1</p>
+<p>此时 dy &#x2F;dx &#x3D; 1</p>
+<p>反推，y(x) &#x3D; 1 +x时，导数为1。</p>
+<p>为了确保微分方程相等，dy &#x2F; dx &#x3D; 1+x</p>
+<p>此时，y（x）&#x3D; 1 + x + x<sub>2</sub>&#x2F;2</p>
+<p>以此类推，好像让微分方程成立，即两者相等是不可能的，除非两个方程无限，这里也确实无限。</p>
+<p>直接写出n次之后的结果</p>
+<p>y(x) &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n</sub>&#x2F;n(n-1)(n-2)…(1)+…</p>
+<p>dy &#x2F;dx &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n-1</sub>&#x2F;(n-1)！+x<sub>n</sub> &#x2F; n!+ …</p>
+<p>简单的说，n！的增长速度太快了，远远超过了x<sub>n</sub>，因此实际上，在末尾的项，这些量会变得极其的小。这个级数会趋于一个极限，不会因为加了很多项而无限变大。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E9%AB%98%E6%95%B0/" class="">
+              高数
+            </a>
+          
+        </div>
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/images/java.jpg" class="lazyload placeholder" data-srcset="/images/java.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">入门项目——学生成绩管理系统（demo）</div>
+      </div>
+      
+      <!-- <div class="content">
+        学生成绩管理系统项目环境jdk 1.8以上即可
+maven 3.6.1以上
+mysql 8
+idea 2021
+JQue
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="/images/java.jpg" class="lazyload placeholder" data-srcset="/images/java.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">反射与注解</div>
+      </div>
+      <!-- <div class="content">
+        反射与注解jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || '#D4E8FA';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="/js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ab7d7aa60540766a526409151b0325fc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "这么垃圾的代码也要copy？？？？",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+
+    <script type="text/javascript">
+  loadScript("https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js")
+  function pjax_scrollrebeal() {
+    ScrollReveal().reveal('.reveal', {
+      distance: '120px',
+      duration: '400',
+      interval: '30',
+      scale: '1',
+      origin: 'bottom', // 动画开始的方向
+      easing: 'ease'
+    });
+  }
+  $(function () {
+    var checkScrollReveal = setInterval(function () {
+      if ($("#safearea").css("display") != "block") return
+      if (typeof ScrollReveal == "undefined") return
+      clearInterval(checkScrollReveal)
+      pjax_scrollrebeal();
+    }, 100)
+  });
+  document.addEventListener('pjax:complete', function () {
+    pjax_scrollrebeal();
+  })
+</script>
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = '';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va",
+        app_key: "UuxnA5liCzoSIlXGGSnWG271",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

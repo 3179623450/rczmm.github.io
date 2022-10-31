@@ -66,7 +66,7 @@
         
     
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小小世界" type="application/atom+xml">
 </head>
 
   
@@ -644,7 +644,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 157 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 163 |
           </span>
   
           <span class="min2read">
@@ -684,30 +684,30 @@
 <h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
 
 <p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">$ cd themes&#x2F;next
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cd themes&#x2F;next
 $ ls
-_config.yml  crowdin.yml  docs  gulpfile.js  languages  layout  LICENSE.md  package.json  README.md  scripts  source<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+_config.yml  crowdin.yml  docs  gulpfile.js  languages  layout  LICENSE.md  package.json  README.md  scripts  source</code></pre>
 
 <h2 align="center">Step 2 &rarr; Get module</h2>
 
 <p>Install module to <code>source/lib</code> directory:</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-ribbon source&#x2F;lib&#x2F;canvas-ribbon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-ribbon source&#x2F;lib&#x2F;canvas-ribbon</code></pre>
 
 <h2 align="center">Step 3 &rarr; Set it up</h2>
 
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">canvas_ribbon</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">canvas_ribbon:
+  enable: true</code></pre>
 
 <p><strong>And, if you wants to use the CDN, then need to set:</strong></p>
-<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">vendors</span><span class="token punctuation">:</span>
-  <span class="token punctuation">...</span>
-  <span class="token key atrule">canvas_ribbon</span><span class="token punctuation">:</span> //cdn.jsdelivr.net/gh/theme<span class="token punctuation">-</span>next/theme<span class="token punctuation">-</span>next<span class="token punctuation">-</span>canvas<span class="token punctuation">-</span>ribbon@1/canvas<span class="token punctuation">-</span>ribbon.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">vendors:
+  ...
+  canvas_ribbon: &#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;theme-next&#x2F;theme-next-canvas-ribbon@1&#x2F;canvas-ribbon.js</code></pre>
 
 <h1 align="center">Update</h1>
 
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">$ cd themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-ribbon
-$ git pull<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cd themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;canvas-ribbon
+$ git pull</code></pre>
 
       </div>
       <div class="post-tags-categories">
