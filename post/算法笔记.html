@@ -58,8 +58,6 @@
     <!-- import script -->
     
         
-            <script src = "/js/index/slowflow.js"></script>
-        
             
         
             
@@ -215,7 +213,7 @@
   </transition>
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
-      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <img class="drawer-box-head_logo lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
       <h3 class="drawer-box-head_title">小小世界</h3>
       <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
     </div>
@@ -379,7 +377,7 @@
     <div class="blog-title" id="author-avatar">
       
         <div class="avatar">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
         </div>
       
       <a href="/" class="logo">小小世界</a>
@@ -644,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 7.3k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 10.2k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 26分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 36分钟 |
           </span>
   
           
@@ -711,7 +709,7 @@
     print(&quot;the resluts is &#123;&#125;&quot;.format(arr))</code></pre>
 
 <h3 id="循环不变式与算法的正确性"><a href="#循环不变式与算法的正确性" class="headerlink" title="循环不变式与算法的正确性"></a>循环不变式与算法的正确性</h3><p>算法导论里的描述真的应该多加思考，这一步往往被我所忽略，因此产生了很多的问题。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="快速排序"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="快速排序"></p>
 <p>这幅图展示了插入排序的工作流程，数组下标出现在矩阵的上方，数据中各个位置存储的数字出现在矩形中。</p>
 <p>循环不变式主要用来帮助我们理解算法的正确性。对于循环不变式，必须证明它的三个性质:</p>
 <p>初始化:它在循环的第一轮迭代开始之前，应该是正确的。</p>
@@ -726,13 +724,13 @@
 <p>在RAM模型中，即使是描述最简单的加法器都会异常的繁琐，因为这涉及到真实的算术指令，数据移动指令和控制指令等，其中还涉及到操作数数据精度的问题，总之在算法的设计与分析中，我们会忽略这些问题，把注意力和精力更多的放在具体的算法过程中去。</p>
 <h3 id="插入排序算法分析"><a href="#插入排序算法分析" class="headerlink" title="插入排序算法分析"></a>插入排序算法分析</h3><p>插入排序过程的时间开销与输入有关:排序1000个数的时间比排序三个数的时间要长。还有，即使排序两个相同长度的输人序列，所需的时间也可能不同。这取决于它们已排序的程度。一般来说，算法所需时间是与输入规模同步增长的，因而常常将一个程序的运行时间表示为其输人的函数。这就要求对术语“运行时间”和“输人规模”更仔细地加以定义。</p>
 <p>输入规模的概念与具体问题有关。对许多问题来说(如排序或计算离散傅里叶变换)，最自然的度量标准是输入中的元素个数，例如，待排序数组的大小n。对另一些问题(如两个整数相乘)，其输入规模的最佳度量是输人数在二进制表示下的位数。有时，用两个数(而不是一个)来表示输人可能更合适。例如，某一算法的输入是个图，则输人规模可以由图中顶点数和边数来表示。在下面讨论的每一个问题中，我们都将指明所用的度量标准。<br>算法的运行时间是指在特定输入时，所执行的基本操作数(或步数)。可以很方便地定义独立于具体机器的“步骤”概念。目前，先采用以下观点，每执行一行伪代码都要花一定量的时间。虽然每一行所花的时间可能不同，但我们假定每次执行第i行所花的时间都是常量c<sup>i</sup>。这种观点与RAM模型是一致的，同时也反映出了伪代码在多数真实计算机上是如何实现的。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="插入排序"></p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="计算总运行时间"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="插入排序"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="计算总运行时间"></p>
 <p>即使是同样规模的输入，一个算法的运行时间同样的也可能依赖于给定的规模下的输入类型。例如，如果说在插入排序中，输入的规模是已经排好序的，就会出现最佳的情况，当然一个等值的输入数组也会出现最佳的情况。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最佳代价"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="最佳代价"></p>
 <p>最坏的情况是随时都有可能发生的，在插入排序中，如果数组是完全逆序的，那么就会出现最坏的情况。必须把A[j]与子数组的每一个元素进行比较才能得出结果，因此此时的时间复杂度是最高的。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="求和式"></p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="最坏情况"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="求和式"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="最坏情况"></p>
 <p>最优时，an+b这是大体的时间复杂度，这是一个一次函数，但是最坏情况时,结果变成了一个二次函数。</p>
 <p>一般的，对于给定的输入，算法的运行时间会是固定的（硬件可能会造成一些影响，但差距不会太大），但是有一些很有意思的随机化算法，对于固定的输入，算法的效率是有变化的，当然对于插入排序来说，他并没有这样的特点。</p>
 <h3 id="最坏和平均情况分析"><a href="#最坏和平均情况分析" class="headerlink" title="最坏和平均情况分析"></a>最坏和平均情况分析</h3><p>一般的，对于某一个算法的考察，我们都会考虑最坏的情况。</p>
@@ -748,7 +746,7 @@
 <p>合并:合并两个已排序的子序列以得到排序结果。<br>在对子序列排序时，其长度为1时递归结束。单个元素被视为是已排好序的。</p>
 <p>其中，引入一个辅助的过程，也就是合并的过程，它的作用是把已经分好的子数组组合成一个排好序的子数组来代替当前子数组。</p>
 <p>再举扑克牌这个例子，假设有两堆牌面朝上地放在桌上，每一堆都是已排序的，最小的牌在最上面。我们希望把这两堆牌合并成一个排好序的输出堆，面朝下地放在桌上。基本步骤包括在面朝上的两堆牌中，选取顶上两张中较小的一张，将其取出后(它所在堆的顶端又会露出一张新的牌)面朝下地放到输出堆中。重复这个步骤，直到某-输入堆为空时为止。这时，把输人堆中余下的牌面朝下地放入输出堆中即可。从计算的角度来看，每一个基本步骤所花时间是个常量，因为只是查看顶上的牌，最多进行n次比较，所以合并排序的时间为O(n)。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="合并排序"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="合并排序"></p>
 <p>PDF的图片可能比较模糊。</p>
 <p>在调用MERGE(A，9，12，16)的第10到17行的操作中，当子数组A[9..16]包含序列(2，4,5，7，1，2，3，6)时的情况。在复制和插入了哨兵后，数组L包含了(2，4，5，7，∞)，数组R包含了〈1，2，3，6，∞)。A中的浅阴影位置包含了它们的最终值，L和R中的浅阴影位置包含了有待于被复制回A中的值。合起来看，浅阴影的位置始终包含了最初在A[9..16]中的值，再加上两个哨兵。A中的深阴影位置包含了将被覆盖的值，而L和R中深阴影位置包含了已被复制回A中的值。a)到h)在第12到17行中循环的每一轮迭代开始之前，数组A、L和R以及它们各自的下标k、i和j 的情况。i)终止时各数组及其下标的情况。此时，A[9..16]中的子数组已排好序了，L和R中的两个哨兵是这两个数组中，仅有的两个未被复制回A中的元素.</p>
 <p>python实现</p>
@@ -812,22 +810,66 @@ def separate(nums, left_index, right_index):
 
 separate(nums, 0, len(nums) - 1)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="合并排序"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="合并排序"></p>
 <h3 id="分治法分析"><a href="#分治法分析" class="headerlink" title="分治法分析"></a>分治法分析</h3><p>当一个算法中含有对其自身的递归调用时，其运行时间可以用一个递归方程(或递归式)来表示。该方程通过描述子问题与原问题的关系，来给出总的运行时间。我们可以利用数学工具来解递归式，并给出算法性能的界。<br>分治算法中的递归式是基于基本模式中的三个步骤的。如先前一样，设T(n)为一个规模为n的问题的运行时间。如果问题的规模足够地小，如n≤c(c为一个常量)，则得到它的直接解的时间为常量，写作O(1)。假设我们把原问题分解成α个子问题，每–个的大小是原问题的1&#x2F;b。(对于合并排序，a和b都是2，但在许多分治法中，a≠b。)如果分解该问题和合并解的时间各为D(n)和C(n)，则得到递归式:</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归式"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归式"></p>
 <h3 id="合并排序算法的分析"><a href="#合并排序算法的分析" class="headerlink" title="合并排序算法的分析"></a>合并排序算法的分析</h3><p>合并排序的代码在元素为奇数个时能正确地工作，而此处我们为了简化对基于递归的算法的分析，就假定原问题的规模是2的幂次，这样每一次分解所产生的子序列的长度就恰好为n&#x2F;2。<br>以下给出递归形式的T(n)即最坏情况下合并排序n个数的运行时间。合并排序一个元素的时间是个常量。当n&gt;1时，将运行时间如下分解:<br>分解:这一步仅仅是计算出子数组的中间位置，需要常量时间，因而D(n)&#x3D;O(1)。</p>
 <p>解决:递归地解两个规模为n&#x2F;2的子问题,时间为2T(n&#x2F;2)。<br>合并:我们已经注意到，在一个含有n个元素的子数组上，MERGE过程的运行时间为e(n)，则C(n)&#x3D;O(n)。<br>当我们在合并排序算法的分析中，将函数D(n)和C(n)相加时，我们是在将一个时间复杂度为O(1)函数与另一个O（n）函数进行相加，相加的和是一个线性函数。</p>
 <p>此时归并排序的最坏情况运行时间的递归表示为：</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归表达式"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归表达式"></p>
 <p>接下来，我们要处理T(n) &#x3D; n*logn的问题，可以用主定理来证明，此处对数的底数为2，但是这里不用主定理，也可以直观理解。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="重写递归式"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="重写递归式"></p>
 <p>其中常量c代表规模为1的问题所需的时间，也是在“解决”和“合并”步骤中处理每个数组元素所需的时间。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" class="lazyload placeholder" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="递归树"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归树"></p>
 <p>如何解递归式。出于方便性的考虑，假设n是2的整数幂。T(n)，它被扩展成递归式的一种等价树形表示。cn项是树根(即顶层递归的代价)，根的两棵子树是两个更小一点的递归式T(n&#x2F;2)。图示出了这-过程在将T(n&#x2F;2)扩展后的情况。在第二层递归的两个子结点中，每一个结点的代价都是cn&#x2F;2。继续在树中扩展每个结点，即将其分解成由递归式所决定的各个组成部分，直到问题的规模降到了1，这时每个问题的代价为c。图示出了最终的树。<br>接下来给这棵树的每一层加上代价。最顶层的总代价为cn，下一层的总代价为c(n&#x2F;2)十c(n&#x2F;2)&#x3D;cn，再往下去一层，总代价为c(n&#x2F;4)+ c(n&#x2F;4)+c(n&#x2F;4)+ c(n&#x2F;4)&#x3D;cn，等等。一般来说、最顶层之下的第i层有2<sub>i</sub>个结点，每一个的代价都是c(n&#x2F;2<sub>i</sub>)，于是，顶层之下的第i层的总代价为2<sub>i</sub>c(n&#x2F;2<sub>i</sub>)&#x3D;cn。在最底层，共有n个结点，每一个结点的代价为c，该层的总代价为cn。</p>
 <p>在图中，“递归树”中总的层数为lgn+1。只要做一个非正式的归纳推理，就很容易理解这一事实。n&#x3D;1为归纳的基本前提情况，此时递归树中只有一层。由于 lg1&#x3D;0，有 lgn+1给出了正确的层数。现在，我们进行归纳假设，即假设一棵有2i个结点的递归树中，共有lg2<sub>i</sub>＋1&#x3D;i+1层(由于对任何i值，都有lg2<sub>i</sub>&#x3D;i)。因为我们假设初始的输入规模是2的整数次幂，因而，下一个要考虑的输入规模应该是2<sub>i</sub>+1。一棵具有2<sub>i</sub>+1个结点的树比具有2<sub>i</sub>个结点的树要多一层，因此，其总的层数为(i＋1)＋1&#x3D;lg2<sub>i+1</sub>+1。<br>要计算递归式给出的总代价，只要将递归树中各层的代价加起来就可以了。在该树中，总共有 lgn十1层，每一层的代价都是cn，于是，整棵树的总代价就是cn(lgn+1)&#x3D;cnlgn+cn。忽略低阶项和常量c，即得到结果e(n lgn)。</p>
-<p>函数增长</p>
-<p>递归</p>
-<p>概率分析与随机算法</p>
+<h2 id="函数增长"><a href="#函数增长" class="headerlink" title="函数增长"></a>函数增长</h2><p>这一部分其实很有意思，之前描述了算法运行时间增长的阶，它给出算法效率的简明特征，并且可以用来比较各种算法的相对性能。例如，合并排序的最坏情况运行时间为O(n lgn)，当输人的规模n足够大时，就要优于最坏情况运行时间为O(n<sub>2</sub>)的插人排序。虽然有时候能够精确地确定一个算法的运行时间，如对插入排序的运行时间所做的分析那样，但通常没必要花那么大的力气去算出额外的精确度。对于足够大的输入规模来说，在精确表示的运行时间中，常系数和低阶项是由输入规模所决定的。</p>
+<p>当输入规模大到使只有运行时间的增长量级有关时，就是在研究算法的渐近效率。也就是说，从极限角度看，我们只关心算法运行时间如何随着输人规模的无限增长而增长。通常，对不是很小的输入规模而言，从渐近意义上说更有效的算法是最佳的选择。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031193802662.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031193802662.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="三种记号"></p>
+<p>对于这样的表述，简单的理解为，上界下界与中间的区别，当然这里的都是渐近上界与渐近下界。不仅如此我们还是用o来表述紧确的渐近上界，w来表述紧确的渐近下界。</p>
+<h2 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h2><p>当一个算法包含对自身的递归调用时，其运行时间通常可以用递归式(recurrence)来表示。递归式是一组等式或不等式，它所描述的函数是用在更小的输入下该函数的值来定义的。例如，归并排序过程的最坏情况运行时间T(n)可由下面的递归式：</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031194356075.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031194356075.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="归并排序"></p>
+<p>解为：nlgn</p>
+<p>在算法导论里描述了三种解递归式的方法.</p>
+<p>1、主方法求解递归式</p>
+<p>一种求解大部分递归式的公式。给出递归式: T(n) &#x3D; a * T(n&#x2F;b) + f(n) 的界，其中a&gt;&#x3D;1，b&gt;1，f(n)是给定的函数，T(n)是定义在非负整数上的递归式。</p>
+<p>2、递归树求解</p>
+<p>用主方法求解不了的递归式，我们可以用递归树来猜测解的上界，然后用代入法来证明解的正确性。递归树的求解精确度取决于画递归树的精确度。</p>
+<p>3、代入法</p>
+<p>比如我们求解，递归式T(n) &#x3D; 2T(n&#x2F;2)+n，我们猜测解是O(nlgn)，我们要寻找到一个常数c，使得T(n)&lt;&#x3D;cnlgn。</p>
+<p>即T(n) &lt;&#x3D; 2c(n&#x2F;2)lg(n&#x2F;2)+n &lt;&#x3D; cnlgn-cnlg2+n &#x3D; cnlgn-cn+n</p>
+<p>只要c&gt;&#x3D;1，T(n)&lt;&#x3D;cnlgn，所以我们的猜测是正确的。</p>
+<p>要注意的是，代入法全凭经验，通常用递归树来确定上界，然后用代入法再证明。</p>
+<p>技术细节：</p>
+<p>在实践中，在表达和解递归式时常常略去一-些技术性细节。例如，常常假设函数的自变量为整数。通常，一个算法的运行时间T(n)在定义时都假设n为整数，因为对大多数算法来说输人的规模都是整数。</p>
+<p>我们常常忽略的另一类细节是边界条件，因为对于固定规模的输人来说，算法的运行时间为常量，故对足够小的n来说，表示算法运行时间的递归式一般为T(n)&#x3D;O(1)。据此，为了方便起见，就常忽略递归式的边界条件，并且假设对小的n值T(n)是常量。</p>
+<h3 id="一些细微的问题"><a href="#一些细微的问题" class="headerlink" title="一些细微的问题"></a>一些细微的问题</h3><h4 id="代换法"><a href="#代换法" class="headerlink" title="代换法"></a>代换法</h4><p>对于代换法，使用代换法解递归式需要两个步骤，用数学归纳法找出真正有效的常数，代换法使用于归纳假设用较小值时，用猜测的值去代替函数的解，这种方式很有效，但是只能用于解的形式很容易的猜的情景。</p>
+<p>但是，不存在一种通用的方式来猜测递归式的正解，这种猜测往往是需要经验的，有时甚至是创造性的。当然有一种方式先证明宽松的上下界，然后缩小不确定性区间。</p>
+<p>有时候，很容易可以猜出渐近界，但是却会在归纳证明时出现一些问题，通常时，问题出在归纳假设不够强，无法证明其准确的界，遇到这种情况，可以去掉低阶项来使得证明顺利进行。</p>
+<p>为什么是去掉低阶项，因为本质是数学归纳法，使用较小的值明显要更好一些。</p>
+<p>运行渐近时，很容易就会犯错，没有证明归纳假设的正确形式。</p>
+<h4 id="递归树"><a href="#递归树" class="headerlink" title="递归树"></a>递归树</h4><p>对于代换法，虽然简单直接，但是往往得不到一个好的猜测，因此画出一个递归树是一种得到好猜测的直接方法。在递归树中，每一个结点都代表递归函数调用集合中一个子问题的代价。我们将树中每一层内的代价相加得到一个每层代价的集合，再将每层的代价相加得到递归是所有层次的总代价。当用递归式表示分治算法的运行时间时，递归树的方法尤其有用。</p>
+<p>递归树最适合用来产生好的猜测，然后用代换法加以验证。但使用递归树产生好的猜测时，通常可以容忍小量的“不良量”( sloppiness)，因为稍后就会证明所做的猜测。如果画递归树时非常地仔细，并且将代价都加了起来，那么就可以直接用递归树作为递归式解的证明。</p>
+<p>子问题的大小将会随着离树根越来越远而变得越来越小，最终达到一个边界。</p>
+<p>递归树真的很香！！！但是我不画。</p>
+<h4 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h4><p>递归式描述了将规模为n的问题划分为a个子问题的算法的运行时间，每个子问题规模为n&#x2F;b，a和b是正常数。a个子问题被分别递归地解决，时间各为T(n&#x2F;b)。划分原问题和合并答案的代价由函数f(n)描述。</p>
+<p>当然从技术正确性来看，递归式实际上没有得到很好的定义，因为n&#x2F;b可能不是一个整数，但是用T函数并不影响递归式的渐近行为就可以。</p>
+<p>关于主方法的证明以及更多的描述等信息，建议算法导论，我看的是第三版。</p>
+<h2 id="概率分析与随机算法"><a href="#概率分析与随机算法" class="headerlink" title="概率分析与随机算法"></a>概率分析与随机算法</h2><p>在算法导论之中，使用了雇佣问题来作为这一章的开头，这里先简单的描述一下雇佣问题。</p>
+<p>你需要雇一名新的助理。你决定找一个雇用代理。雇用代理每天给你推荐一个应聘者。你会面试这个人，然后决定要不要雇用他。你必须付给雇用代理一小笔费用来面试应聘者。要真正地雇用一个应聘者则要花更多的钱，因为你必须辞掉目前的办公室助理，还要付一大笔中介费给雇用代理。你的诺言是在任何时候，都要找到最佳人选来担任这项职务。因此，你决定在面试完每个应聘者后，如果这个应聘者比目前的办公助理更有资格，你就会辞掉目前的办公室助理，然后聘请这个新的应聘者。你愿意为这种策略而付出费用，但希望能够预测这种费用会是多少。</p>
+<p>对于这种策略，使用伪代码来描述是最佳的选择，因为伪代码没有数据结构、语言语法以及执行正确性上的要求，我们可以使用简洁的语言来描述出这样的一种策略。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102115125506.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102115125506.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="雇佣问题"></p>
+<p>导论的伪代码真的很简洁。</p>
+<p>在这个模型里，面试的费用较低，而雇佣的费用是很高的，在这个算法里，总费用很容易就得出，因为我们无论如何，都会面试n个人，因此在这种情况下，我们关注的重点应该放在雇佣的部分上，而这个量在每一次的雇佣时都会发生改变。</p>
+<p>通常的情况下，我们需要检查雇佣者的这个序列，从中维护出一个目前的优胜者，本质上这个雇佣问题是对序列中那一个成员获胜的更新程度建立模型。</p>
+<p>最坏情况分析，这其实很好得出，当我们雇佣了每一个来面试的面试者时，我们雇佣的费用就会达到最高，当面试者的资质逐渐增加的时候，就会出现这种情况。现实中，这种情况或许很难出现，但是在现实里，我们同样不能得出这些面试者出现的顺序，也无法控制这个次序，因此，我们预测的都是一般或者平均情况。</p>
+<h3 id="概率分析"><a href="#概率分析" class="headerlink" title="概率分析"></a>概率分析</h3><p>概率分析是在问题的分析中分析应用概率技术，大多数情况下，我们使用概率分析来分析一个算法的运行时间，当然有时候也用它来分析其他的量，在这个雇佣的问题里，我们重点关心的问题就是输入的分布或者对输入做出的假设，例如平均十个人就会出现超越当前雇佣者资质的面试者，然后使用这样的假设，或者是在现实中收集了一段时间的招聘情况的数据，来分析算法，最后得出一个期望的运行时间，这个期望值有可能对所有可能的分布进行运算，因此，有可能是平均运算。</p>
+<h3 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h3><p>为了利用概率分析，需要了解有关输入分布的一些情况，在许多情况下，我们对输入分布知之甚少，即使知道有些输入分布的某些信息，从计算上说，可能也无法利用这些分布信息来构建模型。</p>
+<p>但是对算法中的某些部分的行为进行随机化，就可以利用概率和随机化作为算法设计和分析的工具。</p>
+<p>在雇佣问题之中，看上去面试者是随机出现的，于是我们需要对随机化进行处理，大多数编程环境都有提供一个随机数生成器，因此最终的模型之中，我们生产一个全序列，里面面试者的排列完全随机，并且在使用这个序列时，我们采用随机数抽取的方式。</p>
+<h2 id="指示器随机变量"><a href="#指示器随机变量" class="headerlink" title="指示器随机变量"></a>指示器随机变量</h2><p>这为概率和期望之间的转换提供了一种便利的方法。它描述了事件在样本空间中是否发生，发生值为1，不发生值为0。</p>
+<p>使用这样的思路在解决雇佣问题，我们希望计算雇佣一个职员的期望次数，为了利用概率分析，假设面试者以随机的顺序出现，令X作为一个随机变量，他的值就是雇佣一个新职员需要的招聘次数。利用指示器随机变量。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102123603046.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102123603046.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="指示器随机变量"></p>
 <h2 id="厕所坑位问题"><a href="#厕所坑位问题" class="headerlink" title="厕所坑位问题"></a>厕所坑位问题</h2><p>额。。。非恶搞、真思考。</p>
 <p>一层宿舍楼内，有公共厕所两间，厕所内有六个坑位，假定每人每天平均上一次厕所，一次三分钟，求一层楼多少人才能使得上厕所不会拥挤的概率超过百分之70？</p>
 <p>拥挤？即三分钟内有至少13个人上厕所。一天二十四小时，共计1440分钟。</p>
@@ -875,8 +917,8 @@ for i in range(numRows):
         
         <div class="tags">
           
-            <a href="/tags/%E7%AE%97%E6%B3%95/" class="">
-              算法
+            <a href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" class="">
+              未完成
             </a>
           
         </div>
@@ -895,7 +937,7 @@ for i in range(numRows):
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="">
     </div>
     <a href="/post/MtaLab%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
       <div class="title">
@@ -916,7 +958,7 @@ y1&#x3D;sin
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" src="" alt="">
     </div>
     <a href="/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html" class="post-nav-link">
       <div class="title">
@@ -971,10 +1013,10 @@ HelloWorld&#x2F;&#x2F; 头文件引入
       </div>
       <div class="donate-box_img">
         <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="支付宝打赏" />
         </div> 
         <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="微信打赏" />
         </div>
       </div>
     </div>

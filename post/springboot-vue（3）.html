@@ -58,8 +58,6 @@
     <!-- import script -->
     
         
-            <script src = "/js/index/slowflow.js"></script>
-        
             
         
             
@@ -215,7 +213,7 @@
   </transition>
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
-      <img class="drawer-box-head_logo lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <img class="drawer-box-head_logo lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
       <h3 class="drawer-box-head_title">小小世界</h3>
       <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
     </div>
@@ -379,7 +377,7 @@
     <div class="blog-title" id="author-avatar">
       
         <div class="avatar">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
         </div>
       
       <a href="/" class="logo">小小世界</a>
@@ -676,14 +674,14 @@
     <article class="post post-detail">
       <div class="post-content">
         <h2 id="静态资源访问"><a href="#静态资源访问" class="headerlink" title="静态资源访问"></a>静态资源访问</h2><p>如果你使用的是IDEA创建项目，那么会默认创建出static目录。静态资源一般来说放在这个目录下。</p>
-<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201530131.png" class="lazyload placeholder" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201530131.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220827201530131"></p>
+<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201530131.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201530131.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220827201530131"></p>
 <p>如果默认的的策略无法满足开发需求，也可以在application.properties中自定义</p>
-<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201701938.png" class="lazyload placeholder" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201701938.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220827201701938"></p>
+<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201701938.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827201701938.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220827201701938"></p>
 <p>前者为过滤规则，或者为静态资源位置。</p>
 <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>表单的enctype属性规定在发送到服务器之前应该如何对表单数据进行编码。</p>
 <p>不设置这个属性，即这个属性保持默认值，此时form表单内的数据格式为：key&#x3D;value&amp;key&#x3D;value</p>
 <p>在Springboot工程中，嵌入的tomcat限制了请求的文件大小，每个文件的配置最大1Mb，单次请求文件总数不能大于10Mb，要更改这个默认值，在application.properties中加入配置：</p>
-<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827202246300.png" class="lazyload placeholder" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827202246300.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20220827202246300"></p>
+<p><img src="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827202246300.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%883%EF%BC%89/image-20220827202246300.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220827202246300"></p>
 <h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>拦截器在Web中很常见，对于一些全局统一的操作，放到拦截器里实现。</p>
 <p>权限检查、性能监控、通用行为（读cookie等只要是多个程序需要的）</p>
 <p>Spring Boot定义了HandlerInterceptor接口来实现自定义拦截器的功能</p>
@@ -753,7 +751,7 @@ public class WebConfiger implements WebMvcConfigurer &#123;
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="">
     </div>
     <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html" class="post-nav-link">
       <div class="title">
@@ -774,7 +772,7 @@ REST并不是一个标准，它更像一组客户端和服务端交互时的架
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" src="" alt="">
     </div>
     <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" class="post-nav-link">
       <div class="title">
@@ -828,10 +826,10 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
       </div>
       <div class="donate-box_img">
         <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="支付宝打赏" />
         </div> 
         <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload placeholder" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="微信打赏" />
         </div>
       </div>
     </div>
