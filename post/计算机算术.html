@@ -877,10 +877,8 @@
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
 <p>1）最简单的舍入机制是截断或向0舍入。</p>
 <p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
-<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点</p>
-<p>数作为结果。</p>
-<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的</p>
-<p>点（即向偶数舍入）。</p>
+<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点数作为结果。</p>
+<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的点（即向偶数舍入）。</p>
 <p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
 <p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
 <p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
