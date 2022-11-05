@@ -213,7 +213,7 @@
   </transition>
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
-      <img class="drawer-box-head_logo lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
+      <img class="drawer-box-head_logo" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" alt="logo">
       <h3 class="drawer-box-head_title">小小世界</h3>
       <h5 class="drawer-box-head_desc">你看到的不止如此</h5>
     </div>
@@ -377,7 +377,7 @@
     <div class="blog-title" id="author-avatar">
       
         <div class="avatar">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="logo">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/logo.jpg" alt="logo">
         </div>
       
       <a href="/" class="logo">小小世界</a>
@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 4.8k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 5.6k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 17分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 20分钟 |
           </span>
   
           
@@ -849,8 +849,42 @@
 <p>E：偏置量为B的指数</p>
 <p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
 <p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
-<p>浮点运算</p>
-<p>浮点运算和我们</p>
+<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>浮点数不能直接相加。</p>
+<p>下面以一个简单的8位尾数和一个未对齐的指数为例说明浮点运算，A&#x3D;1.0101001x2<sub>4</sub>，</p>
+<p>B&#x3D;1.1001100x2<sub>3</sub>。若要计算两个数的乘积，应将尾数相乘，指数相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相乘"></p>
+<p>由于浮点操作数已被表示为规格化形式，计算机在进行浮点加法时面临以下问题：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>为了对齐指数，计算机必须执行下面步骤：</p>
+<p>第1步，找出指数较小的数</p>
+<p>第2步，使两个数的指数相同</p>
+<p>第3步，尾数相加（或相减）</p>
+<p>第4步，如果有必要，将结果规格化</p>
+<p>因为B的指数比A小，将B转为0.110011x2<sub>4</sub>，将A与非规格化的B相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>对结果规格化，得到1.00001111x2<sub>5</sub></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点加法运算流程"></p>
+<p>注意：</p>
+<p>1）因为指数有时与尾数位于同一个字中，在加法过程开始之前必须将它们分离开（减压缩）</p>
+<p>2）如果两个指数的差大于p+1，p为尾数的位数，较小的数由于太小而无法影响较大的数，结果实际就等于较大的数。如，1.1010x2<sub>60</sub>+1.01x2<sub>-12</sub>的结果为1.1010x2<sub>60</sub>，因为指数之差为72</p>
+<p>3）结果规格化时检查指数范围，以分别检测指数下溢或上溢。指数下溢会导致结果为0，而指数上溢会造成错误。</p>
+<p>舍入和截断误差</p>
+<p>浮点运算可能引起尾数位数的相加，需要保持尾数位数不变的方法。最简单的技术叫作截断。</p>
+<p>如，将0.1101101截断为4位尾数的结果为0.1101。截断会产生诱导误差（即误差是由施加在数上的操作计算所引起的），诱导误差是偏置的，因为截断后的数总比截断前小。</p>
+<p>舍入是一种更好的减少数的位数的技术。如果丢弃的位的值大于剩余数最低位的一半，将剩余数的最低位加1。</p>
+<p>考虑两个数在小数点后第4位上舍入的例子：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
+<p>1）最简单的舍入机制是截断或向0舍入。</p>
+<p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
+<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点</p>
+<p>数作为结果。</p>
+<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的</p>
+<p>点（即向偶数舍入）。</p>
+<p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
+<p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
+<p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
+<p>果舍入为最近的浮点数。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -869,7 +903,7 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" alt="">
     </div>
     <a href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html" class="post-nav-link">
       <div class="title">
@@ -889,7 +923,7 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" src="" alt="">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" src="" alt="">
     </div>
     <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" class="post-nav-link">
       <div class="title">
@@ -943,10 +977,10 @@
       </div>
       <div class="donate-box_img">
         <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="支付宝打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" alt="支付宝打赏" />
         </div> 
         <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" class="lazyload" data-srcset="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="微信打赏" />
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" alt="微信打赏" />
         </div>
       </div>
     </div>
