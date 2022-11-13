@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>MtaLab笔记 | 小小世界</title>
+  <title>小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -591,845 +591,1137 @@
 </header>
         <!-- 内容区域 -->
         
- <!-- prismjs 代码高亮 -->
- 
-    
-    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
-    
-        <link href="/js/prism/prism.min.css" rel="stylesheet">
-    
-
-    <style>
-        pre[class*="language-"] {
-            overflow-y: hidden;
-        }
-        .line-numbers .line-numbers-rows {
-            border: none;
-        }
-    </style>
+  <!-- 首页轮播 -->
   
 
-
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-
-
-  <!-- 文章详情页顶部图片和标题 -->
+  <link href="/js/vue-typed-js/index.css" rel="stylesheet">
 
 
 
 
-<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-22.png')">
-  <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+
+
+<div class="swiper-length" style="display: none;">0</div>
+<div id="appSwiper"
+  class="swiper-no-swiping"
+  @mouseenter="stopAutoPlay()" 
+  @mouseleave="startAutoPlay()"
+>
+  <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
+    
+      <swiper-slide>
+        <div class="item swiper-lazy" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" style="background-size: 300000px; 
+          background-position: left center;" style="position: relative;">
+          <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
+            <div class="flag">
+              
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" style="height: 100%; background-size: cover; 
+                background-position: center center;">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
+              </div>
+              <div class="flag-text">
+                <div class="flag-text-content">
+                  <div class="title ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s">小小世界</div>
+                  
+                    <div class="ani animated default-excerpt" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s">
+                      <vue-typed-js :strings="defaultDesc" :loop="defaultDescTypedLoop" :type-speed="100" :back-speed="50">
+                        <h1 class="typing"></h1>
+                      </vue-typed-js>
+                    </div>
+                    
+                </div>
+                <div style="display: flex;" class="flag-text-btns">
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      </swiper-slide>
+    
+  </swiper>
   
-  <div class="post-detail-header_info-box">
-    <div class="title-box">
-      <span class="title">
-        MtaLab笔记
-      </span>
+    <div id="scroll-down" @click="toPostContent()">
+      <a href="javascript:;">
+        <i class="fas fa-angle-down scroll-down-effects"></i>
+      </a>
     </div>
+  
+  <canvas id="header_canvas"style="position:absolute;bottom:0;width:100%;pointer-events:none;"></canvas>
+  
+    <svg class="hans-container" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"><defs><path id="hans-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="hans-parallax"><use xlink:href="#hans-wave" x="50" y="0" fill="rgba(224,233,239,.5)"></use><use xlink:href="#hans-wave" x="50" y="3" fill="rgba(224,233,239,.5)"></use><use xlink:href="#hans-wave" x="50" y="6" fill="rgba(224,233,239,.5)"></use></g></svg>
     
-    
-      
-        <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-08-30 |
-        </span>
-      
-
-      
-
-      
-        <div class="post-detail-header_wordcount">
-          <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 3k |
-          </span>
-  
-          <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 12分钟 |
-          </span>
-  
-          
-            <span class="reading">
-              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
-            </span>
-          
-        </div>
-      
-    
-  </div>
-  
-  
-    <script src="/js/bubble/bubble.js"></script>
-  
 </div>
 
 
+<style>.hans-parallax>use{animation:hans-wave-move 12s linear infinite}.hans-parallax>use:nth-child(1){animation-delay:-2s}.hans-parallax>use:nth-child(2){animation-delay:-2s;animation-duration:5s}.hans-parallax>use:nth-child(3){animation-delay:-4s;animation-duration:3s}@keyframes hans-wave-move{0%{transform:translate(-90px,0)}100%{transform:translate(85px,0)}}</style>
+<style>
+  .hans-container {
+    position: absolute!important;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 100;
+    pointer-events:none;
+  }
+</style>
 
-
-
-<div class="post-detail-content row justify-position" 
-  style="padding-top: 0px;">
-  <div class="main-content">
-    <article class="post post-detail">
-      <div class="post-content">
-        <pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x&#x3D;linspace(0,6);%createavectorxbetween0and6
-y1&#x3D;sin(2*x);
-y2&#x3D;sin(x.^2);
-y3&#x3D;(sin(x)).^2;
-plot(x,y1)</code></pre>
-
-<p>matlab很强大，很强大。</p>
-<pre class="line-numbers language-none"><code class="language-none">退出和中断
-
-exit、quit结束matlab会话，程序完成，如果没有明确的保存，则变量中的数据会丢失。
-
-Ctrl+C中断一个matlab任务</code></pre>
-
-<p>在matlab中，矩阵是数据的基本格式。</p>
-<p>二维矩阵是一个以行列排列的矩形表，例如一个m行、n列的矩阵大小就是m<em>n，多维矩阵的维数大于2，就是说大小为m</em>n*…p</p>
-<p>当行列为1时，此时只有一个量，也就是标量，只有一个数。</p>
-<p>一个变量可以通过分配一个值来定义他。</p>
-<p>二维矩阵的实现</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">A&#x3D;[1 2 3;4 5 6];
-
-B&#x3D;[1 2 3
-4 5 6];</code></pre>
-
-<p>简单的两种方式，前者用分号作为一行的结束，后者直接写出来。</p>
-<p>定义行向量与列向量</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">row_l&#x3D;[1 2 3];
-column_l&#x3D;[1;2;3];</code></pre>
-
-<p>逐个元素的分配矩阵：</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">C(1,1)&#x3D;1;
-C(1,2)&#x3D;2;
-C(1,3)&#x3D;3;
-C(2,1)&#x3D;4;
-C(2,2)&#x3D;5;
-C(2,3)&#x3D;6;
-C</code></pre>
-
-<p>对于三维矩阵，一般的理解为在自变量中依次使用行、列和页维数次序，对于多维矩阵有两个索引原理，最自然的就是矩阵索引，他给出了每个元素在每一维的一个位置。</p>
-<p>另外一个索引原理是线性索引，一些命令把整个索引说明为一个长列元素，如果所有元素都在一行上，那么对于各个元素给定的一个线性索引号说明了一个指定矩阵的索引给出的某个位置。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">D&#x3D;[1 2 3;4 5 6];
-E&#x3D;[1 2 3;4 5 6];
-F(:,:,1)&#x3D;A;
-F(:,:,2)&#x3D;B;
-F
-F(1,1,1)&#x3D;10;
-F</code></pre>
-
-<p>用两个二维矩阵构建一个三维矩阵，再修改一下三维矩阵内一个元素。</p>
-<p>matlab允许在一行上定义多个变量，也可以在换行时使用三个点来在下一行继续输入。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">m&#x3D;1;n&#x3D;2;z&#x3D;0.1212121312;
-A_1&#x3D;[1 2 3 4 5 6 7;2 3 4 5 6 7 8;...
-2 3 4 5 7 8 6];</code></pre>
-
-<p>为了获取变量的维数，可以使用size和length。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">size(A_1)
-length(A_1)</code></pre>
-
-<p>size，输出顺序为行数、列数、页数等。</p>
-<p>（3，7）</p>
-<p>length，给出一个向量的长度。行向量就给出列数，列向量就给出行数。</p>
-<p>（7）</p>
-<p>如果此时，简单的嵌套：</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">length(size(A_1))
-ndims(A_1)</code></pre>
-
-<p>（2）</p>
-<p>就能顺利的得到维数。当然使用ndims函数也能快速的得到维数。</p>
-<p>sub2ind()特殊的函数，首先在matlab之中，数据有索引，即使是矩阵。</p>
-<p>但是数据是按列的方式存储，所以是按照列来计算索引的。</p>
-<p>sub2ind就是把下标转化为索引。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sub2ind(size(A_1),2,3)</code></pre>
-
-<p>如图，A_1是一个3<em>7的矩阵，那么这段语句的含义就是求一个3</em>7矩阵的第2行第3列的索引。</p>
-<p>ind2sub()将线性索引转化为下标。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">[i,j]&#x3D;ind2sub(size(A_1),2);</code></pre>
-
-<p>也就是，求一个3*7矩阵索引为2的元素在第几行第几列。</p>
-<p>多维矩阵的转换：</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">sub2ind([3 3 2],1,2,2)</code></pre>
-
-<p>将一个三行、三列、两页的矩阵的第一行、第二列、第二页的元素转化为索引：13。</p>
-<p>变量</p>
-<p>变量名可以有19个字符，由字母大小写、下划线和数字作为变量名，但只能由字母开头。</p>
-<p>matlab是区分大小写的。在变量使用之前，不需要指定变量的数据类型，也不需要声明变量。</p>
-<pre class="line-numbers language-none"><code class="language-none">double是一个双精度浮点数，每个存储的双精度数用64位。
-
-char用于存储字符，每个存储的字符用16位。
-
-sparse用于存储稀疏矩阵，由一个sparse使用的内存是4+(非零元素数*16)。
-
-unit8是一个无符号的8位整型数。数学函数并不对使用到的这种数据类型进行定义，如存储图像。</code></pre>
-
-<p>逻辑函数</p>
-<pre class="line-numbers language-none"><code class="language-none">iscell(x)如果x是一个细胞矩阵，返回1；否则为0。
-
-isfield(x)如果x在一个结构中是一个域，返回1；否则为0。可参见第12.5节。
-
-isfinite(x)返回一个与x相同大小的向量，这个x包含有限元的位置为1，其他位置为0。
-
-islogical(x)如果x是一个逻辑向量，返回1；否则为0。
-
-isnumeric(x)如果x是一个数值向量，返回1；否则为0。
-
-isstr(x)如果x是一个字符串，返回1；否则为0。
-
-isstruct(x)如果x是一个结构，返回1；否则为0。
-
-isobject(x)如果x是一个对象，返回1；否则为0。
-
-logical(x)返回一个可以使用的逻辑向量，例如逻辑索引或逻辑测试。</code></pre>
-
-<p>预定义变量</p>
-<pre class="line-numbers language-none"><code class="language-none">ans分配最新计算表达式的值，这个表达式并没有给定一个名字。
-
-eps返回机器精度，定义1与最接近可代表的浮点数之间的差。eps数在一些命令中用作偏差。用户可以设定一个新的eps值，但要注意这个eps值不能由命令clear恢复。realmax返回计算机能处理的最大浮点数。
-
-realmin返回计算机能处理的最小的非零浮点数。
-
-pi返回p，即3.141592653589793，如果eps足够小，那么用16位十进制数来表示其精度。
-
-inf定义为1&#x2F;0。当出现被零除时，MATLAB就返回inf，并不中断执行而继续计算。NaN定义为“NotaNumber”，这个非数值要么是％类型，要么是inf&#x2F;inf。
-
-i，j定义为（-1）的1&#x2F;2次方，虚数单位。可以为i和j分配其他值，它们将不再是预定义常数。可以由clear命令恢复。
-
-nargin给出在一个函数调用中输入自变量的个数。
-
-nargout给出在一个函数调用中输出自变量的个数。</code></pre>
-
-<p>变量列表</p>
-<pre class="line-numbers language-none"><code class="language-none">who列出已定义的变量。
-
-Whoglobal与who相同，但仅列出全局变量。
-
-whoa*给出所有以a开头的变量的一个列表。
-
-whos给出比命令who更详细的列表，如显示矩阵的维数。
-
-whosglobal与whos相同，但仅列出全局变量。
-
-exist(namestr)根据在字符串namestr中的变量的定义，返回不同的值。这里要注意的重要的一点是变量名应在引号‘’之间给出。函数返回值的情况是：
-
-1）表示namestr是一个变量名；2)表示namestr是一个M文件名；3)表示namestr是一个MEX文件名；4)表示namestr是一个编译的SIMULINK函数；5)表示namestr是一个预定义的MATLAB函数名。
-
-inmem返回一个带字符串的细胞向量，这个字符串包含目前在内存中的函数、M文件。如果给出两个输出参数，则第二个包含了一个目前在内存中的MEX文件的列表。
-
-workspace对由whos得到的信息给出一个图形界面。命令clear被集成在这个环境中。由helpworkspace给出的信息，也在UNIX下工作。</code></pre>
-
-<p>删除变量和合并</p>
-<pre class="line-numbers language-none"><code class="language-none">clear删除所有变量并恢复除eps外的所有预定义变量。当运行文件时的clear。
-
-clearname仅删除变量name。
-
-clearname1name2删除变量name1、name2、……
-
-cleara*删除所有a开头的变量。
-
-clearvalue根据value给出不同的结果。键入helpclear可得到更多的细节。
-
-pack重组和压缩已分配的内存碎块。当MATLAB的内存满后，可以使用命令pack而不是清除任何变量来得到更多的空间。将会产生如下情况：•所有变量都会保存在磁盘上的一个临时文件pack.tmp中；•删除主内存中的内容；•所有变量将从pack.tmp加载到主内存中；•删除文件pack.tmp。
-
-packfilename用文件filename作临时文件，重组和压缩已分配内存。</code></pre>
-
-<p>算数运算符扩展集</p>
-<p>“^”幂</p>
-<p>“*”乘<br>“&#x2F;”右除(正常除)<br>“\”左除<br>“+”加<br>“－”减</p>
-<p>优先级从上到下降低。</p>
-<p>其中右除和左除表示的为分数，区别在于右除为分母在后，左除为分母在前。</p>
-<p>数学函数</p>
-<pre class="line-numbers language-none"><code class="language-none">abs(x)求x的绝对值，即|x|。
-
-sign(x)求x的符号，如果是正的得1；负的得－1；零得0。
-
-sqrt(x)求x的平方根。
-
-pow2(x,f)求x*2&lt;sub&gt;f&lt;&#x2F;sub&gt;。把f加到x的浮点格式下的指数上计算是一种十分有效的运算。
-
-exp(x)求x的指数函数，即e&lt;sub&gt;x&lt;&#x2F;sub&gt;。log(x)求x的自然对数，即lnx。
-
-log&lt;sup&gt;10&lt;&#x2F;sup&gt;(x)求x以10为底的对数，即log&lt;sup&gt;10&lt;&#x2F;sup&gt;x。
-
-log&lt;sup&gt;2&lt;&#x2F;sup&gt;(x)求x以2为底的对数，即log&lt;sup&gt;2&lt;&#x2F;sup&gt;x。
-
-sin(x)求正弦x，x为弧度。
-
-cos(x)求余弦x，x为弧度。
-
-tan(x)求正切x，x为弧度。
-
-cot(x)求余切x，即1&#x2F;(tanx)，x为弧度。
-
-asin(x)求反正弦，即sin&lt;sub&gt;－1&lt;&#x2F;sub&gt;x。
-
-acos(x)求反余弦，即cos&lt;sub&gt;－1&lt;&#x2F;sub&gt;x。
-
-atan(x)求反正切，即tan&lt;sub&gt;－1&lt;&#x2F;sub&gt;x。
-
-atan2(x,y)求四象限反正切(x&#x2F;y)，其结果在[－pi，pi]区间内。
-
-acot(x)求反余切x&#x3D;四象限反正切(1&#x2F;x)。
-
-sec(x)求正割x，即1&#x2F;(cosx)。
-
-csc(x)求余割x，即1&#x2F;(sinx)。
-
-asec(x)求sec&lt;sub&gt;－1&lt;&#x2F;sub&gt;x&#x3D;arccos(1&#x2F;x)。acsc(x)求csc&lt;sub&gt;－1&lt;&#x2F;sub&gt;x&#x3D;arcsin(1&#x2F;x)。
-
-sinh(x)求双曲正弦x。
-
-cosh(x)求双曲余弦x。
-
-tanh(x)求双曲正切x
-
-coth(x)求双曲余切x，即1&#x2F;(tanhx)。asinh(x)求sinh的反函数
-
-acosh(x)求cosh的反函数
-
-atanh(x)求tanhx的反函数
-
-acoth(x)求cothx的反函数
-
-sech(x)求双曲正割x，即1&#x2F;(coshx)。csch(x)求双曲余割x，即1&#x2F;(sinhx)。asech(x)求sechx的反函数
-
-acsch(x)求cschx的反函数</code></pre>
-
-<p>取整命令和有关命令</p>
-<pre class="line-numbers language-none"><code class="language-none">round(x)求最接近x的整数。如果x是一个向量，则适用于所有元素。
-
-fix(x)求0方向最接近x的整数。即负x向上四舍五入，正x向下四舍五入。
-
-floor(x)求小于或等于x的最接近的整数。
-
-ceil(x)求大于或等于x的最接近的整数。rem(x,y)求整除x&#x2F;y的余数。
-
-gcd(x,y)求整数x和y的最大公因子。[g,c,d]&#x3D;gcd(x，y)求g，c，d，满足g&#x3D;xc+yd。
-
-lcm(x，y)求正整数x和y的最小公倍数，也能用于决定最小公因子。
-
-[t，n]&#x3D;rat(x)由有理数t&#x2F;n求x的近似值，这里的t和n是整数，相对误差小于10－6。它给出了对应的字符串。[t，n]&#x3D;rat(x，tol)与上相同，但相对误差小于tol。
-
-rat(x)求x的连续的分数表达式。
-
-rat(x，tol)求带相对误差tol的x的连续的分数表达式。</code></pre>
-
-<p>有关复数的函数</p>
-<pre class="line-numbers language-none"><code class="language-none">real(z)求z的实部。
-
-imag(z)求z的虚部。
-
-abs(z)求z的绝对值，即|z|。
-
-conj(z)求z的复数共扼。
-
-angle(z)求z的相角，即z&#x3D;x+iy&#x3D;rei中的。
-
-unwrap(v)求与v相同长度的向量。这里，两个相邻元素间的相角差已经改变，因此，差最大为pi。
-
-unwrap(v,k)求出如上的一个向量，但用转移偏差k代替pi。
-
-cplxpair(v)给出一个v中各元素按实部递增排序，并使其复数组合成复数共扼对的一个向量。在一个共扼对中，负虚部在前，实元素排在向量的后部。如果v的一个元素在v中没有它自己的复数共扼，则显示一个错误信息。</code></pre>
-
-<p>坐标转换</p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020209529.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020209529.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020220778.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020220778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>特殊的数学函数</p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020239760.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020239760.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020252000-16620556025935.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020252000-16620556025935.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>浮点运算计数器</p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020819799.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020819799.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>时间和日期</p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020930265.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020930265.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020943297.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902020943297.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902021005621.png" class="lazyload" data-srcset="/post/MtaLab%E7%AC%94%E8%AE%B0/image-20220902021005621.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-
-      </div>
-      <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/MatLab/" class="">
-              MatLab
-            </a>
-          
-        </div>
-        
-      </div>
-      
-    </article>
-    <!-- 上一篇文章和下一篇文章 -->
-    
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-24.png" alt="">
-    </div>
-    <a href="/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">概率论笔记</div>
-      </div>
-      
-      <!-- <div class="content">
-        罗素悖论
-令 P(x) 表示 x ∉ x. 也就是说，对 x 而言，如果 P(x) 是真的， 那么 x 就不是自身的元素
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" src="" alt="">
-    </div>
-    <a href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
-      <div class="title">
-        下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">算法笔记</div>
-      </div>
-      <!-- <div class="content">
-        算法笔记旅行商人问题
-假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货
-      </div> -->
-    </a>
-  </div>
-
-</div>
-
-    
-    
-
-    <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          赏点钱，帮我买条秋裤！
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
 
 <script>
-  var body = document.body || document.documentElement || window;
+  var autoplay = JSON.parse('true');
+  var delay = '2.0s';
+  var loop = JSON.parse('false') ? false : JSON.parse('true');
+  var effect = 'fade';
+  var swiperLength = parseInt(document.querySelector(".swiper-length").innerText);
+  var defaultDesc = '不是叫⼈信仰它的结论，⽽是要你思考。';
+  defaultDesc = defaultDesc.split(',');
+  var defaultDescTypedLoop = JSON.parse('false');
   var vm = new Vue({
-    el: '#appDonate',
+    el: '#appSwiper',
     data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
+      defaultDesc: defaultDesc,
+      defaultDescTypedLoop,
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true // 允许点击小圆点跳转
+        },
+        loop: loop ? true : false,
+        effect, // fade
+        autoplay: (autoplay && swiperLength > 1) ? {
+  　　　　delay,
+  　　　　disableOnInteraction: false // 手动切换之后继续自动轮播
+    　　} : false,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        lazy: {
+          loadPrevNext: true,
+        },
+        on:{
+          init: function() {
+            swiperAnimateCache(this); //隐藏动画元素 
+            swiperAnimate(this); //初始化完成开始动画
+          }, 
+          slideChangeTransitionEnd: function(){ 
+            swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          } 
+        }
+        // Some Swiper option/callback...
+      }
     },
     computed: {
+      swiper() {
+        return this.$refs.mySwiper.$swiper
+      }
     },
     mounted() {
+      // console.log('Current Swiper instance object', this.swiper)
+      // this.swiper.slideTo(0, 1000, false)
     },
     methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
+      stopAutoPlay() {
+        (autoplay && swiperLength > 1) && this.swiper.autoplay.stop();
       },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
+      startAutoPlay() {
+        (autoplay && swiperLength > 1) && this.swiper.autoplay.start();
       },
-      changeTabActive(name) {
-        this.tabActive = name;
+      slideChangeTransitionEnd() {
+        console.log('1');
+      },
+      toPostContent() {
+        const fullHeight = $(window).height() - 60;
+        $('html,body').animate({scrollTop: fullHeight},500);
       }
     },
     created() {}
   })
 </script>
+
+<style>
+#appSwiper {
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+}
+.default-excerpt {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+}
+.bottom-one-btn {
+  margin-top: 15px;
+}
+.swiper-container {
+  overflow: hidden;
+  z-index: 0;
+}
+.swiper-slide {
+  height: 350px;
+  position: relative;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 10px 10px;
+  transition: background 0.2s;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.swiper-slide .item {
+  width: 100%;
+  height: 100%;
+}
+.flag {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  color: #ffffff;
+  height: 100%;
+  background: #000;
+}
+.flag img {
+  min-height: 100%;
+}
+.flag-text {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 80%;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 9999;
+}
+.flag-text .title {
+  font-size: 1.8rem;
+  font-family: Long Cang,cursive;
+}
+.flag-text .title a {
+  color: #fff;
+  transition: color 0.3s;
+}
+.flag-text .title a:hover {
+  color: #D4E8FA;
+}
+.flag-text .excerpt {
+  color: #eee;
+  font-family: Ubuntu,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  width: 70%;
+  line-height: 30px;
+  height: 150px;
+  margin-top: 2%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #42b983;
+}
+.img-mask {
+  opacity:0.6; filter: alpha(opacity=60);
+}
+.flag-text .read-more {
+  margin-bottom: 30px;
+  padding: 5px 15px;
+  color: #ffffff;
+  border-radius: 20px;
+}
+#scroll-down {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+#scroll-down a {
+  color: #fff;
+}
+@-webkit-keyframes rightan
+  {
+  
+  0%
+  {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+  100%
+  {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+}
+.scroll-down-effects {
+  animation: rightan 1.5s infinite;
+}
+/* 当头部导航设置为背景透明的时候 */
+
+  .swiper-slide {
+    height: 400px;
+  }
+  .flag-text {
+    top: 80px;
+  }
+
+
+@media (min-width: 992px) {
+  .swiper-button-prev {
+    margin-left: 15%;
+    transform: translateX(-180%);
+  }
+  .swiper-button-next {
+    margin-right: 15%;
+    transform: translateX(180%);
+  }
+  .flag-text .title {
+    width: 80%;
+    line-height: 35px;
+    max-height: 70px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 1200px) { 
+  .flag {
+    width: 80%;
+  }
+  .swiper-button-prev {
+    margin-left: 10%;
+    transform: translateX(-180%);
+  }
+  .swiper-button-next {
+    margin-right: 10%;
+    transform: translateX(180%);
+  }
+}
+@media (max-width: 992px) {
+  .flag {
+    width: 100%;
+  }
+  .flag-text .title {
+    font-size: 1.5rem;
+    margin-top: 50px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .flag-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  .flag-text .excerpt {
+    width: 100%;
+    line-height: 25px;
+    height: 125px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+  .flag-text .read-more {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 992px) and (min-width: 551px) {
+  .flag-text .excerpt {
+    width: 70%;
+  }
+}
+@media (max-width: 551px) {
+  .swiper-slide {
+    height: 250px;
+  }
+  .flag-text .title {
+    line-height: 30px;
+    max-height: 60px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .flag-text .excerpt {
+    font-size: 1rem;
+    line-height: 20px;
+    height: 80px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+  .flag-text .excerpt { 
+    margin-top: 10px;
+  }
+  .flag-text .read-more {
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    transform: scale(0.5);
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+}
+/* 当头部导航设置为背景透明的时候 */
+
+  @media (max-width: 992px) {
+    .flag-text {
+      top: 60px;
+      height: 80%;
+    }
+  }
+  @media (max-width: 551px) {
+    .swiper-slide {
+      height: 310px;
+    }
+  }
+
+
+/* 文字或者按钮居中显示 */
+
+  .flag-text {
+    left: 10%;
+  }
+  .flag-text .flag-text-content {
+    width: 100%;
+    text-align: center;
+  }
+  .flag-text .title {
+    width: 100%;
+    text-align: center;
+  }
+  .flag-text .excerpt { 
+    width: 100%;
+    text-align: center;
+  }
+  .bottom-one-btn {
+    display: flex;
+    justify-content: center;
+  }
+  .default-excerpt {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+  }
+  .flag-text-btns {
+    justify-content: center;
+  }
+  @media (min-width: 992px) {
+    .flag-text .excerpt {
+      line-height: 30px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+    }
+  }
+  @media (max-width: 992px) {
+    .flag-text {
+      margin-left: 0;
+      transform: translateX(0);
+    }
+  }
+
+
+
+
+/* 全屏显示 */
+
+  .flag {
+    width: 100%;
+  }
+  .swiper-slide {
+    height: calc(100vh - 60px);
+    
+      height: 100vh;
+    
+  }
+  .flag-text {
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+    width: 70%;
+    height: auto;
+  }
+  .flag-text .title {
+    font-size: 2.8rem;
+    line-height: 1.5em;
+    max-height: none;
+    /* overflow: visible; */
+  }
+  .flag-text .excerpt {
+    font-size: 1.25rem;
+    height: 150px;
+  }
+  .flag-text .read-more {
+    margin-top: 10px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    margin-top: -60px!important;
+  }
+  .swiper-btn-color,
+  .swiper-btn-color2 {
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+  .swiper-btn-color:hover,
+  .swiper-btn-color2:hover {
+    background-color: #D4E8FA;
+    border: 1px solid #D4E8FA!important;
+  }
+  .flag-text-btns {
+    justify-content: center;
+  }
+  .swiper-button-prev {
+    margin-left: 10px;
+    transform: translateX(0);
+    border-radius: 50%;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+  }
+  .swiper-button-next {
+    margin-right: 10px;
+    transform: translateX(0);
+    border-radius: 50%;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 992px) {
+    .flag-text .excerpt {
+      line-height: 35px;
+      height: 175px;
+    }
+    .default-excerpt {
+      min-height: 150px;
+    }
+    .typed-element {
+      align-items: unset;
+    }
+  }
+  @media (max-width: 992px) {
+    .flag-text {
+      margin-left: 0;
+      height: 60%;
+      top: 55%;
+    }
+    .flag-text .title {
+      font-size: 2.4rem;
+      margin-top: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .flag-text .excerpt {
+      line-height: 35px;
+      height: 185px;
+    }
+    .flag-text .read-more {
+      margin-top: 20px;
+    }
+  }
+  @media (max-width: 551px) {
+    .flag-text {
+      height: 60%;
+    }
+    .flag-text .title {
+      font-size: 2.2rem;
+    }
+    .flag-text .excerpt {
+      line-height: 30px;
+    }
+    .flag-text .read-more {
+      margin-top: 50px;
+      padding: 10px 30px;
+    }
+    .swiper-button-prev {
+      margin-left: 0;
+    }
+    .swiper-button-next {
+      margin-right: 0;
+    }
+    .default-excerpt {
+      margin-top: 1rem;
+    }
+  }
+
+
+/* video */
+.swiper-video {
+  width: 100%;
+  height: 100%;
+}
+.swiper-video video {
+  pointer-events: none;
+}
+.swiper-video-maskBox{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.2;
+  z-index: 1;
+}
+@media (min-width: 992px) {
+  
+    .swiper-video {
+      display: none;
+    }
+    .swiper-default-bgImg {
+      display: block;  
+    }
+  
+}
+@media (max-width: 992px) {
+  .swiper-video {
+    display: none;
+  }
+  .swiper-default-bgImg {
+    display: block;  
+  }
+}
+/* video-end */
+</style>
+
+
+<div id="l_main">
+  <div class="l_content">
+    <!-- 自定义的内容 -->
+    
+  
+    <div class="widget video" id="video" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: blue" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-envelope fa-fw" aria-hidden="true"></i><span class='name'>雪景球</span></a>
+        
+      </header>
+      <div class="content">
+        <iframe src="//player.bilibili.com/player.html?aid=559093529&bvid=BV1ye4y1S7Zp&cid=862976005&page=1&high_quality=1&danmaku=0" allowfullscreen="allowfullscreen" width="100%" height="500" scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"></iframe> 
+      </div>
+  </div>
+  
+
+    <!-- 首页座右铭 -->
+    
+    <!-- 首页公告 -->
+    
+    <!-- 首页文章置顶 -->
     
 
-    <!-- 分享 -->
-    
-    
-    <!-- 评论 -->
-    <!-- 评论 -->
 
-  <div id="myComment">
+
+    <div class="bg-floor" id="home-bg-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+    <!-- 每一篇文章卡片 -->
+    <!-- hash算法 -->
+
+<section class="posts">
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2020-10-31</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html">英语习题多练</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            虚拟语气1、—Tom is always making so many mistakes in his English exercises!  — Yeah. If he ________ more careful, he ________
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E8%8B%B1%E8%AF%AD%E4%B9%A0%E9%A2%98%E5%A4%9A%E7%BB%83.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-12.png" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
+    <!-- 翻页 -->
+    
+  <!-- <nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav> -->
+  <div class="page-nav">
+    
+      <a href="/page/5/"
+         class="page-nav-pre">
+         <i class="fas fa-angle-left"></i><span class="ml-5">上一页</span>
+      </a>
+    
+    <div class="page-info">
+        <div class="page-info-text">6 / 6</div>
+    </div>
+    
+  </div>
+
+  </div>
+
+  
+<aside id='l_side'>
+  
     
       
-<section id="comments" style="padding: 1em;"
-	class="animated bounceInUp">
-	<div id="vcomment" class="comment"></div>
-</section>
-<style>
-	#comments {
-		background: rgba(255,255,255,0.9);
-	}
-	#veditor {
-		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: right;
-		background-color: rgba(255, 255, 255, 0);
-		resize: vertical;
-	}
-	#veditor:focus{
-		background-position-y: 200px;
-		transition: all 0.2s ease-in-out 0s;
-	}
-	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
-		background-color: #42b983;
-	}
-	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
-		color: #42b983;
-		border-color: #42b983;
-	}
-	#vcomment .vcards .vcard .vhead .vsys i {
-		display: none;
-	}
-	/* 底部valine链接 */
-	#vcomment .vpower {
-		display: none;
-	}
-	
-	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
-	/* #vcomment .vheader {
-		display: flex;
-		justify-content: space-around;
-	}
-	
-	#vcomment .vheader .vnick {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	}
+        <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>脉脉</h2>
+        
+        
+          <p>永远在路上</p>
 
-	#vcomment .vheader .vmail {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	}
-
-	#vcomment .vheader .vlink {
-		width: 31%;
-		border: 2px solid #dedede;
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 5px
-	} */
-
-	img.vimg {
-		transition: all 1s;
-		/* 头像旋转时间为 1s */
-	}
-
-	img.vimg:hover {
-		transform: rotate(360deg);
-		-webkit-transform: rotate(360deg);
-		-moz-transform: rotate(360deg);
-		-o-transform: rotate(360deg);
-		-ms-transform: rotate(360deg);
-	}
-
-	#vcomment .vcards .vcard {
-		padding: 15px 20px 0 20px;
-		border-radius: 10px;
-		margin-bottom: 15px;
-		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
-		transition: all .3s
-	}
-
-	#vcomment .vcards .vcard:hover {
-		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
-	}
-
-	#vcomment .vcards .vcard .vh .vcard {
-		border: none;
-		box-shadow: none;
-	}
-</style>
+        
+        
+          <p><span id="jinrishici-sentence">小小世界</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:3179623450@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=3179623450"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
     
   </div>
+</section>
 
-<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+      
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">
+    
+      
+    <section class="widget side_category">
+      
+  <header>
+    
+      <a style="color: " href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
 
 
-  </div>
-
-  <!-- 目录 -->
-  <!-- 文章详情页右侧目录 -->
-
-  <div class="toc-aside">
-    <div class="toc-main">
-      <div class="toc-aside-title">
-        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
-        
-          <div class="toc-open-close">本文目录</div>
-        
+      <div class='content'>
+        <ul class="entry navigation">
+          
+            <li><a class="flat-box"
+              title="/categories/java/" href="/categories/java/"
+              id="categoriesjava"
+              ><div class='name'>java</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/python/" href="/categories/python/"
+              id="categoriespython"
+              ><div class='name'>python</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/%E6%8A%80%E6%9C%AF/" href="/categories/%E6%8A%80%E6%9C%AF/"
+              id="categoriesE68A80E69CAF"
+              ><div class='name'>技术</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/%E6%95%B0%E5%AD%A6/" href="/categories/%E6%95%B0%E5%AD%A6/"
+              id="categoriesE695B0E5ADA6"
+              ><div class='name'>数学</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box"
+              title="/categories/%E9%A1%B9%E7%9B%AE/" href="/categories/%E9%A1%B9%E7%9B%AE/"
+              id="categoriesE9A1B9E79BAE"
+              ><div class='name'>项目</div><div class='badge'>(1)</div></a></li>
+          
+        </ul>
       </div>
-      <div class="toc-content">
-        <div class="toc"></div>
+    </section>
+  
+  
+    
+    
+      
+<section class="widget side_tagcloud">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+    <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/MatLab/" style="font-size: 14px; color: #999">MatLab</a> <a href="/tags/c/" style="font-size: 14px; color: #999">c++</a> <a href="/tags/java/" style="font-size: 24px; color: #555">java</a> <a href="/tags/javase/" style="font-size: 14px; color: #999">javase</a> <a href="/tags/python/" style="font-size: 19px; color: #777">python</a> <a href="/tags/springboot/" style="font-size: 21.5px; color: #666">springboot</a> <a href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" style="font-size: 14px; color: #999">未完成</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 14px; color: #999">笔记</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 14px; color: #999">项目</a> <a href="/tags/%E9%AB%98%E6%95%B0/" style="font-size: 16.5px; color: #888">高数</a>
+    </div>
+</section>
+
+  
+    
+    
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-10</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html">计算机系统-信息的表示与处理</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-09</span>
+                
+              </div>
+              <a class="post-title" href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html">Oracle19C+PLSQL安装和配置详细教程</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA.jpg" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-27</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html">计算机算术</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-20.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-12</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html">计算机系统-程序的机器级表示</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-08</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构</a>
+            </div>
+          </div>
+        
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- 手机端目录按钮 -->
-  <div id="toc-mobile-btn">
-    <i class="fas fa-list-ul" aria-hidden="true"></i>
-  </div>
+    
+  <section class="widget side_archives">
+    
+    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">三月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div>
+  </section>
 
-
-<script>
-  function closeToc(init) {
-    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
-    $(".toc-content").css({'width': 0});
-    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
-    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
-  };
-  function openToc() {
-    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
-    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
-    $(".toc-content").css({'width': '300px'});
-    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
-  }
-  function openBtnClickFn () {
-    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-    let open = eval('' || 'true');
-    openOrCloseBtn.click(function() {
-      if (open) {
-        closeToc();
-        open = false;
-      } else {
-        openToc();
-        open = true;
-      }
-    });
-  };
-  openBtnClickFn();
-  initCloseTocWidth(true);
-
-  function initCloseTocWidth(init) {
-    if (window.innerWidth >= 992) {
-      let isClose = false;
-      isClose && closeToc(init)
-    }
-  }
-
-  document.addEventListener('pjax:complete', function () {
-    $(".toc-aside").css({'transition': 'no'});
-  })
-  document.addEventListener('pjax:complete', function () {
-    openBtnClickFn();
-  })
+    <section class="widget side_webinfo">
   
-</script>
-
-  <!-- 图片放大 Wrap images with fancybox support -->
-  <script src="/js/wrapImage.js"></script>
-</div>
-
-<!-- 文章详情页背景图 -->
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
-	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
-	<transition-group tag="ul" :name="names">
-		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-			<img :src="image" class="bg-swiper-img no-lazy">
-		</li>
-	</transition-group>
-</div>
-<script>
-	var vm = new Vue({
-		el: '#appBgSwiper',
-		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
-			mark: 0,
-			img: [],
-			bgColor: '',
-			time: null
-		},
-		methods: {   //添加方法
-			change(i, m) {
-				if (i > m) {
-					// this.names = 'fade';
-				} else if (i < m) {
-					// this.names = 'fade';
-				} else {
-					return;
-				}
-				this.mark = i;
-			},
-			prev() {
-				// this.names = 'fade';
-				this.mark--;
-				if (this.mark === -1) {
-					this.mark = 3;
-					return
-				}
-			},
-			next() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			autoPlay() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			play() {
-				let bgImgDelay = '' || '180000'
-				let delay = parseInt(bgImgDelay) || 180000;
-				this.time = setInterval(this.autoPlay, delay);
-			},
-			enter() {
-				clearInterval(this.time);
-			},
-			leave() {
-				this.play();
-			}
-		},
-		created() {
-			this.play()
-		},
-		beforeDestroy() {
-			clearInterval(this.time);
-		},
-		mounted() {
-			let prop = '' || '';
-			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
-			if (isImg) {
-				let img = prop.split(',');
-				let configRoot = '/'
-				let arrImg = [];
-				img.forEach(el => {
-					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-					var objExp = new RegExp(Expression);
-
-					if (objExp.test(el)) {
-						// http or https
-						arrImg.push(el);
-					} else {
-						// 非http or https开头
-						// 本地文件
-						let firstStr = el.charAt(0);
-						if (firstStr == '/') {
-							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-						}
-						el = configRoot + el;
-						arrImg.push(el);
-					}
-				})
-				this.img = arrImg;
-			} else {
-				this.bgColor = prop;
-			}
-		}
-	})
-</script>
-
-<style>
-	.bg-swiper-box {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.bg-swiper-img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+  <header>
+    
+      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name'>狗窝资料</span>
+    
+  </header>
 
 
+  <div class='content'>
+    <div class="webinfo">
+      
+        <div class="webinfo-item">
+          <div>文章数目：</div>
+          <div>26 耳巴子</div>
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>已运行时间：</div>
+          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
+        </div>
+        <script>
+          var BirthDay = new Date(new Date('2020/01/01'));
+          var today = new Date();
+          var timeold = (today.getTime() - BirthDay.getTime());
+          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 太阳日';
+        </script>
+      
 
 
-  <script>
-  function loadMermaid() {
-    if (document.getElementsByClassName('mermaid').length) {
-      if (window.mermaidJsLoad) mermaid.init()
-      else {
-        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
-          window.mermaidJsLoad = true
-          mermaid.initialize({
-            theme: 'default',
-          })
-          if ('true') {
-            mermaid.init();
+      
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>81.6k 火星文</div>
+        </div>
+      
+
+      
+
+      
+
+      
+        <div class="webinfo-item">
+          <div>最后活动时间：</div>
+          
+            <div id="last-update" style="display: none;">Sun Nov 13 2022 20:05:15 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2022-11-13 日</div>
+          
+        </div>
+        
+        <script>
+          function timeago(dateTimeStamp) {
+              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
+              var hour = minute * 60;
+              var day = hour * 24;
+              var week = day * 7;
+              var month = day * 30;
+              var now = new Date().getTime(); //获取当前时间毫秒
+              var diffValue = now - dateTimeStamp; //时间差
+              if (diffValue < 0) {
+                  return;
+              }
+              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
+              var hourC = diffValue / hour;
+              var dayC = diffValue / day;
+              var weekC = diffValue / week;
+              var monthC = diffValue / month;
+              if (monthC >= 1 && monthC <= 3) {
+                  result = " " + parseInt(monthC) + " 月前"
+              } else if (weekC >= 1 && weekC <= 3) {
+                  result = " " + parseInt(weekC) + " 周前"
+              } else if (dayC >= 1 && dayC <= 6) {
+                  result = " " + parseInt(dayC) + " 天前"
+              } else if (hourC >= 1 && hourC <= 23) {
+                  result = " " + parseInt(hourC) + " 小时前"
+              } else if (minC >= 1 && minC <= 59) {
+                  result = " " + parseInt(minC) + " 分钟前"
+              } else if (diffValue >= 0 && diffValue <= minute) {
+                  result = "刚刚"
+              } else {
+                  var datetime = new Date();
+                  datetime.setTime(dateTimeStamp);
+                  var Nyear = datetime.getFullYear();
+                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+                  result = Nyear + "-" + Nmonth + "-" + Ndate
+              }
+              return result;
           }
-        })
-      }
-    }
-  };
-  document.addEventListener("DOMContentLoaded", function () {
-    loadMermaid();
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    loadMermaid();
-  })
+          var lastUpDate = document.getElementById('last-update').innerHTML;
+          try {
+            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
+          } catch (error) {
+            document.getElementById('last-update-show').innerHTML = '2022-11-13 日';
+          }
+        </script>
+        
+      
+    </div>
+  </div>
+</section>
+    
   
-</script>
+
+  </div>
+</aside>
+
+</div>
+<!-- 花瓣和雪花飘落 -->
+<!-- 雪花和花瓣特效 -->
+
+  
+    <script type="text/javascript">
+      //只在桌面版网页启用特效
+      var windowWidth = $(window).width();
+      if (windowWidth > 768) {
+        loadScript('/js/falling/snow.js');
+      }
+    </script>
+  
+
+
+
+<!-- 灯笼 -->
 
 
       </main>

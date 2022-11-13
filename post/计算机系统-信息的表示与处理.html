@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档: 2022/8 | 小小世界</title>
+  <title>计算机系统-信息的表示与处理 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -590,275 +590,683 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-13.png')">
-  <div class="archive-header-title">
-    全部文章
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-  <span class="title" id="archive-header-desc"></span>
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        计算机系统-信息的表示与处理
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-11-10 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 3.4k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 11分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="信息的表示与处理"><a href="#信息的表示与处理" class="headerlink" title="信息的表示与处理"></a>信息的表示与处理</h1><h2 id="信息的表示"><a href="#信息的表示" class="headerlink" title="信息的表示"></a>信息的表示</h2><p>二进制、八进制、十进制、十六进制。基数不同，只重位置，不看具体的值。</p>
+<p>字长（指针的大小）</p>
+<p>虚拟地址以此来编码，一般的高位机向后兼容。</p>
+<p>计算机与编译器都支持多种的编码</p>
+<p>无符号整数与有符号整数的区别在c中，关键字unsigned注明了无符号整数。</p>
+<p>寻址与字节顺序</p>
+<p>一般的，多字节对象连续存址。</p>
+<p>机器之中排列字节地址有差异，有的以最低有效字节在前面——小端法，有的以最高有效字节在前面——大端法。</p>
+<p>字符串表示：一般的字符串被编码以null结尾的字符数组，每个字符使用某种编码表示，例如ASCII编码。</p>
+<p>布尔代数 0,1</p>
+<p>布尔代数相关运算：与、或、非、异或。</p>
+<p>布尔与：同位为1结果即为1，否则为0。</p>
+<p>布尔或：同位有1结果即为1，否则为0。</p>
+<p>布尔非：1为0，0为1。</p>
+<p>布尔异或：同位为1但不同时为1为1，否则为0。</p>
+<p>布尔代数—布尔环（w位向量上的与或非运算时的新形式）</p>
+<p>位向量还可以用来表示掩码，i位为1时代表有效使能，为0则为无效使能。</p>
+<p>C语言很号的支持按位布尔</p>
+<p>位级运算实现掩码运算很好，这里的掩码表示一个位模式，表示一个字节中有效的位的集合。</p>
+<p>逻辑运算</p>
+<p>逻辑或、与、非。</p>
+<p>非零的参数表示为TRUE，为0的表示为FALSE。</p>
+<p>逻辑运算存在短路特性。</p>
+<p>移位运算 向左或向右移动位模式</p>
+<p>x &lt;&lt; k 左移k位，丢弃最高的k位，在右端补齐k个0。</p>
+<p>x &gt;&gt; k 右移k位，但是区分逻辑左移与算数左移的区分，对于逻辑右移，在左端补齐k个0，对于算数右移，需要补齐最高有效位，可能是1。</p>
+<p>C没有规定有符号数应该使用哪一种右移，但是几乎所有的编译器都对有符号数采用算数右移，对于无符号数，右移必须是逻辑的。</p>
+<p>在Java里，&gt;&gt;&gt; 表示逻辑右移，&gt;&gt;表示算数右移。</p>
+<p>优先级问题，移位的运算优先级低于加减法。</p>
+<p>编码整数的方式又两种，一种只能表示非负数，一种都可以表示。</p>
+<p>C中有多种数据类型，都可以表示整数：</p>
+<p>CHAR、SHORT、INT、LONG(UNSIGNED)</p>
+<p>他们表示的字节大小各不相同，一般的取决于字长，例如在32位机中，long只占4个字节。</p>
+<p>无符号编码具有重要意义，因为这是一个双射。</p>
+<p>原码、反码、补码</p>
+<p>最高位为符号位，0表示正数，1表示负数。</p>
+<p>正数的反码是自身，负数的反码是除符号位之外，全部取反。</p>
+<p>正数的补码也是自身，负数的补码是反码+1</p>
+<h2 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h2><p>补码：反码加一”只是补码所具有的一个性质，不能被定义成补码。负数的补码，是能够和其相反数相加通过溢出从而使计算机内计算结果变为0的二进制码。</p>
+<p>用补码表示负数，在补码的定义之中，字的有效最高位解释为负权，因此最高位为1时，表示该数为负数。</p>
+<p>对于补码而言，这也是一个双射，补码编码同样具有唯一性。</p>
+<p>C语言标准之中没有要求使用补码来表示，有符号整数，但是几乎所有的机器都是使用补码的。</p>
+<p>除却补码之外，原码与反码也能表示有符号整数。</p>
+<p>原码、反码都以最高位为符号位，不同的是，反码符号位取非。</p>
+<p>有符号数与无符号数之间转换<br>对C来说，类型的转换从不关心具体的数，对于这个问题，C是从位级角度来考虑的。</p>
+<p>一般的，对于强制类型转换，位的值不发生改变，只改变位的位置。</p>
+<p>零扩展</p>
+<p>从较小的类型转换为较大类型时，在开头扩展0。</p>
+<p>位截断</p>
+<p>丢弃高位，可能会造成溢出。</p>
+<p>有符号数到无符号数的隐式转换，会导致错误或者漏洞，杜绝的方式试试禁用无符号数。</p>
+<p>例如：一种类型的表达式被赋值给另外一种类型的变量时，转换就是隐式的。</p>
+<p>C语言中同时包含了对有符号和无符号数表达式的处理方式，当同时出现两种数时，C会隐式的强转为无符号数，例如在&lt;,&gt;运算中，结果就会很直观。</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>无符号加法，考虑两个w位的无符号数相加，他们的和的范围应该在0到w+1位之间。</p>
+<p>但是C不允许这样的扩张出现，因此必须使用过位截断，使得他们的和在0到w位之间。截断时，截断高位。</p>
+<p>在C中，不会将溢出作为错误而返回信号。</p>
+<p>溢出时，不难发现，结果等于两数之和与2</p>
+<p>的w次方的模数。</p>
+<p>补码加法</p>
+<p>对于补码的加法，必须确定当结果太大（为正）或太小（为负）时，应该怎么做。</p>
+<p>补码，最高位是符号位，表示负权。因此两个数的范围在-2<sub>w-1</sub>到2<sub>w-1</sub>之间。这意味着，要想表示两个数的和，需要w+1位。（符号位在内）</p>
+<p>结果是截断到w位。</p>
+<p>值得一提的是，两个数的w位补码之和和无符号数之和有完全相同的位级表示。</p>
+<p>无符号乘法</p>
+<p>对于两数乘积的取值范围，需要2w位来表示，明显的C语言不可能允许这样的大小扩张，最终结果依旧需要w位，而将无符号数截断为w位等价于计算该值取模2的w次方。</p>
+<p>补码乘法</p>
+<p>对于补码乘法，C语言的有符号乘法通过截断为w位来实现，将一个补码截断为w位，相当于先计算该值模2的w次方，再把无符号数转换为补码。</p>
+<p>一般的，对于无符号和补码乘法来说，乘法运算结果的位级表示都是一样的。</p>
+<p>例如：</p>
+<p>（101） * （011） &#x3D; （001111） &#x3D; （111）【截断后的】</p>
+<p>无符号数表示：5 * 3 &#x3D; 7</p>
+<p>（101） * （011） &#x3D; （110111） &#x3D; （111）【截断后的】</p>
+<p>补码表示：-1 * 3 &#x3D; -1</p>
+<p>虽然完整的乘积的位级的表示可能不同，但是截断后乘积的位级表示是相同的。</p>
+<p>乘以常数</p>
+<p>因为，在大多数机器上，整数乘法指令相当的慢，需要10个或更多时钟周期，因此编译器进行了一项优化，试着用移位加加法运算的组合来代替乘以常数因子的乘法。</p>
+<p>考虑乘以2的幂的情况，再推广至全体常数。</p>
+<p>可以发现左移一个数值等价于执行一个与2的幂相乘的无符号乘法。固定大小的补码算数运算的位级操作与其无符号运算等价。</p>
+<p>但是无论是无符号还是补码，乘以2的幂都会导致溢出，结果说明，即使溢出，通过移位得到的结果也是一样的。</p>
+<p>除以2的幂</p>
+<p>在大多数机器上，整数除法比整数乘法更慢，需要30或者更多的时钟周期。</p>
+<p>除以2的幂，也可以用移位运算来实现，只不过使用的是右移，无符号数和补码分别使用逻辑移位和算术移位来达到目的。</p>
+<p>整数除法总是舍入到0，它将向下舍入到一个正值，向下舍入到一个负值。</p>
+<p>对于无符号运算右移很简单，一部分原因是因为无符号的右移一定是逻辑的。</p>
+<p>c &gt;&gt; k产生的结果是 c &#x2F; 2的k次方。</p>
+<p>对于除以2的幂的补码运算来说，情况稍微要复杂一些，因为要保证负数依然为负，移位要执行的算数移位。</p>
+<p>除以2的幂的补码除法，向下舍入<br>变量x和k分别有补码值x和无符号数值k，且0≤k&lt;w，则当执行算术移位时，C表达式x&gt;&gt;k产生数值 x &#x2F;2^k。</p>
+<p>对于非负数来说，最高位是0，因此算数右移k位与除以2^k是一样的。</p>
+<p>作为负数，如果出现舍入的情况时，移位导致结果向下舍入，此时就需要调整策略。</p>
+<p>作为一个负数，算数右移后的位向量刚好就是就w-k位表示的补码数从w-k位符号扩展到w位。通过在移位之前，偏置这个值，来修正不合适的舍入。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>思考：</p>
+<p>计算机执行的“整数”运算实际上是一种模运算形式。</p>
+<p>表示数字的有限字长限制了可能的值的取值范围，结果运算可能溢出。</p>
+<p>补码表示提供了一种既能表示负数也能表示正数的灵活方法，同时使用了与执行无符号算术相同的位级实现，这些运算包括像加法、减法、乘法，甚至除法，无论运算数是以无符号形式还是以补码形式表示的，都有完全一样或者非常类似的位级行为。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点表示对形如</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>的有理数进行编码。它对执行涉及非常大的数字非常接近于0的数字，以及更普遍地作为实数运算的近似值的计算，是很有用的。</p>
+<p>一般的，IEEE浮点标准被几乎所有的计算机支持。</p>
+<p>二进制小数</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>IEEE浮点表示</p>
+<p>IEEE浮点标准用</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>的形式来表示一个数:<br>符号(sign)，s决定这数是负数(s&#x3D;1)还是正数( s&#x3D;0)，而对于数值0的符号位解释作为特殊情况处理。<br>尾数(significand)M是一个二进制小数。</p>
+<p>阶码(exponent)E的作用是对浮点数加权，这个权重是2的E次幂(可能是负数)。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="标准浮点格式"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>规格化</p>
+<p>当exp的位模式不全为0，也不全为1时，都是规格化的。</p>
+<p>阶码的值是E &#x3D; e - 偏置值。</p>
+<p>e是无符号数，偏置值为2的k-1次方-1，对于单精度是-126到127</p>
+<p>小数字段frac被描述为小数值f，f在0到1之间。尾数的定义是M &#x3D; 1+f。这种表示方法，假设没有一处，尾数在1到2之间，那么就能轻松额外获得一个精度位，既然第一位总是等于1，那么就不需要显示的表示它。</p>
+<p>非规格化</p>
+<p>当阶码全为0的时候，表示的书就是非规格化的。</p>
+<p>阶码为E &#x3D; 1 - 偏置，尾数M &#x3D; f，也就是小数的值，不包含隐含的开头1。</p>
+<p>非规格化数可以表示0，因为对于M来说，必须大于或等于1.因此不能表示0，事实上对于0的位模式，阶码字段与小数域全为0。</p>
+<p>但是-0与+0在符号位上是有差异的，在IEEE中，在某些方面，他们被认为是不同的。</p>
+<p>特殊值</p>
+<p>当阶码全为1时，就会出现无穷的表示。</p>
+<p>舍入</p>
+<p>因为表示方法限制了浮点数的范围和精度，所有浮点运算只能近似的表示实数运算。</p>
+<p>一般的，为了找到一个最接近的匹配值，可以用期望的浮点形式表示出来，这就是舍入。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>浮点运算</p>
+<p>IEEE标准指定了一个简单的规则，来确定加法和乘法这样的算术运算的结果。</p>
+<p>C语言中的浮点数</p>
+<p>C语言中提供了两种不同的浮点数据类型，float和double，在支持IEEE浮点格式的机器上，这些数据类型对应单精度和双精度浮点，另外这类机器采用偶数舍入的舍入方式。</p>
+<p>当在int、float和 double格式之间进行强制类型转换时，程序改变数值和位模式的原则如下(假设int是32位的)：<br>从int转换成float，数字不会溢出，但是可能被舍入。<br>从 int或float转换成double，因为double有更大的范围(也就是可表示值的范围)，也有更高的精度(也就是有效位数)，所以能够保留精确的数值。<br>从double转换成float，因为范围要小一些，所以值可能溢出成＋∞或-∞。另外，由于精确度较小，它还可能被舍入。<br>从float或者double转换成int，值将会向零舍人。例如，1.999将被转换成1,而一1.999将被转换成一1。进一步来说，值可能会溢出。</p>
+<p>C语言标准没有对这种情况指定固定的结果。与Intel兼容的微处理器指定位模式<a href="%E5%AD%97%E9%95%BF%E4%B8%BAw%E6%97%B6%E7%9A%84TMin..">10…00</a>为整数不确定(integer indefinite)值。一个从浮点数到整数的转换，如果不能为该浮点数找到一个合理的整数近似值，就会产生这样一个值。因此，表达式(int)+1e10会得到-21483648，即从一个正值变成了一个负值。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" src="" alt="">
+    </div>
+    <a href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Oracle19C+PLSQL安装和配置详细教程</div>
+      </div>
+      <!-- <div class="content">
+        解压下载的压缩包启动安装，注意解压的包名字中不能含有中文。
+
+选择创建单实例数据库
+
+选择桌面类下一步
+
+创建一个新的o
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    全部文章
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/MatLab%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-30</span>
-              </div>
-              <a class="post-title" href="/post/MatLab%E7%AC%94%E8%AE%B0.html">MatLab笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-30</span>
-              </div>
-              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html">算法笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-29</span>
-              </div>
-              <a class="post-title" href="/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html">C++自学笔记（1）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-28</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%886%EF%BC%89.html">springboot+vue（6）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-27</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%885%EF%BC%89.html">springboot+vue（5）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-27</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%884%EF%BC%89.html">springboot+vue（4）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-27</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%883%EF%BC%89.html">springboot+vue（3）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-26</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">springboot+vue（2）</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-21.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-26</span>
-              </div>
-              <a class="post-title" href="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html">Python装饰器</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/springboot-vue%EF%BC%881%EF%BC%89.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子3.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">08-24</span>
-              </div>
-              <a class="post-title" href="/post/springboot-vue%EF%BC%881%EF%BC%89.html">springboot+vue（1）</a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2022/08/page/2/">2</a><a class="extend next" rel="next" href="/archives/2022/08/page/2/">下一页</a>
-  </nav> -->
-  <div class="page-nav">
-    
-    <div class="page-info">
-        <div class="page-info-text">1 / 2</div>
-    </div>
-    
-      <a href="/archives/2022/08/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>
