@@ -674,15 +674,15 @@
     <article class="post post-detail">
       <div class="post-content">
         <h1 id="信息的表示与处理"><a href="#信息的表示与处理" class="headerlink" title="信息的表示与处理"></a>信息的表示与处理</h1><h2 id="信息的表示"><a href="#信息的表示" class="headerlink" title="信息的表示"></a>信息的表示</h2><p>二进制、八进制、十进制、十六进制。基数不同，只重位置，不看具体的值。</p>
-<p>字长（指针的大小）</p>
+<p><strong>字长</strong>（指针的大小）</p>
 <p>虚拟地址以此来编码，一般的高位机向后兼容。</p>
 <p>计算机与编译器都支持多种的编码</p>
 <p>无符号整数与有符号整数的区别在c中，关键字unsigned注明了无符号整数。</p>
-<p>寻址与字节顺序</p>
+<p><strong>寻址与字节顺序</strong></p>
 <p>一般的，多字节对象连续存址。</p>
 <p>机器之中排列字节地址有差异，有的以最低有效字节在前面——小端法，有的以最高有效字节在前面——大端法。</p>
 <p>字符串表示：一般的字符串被编码以null结尾的字符数组，每个字符使用某种编码表示，例如ASCII编码。</p>
-<p>布尔代数 0,1</p>
+<p><strong>布尔代数</strong> 0,1</p>
 <p>布尔代数相关运算：与、或、非、异或。</p>
 <p>布尔与：同位为1结果即为1，否则为0。</p>
 <p>布尔或：同位有1结果即为1，否则为0。</p>
@@ -692,11 +692,11 @@
 <p>位向量还可以用来表示掩码，i位为1时代表有效使能，为0则为无效使能。</p>
 <p>C语言很号的支持按位布尔</p>
 <p>位级运算实现掩码运算很好，这里的掩码表示一个位模式，表示一个字节中有效的位的集合。</p>
-<p>逻辑运算</p>
+<p><strong>逻辑运算</strong></p>
 <p>逻辑或、与、非。</p>
 <p>非零的参数表示为TRUE，为0的表示为FALSE。</p>
 <p>逻辑运算存在短路特性。</p>
-<p>移位运算 向左或向右移动位模式</p>
+<p><strong>移位运算</strong> 向左或向右移动位模式</p>
 <p>x &lt;&lt; k 左移k位，丢弃最高的k位，在右端补齐k个0。</p>
 <p>x &gt;&gt; k 右移k位，但是区分逻辑左移与算数左移的区分，对于逻辑右移，在左端补齐k个0，对于算数右移，需要补齐最高有效位，可能是1。</p>
 <p>C没有规定有符号数应该使用哪一种右移，但是几乎所有的编译器都对有符号数采用算数右移，对于无符号数，右移必须是逻辑的。</p>
@@ -719,26 +719,27 @@
 <p>原码、反码都以最高位为符号位，不同的是，反码符号位取非。</p>
 <p>有符号数与无符号数之间转换<br>对C来说，类型的转换从不关心具体的数，对于这个问题，C是从位级角度来考虑的。</p>
 <p>一般的，对于强制类型转换，位的值不发生改变，只改变位的位置。</p>
-<p>零扩展</p>
+<p><strong>零扩展</strong></p>
 <p>从较小的类型转换为较大类型时，在开头扩展0。</p>
-<p>位截断</p>
+<p><strong>位截断</strong></p>
 <p>丢弃高位，可能会造成溢出。</p>
 <p>有符号数到无符号数的隐式转换，会导致错误或者漏洞，杜绝的方式试试禁用无符号数。</p>
 <p>例如：一种类型的表达式被赋值给另外一种类型的变量时，转换就是隐式的。</p>
 <p>C语言中同时包含了对有符号和无符号数表达式的处理方式，当同时出现两种数时，C会隐式的强转为无符号数，例如在&lt;,&gt;运算中，结果就会很直观。</p>
-<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p>无符号加法，考虑两个w位的无符号数相加，他们的和的范围应该在0到w+1位之间。</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>无符号加法</strong></p>
+<p>考虑两个w位的无符号数相加，他们的和的范围应该在0到w+1位之间。</p>
 <p>但是C不允许这样的扩张出现，因此必须使用过位截断，使得他们的和在0到w位之间。截断时，截断高位。</p>
 <p>在C中，不会将溢出作为错误而返回信号。</p>
 <p>溢出时，不难发现，结果等于两数之和与2</p>
 <p>的w次方的模数。</p>
-<p>补码加法</p>
+<p><strong>补码加法</strong></p>
 <p>对于补码的加法，必须确定当结果太大（为正）或太小（为负）时，应该怎么做。</p>
 <p>补码，最高位是符号位，表示负权。因此两个数的范围在-2<sub>w-1</sub>到2<sub>w-1</sub>之间。这意味着，要想表示两个数的和，需要w+1位。（符号位在内）</p>
 <p>结果是截断到w位。</p>
 <p>值得一提的是，两个数的w位补码之和和无符号数之和有完全相同的位级表示。</p>
-<p>无符号乘法</p>
+<p><strong>无符号乘法</strong></p>
 <p>对于两数乘积的取值范围，需要2w位来表示，明显的C语言不可能允许这样的大小扩张，最终结果依旧需要w位，而将无符号数截断为w位等价于计算该值取模2的w次方。</p>
-<p>补码乘法</p>
+<p><strong>补码乘法</strong></p>
 <p>对于补码乘法，C语言的有符号乘法通过截断为w位来实现，将一个补码截断为w位，相当于先计算该值模2的w次方，再把无符号数转换为补码。</p>
 <p>一般的，对于无符号和补码乘法来说，乘法运算结果的位级表示都是一样的。</p>
 <p>例如：</p>
@@ -747,12 +748,12 @@
 <p>（101） * （011） &#x3D; （110111） &#x3D; （111）【截断后的】</p>
 <p>补码表示：-1 * 3 &#x3D; -1</p>
 <p>虽然完整的乘积的位级的表示可能不同，但是截断后乘积的位级表示是相同的。</p>
-<p>乘以常数</p>
+<p><strong>乘以常数</strong></p>
 <p>因为，在大多数机器上，整数乘法指令相当的慢，需要10个或更多时钟周期，因此编译器进行了一项优化，试着用移位加加法运算的组合来代替乘以常数因子的乘法。</p>
 <p>考虑乘以2的幂的情况，再推广至全体常数。</p>
 <p>可以发现左移一个数值等价于执行一个与2的幂相乘的无符号乘法。固定大小的补码算数运算的位级操作与其无符号运算等价。</p>
 <p>但是无论是无符号还是补码，乘以2的幂都会导致溢出，结果说明，即使溢出，通过移位得到的结果也是一样的。</p>
-<p>除以2的幂</p>
+<p><strong>除以2的幂</strong></p>
 <p>在大多数机器上，整数除法比整数乘法更慢，需要30或者更多的时钟周期。</p>
 <p>除以2的幂，也可以用移位运算来实现，只不过使用的是右移，无符号数和补码分别使用逻辑移位和算术移位来达到目的。</p>
 <p>整数除法总是舍入到0，它将向下舍入到一个正值，向下舍入到一个负值。</p>
@@ -764,7 +765,7 @@
 <p>作为负数，如果出现舍入的情况时，移位导致结果向下舍入，此时就需要调整策略。</p>
 <p>作为一个负数，算数右移后的位向量刚好就是就w-k位表示的补码数从w-k位符号扩展到w位。通过在移位之前，偏置这个值，来修正不合适的舍入。</p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>思考：</p>
+<p><strong>思考</strong>：</p>
 <p>计算机执行的“整数”运算实际上是一种模运算形式。</p>
 <p>表示数字的有限字长限制了可能的值的取值范围，结果运算可能溢出。</p>
 <p>补码表示提供了一种既能表示负数也能表示正数的灵活方法，同时使用了与执行无符号算术相同的位级实现，这些运算包括像加法、减法、乘法，甚至除法，无论运算数是以无符号形式还是以补码形式表示的，都有完全一样或者非常类似的位级行为。</p>
@@ -772,34 +773,34 @@
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <p>的有理数进行编码。它对执行涉及非常大的数字非常接近于0的数字，以及更普遍地作为实数运算的近似值的计算，是很有用的。</p>
 <p>一般的，IEEE浮点标准被几乎所有的计算机支持。</p>
-<p>二进制小数</p>
+<p><strong>二进制小数</strong></p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>IEEE浮点表示</p>
+<p><strong>IEEE浮点表示</strong></p>
 <p>IEEE浮点标准用</p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <p>的形式来表示一个数:<br>符号(sign)，s决定这数是负数(s&#x3D;1)还是正数( s&#x3D;0)，而对于数值0的符号位解释作为特殊情况处理。<br>尾数(significand)M是一个二进制小数。</p>
 <p>阶码(exponent)E的作用是对浮点数加权，这个权重是2的E次幂(可能是负数)。</p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="标准浮点格式"></p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>规格化</p>
+<p><strong>规格化</strong></p>
 <p>当exp的位模式不全为0，也不全为1时，都是规格化的。</p>
 <p>阶码的值是E &#x3D; e - 偏置值。</p>
 <p>e是无符号数，偏置值为2的k-1次方-1，对于单精度是-126到127</p>
 <p>小数字段frac被描述为小数值f，f在0到1之间。尾数的定义是M &#x3D; 1+f。这种表示方法，假设没有一处，尾数在1到2之间，那么就能轻松额外获得一个精度位，既然第一位总是等于1，那么就不需要显示的表示它。</p>
-<p>非规格化</p>
+<p><strong>非规格化</strong></p>
 <p>当阶码全为0的时候，表示的书就是非规格化的。</p>
 <p>阶码为E &#x3D; 1 - 偏置，尾数M &#x3D; f，也就是小数的值，不包含隐含的开头1。</p>
 <p>非规格化数可以表示0，因为对于M来说，必须大于或等于1.因此不能表示0，事实上对于0的位模式，阶码字段与小数域全为0。</p>
 <p>但是-0与+0在符号位上是有差异的，在IEEE中，在某些方面，他们被认为是不同的。</p>
-<p>特殊值</p>
+<p><strong>特殊值</strong></p>
 <p>当阶码全为1时，就会出现无穷的表示。</p>
-<p>舍入</p>
+<p><strong>舍入</strong></p>
 <p>因为表示方法限制了浮点数的范围和精度，所有浮点运算只能近似的表示实数运算。</p>
 <p>一般的，为了找到一个最接近的匹配值，可以用期望的浮点形式表示出来，这就是舍入。</p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>浮点运算</p>
+<p><strong>浮点运算</strong></p>
 <p>IEEE标准指定了一个简单的规则，来确定加法和乘法这样的算术运算的结果。</p>
-<p>C语言中的浮点数</p>
+<p><strong>C语言中的浮点数</strong></p>
 <p>C语言中提供了两种不同的浮点数据类型，float和double，在支持IEEE浮点格式的机器上，这些数据类型对应单精度和双精度浮点，另外这类机器采用偶数舍入的舍入方式。</p>
 <p>当在int、float和 double格式之间进行强制类型转换时，程序改变数值和位模式的原则如下(假设int是32位的)：<br>从int转换成float，数字不会溢出，但是可能被舍入。<br>从 int或float转换成double，因为double有更大的范围(也就是可表示值的范围)，也有更高的精度(也就是有效位数)，所以能够保留精确的数值。<br>从double转换成float，因为范围要小一些，所以值可能溢出成＋∞或-∞。另外，由于精确度较小，它还可能被舍入。<br>从float或者double转换成int，值将会向零舍人。例如，1.999将被转换成1,而一1.999将被转换成一1。进一步来说，值可能会溢出。</p>
 <p>C语言标准没有对这种情况指定固定的结果。与Intel兼容的微处理器指定位模式<a href="%E5%AD%97%E9%95%BF%E4%B8%BAw%E6%97%B6%E7%9A%84TMin..">10…00</a>为整数不确定(integer indefinite)值。一个从浮点数到整数的转换，如果不能为该浮点数找到一个合理的整数近似值，就会产生这样一个值。因此，表达式(int)+1e10会得到-21483648，即从一个正值变成了一个负值。</p>
