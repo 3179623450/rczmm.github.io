@@ -32,6 +32,7 @@ input,
 select,
 textarea {
   font: 12px/1.5tahoma, arial, 5 b8b 4 f53;
+  filter: grayscale(1);
 }
 h1,
 h2,

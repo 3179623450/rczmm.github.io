@@ -632,60 +632,63 @@
   <!-- 每一篇文章卡片 -->
   <!-- hash算法 -->
 
-<section class="posts">
-  
+  <section class="posts">
     
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2022-08-26</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">springboot+vue（2）</a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
+      
+        <article class="post reveal"
+          style="flex-direction: row-reverse;   ">
+          <div class="post-main">
+            <div class="post-info">
+              <div class="post-time">
+                <i class="fas fa-clock" aria-hidden="true"></i>
+                <span class="post-time">发布时间：2022-08-26</span>
+              </div>
+              <div class="post-title">
+                <a class="post-title-link" href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">
+                  springboot+vue（2）
+                </a>
+              </div>
+              <div class="post-meta">
+                <div class="post-tags">
+                  <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
+                </div>
+                <div class="post-categories">
+                  <!-- 文章详情页的分类 -->
+
+
+                </div>
+              </div>
+              <div class="post-img-mobile">
+                <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" style="background-size: cover; 
+              background-position: center center;">
+                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" alt="正在加载中....">
+                </a>
+              </div>
+              <div class="post-content">
+                部分内容：写点基础的东西。
+Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，提供了start-web等组件，简化了应用配置。
+创建
+              </div>
             </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
+            <div class="post-more">
+              <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">
+                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+              </a>
             </div>
           </div>
-          <div class="post-img-mobile">
+          <div class="post-img">
             <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
+          background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" alt="">
             </a>
           </div>
-          <div class="post-content">
-            写点基础的东西。
-Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，提供了start-web等组件，简化了应用配置。
-创建项目时，选择SpringWeb，会自动把启动器加入到项目中，其中mvc、json
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-16.png" alt="">
-        </a>
-      </div>
-    </article>
-  
-</section>
+        </article>
+        
+  </section>
 </div>
 
 <div class="w-70">
@@ -1533,7 +1536,38 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
 
 
   </body>
-</html>   $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+</html>mentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
       },
 
       close: () => {
