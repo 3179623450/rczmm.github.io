@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 10.2k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 1.7k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 36分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 8分钟 |
           </span>
   
           
@@ -673,244 +673,290 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="算法笔记"><a href="#算法笔记" class="headerlink" title="算法笔记"></a>算法笔记</h1><p>旅行商人问题</p>
-<p>假设有一个运输公司，他有一个中央仓库，每一天，他都要在仓库装车，并且到n个地方送货，一天结束，送货车返回仓库，为了降低成本，该公司希望选择一条送货车行驶距离最短的送货顺序。</p>
-<p> 这是一个NP问题，多项式复杂程度非确定性问题。</p>
-<p>生成一个问题的解往往比验证一个给定的解时间花费的更多。</p>
-<p>所谓的算法，就是任何定义良好的计算过程，但是在学习算法的时候，它通常是与数据结构结合在一起的。</p>
-<p>他拥有输入和输出，算法就是一系列的计算步骤，用来把输入转换为输出。算法还可以看成是一种工具，用来解决一个说明严格的计算问题。</p>
-<p>首先是排序问题，很多的程序中它都是一种中间步骤，因此，到目前为止，有许多优秀的排序算法，用来应对特定的问题来说，需要选择最佳的算法，要考虑许多方面的因素。</p>
-<p>算法的表示可以用许多的语言来表述，在编程语言上，更是有许多的选择，但无论采用哪一种形式，唯一的要求就是算法的规格说明必须提供关于待执行的计算过程的精确描述。</p>
-<p>数据结构，也就是存储和组织数据的一种方式，他的目的是为了对数据方便的进行访问和修改，没有任何一种数据结构适合所有的用途和目的，因此对数据结构的掌握极为重要。</p>
-<p>衡量算法效率的常用标准是速度，也就是一个算法从输出到输入所需要的时间，但是有一些问题还没有已知的有效算法，就比如NP完全问题。</p>
-<p>当然算法最终是作用在计算机上，如果计算机的储存无限大并且是免费的，计算机的运算速度也是无限快，在这么一种情况下，任何一种能得到正确结果的算法都是一样的，但是正因为硬件的限制，因此算法的选择也变得尤其的重要，因此计算的时间和存储的空间都是一种十分有限的资源，这些有限的资源应该被有效的使用。</p>
-<p>并且即使硬件的功能已经足够的强大，但是算法上的差距依旧巨大。</p>
-<p>尽管在一些简单的应用上看上去对于算法没有什么需求，但是大多数问题对于算法的要求还是很巨大的。</p>
-<h2 id="算法入门"><a href="#算法入门" class="headerlink" title="算法入门"></a>算法入门</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>输入：n个任意值的数字</p>
-<p>输出：输入序列的一个排序（升序或者降序）</p>
-<p>插入排序是一个对少量元素进行排序的有效算法，插入排序在逻辑上就和我们打牌时，整理手上的牌一样。开始的时候，我们的一只手是空的，我们每一次摸起一张牌，并且把它放到空手上，放到合适的位置上，接着继续摸牌，把它插入到正确的位置上，为了找到这张牌的正确位置，要把它和每一张牌都进行一次比较，因此无论在什么时候，我用来存储牌的手上，每一张牌都是排好序的，这些牌也都是原来桌子上那些洗好的最顶上的一些牌。</p>
-<p>python 实现</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def insertionsort_up(arr):
-    for i in range(1, len(arr)):
-        key &#x3D; arr[i]
-        # 数组索引
-        j &#x3D; i - 1
+        <h1 id="算法笔记"><a href="#算法笔记" class="headerlink" title="算法笔记"></a>算法笔记</h1><h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p>​	<strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [2,7,11,15], target &#x3D; 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] &#x3D;&#x3D; 9 ，返回 [0, 1] 。</code></pre>
 
-        # 当第二个数小于第一个数时
-        while key &lt; arr[j] and j &gt;&#x3D; 0:
-            # 将第二个值赋值给第一个值
-            arr[j + 1] &#x3D; arr[j]
-            # 索引减一，继续比较
-            j -&#x3D; 1
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,2,4], target &#x3D; 6
+输出：[1,2]</code></pre>
 
-        # 关键值交换
-        arr[j + 1] &#x3D; key
+<p><strong>示例 3：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [3,3], target &#x3D; 6
+输出：[0,1]</code></pre>
 
-    print(&quot;the resluts is &#123;&#125;&quot;.format(arr))</code></pre>
 
-<h3 id="循环不变式与算法的正确性"><a href="#循环不变式与算法的正确性" class="headerlink" title="循环不变式与算法的正确性"></a>循环不变式与算法的正确性</h3><p>算法导论里的描述真的应该多加思考，这一步往往被我所忽略，因此产生了很多的问题。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031110200747.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="快速排序"></p>
-<p>这幅图展示了插入排序的工作流程，数组下标出现在矩阵的上方，数据中各个位置存储的数字出现在矩形中。</p>
-<p>循环不变式主要用来帮助我们理解算法的正确性。对于循环不变式，必须证明它的三个性质:</p>
-<p>初始化:它在循环的第一轮迭代开始之前，应该是正确的。</p>
-<p>保持:如果在循环的某一次迭代开始之前它是正确的，那么，在下一次迭代开始之前，它也应该保持正确。</p>
-<p>终止:当循环结束时，不变式给了我们一个有用的性质，它有助于表明算法是正确的。</p>
-<p>当头两个性质成立时，就能保证循环不变式在循环的每一轮迭代开始之前，都是正确的。请注意这儿的推理与数学归纳法的相似性。在数学归纳法中，要证明某一性质是成立的﹔必须首先证明其基本情况和一个归纳步骤都是成立的。这儿，证明不变式在第一轮迭代开始之前是成立的，就有点类似于归纳法中对基本情况的证明﹔证明不变式在各次迭代之间保持成立，就有点类似于归纳法中的归纳步骤的证明。</p>
-<p>有关循环不变式的第三项性质可能是最重要的，因为我们主要是用不变式来证明算法正确性的。此外，它与数学归纳法的常见用法也是不同的:在归纳法中，归纳步骤是无穷地使用的;在这儿,当循环结束时，即终止“归纳”。</p>
-<p>对插入排序，这些性质也一样成立。</p>
-<p>初始化;首先，先证明在第一轮迭代开始之前，循环不变式是成立的。此时，j&#x3D;2，而子数组为A[1..j一1]。亦即，它只包含一个元素A[1]，实际上就是最初在A[1]中的那个元素。这个子数组是已排序的(这一点是显然的)，这样就证明了循环不变式在循环的第一轮迭代开始之前是成立的。<br>保持:接下来，我们来考虑第二个性质:证明每一轮循环都能使循环不变式保持成立。从非形式化的意义上来看，在外层for循环的循环体中，要将A[j一1]、A[j–2]、A[j一3]等元素向右移–个位置，直到找到A[j的适当位置时为止(第4~7行)，这时将A[j]的值插入(第8行)。如果要更形式化地证明第二个性质成立的话，就需要陈述并证明对内层 while循环也有一个循环不变式成立。但是，此处我们更倾向于暂时不陷入过于形式化的细节之中，而是依赖于非形式化的分析，来证明第二个性质对于外层循环是成立的。<br>终止:最后，分析一下循环结束时的情况。对插人排序来说，当j大于n时(即当j&#x3D;n十1时)，外层for循环结束。在循环不变式中，将j替换为n+1，就有子数组A[1..n]包含了原先A[1..n]中的元素，但现在已排好序了。但是，子数组A[1..n]其实就是整个数组!因此，整个数组就排好序了，这意味着算法是正确的。</p>
-<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p><strong>算法分析即指对一个算法所需要的资源进行预测</strong>。硬件资源偶尔会是我们主要关心的，但通常，资源是指我们希望测度的计算时间。一般来说，对于一个给定的问题，通过分析几种候选算法，可以很容易地从中选出一个最有效的算法。这种分析的结果可能是找出了不止一个的候选算法，但在这一过程中，通常都要去掉几个较差的算法。<br>在分析一个算法之前，要建立有关实现技术的模型，包括描述所用资源的及代价的模型。这里采用导论里一种通用的单处理器、随机存取机( random-access machine，RAM)计算模型来作为实现技术。</p>
-<p>当然，虽然采取这种模型，但是严格的去定义指令和代价是完全没必要的，毕竟主题还是理解算法的设计与分析。</p>
-<p>在RAM模型中，即使是描述最简单的加法器都会异常的繁琐，因为这涉及到真实的算术指令，数据移动指令和控制指令等，其中还涉及到操作数数据精度的问题，总之在算法的设计与分析中，我们会忽略这些问题，把注意力和精力更多的放在具体的算法过程中去。</p>
-<h3 id="插入排序算法分析"><a href="#插入排序算法分析" class="headerlink" title="插入排序算法分析"></a>插入排序算法分析</h3><p>插入排序过程的时间开销与输入有关:排序1000个数的时间比排序三个数的时间要长。还有，即使排序两个相同长度的输人序列，所需的时间也可能不同。这取决于它们已排序的程度。一般来说，算法所需时间是与输入规模同步增长的，因而常常将一个程序的运行时间表示为其输人的函数。这就要求对术语“运行时间”和“输人规模”更仔细地加以定义。</p>
-<p>输入规模的概念与具体问题有关。对许多问题来说(如排序或计算离散傅里叶变换)，最自然的度量标准是输入中的元素个数，例如，待排序数组的大小n。对另一些问题(如两个整数相乘)，其输入规模的最佳度量是输人数在二进制表示下的位数。有时，用两个数(而不是一个)来表示输人可能更合适。例如，某一算法的输入是个图，则输人规模可以由图中顶点数和边数来表示。在下面讨论的每一个问题中，我们都将指明所用的度量标准。<br>算法的运行时间是指在特定输入时，所执行的基本操作数(或步数)。可以很方便地定义独立于具体机器的“步骤”概念。目前，先采用以下观点，每执行一行伪代码都要花一定量的时间。虽然每一行所花的时间可能不同，但我们假定每次执行第i行所花的时间都是常量c<sup>i</sup>。这种观点与RAM模型是一致的，同时也反映出了伪代码在多数真实计算机上是如何实现的。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144347897.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="插入排序"></p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144412291.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="计算总运行时间"></p>
-<p>即使是同样规模的输入，一个算法的运行时间同样的也可能依赖于给定的规模下的输入类型。例如，如果说在插入排序中，输入的规模是已经排好序的，就会出现最佳的情况，当然一个等值的输入数组也会出现最佳的情况。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144641255.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="最佳代价"></p>
-<p>最坏的情况是随时都有可能发生的，在插入排序中，如果数组是完全逆序的，那么就会出现最坏的情况。必须把A[j]与子数组的每一个元素进行比较才能得出结果，因此此时的时间复杂度是最高的。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144802980.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="求和式"></p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031144842358.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="最坏情况"></p>
-<p>最优时，an+b这是大体的时间复杂度，这是一个一次函数，但是最坏情况时,结果变成了一个二次函数。</p>
-<p>一般的，对于给定的输入，算法的运行时间会是固定的（硬件可能会造成一些影响，但差距不会太大），但是有一些很有意思的随机化算法，对于固定的输入，算法的效率是有变化的，当然对于插入排序来说，他并没有这样的特点。</p>
-<h3 id="最坏和平均情况分析"><a href="#最坏和平均情况分析" class="headerlink" title="最坏和平均情况分析"></a>最坏和平均情况分析</h3><p>一般的，对于某一个算法的考察，我们都会考虑最坏的情况。</p>
-<p>一个算法的最坏情况运行时间是在任何输人下运行时间的一个上界。知道了这一点，就能确保算法的运行时间不会比这一时间更长。也就是说，我们不需要对运行时间做某种复杂的猜测，并期望它不会变得更坏了。<br>对于某些算法来说，最坏情况出现得还是相当频繁的。例如，当在数据库中检索一条信息时，当要找的信息不在数据库中时，检索算法的最坏情况就会经常出现。在有些检索应用中，要检索的信息常常是数据库中没有的。<br>大致上看来，“平均情况”通常与最坏情况一样差。假定我们随机地选择n个数，并利用插入排序算法对它们进行排序。要决定应该在在子数组A[1..j-1]中的哪一个位置上插人元素A[j]，需要多长时间?在平均情况下，A[1..j一1]中的一半元素小于A[i]，一半的元素大于A[j]。于是，在平均情况下，要检查子数组A[1..j–1]中一半的元素，因而有t<sup>j</sup>&#x3D;j&#x2F;2。如果求–下平均情况下运行时间的话，会发现它是输人规模的一个二次函数，这与最坏情况下的运行时间是一样的。</p>
-<p>但是这并不意味着平均情况分析就毫无价值，在很多时候，我们都对一个算法的平均情况或期望的运行时间感兴趣，这就是概率分析，他可以用来确定一个算法期望的运行时间，但是这存在着一个问题，平均的定义不太明晰，通常，我们假定某一规模的所有输入都是等可能的。在实践中，这可能并不成立，有时候我们采用随机化算法，他可以给出随机的选择，从而让对算法进行概率分析。</p>
-<h3 id="增长的量级"><a href="#增长的量级" class="headerlink" title="增长的量级"></a>增长的量级</h3><p>可以发现，对插入排序的最佳和最坏情况进行分析的时候，我们采用了一些抽象的概念，简化了每一条语句真实的代价，而且实际上，我们还做了进一步的抽象，使得最佳情况表述为：an+b。</p>
-<p>再做进一步抽象，也就是运行时间的增长率，或者是增长的量级，这样我们就只用考虑公式中的最高次项，常数项甚至可以直接忽略，同时就算常数项系数都可以忽略掉，这是得益于硬件的发展，毕竟在较大规模之中，相对于增长率来说，系数都是次要的。</p>
-<h2 id="算法设计"><a href="#算法设计" class="headerlink" title="算法设计"></a>算法设计</h2><p>算法的设计方式有很多，插入排序使用的是增量法，在排列好子数组之后，将新元素插入，再对新数组进行排列，直到原数组完全排列成功。</p>
-<h3 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h3><p>有很多算法在结构上是递归的:为了解决一个给定的问题，算法要一次或多次地递归调用其自身来解决相关的子问题。这些算法通常采用分治策略:将原问题划分成n个规模较小而结构与原问题相似的子问题;递归地解决这些子问题，然后再合并其结果，就得到原问题的解。</p>
-<p>分治模式在每一层递归上都有三个步骤:<br>分解(Divide):将原问题分解威一系列子问题<br>解决(Conquer):递归地解各子问题。若子问题足够小，则直接求解</p>
-<p>合并(Combine):将子问题的结果合并成原问题的解。<br>合并排序(merge sort)算法完全依照了上述模式，直观地操作如下:</p>
-<p>分解:将n个元素分成各含n&#x2F;2个元素的子序列;<br>解决:用合并排序法对两个子序列递归地排序</p>
-<p>合并:合并两个已排序的子序列以得到排序结果。<br>在对子序列排序时，其长度为1时递归结束。单个元素被视为是已排好序的。</p>
-<p>其中，引入一个辅助的过程，也就是合并的过程，它的作用是把已经分好的子数组组合成一个排好序的子数组来代替当前子数组。</p>
-<p>再举扑克牌这个例子，假设有两堆牌面朝上地放在桌上，每一堆都是已排序的，最小的牌在最上面。我们希望把这两堆牌合并成一个排好序的输出堆，面朝下地放在桌上。基本步骤包括在面朝上的两堆牌中，选取顶上两张中较小的一张，将其取出后(它所在堆的顶端又会露出一张新的牌)面朝下地放到输出堆中。重复这个步骤，直到某-输入堆为空时为止。这时，把输人堆中余下的牌面朝下地放入输出堆中即可。从计算的角度来看，每一个基本步骤所花时间是个常量，因为只是查看顶上的牌，最多进行n次比较，所以合并排序的时间为O(n)。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151130845.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="合并排序"></p>
-<p>PDF的图片可能比较模糊。</p>
-<p>在调用MERGE(A，9，12，16)的第10到17行的操作中，当子数组A[9..16]包含序列(2，4,5，7，1，2，3，6)时的情况。在复制和插入了哨兵后，数组L包含了(2，4，5，7，∞)，数组R包含了〈1，2，3，6，∞)。A中的浅阴影位置包含了它们的最终值，L和R中的浅阴影位置包含了有待于被复制回A中的值。合起来看，浅阴影的位置始终包含了最初在A[9..16]中的值，再加上两个哨兵。A中的深阴影位置包含了将被覆盖的值，而L和R中深阴影位置包含了已被复制回A中的值。a)到h)在第12到17行中循环的每一轮迭代开始之前，数组A、L和R以及它们各自的下标k、i和j 的情况。i)终止时各数组及其下标的情况。此时，A[9..16]中的子数组已排好序了，L和R中的两个哨兵是这两个数组中，仅有的两个未被复制回A中的元素.</p>
-<p>python实现</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mergesort(nums):
-   # 治（归并）
-  def merge(nums, left, m, right):
-    # 前数组长度
-    n_front &#x3D; m - left + 1
-    # 后数组长度
-    n_after &#x3D; right - m # 生成两个临时数组，两种方式
-    L &#x3D; [0] * n_front
-    R &#x3D; [0 for i in range(n_after)]
 
-    # 拷贝数组内容
-    for i in range(n_front):
-        L[i] &#x3D; nums[left + i]
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-109 &lt;= nums[i] &lt;= 109</code></li>
+<li><code>-109 &lt;= target &lt;= 109</code></li>
+<li><strong>只会存在一个有效答案</strong></li>
+</ul>
+<p><strong>进阶：</strong>你可以想出一个时间复杂度小于 <code>O(n2)</code> 的算法吗？</p>
+<p>Related Topics</p>
+<p>数组</p>
+<p>哈希表</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p><strong>1、双重循环，暴力破解</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int *twoSum(int *nums, int numsSize, int target, int *returnSize) &#123;
+    for (int i &#x3D; 0; i &lt; numsSize; ++i) &#123;
+        for (int j &#x3D; i + 1; j &lt; numsSize; ++j) &#123;
+            if (nums[i] + nums[j] &#x3D;&#x3D; target) &#123;
+                int *ret &#x3D; malloc(sizeof(int) * 2);
+                ret[0] &#x3D; i;
+                ret[1] &#x3D; j;
+                *returnSize &#x3D; 2;
+                return ret;
+            &#125;
+        &#125;
+    &#125;
+    *returnSize &#x3D; 0;
+    return NULL;
+&#125;</code></pre>
 
-    for j in range(n_after):
-        R[j] &#x3D; nums[m + 1 + j]
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203123355192.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203123355192.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><strong>2、哈希表，一层循环</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">struct hashTable &#123;
+    int key;
+    int val;
+    UT_hash_handle hh;
+&#125;;
 
-    i &#x3D; 0
-    j &#x3D; 0
-    k &#x3D; left
+struct hashTable* hashtable;
 
-    while i &lt; n_front and j &lt; n_after:
-        if L[i] &lt;&#x3D; R[j]:
-            nums[k] &#x3D; L[i]
-            i +&#x3D; 1
-        else:
-            nums[k] &#x3D; R[j]
-            j +&#x3D; 1
-        k +&#x3D; 1
+struct hashTable* find(int ikey) &#123;
+    struct hashTable* tmp;
+    HASH_FIND_INT(hashtable, &amp;ikey, tmp);
+    return tmp;
+&#125;
 
-    # 拷贝L的保留元素
-    while i &lt; n_front:
-        nums[k] &#x3D; L[i]
-        i +&#x3D; 1
-        k +&#x3D; 1
+void insert(int ikey, int ival) &#123;
+    struct hashTable* it &#x3D; find(ikey);
+    if (it &#x3D;&#x3D; NULL) &#123;
+        struct hashTable* tmp &#x3D; malloc(sizeof(struct hashTable));
+        tmp-&gt;key &#x3D; ikey, tmp-&gt;val &#x3D; ival;
+        HASH_ADD_INT(hashtable, key, tmp);
+    &#125; else &#123;
+        it-&gt;val &#x3D; ival;
+    &#125;
+&#125;
 
-    # 拷贝R的保留元素
-    while j &lt; n_after:
-        nums[k] &#x3D; R[j]
-        j +&#x3D; 1
-        k +&#x3D; 1
+int* twoSum(int* nums, int numsSize, int target, int* returnSize) &#123;
+    hashtable &#x3D; NULL;
+    for (int i &#x3D; 0; i &lt; numsSize; i++) &#123;
+        struct hashTable* it &#x3D; find(target - nums[i]);
+        if (it !&#x3D; NULL) &#123;
+            int* ret &#x3D; malloc(sizeof(int) * 2);
+            ret[0] &#x3D; it-&gt;val, ret[1] &#x3D; i;
+            *returnSize &#x3D; 2;
+            return ret;
+        &#125;
+        insert(nums[i], i);
+    &#125;
+    *returnSize &#x3D; 0;
+    return NULL;
+&#125;</code></pre>
 
-# 分（分离）
-def separate(nums, left_index, right_index):
-    # print(left_index,right_index)
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203124807319.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203124807319.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><p>给你一个整数 <code>x</code> ，如果 <code>x</code> 是一个回文整数，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<p>回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<ul>
+<li>例如，<code>121</code> 是回文，而 <code>123</code> 不是。</li>
+</ul>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：x &#x3D; 121
+输出：true</code></pre>
 
-    if left_index &lt; right_index:
-        # 分离数列大小
-        m &#x3D; (left_index + right_index - 1) &#x2F; 2
-        m &#x3D; int(m)
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：x &#x3D; -121
+输出：false
+解释：从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</code></pre>
 
-        # 分离数列前半部分
-        separate(nums, left_index, m)
-        # 分离数列后半部分
-        separate(nums, m + 1, right_index)
-        # 治，把分开的元素进行合并
-        merge(nums, left_index, m, right_index)
+<p><strong>示例 3：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：x &#x3D; 10
+输出：false
+解释：从右向左读, 为 01 。因此它不是一个回文数。</code></pre>
 
-separate(nums, 0, len(nums) - 1)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151650453.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="合并排序"></p>
-<h3 id="分治法分析"><a href="#分治法分析" class="headerlink" title="分治法分析"></a>分治法分析</h3><p>当一个算法中含有对其自身的递归调用时，其运行时间可以用一个递归方程(或递归式)来表示。该方程通过描述子问题与原问题的关系，来给出总的运行时间。我们可以利用数学工具来解递归式，并给出算法性能的界。<br>分治算法中的递归式是基于基本模式中的三个步骤的。如先前一样，设T(n)为一个规模为n的问题的运行时间。如果问题的规模足够地小，如n≤c(c为一个常量)，则得到它的直接解的时间为常量，写作O(1)。假设我们把原问题分解成α个子问题，每–个的大小是原问题的1&#x2F;b。(对于合并排序，a和b都是2，但在许多分治法中，a≠b。)如果分解该问题和合并解的时间各为D(n)和C(n)，则得到递归式:</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031151740242.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归式"></p>
-<h3 id="合并排序算法的分析"><a href="#合并排序算法的分析" class="headerlink" title="合并排序算法的分析"></a>合并排序算法的分析</h3><p>合并排序的代码在元素为奇数个时能正确地工作，而此处我们为了简化对基于递归的算法的分析，就假定原问题的规模是2的幂次，这样每一次分解所产生的子序列的长度就恰好为n&#x2F;2。<br>以下给出递归形式的T(n)即最坏情况下合并排序n个数的运行时间。合并排序一个元素的时间是个常量。当n&gt;1时，将运行时间如下分解:<br>分解:这一步仅仅是计算出子数组的中间位置，需要常量时间，因而D(n)&#x3D;O(1)。</p>
-<p>解决:递归地解两个规模为n&#x2F;2的子问题,时间为2T(n&#x2F;2)。<br>合并:我们已经注意到，在一个含有n个元素的子数组上，MERGE过程的运行时间为e(n)，则C(n)&#x3D;O(n)。<br>当我们在合并排序算法的分析中，将函数D(n)和C(n)相加时，我们是在将一个时间复杂度为O(1)函数与另一个O（n）函数进行相加，相加的和是一个线性函数。</p>
-<p>此时归并排序的最坏情况运行时间的递归表示为：</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031190823897-16672145045611.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归表达式"></p>
-<p>接下来，我们要处理T(n) &#x3D; n*logn的问题，可以用主定理来证明，此处对数的底数为2，但是这里不用主定理，也可以直观理解。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191004214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="重写递归式"></p>
-<p>其中常量c代表规模为1的问题所需的时间，也是在“解决”和“合并”步骤中处理每个数组元素所需的时间。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031191055517.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="递归树"></p>
-<p>如何解递归式。出于方便性的考虑，假设n是2的整数幂。T(n)，它被扩展成递归式的一种等价树形表示。cn项是树根(即顶层递归的代价)，根的两棵子树是两个更小一点的递归式T(n&#x2F;2)。图示出了这-过程在将T(n&#x2F;2)扩展后的情况。在第二层递归的两个子结点中，每一个结点的代价都是cn&#x2F;2。继续在树中扩展每个结点，即将其分解成由递归式所决定的各个组成部分，直到问题的规模降到了1，这时每个问题的代价为c。图示出了最终的树。<br>接下来给这棵树的每一层加上代价。最顶层的总代价为cn，下一层的总代价为c(n&#x2F;2)十c(n&#x2F;2)&#x3D;cn，再往下去一层，总代价为c(n&#x2F;4)+ c(n&#x2F;4)+c(n&#x2F;4)+ c(n&#x2F;4)&#x3D;cn，等等。一般来说、最顶层之下的第i层有2<sub>i</sub>个结点，每一个的代价都是c(n&#x2F;2<sub>i</sub>)，于是，顶层之下的第i层的总代价为2<sub>i</sub>c(n&#x2F;2<sub>i</sub>)&#x3D;cn。在最底层，共有n个结点，每一个结点的代价为c，该层的总代价为cn。</p>
-<p>在图中，“递归树”中总的层数为lgn+1。只要做一个非正式的归纳推理，就很容易理解这一事实。n&#x3D;1为归纳的基本前提情况，此时递归树中只有一层。由于 lg1&#x3D;0，有 lgn+1给出了正确的层数。现在，我们进行归纳假设，即假设一棵有2i个结点的递归树中，共有lg2<sub>i</sub>＋1&#x3D;i+1层(由于对任何i值，都有lg2<sub>i</sub>&#x3D;i)。因为我们假设初始的输入规模是2的整数次幂，因而，下一个要考虑的输入规模应该是2<sub>i</sub>+1。一棵具有2<sub>i</sub>+1个结点的树比具有2<sub>i</sub>个结点的树要多一层，因此，其总的层数为(i＋1)＋1&#x3D;lg2<sub>i+1</sub>+1。<br>要计算递归式给出的总代价，只要将递归树中各层的代价加起来就可以了。在该树中，总共有 lgn十1层，每一层的代价都是cn，于是，整棵树的总代价就是cn(lgn+1)&#x3D;cnlgn+cn。忽略低阶项和常量c，即得到结果e(n lgn)。</p>
-<h2 id="函数增长"><a href="#函数增长" class="headerlink" title="函数增长"></a>函数增长</h2><p>这一部分其实很有意思，之前描述了算法运行时间增长的阶，它给出算法效率的简明特征，并且可以用来比较各种算法的相对性能。例如，合并排序的最坏情况运行时间为O(n lgn)，当输人的规模n足够大时，就要优于最坏情况运行时间为O(n<sub>2</sub>)的插人排序。虽然有时候能够精确地确定一个算法的运行时间，如对插入排序的运行时间所做的分析那样，但通常没必要花那么大的力气去算出额外的精确度。对于足够大的输入规模来说，在精确表示的运行时间中，常系数和低阶项是由输入规模所决定的。</p>
-<p>当输入规模大到使只有运行时间的增长量级有关时，就是在研究算法的渐近效率。也就是说，从极限角度看，我们只关心算法运行时间如何随着输人规模的无限增长而增长。通常，对不是很小的输入规模而言，从渐近意义上说更有效的算法是最佳的选择。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031193802662.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031193802662.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="三种记号"></p>
-<p>对于这样的表述，简单的理解为，上界下界与中间的区别，当然这里的都是渐近上界与渐近下界。不仅如此我们还是用o来表述紧确的渐近上界，w来表述紧确的渐近下界。</p>
-<h2 id="递归式"><a href="#递归式" class="headerlink" title="递归式"></a>递归式</h2><p>当一个算法包含对自身的递归调用时，其运行时间通常可以用递归式(recurrence)来表示。递归式是一组等式或不等式，它所描述的函数是用在更小的输入下该函数的值来定义的。例如，归并排序过程的最坏情况运行时间T(n)可由下面的递归式：</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031194356075.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221031194356075.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="归并排序"></p>
-<p>解为：nlgn</p>
-<p>在算法导论里描述了三种解递归式的方法.</p>
-<p>1、主方法求解递归式</p>
-<p>一种求解大部分递归式的公式。给出递归式: T(n) &#x3D; a * T(n&#x2F;b) + f(n) 的界，其中a&gt;&#x3D;1，b&gt;1，f(n)是给定的函数，T(n)是定义在非负整数上的递归式。</p>
-<p>2、递归树求解</p>
-<p>用主方法求解不了的递归式，我们可以用递归树来猜测解的上界，然后用代入法来证明解的正确性。递归树的求解精确度取决于画递归树的精确度。</p>
-<p>3、代入法</p>
-<p>比如我们求解，递归式T(n) &#x3D; 2T(n&#x2F;2)+n，我们猜测解是O(nlgn)，我们要寻找到一个常数c，使得T(n)&lt;&#x3D;cnlgn。</p>
-<p>即T(n) &lt;&#x3D; 2c(n&#x2F;2)lg(n&#x2F;2)+n &lt;&#x3D; cnlgn-cnlg2+n &#x3D; cnlgn-cn+n</p>
-<p>只要c&gt;&#x3D;1，T(n)&lt;&#x3D;cnlgn，所以我们的猜测是正确的。</p>
-<p>要注意的是，代入法全凭经验，通常用递归树来确定上界，然后用代入法再证明。</p>
-<p>技术细节：</p>
-<p>在实践中，在表达和解递归式时常常略去一-些技术性细节。例如，常常假设函数的自变量为整数。通常，一个算法的运行时间T(n)在定义时都假设n为整数，因为对大多数算法来说输人的规模都是整数。</p>
-<p>我们常常忽略的另一类细节是边界条件，因为对于固定规模的输人来说，算法的运行时间为常量，故对足够小的n来说，表示算法运行时间的递归式一般为T(n)&#x3D;O(1)。据此，为了方便起见，就常忽略递归式的边界条件，并且假设对小的n值T(n)是常量。</p>
-<h3 id="一些细微的问题"><a href="#一些细微的问题" class="headerlink" title="一些细微的问题"></a>一些细微的问题</h3><h4 id="代换法"><a href="#代换法" class="headerlink" title="代换法"></a>代换法</h4><p>对于代换法，使用代换法解递归式需要两个步骤，用数学归纳法找出真正有效的常数，代换法使用于归纳假设用较小值时，用猜测的值去代替函数的解，这种方式很有效，但是只能用于解的形式很容易的猜的情景。</p>
-<p>但是，不存在一种通用的方式来猜测递归式的正解，这种猜测往往是需要经验的，有时甚至是创造性的。当然有一种方式先证明宽松的上下界，然后缩小不确定性区间。</p>
-<p>有时候，很容易可以猜出渐近界，但是却会在归纳证明时出现一些问题，通常时，问题出在归纳假设不够强，无法证明其准确的界，遇到这种情况，可以去掉低阶项来使得证明顺利进行。</p>
-<p>为什么是去掉低阶项，因为本质是数学归纳法，使用较小的值明显要更好一些。</p>
-<p>运行渐近时，很容易就会犯错，没有证明归纳假设的正确形式。</p>
-<h4 id="递归树"><a href="#递归树" class="headerlink" title="递归树"></a>递归树</h4><p>对于代换法，虽然简单直接，但是往往得不到一个好的猜测，因此画出一个递归树是一种得到好猜测的直接方法。在递归树中，每一个结点都代表递归函数调用集合中一个子问题的代价。我们将树中每一层内的代价相加得到一个每层代价的集合，再将每层的代价相加得到递归是所有层次的总代价。当用递归式表示分治算法的运行时间时，递归树的方法尤其有用。</p>
-<p>递归树最适合用来产生好的猜测，然后用代换法加以验证。但使用递归树产生好的猜测时，通常可以容忍小量的“不良量”( sloppiness)，因为稍后就会证明所做的猜测。如果画递归树时非常地仔细，并且将代价都加了起来，那么就可以直接用递归树作为递归式解的证明。</p>
-<p>子问题的大小将会随着离树根越来越远而变得越来越小，最终达到一个边界。</p>
-<p>递归树真的很香！！！但是我不画。</p>
-<h4 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h4><p>递归式描述了将规模为n的问题划分为a个子问题的算法的运行时间，每个子问题规模为n&#x2F;b，a和b是正常数。a个子问题被分别递归地解决，时间各为T(n&#x2F;b)。划分原问题和合并答案的代价由函数f(n)描述。</p>
-<p>当然从技术正确性来看，递归式实际上没有得到很好的定义，因为n&#x2F;b可能不是一个整数，但是用T函数并不影响递归式的渐近行为就可以。</p>
-<p>关于主方法的证明以及更多的描述等信息，建议算法导论，我看的是第三版。</p>
-<h2 id="概率分析与随机算法"><a href="#概率分析与随机算法" class="headerlink" title="概率分析与随机算法"></a>概率分析与随机算法</h2><p>在算法导论之中，使用了雇佣问题来作为这一章的开头，这里先简单的描述一下雇佣问题。</p>
-<p>你需要雇一名新的助理。你决定找一个雇用代理。雇用代理每天给你推荐一个应聘者。你会面试这个人，然后决定要不要雇用他。你必须付给雇用代理一小笔费用来面试应聘者。要真正地雇用一个应聘者则要花更多的钱，因为你必须辞掉目前的办公室助理，还要付一大笔中介费给雇用代理。你的诺言是在任何时候，都要找到最佳人选来担任这项职务。因此，你决定在面试完每个应聘者后，如果这个应聘者比目前的办公助理更有资格，你就会辞掉目前的办公室助理，然后聘请这个新的应聘者。你愿意为这种策略而付出费用，但希望能够预测这种费用会是多少。</p>
-<p>对于这种策略，使用伪代码来描述是最佳的选择，因为伪代码没有数据结构、语言语法以及执行正确性上的要求，我们可以使用简洁的语言来描述出这样的一种策略。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102115125506.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102115125506.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="雇佣问题"></p>
-<p>导论的伪代码真的很简洁。</p>
-<p>在这个模型里，面试的费用较低，而雇佣的费用是很高的，在这个算法里，总费用很容易就得出，因为我们无论如何，都会面试n个人，因此在这种情况下，我们关注的重点应该放在雇佣的部分上，而这个量在每一次的雇佣时都会发生改变。</p>
-<p>通常的情况下，我们需要检查雇佣者的这个序列，从中维护出一个目前的优胜者，本质上这个雇佣问题是对序列中那一个成员获胜的更新程度建立模型。</p>
-<p>最坏情况分析，这其实很好得出，当我们雇佣了每一个来面试的面试者时，我们雇佣的费用就会达到最高，当面试者的资质逐渐增加的时候，就会出现这种情况。现实中，这种情况或许很难出现，但是在现实里，我们同样不能得出这些面试者出现的顺序，也无法控制这个次序，因此，我们预测的都是一般或者平均情况。</p>
-<h3 id="概率分析"><a href="#概率分析" class="headerlink" title="概率分析"></a>概率分析</h3><p>概率分析是在问题的分析中分析应用概率技术，大多数情况下，我们使用概率分析来分析一个算法的运行时间，当然有时候也用它来分析其他的量，在这个雇佣的问题里，我们重点关心的问题就是输入的分布或者对输入做出的假设，例如平均十个人就会出现超越当前雇佣者资质的面试者，然后使用这样的假设，或者是在现实中收集了一段时间的招聘情况的数据，来分析算法，最后得出一个期望的运行时间，这个期望值有可能对所有可能的分布进行运算，因此，有可能是平均运算。</p>
-<h3 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h3><p>为了利用概率分析，需要了解有关输入分布的一些情况，在许多情况下，我们对输入分布知之甚少，即使知道有些输入分布的某些信息，从计算上说，可能也无法利用这些分布信息来构建模型。</p>
-<p>但是对算法中的某些部分的行为进行随机化，就可以利用概率和随机化作为算法设计和分析的工具。</p>
-<p>在雇佣问题之中，看上去面试者是随机出现的，于是我们需要对随机化进行处理，大多数编程环境都有提供一个随机数生成器，因此最终的模型之中，我们生产一个全序列，里面面试者的排列完全随机，并且在使用这个序列时，我们采用随机数抽取的方式。</p>
-<h2 id="指示器随机变量"><a href="#指示器随机变量" class="headerlink" title="指示器随机变量"></a>指示器随机变量</h2><p>这为概率和期望之间的转换提供了一种便利的方法。它描述了事件在样本空间中是否发生，发生值为1，不发生值为0。</p>
-<p>使用这样的思路在解决雇佣问题，我们希望计算雇佣一个职员的期望次数，为了利用概率分析，假设面试者以随机的顺序出现，令X作为一个随机变量，他的值就是雇佣一个新职员需要的招聘次数。利用指示器随机变量。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102123603046.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20221102123603046.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="指示器随机变量"></p>
-<h2 id="厕所坑位问题"><a href="#厕所坑位问题" class="headerlink" title="厕所坑位问题"></a>厕所坑位问题</h2><p>额。。。非恶搞、真思考。</p>
-<p>一层宿舍楼内，有公共厕所两间，厕所内有六个坑位，假定每人每天平均上一次厕所，一次三分钟，求一层楼多少人才能使得上厕所不会拥挤的概率超过百分之70？</p>
-<p>拥挤？即三分钟内有至少13个人上厕所。一天二十四小时，共计1440分钟。</p>
-<p>假设，只有一个坑位，一个人，那么无论如何也不会产生拥挤问题，当一个坑位，两个人时，此时有可能就会产生拥挤问题。此时一天的总时长为1440分钟，第一个人一天上厕所所花的时间为3分钟，那么此时的第二个人只能在1437分钟里上厕所才不会发生拥挤，此时拥挤的概率应当为3 &#x2F; 1440。当坑位扩展，意味着可以同时容纳多人上厕所，例如两个坑位，两个人就不会出现拥挤的情况。</p>
-<p>用几何的角度想一想，一天的总时长是个圆，他的面积是1440，现在在圆里有两个面积为3的阴影，问两个阴影不重叠的概率是多少。</p>
-<p>1 * 1437 &#x2F; 1440。很容易得到的答案。</p>
-<p>三个人呐？</p>
-<p>1 * 1437 &#x2F; 1440 * 1434 &#x2F; 1440</p>
-<p>如果按照这样的逻辑，481人时，不拥挤的概率一定为0，但实际上480人时，不拥挤的概率已经是一个十分小的数字，我们规定不拥挤的概率应当超过百分之七十。</p>
-<p>对于这样的计算，使用一个简单的程序来帮助我们无疑要愉快的多。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">result &#x3D; 1
-nums &#x3D; 1440
-temp &#x3D; 1
-while nums &gt;&#x3D; 0:
-    result *&#x3D; nums &#x2F; 1440
-    if result &gt;&#x3D; 0.7:
-        print(&#39;不拥挤的概率为：&#39;, result, &#39;此时的人数：&#39;, temp)
-    nums -&#x3D; 3
-    temp +&#x3D; 1</code></pre>
 
-<p>结论是，18个人时，不拥挤的概率约为72%，达到标准。</p>
-<p>即当有18个人时，如果二十四小时内，每一分钟上厕所的概率相等，那么一个坑位就可以大致满足需求。</p>
-<p>一个坑位当人数达到12时，不拥挤的概率约为87%，那么问题中的12个坑位呐？</p>
-<p>实际上，只有当上厕所人数达到13人时，才会出现拥挤的情况。此时每进来一个人，相当于多了面积为3的阴影。因此在上述的代码描述，只需要调整最初时的人数就可以了。</p>
-<p>结果为29人，当人数达到29人时，不拥挤的概率就只有72%</p>
-<p>这个结果正确嘛？如果正确的话，似乎有些不合理了。但实际上，代码描述的是一天二十四小时内，每个人随时都可能上厕所，并且在每分钟上厕所的概率都是相等的，都是独立事件，一个坑位在三分钟内拥有两个主人的情况为拥挤，但在现实情况下，上厕所具有时段性，某个时间段，可能很多人上厕所，并且还有往返时间，上厕所的时间每个人也各不相同，有的人只需要2分钟，有的人却要10分钟。</p>
-<p>这个问题其实是生日问题的翻版，他的目的只有一个，告诉你，去厕所别憋着，因为下一个厕所随时都可能会挤。</p>
-<p>1、</p>
-<h2 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h2><p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前 <em><code>numRows</code></em> 行。</p>
-<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">ret &#x3D; list()
-numRows &#x3D; int(input(&quot;input your nums:&quot;))
-for i in range(numRows):
-    row &#x3D; list()
-    for j in range(0, i + 1):
-        if j &#x3D;&#x3D; 0 or j &#x3D;&#x3D; i:
-            row.append(1)
-        else:
-            row.append(ret[i - 1][j] + ret[i - 1][j - 1])
-    print(row)
-    ret.append(row)</code></pre>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>-231 &lt;= x &lt;= 231 - 1</code></li>
+</ul>
+<p><strong>进阶：</strong>你能不将整数转为字符串来解决这个问题吗？</p>
+<p>Related Topics</p>
+<p>数学</p>
+<h2 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h2><p><strong>数学解法</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">bool isPalindrome(int x) &#123;
+    double t &#x3D; 0;
+    double n &#x3D; x;
+    if (x &lt; 0) &#123;
+        return false;
+    &#125; else &#123;
+        while (x) &#123;
+            int temp;
+            temp &#x3D; x % 10;
+            t &#x3D; t * 10 + temp;
+            x &#x2F;&#x3D; 10;
+        &#125;
+        return n &#x3D;&#x3D; t;
+    &#125;
+&#125;</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203125904887.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203125904887.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<h2 id="罗马数字转整数"><a href="#罗马数字转整数" class="headerlink" title="罗马数字转整数"></a>罗马数字转整数</h2><p>罗马数字包含以下七种字符: <code>I</code>， <code>V</code>， <code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">字符          数值
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000</code></pre>
+
+<p>例如， 罗马数字 <code>2</code> 写做 <code>II</code> ，即为两个并列的 1 。<code>12</code> 写做 <code>XII</code> ，即为 <code>X</code> + <code>II</code> 。 <code>27</code> 写做 <code>XXVII</code>, 即为 <code>XX</code> + <code>V</code> + <code>II</code> 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 <code>IIII</code>，而是 <code>IV</code>。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 <code>IX</code>。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li><code>I</code> 可以放在 <code>V</code> (5) 和 <code>X</code> (10) 的左边，来表示 4 和 9。</li>
+<li><code>X</code> 可以放在 <code>L</code> (50) 和 <code>C</code> (100) 的左边，来表示 40 和 90。</li>
+<li><code>C</code> 可以放在 <code>D</code> (500) 和 <code>M</code> (1000) 的左边，来表示 400 和 900。</li>
+</ul>
+<p>给定一个罗马数字，将其转换成整数。</p>
+<p><strong>示例 1:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: s &#x3D; &quot;III&quot;
+输出: 3</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: s &#x3D; &quot;IV&quot;
+输出: 4</code></pre>
+
+<p><strong>示例 3:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: s &#x3D; &quot;IX&quot;
+输出: 9</code></pre>
+
+<p><strong>示例 4:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: s &#x3D; &quot;LVIII&quot;
+输出: 58
+解释: L &#x3D; 50, V&#x3D; 5, III &#x3D; 3.</code></pre>
+
+<p><strong>示例 5:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: s &#x3D; &quot;MCMXCIV&quot;
+输出: 1994
+解释: M &#x3D; 1000, CM &#x3D; 900, XC &#x3D; 90, IV &#x3D; 4.</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 15</code></li>
+<li><code>s</code> 仅含字符 <code>(&#39;I&#39;, &#39;V&#39;, &#39;X&#39;, &#39;L&#39;, &#39;C&#39;, &#39;D&#39;, &#39;M&#39;)</code></li>
+<li>题目数据保证 <code>s</code> 是一个有效的罗马数字，且表示整数在范围 <code>[1, 3999]</code> 内</li>
+<li>题目所给测试用例皆符合罗马数字书写规则，不会出现跨位等情况。</li>
+<li>IL 和 IM 这样的例子并不符合题目要求，49 应该写作 XLIX，999 应该写作 CMXCIX 。</li>
+<li>关于罗马数字的详尽书写规则，可以参考 <a target="_blank" rel="noopener" href="https://b2b.partcommunity.com/community/knowledge/zh_CN/detail/10753/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97#knowledge_article">罗马数字 - Mathematics </a>。</li>
+</ul>
+<p>Related Topics</p>
+<p>哈希表</p>
+<p>数学</p>
+<p>字符串</p>
+<h2 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h2><p>1、<strong>暴力解法</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int romanToInt(char * s)&#123;
+    int n&#x3D;strlen(s);
+    int num&#x3D;0,i&#x3D;0,j&#x3D;0,k&#x3D;0;;
+    int a[16];
+    for(i&#x3D;0;i&lt;n;i++)&#123;
+        switch(s[i])&#123;
+            case &#39;I&#39;:a[i]&#x3D;1;break;
+            case &#39;V&#39;:a[i]&#x3D;5;break;
+            case &#39;X&#39;:a[i]&#x3D;10;break;
+            case &#39;L&#39;:a[i]&#x3D;50;break;
+            case &#39;C&#39;:a[i]&#x3D;100;break;
+            case &#39;D&#39;:a[i]&#x3D;500;break;
+            default :a[i]&#x3D;1000;break;
+        &#125;                           &#x2F;&#x2F;按序存储字符对应10进制数字
+    &#125;
+    for(i&#x3D;0;i&lt;n-1;i++)&#123;
+        if(a[i]&gt;&#x3D;a[i+1])&#123;
+            num+&#x3D;a[i];
+        &#125;
+        else&#123;
+            num+&#x3D;a[i+1]-a[i];
+            i++;
+        &#125;
+    &#125;
+    if(n&#x3D;&#x3D;1)return a[0];            &#x2F;&#x2F;一位罗马数情况
+    if(a[n-1]&lt;&#x3D;a[n-2])
+        num+&#x3D;a[n-1];                    &#x2F;&#x2F;末尾补位
+    return num;
+&#125;</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132101346.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132101346.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p>2、<strong>哈希表</strong></p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">char roman[7] &#x3D; &quot;IVXLCDM&quot;;
+int data[7] &#x3D; &#123; 1, 5, 10, 50, 100, 500, 1000 &#125;;
+
+int map(char c)
+&#123;
+    int i &#x3D; 0;
+    for (i &#x3D; 0; i &lt; 7; i++) &#123;
+        if (roman[i] &#x3D;&#x3D; c)
+            break;
+    &#125;
+    return i;
+&#125;
+
+int romanToInt(char * s)&#123;
+    int num &#x3D; 0;
+
+    for (int i &#x3D; 0; i &lt; strlen(s) - 1; i++) &#123;
+        if (map(s[i]) &gt;&#x3D; map(s[i + 1]))
+            num +&#x3D; data[map(s[i])];
+        else
+            num -&#x3D; data[map(s[i])];
+    &#125;
+    num +&#x3D; data[map(s[strlen(s) - 1])];
+    return num;
+&#125;</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132405927.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132405927.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<h2 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
+<p>如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：strs &#x3D; [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
+输出：&quot;fl&quot;</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：strs &#x3D; [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]
+输出：&quot;&quot;
+解释：输入不存在公共前缀。</code></pre>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= strs.length &lt;= 200</code></li>
+<li><code>0 &lt;= strs[i].length &lt;= 200</code></li>
+<li><code>strs[i]</code> 仅由小写英文字母组成</li>
+</ul>
+<p>Related Topics</p>
+<p>字符串</p>
+<h2 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h2><pre class="line-numbers language-c" data-language="c"><code class="language-c">char *longestCommonPrefix(char **strs, int strsSize) &#123;
+    int a &#x3D; strlen(strs[0]);
+    int i &#x3D; 0;
+    char *ptr &#x3D; strs[0];
+    for (int j &#x3D; 1; j &lt; strsSize; j++) &#123;
+        for (i &#x3D; 0; i &lt; a; i++) &#123;
+            if (strs[j][i] &#x3D;&#x3D; ptr[i]); else break;
+        &#125;
+        a &#x3D; i;
+
+    &#125;
+    ptr[a] &#x3D; &#39;\0&#39;;
+    return ptr;
+&#125;</code></pre>
 
       </div>
       <div class="post-tags-categories">
