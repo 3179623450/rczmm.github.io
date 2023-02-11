@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 4.6k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 5.3k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 21分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 25分钟 |
           </span>
   
           
@@ -1409,7 +1409,8 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>数学</p>
 <p>字符串</p>
 <p>模拟</p>
-<h2 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">def binary_sum(a, b):
+<h2 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h2><p><strong>1、数组处理</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def binary_sum(a, b):
     # 反转二进制字符串
     a &#x3D; a[::-1]
     b &#x3D; b[::-1]
@@ -1433,6 +1434,123 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 
 <p>在这个程序中，我们定义了一个名为<code>binary_sum</code>的函数，它接收两个二进制字符串作为输入，并返回它们的和。在函数内部，我们首先将二进制字符串反转，以便按位处理。然后，我们遍历字符串的每一位，并计算它们的和。如果某一位的和大于2，它会产生进位，并将其加到下一位。最后，如果有进位，它会加到结果字符串的开头。</p>
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>2、位运算</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def addBinary(self, a, b):
+    &quot;&quot;&quot;
+    :type a: str
+    :type b: str
+    :rtype: str
+    &quot;&quot;&quot;
+    max_len &#x3D; max(len(a), len(b))
+    a &#x3D; a.zfill(max_len)
+    b &#x3D; b.zfill(max_len)
+    result &#x3D; &#39;&#39;
+    carry &#x3D; 0
+    for i in range(max_len - 1, -1, -1):
+        if a[i] &#x3D;&#x3D; &#39;1&#39; and b[i] &#x3D;&#x3D; &#39;1&#39;:
+            result &#x3D; (&#39;1&#39; if carry else &#39;0&#39;) + result
+            carry &#x3D; 1
+        elif a[i] &#x3D;&#x3D; &#39;0&#39; and b[i] &#x3D;&#x3D; &#39;0&#39;:
+            result &#x3D; (&#39;0&#39; if not carry else &#39;1&#39;) + result
+            carry &#x3D; 0
+        else:
+            result &#x3D; (&#39;0&#39; if carry else &#39;1&#39;) + result
+    if carry:
+        result &#x3D; &#39;1&#39; + result
+    return result</code></pre>
+
+<p>这个代码采用了位运算来优化二进制相加的过程，使得复杂度更低。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211184025906.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211184025906.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h2 id="x的平方根"><a href="#x的平方根" class="headerlink" title="x的平方根"></a>x的平方根</h2><p>给你一个非负整数 <code>x</code> ，计算并返回 <code>x</code> 的 <strong>算术平方根</strong> 。</p>
+<p>由于返回类型是整数，结果只保留 <strong>整数部分</strong> ，小数部分将被 <strong>舍去 。</strong></p>
+<p><strong>注意：</strong>不允许使用任何内置指数函数和算符，例如 <code>pow(x, 0.5)</code> 或者 <code>x ** 0.5</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：x &#x3D; 4
+输出：2</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：x &#x3D; 8
+输出：2
+解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。</code></pre>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= x &lt;= 231 - 1</code></li>
+</ul>
+<p>Related Topics</p>
+<p>数学</p>
+<p>二分查找</p>
+<h2 id="解答-11"><a href="#解答-11" class="headerlink" title="解答"></a>解答</h2><p><strong>1、sqrt</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
+    &quot;&quot;&quot;
+    :type x: int
+    :rtype: int
+    &quot;&quot;&quot;
+    return int(sqrt(x))</code></pre>
+
+<p>这段代码使用 Python 的 <code>math</code> 模块中的 <code>sqrt</code> 函数计算平方根。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185256535.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185256535.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>2、二分查找</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
+    &quot;&quot;&quot;
+    :type x: int
+    :rtype: int
+    &quot;&quot;&quot;
+    if x &lt; 0:
+        return None
+    left, right &#x3D; 0, x
+    while left &lt;&#x3D; right:
+        mid &#x3D; (left + right) &#x2F;&#x2F; 2
+        if mid * mid &lt;&#x3D; x &lt; (mid + 1) * (mid + 1):
+            return mid
+        elif x &lt; mid * mid:
+            right &#x3D; mid - 1
+        else:
+            left &#x3D; mid + 1
+    return None</code></pre>
+
+<p>这段代码实现了对平方根的二分查找。我们通过设定左右边界来确定平方根所在的范围，并通过取中间值，判断它的平方是否大于等于给定数字，来逐渐缩小搜索范围。最终，如果找到的话，返回的是平方根的整数部分。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185423200.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185423200.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>3、牛顿迭代</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt( x):
+    &quot;&quot;&quot;
+    :type x: int
+    :rtype: int
+    &quot;&quot;&quot;
+    if x &lt; 0:
+        return None
+    root &#x3D; x
+    precision &#x3D; 0.00001
+    while abs(root * root - x) &gt; precision:
+        root &#x3D; (root + x &#x2F; root) &#x2F; 2
+    return int(root)</code></pre>
+
+<p>在这段代码中，我们通过牛顿迭代公式：<code>root = (root + x / root) / 2</code> 不断地更新<code>root</code>的值，直到误差小于预期的精度。最终，我们将<code>root</code>的值向下取整，以获得整数部分的平方根。</p>
+<p><strong>4、牛顿迭代优化</strong></p>
+<p>使用二分查找：您可以使用二分查找来确定平方根的区间，然后使用牛顿迭代法来逼近结果。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
+    &quot;&quot;&quot;
+    :type x: int
+    :rtype: int
+    &quot;&quot;&quot;
+    if x &lt; 0:
+        return None
+    left &#x3D; 0
+    right &#x3D; x
+    precision &#x3D; 0.00001
+    while left &lt;&#x3D; right:
+        mid &#x3D; (left + right) &#x2F;&#x2F; 2
+        if mid * mid &lt;&#x3D; x &lt; (mid + 1) * (mid + 1):
+            root &#x3D; mid
+            break
+        elif mid * mid &lt; x:
+            left &#x3D; mid + 1
+        else:
+            right &#x3D; mid - 1
+    root &#x3D; left
+    while abs(root * root - x) &gt; precision:
+        root &#x3D; (root + x &#x2F; root) &#x2F; 2
+    return int(root)</code></pre>
 
       </div>
       <div class="post-tags-categories">
