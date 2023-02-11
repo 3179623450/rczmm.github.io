@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 4.3k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 4.6k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 20分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 21分钟 |
           </span>
   
           
@@ -1409,7 +1409,31 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>数学</p>
 <p>字符串</p>
 <p>模拟</p>
-<h2 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h2>
+<h2 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">def binary_sum(a, b):
+    # 反转二进制字符串
+    a &#x3D; a[::-1]
+    b &#x3D; b[::-1]
+    
+    # 计算每一位的和
+    res &#x3D; &#39;&#39;
+    carry &#x3D; 0
+    for i in range(max(len(a), len(b))):
+        a_i &#x3D; int(a[i]) if i &lt; len(a) else 0
+        b_i &#x3D; int(b[i]) if i &lt; len(b) else 0
+        s &#x3D; a_i + b_i + carry
+        res +&#x3D; str(s % 2)
+        carry &#x3D; s &#x2F;&#x2F; 2
+    
+    if carry !&#x3D; 0:
+        res +&#x3D; str(carry)
+    
+    return res[::-1]
+
+print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
+
+<p>在这个程序中，我们定义了一个名为<code>binary_sum</code>的函数，它接收两个二进制字符串作为输入，并返回它们的和。在函数内部，我们首先将二进制字符串反转，以便按位处理。然后，我们遍历字符串的每一位，并计算它们的和。如果某一位的和大于2，它会产生进位，并将其加到下一位。最后，如果有进位，它会加到结果字符串的开头。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+
       </div>
       <div class="post-tags-categories">
         
