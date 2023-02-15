@@ -2996,7 +2996,7 @@ int main() &#123;
     return NULL;
 &#125;</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203123355192.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203123355192.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203123355192.png" alt="解答成功"></p>
 <p><strong>2、哈希表，一层循环</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">struct hashTable &#123;
     int key;
@@ -3039,7 +3039,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) &#123;
     return NULL;
 &#125;</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203124807319.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203124807319.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203124807319.png" alt="解答成功"></p>
 <h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><p>给你一个整数 <code>x</code> ，如果 <code>x</code> 是一个回文整数，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 <p>回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
 <ul>
@@ -3085,7 +3085,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) &#123;
     &#125;
 &#125;</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203125904887.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203125904887.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230203125904887.png" alt="解答成功"></p>
 <h2 id="罗马数字转整数"><a href="#罗马数字转整数" class="headerlink" title="罗马数字转整数"></a>罗马数字转整数</h2><p>罗马数字包含以下七种字符: <code>I</code>， <code>V</code>， <code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p>
 <pre class="line-numbers language-none"><code class="language-none">字符          数值
 I             1
@@ -3172,7 +3172,7 @@ M             1000</code></pre>
     return num;
 &#125;</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132101346.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132101346.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132101346.png" alt="解答成功"></p>
 <p>2、<strong>哈希表</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">char roman[7] &#x3D; &quot;IVXLCDM&quot;;
 int data[7] &#x3D; &#123; 1, 5, 10, 50, 100, 500, 1000 &#125;;
@@ -3200,7 +3200,7 @@ int romanToInt(char * s)&#123;
     return num;
 &#125;</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132405927.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132405927.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230204132405927.png" alt="解答成功"></p>
 <h2 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h2><p>编写一个函数来查找字符串数组中的最长公共前缀。</p>
 <p>如果不存在公共前缀，返回空字符串 <code>&quot;&quot;</code>。</p>
 <p><strong>示例 1：</strong></p>
@@ -3286,7 +3286,7 @@ int romanToInt(char * s)&#123;
         else:
             return False</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205122509053.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205122509053.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205122509053.png" alt="解答成功"></p>
 <p>2、<strong>栈</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">from collections import deque
 
@@ -3318,7 +3318,7 @@ class Solution(object):
                 return False
         return len(stack) &#x3D;&#x3D; 1</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205123246617.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205123246617.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205123246617.png" alt="解答成功"></p>
 <p><strong>3、栈，考虑其他情况</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def isValid(s):
     &quot;&quot;&quot;
@@ -3347,10 +3347,10 @@ class Solution(object):
     else:
         return False</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205192408367.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205192408367.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205192408367.png" alt="解答成功"></p>
 <h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
 <p><strong>示例 1：</strong></p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205193059944.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205193059944.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20230205193059944"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230205193059944.png" alt="image-20230205193059944"></p>
 <pre class="line-numbers language-none"><code class="language-none">输入：l1 &#x3D; [1,2,4], l2 &#x3D; [1,3,4]
 输出：[1,1,2,3,4,4]</code></pre>
 
@@ -3387,7 +3387,7 @@ class Solution(object):
             list1.next &#x3D; self.mergeTwoLists(list1.next, list2)
         return list1 or list2</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181646979.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181646979.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181646979.png" alt="解答成功"></p>
 <h2 id="删除有序数组中的重复项"><a href="#删除有序数组中的重复项" class="headerlink" title="删除有序数组中的重复项"></a>删除有序数组中的重复项</h2><p>给你一个 <strong>升序排列</strong> 的数组 <code>nums</code> ，请你**<a href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。</p>
 <p>由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 <code>k</code> 个元素，那么 <code>nums</code> 的前 <code>k</code> 个元素应该保存最终结果。</p>
 <p>将最终结果插入 <code>nums</code> 的前 <code>k</code> 个位置后返回 <code>k</code> 。</p>
@@ -3440,7 +3440,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
         print(nums)
         return len(nums)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206115029668.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206115029668.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206115029668.png" alt="解答成功"></p>
 <p>2、单层循环（冒泡）</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeDuplicates(nums):
 
@@ -3460,7 +3460,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
             i +&#x3D; 1
     return len(nums)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206121741835.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206121741835.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206121741835.png" alt="解答成功"></p>
 <p>3、单层循环（插入）</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeDuplicates(nums):
     &quot;&quot;&quot;
@@ -3479,7 +3479,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
             i +&#x3D; 1
     return len(nums)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206122856802.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206122856802.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206122856802.png" alt="解答成功"></p>
 <p>4、双指针</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeDuplicates(self, nums):
     &quot;&quot;&quot;
@@ -3500,7 +3500,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
     nums &#x3D; nums[0:ptr1]
     return ptr1 + 1</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125030399.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125030399.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125030399.png" alt="解答成功"></p>
 <h2 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h2><p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
 <p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong>。</p>
 <p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
@@ -3551,7 +3551,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
         nums.pop(nums.index(val))
     return len(nums)</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125523055.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125523055.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206125523055.png" alt="解答成功"></p>
 <p><strong>2</strong>、<strong>双指针</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeElement(self, nums, val):
     &quot;&quot;&quot;
@@ -3568,7 +3568,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
         fast +&#x3D; 1
     return slow</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206133904066.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206133904066.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230206133904066.png" alt="解答成功"></p>
 <h2 id="最后一个单词的长度"><a href="#最后一个单词的长度" class="headerlink" title="最后一个单词的长度"></a>最后一个单词的长度</h2><p>给你一个字符串 <code>s</code>，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 <strong>最后一个</strong> 单词的长度。</p>
 <p><strong>单词</strong> 是指仅由字母组成、不包含任何空格字符的最大子字符串。</p>
 <p><strong>示例 1：</strong></p>
@@ -3611,7 +3611,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
                 break
     return rint</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170030642.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170030642.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170030642.png" alt="解答成功"></p>
 <p><strong>2、凤雏解法</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def lengthOfLastWord(self, s):
     &quot;&quot;&quot;
@@ -3620,7 +3620,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
     &quot;&quot;&quot;
     return len(s.split()[-1])</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170503876.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170503876.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207170503876.png" alt="解答成功"></p>
 <h2 id="加一"><a href="#加一" class="headerlink" title="加一"></a>加一</h2><p>给定一个由 <strong>整数</strong> 组成的 <strong>非空</strong> 数组所表示的非负整数，在该数的基础上加一。</p>
 <p>最高位数字存放在数组的首位， 数组中每个元素只存储<strong>单个</strong>数字。</p>
 <p>你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
@@ -3665,7 +3665,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
             digits[i] &#x3D; 0
     return digits</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181543869.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181543869.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181543869.png" alt="解答成功"></p>
 <h2 id="二进制求和"><a href="#二进制求和" class="headerlink" title="二进制求和"></a>二进制求和</h2><p>给你两个二进制字符串 <code>a</code> 和 <code>b</code> ，以二进制字符串的形式返回它们的和。</p>
 <p><strong>示例 1：</strong></p>
 <pre class="line-numbers language-none"><code class="language-none">输入:a &#x3D; &quot;11&quot;, b &#x3D; &quot;1&quot;
@@ -3710,7 +3710,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 
 <p>在这个程序中，我们定义了一个名为<code>binary_sum</code>的函数，它接收两个二进制字符串作为输入，并返回它们的和。在函数内部，我们首先将二进制字符串反转，以便按位处理。然后，我们遍历字符串的每一位，并计算它们的和。如果某一位的和大于2，它会产生进位，并将其加到下一位。最后，如果有进位，它会加到结果字符串的开头。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211182734349.png"></p>
 <p><strong>2、位运算</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def addBinary(self, a, b):
     &quot;&quot;&quot;
@@ -3737,7 +3737,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
     return result</code></pre>
 
 <p>这个代码采用了位运算来优化二进制相加的过程，使得复杂度更低。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211184025906.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211184025906.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211184025906.png"></p>
 <h2 id="x的平方根"><a href="#x的平方根" class="headerlink" title="x的平方根"></a>x的平方根</h2><p>给你一个非负整数 <code>x</code> ，计算并返回 <code>x</code> 的 <strong>算术平方根</strong> 。</p>
 <p>由于返回类型是整数，结果只保留 <strong>整数部分</strong> ，小数部分将被 <strong>舍去 。</strong></p>
 <p><strong>注意：</strong>不允许使用任何内置指数函数和算符，例如 <code>pow(x, 0.5)</code> 或者 <code>x ** 0.5</code> 。</p>
@@ -3766,7 +3766,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
     return int(sqrt(x))</code></pre>
 
 <p>这段代码使用 Python 的 <code>math</code> 模块中的 <code>sqrt</code> 函数计算平方根。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185256535.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185256535.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185256535.png"></p>
 <p><strong>2、二分查找</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
     &quot;&quot;&quot;
@@ -3787,7 +3787,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
     return None</code></pre>
 
 <p>这段代码实现了对平方根的二分查找。我们通过设定左右边界来确定平方根所在的范围，并通过取中间值，判断它的平方是否大于等于给定数字，来逐渐缩小搜索范围。最终，如果找到的话，返回的是平方根的整数部分。</p>
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185423200.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185423200.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211185423200.png"></p>
 <p><strong>3、牛顿迭代</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt( x):
     &quot;&quot;&quot;
@@ -3881,8 +3881,9 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
         a, b &#x3D; b, a + b
     return b</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211191238036.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211191238036.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211191238036.png"></p>
 <p><strong>3、动态规划</strong></p>
+<p>我们创建了一个数组<code>dp</code>来存储每个阶段的方案数。然后我们从第三个阶段开始循环，并使用前面两个阶段的结果来推导当前阶段的结果。最后，返回第<code>n</code>个阶段的结果即可。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def climbStairs(self, n):
     &quot;&quot;&quot;
     :type n: int
@@ -3898,7 +3899,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
         dp[i] &#x3D; dp[i - 1] + dp[i - 2]
     return dp[n]</code></pre>
 
-<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211192100282.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211192100282.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230211192100282.png"></p>
 ]]></content>
       <tags>
         <tag>未完成</tag>
@@ -6161,6 +6162,582 @@ DBMS 的主要功能
 <p>欢迎来到都江堰，一个位于中国四川省的美丽和历史悠久的城市。这个迷人的城市以其壮丽的自然风光和丰富的文化遗产而闻名，是寻求独特和难忘旅行体验的游客理想的目的地。</p>
 <p>都江堰以其古老的灌溉系统而闻名，该系统建于2000多年前，至今仍在使用。该系统被认为是古代中国最伟大的工程奇迹之一，游客可以通过沿河船游见证其美丽和功能性。除了其历史意义外，都江堰周围还环绕着壮丽的自然美景，包括茂盛的山峦、闪闪发光的河流和绿油油的森林。</p>
 <p>无论您对历史、文化还是自然有兴趣，都江堰都有适合每个人的内容。所以，来探索这个美丽的城市，沉浸在其丰富的历史和自然美中。我们保证您将带着对这个独特和迷人的目的地的新的钦佩离开都江堰。祝您旅途愉快！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>博客开发日记</title>
+    <url>//post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</url>
+    <content><![CDATA[<h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
+<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
+<li>服务端：Django</li>
+<li>数据库：MySQL 8.0</li>
+<li>前端：原生JavaScript</li>
+<li>CSS：原生CSS</li>
+</ol>
+<p>PyCharm</p>
+<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
+<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
+<ol>
+<li><p>创建 Django 模型，用于存储博客内容。</p>
+<p>在新建的app目录下，编辑models.py文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
+
+
+class Blog(models.Model):
+    title &#x3D; models.CharField(max_length&#x3D;200)
+    author &#x3D; models.CharField(max_length&#x3D;100)
+    content &#x3D; models.TextField()
+    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
+    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
+
+    # 返回模型的标题，用于在Django的后台中显示。
+    def __str__(self):
+        return self.title</code></pre>
+</li>
+<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
+<p>在 Django  app中创建一个 views.py 文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
+from django.views import View
+from .models import Blog
+
+class BlogListView(View):
+    def get(self, request):
+        blogs &#x3D; Blog.objects.all()
+        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
+
+<p> 创建模板文件，例如 blog_list.html</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
+&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+  &#123;% for blog in blogs %&#125;
+    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
+  &#123;% endfor %&#125;
+&lt;&#x2F;ul&gt;</code></pre>
+
+<p>urls.py 文件中配置 URL 与视图的映射关系</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
+from .view import BlogListView
+
+urlpatterns &#x3D; [
+    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
+]</code></pre>
+
+<p>文章详情页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
+
+<p>新建页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
+        &#123;&#123; blog.title &#125;&#125;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+<p>创建forms.py文件(app目录内)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
+from .models import Blog
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model &#x3D; Blog
+        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
+
+<p>创建文章页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
+    template_name &#x3D; &#39;create_blog.html&#39;
+
+    def get(self, request):
+        form &#x3D; BlogForm()
+        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
+
+    def post(self, request):
+        form &#x3D; BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_list&#39;)
+        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+  &#123;% csrf_token %&#125;
+  &#123;&#123; form.as_p &#125;&#125;
+  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+
+<p>文章编辑</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    if request.method &#x3D;&#x3D; &#39;POST&#39;:
+        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
+    else:
+        form &#x3D; BlogForm(instance&#x3D;blog)
+    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+    &#123;% csrf_token %&#125;
+    &#123;&#123; form.as_p &#125;&#125;
+    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+</li>
+<li><p>创建 Django URL，实现页面路由功能。</p>
+</li>
+<li><p>编写 HTML 页面，实现博客页面的设计。</p>
+</li>
+<li><p>使用 CSS 完成页面样式设计。</p>
+</li>
+<li><p>使用 JavaScript 实现前端交互功能。</p>
+</li>
+<li><p>配置数据库连接。</p>
+<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;blog.apps.BlogConfig&#39;,
+    &#39;django.db.backends.mysql&#39;
+]</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
+    &#39;default&#39;: &#123;
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;blog&#39;,
+        &#39;USER&#39;: &#39;root&#39;,
+        &#39;PASSWORD&#39;: &#39;root&#39;,
+        &#39;HOST&#39;: &#39;localhost&#39;,
+        &#39;POST&#39;: &#39;3306&#39;,
+        &#39;OPTION&#39;: &#123;
+            &#39;charset&#39;: &#39;utf8mb4&#39;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
+<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
+
+<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
+python manage.py migrate</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
+
+<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
+
+<p>如果没有安装 Django，请使用以下命令安装它：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
+
+<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
+<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
+
+ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
+
+<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
+<ol>
+<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
+<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
+<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
+<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
+</ol>
+<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
+<ol>
+<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
+<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
+<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
+<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
+</ol>
+<p>pycharm的坑</p>
+<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
+<ol>
+<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
+<li>测试博客系统，修复发现的 bug。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>算法设计与分析的常用十大方案</title>
+    <url>//post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</url>
+    <content><![CDATA[<h1 id="01背包问题（最优解问题）"><a href="#01背包问题（最优解问题）" class="headerlink" title="01背包问题（最优解问题）"></a>01背包问题（最优解问题）</h1><p>就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，<br>也就是在c之内，放最大价值的物品<br>目的是限制化重量下，求最大价值</p>
+<h2 id="蛮力法"><a href="#蛮力法" class="headerlink" title="蛮力法"></a>蛮力法</h2><p>使用蛮力法就是，遍历每一种方案，对于每一个物品都要枚举一次看看是否放入背包，最后比较每一种方案的价值<br>（遍历每一种方案）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01_force(n,w,value,weight):
+	&quot;&quot;&quot;
+	蛮力法求解
+	n ：物品数量
+	w ：背包体积
+	value ：物品价值
+	weight ：物品体积
+	return 能放入的物品最大价值
+	&quot;&quot;&quot;
+
+	# 返回值
+
+​	res &#x3D; 0
+​	
+
+# 蛮力法 遍历每一种方案，n个物品，每一个物品都有两种状态，放入或者不放入背包，所以一共有
+
+# 2**n种状态
+
+# 1 0 1
+
+# 2 10 01 00 11
+
+for i in range(2**n)：
+
+	# 方案体积
+
+​	total_weight &#x3D; 0
+
+	# 方案价值
+
+​	total_value &#x3D; 0
+
+	# 第二层循环，每一种方案下遍历每一件物品
+
+​	for j in range(n):
+
+		# 判断方案i是否选择了物品j，如果被选择，那么背包中体积与价值发生变化
+
+		# i是一个整数，j是一个0到n-1的整数
+
+		# 1&lt;&lt;j 表示1左移j位
+
+		# 位与运算，结果如果不为0，那么表示在该位上都为1，也就是j被选择了
+
+		if (i &amp; (1&lt;&lt;j)) !&#x3D; 0:
+			total_weight +&#x3D; weight[j]
+			total_value +&#x3D; value[j]
+	
+
+	# 判断，目的体积要小于背包容量
+
+	if total_weight &lt;&#x3D; w:
+
+		# 求最大价值
+
+		res &#x3D; max(res,total_value)
+return res</code></pre>
+
+<p>“””<br>当i&#x3D;&#x3D;0时，代表没有选择物品</p>
+<p>i&#x3D;&#x3D;1,第一种方案，j&#x3D;&#x3D;0，第一个物品 1&lt;&lt;0 &#x3D; 1 1 &amp; 1 &#x3D;1 代表在第i&#x3D;&#x3D;1种方案下，第j&#x3D;&#x3D;0（第一个物品）<br>被放进背包。<br>j &#x3D;&#x3D; 1 表示第二个物品 1 &lt;&lt; 1 &#x3D; 10 1 &amp; 10 &#x3D; 0 没有被选择<br>j &#x3D;&#x3D; 2,3,4…n-1</p>
+<p>i &#x3D;&#x3D; 2 j&#x3D;&#x3D;0,1,2,,3…n-1</p>
+<p>O(n) &#x3D; n * 2 **n<br>“””</p>
+<h2 id="减治法"><a href="#减治法" class="headerlink" title="减治法"></a>减治法</h2><p>把一个大问题分解成几个小问题，递归求解子问题，合并子问题的解得到大问题的解（缩小问题规模）</p>
+<p>第i个物品价值:value[i] 体积:weight[i],背包容量C</p>
+<p>第i个物品，要么选，要么不选</p>
+<p>1、前n-1个物品选择中，容量 C-weight[n] 选n</p>
+<p>2、前n-1个物品选择中，容量 C 不选n</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,n,c):
+	# 背包容量为0或者物品数量为0,递归出口
+	if c &#x3D;&#x3D; 0 or n &#x3D;&#x3D; 0
+		return 0
+	if weight[n-1] &gt; c:
+		return bag01(weight,value,n-1,c)
+		
+
+return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))</code></pre>
+
+<h3 id="循环-动态规划"><a href="#循环-动态规划" class="headerlink" title="循环(动态规划)"></a>循环(动态规划)</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	# 保存最终结果，c+1（存储了0-c的所有结果）
+	dp &#x3D; [0] * (c + 1)
+	# 第一层循环，遍历物品
+	for i in range(n):
+		# 倒序遍历
+		# 枚举第i物品，容量从c开始，枚举容量从大到小
+		for j in range(c,weight[i] -1,-1):
+			# 当前容量为j时，选或者不选第i个物品，取最大值，来确定这个物品是否放入背包
+			# 如果加入，dp[j] &#x3D;&#x3D; dp[j - w[i]] + v[i]
+			# 不加入，dp[j]
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i]] + value[i])
+	return dp[c]</code></pre>
+
+
+
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法是把一个问题分解成子问题，再把子问题分解成更小的问题，直到子问题容易解决就把解合并。（分解问题）</p>
+<p>n个物品，重量w1,w2,w3。。。wn。价值v1,v2…vn</p>
+<p>容量为c，c-weight[i] &gt; 0</p>
+<p>max(value)</p>
+<p>把物品分成两组，考虑每一组是否被选择。</p>
+<pre class="line-numbers language-none"><code class="language-none">#递归
+def bag01(n,c,weight,value):
+	# 物品数量为0或者背包容量为0
+	if n&#x3D;&#x3D;0 or c &#x3D;&#x3D; 0:
+		return 0
+	# 物品不能放入背包
+	if weight[n-1] &gt; c:
+		# 不考虑当前物品
+		return bag01(n-1,c,weight,value)
+	else:
+		# 递归解决剩下问题，（放和不放，最大值）
+		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1.c.weight,value))</code></pre>
+
+
+
+<h3 id="迭代（循环模拟递归，需要用变量来保存中间状态）"><a href="#迭代（循环模拟递归，需要用变量来保存中间状态）" class="headerlink" title="迭代（循环模拟递归，需要用变量来保存中间状态）"></a>迭代（循环模拟递归，需要用变量来保存中间状态）</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	dp &#x3D; [0] * (c+1)
+	for i in range(1,n+1):
+		for j in range(c,weight[i-1] -1,-1):
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i-1]]+value[i-1])
+	return dp[c]</code></pre>
+
+<p>​	</p>
+<p>分治法重点是把物品不断的切割，分别考虑每组物品是否被选择</p>
+<p>减治法重点不断缩减背包容量，利用放入或者不放入物品</p>
+<h2 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h2><p>对问题进行变形，将问题转换成简单的问题</p>
+<p>例如：减小问题规模n —— n&#x2F;2</p>
+<p>背包容量从小到大排序，利用分治法把大问题分解为小问题，然后减治法把子问题合并起来</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="时空权衡（基于计算机）"><a href="#时空权衡（基于计算机）" class="headerlink" title="时空权衡（基于计算机）"></a>时空权衡（基于计算机）</h2><p>如果想要时间效率最优，可以用动态规划，如果想要空间占用少，可以使用贪心或者滚动数组（将多余空间删去）</p>
+<p>滚动数组（模2）</p>
+<p>占用空间较小</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	f &#x3D; [[0 for j in range(c+1)] for i in range(2)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# i物品数 j容积
+			# 第i个物品不进背包的情况(% 取余)
+			f[i % 2][j] &#x3D; f[(i-1) % 2][j]
+			# 第i个物品不能放
+			if j &gt;&#x3D; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i % 2][j] &#x3D; f[（i-1） % 2][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i % 2][j] &#x3D; max(f[i % 2][j],f[（i-1） % 2][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="动态规划（解决最优解问题的方法）"><a href="#动态规划（解决最优解问题的方法）" class="headerlink" title="动态规划（解决最优解问题的方法）"></a>动态规划（解决最优解问题的方法）</h2><p>一种求解多阶段决策问题的方法，一种面向最优化的递归计算技巧</p>
+<p>用于求解分段函数的最值。它通过以一定顺序对复杂问题进行分解，以避免重复的计算。</p>
+<p>并以类似递推的方式，通过对更小的子问题的解的组合得到原问题的解。</p>
+<p>1、分解问题，对于分解之后的若干子问题·，定义一个状态。通过状态转移方程，将子问题的解转化成原问题的解</p>
+<p>对于每一个物品i，枚举它的体积j，计算f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-w[i]]+v[i])，</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="贪心（最优解问题）并不总能得到全局最优解"><a href="#贪心（最优解问题）并不总能得到全局最优解" class="headerlink" title="贪心（最优解问题）并不总能得到全局最优解"></a>贪心（最优解问题）并不总能得到全局最优解</h2><p>n件物品放入容量为c的背包中，（可不全部放入）使得背包中物品价值最大。</p>
+<p>较好的近似解</p>
+<p>问题分解，求每一个小问题的最优解。</p>
+<p>1、单位重量价值最大的物品先放，直到背包无法再放。（贪心选择性质）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 物品的单位重量价值
+	meimei &#x3D; [value[i]&#x2F;weight[i] for i in range(n)]
+	# 排序（逆序，从大到小的顺序）按照价值重量比排序后的物品索引数组
+	meimei &#x3D; sorted(range(n),key&#x3D;lambda i: meimei[i],reverse&#x3D;True)
+	total_value &#x3D; 0
+	# 是否放入背包的数组
+	bag &#x3D; [0] * n
+	for i in meimei:
+		if weight[i] &lt;&#x3D; c:
+			bag[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+			c -&#x3D; weight[i]
+		else:
+			# 计算部分放入背包
+			bag[i] &#x3D; c&#x2F;weight[i]
+			total_value +&#x3D; value[i] * (c&#x2F;weight[i])
+			break
+	return total_value,bag</code></pre>
+
+
+
+<h2 id="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"><a href="#迭代改进（优化算法）并不总能得到全局最优解，较好的近似解" class="headerlink" title="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"></a>迭代改进（优化算法）并不总能得到全局最优解，较好的近似解</h2><p>基本思想：每一次迭代中，根据当前解，确定一个方向，并且在方向上的解有所改进。</p>
+<p>具体步骤：</p>
+<p>1、初始化解，将解初始化为一个可行解。（全放和全不放）</p>
+<p>2、迭代改进，每一次迭代中，选择一个方向，感觉该方向的优化目标，生成一个新解，并比较当前解。</p>
+<p>3、判断终止条件，判断解是否满足问题要求</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 初始化解
+	select_items &#x3D; [0] * n
+	total_value &#x3D; 0
+	
+
+while c &gt;0:
+
+	# 计算性价比,并按照性价比从大到小排序
+
+	ratios &#x3D; [(value[i] &#x2F; weight[i],i) for i in range(n)]
+	ratios.sort(reverse&#x3D;True)
+	
+
+	# 尝试放入物品
+
+	for ratio,i in ratios:
+		if weight[i] &lt;&#x3D; c:
+			c -&#x3D; weight[i]
+			select_items[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+	
+
+	# 判断终止条件
+
+	if all(select_items):
+		break
+return total_value,select_items</code></pre>
+
+
+
+
+<h2 id="回溯与分支界限"><a href="#回溯与分支界限" class="headerlink" title="回溯与分支界限"></a>回溯与分支界限</h2><p>回溯（全局搜索）逐步构造方案来找到所有解</p>
+<p>首先选择一个决策，直到找到最终的解或者无法前进，无法前进返回上一层，继续下一个决策。</p>
+<p>关键：剪枝（避免重复）</p>
+<p>分支界限（局部搜索找到最优解）逐步将空间缩小来找到问题的最优解。</p>
+<p>根据规则生成一组候选解，对这组解评估，选出一个最优解，再根据最优解生成下一组，知道找到最终解</p>
+<p>关键：剪枝（避免重复）</p>
+<p>01背包中，回溯法：可以用于找到所有可能的解。分支界限：用于找到最优的解。</p>
+<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(c,n,weight,value):
+	def back(i,c_weight,c_value):
+		&#39;&#39;&#39;
+		i : 第i件物品
+		c_weight：当前背包重量
+		c_value：当前背包价值
+		&#39;&#39;&#39;
+		nonlocal max_value
+		if c_weight &gt; c:
+			return
+		if c_value &gt; max_value:
+			max_value &#x3D; c_value
+		if i &#x3D;&#x3D; n:
+			return
+		# 不选第i件物品
+		back(i+1,c_weight,c_value)
+		# 选第i件物品
+		back(i+1,c_weight+weight[i],c_value+value[i])
+	max_value &#x3D; 0
+	back(0,0,0)
+	return max_value</code></pre>
+
+<p>​	</p>
+<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bag01(c,n,weight,value)：
+
+	# 创建一个节点类，保存当前状态和状态的价值上界。
+
+	class Node:
+		def __init__(self,level,value,weight):
+
+			# level表示当前节点的深度
+
+			self.level &#x3D; level
+			self.value &#x3D; value
+			self.weight &#x3D; weight
+
+		# 定义对象之间的＜比较。
+
+		def __lt__(self,other):
+			return self.value &gt; other.value
+
+	# 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空
+
+	nodes &#x3D; [Node(0,0,0)]
+	max_value &#x3D; 0
+	while nodes:
+		node &#x3D; nodes.pop(0)
+
+		# 代表选完了所有的节点
+
+		if node.level &#x3D;&#x3D; n:
+			if node_value &gt; max_value:
+				max_value &#x3D; node_value
+			continue
+		
+
+	# bound 存储计算得到的价值上界
+
+	bound &#x3D; node_value
+
+	# 不选第i件物品
+
+	for j in range(node.level,n):
+
+		# 装不下
+
+		if node.weight + weight[j] &gt; c:
+
+			# 取物品的部分
+
+			bound +&#x3D; (c - node.weight) &#x2F; weight[j] * value[j]
+			break
+		bound +&#x3D; value[j]
+
+	# 价值上界大于已知的最大价值
+
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,node.value,node.weight))
+	
+
+	# 选第i件物品
+
+	bound &#x3D; node.value + value[node.level]
+	weight &#x3D; node.weight + weight[node.level]
+	if weight &lt;&#x3D; c and bound &gt; max_value:
+		max_value &#x3D; bound
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,bound,weight))
+return max_value</code></pre>
+
 ]]></content>
   </entry>
 </search>

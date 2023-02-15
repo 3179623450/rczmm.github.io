@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档 | 小小世界</title>
+  <title>博客开发日记 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -590,281 +590,784 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-13.png')">
-  <div class="archive-header-title">
-    全部文章
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-  <span class="title" id="archive-header-desc"></span>
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        博客开发日记
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-02-14 | 作者：rczmm
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 1.7k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 8分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
+<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
+<li>服务端：Django</li>
+<li>数据库：MySQL 8.0</li>
+<li>前端：原生JavaScript</li>
+<li>CSS：原生CSS</li>
+</ol>
+<p>PyCharm</p>
+<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
+<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
+<ol>
+<li><p>创建 Django 模型，用于存储博客内容。</p>
+<p>在新建的app目录下，编辑models.py文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
+
+
+class Blog(models.Model):
+    title &#x3D; models.CharField(max_length&#x3D;200)
+    author &#x3D; models.CharField(max_length&#x3D;100)
+    content &#x3D; models.TextField()
+    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
+    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
+
+    # 返回模型的标题，用于在Django的后台中显示。
+    def __str__(self):
+        return self.title</code></pre>
+</li>
+<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
+<p>在 Django  app中创建一个 views.py 文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
+from django.views import View
+from .models import Blog
+
+class BlogListView(View):
+    def get(self, request):
+        blogs &#x3D; Blog.objects.all()
+        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
+
+<p> 创建模板文件，例如 blog_list.html</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
+&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+  &#123;% for blog in blogs %&#125;
+    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
+  &#123;% endfor %&#125;
+&lt;&#x2F;ul&gt;</code></pre>
+
+<p>urls.py 文件中配置 URL 与视图的映射关系</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
+from .view import BlogListView
+
+urlpatterns &#x3D; [
+    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
+]</code></pre>
+
+<p>文章详情页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
+
+<p>新建页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
+        &#123;&#123; blog.title &#125;&#125;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+<p>创建forms.py文件(app目录内)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
+from .models import Blog
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model &#x3D; Blog
+        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
+
+<p>创建文章页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
+    template_name &#x3D; &#39;create_blog.html&#39;
+
+    def get(self, request):
+        form &#x3D; BlogForm()
+        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
+
+    def post(self, request):
+        form &#x3D; BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_list&#39;)
+        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+  &#123;% csrf_token %&#125;
+  &#123;&#123; form.as_p &#125;&#125;
+  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+
+<p>文章编辑</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    if request.method &#x3D;&#x3D; &#39;POST&#39;:
+        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
+    else:
+        form &#x3D; BlogForm(instance&#x3D;blog)
+    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+    &#123;% csrf_token %&#125;
+    &#123;&#123; form.as_p &#125;&#125;
+    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+</li>
+<li><p>创建 Django URL，实现页面路由功能。</p>
+</li>
+<li><p>编写 HTML 页面，实现博客页面的设计。</p>
+</li>
+<li><p>使用 CSS 完成页面样式设计。</p>
+</li>
+<li><p>使用 JavaScript 实现前端交互功能。</p>
+</li>
+<li><p>配置数据库连接。</p>
+<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;blog.apps.BlogConfig&#39;,
+    &#39;django.db.backends.mysql&#39;
+]</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
+    &#39;default&#39;: &#123;
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;blog&#39;,
+        &#39;USER&#39;: &#39;root&#39;,
+        &#39;PASSWORD&#39;: &#39;root&#39;,
+        &#39;HOST&#39;: &#39;localhost&#39;,
+        &#39;POST&#39;: &#39;3306&#39;,
+        &#39;OPTION&#39;: &#123;
+            &#39;charset&#39;: &#39;utf8mb4&#39;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
+<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
+
+<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
+python manage.py migrate</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
+
+<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
+
+<p>如果没有安装 Django，请使用以下命令安装它：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
+
+<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
+<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
+
+ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
+
+<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
+<ol>
+<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
+<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
+<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
+<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
+</ol>
+<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
+<ol>
+<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
+<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
+<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
+<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
+</ol>
+<p>pycharm的坑</p>
+<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
+<ol>
+<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
+<li>测试博客系统，修复发现的 bug。</li>
+</ol>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-23.png" alt="">
+    </div>
+    <a href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">算法设计与分析的常用十大方案</div>
+      </div>
+      
+      <!-- <div class="content">
+        01背包问题（最优解问题）就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，也就
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" src="" alt="">
+    </div>
+    <a href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">算法笔记</div>
+      </div>
+      <!-- <div class="content">
+        算法笔记动态规划动态规划是一种解决最优化问题的方法。它的基本思路是通过把原问题分成若干个相对简单的子问题来解决。程序通过
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    全部文章
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2023">2023</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-23.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-15</span>
-              </div>
-              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html">算法设计与分析的常用十大方案</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-14</span>
-              </div>
-              <a class="post-title" href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html">博客开发日记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-05</span>
-              </div>
-              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html">算法笔记</a>
-            </div>
-          </li>
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子7.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-29</span>
-              </div>
-              <a class="post-title" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html">数据库原理与应用</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/Sql%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-25</span>
-              </div>
-              <a class="post-title" href="/post/Sql%E7%AC%94%E8%AE%B0.html">Sql笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-18.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-24</span>
-              </div>
-              <a class="post-title" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html">数据库恢复与安全性</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-21</span>
-              </div>
-              <a class="post-title" href="/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html">变治法</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-10</span>
-              </div>
-              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html">计算机系统-信息的表示与处理</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-09</span>
-              </div>
-              <a class="post-title" href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html">Oracle19C+PLSQL安装和配置详细教程</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">10-27</span>
-              </div>
-              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html">计算机算术</a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">下一页</a>
-  </nav> -->
-  <div class="page-nav">
-    
-    <div class="page-info">
-        <div class="page-info-text">1 / 4</div>
-    </div>
-    
-      <a href="/archives/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>

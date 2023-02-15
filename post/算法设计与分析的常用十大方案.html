@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>归档 | 小小世界</title>
+  <title>算法设计与分析的常用十大方案 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -590,281 +590,897 @@
     
 </header>
         <!-- 内容区域 -->
-        <div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-archive" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-<div class="archive-header" style="background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-13.png')">
-  <div class="archive-header-title">
-    全部文章
-  </div>
-  <div class="archive-header-desc">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-  <span class="title" id="archive-header-desc"></span>
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-23.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        算法设计与分析的常用十大方案
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-02-15 | 作者：rczmm
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 3k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 13分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content row justify-position" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="01背包问题（最优解问题）"><a href="#01背包问题（最优解问题）" class="headerlink" title="01背包问题（最优解问题）"></a>01背包问题（最优解问题）</h1><p>就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，<br>也就是在c之内，放最大价值的物品<br>目的是限制化重量下，求最大价值</p>
+<h2 id="蛮力法"><a href="#蛮力法" class="headerlink" title="蛮力法"></a>蛮力法</h2><p>使用蛮力法就是，遍历每一种方案，对于每一个物品都要枚举一次看看是否放入背包，最后比较每一种方案的价值<br>（遍历每一种方案）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01_force(n,w,value,weight):
+	&quot;&quot;&quot;
+	蛮力法求解
+	n ：物品数量
+	w ：背包体积
+	value ：物品价值
+	weight ：物品体积
+	return 能放入的物品最大价值
+	&quot;&quot;&quot;
+
+	# 返回值
+
+​	res &#x3D; 0
+​	
+
+# 蛮力法 遍历每一种方案，n个物品，每一个物品都有两种状态，放入或者不放入背包，所以一共有
+
+# 2**n种状态
+
+# 1 0 1
+
+# 2 10 01 00 11
+
+for i in range(2**n)：
+
+	# 方案体积
+
+​	total_weight &#x3D; 0
+
+	# 方案价值
+
+​	total_value &#x3D; 0
+
+	# 第二层循环，每一种方案下遍历每一件物品
+
+​	for j in range(n):
+
+		# 判断方案i是否选择了物品j，如果被选择，那么背包中体积与价值发生变化
+
+		# i是一个整数，j是一个0到n-1的整数
+
+		# 1&lt;&lt;j 表示1左移j位
+
+		# 位与运算，结果如果不为0，那么表示在该位上都为1，也就是j被选择了
+
+		if (i &amp; (1&lt;&lt;j)) !&#x3D; 0:
+			total_weight +&#x3D; weight[j]
+			total_value +&#x3D; value[j]
+	
+
+	# 判断，目的体积要小于背包容量
+
+	if total_weight &lt;&#x3D; w:
+
+		# 求最大价值
+
+		res &#x3D; max(res,total_value)
+return res</code></pre>
+
+<p>“””<br>当i&#x3D;&#x3D;0时，代表没有选择物品</p>
+<p>i&#x3D;&#x3D;1,第一种方案，j&#x3D;&#x3D;0，第一个物品 1&lt;&lt;0 &#x3D; 1 1 &amp; 1 &#x3D;1 代表在第i&#x3D;&#x3D;1种方案下，第j&#x3D;&#x3D;0（第一个物品）<br>被放进背包。<br>j &#x3D;&#x3D; 1 表示第二个物品 1 &lt;&lt; 1 &#x3D; 10 1 &amp; 10 &#x3D; 0 没有被选择<br>j &#x3D;&#x3D; 2,3,4…n-1</p>
+<p>i &#x3D;&#x3D; 2 j&#x3D;&#x3D;0,1,2,,3…n-1</p>
+<p>O(n) &#x3D; n * 2 **n<br>“””</p>
+<h2 id="减治法"><a href="#减治法" class="headerlink" title="减治法"></a>减治法</h2><p>把一个大问题分解成几个小问题，递归求解子问题，合并子问题的解得到大问题的解（缩小问题规模）</p>
+<p>第i个物品价值:value[i] 体积:weight[i],背包容量C</p>
+<p>第i个物品，要么选，要么不选</p>
+<p>1、前n-1个物品选择中，容量 C-weight[n] 选n</p>
+<p>2、前n-1个物品选择中，容量 C 不选n</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,n,c):
+	# 背包容量为0或者物品数量为0,递归出口
+	if c &#x3D;&#x3D; 0 or n &#x3D;&#x3D; 0
+		return 0
+	if weight[n-1] &gt; c:
+		return bag01(weight,value,n-1,c)
+		
+
+return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))</code></pre>
+
+<h3 id="循环-动态规划"><a href="#循环-动态规划" class="headerlink" title="循环(动态规划)"></a>循环(动态规划)</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	# 保存最终结果，c+1（存储了0-c的所有结果）
+	dp &#x3D; [0] * (c + 1)
+	# 第一层循环，遍历物品
+	for i in range(n):
+		# 倒序遍历
+		# 枚举第i物品，容量从c开始，枚举容量从大到小
+		for j in range(c,weight[i] -1,-1):
+			# 当前容量为j时，选或者不选第i个物品，取最大值，来确定这个物品是否放入背包
+			# 如果加入，dp[j] &#x3D;&#x3D; dp[j - w[i]] + v[i]
+			# 不加入，dp[j]
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i]] + value[i])
+	return dp[c]</code></pre>
+
+
+
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法是把一个问题分解成子问题，再把子问题分解成更小的问题，直到子问题容易解决就把解合并。（分解问题）</p>
+<p>n个物品，重量w1,w2,w3。。。wn。价值v1,v2…vn</p>
+<p>容量为c，c-weight[i] &gt; 0</p>
+<p>max(value)</p>
+<p>把物品分成两组，考虑每一组是否被选择。</p>
+<pre class="line-numbers language-none"><code class="language-none">#递归
+def bag01(n,c,weight,value):
+	# 物品数量为0或者背包容量为0
+	if n&#x3D;&#x3D;0 or c &#x3D;&#x3D; 0:
+		return 0
+	# 物品不能放入背包
+	if weight[n-1] &gt; c:
+		# 不考虑当前物品
+		return bag01(n-1,c,weight,value)
+	else:
+		# 递归解决剩下问题，（放和不放，最大值）
+		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1.c.weight,value))</code></pre>
+
+
+
+<h3 id="迭代（循环模拟递归，需要用变量来保存中间状态）"><a href="#迭代（循环模拟递归，需要用变量来保存中间状态）" class="headerlink" title="迭代（循环模拟递归，需要用变量来保存中间状态）"></a>迭代（循环模拟递归，需要用变量来保存中间状态）</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	dp &#x3D; [0] * (c+1)
+	for i in range(1,n+1):
+		for j in range(c,weight[i-1] -1,-1):
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i-1]]+value[i-1])
+	return dp[c]</code></pre>
+
+<p>​	</p>
+<p>分治法重点是把物品不断的切割，分别考虑每组物品是否被选择</p>
+<p>减治法重点不断缩减背包容量，利用放入或者不放入物品</p>
+<h2 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h2><p>对问题进行变形，将问题转换成简单的问题</p>
+<p>例如：减小问题规模n —— n&#x2F;2</p>
+<p>背包容量从小到大排序，利用分治法把大问题分解为小问题，然后减治法把子问题合并起来</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="时空权衡（基于计算机）"><a href="#时空权衡（基于计算机）" class="headerlink" title="时空权衡（基于计算机）"></a>时空权衡（基于计算机）</h2><p>如果想要时间效率最优，可以用动态规划，如果想要空间占用少，可以使用贪心或者滚动数组（将多余空间删去）</p>
+<p>滚动数组（模2）</p>
+<p>占用空间较小</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	f &#x3D; [[0 for j in range(c+1)] for i in range(2)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# i物品数 j容积
+			# 第i个物品不进背包的情况(% 取余)
+			f[i % 2][j] &#x3D; f[(i-1) % 2][j]
+			# 第i个物品不能放
+			if j &gt;&#x3D; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i % 2][j] &#x3D; f[（i-1） % 2][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i % 2][j] &#x3D; max(f[i % 2][j],f[（i-1） % 2][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="动态规划（解决最优解问题的方法）"><a href="#动态规划（解决最优解问题的方法）" class="headerlink" title="动态规划（解决最优解问题的方法）"></a>动态规划（解决最优解问题的方法）</h2><p>一种求解多阶段决策问题的方法，一种面向最优化的递归计算技巧</p>
+<p>用于求解分段函数的最值。它通过以一定顺序对复杂问题进行分解，以避免重复的计算。</p>
+<p>并以类似递推的方式，通过对更小的子问题的解的组合得到原问题的解。</p>
+<p>1、分解问题，对于分解之后的若干子问题·，定义一个状态。通过状态转移方程，将子问题的解转化成原问题的解</p>
+<p>对于每一个物品i，枚举它的体积j，计算f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-w[i]]+v[i])，</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="贪心（最优解问题）并不总能得到全局最优解"><a href="#贪心（最优解问题）并不总能得到全局最优解" class="headerlink" title="贪心（最优解问题）并不总能得到全局最优解"></a>贪心（最优解问题）并不总能得到全局最优解</h2><p>n件物品放入容量为c的背包中，（可不全部放入）使得背包中物品价值最大。</p>
+<p>较好的近似解</p>
+<p>问题分解，求每一个小问题的最优解。</p>
+<p>1、单位重量价值最大的物品先放，直到背包无法再放。（贪心选择性质）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 物品的单位重量价值
+	meimei &#x3D; [value[i]&#x2F;weight[i] for i in range(n)]
+	# 排序（逆序，从大到小的顺序）按照价值重量比排序后的物品索引数组
+	meimei &#x3D; sorted(range(n),key&#x3D;lambda i: meimei[i],reverse&#x3D;True)
+	total_value &#x3D; 0
+	# 是否放入背包的数组
+	bag &#x3D; [0] * n
+	for i in meimei:
+		if weight[i] &lt;&#x3D; c:
+			bag[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+			c -&#x3D; weight[i]
+		else:
+			# 计算部分放入背包
+			bag[i] &#x3D; c&#x2F;weight[i]
+			total_value +&#x3D; value[i] * (c&#x2F;weight[i])
+			break
+	return total_value,bag</code></pre>
+
+
+
+<h2 id="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"><a href="#迭代改进（优化算法）并不总能得到全局最优解，较好的近似解" class="headerlink" title="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"></a>迭代改进（优化算法）并不总能得到全局最优解，较好的近似解</h2><p>基本思想：每一次迭代中，根据当前解，确定一个方向，并且在方向上的解有所改进。</p>
+<p>具体步骤：</p>
+<p>1、初始化解，将解初始化为一个可行解。（全放和全不放）</p>
+<p>2、迭代改进，每一次迭代中，选择一个方向，感觉该方向的优化目标，生成一个新解，并比较当前解。</p>
+<p>3、判断终止条件，判断解是否满足问题要求</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 初始化解
+	select_items &#x3D; [0] * n
+	total_value &#x3D; 0
+	
+
+while c &gt;0:
+
+	# 计算性价比,并按照性价比从大到小排序
+
+	ratios &#x3D; [(value[i] &#x2F; weight[i],i) for i in range(n)]
+	ratios.sort(reverse&#x3D;True)
+	
+
+	# 尝试放入物品
+
+	for ratio,i in ratios:
+		if weight[i] &lt;&#x3D; c:
+			c -&#x3D; weight[i]
+			select_items[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+	
+
+	# 判断终止条件
+
+	if all(select_items):
+		break
+return total_value,select_items</code></pre>
+
+
+
+
+<h2 id="回溯与分支界限"><a href="#回溯与分支界限" class="headerlink" title="回溯与分支界限"></a>回溯与分支界限</h2><p>回溯（全局搜索）逐步构造方案来找到所有解</p>
+<p>首先选择一个决策，直到找到最终的解或者无法前进，无法前进返回上一层，继续下一个决策。</p>
+<p>关键：剪枝（避免重复）</p>
+<p>分支界限（局部搜索找到最优解）逐步将空间缩小来找到问题的最优解。</p>
+<p>根据规则生成一组候选解，对这组解评估，选出一个最优解，再根据最优解生成下一组，知道找到最终解</p>
+<p>关键：剪枝（避免重复）</p>
+<p>01背包中，回溯法：可以用于找到所有可能的解。分支界限：用于找到最优的解。</p>
+<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(c,n,weight,value):
+	def back(i,c_weight,c_value):
+		&#39;&#39;&#39;
+		i : 第i件物品
+		c_weight：当前背包重量
+		c_value：当前背包价值
+		&#39;&#39;&#39;
+		nonlocal max_value
+		if c_weight &gt; c:
+			return
+		if c_value &gt; max_value:
+			max_value &#x3D; c_value
+		if i &#x3D;&#x3D; n:
+			return
+		# 不选第i件物品
+		back(i+1,c_weight,c_value)
+		# 选第i件物品
+		back(i+1,c_weight+weight[i],c_value+value[i])
+	max_value &#x3D; 0
+	back(0,0,0)
+	return max_value</code></pre>
+
+<p>​	</p>
+<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bag01(c,n,weight,value)：
+
+	# 创建一个节点类，保存当前状态和状态的价值上界。
+
+	class Node:
+		def __init__(self,level,value,weight):
+
+			# level表示当前节点的深度
+
+			self.level &#x3D; level
+			self.value &#x3D; value
+			self.weight &#x3D; weight
+
+		# 定义对象之间的＜比较。
+
+		def __lt__(self,other):
+			return self.value &gt; other.value
+
+	# 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空
+
+	nodes &#x3D; [Node(0,0,0)]
+	max_value &#x3D; 0
+	while nodes:
+		node &#x3D; nodes.pop(0)
+
+		# 代表选完了所有的节点
+
+		if node.level &#x3D;&#x3D; n:
+			if node_value &gt; max_value:
+				max_value &#x3D; node_value
+			continue
+		
+
+	# bound 存储计算得到的价值上界
+
+	bound &#x3D; node_value
+
+	# 不选第i件物品
+
+	for j in range(node.level,n):
+
+		# 装不下
+
+		if node.weight + weight[j] &gt; c:
+
+			# 取物品的部分
+
+			bound +&#x3D; (c - node.weight) &#x2F; weight[j] * value[j]
+			break
+		bound +&#x3D; value[j]
+
+	# 价值上界大于已知的最大价值
+
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,node.value,node.weight))
+	
+
+	# 选第i件物品
+
+	bound &#x3D; node.value + value[node.level]
+	weight &#x3D; node.weight + weight[node.level]
+	if weight &lt;&#x3D; c and bound &gt; max_value:
+		max_value &#x3D; bound
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,bound,weight))
+return max_value</code></pre>
+
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" src="" alt="">
+    </div>
+    <a href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">博客开发日记</div>
+      </div>
+      <!-- <div class="content">
+        播客开发日记前言闲的没事干，用一下Django练练手。记录一下。
+项目环境
+服务端：Django
+数据库：MySQL 8
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          赏点钱，帮我买条秋裤！
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatpay.png" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/wechatQR.png" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span>
+        
+          <div class="toc-open-close">本文目录</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+
+
+<script>
+  function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin-left': 'auto', 'margin-right': 'auto',});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })
+  
+</script>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
   <script>
-  function typedFn() {
-    const el = '#archive-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
-</script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
   
-  </div>
-  <div class="mask-box"></div>
-</div>
-
-<div class="archive-video">
-  <video class="full-video" autoplay loop muted>
-      <source style="width: 100%;height: 100vh;" src="/">
-  </video>
-  <div class="video-header-title">
-    全部文章
-  </div>
-  <div class="video-header-desc">
-  
-      <span class="title" id="archive-video-header-desc"></span>
-      <script>
-  function typedFn() {
-    const el = '#archive-video-header-desc';
-    const type = 'archive';
-    let desc = '对于自己，我们应当保持沉默'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
 </script>
-      
-  </div>
-  <div class="mask-box"></div>
-</div>
 
-<!-- hash算法 -->
-
-
-<div class="archive-main">
-  <section class="archive">
-    <div class="archive-content">
-      <ul class="post-archive">
-        
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2023">2023</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-23.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-15</span>
-              </div>
-              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html">算法设计与分析的常用十大方案</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-14</span>
-              </div>
-              <a class="post-title" href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html">博客开发日记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子4.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">02-05</span>
-              </div>
-              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html">算法笔记</a>
-            </div>
-          </li>
-        
-          
-            
-            <div class="year" data-aos="zoom-in-up">
-                <div class="bullet"></div>
-                <a href="/archives/2022">2022</a>
-            </div>
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子7.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-29</span>
-              </div>
-              <a class="post-title" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html">数据库原理与应用</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/Sql%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-25</span>
-              </div>
-              <a class="post-title" href="/post/Sql%E7%AC%94%E8%AE%B0.html">Sql笔记</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-18.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-24</span>
-              </div>
-              <a class="post-title" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html">数据库恢复与安全性</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-21</span>
-              </div>
-              <a class="post-title" href="/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html">变治法</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-11.png" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-10</span>
-              </div>
-              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html">计算机系统-信息的表示与处理</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">11-09</span>
-              </div>
-              <a class="post-title" href="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html">Oracle19C+PLSQL安装和配置详细教程</a>
-            </div>
-          </li>
-        
-          
-          <li class="post-item" data-aos="fade-left">
-            
-            <div class="post-img-box">
-              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload" src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA.jpg" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                <span class="post-date">10-27</span>
-              </div>
-              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html">计算机算术</a>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </section>
-  <div class="w-70">
-    
-  <!-- <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">下一页</a>
-  </nav> -->
-  <div class="page-nav">
-    
-    <div class="page-info">
-        <div class="page-info-text">1 / 4</div>
-    </div>
-    
-      <a href="/archives/page/2/"
-         class="page-nav-next">
-          <span class="mr-5">下一页</span><i class="fas fa-angle-right"></i>
-      </a>
-      
-  </div>
-
-  </div>
-</div>
 
       </main>
     </div>
