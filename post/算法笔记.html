@@ -642,11 +642,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 7.2k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 7.4k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 34分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 35分钟 |
           </span>
   
           
@@ -1853,6 +1853,70 @@ def inorder(self, node, res):
     return res</code></pre>
 
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217032346600.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217032346600.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h2 id="相同的树"><a href="#相同的树" class="headerlink" title="相同的树"></a>相同的树</h2><p>给你两棵二叉树的根节点 <code>p</code> 和 <code>q</code> ，编写一个函数来检验这两棵树是否相同。</p>
+<p>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：p &#x3D; [1,2,3], q &#x3D; [1,2,3]
+输出：true</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：p &#x3D; [1,2], q &#x3D; [1,null,2]
+输出：false</code></pre>
+
+<p><strong>示例 3：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：p &#x3D; [1,2,1], q &#x3D; [1,1,2]
+输出：false</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>两棵树上的节点数目都在范围 <code>[0, 100]</code> 内</li>
+<li><code>-104 &lt;= Node.val &lt;= 104</code></li>
+</ul>
+<p>Related Topics</p>
+<p>树</p>
+<p>深度优先搜索</p>
+<p>广度优先搜索</p>
+<p>二叉树</p>
+<h2 id="解答-16"><a href="#解答-16" class="headerlink" title="解答"></a>解答</h2><p>1、DFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSameTree(self, p, q):
+    &quot;&quot;&quot;
+    :type p: TreeNode
+    :type q: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    if not p and not q:
+        return True
+    if not p or not q:
+        return False
+    if p.val !&#x3D; q.val:
+        return False
+    return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035430184.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035430184.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>2、BFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSameTree(self, p, q):
+    &quot;&quot;&quot;
+    :type p: TreeNode
+    :type q: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    queue &#x3D; [(p, q)]
+    while queue:
+        node1, node2 &#x3D; queue.pop(0)
+        if not node1 and not node2:
+            continue
+        if not node1 or not node2 or node1.val !&#x3D; node2.val:
+            return False
+        queue.append((node1.left, node2.left))
+        queue.append((node1.right, node2.right))
+    return True</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035948029.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035948029.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
       </div>
       <div class="post-tags-categories">
