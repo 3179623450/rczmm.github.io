@@ -17,7 +17,12 @@
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
   <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
-  
+  <!--数学渲染-->
+  <script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
   
   
   
@@ -651,11 +656,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 5.4k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 6.2k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 18分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 22分钟 |
           </span>
   
           
@@ -774,6 +779,8 @@
 <p>那么？新的问题来了，能否根据它得出体重的增长率呐？</p>
 <h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><p>关于导数，首先应该区分开一个概念。</p>
 <p>那就是可导与可微，前者表示的是变化率的极限，而后者表示的是局部线性化。</p>
+<p>导数和微分是紧密相关的概念，但并不是完全一样的概念。导数是函数在某一点处的变化率，也就是函数值的增量与自变量值的增量之比，它表示的是函数在某一点处的瞬时变化率。而微分则是对函数进行局部线性近似的一种方法，它用切线来近似曲线，从而得到函数在某一点处的变化情况。</p>
+<p>可以说，导数是微分的结果，也就是函数在某一点处的局部线性近似斜率。微分的本质是用线性函数逼近非线性函数，即把非线性函数局部线性化，这样就可以利用线性函数的性质来分析非线性函数的性质。</p>
 <p>斜率，如果你还记得他，那么再好不过。</p>
 <p>在生活中，我们用斜率来表示倾斜角度，回到函数图像上，其实他也同样如此。</p>
 <img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" class="lazyload" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220624155740453" style="zoom:33%;">
@@ -875,8 +882,7 @@
 <h2 id="指数函数"><a href="#指数函数" class="headerlink" title="指数函数"></a>指数函数</h2><p>y &#x3D; e<sub>x</sub></p>
 <p>这种函数用代数的方法无法建立，只有用微积分才能得到，因为要得到e<sub>x</sub>，要用到一些极限的步骤， 有些量趋于0，有些量趋于无穷。虽然有各种方法来得到e的x次方，但这些方法都会涉及极限的过程。</p>
 <p>而对于极限</p>
-<p>指数函数最重要的性质就是，他的导数就是他自身，这就是指数函数与众不同的地方。</p>
-<p>对于指数函数，y &#x3D; dy &#x2F; dx</p>
+<p>指数函数最重要的性质就是，指数函数的导数等于函数本身的常数倍，这就是指数函数与众不同的地方。<br>$$<br>\frac{d}{dx}a^x &#x3D; a^x\ln a<br>$$<br>对于指数函数，y &#x3D; dy &#x2F; dx</p>
 <p>这其实就是一个简单的微分方程，同时包含函数和函数导数。</p>
 <p>首先，任何数的0次方都等于1，因此指数函数从1开始。</p>
 <p>y(x) &#x3D; 1</p>
@@ -889,6 +895,13 @@
 <p>y(x) &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n</sub>&#x2F;n(n-1)(n-2)…(1)+…</p>
 <p>dy &#x2F;dx &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n-1</sub>&#x2F;(n-1)！+x<sub>n</sub> &#x2F; n!+ …</p>
 <p>简单的说，n！的增长速度太快了，远远超过了x<sub>n</sub>，因此实际上，在末尾的项，这些量会变得极其的小。这个级数会趋于一个极限，不会因为加了很多项而无限变大。</p>
+<h2 id="积分总览"><a href="#积分总览" class="headerlink" title="积分总览"></a>积分总览</h2><p>一般地，我们说积分是与求导相逆的运算，也就是说这两个概念是相对的。</p>
+<p>导数是函数变化率的一种度量，表示函数在某一点处的瞬时变化率；积分则是导数的逆运算，是在一段区间内的函数面积或曲线长度的计算，可以看作是对函数的累积求和。</p>
+<p>其中关于面积的计算</p>
+<p>对于一个函数 f(x)，在区间 [a, b] 上的面积可以近似地用若干个矩形的面积之和来计算。</p>
+<p>如果将区间 [a, b] 分成 n 个小区间，每个小区间的长度为<br>$$<br>\Delta x &#x3D; \frac{b - a}{n}<br>$$<br>，则第 i 个小区间的左端点为<br>$$<br>x_i &#x3D; a + i \Delta x<br>$$<br>，右端点为<br>$$<br>x_{i+1} &#x3D; a + (i+1)\Delta x<br>$$<br>。在区间<br>$$<br>[x_i, x_{i+1}]<br>$$<br>上，可以用<br>$$<br>f(x_i)<br>$$<br> 或者<br>$$<br>f(x_{i+1})<br>$$<br> 来代表 f(x) 的值。因此，区间<br>$$<br>[x_i, x_{i+1}]<br>$$<br>上的矩形面积为<br>$$<br>f(x_i) \Delta x<br>$$<br> 或者<br>$$<br>f(x_{i+1}) \Delta x<br>$$<br>。将所有小矩形的面积相加即可得到函数在区间 [a, b] 上的近似面积 ：<br>$$<br>S \approx \sum_{i&#x3D;0}^{n-1} f(x_i) \Delta x<br>$$<br>当 n 趋近于无穷大时，小矩形的宽度趋近于无穷小，可以得到函数在区间 [a, b] 上的确切面积 A：<br>$$<br>A &#x3D; \lim_{n \to \infty} \sum_{i&#x3D;0}^{n-1} f(x_i) \Delta x &#x3D; \int_a^b f(x) dx<br>$$<br>其中，<br>$$<br>\int<br>$$<br> 表示积分符号，dx表示对 x进行积分。</p>
+<p>曲线长度的计算</p>
+<p>曲线长度指的是一个平面曲线的长度，也被称为弧长。在微积分中，曲线长度的计算可以使用积分来实现。假设我们有一个函数<br>$$<br>y &#x3D; f(x)<br>$$<br>，其定义域为区间 [a, b]。如果我们想要计算从 a到 b 的曲线长度，我们可以将曲线划分为许多小线段，每个小线段的长度可以用勾股定理求得。我们可以将每个小线段的长度相加，得到曲线的近似长度。为了得到更准确的结果，我们需要使用更小的线段来逼近曲线。将线段长度无限小的极限值称为弧长，可以用以下公式计算：<br>$$<br>L &#x3D; \int_a^b \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx<br>$$<br>其中<br>$$<br>dy&#x2F;dx<br>$$<br> 表示函数在每个点处的导数。</p>
 
       </div>
       <div class="post-tags-categories">

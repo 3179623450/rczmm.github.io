@@ -2948,6 +2948,7 @@ int main() &#123;
 <p>深度优先搜索的时间复杂度取决于遍历的节点数量。在最坏情况下，如果遍历整棵树，则时间复杂度为O(n)。在最好情况下，如果树是平衡的，时间复杂度为O(log n)。这是因为平衡二叉树的高度是对数级别的。在平均情况下，时间复杂度为O(n log n)。</p>
 <p>广度优先搜索的时间复杂度同样取决于遍历的节点数量。在最坏情况下，如果遍历整棵树，则时间复杂度为O(n)。在最好情况下，如果树是满二叉树，时间复杂度为O(log n)。在平均情况下，时间复杂度为O(n)。</p>
 <p>例题：</p>
+<p><a href="./%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html#%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91">相同的树</a></p>
 <h2 id="题目部分"><a href="#题目部分" class="headerlink" title="题目部分"></a>题目部分</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
 <p>你可以按任意顺序返回答案。</p>
@@ -2977,7 +2978,7 @@ int main() &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>哈希表</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p><strong>1、双重循环，暴力破解</strong></p>
+<p><strong>1、双重循环，暴力破解</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">int *twoSum(int *nums, int numsSize, int target, int *returnSize) &#123;
     for (int i &#x3D; 0; i &lt; numsSize; ++i) &#123;
         for (int j &#x3D; i + 1; j &lt; numsSize; ++j) &#123;
@@ -3066,7 +3067,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) &#123;
 <p><strong>进阶：</strong>你能不将整数转为字符串来解决这个问题吗？</p>
 <p>Related Topics</p>
 <p>数学</p>
-<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><p><strong>数学解法</strong></p>
+<p><strong>数学解法</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">bool isPalindrome(int x) &#123;
     double t &#x3D; 0;
     double n &#x3D; x;
@@ -3139,7 +3140,7 @@ M             1000</code></pre>
 <p>哈希表</p>
 <p>数学</p>
 <p>字符串</p>
-<h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>暴力解法</strong></p>
+<p>1、<strong>暴力解法</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">int romanToInt(char * s)&#123;
     int n&#x3D;strlen(s);
     int num&#x3D;0,i&#x3D;0,j&#x3D;0,k&#x3D;0;;
@@ -3218,7 +3219,7 @@ int romanToInt(char * s)&#123;
 </ul>
 <p>Related Topics</p>
 <p>字符串</p>
-<h3 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">char *longestCommonPrefix(char **strs, int strsSize) &#123;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">char *longestCommonPrefix(char **strs, int strsSize) &#123;
     int a &#x3D; strlen(strs[0]);
     int i &#x3D; 0;
     char *ptr &#x3D; strs[0];
@@ -3262,7 +3263,7 @@ int romanToInt(char * s)&#123;
 <p>Related Topics</p>
 <p>栈</p>
 <p>字符串</p>
-<h3 id="解答-4"><a href="#解答-4" class="headerlink" title="解答"></a>解答</h3><p><strong>1、暴力循环，字符串替换</strong></p>
+<p><strong>1、暴力循环，字符串替换</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
     def isValid(self, s):
         &quot;&quot;&quot;
@@ -3371,7 +3372,7 @@ class Solution(object):
 <p>Related Topics</p>
 <p>递归</p>
 <p>链表</p>
-<h3 id="解答-5"><a href="#解答-5" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>迭代</strong></p>
+<p>1、<strong>迭代</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">                                         python
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
@@ -3424,7 +3425,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>双指针</p>
-<h3 id="解答-6"><a href="#解答-6" class="headerlink" title="解答"></a>解答</h3><p><strong>1、双重循环，暴力求解</strong></p>
+<p><strong>1、双重循环，暴力求解</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
     def removeDuplicates(self, nums):
         &quot;&quot;&quot;
@@ -3538,7 +3539,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>双指针</p>
-<h3 id="解答-7"><a href="#解答-7" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>循环</strong></p>
+<p>1、<strong>循环</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeElement(self, nums, val):
     &quot;&quot;&quot;
     :type nums: List[int]
@@ -3594,7 +3595,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 </ul>
 <p>Related Topics</p>
 <p>字符串</p>
-<h3 id="解答-8"><a href="#解答-8" class="headerlink" title="解答"></a>解答</h3><p><strong>1、麻瓜解法，倒序遍历</strong></p>
+<p><strong>1、麻瓜解法，倒序遍历</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def lengthOfLastWord(self, s):
     &quot;&quot;&quot;
     :type s: str
@@ -3644,7 +3645,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>数学</p>
-<h3 id="解答-9"><a href="#解答-9" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def plusOne(digits):
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def plusOne(digits):
     &quot;&quot;&quot;
     :type digits: List[int]
     :rtype: List[int]
@@ -3684,7 +3685,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>数学</p>
 <p>字符串</p>
 <p>模拟</p>
-<h3 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h3><p><strong>1、数组处理</strong></p>
+<p><strong>1、数组处理</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def binary_sum(a, b):
     # 反转二进制字符串
     a &#x3D; a[::-1]
@@ -3755,7 +3756,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 <p>Related Topics</p>
 <p>数学</p>
 <p>二分查找</p>
-<h3 id="解答-11"><a href="#解答-11" class="headerlink" title="解答"></a>解答</h3><p><strong>1、sqrt</strong></p>
+<p><strong>1、sqrt</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
     &quot;&quot;&quot;
     :type x: int
@@ -3852,7 +3853,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 <p>记忆化搜索</p>
 <p>数学</p>
 <p>动态规划</p>
-<h3 id="解答-12"><a href="#解答-12" class="headerlink" title="解答"></a>解答</h3><p><strong>1、迭代</strong></p>
+<p><strong>1、迭代</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def climbStairs(self, n):
     &quot;&quot;&quot;
     :type n: int
@@ -3917,7 +3918,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 </ul>
 <p>Related Topics</p>
 <p>链表</p>
-<h3 id="解答-13"><a href="#解答-13" class="headerlink" title="解答"></a>解答</h3><p>python的链表</p>
+<p>python的链表</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class ListNode(object):
      def __init__(self, val&#x3D;0, next&#x3D;None):
          self.val &#x3D; val
@@ -4028,7 +4029,7 @@ while result is not None:
 <p>数组</p>
 <p>双指针</p>
 <p>排序</p>
-<h3 id="解答-14"><a href="#解答-14" class="headerlink" title="解答"></a>解答</h3><p>1、双指针</p>
+<p>1、双指针</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def merge(self, nums1, m, nums2, n):
     &quot;&quot;&quot;
     :type nums1: List[int]
@@ -4080,7 +4081,7 @@ while result is not None:
 <p>树</p>
 <p>深度优先搜索</p>
 <p>二叉树</p>
-<h3 id="解答-15"><a href="#解答-15" class="headerlink" title="解答"></a>解答</h3><p>1、迭代</p>
+<p>1、迭代</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def inorderTraversal(self, root):
     &quot;&quot;&quot;
     :type root: TreeNode
@@ -4147,7 +4148,7 @@ def inorder(self, node, res):
 <p>深度优先搜索</p>
 <p>广度优先搜索</p>
 <p>二叉树</p>
-<h3 id="解答-16"><a href="#解答-16" class="headerlink" title="解答"></a>解答</h3><p>1、DFS</p>
+<p>1、DFS</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSameTree(self, p, q):
     &quot;&quot;&quot;
     :type p: TreeNode
@@ -5897,6 +5898,8 @@ InitList:
 <p>那么？新的问题来了，能否根据它得出体重的增长率呐？</p>
 <h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><p>关于导数，首先应该区分开一个概念。</p>
 <p>那就是可导与可微，前者表示的是变化率的极限，而后者表示的是局部线性化。</p>
+<p>导数和微分是紧密相关的概念，但并不是完全一样的概念。导数是函数在某一点处的变化率，也就是函数值的增量与自变量值的增量之比，它表示的是函数在某一点处的瞬时变化率。而微分则是对函数进行局部线性近似的一种方法，它用切线来近似曲线，从而得到函数在某一点处的变化情况。</p>
+<p>可以说，导数是微分的结果，也就是函数在某一点处的局部线性近似斜率。微分的本质是用线性函数逼近非线性函数，即把非线性函数局部线性化，这样就可以利用线性函数的性质来分析非线性函数的性质。</p>
 <p>斜率，如果你还记得他，那么再好不过。</p>
 <p>在生活中，我们用斜率来表示倾斜角度，回到函数图像上，其实他也同样如此。</p>
 <img src="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" class="lazyload" data-srcset="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/image-20220624155740453.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220624155740453" style="zoom:33%;">
@@ -5998,8 +6001,7 @@ InitList:
 <h2 id="指数函数"><a href="#指数函数" class="headerlink" title="指数函数"></a>指数函数</h2><p>y &#x3D; e<sub>x</sub></p>
 <p>这种函数用代数的方法无法建立，只有用微积分才能得到，因为要得到e<sub>x</sub>，要用到一些极限的步骤， 有些量趋于0，有些量趋于无穷。虽然有各种方法来得到e的x次方，但这些方法都会涉及极限的过程。</p>
 <p>而对于极限</p>
-<p>指数函数最重要的性质就是，他的导数就是他自身，这就是指数函数与众不同的地方。</p>
-<p>对于指数函数，y &#x3D; dy &#x2F; dx</p>
+<p>指数函数最重要的性质就是，指数函数的导数等于函数本身的常数倍，这就是指数函数与众不同的地方。<br>$$<br>\frac{d}{dx}a^x &#x3D; a^x\ln a<br>$$<br>对于指数函数，y &#x3D; dy &#x2F; dx</p>
 <p>这其实就是一个简单的微分方程，同时包含函数和函数导数。</p>
 <p>首先，任何数的0次方都等于1，因此指数函数从1开始。</p>
 <p>y(x) &#x3D; 1</p>
@@ -6012,6 +6014,13 @@ InitList:
 <p>y(x) &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n</sub>&#x2F;n(n-1)(n-2)…(1)+…</p>
 <p>dy &#x2F;dx &#x3D; 1+x+x<sub>2</sub>&#x2F;2 + x<sub>3</sub> &#x2F; 3 * 2 + …. + x<sub>n-1</sub>&#x2F;(n-1)！+x<sub>n</sub> &#x2F; n!+ …</p>
 <p>简单的说，n！的增长速度太快了，远远超过了x<sub>n</sub>，因此实际上，在末尾的项，这些量会变得极其的小。这个级数会趋于一个极限，不会因为加了很多项而无限变大。</p>
+<h2 id="积分总览"><a href="#积分总览" class="headerlink" title="积分总览"></a>积分总览</h2><p>一般地，我们说积分是与求导相逆的运算，也就是说这两个概念是相对的。</p>
+<p>导数是函数变化率的一种度量，表示函数在某一点处的瞬时变化率；积分则是导数的逆运算，是在一段区间内的函数面积或曲线长度的计算，可以看作是对函数的累积求和。</p>
+<p>其中关于面积的计算</p>
+<p>对于一个函数 f(x)，在区间 [a, b] 上的面积可以近似地用若干个矩形的面积之和来计算。</p>
+<p>如果将区间 [a, b] 分成 n 个小区间，每个小区间的长度为<br>$$<br>\Delta x &#x3D; \frac{b - a}{n}<br>$$<br>，则第 i 个小区间的左端点为<br>$$<br>x_i &#x3D; a + i \Delta x<br>$$<br>，右端点为<br>$$<br>x_{i+1} &#x3D; a + (i+1)\Delta x<br>$$<br>。在区间<br>$$<br>[x_i, x_{i+1}]<br>$$<br>上，可以用<br>$$<br>f(x_i)<br>$$<br> 或者<br>$$<br>f(x_{i+1})<br>$$<br> 来代表 f(x) 的值。因此，区间<br>$$<br>[x_i, x_{i+1}]<br>$$<br>上的矩形面积为<br>$$<br>f(x_i) \Delta x<br>$$<br> 或者<br>$$<br>f(x_{i+1}) \Delta x<br>$$<br>。将所有小矩形的面积相加即可得到函数在区间 [a, b] 上的近似面积 ：<br>$$<br>S \approx \sum_{i&#x3D;0}^{n-1} f(x_i) \Delta x<br>$$<br>当 n 趋近于无穷大时，小矩形的宽度趋近于无穷小，可以得到函数在区间 [a, b] 上的确切面积 A：<br>$$<br>A &#x3D; \lim_{n \to \infty} \sum_{i&#x3D;0}^{n-1} f(x_i) \Delta x &#x3D; \int_a^b f(x) dx<br>$$<br>其中，<br>$$<br>\int<br>$$<br> 表示积分符号，dx表示对 x进行积分。</p>
+<p>曲线长度的计算</p>
+<p>曲线长度指的是一个平面曲线的长度，也被称为弧长。在微积分中，曲线长度的计算可以使用积分来实现。假设我们有一个函数<br>$$<br>y &#x3D; f(x)<br>$$<br>，其定义域为区间 [a, b]。如果我们想要计算从 a到 b 的曲线长度，我们可以将曲线划分为许多小线段，每个小线段的长度可以用勾股定理求得。我们可以将每个小线段的长度相加，得到曲线的近似长度。为了得到更准确的结果，我们需要使用更小的线段来逼近曲线。将线段长度无限小的极限值称为弧长，可以用以下公式计算：<br>$$<br>L &#x3D; \int_a^b \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx<br>$$<br>其中<br>$$<br>dy&#x2F;dx<br>$$<br> 表示函数在每个点处的导数。</p>
 ]]></content>
       <categories>
         <category>数学</category>

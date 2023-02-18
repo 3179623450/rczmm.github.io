@@ -17,7 +17,12 @@
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
   <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
-  
+  <!--数学渲染-->
+  <script type="text/javascript" async
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
   
   
   
@@ -642,7 +647,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 7.8k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 7.7k |
           </span>
   
           <span class="min2read">
@@ -681,6 +686,7 @@
 <p>深度优先搜索的时间复杂度取决于遍历的节点数量。在最坏情况下，如果遍历整棵树，则时间复杂度为O(n)。在最好情况下，如果树是平衡的，时间复杂度为O(log n)。这是因为平衡二叉树的高度是对数级别的。在平均情况下，时间复杂度为O(n log n)。</p>
 <p>广度优先搜索的时间复杂度同样取决于遍历的节点数量。在最坏情况下，如果遍历整棵树，则时间复杂度为O(n)。在最好情况下，如果树是满二叉树，时间复杂度为O(log n)。在平均情况下，时间复杂度为O(n)。</p>
 <p>例题：</p>
+<p><a href="./%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html#%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91">相同的树</a></p>
 <h2 id="题目部分"><a href="#题目部分" class="headerlink" title="题目部分"></a>题目部分</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
 <p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</p>
 <p>你可以按任意顺序返回答案。</p>
@@ -710,7 +716,7 @@
 <p>Related Topics</p>
 <p>数组</p>
 <p>哈希表</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><p><strong>1、双重循环，暴力破解</strong></p>
+<p><strong>1、双重循环，暴力破解</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">int *twoSum(int *nums, int numsSize, int target, int *returnSize) &#123;
     for (int i &#x3D; 0; i &lt; numsSize; ++i) &#123;
         for (int j &#x3D; i + 1; j &lt; numsSize; ++j) &#123;
@@ -799,7 +805,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) &#123;
 <p><strong>进阶：</strong>你能不将整数转为字符串来解决这个问题吗？</p>
 <p>Related Topics</p>
 <p>数学</p>
-<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><p><strong>数学解法</strong></p>
+<p><strong>数学解法</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">bool isPalindrome(int x) &#123;
     double t &#x3D; 0;
     double n &#x3D; x;
@@ -872,7 +878,7 @@ M             1000</code></pre>
 <p>哈希表</p>
 <p>数学</p>
 <p>字符串</p>
-<h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>暴力解法</strong></p>
+<p>1、<strong>暴力解法</strong></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">int romanToInt(char * s)&#123;
     int n&#x3D;strlen(s);
     int num&#x3D;0,i&#x3D;0,j&#x3D;0,k&#x3D;0;;
@@ -951,7 +957,7 @@ int romanToInt(char * s)&#123;
 </ul>
 <p>Related Topics</p>
 <p>字符串</p>
-<h3 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">char *longestCommonPrefix(char **strs, int strsSize) &#123;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">char *longestCommonPrefix(char **strs, int strsSize) &#123;
     int a &#x3D; strlen(strs[0]);
     int i &#x3D; 0;
     char *ptr &#x3D; strs[0];
@@ -995,7 +1001,7 @@ int romanToInt(char * s)&#123;
 <p>Related Topics</p>
 <p>栈</p>
 <p>字符串</p>
-<h3 id="解答-4"><a href="#解答-4" class="headerlink" title="解答"></a>解答</h3><p><strong>1、暴力循环，字符串替换</strong></p>
+<p><strong>1、暴力循环，字符串替换</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
     def isValid(self, s):
         &quot;&quot;&quot;
@@ -1104,7 +1110,7 @@ class Solution(object):
 <p>Related Topics</p>
 <p>递归</p>
 <p>链表</p>
-<h3 id="解答-5"><a href="#解答-5" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>迭代</strong></p>
+<p>1、<strong>迭代</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">                                         python
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
@@ -1157,7 +1163,7 @@ for (int i &#x3D; 0; i &lt; k; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>双指针</p>
-<h3 id="解答-6"><a href="#解答-6" class="headerlink" title="解答"></a>解答</h3><p><strong>1、双重循环，暴力求解</strong></p>
+<p><strong>1、双重循环，暴力求解</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution(object):
     def removeDuplicates(self, nums):
         &quot;&quot;&quot;
@@ -1271,7 +1277,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>双指针</p>
-<h3 id="解答-7"><a href="#解答-7" class="headerlink" title="解答"></a>解答</h3><p>1、<strong>循环</strong></p>
+<p>1、<strong>循环</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def removeElement(self, nums, val):
     &quot;&quot;&quot;
     :type nums: List[int]
@@ -1327,7 +1333,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 </ul>
 <p>Related Topics</p>
 <p>字符串</p>
-<h3 id="解答-8"><a href="#解答-8" class="headerlink" title="解答"></a>解答</h3><p><strong>1、麻瓜解法，倒序遍历</strong></p>
+<p><strong>1、麻瓜解法，倒序遍历</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def lengthOfLastWord(self, s):
     &quot;&quot;&quot;
     :type s: str
@@ -1377,7 +1383,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>Related Topics</p>
 <p>数组</p>
 <p>数学</p>
-<h3 id="解答-9"><a href="#解答-9" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def plusOne(digits):
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def plusOne(digits):
     &quot;&quot;&quot;
     :type digits: List[int]
     :rtype: List[int]
@@ -1417,7 +1423,7 @@ for (int i &#x3D; 0; i &lt; len; i++) &#123;
 <p>数学</p>
 <p>字符串</p>
 <p>模拟</p>
-<h3 id="解答-10"><a href="#解答-10" class="headerlink" title="解答"></a>解答</h3><p><strong>1、数组处理</strong></p>
+<p><strong>1、数组处理</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def binary_sum(a, b):
     # 反转二进制字符串
     a &#x3D; a[::-1]
@@ -1488,7 +1494,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 <p>Related Topics</p>
 <p>数学</p>
 <p>二分查找</p>
-<h3 id="解答-11"><a href="#解答-11" class="headerlink" title="解答"></a>解答</h3><p><strong>1、sqrt</strong></p>
+<p><strong>1、sqrt</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def mySqrt(self, x):
     &quot;&quot;&quot;
     :type x: int
@@ -1585,7 +1591,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 <p>记忆化搜索</p>
 <p>数学</p>
 <p>动态规划</p>
-<h3 id="解答-12"><a href="#解答-12" class="headerlink" title="解答"></a>解答</h3><p><strong>1、迭代</strong></p>
+<p><strong>1、迭代</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def climbStairs(self, n):
     &quot;&quot;&quot;
     :type n: int
@@ -1650,7 +1656,7 @@ print(binary_sum(&#39;11&#39;, &#39;1&#39;)) # 100</code></pre>
 </ul>
 <p>Related Topics</p>
 <p>链表</p>
-<h3 id="解答-13"><a href="#解答-13" class="headerlink" title="解答"></a>解答</h3><p>python的链表</p>
+<p>python的链表</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class ListNode(object):
      def __init__(self, val&#x3D;0, next&#x3D;None):
          self.val &#x3D; val
@@ -1761,7 +1767,7 @@ while result is not None:
 <p>数组</p>
 <p>双指针</p>
 <p>排序</p>
-<h3 id="解答-14"><a href="#解答-14" class="headerlink" title="解答"></a>解答</h3><p>1、双指针</p>
+<p>1、双指针</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def merge(self, nums1, m, nums2, n):
     &quot;&quot;&quot;
     :type nums1: List[int]
@@ -1813,7 +1819,7 @@ while result is not None:
 <p>树</p>
 <p>深度优先搜索</p>
 <p>二叉树</p>
-<h3 id="解答-15"><a href="#解答-15" class="headerlink" title="解答"></a>解答</h3><p>1、迭代</p>
+<p>1、迭代</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def inorderTraversal(self, root):
     &quot;&quot;&quot;
     :type root: TreeNode
@@ -1880,7 +1886,7 @@ def inorder(self, node, res):
 <p>深度优先搜索</p>
 <p>广度优先搜索</p>
 <p>二叉树</p>
-<h3 id="解答-16"><a href="#解答-16" class="headerlink" title="解答"></a>解答</h3><p>1、DFS</p>
+<p>1、DFS</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSameTree(self, p, q):
     &quot;&quot;&quot;
     :type p: TreeNode
