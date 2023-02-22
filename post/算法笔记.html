@@ -647,11 +647,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 7.7k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 8.5k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 36分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 40分钟 |
           </span>
   
           
@@ -1110,7 +1110,7 @@ class Solution(object):
 <p>Related Topics</p>
 <p>递归</p>
 <p>链表</p>
-<p>1、<strong>迭代</strong></p>
+<p>1、<strong>递归</strong></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">                                         python
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
@@ -1125,6 +1125,29 @@ class Solution(object):
         return list1 or list2</code></pre>
 
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181646979.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230207181646979.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="解答成功"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def mergeTwoLists(self, list1, list2):
+    &quot;&quot;&quot;
+    :type list1: Optional[ListNode]
+    :type list2: Optional[ListNode]
+    :rtype: Optional[ListNode]
+    &quot;&quot;&quot;
+    res &#x3D; ListNode(-1)
+    tmp &#x3D; res
+    while list1 and list2:
+        if list1.val &lt;&#x3D; list2.val:
+            tmp.next &#x3D; list1
+            list1 &#x3D; list1.next
+        else:
+            tmp.next &#x3D; list2
+            list2 &#x3D; list2.next
+        tmp &#x3D; tmp.next
+    if list1:
+        tmp.next &#x3D; list1
+    else:
+        tmp.next &#x3D; list2
+    return res.next</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222200630502.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222200630502.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <h3 id="删除有序数组中的重复项"><a href="#删除有序数组中的重复项" class="headerlink" title="删除有序数组中的重复项"></a>删除有序数组中的重复项</h3><p>给你一个 <strong>升序排列</strong> 的数组 <code>nums</code> ，请你**<a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong> 。</p>
 <p>由于在某些语言中不能改变数组的长度，所以必须将结果放在数组nums的第一部分。更规范地说，如果在删除重复项之后有 <code>k</code> 个元素，那么 <code>nums</code> 的前 <code>k</code> 个元素应该保存最终结果。</p>
 <p>将最终结果插入 <code>nums</code> 的前 <code>k</code> 个位置后返回 <code>k</code> 。</p>
@@ -1819,7 +1842,7 @@ while result is not None:
 <p>树</p>
 <p>深度优先搜索</p>
 <p>二叉树</p>
-<p>1、迭代</p>
+<p>1、递归</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def inorderTraversal(self, root):
     &quot;&quot;&quot;
     :type root: TreeNode
@@ -1921,6 +1944,161 @@ def inorder(self, node, res):
     return True</code></pre>
 
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035948029.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230217035948029.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="对称的二叉树"><a href="#对称的二叉树" class="headerlink" title="对称的二叉树"></a>对称的二叉树</h3><p>给你一个二叉树的根节点 <code>root</code> ， 检查它是否轴对称。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：root &#x3D; [1,2,2,3,4,4,3]
+输出：true</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/19/symtree2.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2021/02/19/symtree2.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：root &#x3D; [1,2,2,null,3,null,3]
+输出：false</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>树中节点数目在范围 <code>[1, 1000]</code> 内</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<p><strong>进阶：</strong>你可以运用递归和迭代两种方法解决这个问题吗？</p>
+<p>Related Topics</p>
+<p>树</p>
+<p>深度优先搜索</p>
+<p>广度优先搜索</p>
+<p>二叉树</p>
+<p>DFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSymmetric(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    if root is None:
+        return True
+    return self.isMirror(root.left, root.right)
+
+def isMirror(self, node1, node2):
+    if node1 is None and node2 is None:
+        return True
+    if node1 is None or node2 is None:
+        return False
+    if node1.val !&#x3D; node2.val:
+        return False
+    return self.isMirror(node1.left, node2.right) and self.isMirror(node1.right, node2.left)</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219184524542.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219184524542.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>BFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isSymmetric(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    queue &#x3D; [(root.left, root.right)]
+    while queue:
+        node1, node2 &#x3D; queue.pop()
+        if not node1 and not node2:
+            continue
+        if not node1 or not node2 or node1.val !&#x3D; node2.val:
+            return False
+        queue.append((node1.left, node2.right))
+        queue.append((node1.right, node2.left))
+    return True</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219185856490.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219185856490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="二叉树的深度"><a href="#二叉树的深度" class="headerlink" title="二叉树的深度"></a>二叉树的深度</h3><p>给定一个二叉树，找出其最大深度。</p>
+<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
+<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
+<p><strong>示例：</strong><br>给定二叉树 <code>[3,9,20,null,null,15,7]</code>，</p>
+<pre class="line-numbers language-none"><code class="language-none">  3
+ &#x2F; \
+9  20
+  &#x2F;  \
+ 15   7</code></pre>
+
+<p>返回它的最大深度 3 。</p>
+<p>Related Topics</p>
+<p>树</p>
+<p>深度优先搜索</p>
+<p>广度优先搜索</p>
+<p>二叉树</p>
+<p>DFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def maxDepth(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: int
+    &quot;&quot;&quot;
+    if root is None:
+        return 0
+    left &#x3D; self.maxDepth(root.left)
+    right &#x3D; self.maxDepth(root.right)
+    return max(left, right) + 1</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219191812189.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219191812189.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>BFS</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def maxDepth(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: int
+    &quot;&quot;&quot;
+    if root is None:
+        return 0
+    queue &#x3D; [root]
+    depth &#x3D; 0
+    while queue:
+        depth +&#x3D; 1
+        level &#x3D; len(queue)
+        for i in range(level):
+            node &#x3D; queue.pop(0)
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+    return depth</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219191925201.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219191925201.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="将有序数组转换为二叉搜索树"><a href="#将有序数组转换为二叉搜索树" class="headerlink" title="将有序数组转换为二叉搜索树"></a>将有序数组转换为二叉搜索树</h3><p>给你一个整数数组 <code>nums</code> ，其中元素已经按 <strong>升序</strong> 排列，请你将其转换为一棵 <strong>高度平衡</strong> 二叉搜索树。</p>
+<p><strong>高度平衡</strong> 二叉树是一棵满足「每个节点的左右两个子树的高度差的绝对值不超过 1 」的二叉树。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/18/btree1.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2021/02/18/btree1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [-10,-3,0,5,9]
+输出：[0,-3,9,-10,null,5]
+解释：[0,-10,5,null,-3,null,9] 也将被视为正确答案：</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2021/02/18/btree.jpg" class="lazyload" data-srcset="https://assets.leetcode.com/uploads/2021/02/18/btree.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums &#x3D; [1,3]
+输出：[3,1]
+解释：[1,null,3] 和 [3,1] 都是高度平衡二叉搜索树。</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 104</code></li>
+<li><code>-104 &lt;= nums[i] &lt;= 104</code></li>
+<li><code>nums</code> 按 <strong>严格递增</strong> 顺序排列</li>
+</ul>
+<p>Related Topics</p>
+<p>树</p>
+<p>二叉搜索树</p>
+<p>数组</p>
+<p>分治</p>
+<p>二叉树</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def sortedArrayToBST(self, nums):
+    &quot;&quot;&quot;
+    :type nums: List[int]
+    :rtype: TreeNode
+    &quot;&quot;&quot;
+    if not nums:
+        return None
+    mid &#x3D; len(nums) &#x2F;&#x2F; 2
+    root &#x3D; TreeNode(nums[mid])
+    root.left &#x3D; self.sortedArrayToBST(nums[:mid])
+    root.right &#x3D; self.sortedArrayToBST(nums[mid + 1:])
+    return root</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219192828844.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219192828844.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
       </div>
       <div class="post-tags-categories">
