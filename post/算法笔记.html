@@ -647,11 +647,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 9.8k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 10k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 46分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 47分钟 |
           </span>
   
           
@@ -2233,18 +2233,28 @@ def isMirror(self, node1, node2):
 
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222230424153.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222230424153.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <p>2、递归</p>
-<ol>
-<li><pre><code>1. 当 `p` 为空时，判断 `s` 是否为空，如果为空则匹配成功，否则匹配失败。
+<pre class="line-numbers language-none"><code class="language-none">1. 当 &#96;p&#96; 为空时，判断 &#96;s&#96; 是否为空，如果为空则匹配成功，否则匹配失败。
 
-2. 当 `p` 的长度为 1 时，分两种情况，如果 `p` 为字符 `.`，则只要 `s` 不为空，就匹配成功，否则匹配失败；如果 `p` 为其他字符，那么只要 `s` 的第一个字符和 `p` 相同，就匹配成功，否则匹配失败。
+2. 当 &#96;p&#96; 的长度为 1 时，分两种情况，如果 &#96;p&#96; 为字符 &#96;.&#96;，则只要 &#96;s&#96; 不为空，就匹配成功，否则匹配失败；如果 &#96;p&#96; 为其他字符，那么只要 &#96;s&#96; 的第一个字符和 &#96;p&#96; 相同，就匹配成功，否则匹配失败。
 
 3. 当 p长度大于 1 时，分两种情况：
 
-   1. 如果 `p` 的第二个字符不是 `*`，那么只要 `s` 不为空并且 `s` 的第一个字符和 `p` 的第一个字符相同，就递归地匹配 `s[1:]` 和 `p[1:]`。
-   2. 如果 `p` 的第二个字符是 `*`，那么有两种情况，一种是 `*` 匹配了 0 次，此时直接递归匹配 `s` 和 `p[2:]`，另一种是 `*` 匹配了 1 次或多次，此时如果 `s` 不为空并且 `s` 的第一个字符和 `p` 的第一个字符相同，就递归匹配 `s[1:]` 和 `p`。
-</code></pre>
-</li>
-</ol>
+   1. 如果 &#96;p&#96; 的第二个字符不是 &#96;*&#96;，那么只要 &#96;s&#96; 不为空并且 &#96;s&#96; 的第一个字符和 &#96;p&#96; 的第一个字符相同，就递归地匹配 &#96;s[1:]&#96; 和 &#96;p[1:]&#96;。
+   2. 如果 &#96;p&#96; 的第二个字符是 &#96;*&#96;，那么有两种情况，一种是 &#96;*&#96; 匹配了 0 次，此时直接递归匹配 &#96;s&#96; 和 &#96;p[2:]&#96;，另一种是 &#96;*&#96; 匹配了 1 次或多次，此时如果 &#96;s&#96; 不为空并且 &#96;s&#96; 的第一个字符和 &#96;p&#96; 的第一个字符相同，就递归匹配 &#96;s[1:]&#96; 和 &#96;p&#96;。</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isMatch(self, s, p):
+    &quot;&quot;&quot;
+    :type s: str
+    :type p: str
+    :rtype: bool
+    &quot;&quot;&quot;
+    if not p:
+        return not s
+    match &#x3D; bool(s) and p[0] in &#123;s[0], &#39;.&#39;&#125;
+    if len(p) &gt;&#x3D; 2 and p[1] &#x3D;&#x3D; &#39;*&#39;:
+        return self.isMatch(s, p[2:]) or (match and self.isMatch(s[1:], p))
+    else:
+        return match and self.isMatch(s[1:], p[1:])</code></pre>
 
       </div>
       <div class="post-tags-categories">
