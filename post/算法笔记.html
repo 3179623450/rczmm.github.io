@@ -647,11 +647,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 8.5k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 9.8k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 40分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 46分钟 |
           </span>
   
           
@@ -2099,6 +2099,152 @@ def isMirror(self, node1, node2):
     return root</code></pre>
 
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219192828844.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230219192828844.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="寻找两个正序数组中的中位数"><a href="#寻找两个正序数组中的中位数" class="headerlink" title="寻找两个正序数组中的中位数"></a>寻找两个正序数组中的中位数</h3><p>给定两个大小分别为 <code>m</code> 和 <code>n</code> 的正序（从小到大）数组 <code>nums1</code> 和 <code>nums2</code>。请你找出并返回这两个正序数组的 <strong>中位数</strong> 。</p>
+<p>算法的时间复杂度应该为 <code>O(log (m+n))</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2]
+输出：2.00000
+解释：合并数组 &#x3D; [1,2,3] ，中位数 2</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：nums1 &#x3D; [1,2], nums2 &#x3D; [3,4]
+输出：2.50000
+解释：合并数组 &#x3D; [1,2,3,4] ，中位数 (2 + 3) &#x2F; 2 &#x3D; 2.5</code></pre>
+
+
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>nums1.length == m</code></li>
+<li><code>nums2.length == n</code></li>
+<li><code>0 &lt;= m &lt;= 1000</code></li>
+<li><code>0 &lt;= n &lt;= 1000</code></li>
+<li><code>1 &lt;= m + n &lt;= 2000</code></li>
+<li><code>-106 &lt;= nums1[i], nums2[i] &lt;= 106</code></li>
+</ul>
+<p>Related Topics</p>
+<p>数组</p>
+<p>二分查找</p>
+<p>分治</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def findMedianSortedArrays(self, nums1, nums2):
+    &quot;&quot;&quot;
+    :type nums1: List[int]
+    :type nums2: List[int]
+    :rtype: float
+    &quot;&quot;&quot;
+    m &#x3D; len(nums1)
+    n &#x3D; len(nums2)
+    res &#x3D; [0] * (m+n)
+    i, j, k &#x3D; 0, 0, 0
+    while i &lt; m and j &lt; n:
+        if nums1[i] &lt; nums2[j]:
+            res[k] &#x3D; nums1[i]
+            i +&#x3D; 1
+            k +&#x3D; 1
+        else:
+            res[k] &#x3D; nums2[j]
+            j +&#x3D; 1
+            k +&#x3D; 1
+    while i &lt; m:
+        res[k] &#x3D; nums1[i]
+        k +&#x3D; 1
+        i +&#x3D; 1
+    while j &lt; n:
+        res[k] &#x3D; nums2[j]
+        k +&#x3D; 1
+        j +&#x3D; 1
+    if (m + n) % 2 &#x3D;&#x3D; 0:
+        return (res[((m + n) &#x2F;&#x2F; 2) - 1] + res[(m + n) &#x2F;&#x2F; 2]) &#x2F; 2.0
+    else:
+        return res[(m + n) &#x2F;&#x2F; 2]</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222225347902.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222225347902.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="正则表达式匹配"><a href="#正则表达式匹配" class="headerlink" title="正则表达式匹配"></a>正则表达式匹配</h3><p>给你一个字符串 <code>s</code> 和一个字符规律 <code>p</code>，请你来实现一个支持 <code>&#39;.&#39;</code> 和 <code>&#39;*&#39;</code> 的正则表达式匹配。</p>
+<ul>
+<li><code>&#39;.&#39;</code> 匹配任意单个字符</li>
+<li><code>&#39;*&#39;</code> 匹配零个或多个前面的那一个元素</li>
+</ul>
+<p>所谓匹配，是要涵盖 <strong>整个</strong> 字符串 <code>s</code>的，而不是部分字符串。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s &#x3D; &quot;aa&quot;, p &#x3D; &quot;a&quot;
+输出：false
+解释：&quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s &#x3D; &quot;aa&quot;, p &#x3D; &quot;a*&quot;
+输出：true
+解释：因为 &#39;*&#39; 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 &#39;a&#39;。因此，字符串 &quot;aa&quot; 可被视为 &#39;a&#39; 重复了一次。</code></pre>
+
+<p><strong>示例 3：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：s &#x3D; &quot;ab&quot;, p &#x3D; &quot;.*&quot;
+输出：true
+解释：&quot;.*&quot; 表示可匹配零个或多个（&#39;*&#39;）任意字符（&#39;.&#39;）。</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 20</code></li>
+<li><code>1 &lt;= p.length &lt;= 30</code></li>
+<li><code>s</code> 只包含从 <code>a-z</code> 的小写字母。</li>
+<li><code>p</code> 只包含从 <code>a-z</code> 的小写字母，以及字符 <code>.</code> 和 <code>*</code>。</li>
+<li>保证每次出现字符 <code>*</code> 时，前面都匹配到有效的字符</li>
+</ul>
+<p>Related Topics</p>
+<p>递归</p>
+<p>字符串</p>
+<p>动态规划</p>
+<p>1、动态规划</p>
+<pre class="line-numbers language-none"><code class="language-none">假设字符串为 s，字符规律为 p，我们用 dp[i][j] 表示 s 的前 i 个字符是否能被 p 的前 j 个字符匹配。则有以下情况：
+
+1. p[j] 是小写字母，即 p[j] &#x3D;&#x3D; s[i]，则 dp[i][j] &#x3D; dp[i-1][j-1]。
+2. p[j] 是 &#39;.&#39;，可以匹配任意字符，即 dp[i][j] &#x3D; dp[i-1][j-1]。
+3. p[j] 是 &#39;*&#39;，可以匹配零个或多个前面的元素，有两种情况：
+   - 如果 p[j-1] 和 s[i] 不匹配，则 dp[i][j] &#x3D; dp[i][j-2]，表示直接忽略这个 &#39;*&#39; 和它前面的字符。
+   - 如果 p[j-1] 和 s[i] 匹配，有三种情况：
+     1. dp[i][j] &#x3D; dp[i-1][j]，表示忽略掉 s 的第 i 个字符；
+     2. dp[i][j] &#x3D; dp[i][j-1]，表示把 &#39;*&#39; 当成单个字符，即匹配 s 的第 i 个字符；
+     3. dp[i][j] &#x3D; dp[i][j-2]，表示忽略掉 &#39;*&#39; 和它前面的字符。
+
+最终的结果为 dp[len(s)][len(p)]。</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def isMatch(self, s, p):
+    &quot;&quot;&quot;
+    :type s: str
+    :type p: str
+    :rtype: bool
+    &quot;&quot;&quot;
+    m, n &#x3D; len(s), len(p)
+    dp &#x3D; [[False] * (n + 1) for _ in range(m + 1)]
+    dp[0][0] &#x3D; True
+
+    for i in range(m + 1):
+        for j in range(1, n + 1):
+            if p[j - 1] &#x3D;&#x3D; &#39;*&#39;:
+                dp[i][j] &#x3D; dp[i][j - 2]
+                if i &gt; 0 and (s[i - 1] &#x3D;&#x3D; p[j - 2] or p[j - 2] &#x3D;&#x3D; &quot;.&quot;):
+                    dp[i][j] |&#x3D; dp[i - 1][j]
+            elif i &gt; 0 and (s[i - 1] &#x3D;&#x3D; p[j - 1] or p[j - 1] &#x3D;&#x3D; &#39;.&#39;):
+                dp[i][j] &#x3D; dp[i - 1][j - 1]
+
+    return dp[m][n]</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222230424153.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230222230424153.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>2、递归</p>
+<ol>
+<li><pre><code>1. 当 `p` 为空时，判断 `s` 是否为空，如果为空则匹配成功，否则匹配失败。
+
+2. 当 `p` 的长度为 1 时，分两种情况，如果 `p` 为字符 `.`，则只要 `s` 不为空，就匹配成功，否则匹配失败；如果 `p` 为其他字符，那么只要 `s` 的第一个字符和 `p` 相同，就匹配成功，否则匹配失败。
+
+3. 当 p长度大于 1 时，分两种情况：
+
+   1. 如果 `p` 的第二个字符不是 `*`，那么只要 `s` 不为空并且 `s` 的第一个字符和 `p` 的第一个字符相同，就递归地匹配 `s[1:]` 和 `p[1:]`。
+   2. 如果 `p` 的第二个字符是 `*`，那么有两种情况，一种是 `*` 匹配了 0 次，此时直接递归匹配 `s` 和 `p[2:]`，另一种是 `*` 匹配了 1 次或多次，此时如果 `s` 不为空并且 `s` 的第一个字符和 `p` 的第一个字符相同，就递归匹配 `s[1:]` 和 `p`。
+</code></pre>
+</li>
+</ol>
 
       </div>
       <div class="post-tags-categories">
