@@ -790,7 +790,7 @@ def bag01(n,c,weight,value):
 		return bag01(n-1,c,weight,value)
 	else:
 		# 递归解决剩下问题，（放和不放，最大值）
-		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1.c.weight,value))</code></pre>
+		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1,c.weight,value))</code></pre>
 
 
 
