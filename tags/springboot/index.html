@@ -17,12 +17,7 @@
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
   <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
-  <!--数学渲染-->
-  <script type="text/javascript" async
-          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-
+  
   
   
   
@@ -86,35 +81,24 @@
 
   
   
-  <body>
-    <!-- 预加载动画 -->
-    <!-- 页面预加载动画 -->
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
 
-<div id='loader'>
-  <link rel="stylesheet" href="/js/loaded/index.css" >
-  <div class="loading-left-bg"></div>
-  <div class="loading-right-bg"></div>
-  <div class="spinner-box">
-    <div class="configure-border-1">
-      <div class="configure-core"></div>
-    </div>
-    <div class="configure-border-2">
-      <div class="configure-core"></div>
-    </div>
-    <div class="loading-word">加载中...</div>
-  </div>
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
 </div>
 
+  
 <script>
   var endLoading = function () {
     document.body.style.overflow = 'auto';
     document.getElementById('loader').classList.add("loading");
   }
   window.addEventListener('DOMContentLoaded',endLoading);
-  
 </script>
 
-    
+  <body>
     <!-- 判断是否为暗黑风格 -->
     <!-- 判断是否为黑夜模式 -->
 <script>
@@ -162,7 +146,7 @@
   }
 
   //https://github.com/filamentgroup/loadCSS
-  var loadCSS = function (href, before, media, attributes) {
+  var loadCSS = function (src) {
     return new Promise(resolve => {
       setTimeout(function () {
         var link = document.createElement('link');
@@ -200,7 +184,7 @@
       <main class="main" id="pjax-container">
         <!-- 头部导航 -->
         
-<header class="header   " 
+<header class="header  " 
   id="navHeader"
   style="position: fixed;
   left: 0; top: 0; z-index: 10;width: 100%;"
@@ -322,7 +306,7 @@
         
         
           <li class="drawer-box-content_item">
-            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm">
               <i class="fas fa-github" aria-hidden="true"></i>
               <span>Github</span>
             </a>
@@ -564,7 +548,7 @@
     </nav>
   </div>
   
-    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
   
   
     <div id="he-plugin-simple"></div>
@@ -637,247 +621,239 @@
   <!-- 每一篇文章卡片 -->
   <!-- hash算法 -->
 
-  <section class="posts">
+<section class="posts">
+  
     
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-28</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/springboot-vue%EF%BC%886%EF%BC%89.html">
-                  springboot+vue（6）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-28</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/springboot-vue%EF%BC%886%EF%BC%89.html">springboot+vue（6）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：多表查询和分页查询多表
-实现复杂关系映射，可以使用@Results注解，@Result注解，@One注解，@Many注解组合完成复杂关系的配置。
-
-（Mybat
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-27</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/springboot-vue%EF%BC%885%EF%BC%89.html">
-                  springboot+vue（5）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            多表查询和分页查询多表
+实现复杂关系映射，可以使用@Results注解，@Result注解，@One注解，@Many注解组合完成复杂关系的配置。
+
+（MybatisPLus对多表无变化，以上为Mybatis的注解。）
+测试
+@Select(
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/springboot-vue%EF%BC%886%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-27</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/springboot-vue%EF%BC%885%EF%BC%89.html">springboot+vue（5）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：MybatisPlusORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。
-MyBatis是一款优秀的数据持久层ORM框
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-27</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/springboot-vue%EF%BC%884%EF%BC%89.html">
-                  springboot+vue（4）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            MybatisPlusORM:对象关系映射，解决的是数据库和面向对象不匹配的问题，它的本质是简化操作数据库的编码。
+MyBatis是一款优秀的数据持久层ORM框架，被广泛地应用于应用系统。
+MyBatis能够非常灵活地实现动态SQL，可以使
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/springboot-vue%EF%BC%885%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-27</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/springboot-vue%EF%BC%884%EF%BC%89.html">springboot+vue（4）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：RESTful这是目前比较流行的互联网软件服务架构设计风格。
-REST并不是一个标准，它更像一组客户端和服务端交互时的架构理念和设计原则，基于这种架构理念和设计
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-27</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/springboot-vue%EF%BC%883%EF%BC%89.html">
-                  springboot+vue（3）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            RESTful这是目前比较流行的互联网软件服务架构设计风格。
+REST并不是一个标准，它更像一组客户端和服务端交互时的架构理念和设计原则，基于这种架构理念和设计原则的Web API更加简洁，更有层次。
+每一个URI代表一种资源
+客户端使用G
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/springboot-vue%EF%BC%884%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-15.png" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-27</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/springboot-vue%EF%BC%883%EF%BC%89.html">springboot+vue（3）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：静态资源访问如果你使用的是IDEA创建项目，那么会默认创建出static目录。静态资源一般来说放在这个目录下。
-
-如果默认的的策略无法满足开发需求，也可以在ap
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-08</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
-                  入门项目——学生成绩管理系统（demo）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            静态资源访问如果你使用的是IDEA创建项目，那么会默认创建出static目录。静态资源一般来说放在这个目录下。
+
+如果默认的的策略无法满足开发需求，也可以在application.properties中自定义
+
+前者为过滤规则，或者为静态资
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/springboot-vue%EF%BC%883%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-08</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">入门项目——学生成绩管理系统（demo）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
 
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
@@ -885,38 +861,43 @@ REST并不是一个标准，它更像一组客户端和服务端交互时的架�
 </div>
 
 
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
               background-position: center center;">
-                  <img class="lazyload" src="/images/java.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：学生成绩管理系统项目环境jdk 1.8以上即可
+              <img class="lazyload" src="/images/java.jpg" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            学生成绩管理系统项目环境jdk 1.8以上即可
 maven 3.6.1以上
 mysql 8
 idea 2021
 JQuery
-项目创建新建选择spring In
-              </div>
-            </div>
-            <div class="post-more">
-              <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
-            </div>
+项目创建新建选择spring Initializr
+
+指定项目名，路径，类型等信息。
+
+指定导入的jar包，
+sp
           </div>
-          <div class="post-img">
-            <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
+        </div>
+        <div class="post-more">
+          <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
           background-position: center center;">
-              <img class="lazyload" src="/images/java.jpg" alt="">
-            </a>
-          </div>
-        </article>
-        
-  </section>
+          <img class="lazyload" src="/images/java.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
 </div>
 
 <div class="w-70">
@@ -1099,7 +1080,7 @@ JQuery
       
         
           <div class="footer-copyright">
-            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
 
           </div>
         
@@ -1233,8 +1214,13 @@ JQuery
     <script src="/js/app.js"></script>
     
     <!-- 文章目录所需js -->
-<link href="/js/tocbot/tocbot.css" rel="stylesheet">
-<script src="/js/tocbot/tocbot.min.js"></script>
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
 
 <script>
   var headerEl = 'h2, h3, h4',  //headers 
@@ -1249,12 +1235,15 @@ JQuery
     // Which headings to grab inside of the contentSelector element.
     headingSelector: headerEl,
     scrollSmooth: true,
-    scrollSmoothOffset: -80,
-    headingsOffset: -($(window).height() * 0.4 - 45),
-    positionFixedSelector: '.toc-main',
-    positionFixedClass: 'is-position-fixed',
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
     fixedSidebarOffset: 'auto',
     activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
     // onClick: function (e) {},
   }
   if ($('.toc').length > 0) {
@@ -1307,7 +1296,7 @@ JQuery
     if (activePosition > (document.documentElement.clientHeight - 100)) {
       $cardToc.scrollTop = sidebarScrollTop + 150
     }
-    if (activePosition < 100) {
+    if (activePosition < 150) {
       $cardToc.scrollTop = sidebarScrollTop - 150
     }
   }
@@ -1327,7 +1316,7 @@ JQuery
   
   // 手机端toc按钮点击出现目录
   const mobileTocClick = function () {
-    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
     const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
     let right = '45px';
     if (window.innerWidth >= 551 && window.innerWidth <= 992) {
@@ -1359,7 +1348,7 @@ JQuery
 </script>
 
 <style>
-  .is-position-fixed {
+  /* .is-position-fixed {
     position: sticky !important;
     top: 74px;
   }
@@ -1374,14 +1363,13 @@ JQuery
     position: absolute;
     left: 12px;
     top: 0;
-  }
-</style> 
+  } */
+</style>
+ 
 
 <!-- 设置导航背景 -->
 <script>
   let setHeaderClass = () => {
-    const headerMenuTransparent = true;
-    if (!headerMenuTransparent) { return; }
     const nav = $('#navHeader');
     const navTop = nav.outerHeight();
     const winTop = $(window).scrollTop();
@@ -1668,7 +1656,9 @@ JQuery
 <!-- 爱心点击 -->
 
   
-    <script src="/js/cursor/fireworks.js"></script>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
   
 
 
@@ -1677,6 +1667,60 @@ JQuery
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
 
 
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
     <!-- pjax -->
     
 

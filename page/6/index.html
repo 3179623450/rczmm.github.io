@@ -17,12 +17,7 @@
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
   <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
-  <!--数学渲染-->
-  <script type="text/javascript" async
-          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
-
+  
   
   
   
@@ -86,35 +81,24 @@
 
   
   
-  <body>
-    <!-- 预加载动画 -->
-    <!-- 页面预加载动画 -->
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
 
-<div id='loader'>
-  <link rel="stylesheet" href="/js/loaded/index.css" >
-  <div class="loading-left-bg"></div>
-  <div class="loading-right-bg"></div>
-  <div class="spinner-box">
-    <div class="configure-border-1">
-      <div class="configure-core"></div>
-    </div>
-    <div class="configure-border-2">
-      <div class="configure-core"></div>
-    </div>
-    <div class="loading-word">加载中...</div>
-  </div>
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
 </div>
 
+  
 <script>
   var endLoading = function () {
     document.body.style.overflow = 'auto';
     document.getElementById('loader').classList.add("loading");
   }
   window.addEventListener('DOMContentLoaded',endLoading);
-  
 </script>
 
-    
+  <body>
     <!-- 判断是否为暗黑风格 -->
     <!-- 判断是否为黑夜模式 -->
 <script>
@@ -162,7 +146,7 @@
   }
 
   //https://github.com/filamentgroup/loadCSS
-  var loadCSS = function (href, before, media, attributes) {
+  var loadCSS = function (src) {
     return new Promise(resolve => {
       setTimeout(function () {
         var link = document.createElement('link');
@@ -200,7 +184,7 @@
       <main class="main" id="pjax-container">
         <!-- 头部导航 -->
         
-<header class="header   " 
+<header class="header  " 
   id="navHeader"
   style="position: fixed;
   left: 0; top: 0; z-index: 10;width: 100%;"
@@ -322,7 +306,7 @@
         
         
           <li class="drawer-box-content_item">
-            <a target="_blank" rel="noopener" href="https://github.com/rczmm/">
+            <a target="_blank" rel="noopener" href="https://github.com/rczmm">
               <i class="fas fa-github" aria-hidden="true"></i>
               <span>Github</span>
             </a>
@@ -564,7 +548,7 @@
     </nav>
   </div>
   
-    <a target="_blank" rel="noopener" href="https://github.com/rczmm/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <a target="_blank" rel="noopener" href="https://github.com/rczmm" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
   
   
     <div id="he-plugin-simple"></div>
@@ -615,12 +599,12 @@
   <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
     
       <swiper-slide>
-        <div class="item swiper-lazy" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" style="background-size: 300000px; 
+        <div class="item swiper-lazy" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子3.jpg" style="background-size: 300000px; 
           background-position: left center;" style="position: relative;">
           <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
             <div class="flag">
               
-              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子2.jfif" style="height: 100%; background-size: cover; 
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子3.jpg" style="height: 100%; background-size: cover; 
                 background-position: center center;">
                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
               </div>
@@ -674,9 +658,9 @@
 
 <script>
   var autoplay = JSON.parse('true');
-  var delay = '2.0s';
-  var loop = JSON.parse('false') ? false : JSON.parse('true');
-  var effect = 'fade';
+  var delay = '5000';
+  var loop = JSON.parse('true') ? false : JSON.parse('true');
+  var effect = 'slide';
   var swiperLength = parseInt(document.querySelector(".swiper-length").innerText);
   var defaultDesc = '不是叫⼈信仰它的结论，⽽是要你思考。';
   defaultDesc = defaultDesc.split(',');
@@ -744,16 +728,19 @@
   })
 </script>
 
+  <script src="/js/bubble/homeBubble.js"></script>
+
 <style>
 #appSwiper {
   position: relative;
   user-select: none;
   overflow: hidden;
+  font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
 }
 .default-excerpt {
-  font-size: 1.6rem;
-  margin-top: 1rem;
-  font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+  font-size: 1.6em;
+  margin-top: 1em;
+  color: #eee;
 }
 .bottom-one-btn {
   margin-top: 15px;
@@ -802,8 +789,7 @@
   z-index: 9999;
 }
 .flag-text .title {
-  font-size: 1.8rem;
-  font-family: Long Cang,cursive;
+  font-size: 1.8em;
 }
 .flag-text .title a {
   color: #fff;
@@ -814,7 +800,6 @@
 }
 .flag-text .excerpt {
   color: #eee;
-  font-family: Ubuntu,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
   width: 70%;
   line-height: 30px;
   height: 150px;
@@ -842,7 +827,7 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.5rem;
+  font-size: 2.5em;
   color: #fff;
   cursor: pointer;
   z-index: 2;
@@ -872,14 +857,12 @@
   animation: rightan 1.5s infinite;
 }
 /* 当头部导航设置为背景透明的时候 */
-
-  .swiper-slide {
-    height: 400px;
-  }
-  .flag-text {
-    top: 80px;
-  }
-
+.swiper-slide {
+  height: 400px;
+}
+.flag-text {
+  top: 80px;
+}
 
 @media (min-width: 992px) {
   .swiper-button-prev {
@@ -918,7 +901,7 @@
     width: 100%;
   }
   .flag-text .title {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     margin-top: 50px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -966,7 +949,7 @@
     margin-top: 20px;
   }
   .flag-text .excerpt {
-    font-size: 1rem;
+    font-size: 1em;
     line-height: 20px;
     height: 80px;
     display: -webkit-box;
@@ -992,7 +975,6 @@
   }
 }
 /* 当头部导航设置为背景透明的时候 */
-
   @media (max-width: 992px) {
     .flag-text {
       top: 60px;
@@ -1004,7 +986,6 @@
       height: 310px;
     }
   }
-
 
 /* 文字或者按钮居中显示 */
 
@@ -1030,8 +1011,7 @@
   .default-excerpt {
     display: flex;
     justify-content: center;
-    font-size: 1.6rem;
-    font-family: Titillium Web,'PingFang SC','Hiragino Sans GB','Microsoft JhengHei','Microsoft YaHei',sans-serif;
+    font-size: 1.6em;
   }
   .flag-text-btns {
     justify-content: center;
@@ -1061,10 +1041,7 @@
     width: 100%;
   }
   .swiper-slide {
-    height: calc(100vh - 60px);
-    
-      height: 100vh;
-    
+    height: 100vh;
   }
   .flag-text {
     top: 50%;
@@ -1074,13 +1051,12 @@
     height: auto;
   }
   .flag-text .title {
-    font-size: 2.8rem;
+    font-size: 2.8em;
     line-height: 1.5em;
     max-height: none;
-    /* overflow: visible; */
   }
   .flag-text .excerpt {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     height: 150px;
   }
   .flag-text .read-more {
@@ -1120,7 +1096,7 @@
     height: 50px;
   }
   .swiper-button-next:after, .swiper-button-prev:after {
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
   @media (min-width: 992px) {
     .flag-text .excerpt {
@@ -1141,7 +1117,7 @@
       top: 55%;
     }
     .flag-text .title {
-      font-size: 2.4rem;
+      font-size: 2.4em;
       margin-top: 0;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -1161,7 +1137,7 @@
       height: 60%;
     }
     .flag-text .title {
-      font-size: 2.2rem;
+      font-size: 2.2em;
     }
     .flag-text .excerpt {
       line-height: 30px;
@@ -1177,7 +1153,7 @@
       margin-right: 0;
     }
     .default-excerpt {
-      margin-top: 1rem;
+      margin-top: 1em;
     }
   }
 
@@ -1252,139 +1228,130 @@
     <!-- 每一篇文章卡片 -->
     <!-- hash算法 -->
 
-  <section class="posts">
+<section class="posts">
+  
     
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-24</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html">
-                  基于Python的QT（二）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-24</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html">基于Python的QT（二）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：Qt首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。
-qtbase就是大多数模块的基础组件，比例qt
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-19</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html">
-                  基于python的QT（一）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            Qt首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。
+qtbase就是大多数模块的基础组件，比例qtcore、qtgui、qtwidgets、qtnetworks，这些模块里当然都
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-19</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html">基于python的QT（一）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
-
-
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：前言QT，一个跨平台的GUI编程框架，支持多种语言，java、c++、python。
-此笔记基于python。
-安装Qt，对于python而言，QT支持的版本最
-              </div>
             </div>
-            <div class="post-more">
-              <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html">
-                <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-              </a>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-08-08</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
-                  入门项目——学生成绩管理系统（demo）
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            前言QT，一个跨平台的GUI编程框架，支持多种语言，java、c++、python。
+此笔记基于python。
+安装Qt，对于python而言，QT支持的版本最低是3.6，在官方文档中，建议使用虚拟环境，即venu，笔记中使用pycharm
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-14.png" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-08-08</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">入门项目——学生成绩管理系统（demo）</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
 
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
@@ -1392,61 +1359,63 @@ qtbase就是大多数模块的基础组件，比例qt
 </div>
 
 
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
               background-position: center center;">
-                  <img class="lazyload" src="/images/java.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：学生成绩管理系统项目环境jdk 1.8以上即可
+              <img class="lazyload" src="/images/java.jpg" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            学生成绩管理系统项目环境jdk 1.8以上即可
 maven 3.6.1以上
 mysql 8
 idea 2021
 JQuery
-项目创建新建选择spring In
-              </div>
-            </div>
-            <div class="post-more">
-              <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
-            </div>
+项目创建新建选择spring Initializr
+
+指定项目名，路径，类型等信息。
+
+指定导入的jar包，
+sp
           </div>
-          <div class="post-img">
-            <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
+        </div>
+        <div class="post-more">
+          <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E5%85%A5%E9%97%A8%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.html" style="background-size: cover; 
           background-position: center center;">
-              <img class="lazyload" src="/images/java.jpg" alt="">
-            </a>
+          <img class="lazyload" src="/images/java.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-06-19</span>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-06-19</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html">
-                  高等数学
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html">高等数学</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E6%95%B0/" rel="tag">高数</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
 
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
@@ -1454,58 +1423,56 @@ JQuery
 </div>
 
 
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="/images/%E6%95%B0%E5%AD%A6.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：高等数学学习笔记数学公式显示错误时，可刷新界面。
-点击刷新
-函数在高等数学里，微积分无疑是极为重要的，但是如果没有函数去研究微积分，这其实很没有意义，在微积分的
-              </div>
-            </div>
-            <div class="post-more">
-              <a href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html">
-                <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
-              </a>
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="/images/%E6%95%B0%E5%AD%A6.jpg" alt="">
             </a>
           </div>
-        </article>
-        
-      
-        <article class="post reveal"
-          style="flex-direction: row-reverse;   ">
-          <div class="post-main">
-            <div class="post-info">
-              <div class="post-time">
-                <i class="fas fa-clock" aria-hidden="true"></i>
-                <span class="post-time">发布时间：2022-06-18</span>
-              </div>
-              <div class="post-title">
-                <a class="post-title-link" href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
-                  反射与注解
-                </a>
-              </div>
-              <div class="post-meta">
-                <div class="post-tags">
-                  <!-- 文章详情页的标签 -->
+          <div class="post-content">
+            高等数学学习笔记数学公式显示错误时，可刷新界面。
+点击刷新
+函数在高等数学里，微积分无疑是极为重要的，但是如果没有函数去研究微积分，这其实很没有意义，在微积分的世界里，函数在参与排行榜绝对排行第一。
+函数概念函数是什么？在很多教材或者课外读
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html">
+            <i class="iconfont iconmore" pointer style="  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="/images/%E6%95%B0%E5%AD%A6.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+    
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2022-06-18</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">反射与注解</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
 
     <i class="iconfont icontag"></i>
     <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/" rel="tag">javase</a></li></ul>
 
-                </div>
-                <div class="post-categories">
-                  <!-- 文章详情页的分类 -->
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
 
 <div class="article-category">
   <i class="iconfont iconbookmark1"></i>
@@ -1513,34 +1480,35 @@ JQuery
 </div>
 
 
-                </div>
-              </div>
-              <div class="post-img-mobile">
-                <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html" style="background-size: cover; 
-              background-position: center center;">
-                  <img class="lazyload" src="/images/java.jpg" alt="正在加载中....">
-                </a>
-              </div>
-              <div class="post-content">
-                部分内容：反射与注解jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。
-注解的作用，使得开发者
-              </div>
-            </div>
-            <div class="post-more">
-              <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
-                <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-              </a>
             </div>
           </div>
-          <div class="post-img">
+          <div class="post-img-mobile">
             <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html" style="background-size: cover; 
-          background-position: center center;">
+              background-position: center center;">
               <img class="lazyload" src="/images/java.jpg" alt="">
             </a>
           </div>
-        </article>
-        
-  </section>
+          <div class="post-content">
+            反射与注解jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。
+注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。
+反射认识反射机制这是ja
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload" src="/images/java.jpg" alt="">
+        </a>
+      </div>
+    </article>
+  
+</section>
     <!-- 翻页 -->
     
   <!-- <nav class="page-nav">
@@ -1566,12 +1534,10 @@ JQuery
 
   </div>
 
-  
-<aside id='l_side'>
+  <aside id='l_side'>
   
     
-      
-        <section class="widget side_blogger">
+      <section class="widget side_blogger">
   <div class='content'>
     
       
@@ -1639,7 +1605,6 @@ JQuery
   </div>
 </section>
 
-      
     
   
   
@@ -1647,9 +1612,10 @@ JQuery
     
   
 
-  <div class="layout_sticky">
+  <div class="layout_sticky">    
     
       
+        
     <section class="widget side_category">
       
   <header>
@@ -1692,9 +1658,9 @@ JQuery
     </section>
   
   
-    
-    
       
+      
+        
 <section class="widget side_tagcloud">
     
   <header>
@@ -1710,8 +1676,8 @@ JQuery
 </section>
 
   
-    
-    
+      
+      
   <section class="widget side_recent_post">
     
   <header>
@@ -1836,17 +1802,17 @@ JQuery
     </div>
   </section>
 
-    
+      
   <section class="widget side_archives">
     
     <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">三月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div>
   </section>
 
-    <section class="widget side_webinfo">
+      <section class="widget side_webinfo">
   
   <header>
     
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name'>狗窝资料</span>
+      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">狗窝资料</span>
     
   </header>
 
@@ -1856,7 +1822,7 @@ JQuery
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>32 耳巴子</div>
+          <div>32 篇</div>
         </div>
       
 
@@ -1870,7 +1836,7 @@ JQuery
           var today = new Date();
           var timeold = (today.getTime() - BirthDay.getTime());
           var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 太阳日';
+          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
         </script>
       
 
@@ -1878,19 +1844,33 @@ JQuery
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>93.4k 火星文</div>
+          <div>93.4k 字</div>
         </div>
       
 
       
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+          
+        </div>
+      
 
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+          
+        </div>
       
 
       
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Feb 28 2023 20:41:44 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Tue Feb 28 2023 21:14:52 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2023-02-28 日</div>
           
         </div>
@@ -1949,12 +1929,12 @@ JQuery
     </div>
   </div>
 </section>
-    
+      
   
 
+    
   </div>
 </aside>
-
 </div>
 <!-- 花瓣和雪花飘落 -->
 <!-- 雪花和花瓣特效 -->
@@ -1964,7 +1944,7 @@ JQuery
       //只在桌面版网页启用特效
       var windowWidth = $(window).width();
       if (windowWidth > 768) {
-        loadScript('/js/falling/snow.js');
+        loadScript('/js/falling/sakura.js');
       }
     </script>
   
@@ -2150,7 +2130,7 @@ JQuery
       
         
           <div class="footer-copyright">
-            <p>Copyright © 2019 - 2022 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://github.com/rczmm">rczmm</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> </p>
 
           </div>
         
@@ -2284,8 +2264,13 @@ JQuery
     <script src="/js/app.js"></script>
     
     <!-- 文章目录所需js -->
-<link href="/js/tocbot/tocbot.css" rel="stylesheet">
-<script src="/js/tocbot/tocbot.min.js"></script>
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
 
 <script>
   var headerEl = 'h2, h3, h4',  //headers 
@@ -2300,12 +2285,15 @@ JQuery
     // Which headings to grab inside of the contentSelector element.
     headingSelector: headerEl,
     scrollSmooth: true,
-    scrollSmoothOffset: -80,
-    headingsOffset: -($(window).height() * 0.4 - 45),
-    positionFixedSelector: '.toc-main',
-    positionFixedClass: 'is-position-fixed',
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
     fixedSidebarOffset: 'auto',
     activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
     // onClick: function (e) {},
   }
   if ($('.toc').length > 0) {
@@ -2358,7 +2346,7 @@ JQuery
     if (activePosition > (document.documentElement.clientHeight - 100)) {
       $cardToc.scrollTop = sidebarScrollTop + 150
     }
-    if (activePosition < 100) {
+    if (activePosition < 150) {
       $cardToc.scrollTop = sidebarScrollTop - 150
     }
   }
@@ -2378,7 +2366,7 @@ JQuery
   
   // 手机端toc按钮点击出现目录
   const mobileTocClick = function () {
-    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
     const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
     let right = '45px';
     if (window.innerWidth >= 551 && window.innerWidth <= 992) {
@@ -2410,7 +2398,7 @@ JQuery
 </script>
 
 <style>
-  .is-position-fixed {
+  /* .is-position-fixed {
     position: sticky !important;
     top: 74px;
   }
@@ -2425,14 +2413,13 @@ JQuery
     position: absolute;
     left: 12px;
     top: 0;
-  }
-</style> 
+  } */
+</style>
+ 
 
 <!-- 设置导航背景 -->
 <script>
   let setHeaderClass = () => {
-    const headerMenuTransparent = true;
-    if (!headerMenuTransparent) { return; }
     const nav = $('#navHeader');
     const navTop = nav.outerHeight();
     const winTop = $(window).scrollTop();
@@ -2719,7 +2706,9 @@ JQuery
 <!-- 爱心点击 -->
 
   
-    <script src="/js/cursor/fireworks.js"></script>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
   
 
 
@@ -2728,6 +2717,60 @@ JQuery
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
 
 
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
     <!-- pjax -->
     
 
