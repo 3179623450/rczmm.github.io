@@ -1195,6 +1195,20 @@ function(4, 6)</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Sql笔记</title>
+    <url>//post/Sql%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<h1 id="Sql笔记"><a href="#Sql笔记" class="headerlink" title="Sql笔记"></a>Sql笔记</h1><p>1、查询表中记录条数</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(*) FROM USER;
+SELECT COUNT(1) FROM USER;
+SELECT COUNT(id) FROM USER;</code></pre>
+
+<p>COUNT能聚合记录条数。</p>
+<p>以上三条sql语句在运行速度上几乎没有差别，但是对于其中的内容来说，count（1）会包含null的记录。</p>
+<p>但是对于Innodb引擎来说，这个开窗会十分的慢，</p>
+<p>因为Innodb是索引组织表，主键索引树的叶子结点是数据，而普通索引树的叶子结点是主键值，因此普通索引树比主键索引树小很多。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>springboot+vue（1）</title>
     <url>//post/springboot-vue%EF%BC%881%EF%BC%89.html</url>
     <content><![CDATA[<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>JavaEE：Springboot+MybatisPlus</p>
@@ -2287,6 +2301,230 @@ public class TimeAspect &#123;
       </tags>
   </entry>
   <entry>
+    <title>博客开发日记</title>
+    <url>//post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</url>
+    <content><![CDATA[<h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
+<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
+<li>服务端：Django</li>
+<li>数据库：MySQL 8.0</li>
+<li>前端：原生JavaScript</li>
+<li>CSS：原生CSS</li>
+</ol>
+<p>PyCharm</p>
+<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
+<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
+<ol>
+<li><p>创建 Django 模型，用于存储博客内容。</p>
+<p>在新建的app目录下，编辑models.py文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
+
+
+class Blog(models.Model):
+    title &#x3D; models.CharField(max_length&#x3D;200)
+    author &#x3D; models.CharField(max_length&#x3D;100)
+    content &#x3D; models.TextField()
+    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
+    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
+
+    # 返回模型的标题，用于在Django的后台中显示。
+    def __str__(self):
+        return self.title</code></pre>
+</li>
+<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
+<p>在 Django  app中创建一个 views.py 文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
+from django.views import View
+from .models import Blog
+
+class BlogListView(View):
+    def get(self, request):
+        blogs &#x3D; Blog.objects.all()
+        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
+
+<p> 创建模板文件，例如 blog_list.html</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
+&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+  &#123;% for blog in blogs %&#125;
+    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
+  &#123;% endfor %&#125;
+&lt;&#x2F;ul&gt;</code></pre>
+
+<p>urls.py 文件中配置 URL 与视图的映射关系</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
+from .view import BlogListView
+
+urlpatterns &#x3D; [
+    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
+]</code></pre>
+
+<p>文章详情页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
+
+<p>新建页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
+        &#123;&#123; blog.title &#125;&#125;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+<p>创建forms.py文件(app目录内)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
+from .models import Blog
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model &#x3D; Blog
+        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
+
+<p>创建文章页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
+    template_name &#x3D; &#39;create_blog.html&#39;
+
+    def get(self, request):
+        form &#x3D; BlogForm()
+        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
+
+    def post(self, request):
+        form &#x3D; BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_list&#39;)
+        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+  &#123;% csrf_token %&#125;
+  &#123;&#123; form.as_p &#125;&#125;
+  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+
+<p>文章编辑</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    if request.method &#x3D;&#x3D; &#39;POST&#39;:
+        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
+    else:
+        form &#x3D; BlogForm(instance&#x3D;blog)
+    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+    &#123;% csrf_token %&#125;
+    &#123;&#123; form.as_p &#125;&#125;
+    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+</li>
+<li><p>创建 Django URL，实现页面路由功能。</p>
+</li>
+<li><p>编写 HTML 页面，实现博客页面的设计。</p>
+</li>
+<li><p>使用 CSS 完成页面样式设计。</p>
+</li>
+<li><p>使用 JavaScript 实现前端交互功能。</p>
+</li>
+<li><p>配置数据库连接。</p>
+<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;blog.apps.BlogConfig&#39;,
+    &#39;django.db.backends.mysql&#39;
+]</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
+    &#39;default&#39;: &#123;
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;blog&#39;,
+        &#39;USER&#39;: &#39;root&#39;,
+        &#39;PASSWORD&#39;: &#39;root&#39;,
+        &#39;HOST&#39;: &#39;localhost&#39;,
+        &#39;POST&#39;: &#39;3306&#39;,
+        &#39;OPTION&#39;: &#123;
+            &#39;charset&#39;: &#39;utf8mb4&#39;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
+<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
+
+<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
+python manage.py migrate</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
+
+<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
+
+<p>如果没有安装 Django，请使用以下命令安装它：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
+
+<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
+<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
+
+ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
+
+<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
+<ol>
+<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
+<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
+<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
+<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
+</ol>
+<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
+<ol>
+<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
+<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
+<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
+<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
+</ol>
+<p>pycharm的坑</p>
+<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
+<ol>
+<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
+<li>测试博客系统，修复发现的 bug。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>反射与注解</title>
     <url>//post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html</url>
     <content><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p>
@@ -2353,6 +2591,90 @@ class Message &#123;
       <tags>
         <tag>javase</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>变治法</title>
+    <url>//post/%E5%8F%98%E6%B2%BB%E6%B3%95.html</url>
+    <content><![CDATA[<h1 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h1><p>算法设计与分析方法之中的一种特殊的变换思想，严格意义上说，他并不想分治法、动态规划那样标准，它只是一种变换问题的思想。</p>
+<p>变：将问题变得更加容易</p>
+<p>治：求解容易的问题</p>
+<h2 id="实例化简（预排序、高斯消元）"><a href="#实例化简（预排序、高斯消元）" class="headerlink" title="实例化简（预排序、高斯消元）"></a>实例化简（预排序、高斯消元）</h2><h3 id="预排序，一种简单的预处理技术（主要是意识）。"><a href="#预排序，一种简单的预处理技术（主要是意识）。" class="headerlink" title="预排序，一种简单的预处理技术（主要是意识）。"></a>预排序，一种简单的预处理技术（主要是意识）。</h3><p>检验数组元素唯一性</p>
+<p>词频统计</p>
+<p>元素查找</p>
+<p>以上三种模式，都可以使用蛮力来做，但是明显的性能太差了。</p>
+<p>将数组排序是一个解决方案，无论是唯一性还是词频都可以很好的得到答案，代价仅仅是遍历一次数组，而元素查找在适合的数组之中，也可以使用诸如二分的方式很快的得到结果。但是对于查找来说，遍历随便比较差，但是对于多次查找来说，这是值得的。</p>
+<p>高斯消元法</p>
+<p>求解线性方程组的方式，将系数矩阵化为上三角矩阵。（就是一种变治和化简的思想）</p>
+<h2 id="改变问题（AVL、多路查找树）"><a href="#改变问题（AVL、多路查找树）" class="headerlink" title="改变问题（AVL、多路查找树）"></a>改变问题（AVL、多路查找树）</h2><p>AVL，为了改善二叉排序树的查找性能</p>
+<h2 id="问题化简（堆排序）"><a href="#问题化简（堆排序）" class="headerlink" title="问题化简（堆排序）"></a>问题化简（堆排序）</h2><p>堆排序</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def heapsort2(arr):
+    # 建立堆
+    def heapify(arr, low, high):
+        # 开始指向堆顶元素
+        i &#x3D; low
+        # 开始指向左节点
+        j &#x3D; 2 * i + 1
+        # 储存堆顶元素
+        temp &#x3D; arr[low]
+        # j位置有效
+        while j &lt;&#x3D; high:
+            # 右结点大于左结点
+            if j + 1 &lt;&#x3D; high and arr[j + 1] &gt;&#x3D; arr[j]:
+                # 指向右结点
+                j &#x3D; j + 1
+            # 子结点大于父节点
+            if arr[j] &gt; temp:
+                # 交换
+                arr[i] &#x3D; arr[j]
+                i &#x3D; j
+                j &#x3D; 2 * i + 1
+            else:
+                # temp放入某一节父节点
+                arr[i] &#x3D; temp
+                break
+        else:
+            # temp放到叶子结点
+            arr[i] &#x3D; temp
+
+    # 排序
+    def sort(nums):
+        n &#x3D; len(nums)
+
+        for i in range((n - 2) &#x2F;&#x2F; 2, -1, -1):
+            heapify(nums, i, n - 1)
+
+        for i in range(n - 1, -1, -1):
+            nums[0], nums[i] &#x3D; nums[i], nums[0]
+            heapify(nums, 0, i - 1)
+
+    sort(arr)
+    # print(&quot;结果数组：&quot;, arr)</code></pre>
+
+
+
+<h2 id="霍纳法则"><a href="#霍纳法则" class="headerlink" title="霍纳法则"></a>霍纳法则</h2><p>P（x） &#x3D; an * x^n  + ……a1* x + a0</p>
+<p>一项一项的计算很慢，如果改变表现形式，这样就只要进行迭代。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 霍纳法则
+# arr（多项式，a1-an的数组）
+# n（项数）
+# x（x的值）
+def Horner_rule(arr, n, x):
+    i &#x3D; 0
+    ans &#x3D; 0
+    while i &lt; n:
+        ans &#x3D; arr[i] + x * ans
+        i+&#x3D;1
+    print(ans)
+    return ans
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    arr &#x3D; [1 for i in range(0,10)]
+    print(arr)
+    x &#x3D; 4
+    n &#x3D; 4
+    Horner_rule(arr,4,4)</code></pre>
+
+]]></content>
   </entry>
   <entry>
     <title>基于Python的QT（二）</title>
@@ -2604,6 +2926,302 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 <p>在这样的过程中，不难发现，一个文件经过了许多的进程。</p>
 <p>OS为了实际写入磁盘：首先确定新数据将驻留在磁盘上的哪个位置，然后在文件系统所维护的各种结构中进行记录，这样做需要向底层存储设备发出IO请求，以读取现有结构或者更新他们。</p>
 <p>当然还有很多的细节，出于性能上的原因，大多数文件系统首先会延迟这些写操作一段时间，希望将其分为较大的组，为了处理写入期间系统奔溃的问题，大多数文件系统都包含某种复杂的写入协议，如日志或写时赋值，仔细排序写入磁盘的操作，以确保如果写入序列期间发生故障，系统可以在之后恢复到合理的状态。为了使不同的通用操作更加高效，文件系统采用了许多不同的数据结构和访问方法，从简单的列表到复杂的B树。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据库原理与应用</title>
+    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html</url>
+    <content><![CDATA[<h1 id="数据库原理与应用"><a href="#数据库原理与应用" class="headerlink" title="数据库原理与应用"></a>数据库原理与应用</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>数据（Data）</p>
+<pre class="line-numbers language-none"><code class="language-none">数据是数据库中存储的基本对象
+数据的定义：描述事物的符号记录
+数据的种类：文本、图形、图像、音频、视频、学生的档案记录、货物的运输情况等
+数据的特点：数据与其语义是不可分的（说明：数据的含义称为数据的语义，数据与其语义是不可分的。）</code></pre>
+
+<p>数据库（DataBase，简称 DB）</p>
+<pre class="line-numbers language-none"><code class="language-none">数据库的定义：数据库（Database，简称 DB）是长期储存在计算机内、有组织的、可共享的大量数据的集合。（一个大规模集成的数据集合。）
+数据库的基本特征：
+	数据按一定的数据模型组织、描述和储存
+	可为各种用户共享
+	冗余度较小
+	数据独立性较高
+	易扩展
+数据库作用：
+	一个数据库是对现实生活中一个企业或一个单位在计算机中的建模结果
+	实体
+	联系（实体间的关系）</code></pre>
+
+<p>数据库管理系统（DataBase Management System，简称 DBMS）</p>
+<pre class="line-numbers language-none"><code class="language-none">DBMS 的定义：是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件，也是一个大型复杂的软件系统。
+DBMS 的用途：数据库管理系统的主要任务就是科学地组织和存储数据、高效地获取和维护数据
+DBMS 的主要功能
+    数据定义功能
+        提供数据定义语言（DDL）
+        定义数据库中的数据对象
+    数据组织、存储和管理
+        分类组织、存储和管理各种数据
+        确定组织数据的文件结构和存取方式
+        实现数据之间的联系
+        提供多种存取方法提高存取效率
+    数据操纵功能
+        提供数据操纵语言（DML）
+        实现对数据库的基本操作 CRUD (查询、插入、删除和修改)
+    数据库的事务管理和运行管理
+        数据库在建立、运行和维护时由 DBMS 统一管理和控制，保证事务的正确性
+        保证数据的安全性、完整性、多用户对数据的并发使用
+        发生故障后的系统恢复
+    数据库的建立和维护功能（实用程序）
+        数据库初始数据装载转换
+        数据库转储
+        介质故障恢复
+        数据库的重组织
+        性能监视分析等
+    其它功能
+        DBMS 与网络中其它软件系统的通信
+        两个 DBMS 系统的数据转换
+        异构数据库之间的互访和互操作</code></pre>
+
+<p>数据库系统（Database System，简称 DBS）</p>
+<pre class="line-numbers language-none"><code class="language-none">数据库系统的定义：在计算机系统中引入数据库后的系统构成数据库系统。
+数据库系统的构成
+	数据库
+    数据库管理系统（及其开发工具）
+    应用系统
+    数据库管理员 (DBA)：是负责数据库的设计、规划、协调的专职人员。是全面负责建立、维护和管理数据库系统的人员。</code></pre>
+
+<p>数据管理技术的产生和发展</p>
+<p>数据管理是对数据进行分类、组织、编码、存储、检索和维护，也是数据处理的中心问题。</p>
+<p>数据管理技术的发展过程</p>
+<p>人工管理阶段（20 世纪 40 年代中 —— 50 年代中）</p>
+<p>文件系统阶段（20 世纪 50 年代末 —— 60 年代中）</p>
+<p>数据库系统阶段（20 世纪 60 年代末 —— 现在）</p>
+<p>数据库系统的特点</p>
+<pre class="line-numbers language-none"><code class="language-none">数据结构化
+	数据库的主要特征之一，也是数据库系统与文件系统的本质区别
+数据的共享性高，冗余度低，易扩充
+	数据共享的好处：
+		减少数据冗余，节约存储空间
+		避免数据之间的不相容性与不一致性
+		使系统易于扩充
+数据独立性高
+	物理独立性：指用户的应用程序与存储在磁盘上的数据库中数据是相互独立的。当数据的物理存储改变了，应用程序不用改变。
+	逻辑独立性：指用户的应用程序与数据库的逻辑结构是相互独立的。数据的逻辑结构改变了，用户程序也可以不变。
+	数据独立性是由 DBMS 的二级映像功能来保证的
+数据由 DBMS 统一管理和控制
+	DBMS 提供以下几方面的数据控制功能
+        数据的安全性（Security）保护：保护数据，以防止不合法的使用造成的数据的泄密和破坏。
+    	数据的完整性（Integrity）检查：将数据控制在有效的范围内，或保证数据之间满足一定的关系。
+    	并发（Concurrency）控制：对多用户的并发操作加以控制和协调，防止相互干扰而得到错误的结果。
+    	数据库恢复（Recovery）：DBMS 必须具有将数据库从错误状态恢复到某一正确状态的功能
+</code></pre>
+
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>数据模型分为两类（分属两个不同的层次）</p>
+<p>概念模型，也称信息模型，它是按用户的观点来对数据和信息建模，用于数据库设计。</p>
+<pre class="line-numbers language-none"><code class="language-none">实体（Entity）：客观存在并可相互区别的事物，比如一个学生，一门课，学生的一次选课
+属性（Attribute）：实体所具有的某一特性，比如学生的身高，一个实体可以由若干个属性来刻画。
+码（Key） ：唯一标识实体的属性集，比如学生的学号
+域（Domain）：属性的取值范围称为该属性的域。
+实体型（Entity Type）： 实体名 + 属性名，比如 学生（学号，姓名，性别）就是一个实体型
+实体集（Entity Set）：同一类型的实体的集合，比如全体学生
+联系（Relationship） ：现实世界中事物内部以及事物之间的联系在信息中反映为实体内部的联系和实体之间的联系。
+实体内部的联系通常是指组成实体的各属性之间的联系
+实体之间的联系通常是指不同实体集之间的联系，（有一对一，一对多，多对多等多种类型），实体之间的联系可用 E - R 图 表示</code></pre>
+
+<p>逻辑模型主要包括网状模型、层次模型、关系模型、面向对象模型等，按计算机系统的观点对数据建模，用于 DBMS 实现。</p>
+<p>物理模型是对数据最底层的抽象，描述数据在系统内部的表示方式和存取方法，在磁盘或磁带上的存储方式和存取方法。</p>
+<p>关系模型是最重要的一种数据模型。</p>
+<p>在用户观点下，关系模型由一组关系组成，每个关系的数据结构是一张规范化的二维表，它由行（元组）和列（属性）组成。</p>
+<pre class="line-numbers language-none"><code class="language-none">关系（Relation）：一个关系对应一张表
+元组（Tuple）：表中的一行即一个元组
+属性（Attribute）：表中的一列即一个属性，给每一个属性起一个名称即属性名
+主码（Key） ：表中的某个属性组，可以唯一确定一个元组，该属性组就称为主码。比如上表中的学号就就是该关系的主码
+域（Domain）：域是一组具有相同数据类型的值的集合。比如人的年龄是1-120岁，属性的取值范围来自该属性对应的域
+分量：元组中的一个属性值。
+关系模式：对关系的描述，一般表示为 关系名（属性名1，属性名2....）。比如学生（学号，姓名，年龄，性别，系，年级）。关系模式必须是规范化的，不允许表中还有表，每个属性都应该是不可分的（即关系的每一个分量必须是一个不可分的数据项）</code></pre>
+
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>关系 Relation</p>
+<p>学生（学号，姓名，年级）就是一个关系</p>
+<p>如果只有 1 个属性，则称为<strong>单元关系&#x2F;一元关系</strong></p>
+<p>如果有 2 个属性，则称为<strong>二元关系</strong></p>
+<p>主码 Primary Key</p>
+<p>有一个或一组这样的属性，它的值能确定该关系中其他所有属性的值。</p>
+<p>候选码 Candidate Key</p>
+<p>能唯一标识元组的属性(组)，其中选择其一作为主码。</p>
+<p>主属性 Prime Attribute</p>
+<p>候选码中的诸属性。</p>
+<p>非主属性 Non-Key Attribute</p>
+<p>不出现在任何候选码中的属性。</p>
+<p>关系的型与值</p>
+<p>关系(表)的型：关系的结构(字段名、字段个数、域等)</p>
+<p>关系(表)的值：关系中具体的元组，也称关系的实例(Instance)。</p>
+<p>关系数据库</p>
+<p>关系模型由关系数据结构、关系操作集合和关系完整性约束三部分组成。</p>
+<p>（1）单一的数据结构—关系</p>
+<p>关系模型的数据结构非常单一。在关系模型中，现实世界的实体以及实体间的各种联系均用关系来表示。在用户看来，关系模型中数据的逻辑结构是一张二维表。</p>
+<p>（2）关系操作</p>
+<p>关系模型中常用的关系操作包括：选择（Select）、投影（Project）、连接（Join）、除（Divide）、并（Union）、交(Intersection）、差（Difference）等和查询（Query）操作和增加（Insert）、删除（Delete）、修改（Update）操作两大部分。</p>
+<p>（3）关系的三类完整牲约束</p>
+<p>关系模型允许定义三类完整性约束：实体完整性、参照完整性和用户定义的完整性。<br>关系的完整性</p>
+<p>关系模型中可以有三类完整性约束：实体完整性、参照完整性和用户定义完整性。</p>
+<p>其中实体完整性和参照完整性是关系模型必须满足的完整性约束条件，被称作是关系的两个不变性，应该由关系系统自动支持。</p>
+<p>关系模型的完整性规则是对关系的某种约束条件。任何关系在任何时刻都要满足这些语义约束</p>
+<p>实体完整性</p>
+<p>关系数据库中的每个元组应该是可区分的、唯一的。这样的约束条件用实体完整性来保证</p>
+<p>实体完整性规则：每个关系都应有至少一个主属性，且主属性不能为空值</p>
+<p>例如：选修（学号，课程号，成绩）关系中，学号和课程号不能为空值</p>
+<p> 实体完整性规则规定基本关系的所有主属性都不能取空值，而不仅是主码整体不能取空值。<br>参照完整性</p>
+<p><strong>参照完整性规则：</strong>若属性 F 是基本关系R的外码，它与基本关系 S 的主码 Ks 相对应，则对于 R 中每个元组在 F 上的值必须为：</p>
+<ul>
+<li>或者取空值</li>
+<li>或者等于 S 中某个元组的主码值</li>
+</ul>
+<p>用户定义完整性</p>
+<p>任何关系数据库系统都应支持实体完整性和参照完整性。除此之外，用户还可以自定义完整性约束。</p>
+<p>用户定义的完整性是针对某一具体关系数据库的约束条件，反映某一具体应用所涉及的数据必须满足的语义要求。</p>
+<p>例：选修（学号，课程号，成绩）成绩的取值范围在 0~100 之间</p>
+<p>关系模型应提供定义和检验这类完整性的机制，以便用统一的系统的方法处理它们，而不要由应用程序承担这一功能。<br>关系代数</p>
+<p>关系代数是一种抽象的查询语言，是关系数据操纵语言的一种传统表达方式，它是用对关系的运算来表达查询的。</p>
+<p>关系代数的运算对象是关系，运算结果亦是关系</p>
+<p>关系代数用到的运算符包括两类：集合运算符和专门的关系运算符</p>
+<p>传统的集合运算</p>
+<p>传统的集合运算是二目运算，包括并、差、交、笛卡尔积 4 种运算</p>
+<p>并 Union</p>
+<p>关系 R 与关系 S 的并记作：<code>R ∪ S = &#123;t|t∈R ∨ t∈S&#125;</code></p>
+<p>其结果仍为 n 目关系，由属于 R 或属于 S 的元组组成</p>
+<p>差 Difference</p>
+<p>系R与关系S的差记作：<code>R - S = &#123;t|t∈R ∧ tS&#125;</code></p>
+<p>其结果关系仍为 n 目关系，由属于 R 而不属于 S 的所有元组组成。</p>
+<p>交 Intersection</p>
+<p>关系 R 与关系 S 的交记作：<code>R ∩ S = &#123;t|t∈R ∧ t∈S&#125;</code></p>
+<p>其结果关系仍为 n 目关系，由既属于 R 又属于 S 的元组组成。关系的交可以用差来表示，即 <code>R ∩ S = R-(R-S)</code></p>
+<p>笛卡尔积 Cartesian Product</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/image-20221129164932849.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/image-20221129164932849.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>专门的关系运算</p>
+<p>专门的关系运算包括选择、投影、连接、除运算等</p>
+<p>选择 selection</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据库恢复与安全性</title>
+    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</url>
+    <content><![CDATA[<h1 id="数据库恢复与安全性（Oracle）"><a href="#数据库恢复与安全性（Oracle）" class="headerlink" title="数据库恢复与安全性（Oracle）"></a>数据库恢复与安全性（Oracle）</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）了解oracle的物理备份<br>（2）掌握oracle数据库逻辑备份方法<br>（3）掌握oracle数据库恢复的方法<br>（4）学会使用exp备份数据库、使用imp恢复数据库<br>（5）了解flashback 的使用<br>（6）学会完成SQL导入导出<br>（7）掌握ORACLE中有关用户创建的方法<br>（8）熟练掌握PL-SQL的数据控制语言，能通过自主存取控制进行权限管理<br>（9）熟悉用户资源文件的使用<br>（10）熟悉ORACLE中角色管理<br>（11）熟悉视图机制在自主存取控制上的应用</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Oracle Database 12 home</p>
+<h2 id="实验步骤、出现的问题及解决方案"><a href="#实验步骤、出现的问题及解决方案" class="headerlink" title="实验步骤、出现的问题及解决方案"></a>实验步骤、出现的问题及解决方案</h2><p>数据库用户、表空间、表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>逻辑备份</p>
+<p>导出“预约”表</p>
+<pre class="line-numbers language-oracle" data-language="oracle"><code class="language-oracle">exp userid&#x3D;ZS20220872&#x2F;123456@orcl tables&#x3D;TEST.预约 file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>删除”预约“表</p>
+<pre class="line-numbers language-none"><code class="language-none">drop table 预约;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>导入“预约表”，恢复“预约表”</p>
+<pre class="line-numbers language-none"><code class="language-none">imp userid&#x3D;ZS20220872&#x2F;123456@orcl fromuser&#x3D;test file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp tables&#x3D;预约</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>查询预约表中信息</p>
+<pre class="line-numbers language-none"><code class="language-none">select * from 预约;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>导出数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">exp userid&#x3D;ZS20220872&#x2F;123456@orcl full&#x3D;y inctype&#x3D;complete file&#x3D;C:\Users\Administrator\Desktop\西 南科技大学\数据库原理\all.dmp</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>使用闪回(flashback)</p>
+<p>设置行可移动</p>
+<pre class="line-numbers language-none"><code class="language-none">alter table 读者 enable row movement;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>在读者表中添加多条记录</p>
+<pre class="line-numbers language-none"><code class="language-none">insert into 读者 values(&#39;20190325&#39;,&#39;张四&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;1352659962&#39;,&#39;52182193213123&#39;);
+insert into 读者 values(&#39;201903232&#39;,&#39;张七&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;135262359962&#39;,&#39;522665445454564563&#39;);
+select 姓名,性别 from 读者;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221124153425218"></p>
+<p>闪回到改变之前</p>
+<pre class="line-numbers language-none"><code class="language-none">flashback table 读者 to timestamp to_timestamp(&#39;2022&#x2F;11&#x2F;24 15:30:00&#39;,&#39;YYYY&#x2F;MM&#x2F;DDHH24:MI:SS&#39;);
+ select 姓名,性别 from 读者;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>SQl导入导出</p>
+<p>导出图书表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>删除表</p>
+<p>NULL</p>
+<p>导入表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>以SYSTEM登录数据库，为自己帐号增加系统角色DBA</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">grant dba to ZS20220872;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>重新以自己的帐号登录，创建一个数据库用户，该用户拥有所有CONNECT, RESOURCE，DBA系统角色权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create user Renchengzhen identified by 123456;
+grant connect to renchengzhen;
+grant resource to renchengzhen;
+grant dba to renchengzhen;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>(未定义函数，以下语句无效)</p>
+<p>建立角色：renchengzhen_OPER，该角色拥有调用存储过程借书、还书、预约的权限，以及CONNECT系统角色权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_role;
+grant connect to renchengzhen_role;
+grant execute on 借书 to renchengzhen_role;
+grant execute on 还书 to renchengzhen_role;
+grant execute on 预约 to renchengzhen_role;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个数据库用户：用户_oper（用户为“自己名字全拼”）为该用户授权角色：用户_role。以该用户登录，完成借书，还书功能。</p>
+<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_oper;
+grant renchengzhen_role to renchengzhen_oper;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">call renchengzhen.借书();</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>以自己的帐号登录，建立视图VIEW_READER, 该视图包含书目（ISBN, 书名，作者，出版单位，图书分类名称）</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE VIEW VIEW_READER
+AS
+SELECT
+	&quot;书目&quot;.&quot;iSBN&quot;, 
+	&quot;书目&quot;.&quot;书名&quot;, 
+	&quot;书目&quot;.&quot;作者&quot;, 
+	&quot;书目&quot;.&quot;出版单位&quot;, 
+	&quot;书目&quot;.&quot;图书分类号&quot;
+FROM
+	&quot;书目&quot;;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个数据库用户：renchengzhen_USER1，该用户具有对视图VIEW_READER查询的权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create user renchengzhen_user1 identified by 123456;
+grant connect to renchengzhen_user1;
+grant select on view_reader to renchengzhen_user1;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个概要文件，如果renchengzhen_USER1连续3次登录失败，则锁定该账户，10天后该账户自动解锁。把创建的概要文件分配给该账号，然后以该用户登录进行权限测试。</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE PROFILE LOCK_USER LIMIT
+FAILED_LOGIN_ATTEMPTS 3
+PASSWORD_LOCK_TIME 10;
+ALTER USER renchengzhen_USER1 PROFILE LOCK_USER;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER USER renchengzhen_USER1 ACCOUNT UNLOCK;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 ]]></content>
   </entry>
   <entry>
@@ -4523,6 +5141,605 @@ def isMirror(self, node1, node2):
       </tags>
   </entry>
   <entry>
+    <title>算法设计与分析的常用十大方案</title>
+    <url>//post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</url>
+    <content><![CDATA[<h1 id="01背包问题（最优解问题）"><a href="#01背包问题（最优解问题）" class="headerlink" title="01背包问题（最优解问题）"></a>01背包问题（最优解问题）</h1><p>就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，<br>也就是在c之内，放最大价值的物品<br>目的是限制化重量下，求最大价值</p>
+<h2 id="蛮力法"><a href="#蛮力法" class="headerlink" title="蛮力法"></a>蛮力法</h2><p>使用蛮力法就是，遍历每一种方案，对于每一个物品都要枚举一次看看是否放入背包，最后比较每一种方案的价值<br>（遍历每一种方案）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01_force(n,w,value,weight):
+	&quot;&quot;&quot;
+	蛮力法求解
+	n ：物品数量
+	w ：背包体积
+	value ：物品价值
+	weight ：物品体积
+	return 能放入的物品最大价值
+	&quot;&quot;&quot;
+
+	# 返回值
+
+​	res &#x3D; 0
+​	
+
+# 蛮力法 遍历每一种方案，n个物品，每一个物品都有两种状态，放入或者不放入背包，所以一共有
+
+# 2**n种状态
+
+# 1 0 1
+
+# 2 10 01 00 11
+
+for i in range(2**n)：
+
+	# 方案体积
+
+​	total_weight &#x3D; 0
+
+	# 方案价值
+
+​	total_value &#x3D; 0
+
+	# 第二层循环，每一种方案下遍历每一件物品
+
+​	for j in range(n):
+
+		# 判断方案i是否选择了物品j，如果被选择，那么背包中体积与价值发生变化
+
+		# i是一个整数，j是一个0到n-1的整数
+
+		# 1&lt;&lt;j 表示1左移j位
+
+		# 位与运算，结果如果不为0，那么表示在该位上都为1，也就是j被选择了
+
+		if (i &amp; (1&lt;&lt;j)) !&#x3D; 0:
+			total_weight +&#x3D; weight[j]
+			total_value +&#x3D; value[j]
+	
+
+	# 判断，目的体积要小于背包容量
+
+	if total_weight &lt;&#x3D; w:
+
+		# 求最大价值
+
+		res &#x3D; max(res,total_value)
+return res</code></pre>
+
+<p>“””<br>当i&#x3D;&#x3D;0时，代表没有选择物品</p>
+<p>i&#x3D;&#x3D;1,第一种方案，j&#x3D;&#x3D;0，第一个物品 1&lt;&lt;0 &#x3D; 1 1 &amp; 1 &#x3D;1 代表在第i&#x3D;&#x3D;1种方案下，第j&#x3D;&#x3D;0（第一个物品）<br>被放进背包。<br>j &#x3D;&#x3D; 1 表示第二个物品 1 &lt;&lt; 1 &#x3D; 10 1 &amp; 10 &#x3D; 0 没有被选择<br>j &#x3D;&#x3D; 2,3,4…n-1</p>
+<p>i &#x3D;&#x3D; 2 j&#x3D;&#x3D;0,1,2,,3…n-1</p>
+<p>O(n) &#x3D; n * 2 **n<br>“””</p>
+<h2 id="减治法"><a href="#减治法" class="headerlink" title="减治法"></a>减治法</h2><p>把一个大问题分解成几个小问题，递归求解子问题，合并子问题的解得到大问题的解（缩小问题规模）</p>
+<p>第i个物品价值:value[i] 体积:weight[i],背包容量C</p>
+<p>第i个物品，要么选，要么不选</p>
+<p>1、前n-1个物品选择中，容量 C-weight[n] 选n</p>
+<p>2、前n-1个物品选择中，容量 C 不选n</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,n,c):
+	# 背包容量为0或者物品数量为0,递归出口
+	if c &#x3D;&#x3D; 0 or n &#x3D;&#x3D; 0
+		return 0
+	if weight[n-1] &gt; c:
+		return bag01(weight,value,n-1,c)
+		
+
+return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))</code></pre>
+
+<h3 id="循环-动态规划"><a href="#循环-动态规划" class="headerlink" title="循环(动态规划)"></a>循环(动态规划)</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	# 保存最终结果，c+1（存储了0-c的所有结果）
+	dp &#x3D; [0] * (c + 1)
+	# 第一层循环，遍历物品
+	for i in range(n):
+		# 倒序遍历
+		# 枚举第i物品，容量从c开始，枚举容量从大到小
+		for j in range(c,weight[i] -1,-1):
+			# 当前容量为j时，选或者不选第i个物品，取最大值，来确定这个物品是否放入背包
+			# 如果加入，dp[j] &#x3D;&#x3D; dp[j - w[i]] + v[i]
+			# 不加入，dp[j]
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i]] + value[i])
+	return dp[c]</code></pre>
+
+
+
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法是把一个问题分解成子问题，再把子问题分解成更小的问题，直到子问题容易解决就把解合并。（分解问题）</p>
+<p>n个物品，重量w1,w2,w3。。。wn。价值v1,v2…vn</p>
+<p>容量为c，c-weight[i] &gt; 0</p>
+<p>max(value)</p>
+<p>把物品分成两组，考虑每一组是否被选择。</p>
+<pre class="line-numbers language-none"><code class="language-none">#递归
+def bag01(n,c,weight,value):
+	# 物品数量为0或者背包容量为0
+	if n&#x3D;&#x3D;0 or c &#x3D;&#x3D; 0:
+		return 0
+	# 物品不能放入背包
+	if weight[n-1] &gt; c:
+		# 不考虑当前物品
+		return bag01(n-1,c,weight,value)
+	else:
+		# 递归解决剩下问题，（放和不放，最大值）
+		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1,c.weight,value))</code></pre>
+
+
+
+<h3 id="迭代（循环模拟递归，需要用变量来保存中间状态）"><a href="#迭代（循环模拟递归，需要用变量来保存中间状态）" class="headerlink" title="迭代（循环模拟递归，需要用变量来保存中间状态）"></a>迭代（循环模拟递归，需要用变量来保存中间状态）</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
+	dp &#x3D; [0] * (c+1)
+	for i in range(1,n+1):
+		for j in range(c,weight[i-1] -1,-1):
+			dp[j] &#x3D; max(dp[j],dp[j-weight[i-1]]+value[i-1])
+	return dp[c]</code></pre>
+
+<p>​	</p>
+<p>分治法重点是把物品不断的切割，分别考虑每组物品是否被选择</p>
+<p>减治法重点不断缩减背包容量，利用放入或者不放入物品</p>
+<h2 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h2><p>对问题进行变形，将问题转换成简单的问题</p>
+<p>例如：减小问题规模n —— n&#x2F;2</p>
+<p>背包容量从小到大排序，利用分治法把大问题分解为小问题，然后减治法把子问题合并起来</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="时空权衡（基于计算机）"><a href="#时空权衡（基于计算机）" class="headerlink" title="时空权衡（基于计算机）"></a>时空权衡（基于计算机）</h2><p>如果想要时间效率最优，可以用动态规划，如果想要空间占用少，可以使用贪心或者滚动数组（将多余空间删去）</p>
+<p>滚动数组（模2）</p>
+<p>占用空间较小</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	f &#x3D; [[0 for j in range(c+1)] for i in range(2)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# i物品数 j容积
+			# 第i个物品不进背包的情况(% 取余)
+			f[i % 2][j] &#x3D; f[(i-1) % 2][j]
+			# 第i个物品不能放
+			if j &gt;&#x3D; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i % 2][j] &#x3D; f[（i-1） % 2][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i % 2][j] &#x3D; max(f[i % 2][j],f[（i-1） % 2][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="动态规划（解决最优解问题的方法）"><a href="#动态规划（解决最优解问题的方法）" class="headerlink" title="动态规划（解决最优解问题的方法）"></a>动态规划（解决最优解问题的方法）</h2><p>一种求解多阶段决策问题的方法，一种面向最优化的递归计算技巧</p>
+<p>用于求解分段函数的最值。它通过以一定顺序对复杂问题进行分解，以避免重复的计算。</p>
+<p>并以类似递推的方式，通过对更小的子问题的解的组合得到原问题的解。</p>
+<p>1、分解问题，对于分解之后的若干子问题·，定义一个状态。通过状态转移方程，将子问题的解转化成原问题的解</p>
+<p>对于每一个物品i，枚举它的体积j，计算f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-w[i]]+v[i])，</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
+	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
+	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
+	for i in range(1,n+1):
+		for j in range(1,c+1):
+			# 第i个物品不能放
+			if j &lt; weight[i-1]:
+				# 第i个物品取第i-1个物品的状态
+				f[i][j] &#x3D; f[i-1][j]
+			else:
+				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
+				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
+	return f[n][c]</code></pre>
+
+
+
+<h2 id="贪心（最优解问题）并不总能得到全局最优解"><a href="#贪心（最优解问题）并不总能得到全局最优解" class="headerlink" title="贪心（最优解问题）并不总能得到全局最优解"></a>贪心（最优解问题）并不总能得到全局最优解</h2><p>n件物品放入容量为c的背包中，（可不全部放入）使得背包中物品价值最大。</p>
+<p>较好的近似解</p>
+<p>问题分解，求每一个小问题的最优解。</p>
+<p>1、单位重量价值最大的物品先放，直到背包无法再放。（贪心选择性质）</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 物品的单位重量价值
+	meimei &#x3D; [value[i]&#x2F;weight[i] for i in range(n)]
+	# 排序（逆序，从大到小的顺序）按照价值重量比排序后的物品索引数组
+	meimei &#x3D; sorted(range(n),key&#x3D;lambda i: meimei[i],reverse&#x3D;True)
+	total_value &#x3D; 0
+	# 是否放入背包的数组
+	bag &#x3D; [0] * n
+	for i in meimei:
+		if weight[i] &lt;&#x3D; c:
+			bag[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+			c -&#x3D; weight[i]
+		else:
+			# 计算部分放入背包
+			bag[i] &#x3D; c&#x2F;weight[i]
+			total_value +&#x3D; value[i] * (c&#x2F;weight[i])
+			break
+	return total_value,bag</code></pre>
+
+
+
+<h2 id="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"><a href="#迭代改进（优化算法）并不总能得到全局最优解，较好的近似解" class="headerlink" title="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"></a>迭代改进（优化算法）并不总能得到全局最优解，较好的近似解</h2><p>基本思想：每一次迭代中，根据当前解，确定一个方向，并且在方向上的解有所改进。</p>
+<p>具体步骤：</p>
+<p>1、初始化解，将解初始化为一个可行解。（全放和全不放）</p>
+<p>2、迭代改进，每一次迭代中，选择一个方向，感觉该方向的优化目标，生成一个新解，并比较当前解。</p>
+<p>3、判断终止条件，判断解是否满足问题要求</p>
+<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
+	# 初始化解
+	select_items &#x3D; [0] * n
+	total_value &#x3D; 0
+	
+
+while c &gt;0:
+
+	# 计算性价比,并按照性价比从大到小排序
+
+	ratios &#x3D; [(value[i] &#x2F; weight[i],i) for i in range(n)]
+	ratios.sort(reverse&#x3D;True)
+	
+
+	# 尝试放入物品
+
+	for ratio,i in ratios:
+		if weight[i] &lt;&#x3D; c:
+			c -&#x3D; weight[i]
+			select_items[i] &#x3D; 1
+			total_value +&#x3D; value[i]
+	
+
+	# 判断终止条件
+
+	if all(select_items):
+		break
+return total_value,select_items</code></pre>
+
+
+
+
+<h2 id="回溯与分支界限"><a href="#回溯与分支界限" class="headerlink" title="回溯与分支界限"></a>回溯与分支界限</h2><p>回溯（全局搜索）逐步构造方案来找到所有解</p>
+<p>首先选择一个决策，直到找到最终的解或者无法前进，无法前进返回上一层，继续下一个决策。</p>
+<p>关键：剪枝（避免重复）</p>
+<p>分支界限（局部搜索找到最优解）逐步将空间缩小来找到问题的最优解。</p>
+<p>根据规则生成一组候选解，对这组解评估，选出一个最优解，再根据最优解生成下一组，知道找到最终解</p>
+<p>关键：剪枝（避免重复）</p>
+<p>01背包中，回溯法：可以用于找到所有可能的解。分支界限：用于找到最优的解。</p>
+<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(c,n,weight,value):
+	def back(i,c_weight,c_value):
+		&#39;&#39;&#39;
+		i : 第i件物品
+		c_weight：当前背包重量
+		c_value：当前背包价值
+		&#39;&#39;&#39;
+		nonlocal max_value
+		if c_weight &gt; c:
+			return
+		if c_value &gt; max_value:
+			max_value &#x3D; c_value
+		if i &#x3D;&#x3D; n:
+			return
+		# 不选第i件物品
+		back(i+1,c_weight,c_value)
+		# 选第i件物品
+		back(i+1,c_weight+weight[i],c_value+value[i])
+	max_value &#x3D; 0
+	back(0,0,0)
+	return max_value</code></pre>
+
+<p>​	</p>
+<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bag01(c,n,weight,value)：
+
+	# 创建一个节点类，保存当前状态和状态的价值上界。
+
+	class Node:
+		def __init__(self,level,value,weight):
+
+			# level表示当前节点的深度
+
+			self.level &#x3D; level
+			self.value &#x3D; value
+			self.weight &#x3D; weight
+
+		# 定义对象之间的＜比较。
+
+		def __lt__(self,other):
+			return self.value &gt; other.value
+
+	# 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空
+
+	nodes &#x3D; [Node(0,0,0)]
+	max_value &#x3D; 0
+	while nodes:
+		node &#x3D; nodes.pop(0)
+
+		# 代表选完了所有的节点
+
+		if node.level &#x3D;&#x3D; n:
+			if node_value &gt; max_value:
+				max_value &#x3D; node_value
+			continue
+		
+
+	# bound 存储计算得到的价值上界
+
+	bound &#x3D; node_value
+
+	# 不选第i件物品
+
+	for j in range(node.level,n):
+
+		# 装不下
+
+		if node.weight + weight[j] &gt; c:
+
+			# 取物品的部分
+
+			bound +&#x3D; (c - node.weight) &#x2F; weight[j] * value[j]
+			break
+		bound +&#x3D; value[j]
+
+	# 价值上界大于已知的最大价值
+
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,node.value,node.weight))
+	
+
+	# 选第i件物品
+
+	bound &#x3D; node.value + value[node.level]
+	weight &#x3D; node.weight + weight[node.level]
+	if weight &lt;&#x3D; c and bound &gt; max_value:
+		max_value &#x3D; bound
+	if bound &gt; max_value:
+		nodes.append(Node(node.level+1,bound,weight))
+return max_value</code></pre>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>英语笔记</title>
+    <url>//post/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<h2 id="虚拟语气"><a href="#虚拟语气" class="headerlink" title="虚拟语气"></a>虚拟语气</h2><p>1、—Tom is always making so many mistakes in his English exercises!  — Yeah. If he ________ more careful, he ________ fewer mistakes.</p>
+<p>were,would make</p>
+<p>试题分析：汤姆总是在英语联系中犯那么多错误！如果他可以更加细心一点，他就会犯更少的错误。</p>
+<p>表示与现在事实相反的假设，If+主语+动词过去式（be动词用were）,主语+would&#x2F;should&#x2F;might&#x2F;could+动词原形。</p>
+<p>2、If I ＿＿you . I＿＿study harder.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会更努力学习。</p>
+<p>虚拟语气表示与过去事实相反。</p>
+<p>3、 If I ______ you, I ______invite him to go to see a movie.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会邀请他去看电影，go to see a movie去看电影，invite sb to do 邀请某人做某事，在表达与现在事实相反的虚拟语气中，Be动词用were，主语用would。</p>
+<p>4、If I  you,I  buy a bike for him.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会给他买一俩自行车，buy sth for sb给某人买某物，本句是虚拟语气，表示与现在的事实相反，在虚拟语气中不能用was。</p>
+<p>5、— Come and join us, Ben!— I’m afraid I can’t. I’m too busy now. If I ________ time, I would certainly go.</p>
+<p>had</p>
+<p>试题分析：本、来加入我们吧！恐怕我不能，我现在太忙，如果我有时间，我一定会去的。条件状语从句中描述的与现在相反的事实，从句用一般过去时态。</p>
+<h2 id="作文"><a href="#作文" class="headerlink" title="作文"></a>作文</h2><p>欢迎游客来北京旅游</p>
+<p>Welcome to Beijing, the bustling capital city of China! This vibrant city offers an abundance of history, culture, and modern amenities. From visiting the iconic Forbidden City and climbing the Great Wall, to experiencing the local street food and shopping at the bustling markets, there is truly something for everyone in Beijing. Whether you are a first-time visitor or a returning traveler, we are confident that you will find this city to be a unique and fascinating destination. So come, explore and immerse yourself in the rich history and culture of Beijing. Enjoy your trip!</p>
+<p>欢迎来到北京，中国繁华的首都！这座充满活力的城市提供了丰富的历史、文化和现代设施。从参观标志性的故宫和爬登长城，到体验当地的街头美食和在繁忙的市场购物，北京确实有适合每个人的地方。无论您是初次访问者还是回头客，我们相信您会发现这座城市是一个独特而有趣的目的地。所以，来吧，探索和沉浸在北京丰富的历史和文化中。祝您旅途愉快！</p>
+<p>都江堰旅游</p>
+<p>Welcome to Dujiangyan, a beautiful and historic city located in Sichuan province, China. This charming city is renowned for its magnificent natural scenery and rich cultural heritage, making it an ideal destination for tourists who are looking for a unique and unforgettable travel experience.</p>
+<p>Dujiangyan is famous for its ancient irrigation system, which was built over 2,000 years ago and remains in use today. The system is considered one of the greatest engineering marvels of ancient China, and visitors can witness its beauty and functionality by taking a boat ride along the river. In addition to its historical significance, Dujiangyan is also surrounded by stunning natural beauty, including lush mountains, sparkling rivers, and verdant forests.</p>
+<p>Whether you are interested in history, culture, or nature, Dujiangyan has something to offer for everyone. So come, explore this beautiful city and immerse yourself in its rich history and natural beauty. We guarantee that you will leave Dujiangyan with a newfound appreciation for this unique and fascinating destination. Enjoy your trip!</p>
+<p>欢迎来到都江堰，一个位于中国四川省的美丽和历史悠久的城市。这个迷人的城市以其壮丽的自然风光和丰富的文化遗产而闻名，是寻求独特和难忘旅行体验的游客理想的目的地。</p>
+<p>都江堰以其古老的灌溉系统而闻名，该系统建于2000多年前，至今仍在使用。该系统被认为是古代中国最伟大的工程奇迹之一，游客可以通过沿河船游见证其美丽和功能性。除了其历史意义外，都江堰周围还环绕着壮丽的自然美景，包括茂盛的山峦、闪闪发光的河流和绿油油的森林。</p>
+<p>无论您对历史、文化还是自然有兴趣，都江堰都有适合每个人的内容。所以，来探索这个美丽的城市，沉浸在其丰富的历史和自然美中。我们保证您将带着对这个独特和迷人的目的地的新的钦佩离开都江堰。祝您旅途愉快！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>计算机算术</title>
+    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</url>
+    <content><![CDATA[<h1 id="计算机算术"><a href="#计算机算术" class="headerlink" title="计算机算术"></a>计算机算术</h1><h2 id="数据是什么"><a href="#数据是什么" class="headerlink" title="数据是什么"></a>数据是什么</h2><p>各种各样的信息，数字、文本、程序、音乐、符号等。信息可以是能够被计算机存储和处理的任何事物。</p>
+<h3 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h3><p>计算机存储和处理信息的最小单位是位（bit），一个比特表示0或1。</p>
+<p>数字计算机将信息以一组或一串比特成为字保存在存储器中。</p>
+<p>计算机通过高低电压来存储0或1。</p>
+<p>计算机对一组二进制位进行操作，8个二进制位为一个字节（byte），一些计算机制造商用术语“字”表示16位的值，长字表示32位的值，还有一些制造商用字表示32位的值，用半字表示16位的值。</p>
+<h3 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="位树——（计算机组成原理）"></p>
+<p>每当数字增加1位，路径的总数将翻一倍。一个n位的字将得到2n条不同路径或位模式。如，一个8位的字节将得到2<sub>8</sub>&#x3D;256个可能的值。</p>
+<p>为了用二进制数表示任何一个拥有最多n个值的量，应找到一个使不等式n&lt;&#x3D;2<sub>m</sub>成立的最小位数m。</p>
+<h3 id="信息表示"><a href="#信息表示" class="headerlink" title="信息表示"></a>信息表示</h3><p>一个n位的二进制什么也表示不了。因为一个由二进制1和0组成的串没有任何内在含义。需要程序员赋予它何种含义。</p>
+<p>一个二进制串可以表示的对象有：</p>
+<p>指令</p>
+<p>字长为32位或更长的计算机用一个字来表示CPU能够完成的操作（8位或16位计算机用多个字表示一条指令）。指令的二进制编码与其功能之间的关系由计算机设计者决定。如，一台计算机上表示“A加B”的二进制序列可能与另一台计算机上的完全不同。</p>
+<p>数量</p>
+<p>一个字或多个字都可以用来表示数量。数可以被表示为多种格式，如有符号、无符号二进制整数、二进制浮点数、整数复数等等。</p>
+<p>字符</p>
+<p>字符是一个叫作“字母表”的集合中元素。拉丁或罗马字母表中的字母、数字字符（A-Z，a-z，0-9）和*、-、+、？等符号都被分配了二进制值，因此可以在计算机内存储和处理。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="ASCII码表—（计算机组成原理）"></p>
+<p>ASCII码表用7位表示一个字符，一共可以表示27&#x3D;128个不同的字符。其中96个字符是可打印字符。其余32个是不可打印字符，用于完成回车、退格、换行等特殊功能。</p>
+<p>扩展的ASCII码表：8位的ISO 8859-1拉丁编码。将7位的ISO&#x2F;ASCII字符集扩展为8位，可以得到两个128个字符的字符集，如果字符的最高位为0,则其余7位代表128个标准ISO&#x2F;ASCII字符中的一个，如果字符最高位为1，其余7位将表示128个新字符中的任意一个。</p>
+<p>图像、声音和视觉</p>
+<p>数字计算机处理大量表示声音、静态图像和视频的数据。</p>
+<p>组成照片的基本单位是像素，每个像素的大小可以是8位（单色）或24位（三基）。</p>
+<p>视频作为一串静态图像依次传输，每秒发送60次。</p>
+<p>声音通过对波形信号采样。</p>
+<p>无损压缩和有损压缩。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用来计数的数字（即1,2,3,4…）被称作自然数。我们用十进制计数，因为它有0~9共10个符号。并非所有数字都是自然数，还有负数、实数等</p>
+<p>现代数字系统中，使用位置记数法表示十进制数，每个数位的值或权取决于它在数字中的位置。</p>
+<p>按照位置记数法，一个n位的整数N的形式表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n位整数-（位置计数法）"></p>
+<p>用小数点将整数部分和小数部分分开，可以对位置记数法进行扩展，使其能表示实数。</p>
+<p>一个用基数b的位置记数法表示的数的值被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="基数为b的位置计数法"></p>
+<p>采用位置记数法，一个数的数值等于它各位值的总和，而每一位的值则是该位的数值乘以它在数中的位置所对应的权。</p>
+<p>如：</p>
+<p>十进制数1982 &#x3D; 1 x 10<sub>3</sub> + 9 x 10<sub>2</sub> + 8 x 10<sub>1</sub> + 2 x 10<sub>0</sub></p>
+<p>二进制数10110.11 &#x3D; 1x2<sub>4</sub> + 0x2<sub>3</sub> + 1x2<sub>2</sub> + 1x2<sub>1</sub> + 0x2<sub>0</sub> + 1x2<sub>-1</sub> + 1x2<sub>-2</sub> </p>
+<p>十进制位置记数法不能精确表示所有小数，如1&#x2F;3是0.3333333…33，二进制也是如此，如0.1<sup>10</sup> 不能被精确转换为二进制形式。</p>
+<h2 id="二进制运算"><a href="#二进制运算" class="headerlink" title="二进制运算"></a>二进制运算</h2><p>二进制算术运算规则与十进制基本相同，区别是基数不同。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="二进制的四则运算规则"></p>
+<p>两个位相加可能产生进位或借位，和十进制运算规则相同。</p>
+<p>下面描述了011010012（乘数）与010010012（被乘数）相乘的过程，两个n位字相乘将产生一个2n位的积：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="两个二进制数相乘"></p>
+<p>但是计算机并没有按照这种方式进行计算。</p>
+<h3 id="有符号整数"><a href="#有符号整数" class="headerlink" title="有符号整数"></a>有符号整数</h3><p>负数可以用多种不同的方式表示，计算机设计者选择了3种方法：符号及值表示法、二进制补码表示法、移码表示法，每种方法都有各自的优缺点。</p>
+<h4 id="符号及值表示法"><a href="#符号及值表示法" class="headerlink" title="符号及值表示法"></a>符号及值表示法</h4><p>一个n位字可以表示从0~2<sub>n-1</sub>共2<sub>n</sub>个可能的值。如，一个8位的字可以表示0,1，…，254,255。表示负数的方法是用它的最高位表示符号，通常符号位为0表示正数，符号位为1表示负数。</p>
+<p>下面两个8位有符号二进制00001101和10001101的值为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="有符号二进制数字"></p>
+<p>n位有符号的表示范围为-(2<sub>n-1</sub>-1) ~ +(2<sub>n-1</sub>-1)。一个8位有符号数的表示-127（11111111）~ +127（01111111）之间的整数。</p>
+<p>有人反对该系统的一个原因是它有两个值都表示0：</p>
+<p>00000000 &#x3D; +0 和 10000000 &#x3D; -0</p>
+<p>符号及值表示法没有被用于整数算术运算中，因为它的加、减法运行需要分别用加法器和减法器实现。符号及值表示法用于浮点算术运算中。</p>
+<h4 id="二进制补码运算"><a href="#二进制补码运算" class="headerlink" title="二进制补码运算"></a>二进制补码运算</h4><p>微处理器用二进制补码系统表示有符号整数，它可以将减法运算转换为对减数的补码的加法运算。</p>
+<p>一个数与它的补码之和是一个常数。如，一个一位十进制数与它的补码之和总是9。2的补码是7，因为2+7&#x3D;9。在n位二进制算术中，数P的补码为Q且P+Q&#x3D;2<sub>n</sub>。</p>
+<p>在二进制算术中，求一个数的补码的方法是将其各位取反并加1。</p>
+<p>如：01100101的补码为10011010+1&#x3D;10011011。</p>
+<p>一个n位二进制数N的二进制补码定义为2<sub>n</sub>-N。如果N&#x3D;5&#x3D;00000101（8位二进制数），则N的补码为2<sub>8</sub>-00000101&#x3D;100000000-00000101&#x3D;11111011</p>
+<p>下面说明了8位二进制数的补码运算过程，将4个数+5、-5、+7、-7转换为补码：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
+<p>将7与5的补码相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
+<p>结果为9位二进制数100000010。如果忽略最左边一位（进位位），结果为00000010<sup>2</sup>&#x3D;+2，正是希望得到的结果。</p>
+<p>将-7加5：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
+<p>结果为11111110（进位位为0）。也是希望得到的结果-2，即2<sub>8</sub>-2&#x3D;100000000-00000010&#x3D;11111110</p>
+<p>n位二进制算术运算Z&#x3D;X-Y，用X加上Y的补码完成运算：Y的补码为2<sub>n</sub>-Y，则Z&#x3D;X+(2<sub>n</sub>-Y)&#x3D;2<sub>n</sub>+(X-Y)。我们得到了需要的结果，X-Y，以及位于最左边的一个并不需要的进位（即2<sub>n</sub>），而这个进位被丢弃了。</p>
+<p>一个数两次求补码得到该数本身。如-5&#x3D;28-00000101&#x3D;11111011。</p>
+<p>即-x&#x3D;2<sub>n</sub>-x且-(-x)&#x3D;2<sub>n</sub>-(2<sub>n</sub>-x)&#x3D;x。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="加法实例"></p>
+<h4 id="求补运算"><a href="#求补运算" class="headerlink" title="求补运算"></a>求补运算</h4><p>一个n位的二进制数N的补码，被定义为2<sub>n</sub>-N，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
+<p>如，8位（n&#x3D;8）时有：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n=8时"></p>
+<p>表达式11111111-N的值很容易计算，对N的第i位n<sup>i</sup>，若n<sup>i</sup>&#x3D;0，则1-0&#x3D;1，若n<sup>i</sup>&#x3D;1，则1-1&#x3D;0。显然：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>所以计算N的补码就是将N的每一位取反加1。</p>
+<p>之所以使用这种求补码的方式，是因为在硬件上它十分容易实现。</p>
+<h4 id="补码的特点"><a href="#补码的特点" class="headerlink" title="补码的特点"></a>补码的特点</h4><p>补码互补因为X+-X &#x3D; 0</p>
+<p>补码被表示为000….000，是唯一的</p>
+<p>补码的最高位为符号位，符号位为0，则该数为正，符号位为1，该数位负。</p>
+<p>n位二进制位的补码表示范围为-2<sub>n</sub>-1—2<sub>n</sub>+1，对于8位，是-127-128。</p>
+<p>补码的加减法使用同样的硬件完成，因为补码的减法由被减数的补码实现。</p>
+<h4 id="运算溢出"><a href="#运算溢出" class="headerlink" title="运算溢出"></a>运算溢出</h4><p>溢出的问题，主要是补码表示范围的限制。如果两个数运算后结果的值不在范围内，那么就会溢出，并且如果操作数的两个符号位相同，但是结果的符号位与他们不同，同样也会发生溢出。</p>
+<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p>计算机必须实现乘除法，但是相对来说，这比加减法要复杂的多。</p>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>首先是二进制的算术移位运算，进行移位运算时，一个数的所有位都会向左或者向右移动n位，有些计算机可以一次移动多个位。</p>
+<p><strong>二进制补码正数左移移位等于乘2。（正数的补码原码反码一致）</strong></p>
+<p>算术左移：最低位补0，最高位被复制到进位标志中，如11000101左移一位得到10001010</p>
+<p>算术右移：最高位补符号位，所有位右移一位。最低位复制到进位标志中。如00100101右移一位得到00010010。11100101右移一位得到11110010。</p>
+<p><strong>二进制右移一位相当于除以2。</strong></p>
+<h4 id="无符号二进制乘法"><a href="#无符号二进制乘法" class="headerlink" title="无符号二进制乘法"></a>无符号二进制乘法</h4><p>计算机从乘数的最低位开始，每次检查一位，判断它是否为0，如果乘数的当前位为1则写下被乘数，若该位为0则写下n个0。接下来检查乘数的下一位，这时应从上一位数的左边一位开始写下被乘数或0。被写下的这一组数叫作部分积。得到所有的部分积后，加到一起，得到乘法结果：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
+<p>两个二进制数相乘得到一个2n位的积。</p>
+<p>但是计算机并没有实现上面的算法，这种算法要求计算机存储n个部分积，然后将它们同时相加。更好的做法是每得到一个部分积就做一次加法。</p>
+<p>下面给出了一个计算两个n位无符号二进制数相乘的算法：</p>
+<p>步骤a：将计数器的值置为n</p>
+<p>步骤b：将2n位的部分积寄存器清零</p>
+<p>步骤c：检查乘数的最右位（即最低位），将被乘数与部分积的最低位n位相加</p>
+<p>步骤d：将部分积右移一位</p>
+<p>步骤e：将乘数右移一位（乘数的最右位被丢弃）</p>
+<p>步骤f：将计数器的值减1，重复步骤c直到n个周期后计数器的值变为0。部分积寄存器的内容就是乘积结果。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
+<h4 id="快速乘法"><a href="#快速乘法" class="headerlink" title="快速乘法"></a>快速乘法</h4><p>通过移位和加法实现的乘法速度很慢，实际的计算机采用了多种方法加快乘法运算的速度。</p>
+<p>有些程序员使用移位和加法等速度相对较快的操作避免使用乘法。</p>
+<p>考虑P乘以10和P乘以9的两个例子：</p>
+<p> 10P&#x3D; 2x(2x2xP+P) ，即将P左移2次，加上P，再将和左移一次</p>
+<p> 9P&#x3D; 2x2x2xP + P，即将P左移3次，加上P得到结果</p>
+<p>乘法运算也可以借助查找表（look-up table）实现，这种方法将两个数相乘所有可能的积都保存在一个只读存储器内。这样只需简单的用X和Y的值找到表中的对应项就可以得到X和Y的乘积。如，两个8位二进制乘法需要一个16位地址、2<sub>16</sub>项的查找表，每项记录一个16位的积。</p>
+<p>缺点：太占空间了。</p>
+<p>可以用一个简单方法来减少查找表的大小：假设计算两个16位数A与B的乘积，可以将16位数A拆分为两个8位数A<sup>u</sup>和A<sup>l</sup>，A<sup>u</sup>是A的高8位，A<sup>l</sup>是A的低8位。如</p>
+<p>果A&#x3D;1111000010101010，则A<sup>u</sup>&#x3D;11110000，A<sup>l</sup>&#x3D;10101010。A可被表示为A<sup>u</sup> x 256+A<sup>l</sup>，B可被表示为B<sup>u</sup> x 256+B<sup>l</sup>，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221027200737262"></p>
+<p>这样可以用8位乘法和4个加法来完成16位乘法。</p>
+<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p>除法是通过被除数不断地减去除数直到结果为0或小于除数来实现的。减去除数的次数称作商，最后一次减法的差称作余数。</p>
+<p>  被除数&#x2F;除数 &#x3D; 商 + 余数&#x2F;除数</p>
+<p>下面描述了575除以25的过程：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>将被除数的下一个数字5移到7的后面，并比较除数和75，由于75正好是25的整数倍，因此在商的下一位上写下3：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>因为已经处理到被除数的最后一位且75正好是测试的整数倍。除法结束，商为23，余数为0。</p>
+<p>考虑用无符号二进制除法完成同样的例子： </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>被除数的前5位比除数小，因此商的最高位为0并将除数与被除数的前6位比较</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>被除数的前6位中有一个除数，减法后得到新的部分被除数为001010（1111），将被除数的下一位移下来</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>新的部分被除数小于除数，因此商的下一位为0，后续除法过程如下：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>除法结果商为10111，余数为0。 </p>
+<h4 id="恢复余数除法"><a href="#恢复余数除法" class="headerlink" title="恢复余数除法"></a>恢复余数除法</h4><p>刚刚讨论的除法方法，用计算机实现，需要修改的就是除数与部分被除数的比较方法，计算机减去并检测结果的符号位。如果减法的结果为正，则商1，如果结果为负，则商0并将部分被除数与除数相加，将其恢复为原先的值。</p>
+<p>恢复余数除法算法：</p>
+<p>1）将除数的最高位与被除数的最高位对齐</p>
+<p>2）从部分被除数中减去除数，得到新的部分被除数</p>
+<p>3）如果新的部分被除数为负数，则商0并用新的部分被除数加上除数，恢复原先的部分被除数</p>
+<p>4）如果新的部分被除数为正，则商1</p>
+<p>5）判断除法是否结束，如果除数的最低位与部分被除数的最低位对齐，则除法结束，最后的部分被除数就是余数。否则，执行第6步</p>
+<p>6）将除数右移一位，从第2步继续执行 </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="英文版"></p>
+<h4 id="不恢复余数除法"><a href="#不恢复余数除法" class="headerlink" title="不恢复余数除法"></a>不恢复余数除法</h4><p>不恢复余数除法与恢复余数除法基本相同，唯一区别在于取消了恢复余数的操作。</p>
+<p>在恢复余数除法中，在部分被除数与除数相加恢复部分被除数之后的一个周期，部分被除数将减去除数的二分之一。每个将除数右移的操作等价于将除数除以2。当前周期恢复部分被除数以及下个周期减去除数一半的操作等价于部分被除数加上除数的一半。即D – D&#x2F;2 &#x3D; +D&#x2F;2，D为除数。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>部分被除数减去除数之后，将检测新的部分被除数的符号位。若为负，则商左移1位，商的最低位补0，并将部分被除数加上除数的二分之一。若为正，则商左移1位，商的最低位补1，并将部分被除数减去除数的二分之一。</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数即实数，实数是所有有理数和无理数的集合。</p>
+<p>之所以叫作浮点数，是因为小数点在数中的位置并不是固定的。一个浮点数值分为两部分存储 ：数值以及小数点在数值中的位置。</p>
+<p>计算机中的浮点运算的计算结果一般是不确定的，一块芯片上的浮点计算结果也许与另一块芯片上的不同。</p>
+<p>科学计数法：来表示很大或很小的数。</p>
+<p>十进制浮点数可以被表示为：尾数x10<sub>指数</sub>，如1.2345x10<sub>20</sub></p>
+<p>二进制浮点数可以被表示为：尾数x2<sub>指数</sub>，如1.0111x2<sub>5</sub></p>
+<p>IEEE 754浮点数标准提供3种浮点数表示：32位单精度浮点数、64位双精度浮点数、128位四精度浮点数</p>
+<p>IEEE 754浮点数的尾数总是规格化的，其范围为1.000…0x2<sub>e</sub>到1.111…1x2<sub>e</sub>，e为指数。</p>
+<p>规格化浮点数的最高位总是1，规格化使尾数的所有位都是有效的，因而尾数精度最高。</p>
+<p>如：</p>
+<p> 0.10…x2<sub>e</sub>规格化为1.10…x2<sub>e-1</sub></p>
+<p> 10.1…2<sub>e</sub>规格化为1.01…x2<sub>e+1</sub></p>
+<p>尾数规格化充分利用了可用的最大精度。如，一个8位非规格化的尾数0.0000101只能有4位有效位，而规格化后的8位尾数1.0100011则有8位有效位。</p>
+<p>IEEE 754浮点数的尾数被表示为符号及值的形式，即用一个符号位表示它是正数还是负数。它的指数则用偏置方式表示，即给真正的指数加上一个常数。</p>
+<p>假定所用的指数为8位，偏置值为127。如果一个数的指数为0，则被保存为0 + 127&#x3D;127。如果指数为-2，则被保存为-2 + 127 &#x3D; 125。</p>
+<p>实数1010.1111规格化的结果为+1.010111x2<sub>3</sub>，指数为+3，将被保存为3+127&#x3D;130，即130<sup>10</sup>用二进制表示为10000010。</p>
+<p>这种用偏置表示指数的方法优点在于，最小的负指数被表示为0，如果不采用这种方法，0的浮点表示为0.0…0x2<sub>最小负指数</sub>。采用偏置指数，0就可以用尾数0和指数0表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>一个32位IEEE 754单精度浮点数可以被表示为下面的二进制串：</p>
+<p>S EEEEEEEE 1.MMMMMMMMMMMMMMMMMMMMMMM</p>
+<p>S为符号位，指明这个数是正数还是负数</p>
+<p>E为8位偏置指数，指出了小数点的位置</p>
+<p>M为23位尾数</p>
+<p>下图描述了32位浮点数的结构：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>S位为符号位，决定了数的符号，若S&#x3D;0，则为正数，若S&#x3D;1，则为负数。</p>
+<p>指数E将浮点数的尾数扩大或缩小2<sub>E</sub>倍，并且偏置值为127。</p>
+<p>如浮点数+1.11001…0x2<sub>12</sub>的指数为12+127&#x3D;139<sub>10</sub>&#x3D;10001011<sub>2</sub> 。</p>
+<p> IEEE浮点数的尾数总是规格化的，其值范围在1.0000..00~1.1111..11，除非这个浮点数是0，此时尾数为0.000..00。</p>
+<p>由于尾数总是规格化的，且最高位总是为1，因此将尾数存入存储器时没有必要保存最高位的1。所以，一个非0的IEEE 754浮点数可被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>S：符号位</p>
+<p>E：偏置量为B的指数</p>
+<p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
+<p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
+<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>浮点数不能直接相加。</p>
+<p>下面以一个简单的8位尾数和一个未对齐的指数为例说明浮点运算，A&#x3D;1.0101001x2<sub>4</sub>，</p>
+<p>B&#x3D;1.1001100x2<sub>3</sub>。若要计算两个数的乘积，应将尾数相乘，指数相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相乘"></p>
+<p>由于浮点操作数已被表示为规格化形式，计算机在进行浮点加法时面临以下问题：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>为了对齐指数，计算机必须执行下面步骤：</p>
+<p>第1步，找出指数较小的数</p>
+<p>第2步，使两个数的指数相同</p>
+<p>第3步，尾数相加（或相减）</p>
+<p>第4步，如果有必要，将结果规格化</p>
+<p>因为B的指数比A小，将B转为0.110011x2<sub>4</sub>，将A与非规格化的B相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>对结果规格化，得到1.00001111x2<sub>5</sub></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点加法运算流程"></p>
+<p>注意：</p>
+<p>1）因为指数有时与尾数位于同一个字中，在加法过程开始之前必须将它们分离开（减压缩）</p>
+<p>2）如果两个指数的差大于p+1，p为尾数的位数，较小的数由于太小而无法影响较大的数，结果实际就等于较大的数。如，1.1010x2<sub>60</sub>+1.01x2<sub>-12</sub>的结果为1.1010x2<sub>60</sub>，因为指数之差为72</p>
+<p>3）结果规格化时检查指数范围，以分别检测指数下溢或上溢。指数下溢会导致结果为0，而指数上溢会造成错误。</p>
+<p>舍入和截断误差</p>
+<p>浮点运算可能引起尾数位数的相加，需要保持尾数位数不变的方法。最简单的技术叫作截断。</p>
+<p>如，将0.1101101截断为4位尾数的结果为0.1101。截断会产生诱导误差（即误差是由施加在数上的操作计算所引起的），诱导误差是偏置的，因为截断后的数总比截断前小。</p>
+<p>舍入是一种更好的减少数的位数的技术。如果丢弃的位的值大于剩余数最低位的一半，将剩余数的最低位加1。</p>
+<p>考虑两个数在小数点后第4位上舍入的例子：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
+<p>1）最简单的舍入机制是截断或向0舍入。</p>
+<p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
+<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点数作为结果。</p>
+<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的点（即向偶数舍入）。</p>
+<p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
+<p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
+<p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
+<p>果舍入为最近的浮点数。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>计算机基础</title>
     <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80.html</url>
     <content><![CDATA[<h1 id="计算机基础（备考版）"><a href="#计算机基础（备考版）" class="headerlink" title="计算机基础（备考版）"></a>计算机基础（备考版）</h1><h2 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h2><h3 id="1、1-ENIAC"><a href="#1、1-ENIAC" class="headerlink" title="1、1  ENIAC"></a>1、1  ENIAC</h3><p>1946年2月，世界上第一台电子数字积分计算机在美国宾夕法尼亚大学诞生，取名为ENIAC(中文名称为“埃尼阿克”)。</p>
@@ -5128,218 +6345,139 @@ def isMirror(self, node1, node2):
       </categories>
   </entry>
   <entry>
-    <title>计算机算术</title>
-    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</url>
-    <content><![CDATA[<h1 id="计算机算术"><a href="#计算机算术" class="headerlink" title="计算机算术"></a>计算机算术</h1><h2 id="数据是什么"><a href="#数据是什么" class="headerlink" title="数据是什么"></a>数据是什么</h2><p>各种各样的信息，数字、文本、程序、音乐、符号等。信息可以是能够被计算机存储和处理的任何事物。</p>
-<h3 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h3><p>计算机存储和处理信息的最小单位是位（bit），一个比特表示0或1。</p>
-<p>数字计算机将信息以一组或一串比特成为字保存在存储器中。</p>
-<p>计算机通过高低电压来存储0或1。</p>
-<p>计算机对一组二进制位进行操作，8个二进制位为一个字节（byte），一些计算机制造商用术语“字”表示16位的值，长字表示32位的值，还有一些制造商用字表示32位的值，用半字表示16位的值。</p>
-<h3 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="位树——（计算机组成原理）"></p>
-<p>每当数字增加1位，路径的总数将翻一倍。一个n位的字将得到2n条不同路径或位模式。如，一个8位的字节将得到2<sub>8</sub>&#x3D;256个可能的值。</p>
-<p>为了用二进制数表示任何一个拥有最多n个值的量，应找到一个使不等式n&lt;&#x3D;2<sub>m</sub>成立的最小位数m。</p>
-<h3 id="信息表示"><a href="#信息表示" class="headerlink" title="信息表示"></a>信息表示</h3><p>一个n位的二进制什么也表示不了。因为一个由二进制1和0组成的串没有任何内在含义。需要程序员赋予它何种含义。</p>
-<p>一个二进制串可以表示的对象有：</p>
-<p>指令</p>
-<p>字长为32位或更长的计算机用一个字来表示CPU能够完成的操作（8位或16位计算机用多个字表示一条指令）。指令的二进制编码与其功能之间的关系由计算机设计者决定。如，一台计算机上表示“A加B”的二进制序列可能与另一台计算机上的完全不同。</p>
-<p>数量</p>
-<p>一个字或多个字都可以用来表示数量。数可以被表示为多种格式，如有符号、无符号二进制整数、二进制浮点数、整数复数等等。</p>
-<p>字符</p>
-<p>字符是一个叫作“字母表”的集合中元素。拉丁或罗马字母表中的字母、数字字符（A-Z，a-z，0-9）和*、-、+、？等符号都被分配了二进制值，因此可以在计算机内存储和处理。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="ASCII码表—（计算机组成原理）"></p>
-<p>ASCII码表用7位表示一个字符，一共可以表示27&#x3D;128个不同的字符。其中96个字符是可打印字符。其余32个是不可打印字符，用于完成回车、退格、换行等特殊功能。</p>
-<p>扩展的ASCII码表：8位的ISO 8859-1拉丁编码。将7位的ISO&#x2F;ASCII字符集扩展为8位，可以得到两个128个字符的字符集，如果字符的最高位为0,则其余7位代表128个标准ISO&#x2F;ASCII字符中的一个，如果字符最高位为1，其余7位将表示128个新字符中的任意一个。</p>
-<p>图像、声音和视觉</p>
-<p>数字计算机处理大量表示声音、静态图像和视频的数据。</p>
-<p>组成照片的基本单位是像素，每个像素的大小可以是8位（单色）或24位（三基）。</p>
-<p>视频作为一串静态图像依次传输，每秒发送60次。</p>
-<p>声音通过对波形信号采样。</p>
-<p>无损压缩和有损压缩。</p>
-<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用来计数的数字（即1,2,3,4…）被称作自然数。我们用十进制计数，因为它有0~9共10个符号。并非所有数字都是自然数，还有负数、实数等</p>
-<p>现代数字系统中，使用位置记数法表示十进制数，每个数位的值或权取决于它在数字中的位置。</p>
-<p>按照位置记数法，一个n位的整数N的形式表示：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n位整数-（位置计数法）"></p>
-<p>用小数点将整数部分和小数部分分开，可以对位置记数法进行扩展，使其能表示实数。</p>
-<p>一个用基数b的位置记数法表示的数的值被定义为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="基数为b的位置计数法"></p>
-<p>采用位置记数法，一个数的数值等于它各位值的总和，而每一位的值则是该位的数值乘以它在数中的位置所对应的权。</p>
-<p>如：</p>
-<p>十进制数1982 &#x3D; 1 x 10<sub>3</sub> + 9 x 10<sub>2</sub> + 8 x 10<sub>1</sub> + 2 x 10<sub>0</sub></p>
-<p>二进制数10110.11 &#x3D; 1x2<sub>4</sub> + 0x2<sub>3</sub> + 1x2<sub>2</sub> + 1x2<sub>1</sub> + 0x2<sub>0</sub> + 1x2<sub>-1</sub> + 1x2<sub>-2</sub> </p>
-<p>十进制位置记数法不能精确表示所有小数，如1&#x2F;3是0.3333333…33，二进制也是如此，如0.1<sup>10</sup> 不能被精确转换为二进制形式。</p>
-<h2 id="二进制运算"><a href="#二进制运算" class="headerlink" title="二进制运算"></a>二进制运算</h2><p>二进制算术运算规则与十进制基本相同，区别是基数不同。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="二进制的四则运算规则"></p>
-<p>两个位相加可能产生进位或借位，和十进制运算规则相同。</p>
-<p>下面描述了011010012（乘数）与010010012（被乘数）相乘的过程，两个n位字相乘将产生一个2n位的积：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="两个二进制数相乘"></p>
-<p>但是计算机并没有按照这种方式进行计算。</p>
-<h3 id="有符号整数"><a href="#有符号整数" class="headerlink" title="有符号整数"></a>有符号整数</h3><p>负数可以用多种不同的方式表示，计算机设计者选择了3种方法：符号及值表示法、二进制补码表示法、移码表示法，每种方法都有各自的优缺点。</p>
-<h4 id="符号及值表示法"><a href="#符号及值表示法" class="headerlink" title="符号及值表示法"></a>符号及值表示法</h4><p>一个n位字可以表示从0~2<sub>n-1</sub>共2<sub>n</sub>个可能的值。如，一个8位的字可以表示0,1，…，254,255。表示负数的方法是用它的最高位表示符号，通常符号位为0表示正数，符号位为1表示负数。</p>
-<p>下面两个8位有符号二进制00001101和10001101的值为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="有符号二进制数字"></p>
-<p>n位有符号的表示范围为-(2<sub>n-1</sub>-1) ~ +(2<sub>n-1</sub>-1)。一个8位有符号数的表示-127（11111111）~ +127（01111111）之间的整数。</p>
-<p>有人反对该系统的一个原因是它有两个值都表示0：</p>
-<p>00000000 &#x3D; +0 和 10000000 &#x3D; -0</p>
-<p>符号及值表示法没有被用于整数算术运算中，因为它的加、减法运行需要分别用加法器和减法器实现。符号及值表示法用于浮点算术运算中。</p>
-<h4 id="二进制补码运算"><a href="#二进制补码运算" class="headerlink" title="二进制补码运算"></a>二进制补码运算</h4><p>微处理器用二进制补码系统表示有符号整数，它可以将减法运算转换为对减数的补码的加法运算。</p>
-<p>一个数与它的补码之和是一个常数。如，一个一位十进制数与它的补码之和总是9。2的补码是7，因为2+7&#x3D;9。在n位二进制算术中，数P的补码为Q且P+Q&#x3D;2<sub>n</sub>。</p>
-<p>在二进制算术中，求一个数的补码的方法是将其各位取反并加1。</p>
-<p>如：01100101的补码为10011010+1&#x3D;10011011。</p>
-<p>一个n位二进制数N的二进制补码定义为2<sub>n</sub>-N。如果N&#x3D;5&#x3D;00000101（8位二进制数），则N的补码为2<sub>8</sub>-00000101&#x3D;100000000-00000101&#x3D;11111011</p>
-<p>下面说明了8位二进制数的补码运算过程，将4个数+5、-5、+7、-7转换为补码：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
-<p>将7与5的补码相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
-<p>结果为9位二进制数100000010。如果忽略最左边一位（进位位），结果为00000010<sup>2</sup>&#x3D;+2，正是希望得到的结果。</p>
-<p>将-7加5：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
-<p>结果为11111110（进位位为0）。也是希望得到的结果-2，即2<sub>8</sub>-2&#x3D;100000000-00000010&#x3D;11111110</p>
-<p>n位二进制算术运算Z&#x3D;X-Y，用X加上Y的补码完成运算：Y的补码为2<sub>n</sub>-Y，则Z&#x3D;X+(2<sub>n</sub>-Y)&#x3D;2<sub>n</sub>+(X-Y)。我们得到了需要的结果，X-Y，以及位于最左边的一个并不需要的进位（即2<sub>n</sub>），而这个进位被丢弃了。</p>
-<p>一个数两次求补码得到该数本身。如-5&#x3D;28-00000101&#x3D;11111011。</p>
-<p>即-x&#x3D;2<sub>n</sub>-x且-(-x)&#x3D;2<sub>n</sub>-(2<sub>n</sub>-x)&#x3D;x。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="加法实例"></p>
-<h4 id="求补运算"><a href="#求补运算" class="headerlink" title="求补运算"></a>求补运算</h4><p>一个n位的二进制数N的补码，被定义为2<sub>n</sub>-N，则</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
-<p>如，8位（n&#x3D;8）时有：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n=8时"></p>
-<p>表达式11111111-N的值很容易计算，对N的第i位n<sup>i</sup>，若n<sup>i</sup>&#x3D;0，则1-0&#x3D;1，若n<sup>i</sup>&#x3D;1，则1-1&#x3D;0。显然：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>所以计算N的补码就是将N的每一位取反加1。</p>
-<p>之所以使用这种求补码的方式，是因为在硬件上它十分容易实现。</p>
-<h4 id="补码的特点"><a href="#补码的特点" class="headerlink" title="补码的特点"></a>补码的特点</h4><p>补码互补因为X+-X &#x3D; 0</p>
-<p>补码被表示为000….000，是唯一的</p>
-<p>补码的最高位为符号位，符号位为0，则该数为正，符号位为1，该数位负。</p>
-<p>n位二进制位的补码表示范围为-2<sub>n</sub>-1—2<sub>n</sub>+1，对于8位，是-127-128。</p>
-<p>补码的加减法使用同样的硬件完成，因为补码的减法由被减数的补码实现。</p>
-<h4 id="运算溢出"><a href="#运算溢出" class="headerlink" title="运算溢出"></a>运算溢出</h4><p>溢出的问题，主要是补码表示范围的限制。如果两个数运算后结果的值不在范围内，那么就会溢出，并且如果操作数的两个符号位相同，但是结果的符号位与他们不同，同样也会发生溢出。</p>
-<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p>计算机必须实现乘除法，但是相对来说，这比加减法要复杂的多。</p>
-<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>首先是二进制的算术移位运算，进行移位运算时，一个数的所有位都会向左或者向右移动n位，有些计算机可以一次移动多个位。</p>
-<p><strong>二进制补码正数左移移位等于乘2。（正数的补码原码反码一致）</strong></p>
-<p>算术左移：最低位补0，最高位被复制到进位标志中，如11000101左移一位得到10001010</p>
-<p>算术右移：最高位补符号位，所有位右移一位。最低位复制到进位标志中。如00100101右移一位得到00010010。11100101右移一位得到11110010。</p>
-<p><strong>二进制右移一位相当于除以2。</strong></p>
-<h4 id="无符号二进制乘法"><a href="#无符号二进制乘法" class="headerlink" title="无符号二进制乘法"></a>无符号二进制乘法</h4><p>计算机从乘数的最低位开始，每次检查一位，判断它是否为0，如果乘数的当前位为1则写下被乘数，若该位为0则写下n个0。接下来检查乘数的下一位，这时应从上一位数的左边一位开始写下被乘数或0。被写下的这一组数叫作部分积。得到所有的部分积后，加到一起，得到乘法结果：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
-<p>两个二进制数相乘得到一个2n位的积。</p>
-<p>但是计算机并没有实现上面的算法，这种算法要求计算机存储n个部分积，然后将它们同时相加。更好的做法是每得到一个部分积就做一次加法。</p>
-<p>下面给出了一个计算两个n位无符号二进制数相乘的算法：</p>
-<p>步骤a：将计数器的值置为n</p>
-<p>步骤b：将2n位的部分积寄存器清零</p>
-<p>步骤c：检查乘数的最右位（即最低位），将被乘数与部分积的最低位n位相加</p>
-<p>步骤d：将部分积右移一位</p>
-<p>步骤e：将乘数右移一位（乘数的最右位被丢弃）</p>
-<p>步骤f：将计数器的值减1，重复步骤c直到n个周期后计数器的值变为0。部分积寄存器的内容就是乘积结果。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
-<h4 id="快速乘法"><a href="#快速乘法" class="headerlink" title="快速乘法"></a>快速乘法</h4><p>通过移位和加法实现的乘法速度很慢，实际的计算机采用了多种方法加快乘法运算的速度。</p>
-<p>有些程序员使用移位和加法等速度相对较快的操作避免使用乘法。</p>
-<p>考虑P乘以10和P乘以9的两个例子：</p>
-<p> 10P&#x3D; 2x(2x2xP+P) ，即将P左移2次，加上P，再将和左移一次</p>
-<p> 9P&#x3D; 2x2x2xP + P，即将P左移3次，加上P得到结果</p>
-<p>乘法运算也可以借助查找表（look-up table）实现，这种方法将两个数相乘所有可能的积都保存在一个只读存储器内。这样只需简单的用X和Y的值找到表中的对应项就可以得到X和Y的乘积。如，两个8位二进制乘法需要一个16位地址、2<sub>16</sub>项的查找表，每项记录一个16位的积。</p>
-<p>缺点：太占空间了。</p>
-<p>可以用一个简单方法来减少查找表的大小：假设计算两个16位数A与B的乘积，可以将16位数A拆分为两个8位数A<sup>u</sup>和A<sup>l</sup>，A<sup>u</sup>是A的高8位，A<sup>l</sup>是A的低8位。如</p>
-<p>果A&#x3D;1111000010101010，则A<sup>u</sup>&#x3D;11110000，A<sup>l</sup>&#x3D;10101010。A可被表示为A<sup>u</sup> x 256+A<sup>l</sup>，B可被表示为B<sup>u</sup> x 256+B<sup>l</sup>，则</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221027200737262"></p>
-<p>这样可以用8位乘法和4个加法来完成16位乘法。</p>
-<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p>除法是通过被除数不断地减去除数直到结果为0或小于除数来实现的。减去除数的次数称作商，最后一次减法的差称作余数。</p>
-<p>  被除数&#x2F;除数 &#x3D; 商 + 余数&#x2F;除数</p>
-<p>下面描述了575除以25的过程：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>将被除数的下一个数字5移到7的后面，并比较除数和75，由于75正好是25的整数倍，因此在商的下一位上写下3：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>因为已经处理到被除数的最后一位且75正好是测试的整数倍。除法结束，商为23，余数为0。</p>
-<p>考虑用无符号二进制除法完成同样的例子： </p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>被除数的前5位比除数小，因此商的最高位为0并将除数与被除数的前6位比较</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>被除数的前6位中有一个除数，减法后得到新的部分被除数为001010（1111），将被除数的下一位移下来</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>新的部分被除数小于除数，因此商的下一位为0，后续除法过程如下：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>除法结果商为10111，余数为0。 </p>
-<h4 id="恢复余数除法"><a href="#恢复余数除法" class="headerlink" title="恢复余数除法"></a>恢复余数除法</h4><p>刚刚讨论的除法方法，用计算机实现，需要修改的就是除数与部分被除数的比较方法，计算机减去并检测结果的符号位。如果减法的结果为正，则商1，如果结果为负，则商0并将部分被除数与除数相加，将其恢复为原先的值。</p>
-<p>恢复余数除法算法：</p>
-<p>1）将除数的最高位与被除数的最高位对齐</p>
-<p>2）从部分被除数中减去除数，得到新的部分被除数</p>
-<p>3）如果新的部分被除数为负数，则商0并用新的部分被除数加上除数，恢复原先的部分被除数</p>
-<p>4）如果新的部分被除数为正，则商1</p>
-<p>5）判断除法是否结束，如果除数的最低位与部分被除数的最低位对齐，则除法结束，最后的部分被除数就是余数。否则，执行第6步</p>
-<p>6）将除数右移一位，从第2步继续执行 </p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="英文版"></p>
-<h4 id="不恢复余数除法"><a href="#不恢复余数除法" class="headerlink" title="不恢复余数除法"></a>不恢复余数除法</h4><p>不恢复余数除法与恢复余数除法基本相同，唯一区别在于取消了恢复余数的操作。</p>
-<p>在恢复余数除法中，在部分被除数与除数相加恢复部分被除数之后的一个周期，部分被除数将减去除数的二分之一。每个将除数右移的操作等价于将除数除以2。当前周期恢复部分被除数以及下个周期减去除数一半的操作等价于部分被除数加上除数的一半。即D – D&#x2F;2 &#x3D; +D&#x2F;2，D为除数。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>部分被除数减去除数之后，将检测新的部分被除数的符号位。若为负，则商左移1位，商的最低位补0，并将部分被除数加上除数的二分之一。若为正，则商左移1位，商的最低位补1，并将部分被除数减去除数的二分之一。</p>
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数即实数，实数是所有有理数和无理数的集合。</p>
-<p>之所以叫作浮点数，是因为小数点在数中的位置并不是固定的。一个浮点数值分为两部分存储 ：数值以及小数点在数值中的位置。</p>
-<p>计算机中的浮点运算的计算结果一般是不确定的，一块芯片上的浮点计算结果也许与另一块芯片上的不同。</p>
-<p>科学计数法：来表示很大或很小的数。</p>
-<p>十进制浮点数可以被表示为：尾数x10<sub>指数</sub>，如1.2345x10<sub>20</sub></p>
-<p>二进制浮点数可以被表示为：尾数x2<sub>指数</sub>，如1.0111x2<sub>5</sub></p>
-<p>IEEE 754浮点数标准提供3种浮点数表示：32位单精度浮点数、64位双精度浮点数、128位四精度浮点数</p>
-<p>IEEE 754浮点数的尾数总是规格化的，其范围为1.000…0x2<sub>e</sub>到1.111…1x2<sub>e</sub>，e为指数。</p>
-<p>规格化浮点数的最高位总是1，规格化使尾数的所有位都是有效的，因而尾数精度最高。</p>
-<p>如：</p>
-<p> 0.10…x2<sub>e</sub>规格化为1.10…x2<sub>e-1</sub></p>
-<p> 10.1…2<sub>e</sub>规格化为1.01…x2<sub>e+1</sub></p>
-<p>尾数规格化充分利用了可用的最大精度。如，一个8位非规格化的尾数0.0000101只能有4位有效位，而规格化后的8位尾数1.0100011则有8位有效位。</p>
-<p>IEEE 754浮点数的尾数被表示为符号及值的形式，即用一个符号位表示它是正数还是负数。它的指数则用偏置方式表示，即给真正的指数加上一个常数。</p>
-<p>假定所用的指数为8位，偏置值为127。如果一个数的指数为0，则被保存为0 + 127&#x3D;127。如果指数为-2，则被保存为-2 + 127 &#x3D; 125。</p>
-<p>实数1010.1111规格化的结果为+1.010111x2<sub>3</sub>，指数为+3，将被保存为3+127&#x3D;130，即130<sup>10</sup>用二进制表示为10000010。</p>
-<p>这种用偏置表示指数的方法优点在于，最小的负指数被表示为0，如果不采用这种方法，0的浮点表示为0.0…0x2<sub>最小负指数</sub>。采用偏置指数，0就可以用尾数0和指数0表示：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>一个32位IEEE 754单精度浮点数可以被表示为下面的二进制串：</p>
-<p>S EEEEEEEE 1.MMMMMMMMMMMMMMMMMMMMMMM</p>
-<p>S为符号位，指明这个数是正数还是负数</p>
-<p>E为8位偏置指数，指出了小数点的位置</p>
-<p>M为23位尾数</p>
-<p>下图描述了32位浮点数的结构：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>S位为符号位，决定了数的符号，若S&#x3D;0，则为正数，若S&#x3D;1，则为负数。</p>
-<p>指数E将浮点数的尾数扩大或缩小2<sub>E</sub>倍，并且偏置值为127。</p>
-<p>如浮点数+1.11001…0x2<sub>12</sub>的指数为12+127&#x3D;139<sub>10</sub>&#x3D;10001011<sub>2</sub> 。</p>
-<p> IEEE浮点数的尾数总是规格化的，其值范围在1.0000..00~1.1111..11，除非这个浮点数是0，此时尾数为0.000..00。</p>
-<p>由于尾数总是规格化的，且最高位总是为1，因此将尾数存入存储器时没有必要保存最高位的1。所以，一个非0的IEEE 754浮点数可被定义为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>S：符号位</p>
-<p>E：偏置量为B的指数</p>
-<p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
-<p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
-<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>浮点数不能直接相加。</p>
-<p>下面以一个简单的8位尾数和一个未对齐的指数为例说明浮点运算，A&#x3D;1.0101001x2<sub>4</sub>，</p>
-<p>B&#x3D;1.1001100x2<sub>3</sub>。若要计算两个数的乘积，应将尾数相乘，指数相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相乘"></p>
-<p>由于浮点操作数已被表示为规格化形式，计算机在进行浮点加法时面临以下问题：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
-<p>为了对齐指数，计算机必须执行下面步骤：</p>
-<p>第1步，找出指数较小的数</p>
-<p>第2步，使两个数的指数相同</p>
-<p>第3步，尾数相加（或相减）</p>
-<p>第4步，如果有必要，将结果规格化</p>
-<p>因为B的指数比A小，将B转为0.110011x2<sub>4</sub>，将A与非规格化的B相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
-<p>对结果规格化，得到1.00001111x2<sub>5</sub></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点加法运算流程"></p>
-<p>注意：</p>
-<p>1）因为指数有时与尾数位于同一个字中，在加法过程开始之前必须将它们分离开（减压缩）</p>
-<p>2）如果两个指数的差大于p+1，p为尾数的位数，较小的数由于太小而无法影响较大的数，结果实际就等于较大的数。如，1.1010x2<sub>60</sub>+1.01x2<sub>-12</sub>的结果为1.1010x2<sub>60</sub>，因为指数之差为72</p>
-<p>3）结果规格化时检查指数范围，以分别检测指数下溢或上溢。指数下溢会导致结果为0，而指数上溢会造成错误。</p>
-<p>舍入和截断误差</p>
-<p>浮点运算可能引起尾数位数的相加，需要保持尾数位数不变的方法。最简单的技术叫作截断。</p>
-<p>如，将0.1101101截断为4位尾数的结果为0.1101。截断会产生诱导误差（即误差是由施加在数上的操作计算所引起的），诱导误差是偏置的，因为截断后的数总比截断前小。</p>
-<p>舍入是一种更好的减少数的位数的技术。如果丢弃的位的值大于剩余数最低位的一半，将剩余数的最低位加1。</p>
-<p>考虑两个数在小数点后第4位上舍入的例子：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
-<p>1）最简单的舍入机制是截断或向0舍入。</p>
-<p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
-<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点数作为结果。</p>
-<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的点（即向偶数舍入）。</p>
-<p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
-<p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
-<p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
-<p>果舍入为最近的浮点数。</p>
+    <title>计算机系统-信息的表示与处理</title>
+    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html</url>
+    <content><![CDATA[<h1 id="信息的表示与处理"><a href="#信息的表示与处理" class="headerlink" title="信息的表示与处理"></a>信息的表示与处理</h1><h2 id="信息的表示"><a href="#信息的表示" class="headerlink" title="信息的表示"></a>信息的表示</h2><p>二进制、八进制、十进制、十六进制。基数不同，只重位置，不看具体的值。</p>
+<p><strong>字长</strong>（指针的大小）</p>
+<p>虚拟地址以此来编码，一般的高位机向后兼容。</p>
+<p>计算机与编译器都支持多种的编码</p>
+<p>无符号整数与有符号整数的区别在c中，关键字unsigned注明了无符号整数。</p>
+<p><strong>寻址与字节顺序</strong></p>
+<p>一般的，多字节对象连续存址。</p>
+<p>机器之中排列字节地址有差异，有的以最低有效字节在前面——小端法，有的以最高有效字节在前面——大端法。</p>
+<p>字符串表示：一般的字符串被编码以null结尾的字符数组，每个字符使用某种编码表示，例如ASCII编码。</p>
+<p><strong>布尔代数</strong> 0,1</p>
+<p>布尔代数相关运算：与、或、非、异或。</p>
+<p>布尔与：同位为1结果即为1，否则为0。</p>
+<p>布尔或：同位有1结果即为1，否则为0。</p>
+<p>布尔非：1为0，0为1。</p>
+<p>布尔异或：同位为1但不同时为1为1，否则为0。</p>
+<p>布尔代数—布尔环（w位向量上的与或非运算时的新形式）</p>
+<p>位向量还可以用来表示掩码，i位为1时代表有效使能，为0则为无效使能。</p>
+<p>C语言很号的支持按位布尔</p>
+<p>位级运算实现掩码运算很好，这里的掩码表示一个位模式，表示一个字节中有效的位的集合。</p>
+<p><strong>逻辑运算</strong></p>
+<p>逻辑或、与、非。</p>
+<p>非零的参数表示为TRUE，为0的表示为FALSE。</p>
+<p>逻辑运算存在短路特性。</p>
+<p><strong>移位运算</strong> 向左或向右移动位模式</p>
+<p>x &lt;&lt; k 左移k位，丢弃最高的k位，在右端补齐k个0。</p>
+<p>x &gt;&gt; k 右移k位，但是区分逻辑左移与算数左移的区分，对于逻辑右移，在左端补齐k个0，对于算数右移，需要补齐最高有效位，可能是1。</p>
+<p>C没有规定有符号数应该使用哪一种右移，但是几乎所有的编译器都对有符号数采用算数右移，对于无符号数，右移必须是逻辑的。</p>
+<p>在Java里，&gt;&gt;&gt; 表示逻辑右移，&gt;&gt;表示算数右移。</p>
+<p>优先级问题，移位的运算优先级低于加减法。</p>
+<p>编码整数的方式又两种，一种只能表示非负数，一种都可以表示。</p>
+<p>C中有多种数据类型，都可以表示整数：</p>
+<p>CHAR、SHORT、INT、LONG(UNSIGNED)</p>
+<p>他们表示的字节大小各不相同，一般的取决于字长，例如在32位机中，long只占4个字节。</p>
+<p>无符号编码具有重要意义，因为这是一个双射。</p>
+<p>原码、反码、补码</p>
+<p>最高位为符号位，0表示正数，1表示负数。</p>
+<p>正数的反码是自身，负数的反码是除符号位之外，全部取反。</p>
+<p>正数的补码也是自身，负数的补码是反码+1</p>
+<h2 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h2><p>补码：反码加一”只是补码所具有的一个性质，不能被定义成补码。负数的补码，是能够和其相反数相加通过溢出从而使计算机内计算结果变为0的二进制码。</p>
+<p>用补码表示负数，在补码的定义之中，字的有效最高位解释为负权，因此最高位为1时，表示该数为负数。</p>
+<p>对于补码而言，这也是一个双射，补码编码同样具有唯一性。</p>
+<p>C语言标准之中没有要求使用补码来表示，有符号整数，但是几乎所有的机器都是使用补码的。</p>
+<p>除却补码之外，原码与反码也能表示有符号整数。</p>
+<p>原码、反码都以最高位为符号位，不同的是，反码符号位取非。</p>
+<p>有符号数与无符号数之间转换<br>对C来说，类型的转换从不关心具体的数，对于这个问题，C是从位级角度来考虑的。</p>
+<p>一般的，对于强制类型转换，位的值不发生改变，只改变位的位置。</p>
+<p><strong>零扩展</strong></p>
+<p>从较小的类型转换为较大类型时，在开头扩展0。</p>
+<p><strong>位截断</strong></p>
+<p>丢弃高位，可能会造成溢出。</p>
+<p>有符号数到无符号数的隐式转换，会导致错误或者漏洞，杜绝的方式试试禁用无符号数。</p>
+<p>例如：一种类型的表达式被赋值给另外一种类型的变量时，转换就是隐式的。</p>
+<p>C语言中同时包含了对有符号和无符号数表达式的处理方式，当同时出现两种数时，C会隐式的强转为无符号数，例如在&lt;,&gt;运算中，结果就会很直观。</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>无符号加法</strong></p>
+<p>考虑两个w位的无符号数相加，他们的和的范围应该在0到w+1位之间。</p>
+<p>但是C不允许这样的扩张出现，因此必须使用过位截断，使得他们的和在0到w位之间。截断时，截断高位。</p>
+<p>在C中，不会将溢出作为错误而返回信号。</p>
+<p>溢出时，不难发现，结果等于两数之和与2</p>
+<p>的w次方的模数。</p>
+<p><strong>补码加法</strong></p>
+<p>对于补码的加法，必须确定当结果太大（为正）或太小（为负）时，应该怎么做。</p>
+<p>补码，最高位是符号位，表示负权。因此两个数的范围在-2<sub>w-1</sub>到2<sub>w-1</sub>之间。这意味着，要想表示两个数的和，需要w+1位。（符号位在内）</p>
+<p>结果是截断到w位。</p>
+<p>值得一提的是，两个数的w位补码之和和无符号数之和有完全相同的位级表示。</p>
+<p><strong>无符号乘法</strong></p>
+<p>对于两数乘积的取值范围，需要2w位来表示，明显的C语言不可能允许这样的大小扩张，最终结果依旧需要w位，而将无符号数截断为w位等价于计算该值取模2的w次方。</p>
+<p><strong>补码乘法</strong></p>
+<p>对于补码乘法，C语言的有符号乘法通过截断为w位来实现，将一个补码截断为w位，相当于先计算该值模2的w次方，再把无符号数转换为补码。</p>
+<p>一般的，对于无符号和补码乘法来说，乘法运算结果的位级表示都是一样的。</p>
+<p>例如：</p>
+<p>（101） * （011） &#x3D; （001111） &#x3D; （111）【截断后的】</p>
+<p>无符号数表示：5 * 3 &#x3D; 7</p>
+<p>（101） * （011） &#x3D; （110111） &#x3D; （111）【截断后的】</p>
+<p>补码表示：-1 * 3 &#x3D; -1</p>
+<p>虽然完整的乘积的位级的表示可能不同，但是截断后乘积的位级表示是相同的。</p>
+<p><strong>乘以常数</strong></p>
+<p>因为，在大多数机器上，整数乘法指令相当的慢，需要10个或更多时钟周期，因此编译器进行了一项优化，试着用移位加加法运算的组合来代替乘以常数因子的乘法。</p>
+<p>考虑乘以2的幂的情况，再推广至全体常数。</p>
+<p>可以发现左移一个数值等价于执行一个与2的幂相乘的无符号乘法。固定大小的补码算数运算的位级操作与其无符号运算等价。</p>
+<p>但是无论是无符号还是补码，乘以2的幂都会导致溢出，结果说明，即使溢出，通过移位得到的结果也是一样的。</p>
+<p><strong>除以2的幂</strong></p>
+<p>在大多数机器上，整数除法比整数乘法更慢，需要30或者更多的时钟周期。</p>
+<p>除以2的幂，也可以用移位运算来实现，只不过使用的是右移，无符号数和补码分别使用逻辑移位和算术移位来达到目的。</p>
+<p>整数除法总是舍入到0，它将向下舍入到一个正值，向下舍入到一个负值。</p>
+<p>对于无符号运算右移很简单，一部分原因是因为无符号的右移一定是逻辑的。</p>
+<p>c &gt;&gt; k产生的结果是 c &#x2F; 2的k次方。</p>
+<p>对于除以2的幂的补码运算来说，情况稍微要复杂一些，因为要保证负数依然为负，移位要执行的算数移位。</p>
+<p>除以2的幂的补码除法，向下舍入<br>变量x和k分别有补码值x和无符号数值k，且0≤k&lt;w，则当执行算术移位时，C表达式x&gt;&gt;k产生数值 x &#x2F;2^k。</p>
+<p>对于非负数来说，最高位是0，因此算数右移k位与除以2^k是一样的。</p>
+<p>作为负数，如果出现舍入的情况时，移位导致结果向下舍入，此时就需要调整策略。</p>
+<p>作为一个负数，算数右移后的位向量刚好就是就w-k位表示的补码数从w-k位符号扩展到w位。通过在移位之前，偏置这个值，来修正不合适的舍入。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>思考</strong>：</p>
+<p>计算机执行的“整数”运算实际上是一种模运算形式。</p>
+<p>表示数字的有限字长限制了可能的值的取值范围，结果运算可能溢出。</p>
+<p>补码表示提供了一种既能表示负数也能表示正数的灵活方法，同时使用了与执行无符号算术相同的位级实现，这些运算包括像加法、减法、乘法，甚至除法，无论运算数是以无符号形式还是以补码形式表示的，都有完全一样或者非常类似的位级行为。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点表示对形如</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>的有理数进行编码。它对执行涉及非常大的数字非常接近于0的数字，以及更普遍地作为实数运算的近似值的计算，是很有用的。</p>
+<p>一般的，IEEE浮点标准被几乎所有的计算机支持。</p>
+<p><strong>二进制小数</strong></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>IEEE浮点表示</strong></p>
+<p>IEEE浮点标准用</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>的形式来表示一个数:<br>符号(sign)，s决定这数是负数(s&#x3D;1)还是正数( s&#x3D;0)，而对于数值0的符号位解释作为特殊情况处理。<br>尾数(significand)M是一个二进制小数。</p>
+<p>阶码(exponent)E的作用是对浮点数加权，这个权重是2的E次幂(可能是负数)。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="标准浮点格式"></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>规格化</strong></p>
+<p>当exp的位模式不全为0，也不全为1时，都是规格化的。</p>
+<p>阶码的值是E &#x3D; e - 偏置值。</p>
+<p>e是无符号数，偏置值为2的k-1次方-1，对于单精度是-126到127</p>
+<p>小数字段frac被描述为小数值f，f在0到1之间。尾数的定义是M &#x3D; 1+f。这种表示方法，假设没有一处，尾数在1到2之间，那么就能轻松额外获得一个精度位，既然第一位总是等于1，那么就不需要显示的表示它。</p>
+<p><strong>非规格化</strong></p>
+<p>当阶码全为0的时候，表示的书就是非规格化的。</p>
+<p>阶码为E &#x3D; 1 - 偏置，尾数M &#x3D; f，也就是小数的值，不包含隐含的开头1。</p>
+<p>非规格化数可以表示0，因为对于M来说，必须大于或等于1.因此不能表示0，事实上对于0的位模式，阶码字段与小数域全为0。</p>
+<p>但是-0与+0在符号位上是有差异的，在IEEE中，在某些方面，他们被认为是不同的。</p>
+<p><strong>特殊值</strong></p>
+<p>当阶码全为1时，就会出现无穷的表示。</p>
+<p><strong>舍入</strong></p>
+<p>因为表示方法限制了浮点数的范围和精度，所有浮点运算只能近似的表示实数运算。</p>
+<p>一般的，为了找到一个最接近的匹配值，可以用期望的浮点形式表示出来，这就是舍入。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><strong>浮点运算</strong></p>
+<p>IEEE标准指定了一个简单的规则，来确定加法和乘法这样的算术运算的结果。</p>
+<p><strong>C语言中的浮点数</strong></p>
+<p>C语言中提供了两种不同的浮点数据类型，float和double，在支持IEEE浮点格式的机器上，这些数据类型对应单精度和双精度浮点，另外这类机器采用偶数舍入的舍入方式。</p>
+<p>当在int、float和 double格式之间进行强制类型转换时，程序改变数值和位模式的原则如下(假设int是32位的)：<br>从int转换成float，数字不会溢出，但是可能被舍入。<br>从 int或float转换成double，因为double有更大的范围(也就是可表示值的范围)，也有更高的精度(也就是有效位数)，所以能够保留精确的数值。<br>从double转换成float，因为范围要小一些，所以值可能溢出成＋∞或-∞。另外，由于精确度较小，它还可能被舍入。<br>从float或者double转换成int，值将会向零舍人。例如，1.999将被转换成1,而一1.999将被转换成一1。进一步来说，值可能会溢出。</p>
+<p>C语言标准没有对这种情况指定固定的结果。与Intel兼容的微处理器指定位模式<a href="%E5%AD%97%E9%95%BF%E4%B8%BAw%E6%97%B6%E7%9A%84TMin..">10…00</a>为整数不确定(integer indefinite)值。一个从浮点数到整数的转换，如果不能为该浮点数找到一个合理的整数近似值，就会产生这样一个值。因此，表达式(int)+1e10会得到-21483648，即从一个正值变成了一个负值。</p>
 ]]></content>
   </entry>
   <entry>
@@ -5675,142 +6813,6 @@ InitList:
 <p>popq 弹栈</p>
 <p>将一个四字值压入栈中，首先要将栈指针减8，然后将值写到新的栈顶地址。</p>
 <p>​                                       </p>
-]]></content>
-  </entry>
-  <entry>
-    <title>计算机系统-信息的表示与处理</title>
-    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html</url>
-    <content><![CDATA[<h1 id="信息的表示与处理"><a href="#信息的表示与处理" class="headerlink" title="信息的表示与处理"></a>信息的表示与处理</h1><h2 id="信息的表示"><a href="#信息的表示" class="headerlink" title="信息的表示"></a>信息的表示</h2><p>二进制、八进制、十进制、十六进制。基数不同，只重位置，不看具体的值。</p>
-<p><strong>字长</strong>（指针的大小）</p>
-<p>虚拟地址以此来编码，一般的高位机向后兼容。</p>
-<p>计算机与编译器都支持多种的编码</p>
-<p>无符号整数与有符号整数的区别在c中，关键字unsigned注明了无符号整数。</p>
-<p><strong>寻址与字节顺序</strong></p>
-<p>一般的，多字节对象连续存址。</p>
-<p>机器之中排列字节地址有差异，有的以最低有效字节在前面——小端法，有的以最高有效字节在前面——大端法。</p>
-<p>字符串表示：一般的字符串被编码以null结尾的字符数组，每个字符使用某种编码表示，例如ASCII编码。</p>
-<p><strong>布尔代数</strong> 0,1</p>
-<p>布尔代数相关运算：与、或、非、异或。</p>
-<p>布尔与：同位为1结果即为1，否则为0。</p>
-<p>布尔或：同位有1结果即为1，否则为0。</p>
-<p>布尔非：1为0，0为1。</p>
-<p>布尔异或：同位为1但不同时为1为1，否则为0。</p>
-<p>布尔代数—布尔环（w位向量上的与或非运算时的新形式）</p>
-<p>位向量还可以用来表示掩码，i位为1时代表有效使能，为0则为无效使能。</p>
-<p>C语言很号的支持按位布尔</p>
-<p>位级运算实现掩码运算很好，这里的掩码表示一个位模式，表示一个字节中有效的位的集合。</p>
-<p><strong>逻辑运算</strong></p>
-<p>逻辑或、与、非。</p>
-<p>非零的参数表示为TRUE，为0的表示为FALSE。</p>
-<p>逻辑运算存在短路特性。</p>
-<p><strong>移位运算</strong> 向左或向右移动位模式</p>
-<p>x &lt;&lt; k 左移k位，丢弃最高的k位，在右端补齐k个0。</p>
-<p>x &gt;&gt; k 右移k位，但是区分逻辑左移与算数左移的区分，对于逻辑右移，在左端补齐k个0，对于算数右移，需要补齐最高有效位，可能是1。</p>
-<p>C没有规定有符号数应该使用哪一种右移，但是几乎所有的编译器都对有符号数采用算数右移，对于无符号数，右移必须是逻辑的。</p>
-<p>在Java里，&gt;&gt;&gt; 表示逻辑右移，&gt;&gt;表示算数右移。</p>
-<p>优先级问题，移位的运算优先级低于加减法。</p>
-<p>编码整数的方式又两种，一种只能表示非负数，一种都可以表示。</p>
-<p>C中有多种数据类型，都可以表示整数：</p>
-<p>CHAR、SHORT、INT、LONG(UNSIGNED)</p>
-<p>他们表示的字节大小各不相同，一般的取决于字长，例如在32位机中，long只占4个字节。</p>
-<p>无符号编码具有重要意义，因为这是一个双射。</p>
-<p>原码、反码、补码</p>
-<p>最高位为符号位，0表示正数，1表示负数。</p>
-<p>正数的反码是自身，负数的反码是除符号位之外，全部取反。</p>
-<p>正数的补码也是自身，负数的补码是反码+1</p>
-<h2 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h2><p>补码：反码加一”只是补码所具有的一个性质，不能被定义成补码。负数的补码，是能够和其相反数相加通过溢出从而使计算机内计算结果变为0的二进制码。</p>
-<p>用补码表示负数，在补码的定义之中，字的有效最高位解释为负权，因此最高位为1时，表示该数为负数。</p>
-<p>对于补码而言，这也是一个双射，补码编码同样具有唯一性。</p>
-<p>C语言标准之中没有要求使用补码来表示，有符号整数，但是几乎所有的机器都是使用补码的。</p>
-<p>除却补码之外，原码与反码也能表示有符号整数。</p>
-<p>原码、反码都以最高位为符号位，不同的是，反码符号位取非。</p>
-<p>有符号数与无符号数之间转换<br>对C来说，类型的转换从不关心具体的数，对于这个问题，C是从位级角度来考虑的。</p>
-<p>一般的，对于强制类型转换，位的值不发生改变，只改变位的位置。</p>
-<p><strong>零扩展</strong></p>
-<p>从较小的类型转换为较大类型时，在开头扩展0。</p>
-<p><strong>位截断</strong></p>
-<p>丢弃高位，可能会造成溢出。</p>
-<p>有符号数到无符号数的隐式转换，会导致错误或者漏洞，杜绝的方式试试禁用无符号数。</p>
-<p>例如：一种类型的表达式被赋值给另外一种类型的变量时，转换就是隐式的。</p>
-<p>C语言中同时包含了对有符号和无符号数表达式的处理方式，当同时出现两种数时，C会隐式的强转为无符号数，例如在&lt;,&gt;运算中，结果就会很直观。</p>
-<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>无符号加法</strong></p>
-<p>考虑两个w位的无符号数相加，他们的和的范围应该在0到w+1位之间。</p>
-<p>但是C不允许这样的扩张出现，因此必须使用过位截断，使得他们的和在0到w位之间。截断时，截断高位。</p>
-<p>在C中，不会将溢出作为错误而返回信号。</p>
-<p>溢出时，不难发现，结果等于两数之和与2</p>
-<p>的w次方的模数。</p>
-<p><strong>补码加法</strong></p>
-<p>对于补码的加法，必须确定当结果太大（为正）或太小（为负）时，应该怎么做。</p>
-<p>补码，最高位是符号位，表示负权。因此两个数的范围在-2<sub>w-1</sub>到2<sub>w-1</sub>之间。这意味着，要想表示两个数的和，需要w+1位。（符号位在内）</p>
-<p>结果是截断到w位。</p>
-<p>值得一提的是，两个数的w位补码之和和无符号数之和有完全相同的位级表示。</p>
-<p><strong>无符号乘法</strong></p>
-<p>对于两数乘积的取值范围，需要2w位来表示，明显的C语言不可能允许这样的大小扩张，最终结果依旧需要w位，而将无符号数截断为w位等价于计算该值取模2的w次方。</p>
-<p><strong>补码乘法</strong></p>
-<p>对于补码乘法，C语言的有符号乘法通过截断为w位来实现，将一个补码截断为w位，相当于先计算该值模2的w次方，再把无符号数转换为补码。</p>
-<p>一般的，对于无符号和补码乘法来说，乘法运算结果的位级表示都是一样的。</p>
-<p>例如：</p>
-<p>（101） * （011） &#x3D; （001111） &#x3D; （111）【截断后的】</p>
-<p>无符号数表示：5 * 3 &#x3D; 7</p>
-<p>（101） * （011） &#x3D; （110111） &#x3D; （111）【截断后的】</p>
-<p>补码表示：-1 * 3 &#x3D; -1</p>
-<p>虽然完整的乘积的位级的表示可能不同，但是截断后乘积的位级表示是相同的。</p>
-<p><strong>乘以常数</strong></p>
-<p>因为，在大多数机器上，整数乘法指令相当的慢，需要10个或更多时钟周期，因此编译器进行了一项优化，试着用移位加加法运算的组合来代替乘以常数因子的乘法。</p>
-<p>考虑乘以2的幂的情况，再推广至全体常数。</p>
-<p>可以发现左移一个数值等价于执行一个与2的幂相乘的无符号乘法。固定大小的补码算数运算的位级操作与其无符号运算等价。</p>
-<p>但是无论是无符号还是补码，乘以2的幂都会导致溢出，结果说明，即使溢出，通过移位得到的结果也是一样的。</p>
-<p><strong>除以2的幂</strong></p>
-<p>在大多数机器上，整数除法比整数乘法更慢，需要30或者更多的时钟周期。</p>
-<p>除以2的幂，也可以用移位运算来实现，只不过使用的是右移，无符号数和补码分别使用逻辑移位和算术移位来达到目的。</p>
-<p>整数除法总是舍入到0，它将向下舍入到一个正值，向下舍入到一个负值。</p>
-<p>对于无符号运算右移很简单，一部分原因是因为无符号的右移一定是逻辑的。</p>
-<p>c &gt;&gt; k产生的结果是 c &#x2F; 2的k次方。</p>
-<p>对于除以2的幂的补码运算来说，情况稍微要复杂一些，因为要保证负数依然为负，移位要执行的算数移位。</p>
-<p>除以2的幂的补码除法，向下舍入<br>变量x和k分别有补码值x和无符号数值k，且0≤k&lt;w，则当执行算术移位时，C表达式x&gt;&gt;k产生数值 x &#x2F;2^k。</p>
-<p>对于非负数来说，最高位是0，因此算数右移k位与除以2^k是一样的。</p>
-<p>作为负数，如果出现舍入的情况时，移位导致结果向下舍入，此时就需要调整策略。</p>
-<p>作为一个负数，算数右移后的位向量刚好就是就w-k位表示的补码数从w-k位符号扩展到w位。通过在移位之前，偏置这个值，来修正不合适的舍入。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152105230.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><strong>思考</strong>：</p>
-<p>计算机执行的“整数”运算实际上是一种模运算形式。</p>
-<p>表示数字的有限字长限制了可能的值的取值范围，结果运算可能溢出。</p>
-<p>补码表示提供了一种既能表示负数也能表示正数的灵活方法，同时使用了与执行无符号算术相同的位级实现，这些运算包括像加法、减法、乘法，甚至除法，无论运算数是以无符号形式还是以补码形式表示的，都有完全一样或者非常类似的位级行为。</p>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点表示对形如</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152237823.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>的有理数进行编码。它对执行涉及非常大的数字非常接近于0的数字，以及更普遍地作为实数运算的近似值的计算，是很有用的。</p>
-<p>一般的，IEEE浮点标准被几乎所有的计算机支持。</p>
-<p><strong>二进制小数</strong></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152418270.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><strong>IEEE浮点表示</strong></p>
-<p>IEEE浮点标准用</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152529379.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>的形式来表示一个数:<br>符号(sign)，s决定这数是负数(s&#x3D;1)还是正数( s&#x3D;0)，而对于数值0的符号位解释作为特殊情况处理。<br>尾数(significand)M是一个二进制小数。</p>
-<p>阶码(exponent)E的作用是对浮点数加权，这个权重是2的E次幂(可能是负数)。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113152628441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="标准浮点格式"></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113153010332.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><strong>规格化</strong></p>
-<p>当exp的位模式不全为0，也不全为1时，都是规格化的。</p>
-<p>阶码的值是E &#x3D; e - 偏置值。</p>
-<p>e是无符号数，偏置值为2的k-1次方-1，对于单精度是-126到127</p>
-<p>小数字段frac被描述为小数值f，f在0到1之间。尾数的定义是M &#x3D; 1+f。这种表示方法，假设没有一处，尾数在1到2之间，那么就能轻松额外获得一个精度位，既然第一位总是等于1，那么就不需要显示的表示它。</p>
-<p><strong>非规格化</strong></p>
-<p>当阶码全为0的时候，表示的书就是非规格化的。</p>
-<p>阶码为E &#x3D; 1 - 偏置，尾数M &#x3D; f，也就是小数的值，不包含隐含的开头1。</p>
-<p>非规格化数可以表示0，因为对于M来说，必须大于或等于1.因此不能表示0，事实上对于0的位模式，阶码字段与小数域全为0。</p>
-<p>但是-0与+0在符号位上是有差异的，在IEEE中，在某些方面，他们被认为是不同的。</p>
-<p><strong>特殊值</strong></p>
-<p>当阶码全为1时，就会出现无穷的表示。</p>
-<p><strong>舍入</strong></p>
-<p>因为表示方法限制了浮点数的范围和精度，所有浮点运算只能近似的表示实数运算。</p>
-<p>一般的，为了找到一个最接近的匹配值，可以用期望的浮点形式表示出来，这就是舍入。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86/image-20221113155430334.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><strong>浮点运算</strong></p>
-<p>IEEE标准指定了一个简单的规则，来确定加法和乘法这样的算术运算的结果。</p>
-<p><strong>C语言中的浮点数</strong></p>
-<p>C语言中提供了两种不同的浮点数据类型，float和double，在支持IEEE浮点格式的机器上，这些数据类型对应单精度和双精度浮点，另外这类机器采用偶数舍入的舍入方式。</p>
-<p>当在int、float和 double格式之间进行强制类型转换时，程序改变数值和位模式的原则如下(假设int是32位的)：<br>从int转换成float，数字不会溢出，但是可能被舍入。<br>从 int或float转换成double，因为double有更大的范围(也就是可表示值的范围)，也有更高的精度(也就是有效位数)，所以能够保留精确的数值。<br>从double转换成float，因为范围要小一些，所以值可能溢出成＋∞或-∞。另外，由于精确度较小，它还可能被舍入。<br>从float或者double转换成int，值将会向零舍人。例如，1.999将被转换成1,而一1.999将被转换成一1。进一步来说，值可能会溢出。</p>
-<p>C语言标准没有对这种情况指定固定的结果。与Intel兼容的微处理器指定位模式<a href="%E5%AD%97%E9%95%BF%E4%B8%BAw%E6%97%B6%E7%9A%84TMin..">10…00</a>为整数不确定(integer indefinite)值。一个从浮点数到整数的转换，如果不能为该浮点数找到一个合理的整数近似值，就会产生这样一个值。因此，表达式(int)+1e10会得到-21483648，即从一个正值变成了一个负值。</p>
 ]]></content>
   </entry>
   <entry>
@@ -6378,1007 +7380,5 @@ InitList:
       <tags>
         <tag>高数</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>变治法</title>
-    <url>//post/%E5%8F%98%E6%B2%BB%E6%B3%95.html</url>
-    <content><![CDATA[<h1 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h1><p>算法设计与分析方法之中的一种特殊的变换思想，严格意义上说，他并不想分治法、动态规划那样标准，它只是一种变换问题的思想。</p>
-<p>变：将问题变得更加容易</p>
-<p>治：求解容易的问题</p>
-<h2 id="实例化简（预排序、高斯消元）"><a href="#实例化简（预排序、高斯消元）" class="headerlink" title="实例化简（预排序、高斯消元）"></a>实例化简（预排序、高斯消元）</h2><h3 id="预排序，一种简单的预处理技术（主要是意识）。"><a href="#预排序，一种简单的预处理技术（主要是意识）。" class="headerlink" title="预排序，一种简单的预处理技术（主要是意识）。"></a>预排序，一种简单的预处理技术（主要是意识）。</h3><p>检验数组元素唯一性</p>
-<p>词频统计</p>
-<p>元素查找</p>
-<p>以上三种模式，都可以使用蛮力来做，但是明显的性能太差了。</p>
-<p>将数组排序是一个解决方案，无论是唯一性还是词频都可以很好的得到答案，代价仅仅是遍历一次数组，而元素查找在适合的数组之中，也可以使用诸如二分的方式很快的得到结果。但是对于查找来说，遍历随便比较差，但是对于多次查找来说，这是值得的。</p>
-<p>高斯消元法</p>
-<p>求解线性方程组的方式，将系数矩阵化为上三角矩阵。（就是一种变治和化简的思想）</p>
-<h2 id="改变问题（AVL、多路查找树）"><a href="#改变问题（AVL、多路查找树）" class="headerlink" title="改变问题（AVL、多路查找树）"></a>改变问题（AVL、多路查找树）</h2><p>AVL，为了改善二叉排序树的查找性能</p>
-<h2 id="问题化简（堆排序）"><a href="#问题化简（堆排序）" class="headerlink" title="问题化简（堆排序）"></a>问题化简（堆排序）</h2><p>堆排序</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def heapsort2(arr):
-    # 建立堆
-    def heapify(arr, low, high):
-        # 开始指向堆顶元素
-        i &#x3D; low
-        # 开始指向左节点
-        j &#x3D; 2 * i + 1
-        # 储存堆顶元素
-        temp &#x3D; arr[low]
-        # j位置有效
-        while j &lt;&#x3D; high:
-            # 右结点大于左结点
-            if j + 1 &lt;&#x3D; high and arr[j + 1] &gt;&#x3D; arr[j]:
-                # 指向右结点
-                j &#x3D; j + 1
-            # 子结点大于父节点
-            if arr[j] &gt; temp:
-                # 交换
-                arr[i] &#x3D; arr[j]
-                i &#x3D; j
-                j &#x3D; 2 * i + 1
-            else:
-                # temp放入某一节父节点
-                arr[i] &#x3D; temp
-                break
-        else:
-            # temp放到叶子结点
-            arr[i] &#x3D; temp
-
-    # 排序
-    def sort(nums):
-        n &#x3D; len(nums)
-
-        for i in range((n - 2) &#x2F;&#x2F; 2, -1, -1):
-            heapify(nums, i, n - 1)
-
-        for i in range(n - 1, -1, -1):
-            nums[0], nums[i] &#x3D; nums[i], nums[0]
-            heapify(nums, 0, i - 1)
-
-    sort(arr)
-    # print(&quot;结果数组：&quot;, arr)</code></pre>
-
-
-
-<h2 id="霍纳法则"><a href="#霍纳法则" class="headerlink" title="霍纳法则"></a>霍纳法则</h2><p>P（x） &#x3D; an * x^n  + ……a1* x + a0</p>
-<p>一项一项的计算很慢，如果改变表现形式，这样就只要进行迭代。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 霍纳法则
-# arr（多项式，a1-an的数组）
-# n（项数）
-# x（x的值）
-def Horner_rule(arr, n, x):
-    i &#x3D; 0
-    ans &#x3D; 0
-    while i &lt; n:
-        ans &#x3D; arr[i] + x * ans
-        i+&#x3D;1
-    print(ans)
-    return ans
-
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
-    arr &#x3D; [1 for i in range(0,10)]
-    print(arr)
-    x &#x3D; 4
-    n &#x3D; 4
-    Horner_rule(arr,4,4)</code></pre>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>数据库恢复与安全性</title>
-    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</url>
-    <content><![CDATA[<h1 id="数据库恢复与安全性（Oracle）"><a href="#数据库恢复与安全性（Oracle）" class="headerlink" title="数据库恢复与安全性（Oracle）"></a>数据库恢复与安全性（Oracle）</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）了解oracle的物理备份<br>（2）掌握oracle数据库逻辑备份方法<br>（3）掌握oracle数据库恢复的方法<br>（4）学会使用exp备份数据库、使用imp恢复数据库<br>（5）了解flashback 的使用<br>（6）学会完成SQL导入导出<br>（7）掌握ORACLE中有关用户创建的方法<br>（8）熟练掌握PL-SQL的数据控制语言，能通过自主存取控制进行权限管理<br>（9）熟悉用户资源文件的使用<br>（10）熟悉ORACLE中角色管理<br>（11）熟悉视图机制在自主存取控制上的应用</p>
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Oracle Database 12 home</p>
-<h2 id="实验步骤、出现的问题及解决方案"><a href="#实验步骤、出现的问题及解决方案" class="headerlink" title="实验步骤、出现的问题及解决方案"></a>实验步骤、出现的问题及解决方案</h2><p>数据库用户、表空间、表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>逻辑备份</p>
-<p>导出“预约”表</p>
-<pre class="line-numbers language-oracle" data-language="oracle"><code class="language-oracle">exp userid&#x3D;ZS20220872&#x2F;123456@orcl tables&#x3D;TEST.预约 file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>删除”预约“表</p>
-<pre class="line-numbers language-none"><code class="language-none">drop table 预约;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>导入“预约表”，恢复“预约表”</p>
-<pre class="line-numbers language-none"><code class="language-none">imp userid&#x3D;ZS20220872&#x2F;123456@orcl fromuser&#x3D;test file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp tables&#x3D;预约</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>查询预约表中信息</p>
-<pre class="line-numbers language-none"><code class="language-none">select * from 预约;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>导出数据库</p>
-<pre class="line-numbers language-none"><code class="language-none">exp userid&#x3D;ZS20220872&#x2F;123456@orcl full&#x3D;y inctype&#x3D;complete file&#x3D;C:\Users\Administrator\Desktop\西 南科技大学\数据库原理\all.dmp</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>使用闪回(flashback)</p>
-<p>设置行可移动</p>
-<pre class="line-numbers language-none"><code class="language-none">alter table 读者 enable row movement;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>在读者表中添加多条记录</p>
-<pre class="line-numbers language-none"><code class="language-none">insert into 读者 values(&#39;20190325&#39;,&#39;张四&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;1352659962&#39;,&#39;52182193213123&#39;);
-insert into 读者 values(&#39;201903232&#39;,&#39;张七&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;135262359962&#39;,&#39;522665445454564563&#39;);
-select 姓名,性别 from 读者;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221124153425218"></p>
-<p>闪回到改变之前</p>
-<pre class="line-numbers language-none"><code class="language-none">flashback table 读者 to timestamp to_timestamp(&#39;2022&#x2F;11&#x2F;24 15:30:00&#39;,&#39;YYYY&#x2F;MM&#x2F;DDHH24:MI:SS&#39;);
- select 姓名,性别 from 读者;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>SQl导入导出</p>
-<p>导出图书表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>删除表</p>
-<p>NULL</p>
-<p>导入表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>以SYSTEM登录数据库，为自己帐号增加系统角色DBA</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">grant dba to ZS20220872;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>重新以自己的帐号登录，创建一个数据库用户，该用户拥有所有CONNECT, RESOURCE，DBA系统角色权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create user Renchengzhen identified by 123456;
-grant connect to renchengzhen;
-grant resource to renchengzhen;
-grant dba to renchengzhen;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>(未定义函数，以下语句无效)</p>
-<p>建立角色：renchengzhen_OPER，该角色拥有调用存储过程借书、还书、预约的权限，以及CONNECT系统角色权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_role;
-grant connect to renchengzhen_role;
-grant execute on 借书 to renchengzhen_role;
-grant execute on 还书 to renchengzhen_role;
-grant execute on 预约 to renchengzhen_role;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个数据库用户：用户_oper（用户为“自己名字全拼”）为该用户授权角色：用户_role。以该用户登录，完成借书，还书功能。</p>
-<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_oper;
-grant renchengzhen_role to renchengzhen_oper;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">call renchengzhen.借书();</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>以自己的帐号登录，建立视图VIEW_READER, 该视图包含书目（ISBN, 书名，作者，出版单位，图书分类名称）</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE VIEW VIEW_READER
-AS
-SELECT
-	&quot;书目&quot;.&quot;iSBN&quot;, 
-	&quot;书目&quot;.&quot;书名&quot;, 
-	&quot;书目&quot;.&quot;作者&quot;, 
-	&quot;书目&quot;.&quot;出版单位&quot;, 
-	&quot;书目&quot;.&quot;图书分类号&quot;
-FROM
-	&quot;书目&quot;;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个数据库用户：renchengzhen_USER1，该用户具有对视图VIEW_READER查询的权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create user renchengzhen_user1 identified by 123456;
-grant connect to renchengzhen_user1;
-grant select on view_reader to renchengzhen_user1;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个概要文件，如果renchengzhen_USER1连续3次登录失败，则锁定该账户，10天后该账户自动解锁。把创建的概要文件分配给该账号，然后以该用户登录进行权限测试。</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE PROFILE LOCK_USER LIMIT
-FAILED_LOGIN_ATTEMPTS 3
-PASSWORD_LOCK_TIME 10;
-ALTER USER renchengzhen_USER1 PROFILE LOCK_USER;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">ALTER USER renchengzhen_USER1 ACCOUNT UNLOCK;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Sql笔记</title>
-    <url>//post/Sql%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<h1 id="Sql笔记"><a href="#Sql笔记" class="headerlink" title="Sql笔记"></a>Sql笔记</h1><p>1、查询表中记录条数</p>
-<pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(*) FROM USER;
-SELECT COUNT(1) FROM USER;
-SELECT COUNT(id) FROM USER;</code></pre>
-
-<p>COUNT能聚合记录条数。</p>
-<p>以上三条sql语句在运行速度上几乎没有差别，但是对于其中的内容来说，count（1）会包含null的记录。</p>
-<p>但是对于Innodb引擎来说，这个开窗会十分的慢，</p>
-<p>因为Innodb是索引组织表，主键索引树的叶子结点是数据，而普通索引树的叶子结点是主键值，因此普通索引树比主键索引树小很多。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>数据库原理与应用</title>
-    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html</url>
-    <content><![CDATA[<h1 id="数据库原理与应用"><a href="#数据库原理与应用" class="headerlink" title="数据库原理与应用"></a>数据库原理与应用</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>数据（Data）</p>
-<pre class="line-numbers language-none"><code class="language-none">数据是数据库中存储的基本对象
-数据的定义：描述事物的符号记录
-数据的种类：文本、图形、图像、音频、视频、学生的档案记录、货物的运输情况等
-数据的特点：数据与其语义是不可分的（说明：数据的含义称为数据的语义，数据与其语义是不可分的。）</code></pre>
-
-<p>数据库（DataBase，简称 DB）</p>
-<pre class="line-numbers language-none"><code class="language-none">数据库的定义：数据库（Database，简称 DB）是长期储存在计算机内、有组织的、可共享的大量数据的集合。（一个大规模集成的数据集合。）
-数据库的基本特征：
-	数据按一定的数据模型组织、描述和储存
-	可为各种用户共享
-	冗余度较小
-	数据独立性较高
-	易扩展
-数据库作用：
-	一个数据库是对现实生活中一个企业或一个单位在计算机中的建模结果
-	实体
-	联系（实体间的关系）</code></pre>
-
-<p>数据库管理系统（DataBase Management System，简称 DBMS）</p>
-<pre class="line-numbers language-none"><code class="language-none">DBMS 的定义：是位于用户与操作系统之间的一层数据管理软件。数据库管理系统和操作系统一样是计算机的基础软件，也是一个大型复杂的软件系统。
-DBMS 的用途：数据库管理系统的主要任务就是科学地组织和存储数据、高效地获取和维护数据
-DBMS 的主要功能
-    数据定义功能
-        提供数据定义语言（DDL）
-        定义数据库中的数据对象
-    数据组织、存储和管理
-        分类组织、存储和管理各种数据
-        确定组织数据的文件结构和存取方式
-        实现数据之间的联系
-        提供多种存取方法提高存取效率
-    数据操纵功能
-        提供数据操纵语言（DML）
-        实现对数据库的基本操作 CRUD (查询、插入、删除和修改)
-    数据库的事务管理和运行管理
-        数据库在建立、运行和维护时由 DBMS 统一管理和控制，保证事务的正确性
-        保证数据的安全性、完整性、多用户对数据的并发使用
-        发生故障后的系统恢复
-    数据库的建立和维护功能（实用程序）
-        数据库初始数据装载转换
-        数据库转储
-        介质故障恢复
-        数据库的重组织
-        性能监视分析等
-    其它功能
-        DBMS 与网络中其它软件系统的通信
-        两个 DBMS 系统的数据转换
-        异构数据库之间的互访和互操作</code></pre>
-
-<p>数据库系统（Database System，简称 DBS）</p>
-<pre class="line-numbers language-none"><code class="language-none">数据库系统的定义：在计算机系统中引入数据库后的系统构成数据库系统。
-数据库系统的构成
-	数据库
-    数据库管理系统（及其开发工具）
-    应用系统
-    数据库管理员 (DBA)：是负责数据库的设计、规划、协调的专职人员。是全面负责建立、维护和管理数据库系统的人员。</code></pre>
-
-<p>数据管理技术的产生和发展</p>
-<p>数据管理是对数据进行分类、组织、编码、存储、检索和维护，也是数据处理的中心问题。</p>
-<p>数据管理技术的发展过程</p>
-<p>人工管理阶段（20 世纪 40 年代中 —— 50 年代中）</p>
-<p>文件系统阶段（20 世纪 50 年代末 —— 60 年代中）</p>
-<p>数据库系统阶段（20 世纪 60 年代末 —— 现在）</p>
-<p>数据库系统的特点</p>
-<pre class="line-numbers language-none"><code class="language-none">数据结构化
-	数据库的主要特征之一，也是数据库系统与文件系统的本质区别
-数据的共享性高，冗余度低，易扩充
-	数据共享的好处：
-		减少数据冗余，节约存储空间
-		避免数据之间的不相容性与不一致性
-		使系统易于扩充
-数据独立性高
-	物理独立性：指用户的应用程序与存储在磁盘上的数据库中数据是相互独立的。当数据的物理存储改变了，应用程序不用改变。
-	逻辑独立性：指用户的应用程序与数据库的逻辑结构是相互独立的。数据的逻辑结构改变了，用户程序也可以不变。
-	数据独立性是由 DBMS 的二级映像功能来保证的
-数据由 DBMS 统一管理和控制
-	DBMS 提供以下几方面的数据控制功能
-        数据的安全性（Security）保护：保护数据，以防止不合法的使用造成的数据的泄密和破坏。
-    	数据的完整性（Integrity）检查：将数据控制在有效的范围内，或保证数据之间满足一定的关系。
-    	并发（Concurrency）控制：对多用户的并发操作加以控制和协调，防止相互干扰而得到错误的结果。
-    	数据库恢复（Recovery）：DBMS 必须具有将数据库从错误状态恢复到某一正确状态的功能
-</code></pre>
-
-<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>数据模型分为两类（分属两个不同的层次）</p>
-<p>概念模型，也称信息模型，它是按用户的观点来对数据和信息建模，用于数据库设计。</p>
-<pre class="line-numbers language-none"><code class="language-none">实体（Entity）：客观存在并可相互区别的事物，比如一个学生，一门课，学生的一次选课
-属性（Attribute）：实体所具有的某一特性，比如学生的身高，一个实体可以由若干个属性来刻画。
-码（Key） ：唯一标识实体的属性集，比如学生的学号
-域（Domain）：属性的取值范围称为该属性的域。
-实体型（Entity Type）： 实体名 + 属性名，比如 学生（学号，姓名，性别）就是一个实体型
-实体集（Entity Set）：同一类型的实体的集合，比如全体学生
-联系（Relationship） ：现实世界中事物内部以及事物之间的联系在信息中反映为实体内部的联系和实体之间的联系。
-实体内部的联系通常是指组成实体的各属性之间的联系
-实体之间的联系通常是指不同实体集之间的联系，（有一对一，一对多，多对多等多种类型），实体之间的联系可用 E - R 图 表示</code></pre>
-
-<p>逻辑模型主要包括网状模型、层次模型、关系模型、面向对象模型等，按计算机系统的观点对数据建模，用于 DBMS 实现。</p>
-<p>物理模型是对数据最底层的抽象，描述数据在系统内部的表示方式和存取方法，在磁盘或磁带上的存储方式和存取方法。</p>
-<p>关系模型是最重要的一种数据模型。</p>
-<p>在用户观点下，关系模型由一组关系组成，每个关系的数据结构是一张规范化的二维表，它由行（元组）和列（属性）组成。</p>
-<pre class="line-numbers language-none"><code class="language-none">关系（Relation）：一个关系对应一张表
-元组（Tuple）：表中的一行即一个元组
-属性（Attribute）：表中的一列即一个属性，给每一个属性起一个名称即属性名
-主码（Key） ：表中的某个属性组，可以唯一确定一个元组，该属性组就称为主码。比如上表中的学号就就是该关系的主码
-域（Domain）：域是一组具有相同数据类型的值的集合。比如人的年龄是1-120岁，属性的取值范围来自该属性对应的域
-分量：元组中的一个属性值。
-关系模式：对关系的描述，一般表示为 关系名（属性名1，属性名2....）。比如学生（学号，姓名，年龄，性别，系，年级）。关系模式必须是规范化的，不允许表中还有表，每个属性都应该是不可分的（即关系的每一个分量必须是一个不可分的数据项）</code></pre>
-
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>关系 Relation</p>
-<p>学生（学号，姓名，年级）就是一个关系</p>
-<p>如果只有 1 个属性，则称为<strong>单元关系&#x2F;一元关系</strong></p>
-<p>如果有 2 个属性，则称为<strong>二元关系</strong></p>
-<p>主码 Primary Key</p>
-<p>有一个或一组这样的属性，它的值能确定该关系中其他所有属性的值。</p>
-<p>候选码 Candidate Key</p>
-<p>能唯一标识元组的属性(组)，其中选择其一作为主码。</p>
-<p>主属性 Prime Attribute</p>
-<p>候选码中的诸属性。</p>
-<p>非主属性 Non-Key Attribute</p>
-<p>不出现在任何候选码中的属性。</p>
-<p>关系的型与值</p>
-<p>关系(表)的型：关系的结构(字段名、字段个数、域等)</p>
-<p>关系(表)的值：关系中具体的元组，也称关系的实例(Instance)。</p>
-<p>关系数据库</p>
-<p>关系模型由关系数据结构、关系操作集合和关系完整性约束三部分组成。</p>
-<p>（1）单一的数据结构—关系</p>
-<p>关系模型的数据结构非常单一。在关系模型中，现实世界的实体以及实体间的各种联系均用关系来表示。在用户看来，关系模型中数据的逻辑结构是一张二维表。</p>
-<p>（2）关系操作</p>
-<p>关系模型中常用的关系操作包括：选择（Select）、投影（Project）、连接（Join）、除（Divide）、并（Union）、交(Intersection）、差（Difference）等和查询（Query）操作和增加（Insert）、删除（Delete）、修改（Update）操作两大部分。</p>
-<p>（3）关系的三类完整牲约束</p>
-<p>关系模型允许定义三类完整性约束：实体完整性、参照完整性和用户定义的完整性。<br>关系的完整性</p>
-<p>关系模型中可以有三类完整性约束：实体完整性、参照完整性和用户定义完整性。</p>
-<p>其中实体完整性和参照完整性是关系模型必须满足的完整性约束条件，被称作是关系的两个不变性，应该由关系系统自动支持。</p>
-<p>关系模型的完整性规则是对关系的某种约束条件。任何关系在任何时刻都要满足这些语义约束</p>
-<p>实体完整性</p>
-<p>关系数据库中的每个元组应该是可区分的、唯一的。这样的约束条件用实体完整性来保证</p>
-<p>实体完整性规则：每个关系都应有至少一个主属性，且主属性不能为空值</p>
-<p>例如：选修（学号，课程号，成绩）关系中，学号和课程号不能为空值</p>
-<p> 实体完整性规则规定基本关系的所有主属性都不能取空值，而不仅是主码整体不能取空值。<br>参照完整性</p>
-<p><strong>参照完整性规则：</strong>若属性 F 是基本关系R的外码，它与基本关系 S 的主码 Ks 相对应，则对于 R 中每个元组在 F 上的值必须为：</p>
-<ul>
-<li>或者取空值</li>
-<li>或者等于 S 中某个元组的主码值</li>
-</ul>
-<p>用户定义完整性</p>
-<p>任何关系数据库系统都应支持实体完整性和参照完整性。除此之外，用户还可以自定义完整性约束。</p>
-<p>用户定义的完整性是针对某一具体关系数据库的约束条件，反映某一具体应用所涉及的数据必须满足的语义要求。</p>
-<p>例：选修（学号，课程号，成绩）成绩的取值范围在 0~100 之间</p>
-<p>关系模型应提供定义和检验这类完整性的机制，以便用统一的系统的方法处理它们，而不要由应用程序承担这一功能。<br>关系代数</p>
-<p>关系代数是一种抽象的查询语言，是关系数据操纵语言的一种传统表达方式，它是用对关系的运算来表达查询的。</p>
-<p>关系代数的运算对象是关系，运算结果亦是关系</p>
-<p>关系代数用到的运算符包括两类：集合运算符和专门的关系运算符</p>
-<p>传统的集合运算</p>
-<p>传统的集合运算是二目运算，包括并、差、交、笛卡尔积 4 种运算</p>
-<p>并 Union</p>
-<p>关系 R 与关系 S 的并记作：<code>R ∪ S = &#123;t|t∈R ∨ t∈S&#125;</code></p>
-<p>其结果仍为 n 目关系，由属于 R 或属于 S 的元组组成</p>
-<p>差 Difference</p>
-<p>系R与关系S的差记作：<code>R - S = &#123;t|t∈R ∧ tS&#125;</code></p>
-<p>其结果关系仍为 n 目关系，由属于 R 而不属于 S 的所有元组组成。</p>
-<p>交 Intersection</p>
-<p>关系 R 与关系 S 的交记作：<code>R ∩ S = &#123;t|t∈R ∧ t∈S&#125;</code></p>
-<p>其结果关系仍为 n 目关系，由既属于 R 又属于 S 的元组组成。关系的交可以用差来表示，即 <code>R ∩ S = R-(R-S)</code></p>
-<p>笛卡尔积 Cartesian Product</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/image-20221129164932849.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/image-20221129164932849.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>专门的关系运算</p>
-<p>专门的关系运算包括选择、投影、连接、除运算等</p>
-<p>选择 selection</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>英语笔记</title>
-    <url>//post/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<h2 id="虚拟语气"><a href="#虚拟语气" class="headerlink" title="虚拟语气"></a>虚拟语气</h2><p>1、—Tom is always making so many mistakes in his English exercises!  — Yeah. If he ________ more careful, he ________ fewer mistakes.</p>
-<p>were,would make</p>
-<p>试题分析：汤姆总是在英语联系中犯那么多错误！如果他可以更加细心一点，他就会犯更少的错误。</p>
-<p>表示与现在事实相反的假设，If+主语+动词过去式（be动词用were）,主语+would&#x2F;should&#x2F;might&#x2F;could+动词原形。</p>
-<p>2、If I ＿＿you . I＿＿study harder.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会更努力学习。</p>
-<p>虚拟语气表示与过去事实相反。</p>
-<p>3、 If I ______ you, I ______invite him to go to see a movie.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会邀请他去看电影，go to see a movie去看电影，invite sb to do 邀请某人做某事，在表达与现在事实相反的虚拟语气中，Be动词用were，主语用would。</p>
-<p>4、If I  you,I  buy a bike for him.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会给他买一俩自行车，buy sth for sb给某人买某物，本句是虚拟语气，表示与现在的事实相反，在虚拟语气中不能用was。</p>
-<p>5、— Come and join us, Ben!— I’m afraid I can’t. I’m too busy now. If I ________ time, I would certainly go.</p>
-<p>had</p>
-<p>试题分析：本、来加入我们吧！恐怕我不能，我现在太忙，如果我有时间，我一定会去的。条件状语从句中描述的与现在相反的事实，从句用一般过去时态。</p>
-<h2 id="作文"><a href="#作文" class="headerlink" title="作文"></a>作文</h2><p>欢迎游客来北京旅游</p>
-<p>Welcome to Beijing, the bustling capital city of China! This vibrant city offers an abundance of history, culture, and modern amenities. From visiting the iconic Forbidden City and climbing the Great Wall, to experiencing the local street food and shopping at the bustling markets, there is truly something for everyone in Beijing. Whether you are a first-time visitor or a returning traveler, we are confident that you will find this city to be a unique and fascinating destination. So come, explore and immerse yourself in the rich history and culture of Beijing. Enjoy your trip!</p>
-<p>欢迎来到北京，中国繁华的首都！这座充满活力的城市提供了丰富的历史、文化和现代设施。从参观标志性的故宫和爬登长城，到体验当地的街头美食和在繁忙的市场购物，北京确实有适合每个人的地方。无论您是初次访问者还是回头客，我们相信您会发现这座城市是一个独特而有趣的目的地。所以，来吧，探索和沉浸在北京丰富的历史和文化中。祝您旅途愉快！</p>
-<p>都江堰旅游</p>
-<p>Welcome to Dujiangyan, a beautiful and historic city located in Sichuan province, China. This charming city is renowned for its magnificent natural scenery and rich cultural heritage, making it an ideal destination for tourists who are looking for a unique and unforgettable travel experience.</p>
-<p>Dujiangyan is famous for its ancient irrigation system, which was built over 2,000 years ago and remains in use today. The system is considered one of the greatest engineering marvels of ancient China, and visitors can witness its beauty and functionality by taking a boat ride along the river. In addition to its historical significance, Dujiangyan is also surrounded by stunning natural beauty, including lush mountains, sparkling rivers, and verdant forests.</p>
-<p>Whether you are interested in history, culture, or nature, Dujiangyan has something to offer for everyone. So come, explore this beautiful city and immerse yourself in its rich history and natural beauty. We guarantee that you will leave Dujiangyan with a newfound appreciation for this unique and fascinating destination. Enjoy your trip!</p>
-<p>欢迎来到都江堰，一个位于中国四川省的美丽和历史悠久的城市。这个迷人的城市以其壮丽的自然风光和丰富的文化遗产而闻名，是寻求独特和难忘旅行体验的游客理想的目的地。</p>
-<p>都江堰以其古老的灌溉系统而闻名，该系统建于2000多年前，至今仍在使用。该系统被认为是古代中国最伟大的工程奇迹之一，游客可以通过沿河船游见证其美丽和功能性。除了其历史意义外，都江堰周围还环绕着壮丽的自然美景，包括茂盛的山峦、闪闪发光的河流和绿油油的森林。</p>
-<p>无论您对历史、文化还是自然有兴趣，都江堰都有适合每个人的内容。所以，来探索这个美丽的城市，沉浸在其丰富的历史和自然美中。我们保证您将带着对这个独特和迷人的目的地的新的钦佩离开都江堰。祝您旅途愉快！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>博客开发日记</title>
-    <url>//post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</url>
-    <content><![CDATA[<h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
-<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
-<li>服务端：Django</li>
-<li>数据库：MySQL 8.0</li>
-<li>前端：原生JavaScript</li>
-<li>CSS：原生CSS</li>
-</ol>
-<p>PyCharm</p>
-<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
-<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
-<ol>
-<li><p>创建 Django 模型，用于存储博客内容。</p>
-<p>在新建的app目录下，编辑models.py文件</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
-
-
-class Blog(models.Model):
-    title &#x3D; models.CharField(max_length&#x3D;200)
-    author &#x3D; models.CharField(max_length&#x3D;100)
-    content &#x3D; models.TextField()
-    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
-    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
-
-    # 返回模型的标题，用于在Django的后台中显示。
-    def __str__(self):
-        return self.title</code></pre>
-</li>
-<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
-<p>在 Django  app中创建一个 views.py 文件</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
-from django.views import View
-from .models import Blog
-
-class BlogListView(View):
-    def get(self, request):
-        blogs &#x3D; Blog.objects.all()
-        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
-
-<p> 创建模板文件，例如 blog_list.html</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
-&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
-&lt;ul&gt;
-  &#123;% for blog in blogs %&#125;
-    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
-  &#123;% endfor %&#125;
-&lt;&#x2F;ul&gt;</code></pre>
-
-<p>urls.py 文件中配置 URL 与视图的映射关系</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
-from .view import BlogListView
-
-urlpatterns &#x3D; [
-    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
-]</code></pre>
-
-<p>文章详情页面</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
-    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
-    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
-
-<p>新建页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-&lt;h1&gt;
-    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
-        &#123;&#123; blog.title &#125;&#125;
-    &lt;&#x2F;a&gt;
-&lt;&#x2F;h1&gt;
-&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
-&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
-&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-
-<p>创建forms.py文件(app目录内)</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
-from .models import Blog
-
-class BlogForm(forms.ModelForm):
-    class Meta:
-        model &#x3D; Blog
-        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
-
-<p>创建文章页面</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
-    template_name &#x3D; &#39;create_blog.html&#39;
-
-    def get(self, request):
-        form &#x3D; BlogForm()
-        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
-
-    def post(self, request):
-        form &#x3D; BlogForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(&#39;blog_list&#39;)
-        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
-
-<p>编写页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
-  &#123;% csrf_token %&#125;
-  &#123;&#123; form.as_p &#125;&#125;
-  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
-&lt;&#x2F;form&gt;</code></pre>
-
-<p>文章编辑</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
-    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
-    if request.method &#x3D;&#x3D; &#39;POST&#39;:
-        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
-        if form.is_valid():
-            form.save()
-            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
-    else:
-        form &#x3D; BlogForm(instance&#x3D;blog)
-    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
-
-<p>编写页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
-    &#123;% csrf_token %&#125;
-    &#123;&#123; form.as_p &#125;&#125;
-    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
-&lt;&#x2F;form&gt;</code></pre>
-</li>
-<li><p>创建 Django URL，实现页面路由功能。</p>
-</li>
-<li><p>编写 HTML 页面，实现博客页面的设计。</p>
-</li>
-<li><p>使用 CSS 完成页面样式设计。</p>
-</li>
-<li><p>使用 JavaScript 实现前端交互功能。</p>
-</li>
-<li><p>配置数据库连接。</p>
-<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
-    &#39;django.contrib.admin&#39;,
-    &#39;django.contrib.auth&#39;,
-    &#39;django.contrib.contenttypes&#39;,
-    &#39;django.contrib.sessions&#39;,
-    &#39;django.contrib.messages&#39;,
-    &#39;django.contrib.staticfiles&#39;,
-    &#39;blog.apps.BlogConfig&#39;,
-    &#39;django.db.backends.mysql&#39;
-]</code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
-    &#39;default&#39;: &#123;
-        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
-        &#39;NAME&#39;: &#39;blog&#39;,
-        &#39;USER&#39;: &#39;root&#39;,
-        &#39;PASSWORD&#39;: &#39;root&#39;,
-        &#39;HOST&#39;: &#39;localhost&#39;,
-        &#39;POST&#39;: &#39;3306&#39;,
-        &#39;OPTION&#39;: &#123;
-            &#39;charset&#39;: &#39;utf8mb4&#39;
-        &#125;
-    &#125;
-&#125;</code></pre>
-
-<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
-<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
-
-<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
-<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
-python manage.py migrate</code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
-
-<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
-<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
-
-<p>如果没有安装 Django，请使用以下命令安装它：</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
-
-<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
-<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
-
-ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
-
-<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
-<ol>
-<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
-<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
-<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
-<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
-</ol>
-<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
-<ol>
-<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
-<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
-<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
-<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
-</ol>
-<p>pycharm的坑</p>
-<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
-<ol>
-<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
-<li>测试博客系统，修复发现的 bug。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>算法设计与分析的常用十大方案</title>
-    <url>//post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</url>
-    <content><![CDATA[<h1 id="01背包问题（最优解问题）"><a href="#01背包问题（最优解问题）" class="headerlink" title="01背包问题（最优解问题）"></a>01背包问题（最优解问题）</h1><p>就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，<br>也就是在c之内，放最大价值的物品<br>目的是限制化重量下，求最大价值</p>
-<h2 id="蛮力法"><a href="#蛮力法" class="headerlink" title="蛮力法"></a>蛮力法</h2><p>使用蛮力法就是，遍历每一种方案，对于每一个物品都要枚举一次看看是否放入背包，最后比较每一种方案的价值<br>（遍历每一种方案）</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01_force(n,w,value,weight):
-	&quot;&quot;&quot;
-	蛮力法求解
-	n ：物品数量
-	w ：背包体积
-	value ：物品价值
-	weight ：物品体积
-	return 能放入的物品最大价值
-	&quot;&quot;&quot;
-
-	# 返回值
-
-​	res &#x3D; 0
-​	
-
-# 蛮力法 遍历每一种方案，n个物品，每一个物品都有两种状态，放入或者不放入背包，所以一共有
-
-# 2**n种状态
-
-# 1 0 1
-
-# 2 10 01 00 11
-
-for i in range(2**n)：
-
-	# 方案体积
-
-​	total_weight &#x3D; 0
-
-	# 方案价值
-
-​	total_value &#x3D; 0
-
-	# 第二层循环，每一种方案下遍历每一件物品
-
-​	for j in range(n):
-
-		# 判断方案i是否选择了物品j，如果被选择，那么背包中体积与价值发生变化
-
-		# i是一个整数，j是一个0到n-1的整数
-
-		# 1&lt;&lt;j 表示1左移j位
-
-		# 位与运算，结果如果不为0，那么表示在该位上都为1，也就是j被选择了
-
-		if (i &amp; (1&lt;&lt;j)) !&#x3D; 0:
-			total_weight +&#x3D; weight[j]
-			total_value +&#x3D; value[j]
-	
-
-	# 判断，目的体积要小于背包容量
-
-	if total_weight &lt;&#x3D; w:
-
-		# 求最大价值
-
-		res &#x3D; max(res,total_value)
-return res</code></pre>
-
-<p>“””<br>当i&#x3D;&#x3D;0时，代表没有选择物品</p>
-<p>i&#x3D;&#x3D;1,第一种方案，j&#x3D;&#x3D;0，第一个物品 1&lt;&lt;0 &#x3D; 1 1 &amp; 1 &#x3D;1 代表在第i&#x3D;&#x3D;1种方案下，第j&#x3D;&#x3D;0（第一个物品）<br>被放进背包。<br>j &#x3D;&#x3D; 1 表示第二个物品 1 &lt;&lt; 1 &#x3D; 10 1 &amp; 10 &#x3D; 0 没有被选择<br>j &#x3D;&#x3D; 2,3,4…n-1</p>
-<p>i &#x3D;&#x3D; 2 j&#x3D;&#x3D;0,1,2,,3…n-1</p>
-<p>O(n) &#x3D; n * 2 **n<br>“””</p>
-<h2 id="减治法"><a href="#减治法" class="headerlink" title="减治法"></a>减治法</h2><p>把一个大问题分解成几个小问题，递归求解子问题，合并子问题的解得到大问题的解（缩小问题规模）</p>
-<p>第i个物品价值:value[i] 体积:weight[i],背包容量C</p>
-<p>第i个物品，要么选，要么不选</p>
-<p>1、前n-1个物品选择中，容量 C-weight[n] 选n</p>
-<p>2、前n-1个物品选择中，容量 C 不选n</p>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,n,c):
-	# 背包容量为0或者物品数量为0,递归出口
-	if c &#x3D;&#x3D; 0 or n &#x3D;&#x3D; 0
-		return 0
-	if weight[n-1] &gt; c:
-		return bag01(weight,value,n-1,c)
-		
-
-return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))</code></pre>
-
-<h3 id="循环-动态规划"><a href="#循环-动态规划" class="headerlink" title="循环(动态规划)"></a>循环(动态规划)</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
-	# 保存最终结果，c+1（存储了0-c的所有结果）
-	dp &#x3D; [0] * (c + 1)
-	# 第一层循环，遍历物品
-	for i in range(n):
-		# 倒序遍历
-		# 枚举第i物品，容量从c开始，枚举容量从大到小
-		for j in range(c,weight[i] -1,-1):
-			# 当前容量为j时，选或者不选第i个物品，取最大值，来确定这个物品是否放入背包
-			# 如果加入，dp[j] &#x3D;&#x3D; dp[j - w[i]] + v[i]
-			# 不加入，dp[j]
-			dp[j] &#x3D; max(dp[j],dp[j-weight[i]] + value[i])
-	return dp[c]</code></pre>
-
-
-
-<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法是把一个问题分解成子问题，再把子问题分解成更小的问题，直到子问题容易解决就把解合并。（分解问题）</p>
-<p>n个物品，重量w1,w2,w3。。。wn。价值v1,v2…vn</p>
-<p>容量为c，c-weight[i] &gt; 0</p>
-<p>max(value)</p>
-<p>把物品分成两组，考虑每一组是否被选择。</p>
-<pre class="line-numbers language-none"><code class="language-none">#递归
-def bag01(n,c,weight,value):
-	# 物品数量为0或者背包容量为0
-	if n&#x3D;&#x3D;0 or c &#x3D;&#x3D; 0:
-		return 0
-	# 物品不能放入背包
-	if weight[n-1] &gt; c:
-		# 不考虑当前物品
-		return bag01(n-1,c,weight,value)
-	else:
-		# 递归解决剩下问题，（放和不放，最大值）
-		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1,c.weight,value))</code></pre>
-
-
-
-<h3 id="迭代（循环模拟递归，需要用变量来保存中间状态）"><a href="#迭代（循环模拟递归，需要用变量来保存中间状态）" class="headerlink" title="迭代（循环模拟递归，需要用变量来保存中间状态）"></a>迭代（循环模拟递归，需要用变量来保存中间状态）</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
-	dp &#x3D; [0] * (c+1)
-	for i in range(1,n+1):
-		for j in range(c,weight[i-1] -1,-1):
-			dp[j] &#x3D; max(dp[j],dp[j-weight[i-1]]+value[i-1])
-	return dp[c]</code></pre>
-
-<p>​	</p>
-<p>分治法重点是把物品不断的切割，分别考虑每组物品是否被选择</p>
-<p>减治法重点不断缩减背包容量，利用放入或者不放入物品</p>
-<h2 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h2><p>对问题进行变形，将问题转换成简单的问题</p>
-<p>例如：减小问题规模n —— n&#x2F;2</p>
-<p>背包容量从小到大排序，利用分治法把大问题分解为小问题，然后减治法把子问题合并起来</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
-	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
-	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
-	for i in range(1,n+1):
-		for j in range(1,c+1):
-			# 第i个物品不能放
-			if j &lt; weight[i-1]:
-				# 第i个物品取第i-1个物品的状态
-				f[i][j] &#x3D; f[i-1][j]
-			else:
-				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
-				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
-	return f[n][c]</code></pre>
-
-
-
-<h2 id="时空权衡（基于计算机）"><a href="#时空权衡（基于计算机）" class="headerlink" title="时空权衡（基于计算机）"></a>时空权衡（基于计算机）</h2><p>如果想要时间效率最优，可以用动态规划，如果想要空间占用少，可以使用贪心或者滚动数组（将多余空间删去）</p>
-<p>滚动数组（模2）</p>
-<p>占用空间较小</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
-	f &#x3D; [[0 for j in range(c+1)] for i in range(2)]
-	for i in range(1,n+1):
-		for j in range(1,c+1):
-			# i物品数 j容积
-			# 第i个物品不进背包的情况(% 取余)
-			f[i % 2][j] &#x3D; f[(i-1) % 2][j]
-			# 第i个物品不能放
-			if j &gt;&#x3D; weight[i-1]:
-				# 第i个物品取第i-1个物品的状态
-				f[i % 2][j] &#x3D; f[（i-1） % 2][j]
-			else:
-				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
-				f[i % 2][j] &#x3D; max(f[i % 2][j],f[（i-1） % 2][j-weight[i-1]])
-	return f[n][c]</code></pre>
-
-
-
-<h2 id="动态规划（解决最优解问题的方法）"><a href="#动态规划（解决最优解问题的方法）" class="headerlink" title="动态规划（解决最优解问题的方法）"></a>动态规划（解决最优解问题的方法）</h2><p>一种求解多阶段决策问题的方法，一种面向最优化的递归计算技巧</p>
-<p>用于求解分段函数的最值。它通过以一定顺序对复杂问题进行分解，以避免重复的计算。</p>
-<p>并以类似递推的方式，通过对更小的子问题的解的组合得到原问题的解。</p>
-<p>1、分解问题，对于分解之后的若干子问题·，定义一个状态。通过状态转移方程，将子问题的解转化成原问题的解</p>
-<p>对于每一个物品i，枚举它的体积j，计算f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-w[i]]+v[i])，</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01(weight,value,c,n):
-	# 中间状态，f[i][j]表示前i件物品放入容量为j的背包可以获得的最大价值
-	f &#x3D; [[0 for j in range(c+1)] for i in range(n+1)]
-	for i in range(1,n+1):
-		for j in range(1,c+1):
-			# 第i个物品不能放
-			if j &lt; weight[i-1]:
-				# 第i个物品取第i-1个物品的状态
-				f[i][j] &#x3D; f[i-1][j]
-			else:
-				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
-				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
-	return f[n][c]</code></pre>
-
-
-
-<h2 id="贪心（最优解问题）并不总能得到全局最优解"><a href="#贪心（最优解问题）并不总能得到全局最优解" class="headerlink" title="贪心（最优解问题）并不总能得到全局最优解"></a>贪心（最优解问题）并不总能得到全局最优解</h2><p>n件物品放入容量为c的背包中，（可不全部放入）使得背包中物品价值最大。</p>
-<p>较好的近似解</p>
-<p>问题分解，求每一个小问题的最优解。</p>
-<p>1、单位重量价值最大的物品先放，直到背包无法再放。（贪心选择性质）</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
-	# 物品的单位重量价值
-	meimei &#x3D; [value[i]&#x2F;weight[i] for i in range(n)]
-	# 排序（逆序，从大到小的顺序）按照价值重量比排序后的物品索引数组
-	meimei &#x3D; sorted(range(n),key&#x3D;lambda i: meimei[i],reverse&#x3D;True)
-	total_value &#x3D; 0
-	# 是否放入背包的数组
-	bag &#x3D; [0] * n
-	for i in meimei:
-		if weight[i] &lt;&#x3D; c:
-			bag[i] &#x3D; 1
-			total_value +&#x3D; value[i]
-			c -&#x3D; weight[i]
-		else:
-			# 计算部分放入背包
-			bag[i] &#x3D; c&#x2F;weight[i]
-			total_value +&#x3D; value[i] * (c&#x2F;weight[i])
-			break
-	return total_value,bag</code></pre>
-
-
-
-<h2 id="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"><a href="#迭代改进（优化算法）并不总能得到全局最优解，较好的近似解" class="headerlink" title="迭代改进（优化算法）并不总能得到全局最优解，较好的近似解"></a>迭代改进（优化算法）并不总能得到全局最优解，较好的近似解</h2><p>基本思想：每一次迭代中，根据当前解，确定一个方向，并且在方向上的解有所改进。</p>
-<p>具体步骤：</p>
-<p>1、初始化解，将解初始化为一个可行解。（全放和全不放）</p>
-<p>2、迭代改进，每一次迭代中，选择一个方向，感觉该方向的优化目标，生成一个新解，并比较当前解。</p>
-<p>3、判断终止条件，判断解是否满足问题要求</p>
-<pre class="line-numbers language-none"><code class="language-none">def bag01(value,weight,n,c):
-	# 初始化解
-	select_items &#x3D; [0] * n
-	total_value &#x3D; 0
-	
-
-while c &gt;0:
-
-	# 计算性价比,并按照性价比从大到小排序
-
-	ratios &#x3D; [(value[i] &#x2F; weight[i],i) for i in range(n)]
-	ratios.sort(reverse&#x3D;True)
-	
-
-	# 尝试放入物品
-
-	for ratio,i in ratios:
-		if weight[i] &lt;&#x3D; c:
-			c -&#x3D; weight[i]
-			select_items[i] &#x3D; 1
-			total_value +&#x3D; value[i]
-	
-
-	# 判断终止条件
-
-	if all(select_items):
-		break
-return total_value,select_items</code></pre>
-
-
-
-
-<h2 id="回溯与分支界限"><a href="#回溯与分支界限" class="headerlink" title="回溯与分支界限"></a>回溯与分支界限</h2><p>回溯（全局搜索）逐步构造方案来找到所有解</p>
-<p>首先选择一个决策，直到找到最终的解或者无法前进，无法前进返回上一层，继续下一个决策。</p>
-<p>关键：剪枝（避免重复）</p>
-<p>分支界限（局部搜索找到最优解）逐步将空间缩小来找到问题的最优解。</p>
-<p>根据规则生成一组候选解，对这组解评估，选出一个最优解，再根据最优解生成下一组，知道找到最终解</p>
-<p>关键：剪枝（避免重复）</p>
-<p>01背包中，回溯法：可以用于找到所有可能的解。分支界限：用于找到最优的解。</p>
-<h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(c,n,weight,value):
-	def back(i,c_weight,c_value):
-		&#39;&#39;&#39;
-		i : 第i件物品
-		c_weight：当前背包重量
-		c_value：当前背包价值
-		&#39;&#39;&#39;
-		nonlocal max_value
-		if c_weight &gt; c:
-			return
-		if c_value &gt; max_value:
-			max_value &#x3D; c_value
-		if i &#x3D;&#x3D; n:
-			return
-		# 不选第i件物品
-		back(i+1,c_weight,c_value)
-		# 选第i件物品
-		back(i+1,c_weight+weight[i],c_value+value[i])
-	max_value &#x3D; 0
-	back(0,0,0)
-	return max_value</code></pre>
-
-<p>​	</p>
-<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bag01(c,n,weight,value)：
-
-	# 创建一个节点类，保存当前状态和状态的价值上界。
-
-	class Node:
-		def __init__(self,level,value,weight):
-
-			# level表示当前节点的深度
-
-			self.level &#x3D; level
-			self.value &#x3D; value
-			self.weight &#x3D; weight
-
-		# 定义对象之间的＜比较。
-
-		def __lt__(self,other):
-			return self.value &gt; other.value
-
-	# 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空
-
-	nodes &#x3D; [Node(0,0,0)]
-	max_value &#x3D; 0
-	while nodes:
-		node &#x3D; nodes.pop(0)
-
-		# 代表选完了所有的节点
-
-		if node.level &#x3D;&#x3D; n:
-			if node_value &gt; max_value:
-				max_value &#x3D; node_value
-			continue
-		
-
-	# bound 存储计算得到的价值上界
-
-	bound &#x3D; node_value
-
-	# 不选第i件物品
-
-	for j in range(node.level,n):
-
-		# 装不下
-
-		if node.weight + weight[j] &gt; c:
-
-			# 取物品的部分
-
-			bound +&#x3D; (c - node.weight) &#x2F; weight[j] * value[j]
-			break
-		bound +&#x3D; value[j]
-
-	# 价值上界大于已知的最大价值
-
-	if bound &gt; max_value:
-		nodes.append(Node(node.level+1,node.value,node.weight))
-	
-
-	# 选第i件物品
-
-	bound &#x3D; node.value + value[node.level]
-	weight &#x3D; node.weight + weight[node.level]
-	if weight &lt;&#x3D; c and bound &gt; max_value:
-		max_value &#x3D; bound
-	if bound &gt; max_value:
-		nodes.append(Node(node.level+1,bound,weight))
-return max_value</code></pre>
-
-]]></content>
   </entry>
 </search>
