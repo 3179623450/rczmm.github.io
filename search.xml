@@ -661,6 +661,36 @@ name::code;  &#x2F;&#x2F; code 可以是变量或函数</code></pre>
 ]]></content>
   </entry>
   <entry>
+    <title>Oracle19C+PLSQL安装和配置详细教程</title>
+    <url>//post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html</url>
+    <content><![CDATA[<p>解压下载的压缩包启动安装，注意解压的包名字中不能含有中文。</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211402868.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211402868.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>选择创建单实例数据库</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211717377.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211717377.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>选择桌面类下一步</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211841511.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211841511.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个新的oracle用户并设置密码</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211854956.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211854956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>选择一个Oracle安装的基础目录</p>
+<p><strong>不选择容器数据库，容器数据库是从12C出现的新特性</strong></p>
+<p>设置密码可能不符合Oracle的建议标准点击是即可</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211934943.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211934943.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>先决条件检查，结束后会列出一个清单</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211951263.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211951263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>列出清单，可以保存为响应文件进行静默安装，点击安装，执行时间约15分钟左右</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212008892.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212008892.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212049311.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212049311.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>安装完成</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212104073.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212104073.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>测试安装是否成功</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212138420.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212138420.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>登陆<a href="https://localhost:5500/em/login">https://localhost:5500/em/login</a></p>
+<p>登陆用户为sys密码为之前创建的</p>
+<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212234923.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212234923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>安装成功。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>MatLab笔记</title>
     <url>//post/MatLab%E7%AC%94%E8%AE%B0.html</url>
     <content><![CDATA[<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">x&#x3D;linspace(0,6);%createavectorxbetween0and6
@@ -939,36 +969,6 @@ cplxpair(v)给出一个v中各元素按实部递增排序，并使其复数组�
       <tags>
         <tag>MatLab</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Oracle19C+PLSQL安装和配置详细教程</title>
-    <url>//post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html</url>
-    <content><![CDATA[<p>解压下载的压缩包启动安装，注意解压的包名字中不能含有中文。</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211402868.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211402868.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>选择创建单实例数据库</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211717377.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211717377.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>选择桌面类下一步</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211841511.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211841511.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个新的oracle用户并设置密码</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211854956.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211854956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>选择一个Oracle安装的基础目录</p>
-<p><strong>不选择容器数据库，容器数据库是从12C出现的新特性</strong></p>
-<p>设置密码可能不符合Oracle的建议标准点击是即可</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211934943.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211934943.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>先决条件检查，结束后会列出一个清单</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211951263.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109211951263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>列出清单，可以保存为响应文件进行静默安装，点击安装，执行时间约15分钟左右</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212008892.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212008892.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212049311.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212049311.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>安装完成</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212104073.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212104073.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>测试安装是否成功</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212138420.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212138420.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>登陆<a href="https://localhost:5500/em/login">https://localhost:5500/em/login</a></p>
-<p>登陆用户为sys密码为之前创建的</p>
-<p><img src="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212234923.png" class="lazyload" data-srcset="/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/image-20221109212234923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>安装成功。</p>
-]]></content>
   </entry>
   <entry>
     <title>Python装饰器</title>
@@ -5525,221 +5525,6 @@ return max_value</code></pre>
 ]]></content>
   </entry>
   <entry>
-    <title>计算机算术</title>
-    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</url>
-    <content><![CDATA[<h1 id="计算机算术"><a href="#计算机算术" class="headerlink" title="计算机算术"></a>计算机算术</h1><h2 id="数据是什么"><a href="#数据是什么" class="headerlink" title="数据是什么"></a>数据是什么</h2><p>各种各样的信息，数字、文本、程序、音乐、符号等。信息可以是能够被计算机存储和处理的任何事物。</p>
-<h3 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h3><p>计算机存储和处理信息的最小单位是位（bit），一个比特表示0或1。</p>
-<p>数字计算机将信息以一组或一串比特成为字保存在存储器中。</p>
-<p>计算机通过高低电压来存储0或1。</p>
-<p>计算机对一组二进制位进行操作，8个二进制位为一个字节（byte），一些计算机制造商用术语“字”表示16位的值，长字表示32位的值，还有一些制造商用字表示32位的值，用半字表示16位的值。</p>
-<h3 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="位树——（计算机组成原理）"></p>
-<p>每当数字增加1位，路径的总数将翻一倍。一个n位的字将得到2n条不同路径或位模式。如，一个8位的字节将得到2<sub>8</sub>&#x3D;256个可能的值。</p>
-<p>为了用二进制数表示任何一个拥有最多n个值的量，应找到一个使不等式n&lt;&#x3D;2<sub>m</sub>成立的最小位数m。</p>
-<h3 id="信息表示"><a href="#信息表示" class="headerlink" title="信息表示"></a>信息表示</h3><p>一个n位的二进制什么也表示不了。因为一个由二进制1和0组成的串没有任何内在含义。需要程序员赋予它何种含义。</p>
-<p>一个二进制串可以表示的对象有：</p>
-<p>指令</p>
-<p>字长为32位或更长的计算机用一个字来表示CPU能够完成的操作（8位或16位计算机用多个字表示一条指令）。指令的二进制编码与其功能之间的关系由计算机设计者决定。如，一台计算机上表示“A加B”的二进制序列可能与另一台计算机上的完全不同。</p>
-<p>数量</p>
-<p>一个字或多个字都可以用来表示数量。数可以被表示为多种格式，如有符号、无符号二进制整数、二进制浮点数、整数复数等等。</p>
-<p>字符</p>
-<p>字符是一个叫作“字母表”的集合中元素。拉丁或罗马字母表中的字母、数字字符（A-Z，a-z，0-9）和*、-、+、？等符号都被分配了二进制值，因此可以在计算机内存储和处理。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="ASCII码表—（计算机组成原理）"></p>
-<p>ASCII码表用7位表示一个字符，一共可以表示27&#x3D;128个不同的字符。其中96个字符是可打印字符。其余32个是不可打印字符，用于完成回车、退格、换行等特殊功能。</p>
-<p>扩展的ASCII码表：8位的ISO 8859-1拉丁编码。将7位的ISO&#x2F;ASCII字符集扩展为8位，可以得到两个128个字符的字符集，如果字符的最高位为0,则其余7位代表128个标准ISO&#x2F;ASCII字符中的一个，如果字符最高位为1，其余7位将表示128个新字符中的任意一个。</p>
-<p>图像、声音和视觉</p>
-<p>数字计算机处理大量表示声音、静态图像和视频的数据。</p>
-<p>组成照片的基本单位是像素，每个像素的大小可以是8位（单色）或24位（三基）。</p>
-<p>视频作为一串静态图像依次传输，每秒发送60次。</p>
-<p>声音通过对波形信号采样。</p>
-<p>无损压缩和有损压缩。</p>
-<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用来计数的数字（即1,2,3,4…）被称作自然数。我们用十进制计数，因为它有0~9共10个符号。并非所有数字都是自然数，还有负数、实数等</p>
-<p>现代数字系统中，使用位置记数法表示十进制数，每个数位的值或权取决于它在数字中的位置。</p>
-<p>按照位置记数法，一个n位的整数N的形式表示：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n位整数-（位置计数法）"></p>
-<p>用小数点将整数部分和小数部分分开，可以对位置记数法进行扩展，使其能表示实数。</p>
-<p>一个用基数b的位置记数法表示的数的值被定义为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="基数为b的位置计数法"></p>
-<p>采用位置记数法，一个数的数值等于它各位值的总和，而每一位的值则是该位的数值乘以它在数中的位置所对应的权。</p>
-<p>如：</p>
-<p>十进制数1982 &#x3D; 1 x 10<sub>3</sub> + 9 x 10<sub>2</sub> + 8 x 10<sub>1</sub> + 2 x 10<sub>0</sub></p>
-<p>二进制数10110.11 &#x3D; 1x2<sub>4</sub> + 0x2<sub>3</sub> + 1x2<sub>2</sub> + 1x2<sub>1</sub> + 0x2<sub>0</sub> + 1x2<sub>-1</sub> + 1x2<sub>-2</sub> </p>
-<p>十进制位置记数法不能精确表示所有小数，如1&#x2F;3是0.3333333…33，二进制也是如此，如0.1<sup>10</sup> 不能被精确转换为二进制形式。</p>
-<h2 id="二进制运算"><a href="#二进制运算" class="headerlink" title="二进制运算"></a>二进制运算</h2><p>二进制算术运算规则与十进制基本相同，区别是基数不同。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="二进制的四则运算规则"></p>
-<p>两个位相加可能产生进位或借位，和十进制运算规则相同。</p>
-<p>下面描述了011010012（乘数）与010010012（被乘数）相乘的过程，两个n位字相乘将产生一个2n位的积：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="两个二进制数相乘"></p>
-<p>但是计算机并没有按照这种方式进行计算。</p>
-<h3 id="有符号整数"><a href="#有符号整数" class="headerlink" title="有符号整数"></a>有符号整数</h3><p>负数可以用多种不同的方式表示，计算机设计者选择了3种方法：符号及值表示法、二进制补码表示法、移码表示法，每种方法都有各自的优缺点。</p>
-<h4 id="符号及值表示法"><a href="#符号及值表示法" class="headerlink" title="符号及值表示法"></a>符号及值表示法</h4><p>一个n位字可以表示从0~2<sub>n-1</sub>共2<sub>n</sub>个可能的值。如，一个8位的字可以表示0,1，…，254,255。表示负数的方法是用它的最高位表示符号，通常符号位为0表示正数，符号位为1表示负数。</p>
-<p>下面两个8位有符号二进制00001101和10001101的值为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="有符号二进制数字"></p>
-<p>n位有符号的表示范围为-(2<sub>n-1</sub>-1) ~ +(2<sub>n-1</sub>-1)。一个8位有符号数的表示-127（11111111）~ +127（01111111）之间的整数。</p>
-<p>有人反对该系统的一个原因是它有两个值都表示0：</p>
-<p>00000000 &#x3D; +0 和 10000000 &#x3D; -0</p>
-<p>符号及值表示法没有被用于整数算术运算中，因为它的加、减法运行需要分别用加法器和减法器实现。符号及值表示法用于浮点算术运算中。</p>
-<h4 id="二进制补码运算"><a href="#二进制补码运算" class="headerlink" title="二进制补码运算"></a>二进制补码运算</h4><p>微处理器用二进制补码系统表示有符号整数，它可以将减法运算转换为对减数的补码的加法运算。</p>
-<p>一个数与它的补码之和是一个常数。如，一个一位十进制数与它的补码之和总是9。2的补码是7，因为2+7&#x3D;9。在n位二进制算术中，数P的补码为Q且P+Q&#x3D;2<sub>n</sub>。</p>
-<p>在二进制算术中，求一个数的补码的方法是将其各位取反并加1。</p>
-<p>如：01100101的补码为10011010+1&#x3D;10011011。</p>
-<p>一个n位二进制数N的二进制补码定义为2<sub>n</sub>-N。如果N&#x3D;5&#x3D;00000101（8位二进制数），则N的补码为2<sub>8</sub>-00000101&#x3D;100000000-00000101&#x3D;11111011</p>
-<p>下面说明了8位二进制数的补码运算过程，将4个数+5、-5、+7、-7转换为补码：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
-<p>将7与5的补码相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
-<p>结果为9位二进制数100000010。如果忽略最左边一位（进位位），结果为00000010<sup>2</sup>&#x3D;+2，正是希望得到的结果。</p>
-<p>将-7加5：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
-<p>结果为11111110（进位位为0）。也是希望得到的结果-2，即2<sub>8</sub>-2&#x3D;100000000-00000010&#x3D;11111110</p>
-<p>n位二进制算术运算Z&#x3D;X-Y，用X加上Y的补码完成运算：Y的补码为2<sub>n</sub>-Y，则Z&#x3D;X+(2<sub>n</sub>-Y)&#x3D;2<sub>n</sub>+(X-Y)。我们得到了需要的结果，X-Y，以及位于最左边的一个并不需要的进位（即2<sub>n</sub>），而这个进位被丢弃了。</p>
-<p>一个数两次求补码得到该数本身。如-5&#x3D;28-00000101&#x3D;11111011。</p>
-<p>即-x&#x3D;2<sub>n</sub>-x且-(-x)&#x3D;2<sub>n</sub>-(2<sub>n</sub>-x)&#x3D;x。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="加法实例"></p>
-<h4 id="求补运算"><a href="#求补运算" class="headerlink" title="求补运算"></a>求补运算</h4><p>一个n位的二进制数N的补码，被定义为2<sub>n</sub>-N，则</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
-<p>如，8位（n&#x3D;8）时有：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n=8时"></p>
-<p>表达式11111111-N的值很容易计算，对N的第i位n<sup>i</sup>，若n<sup>i</sup>&#x3D;0，则1-0&#x3D;1，若n<sup>i</sup>&#x3D;1，则1-1&#x3D;0。显然：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>所以计算N的补码就是将N的每一位取反加1。</p>
-<p>之所以使用这种求补码的方式，是因为在硬件上它十分容易实现。</p>
-<h4 id="补码的特点"><a href="#补码的特点" class="headerlink" title="补码的特点"></a>补码的特点</h4><p>补码互补因为X+-X &#x3D; 0</p>
-<p>补码被表示为000….000，是唯一的</p>
-<p>补码的最高位为符号位，符号位为0，则该数为正，符号位为1，该数位负。</p>
-<p>n位二进制位的补码表示范围为-2<sub>n</sub>-1—2<sub>n</sub>+1，对于8位，是-127-128。</p>
-<p>补码的加减法使用同样的硬件完成，因为补码的减法由被减数的补码实现。</p>
-<h4 id="运算溢出"><a href="#运算溢出" class="headerlink" title="运算溢出"></a>运算溢出</h4><p>溢出的问题，主要是补码表示范围的限制。如果两个数运算后结果的值不在范围内，那么就会溢出，并且如果操作数的两个符号位相同，但是结果的符号位与他们不同，同样也会发生溢出。</p>
-<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p>计算机必须实现乘除法，但是相对来说，这比加减法要复杂的多。</p>
-<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>首先是二进制的算术移位运算，进行移位运算时，一个数的所有位都会向左或者向右移动n位，有些计算机可以一次移动多个位。</p>
-<p><strong>二进制补码正数左移移位等于乘2。（正数的补码原码反码一致）</strong></p>
-<p>算术左移：最低位补0，最高位被复制到进位标志中，如11000101左移一位得到10001010</p>
-<p>算术右移：最高位补符号位，所有位右移一位。最低位复制到进位标志中。如00100101右移一位得到00010010。11100101右移一位得到11110010。</p>
-<p><strong>二进制右移一位相当于除以2。</strong></p>
-<h4 id="无符号二进制乘法"><a href="#无符号二进制乘法" class="headerlink" title="无符号二进制乘法"></a>无符号二进制乘法</h4><p>计算机从乘数的最低位开始，每次检查一位，判断它是否为0，如果乘数的当前位为1则写下被乘数，若该位为0则写下n个0。接下来检查乘数的下一位，这时应从上一位数的左边一位开始写下被乘数或0。被写下的这一组数叫作部分积。得到所有的部分积后，加到一起，得到乘法结果：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
-<p>两个二进制数相乘得到一个2n位的积。</p>
-<p>但是计算机并没有实现上面的算法，这种算法要求计算机存储n个部分积，然后将它们同时相加。更好的做法是每得到一个部分积就做一次加法。</p>
-<p>下面给出了一个计算两个n位无符号二进制数相乘的算法：</p>
-<p>步骤a：将计数器的值置为n</p>
-<p>步骤b：将2n位的部分积寄存器清零</p>
-<p>步骤c：检查乘数的最右位（即最低位），将被乘数与部分积的最低位n位相加</p>
-<p>步骤d：将部分积右移一位</p>
-<p>步骤e：将乘数右移一位（乘数的最右位被丢弃）</p>
-<p>步骤f：将计数器的值减1，重复步骤c直到n个周期后计数器的值变为0。部分积寄存器的内容就是乘积结果。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
-<h4 id="快速乘法"><a href="#快速乘法" class="headerlink" title="快速乘法"></a>快速乘法</h4><p>通过移位和加法实现的乘法速度很慢，实际的计算机采用了多种方法加快乘法运算的速度。</p>
-<p>有些程序员使用移位和加法等速度相对较快的操作避免使用乘法。</p>
-<p>考虑P乘以10和P乘以9的两个例子：</p>
-<p> 10P&#x3D; 2x(2x2xP+P) ，即将P左移2次，加上P，再将和左移一次</p>
-<p> 9P&#x3D; 2x2x2xP + P，即将P左移3次，加上P得到结果</p>
-<p>乘法运算也可以借助查找表（look-up table）实现，这种方法将两个数相乘所有可能的积都保存在一个只读存储器内。这样只需简单的用X和Y的值找到表中的对应项就可以得到X和Y的乘积。如，两个8位二进制乘法需要一个16位地址、2<sub>16</sub>项的查找表，每项记录一个16位的积。</p>
-<p>缺点：太占空间了。</p>
-<p>可以用一个简单方法来减少查找表的大小：假设计算两个16位数A与B的乘积，可以将16位数A拆分为两个8位数A<sup>u</sup>和A<sup>l</sup>，A<sup>u</sup>是A的高8位，A<sup>l</sup>是A的低8位。如</p>
-<p>果A&#x3D;1111000010101010，则A<sup>u</sup>&#x3D;11110000，A<sup>l</sup>&#x3D;10101010。A可被表示为A<sup>u</sup> x 256+A<sup>l</sup>，B可被表示为B<sup>u</sup> x 256+B<sup>l</sup>，则</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221027200737262"></p>
-<p>这样可以用8位乘法和4个加法来完成16位乘法。</p>
-<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p>除法是通过被除数不断地减去除数直到结果为0或小于除数来实现的。减去除数的次数称作商，最后一次减法的差称作余数。</p>
-<p>  被除数&#x2F;除数 &#x3D; 商 + 余数&#x2F;除数</p>
-<p>下面描述了575除以25的过程：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>将被除数的下一个数字5移到7的后面，并比较除数和75，由于75正好是25的整数倍，因此在商的下一位上写下3：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>因为已经处理到被除数的最后一位且75正好是测试的整数倍。除法结束，商为23，余数为0。</p>
-<p>考虑用无符号二进制除法完成同样的例子： </p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>被除数的前5位比除数小，因此商的最高位为0并将除数与被除数的前6位比较</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>被除数的前6位中有一个除数，减法后得到新的部分被除数为001010（1111），将被除数的下一位移下来</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>新的部分被除数小于除数，因此商的下一位为0，后续除法过程如下：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>除法结果商为10111，余数为0。 </p>
-<h4 id="恢复余数除法"><a href="#恢复余数除法" class="headerlink" title="恢复余数除法"></a>恢复余数除法</h4><p>刚刚讨论的除法方法，用计算机实现，需要修改的就是除数与部分被除数的比较方法，计算机减去并检测结果的符号位。如果减法的结果为正，则商1，如果结果为负，则商0并将部分被除数与除数相加，将其恢复为原先的值。</p>
-<p>恢复余数除法算法：</p>
-<p>1）将除数的最高位与被除数的最高位对齐</p>
-<p>2）从部分被除数中减去除数，得到新的部分被除数</p>
-<p>3）如果新的部分被除数为负数，则商0并用新的部分被除数加上除数，恢复原先的部分被除数</p>
-<p>4）如果新的部分被除数为正，则商1</p>
-<p>5）判断除法是否结束，如果除数的最低位与部分被除数的最低位对齐，则除法结束，最后的部分被除数就是余数。否则，执行第6步</p>
-<p>6）将除数右移一位，从第2步继续执行 </p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="英文版"></p>
-<h4 id="不恢复余数除法"><a href="#不恢复余数除法" class="headerlink" title="不恢复余数除法"></a>不恢复余数除法</h4><p>不恢复余数除法与恢复余数除法基本相同，唯一区别在于取消了恢复余数的操作。</p>
-<p>在恢复余数除法中，在部分被除数与除数相加恢复部分被除数之后的一个周期，部分被除数将减去除数的二分之一。每个将除数右移的操作等价于将除数除以2。当前周期恢复部分被除数以及下个周期减去除数一半的操作等价于部分被除数加上除数的一半。即D – D&#x2F;2 &#x3D; +D&#x2F;2，D为除数。</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>部分被除数减去除数之后，将检测新的部分被除数的符号位。若为负，则商左移1位，商的最低位补0，并将部分被除数加上除数的二分之一。若为正，则商左移1位，商的最低位补1，并将部分被除数减去除数的二分之一。</p>
-<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数即实数，实数是所有有理数和无理数的集合。</p>
-<p>之所以叫作浮点数，是因为小数点在数中的位置并不是固定的。一个浮点数值分为两部分存储 ：数值以及小数点在数值中的位置。</p>
-<p>计算机中的浮点运算的计算结果一般是不确定的，一块芯片上的浮点计算结果也许与另一块芯片上的不同。</p>
-<p>科学计数法：来表示很大或很小的数。</p>
-<p>十进制浮点数可以被表示为：尾数x10<sub>指数</sub>，如1.2345x10<sub>20</sub></p>
-<p>二进制浮点数可以被表示为：尾数x2<sub>指数</sub>，如1.0111x2<sub>5</sub></p>
-<p>IEEE 754浮点数标准提供3种浮点数表示：32位单精度浮点数、64位双精度浮点数、128位四精度浮点数</p>
-<p>IEEE 754浮点数的尾数总是规格化的，其范围为1.000…0x2<sub>e</sub>到1.111…1x2<sub>e</sub>，e为指数。</p>
-<p>规格化浮点数的最高位总是1，规格化使尾数的所有位都是有效的，因而尾数精度最高。</p>
-<p>如：</p>
-<p> 0.10…x2<sub>e</sub>规格化为1.10…x2<sub>e-1</sub></p>
-<p> 10.1…2<sub>e</sub>规格化为1.01…x2<sub>e+1</sub></p>
-<p>尾数规格化充分利用了可用的最大精度。如，一个8位非规格化的尾数0.0000101只能有4位有效位，而规格化后的8位尾数1.0100011则有8位有效位。</p>
-<p>IEEE 754浮点数的尾数被表示为符号及值的形式，即用一个符号位表示它是正数还是负数。它的指数则用偏置方式表示，即给真正的指数加上一个常数。</p>
-<p>假定所用的指数为8位，偏置值为127。如果一个数的指数为0，则被保存为0 + 127&#x3D;127。如果指数为-2，则被保存为-2 + 127 &#x3D; 125。</p>
-<p>实数1010.1111规格化的结果为+1.010111x2<sub>3</sub>，指数为+3，将被保存为3+127&#x3D;130，即130<sup>10</sup>用二进制表示为10000010。</p>
-<p>这种用偏置表示指数的方法优点在于，最小的负指数被表示为0，如果不采用这种方法，0的浮点表示为0.0…0x2<sub>最小负指数</sub>。采用偏置指数，0就可以用尾数0和指数0表示：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>一个32位IEEE 754单精度浮点数可以被表示为下面的二进制串：</p>
-<p>S EEEEEEEE 1.MMMMMMMMMMMMMMMMMMMMMMM</p>
-<p>S为符号位，指明这个数是正数还是负数</p>
-<p>E为8位偏置指数，指出了小数点的位置</p>
-<p>M为23位尾数</p>
-<p>下图描述了32位浮点数的结构：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>S位为符号位，决定了数的符号，若S&#x3D;0，则为正数，若S&#x3D;1，则为负数。</p>
-<p>指数E将浮点数的尾数扩大或缩小2<sub>E</sub>倍，并且偏置值为127。</p>
-<p>如浮点数+1.11001…0x2<sub>12</sub>的指数为12+127&#x3D;139<sub>10</sub>&#x3D;10001011<sub>2</sub> 。</p>
-<p> IEEE浮点数的尾数总是规格化的，其值范围在1.0000..00~1.1111..11，除非这个浮点数是0，此时尾数为0.000..00。</p>
-<p>由于尾数总是规格化的，且最高位总是为1，因此将尾数存入存储器时没有必要保存最高位的1。所以，一个非0的IEEE 754浮点数可被定义为：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>S：符号位</p>
-<p>E：偏置量为B的指数</p>
-<p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
-<p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
-<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>浮点数不能直接相加。</p>
-<p>下面以一个简单的8位尾数和一个未对齐的指数为例说明浮点运算，A&#x3D;1.0101001x2<sub>4</sub>，</p>
-<p>B&#x3D;1.1001100x2<sub>3</sub>。若要计算两个数的乘积，应将尾数相乘，指数相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相乘"></p>
-<p>由于浮点操作数已被表示为规格化形式，计算机在进行浮点加法时面临以下问题：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
-<p>为了对齐指数，计算机必须执行下面步骤：</p>
-<p>第1步，找出指数较小的数</p>
-<p>第2步，使两个数的指数相同</p>
-<p>第3步，尾数相加（或相减）</p>
-<p>第4步，如果有必要，将结果规格化</p>
-<p>因为B的指数比A小，将B转为0.110011x2<sub>4</sub>，将A与非规格化的B相加：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
-<p>对结果规格化，得到1.00001111x2<sub>5</sub></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点加法运算流程"></p>
-<p>注意：</p>
-<p>1）因为指数有时与尾数位于同一个字中，在加法过程开始之前必须将它们分离开（减压缩）</p>
-<p>2）如果两个指数的差大于p+1，p为尾数的位数，较小的数由于太小而无法影响较大的数，结果实际就等于较大的数。如，1.1010x2<sub>60</sub>+1.01x2<sub>-12</sub>的结果为1.1010x2<sub>60</sub>，因为指数之差为72</p>
-<p>3）结果规格化时检查指数范围，以分别检测指数下溢或上溢。指数下溢会导致结果为0，而指数上溢会造成错误。</p>
-<p>舍入和截断误差</p>
-<p>浮点运算可能引起尾数位数的相加，需要保持尾数位数不变的方法。最简单的技术叫作截断。</p>
-<p>如，将0.1101101截断为4位尾数的结果为0.1101。截断会产生诱导误差（即误差是由施加在数上的操作计算所引起的），诱导误差是偏置的，因为截断后的数总比截断前小。</p>
-<p>舍入是一种更好的减少数的位数的技术。如果丢弃的位的值大于剩余数最低位的一半，将剩余数的最低位加1。</p>
-<p>考虑两个数在小数点后第4位上舍入的例子：</p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
-<p>1）最简单的舍入机制是截断或向0舍入。</p>
-<p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
-<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点数作为结果。</p>
-<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的点（即向偶数舍入）。</p>
-<p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
-<p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
-<p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
-<p>果舍入为最近的浮点数。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>计算机基础</title>
     <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80.html</url>
     <content><![CDATA[<h1 id="计算机基础（备考版）"><a href="#计算机基础（备考版）" class="headerlink" title="计算机基础（备考版）"></a>计算机基础（备考版）</h1><h2 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h2><h3 id="1、1-ENIAC"><a href="#1、1-ENIAC" class="headerlink" title="1、1  ENIAC"></a>1、1  ENIAC</h3><p>1946年2月，世界上第一台电子数字积分计算机在美国宾夕法尼亚大学诞生，取名为ENIAC(中文名称为“埃尼阿克”)。</p>
@@ -6343,6 +6128,221 @@ return max_value</code></pre>
       <categories>
         <category>技术</category>
       </categories>
+  </entry>
+  <entry>
+    <title>计算机算术</title>
+    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</url>
+    <content><![CDATA[<h1 id="计算机算术"><a href="#计算机算术" class="headerlink" title="计算机算术"></a>计算机算术</h1><h2 id="数据是什么"><a href="#数据是什么" class="headerlink" title="数据是什么"></a>数据是什么</h2><p>各种各样的信息，数字、文本、程序、音乐、符号等。信息可以是能够被计算机存储和处理的任何事物。</p>
+<h3 id="位和字节"><a href="#位和字节" class="headerlink" title="位和字节"></a>位和字节</h3><p>计算机存储和处理信息的最小单位是位（bit），一个比特表示0或1。</p>
+<p>数字计算机将信息以一组或一串比特成为字保存在存储器中。</p>
+<p>计算机通过高低电压来存储0或1。</p>
+<p>计算机对一组二进制位进行操作，8个二进制位为一个字节（byte），一些计算机制造商用术语“字”表示16位的值，长字表示32位的值，还有一些制造商用字表示32位的值，用半字表示16位的值。</p>
+<h3 id="位模式"><a href="#位模式" class="headerlink" title="位模式"></a>位模式</h3><p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027123753837.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="位树——（计算机组成原理）"></p>
+<p>每当数字增加1位，路径的总数将翻一倍。一个n位的字将得到2n条不同路径或位模式。如，一个8位的字节将得到2<sub>8</sub>&#x3D;256个可能的值。</p>
+<p>为了用二进制数表示任何一个拥有最多n个值的量，应找到一个使不等式n&lt;&#x3D;2<sub>m</sub>成立的最小位数m。</p>
+<h3 id="信息表示"><a href="#信息表示" class="headerlink" title="信息表示"></a>信息表示</h3><p>一个n位的二进制什么也表示不了。因为一个由二进制1和0组成的串没有任何内在含义。需要程序员赋予它何种含义。</p>
+<p>一个二进制串可以表示的对象有：</p>
+<p>指令</p>
+<p>字长为32位或更长的计算机用一个字来表示CPU能够完成的操作（8位或16位计算机用多个字表示一条指令）。指令的二进制编码与其功能之间的关系由计算机设计者决定。如，一台计算机上表示“A加B”的二进制序列可能与另一台计算机上的完全不同。</p>
+<p>数量</p>
+<p>一个字或多个字都可以用来表示数量。数可以被表示为多种格式，如有符号、无符号二进制整数、二进制浮点数、整数复数等等。</p>
+<p>字符</p>
+<p>字符是一个叫作“字母表”的集合中元素。拉丁或罗马字母表中的字母、数字字符（A-Z，a-z，0-9）和*、-、+、？等符号都被分配了二进制值，因此可以在计算机内存储和处理。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124028066.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="ASCII码表—（计算机组成原理）"></p>
+<p>ASCII码表用7位表示一个字符，一共可以表示27&#x3D;128个不同的字符。其中96个字符是可打印字符。其余32个是不可打印字符，用于完成回车、退格、换行等特殊功能。</p>
+<p>扩展的ASCII码表：8位的ISO 8859-1拉丁编码。将7位的ISO&#x2F;ASCII字符集扩展为8位，可以得到两个128个字符的字符集，如果字符的最高位为0,则其余7位代表128个标准ISO&#x2F;ASCII字符中的一个，如果字符最高位为1，其余7位将表示128个新字符中的任意一个。</p>
+<p>图像、声音和视觉</p>
+<p>数字计算机处理大量表示声音、静态图像和视频的数据。</p>
+<p>组成照片的基本单位是像素，每个像素的大小可以是8位（单色）或24位（三基）。</p>
+<p>视频作为一串静态图像依次传输，每秒发送60次。</p>
+<p>声音通过对波形信号采样。</p>
+<p>无损压缩和有损压缩。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>用来计数的数字（即1,2,3,4…）被称作自然数。我们用十进制计数，因为它有0~9共10个符号。并非所有数字都是自然数，还有负数、实数等</p>
+<p>现代数字系统中，使用位置记数法表示十进制数，每个数位的值或权取决于它在数字中的位置。</p>
+<p>按照位置记数法，一个n位的整数N的形式表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124225524.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n位整数-（位置计数法）"></p>
+<p>用小数点将整数部分和小数部分分开，可以对位置记数法进行扩展，使其能表示实数。</p>
+<p>一个用基数b的位置记数法表示的数的值被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027124340942.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="基数为b的位置计数法"></p>
+<p>采用位置记数法，一个数的数值等于它各位值的总和，而每一位的值则是该位的数值乘以它在数中的位置所对应的权。</p>
+<p>如：</p>
+<p>十进制数1982 &#x3D; 1 x 10<sub>3</sub> + 9 x 10<sub>2</sub> + 8 x 10<sub>1</sub> + 2 x 10<sub>0</sub></p>
+<p>二进制数10110.11 &#x3D; 1x2<sub>4</sub> + 0x2<sub>3</sub> + 1x2<sub>2</sub> + 1x2<sub>1</sub> + 0x2<sub>0</sub> + 1x2<sub>-1</sub> + 1x2<sub>-2</sub> </p>
+<p>十进制位置记数法不能精确表示所有小数，如1&#x2F;3是0.3333333…33，二进制也是如此，如0.1<sup>10</sup> 不能被精确转换为二进制形式。</p>
+<h2 id="二进制运算"><a href="#二进制运算" class="headerlink" title="二进制运算"></a>二进制运算</h2><p>二进制算术运算规则与十进制基本相同，区别是基数不同。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027135114120.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="二进制的四则运算规则"></p>
+<p>两个位相加可能产生进位或借位，和十进制运算规则相同。</p>
+<p>下面描述了011010012（乘数）与010010012（被乘数）相乘的过程，两个n位字相乘将产生一个2n位的积：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141254062.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="两个二进制数相乘"></p>
+<p>但是计算机并没有按照这种方式进行计算。</p>
+<h3 id="有符号整数"><a href="#有符号整数" class="headerlink" title="有符号整数"></a>有符号整数</h3><p>负数可以用多种不同的方式表示，计算机设计者选择了3种方法：符号及值表示法、二进制补码表示法、移码表示法，每种方法都有各自的优缺点。</p>
+<h4 id="符号及值表示法"><a href="#符号及值表示法" class="headerlink" title="符号及值表示法"></a>符号及值表示法</h4><p>一个n位字可以表示从0~2<sub>n-1</sub>共2<sub>n</sub>个可能的值。如，一个8位的字可以表示0,1，…，254,255。表示负数的方法是用它的最高位表示符号，通常符号位为0表示正数，符号位为1表示负数。</p>
+<p>下面两个8位有符号二进制00001101和10001101的值为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027141520250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="有符号二进制数字"></p>
+<p>n位有符号的表示范围为-(2<sub>n-1</sub>-1) ~ +(2<sub>n-1</sub>-1)。一个8位有符号数的表示-127（11111111）~ +127（01111111）之间的整数。</p>
+<p>有人反对该系统的一个原因是它有两个值都表示0：</p>
+<p>00000000 &#x3D; +0 和 10000000 &#x3D; -0</p>
+<p>符号及值表示法没有被用于整数算术运算中，因为它的加、减法运行需要分别用加法器和减法器实现。符号及值表示法用于浮点算术运算中。</p>
+<h4 id="二进制补码运算"><a href="#二进制补码运算" class="headerlink" title="二进制补码运算"></a>二进制补码运算</h4><p>微处理器用二进制补码系统表示有符号整数，它可以将减法运算转换为对减数的补码的加法运算。</p>
+<p>一个数与它的补码之和是一个常数。如，一个一位十进制数与它的补码之和总是9。2的补码是7，因为2+7&#x3D;9。在n位二进制算术中，数P的补码为Q且P+Q&#x3D;2<sub>n</sub>。</p>
+<p>在二进制算术中，求一个数的补码的方法是将其各位取反并加1。</p>
+<p>如：01100101的补码为10011010+1&#x3D;10011011。</p>
+<p>一个n位二进制数N的二进制补码定义为2<sub>n</sub>-N。如果N&#x3D;5&#x3D;00000101（8位二进制数），则N的补码为2<sub>8</sub>-00000101&#x3D;100000000-00000101&#x3D;11111011</p>
+<p>下面说明了8位二进制数的补码运算过程，将4个数+5、-5、+7、-7转换为补码：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143701913.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
+<p>将7与5的补码相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027143728851.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
+<p>结果为9位二进制数100000010。如果忽略最左边一位（进位位），结果为00000010<sup>2</sup>&#x3D;+2，正是希望得到的结果。</p>
+<p>将-7加5：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027144848474.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码相加"></p>
+<p>结果为11111110（进位位为0）。也是希望得到的结果-2，即2<sub>8</sub>-2&#x3D;100000000-00000010&#x3D;11111110</p>
+<p>n位二进制算术运算Z&#x3D;X-Y，用X加上Y的补码完成运算：Y的补码为2<sub>n</sub>-Y，则Z&#x3D;X+(2<sub>n</sub>-Y)&#x3D;2<sub>n</sub>+(X-Y)。我们得到了需要的结果，X-Y，以及位于最左边的一个并不需要的进位（即2<sub>n</sub>），而这个进位被丢弃了。</p>
+<p>一个数两次求补码得到该数本身。如-5&#x3D;28-00000101&#x3D;11111011。</p>
+<p>即-x&#x3D;2<sub>n</sub>-x且-(-x)&#x3D;2<sub>n</sub>-(2<sub>n</sub>-x)&#x3D;x。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027145204303.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="加法实例"></p>
+<h4 id="求补运算"><a href="#求补运算" class="headerlink" title="求补运算"></a>求补运算</h4><p>一个n位的二进制数N的补码，被定义为2<sub>n</sub>-N，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194431138.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="补码"></p>
+<p>如，8位（n&#x3D;8）时有：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194510320.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="n=8时"></p>
+<p>表达式11111111-N的值很容易计算，对N的第i位n<sup>i</sup>，若n<sup>i</sup>&#x3D;0，则1-0&#x3D;1，若n<sup>i</sup>&#x3D;1，则1-1&#x3D;0。显然：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027194555178.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>所以计算N的补码就是将N的每一位取反加1。</p>
+<p>之所以使用这种求补码的方式，是因为在硬件上它十分容易实现。</p>
+<h4 id="补码的特点"><a href="#补码的特点" class="headerlink" title="补码的特点"></a>补码的特点</h4><p>补码互补因为X+-X &#x3D; 0</p>
+<p>补码被表示为000….000，是唯一的</p>
+<p>补码的最高位为符号位，符号位为0，则该数为正，符号位为1，该数位负。</p>
+<p>n位二进制位的补码表示范围为-2<sub>n</sub>-1—2<sub>n</sub>+1，对于8位，是-127-128。</p>
+<p>补码的加减法使用同样的硬件完成，因为补码的减法由被减数的补码实现。</p>
+<h4 id="运算溢出"><a href="#运算溢出" class="headerlink" title="运算溢出"></a>运算溢出</h4><p>溢出的问题，主要是补码表示范围的限制。如果两个数运算后结果的值不在范围内，那么就会溢出，并且如果操作数的两个符号位相同，但是结果的符号位与他们不同，同样也会发生溢出。</p>
+<h3 id="乘除法"><a href="#乘除法" class="headerlink" title="乘除法"></a>乘除法</h3><p>计算机必须实现乘除法，但是相对来说，这比加减法要复杂的多。</p>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>首先是二进制的算术移位运算，进行移位运算时，一个数的所有位都会向左或者向右移动n位，有些计算机可以一次移动多个位。</p>
+<p><strong>二进制补码正数左移移位等于乘2。（正数的补码原码反码一致）</strong></p>
+<p>算术左移：最低位补0，最高位被复制到进位标志中，如11000101左移一位得到10001010</p>
+<p>算术右移：最高位补符号位，所有位右移一位。最低位复制到进位标志中。如00100101右移一位得到00010010。11100101右移一位得到11110010。</p>
+<p><strong>二进制右移一位相当于除以2。</strong></p>
+<h4 id="无符号二进制乘法"><a href="#无符号二进制乘法" class="headerlink" title="无符号二进制乘法"></a>无符号二进制乘法</h4><p>计算机从乘数的最低位开始，每次检查一位，判断它是否为0，如果乘数的当前位为1则写下被乘数，若该位为0则写下n个0。接下来检查乘数的下一位，这时应从上一位数的左边一位开始写下被乘数或0。被写下的这一组数叫作部分积。得到所有的部分积后，加到一起，得到乘法结果：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200042109.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
+<p>两个二进制数相乘得到一个2n位的积。</p>
+<p>但是计算机并没有实现上面的算法，这种算法要求计算机存储n个部分积，然后将它们同时相加。更好的做法是每得到一个部分积就做一次加法。</p>
+<p>下面给出了一个计算两个n位无符号二进制数相乘的算法：</p>
+<p>步骤a：将计数器的值置为n</p>
+<p>步骤b：将2n位的部分积寄存器清零</p>
+<p>步骤c：检查乘数的最右位（即最低位），将被乘数与部分积的最低位n位相加</p>
+<p>步骤d：将部分积右移一位</p>
+<p>步骤e：将乘数右移一位（乘数的最右位被丢弃）</p>
+<p>步骤f：将计数器的值减1，重复步骤c直到n个周期后计数器的值变为0。部分积寄存器的内容就是乘积结果。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200552235.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="无符号二进制乘法"></p>
+<h4 id="快速乘法"><a href="#快速乘法" class="headerlink" title="快速乘法"></a>快速乘法</h4><p>通过移位和加法实现的乘法速度很慢，实际的计算机采用了多种方法加快乘法运算的速度。</p>
+<p>有些程序员使用移位和加法等速度相对较快的操作避免使用乘法。</p>
+<p>考虑P乘以10和P乘以9的两个例子：</p>
+<p> 10P&#x3D; 2x(2x2xP+P) ，即将P左移2次，加上P，再将和左移一次</p>
+<p> 9P&#x3D; 2x2x2xP + P，即将P左移3次，加上P得到结果</p>
+<p>乘法运算也可以借助查找表（look-up table）实现，这种方法将两个数相乘所有可能的积都保存在一个只读存储器内。这样只需简单的用X和Y的值找到表中的对应项就可以得到X和Y的乘积。如，两个8位二进制乘法需要一个16位地址、2<sub>16</sub>项的查找表，每项记录一个16位的积。</p>
+<p>缺点：太占空间了。</p>
+<p>可以用一个简单方法来减少查找表的大小：假设计算两个16位数A与B的乘积，可以将16位数A拆分为两个8位数A<sup>u</sup>和A<sup>l</sup>，A<sup>u</sup>是A的高8位，A<sup>l</sup>是A的低8位。如</p>
+<p>果A&#x3D;1111000010101010，则A<sup>u</sup>&#x3D;11110000，A<sup>l</sup>&#x3D;10101010。A可被表示为A<sup>u</sup> x 256+A<sup>l</sup>，B可被表示为B<sup>u</sup> x 256+B<sup>l</sup>，则</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027200737262.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221027200737262"></p>
+<p>这样可以用8位乘法和4个加法来完成16位乘法。</p>
+<h4 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h4><p>除法是通过被除数不断地减去除数直到结果为0或小于除数来实现的。减去除数的次数称作商，最后一次减法的差称作余数。</p>
+<p>  被除数&#x2F;除数 &#x3D; 商 + 余数&#x2F;除数</p>
+<p>下面描述了575除以25的过程：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201041218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>将被除数的下一个数字5移到7的后面，并比较除数和75，由于75正好是25的整数倍，因此在商的下一位上写下3：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201105004.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>因为已经处理到被除数的最后一位且75正好是测试的整数倍。除法结束，商为23，余数为0。</p>
+<p>考虑用无符号二进制除法完成同样的例子： </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201134495.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>被除数的前5位比除数小，因此商的最高位为0并将除数与被除数的前6位比较</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201150167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>被除数的前6位中有一个除数，减法后得到新的部分被除数为001010（1111），将被除数的下一位移下来</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201204703.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>新的部分被除数小于除数，因此商的下一位为0，后续除法过程如下：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201220956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>除法结果商为10111，余数为0。 </p>
+<h4 id="恢复余数除法"><a href="#恢复余数除法" class="headerlink" title="恢复余数除法"></a>恢复余数除法</h4><p>刚刚讨论的除法方法，用计算机实现，需要修改的就是除数与部分被除数的比较方法，计算机减去并检测结果的符号位。如果减法的结果为正，则商1，如果结果为负，则商0并将部分被除数与除数相加，将其恢复为原先的值。</p>
+<p>恢复余数除法算法：</p>
+<p>1）将除数的最高位与被除数的最高位对齐</p>
+<p>2）从部分被除数中减去除数，得到新的部分被除数</p>
+<p>3）如果新的部分被除数为负数，则商0并用新的部分被除数加上除数，恢复原先的部分被除数</p>
+<p>4）如果新的部分被除数为正，则商1</p>
+<p>5）判断除法是否结束，如果除数的最低位与部分被除数的最低位对齐，则除法结束，最后的部分被除数就是余数。否则，执行第6步</p>
+<p>6）将除数右移一位，从第2步继续执行 </p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201323182.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201333279.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="英文版"></p>
+<h4 id="不恢复余数除法"><a href="#不恢复余数除法" class="headerlink" title="不恢复余数除法"></a>不恢复余数除法</h4><p>不恢复余数除法与恢复余数除法基本相同，唯一区别在于取消了恢复余数的操作。</p>
+<p>在恢复余数除法中，在部分被除数与除数相加恢复部分被除数之后的一个周期，部分被除数将减去除数的二分之一。每个将除数右移的操作等价于将除数除以2。当前周期恢复部分被除数以及下个周期减去除数一半的操作等价于部分被除数加上除数的一半。即D – D&#x2F;2 &#x3D; +D&#x2F;2，D为除数。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027201433706.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>部分被除数减去除数之后，将检测新的部分被除数的符号位。若为负，则商左移1位，商的最低位补0，并将部分被除数加上除数的二分之一。若为正，则商左移1位，商的最低位补1，并将部分被除数减去除数的二分之一。</p>
+<h3 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h3><p>浮点数即实数，实数是所有有理数和无理数的集合。</p>
+<p>之所以叫作浮点数，是因为小数点在数中的位置并不是固定的。一个浮点数值分为两部分存储 ：数值以及小数点在数值中的位置。</p>
+<p>计算机中的浮点运算的计算结果一般是不确定的，一块芯片上的浮点计算结果也许与另一块芯片上的不同。</p>
+<p>科学计数法：来表示很大或很小的数。</p>
+<p>十进制浮点数可以被表示为：尾数x10<sub>指数</sub>，如1.2345x10<sub>20</sub></p>
+<p>二进制浮点数可以被表示为：尾数x2<sub>指数</sub>，如1.0111x2<sub>5</sub></p>
+<p>IEEE 754浮点数标准提供3种浮点数表示：32位单精度浮点数、64位双精度浮点数、128位四精度浮点数</p>
+<p>IEEE 754浮点数的尾数总是规格化的，其范围为1.000…0x2<sub>e</sub>到1.111…1x2<sub>e</sub>，e为指数。</p>
+<p>规格化浮点数的最高位总是1，规格化使尾数的所有位都是有效的，因而尾数精度最高。</p>
+<p>如：</p>
+<p> 0.10…x2<sub>e</sub>规格化为1.10…x2<sub>e-1</sub></p>
+<p> 10.1…2<sub>e</sub>规格化为1.01…x2<sub>e+1</sub></p>
+<p>尾数规格化充分利用了可用的最大精度。如，一个8位非规格化的尾数0.0000101只能有4位有效位，而规格化后的8位尾数1.0100011则有8位有效位。</p>
+<p>IEEE 754浮点数的尾数被表示为符号及值的形式，即用一个符号位表示它是正数还是负数。它的指数则用偏置方式表示，即给真正的指数加上一个常数。</p>
+<p>假定所用的指数为8位，偏置值为127。如果一个数的指数为0，则被保存为0 + 127&#x3D;127。如果指数为-2，则被保存为-2 + 127 &#x3D; 125。</p>
+<p>实数1010.1111规格化的结果为+1.010111x2<sub>3</sub>，指数为+3，将被保存为3+127&#x3D;130，即130<sup>10</sup>用二进制表示为10000010。</p>
+<p>这种用偏置表示指数的方法优点在于，最小的负指数被表示为0，如果不采用这种方法，0的浮点表示为0.0…0x2<sub>最小负指数</sub>。采用偏置指数，0就可以用尾数0和指数0表示：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202017466.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>一个32位IEEE 754单精度浮点数可以被表示为下面的二进制串：</p>
+<p>S EEEEEEEE 1.MMMMMMMMMMMMMMMMMMMMMMM</p>
+<p>S为符号位，指明这个数是正数还是负数</p>
+<p>E为8位偏置指数，指出了小数点的位置</p>
+<p>M为23位尾数</p>
+<p>下图描述了32位浮点数的结构：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202054808.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>S位为符号位，决定了数的符号，若S&#x3D;0，则为正数，若S&#x3D;1，则为负数。</p>
+<p>指数E将浮点数的尾数扩大或缩小2<sub>E</sub>倍，并且偏置值为127。</p>
+<p>如浮点数+1.11001…0x2<sub>12</sub>的指数为12+127&#x3D;139<sub>10</sub>&#x3D;10001011<sub>2</sub> 。</p>
+<p> IEEE浮点数的尾数总是规格化的，其值范围在1.0000..00~1.1111..11，除非这个浮点数是0，此时尾数为0.000..00。</p>
+<p>由于尾数总是规格化的，且最高位总是为1，因此将尾数存入存储器时没有必要保存最高位的1。所以，一个非0的IEEE 754浮点数可被定义为：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221027202333330.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>S：符号位</p>
+<p>E：偏置量为B的指数</p>
+<p>F：尾数的小数部分（实际的尾数为1.F，有个隐含的1）</p>
+<p>浮点数0被表示为S&#x3D;0，E&#x3D;0，M&#x3D;0（即浮点数0用全0表示）</p>
+<h3 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h3><p>浮点数不能直接相加。</p>
+<p>下面以一个简单的8位尾数和一个未对齐的指数为例说明浮点运算，A&#x3D;1.0101001x2<sub>4</sub>，</p>
+<p>B&#x3D;1.1001100x2<sub>3</sub>。若要计算两个数的乘积，应将尾数相乘，指数相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153155711.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相乘"></p>
+<p>由于浮点操作数已被表示为规格化形式，计算机在进行浮点加法时面临以下问题：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153842746.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>为了对齐指数，计算机必须执行下面步骤：</p>
+<p>第1步，找出指数较小的数</p>
+<p>第2步，使两个数的指数相同</p>
+<p>第3步，尾数相加（或相减）</p>
+<p>第4步，如果有必要，将结果规格化</p>
+<p>因为B的指数比A小，将B转为0.110011x2<sub>4</sub>，将A与非规格化的B相加：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221104153956601.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点数相加"></p>
+<p>对结果规格化，得到1.00001111x2<sub>5</sub></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132231397.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="浮点加法运算流程"></p>
+<p>注意：</p>
+<p>1）因为指数有时与尾数位于同一个字中，在加法过程开始之前必须将它们分离开（减压缩）</p>
+<p>2）如果两个指数的差大于p+1，p为尾数的位数，较小的数由于太小而无法影响较大的数，结果实际就等于较大的数。如，1.1010x2<sub>60</sub>+1.01x2<sub>-12</sub>的结果为1.1010x2<sub>60</sub>，因为指数之差为72</p>
+<p>3）结果规格化时检查指数范围，以分别检测指数下溢或上溢。指数下溢会导致结果为0，而指数上溢会造成错误。</p>
+<p>舍入和截断误差</p>
+<p>浮点运算可能引起尾数位数的相加，需要保持尾数位数不变的方法。最简单的技术叫作截断。</p>
+<p>如，将0.1101101截断为4位尾数的结果为0.1101。截断会产生诱导误差（即误差是由施加在数上的操作计算所引起的），诱导误差是偏置的，因为截断后的数总比截断前小。</p>
+<p>舍入是一种更好的减少数的位数的技术。如果丢弃的位的值大于剩余数最低位的一半，将剩余数的最低位加1。</p>
+<p>考虑两个数在小数点后第4位上舍入的例子：</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132343588.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/image-20221105132355041.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="舍入机制"></p>
+<p>1）最简单的舍入机制是截断或向0舍入。</p>
+<p>2）“向最近的数舍入”方法会选择距离该数最近的那个浮点数作为结果。</p>
+<p>3）“向正或负无穷大舍入”方法会选择正或负无穷大方向上最近的有效浮点数作为结果。</p>
+<p>当要舍入的数位于两个连续浮点数的正中时，IEEE舍入机制选择最低位为0的点（即向偶数舍入）。</p>
+<p>整数操作时精确、可重复的，浮点数操作是不精确的。</p>
+<p>考虑表达式z &#x3D; x<sub>2</sub>-y<sub>2</sub>，x、y、z都是实数。可以将表达式视作x<sub>2</sub>-y<sub>2</sub>或(x+y)(x-y)计算，整数运算得到相同结果，但浮点数运算可能得到不同结果。</p>
+<p>IEEE要求加、减、乘和除运算结果能够精确计算，并用向偶数舍入的方法将结</p>
+<p>果舍入为最近的浮点数。</p>
+]]></content>
   </entry>
   <entry>
     <title>计算机系统-信息的表示与处理</title>
