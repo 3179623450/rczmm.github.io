@@ -5368,6 +5368,132 @@ def isMirror(self, node1, node2):
 
 <p>使用一个队列 <code>queue</code> 来存储当前待遍历的节点以及当前节点的路径和。我们首先将根节点和根节点的值加入队列中。然后对于每个节点，我们检查其是否为叶子节点，如果是，则检查当前路径和是否等于目标和，如果是，则返回 <code>True</code>。否则，我们将其左右子节点和路径和加入队列中，继续遍历下一个节点，直到队列为空或者找到符合条件的路径。</p>
 <p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304204112260.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304204112260.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="杨辉三角"><a href="#杨辉三角" class="headerlink" title="杨辉三角"></a>杨辉三角</h3><p>给定一个非负整数 <em><code>numRows</code>，</em>生成「杨辉三角」的前 <em><code>numRows</code></em> 行。</p>
+<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
+<p><img src="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" class="lazyload" data-srcset="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>示例 1:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 5
+输出: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: numRows &#x3D; 1
+输出: [[1]]</code></pre>
+
+
+
+<p><strong>提示:</strong></p>
+<ul>
+<li><code>1 &lt;= numRows &lt;= 30</code></li>
+</ul>
+<p>Related Topics</p>
+<p>数组</p>
+<p>动态规划</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def generate(self, numRows):
+    &quot;&quot;&quot;
+    :type numRows: int
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    if numRows &#x3D;&#x3D; 0:
+        return []
+    elif numRows &#x3D;&#x3D; 1:
+        return [[1]]
+    elif numRows &#x3D;&#x3D; 2:
+        return [[1], [1, 1]]
+    else:
+        triangle &#x3D; [[1], [1, 1]]
+        for i in range(2, numRows):
+            row &#x3D; [1] * (i + 1)
+            for j in range(1, i):
+                row[j] &#x3D; triangle[i - 1][j - 1] + triangle[i - 1][j]
+            triangle.append(row)
+        return triangle</code></pre>
+
+<p>使用了一个二维数组 <code>triangle</code> 来存储杨辉三角中的每一行。我们首先处理特殊情况：当 <code>numRows</code> 为 0 时返回空数组，当 <code>numRows</code> 为 1 时返回一个只包含一个元素 1 的数组，当 <code>numRows</code> 为 2 时返回一个包含两个元素 1 的数组。</p>
+<p>对于 <code>numRows</code> 大于 2 的情况，我们使用一个循环来生成杨辉三角的每一行。在循环中，我们首先创建一个长度为 <code>i+1</code> 的数组 <code>row</code>，并将其所有元素初始化为 1。然后，我们使用另一个循环遍历 <code>row</code> 中的每一个元素，计算其对应的值，即杨辉三角中的数值，并将其赋值给 <code>row</code> 中的相应位置。最后，我们将 <code>row</code> 添加到 <code>triangle</code> 中，完成一行的生成。</p>
+<p>最后，我们返回 <code>triangle</code>，即杨辉三角的所有行。</p>
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304215151223.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304215151223.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="杨辉三角II"><a href="#杨辉三角II" class="headerlink" title="杨辉三角II"></a>杨辉三角II</h3><p>给定一个非负索引 <code>rowIndex</code>，返回「杨辉三角」的第 <code>rowIndex</code> 行。</p>
+<p>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</p>
+<p><img src="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" class="lazyload" data-srcset="https://pic.leetcode-cn.com/1626927345-DZmfxB-PascalTriangleAnimated2.gif" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><strong>示例 1:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: rowIndex &#x3D; 3
+输出: [1,3,3,1]</code></pre>
+
+<p><strong>示例 2:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: rowIndex &#x3D; 0
+输出: [1]</code></pre>
+
+<p><strong>示例 3:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入: rowIndex &#x3D; 1
+输出: [1,1]</code></pre>
+
+
+
+<p><strong>提示:</strong></p>
+<ul>
+<li><code>0 &lt;= rowIndex &lt;= 33</code></li>
+</ul>
+<p><strong>进阶：</strong></p>
+<p>你可以优化你的算法到 <code>*O*(*rowIndex*)</code> 空间复杂度吗？</p>
+<p>Related Topics</p>
+<p>数组</p>
+<p>动态规划</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def getRow(self, rowIndex):
+    &quot;&quot;&quot;
+    :type rowIndex: int
+    :rtype: List[int]
+    &quot;&quot;&quot;
+    row &#x3D; [1] * (rowIndex + 1)
+    for i in range(1,rowIndex + 1):
+        for j in range(i-1,0,-1):
+            row[j] +&#x3D; row[j-1]
+    return row</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304215833496.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304215833496.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个长度为 <code>rowIndex+1</code> 的数组 <code>row</code> 来保存每一行的数字。由于每行的数字只与上一行有关，我们可以使用递推公式 <code>row[j] = row[j] + row[j-1]</code> 来计算每行的数字。由于我们只需要返回第 <code>rowIndex</code> 行，因此可以在循环结束后直接返回 <code>row</code> 数组即可。</p>
+<h3 id="买卖股票的最佳时机"><a href="#买卖股票的最佳时机" class="headerlink" title="买卖股票的最佳时机"></a>买卖股票的最佳时机</h3><p>给定一个数组 <code>prices</code> ，它的第 <code>i</code> 个元素 <code>prices[i]</code> 表示一支给定股票第 <code>i</code> 天的价格。</p>
+<p>你只能选择 <strong>某一天</strong> 买入这只股票，并选择在 <strong>未来的某一个不同的日子</strong> 卖出该股票。设计一个算法来计算你所能获取的最大利润。</p>
+<p>返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 <code>0</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：[7,1,5,3,6,4]
+输出：5
+解释：在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。
+     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">输入：prices &#x3D; [7,6,4,3,1]
+输出：0
+解释：在这种情况下, 没有交易完成, 所以最大利润为 0。</code></pre>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= prices.length &lt;= 105</code></li>
+<li><code>0 &lt;= prices[i] &lt;= 104</code></li>
+</ul>
+<p>Related Topics</p>
+<p>数组</p>
+<p>动态规划</p>
+<p>首先，定义状态 <code>dp[i]</code> 表示在第 <code>i</code> 天卖出股票所能获得的最大利润。我们需要在第 <code>0</code> 天买入，所以初始状态为 <code>dp[0] = 0</code>。</p>
+<p>对于每一天 <code>i</code>，我们需要找到在前 <code>i-1</code> 天中股票价格的最小值 <code>min_price</code>。那么在第 <code>i</code> 天卖出股票所能获得的最大利润即为 <code>prices[i] - min_price</code>。如果这个利润比当前的最大利润 <code>dp[i-1]</code> 还要大，那么我们就更新 <code>dp[i]</code>。</p>
+<p>最后，我们只需要遍历整个 <code>dp</code> 数组，找到最大的利润值即可。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def maxProfit(self, prices):
+    &quot;&quot;&quot;
+    :type prices: List[int]
+    :rtype: int
+    &quot;&quot;&quot;
+    n &#x3D; len(prices)
+    if n &lt;&#x3D; 1:
+        return 0
+    dp &#x3D; [0] * n
+    min_price &#x3D; prices[0]
+    for i in range(1, n):
+        min_price &#x3D; min(min_price, prices[i - 1])
+        dp[i] &#x3D; max(dp[i - 1], prices[i] - min_price)
+    return dp[-1]</code></pre>
+
+<p><img src="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304221333680.png" class="lazyload" data-srcset="/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/image-20230304221333680.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 ]]></content>
       <tags>
         <tag>未完成</tag>
