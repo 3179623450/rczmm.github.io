@@ -971,6 +971,20 @@ cplxpair(v)给出一个v中各元素按实部递增排序，并使其复数组�
 ]]></content>
   </entry>
   <entry>
+    <title>Sql笔记</title>
+    <url>//post/Sql%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<h1 id="Sql笔记"><a href="#Sql笔记" class="headerlink" title="Sql笔记"></a>Sql笔记</h1><p>1、查询表中记录条数</p>
+<pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(*) FROM USER;
+SELECT COUNT(1) FROM USER;
+SELECT COUNT(id) FROM USER;</code></pre>
+
+<p>COUNT能聚合记录条数。</p>
+<p>以上三条sql语句在运行速度上几乎没有差别，但是对于其中的内容来说，count（1）会包含null的记录。</p>
+<p>但是对于Innodb引擎来说，这个开窗会十分的慢，</p>
+<p>因为Innodb是索引组织表，主键索引树的叶子结点是数据，而普通索引树的叶子结点是主键值，因此普通索引树比主键索引树小很多。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Python装饰器</title>
     <url>//post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html</url>
     <content><![CDATA[<h1 id="Python-装饰器"><a href="#Python-装饰器" class="headerlink" title="Python 装饰器"></a>Python 装饰器</h1><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在Python中，函数也是一个对象，可以被当做参数传递，可以在另一个函数中调用，也可以实现函数的嵌套。</p>
@@ -1193,20 +1207,6 @@ function(4, 6)</code></pre>
       <tags>
         <tag>python</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Sql笔记</title>
-    <url>//post/Sql%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<h1 id="Sql笔记"><a href="#Sql笔记" class="headerlink" title="Sql笔记"></a>Sql笔记</h1><p>1、查询表中记录条数</p>
-<pre class="line-numbers language-none"><code class="language-none">SELECT COUNT(*) FROM USER;
-SELECT COUNT(1) FROM USER;
-SELECT COUNT(id) FROM USER;</code></pre>
-
-<p>COUNT能聚合记录条数。</p>
-<p>以上三条sql语句在运行速度上几乎没有差别，但是对于其中的内容来说，count（1）会包含null的记录。</p>
-<p>但是对于Innodb引擎来说，这个开窗会十分的慢，</p>
-<p>因为Innodb是索引组织表，主键索引树的叶子结点是数据，而普通索引树的叶子结点是主键值，因此普通索引树比主键索引树小很多。</p>
-]]></content>
   </entry>
   <entry>
     <title>springboot+vue（1）</title>
@@ -1585,6 +1585,230 @@ public IPage findAll() &#123;
         <tag>java</tag>
         <tag>springboot</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>博客开发日记</title>
+    <url>//post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</url>
+    <content><![CDATA[<h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
+<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
+<li>服务端：Django</li>
+<li>数据库：MySQL 8.0</li>
+<li>前端：原生JavaScript</li>
+<li>CSS：原生CSS</li>
+</ol>
+<p>PyCharm</p>
+<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
+<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
+<ol>
+<li><p>创建 Django 模型，用于存储博客内容。</p>
+<p>在新建的app目录下，编辑models.py文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
+
+
+class Blog(models.Model):
+    title &#x3D; models.CharField(max_length&#x3D;200)
+    author &#x3D; models.CharField(max_length&#x3D;100)
+    content &#x3D; models.TextField()
+    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
+    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
+
+    # 返回模型的标题，用于在Django的后台中显示。
+    def __str__(self):
+        return self.title</code></pre>
+</li>
+<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
+<p>在 Django  app中创建一个 views.py 文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
+from django.views import View
+from .models import Blog
+
+class BlogListView(View):
+    def get(self, request):
+        blogs &#x3D; Blog.objects.all()
+        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
+
+<p> 创建模板文件，例如 blog_list.html</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
+&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+  &#123;% for blog in blogs %&#125;
+    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
+  &#123;% endfor %&#125;
+&lt;&#x2F;ul&gt;</code></pre>
+
+<p>urls.py 文件中配置 URL 与视图的映射关系</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
+from .view import BlogListView
+
+urlpatterns &#x3D; [
+    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
+]</code></pre>
+
+<p>文章详情页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
+
+<p>新建页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
+        &#123;&#123; blog.title &#125;&#125;
+    &lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+<p>创建forms.py文件(app目录内)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
+from .models import Blog
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model &#x3D; Blog
+        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
+
+<p>创建文章页面</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
+    template_name &#x3D; &#39;create_blog.html&#39;
+
+    def get(self, request):
+        form &#x3D; BlogForm()
+        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
+
+    def post(self, request):
+        form &#x3D; BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_list&#39;)
+        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+  &#123;% csrf_token %&#125;
+  &#123;&#123; form.as_p &#125;&#125;
+  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+
+<p>文章编辑</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
+    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
+    if request.method &#x3D;&#x3D; &#39;POST&#39;:
+        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
+        if form.is_valid():
+            form.save()
+            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
+    else:
+        form &#x3D; BlogForm(instance&#x3D;blog)
+    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
+
+<p>配置路由</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
+
+<p>编写页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
+    &#123;% csrf_token %&#125;
+    &#123;&#123; form.as_p &#125;&#125;
+    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
+&lt;&#x2F;form&gt;</code></pre>
+</li>
+<li><p>创建 Django URL，实现页面路由功能。</p>
+</li>
+<li><p>编写 HTML 页面，实现博客页面的设计。</p>
+</li>
+<li><p>使用 CSS 完成页面样式设计。</p>
+</li>
+<li><p>使用 JavaScript 实现前端交互功能。</p>
+</li>
+<li><p>配置数据库连接。</p>
+<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+    &#39;blog.apps.BlogConfig&#39;,
+    &#39;django.db.backends.mysql&#39;
+]</code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
+    &#39;default&#39;: &#123;
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;blog&#39;,
+        &#39;USER&#39;: &#39;root&#39;,
+        &#39;PASSWORD&#39;: &#39;root&#39;,
+        &#39;HOST&#39;: &#39;localhost&#39;,
+        &#39;POST&#39;: &#39;3306&#39;,
+        &#39;OPTION&#39;: &#123;
+            &#39;charset&#39;: &#39;utf8mb4&#39;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
+<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
+
+<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
+<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
+python manage.py migrate</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
+
+<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
+<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
+
+<p>如果没有安装 Django，请使用以下命令安装它：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
+
+<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
+<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
+
+ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
+
+<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
+<ol>
+<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
+<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
+<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
+<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
+</ol>
+<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
+<ol>
+<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
+<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
+<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
+<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
+</ol>
+<p>pycharm的坑</p>
+<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
+<ol>
+<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
+<li>测试博客系统，修复发现的 bug。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>入门项目——学生成绩管理系统（demo）</title>
@@ -2301,298 +2525,6 @@ public class TimeAspect &#123;
       </tags>
   </entry>
   <entry>
-    <title>博客开发日记</title>
-    <url>//post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</url>
-    <content><![CDATA[<h1 id="播客开发日记"><a href="#播客开发日记" class="headerlink" title="播客开发日记"></a>播客开发日记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>闲的没事干，用一下Django练练手。记录一下。</p>
-<h2 id="项目环境"><a href="#项目环境" class="headerlink" title="项目环境"></a>项目环境</h2><ol>
-<li>服务端：Django</li>
-<li>数据库：MySQL 8.0</li>
-<li>前端：原生JavaScript</li>
-<li>CSS：原生CSS</li>
-</ol>
-<p>PyCharm</p>
-<h2 id="项目步骤"><a href="#项目步骤" class="headerlink" title="项目步骤"></a>项目步骤</h2><p>新建django项目</p>
-<p><img src="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" class="lazyload" data-srcset="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0/image-20230215001945563.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>注意新建填写应用程序名称，如果未填写，项目创建完成之后也可以创建。</p>
-<ol>
-<li><p>创建 Django 模型，用于存储博客内容。</p>
-<p>在新建的app目录下，编辑models.py文件</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.db import models
-
-
-class Blog(models.Model):
-    title &#x3D; models.CharField(max_length&#x3D;200)
-    author &#x3D; models.CharField(max_length&#x3D;100)
-    content &#x3D; models.TextField()
-    created_at &#x3D; models.DateTimeField(auto_now_add&#x3D;True)
-    updated_at &#x3D; models.DateTimeField(auto_now&#x3D;True)
-
-    # 返回模型的标题，用于在Django的后台中显示。
-    def __str__(self):
-        return self.title</code></pre>
-</li>
-<li><p>创建 Django 视图，实现博客的增删改查功能。</p>
-<p>在 Django  app中创建一个 views.py 文件</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.shortcuts import render, redirect
-from django.views import View
-from .models import Blog
-
-class BlogListView(View):
-    def get(self, request):
-        blogs &#x3D; Blog.objects.all()
-        return render(request, &#39;blog_list.html&#39;, &#123;&#39;blogs&#39;: blogs&#125;)</code></pre>
-
-<p> 创建模板文件，例如 blog_list.html</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># blog_list.html
-&lt;h1&gt;Blog List&lt;&#x2F;h1&gt;
-&lt;ul&gt;
-  &#123;% for blog in blogs %&#125;
-    &lt;li&gt;&#123;&#123; blog.title &#125;&#125; - &#123;&#123; blog.content &#125;&#125;&lt;&#x2F;li&gt;
-  &#123;% endfor %&#125;
-&lt;&#x2F;ul&gt;</code></pre>
-
-<p>urls.py 文件中配置 URL 与视图的映射关系</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django.urls import path
-from .view import BlogListView
-
-urlpatterns &#x3D; [
-    path(&#39;my_blog&#x2F;&#39;, BlogListView.as_view(),name&#x3D;&#39;blog_list&#39;),
-]</code></pre>
-
-<p>文章详情页面</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def blog_detail(request,pk):
-    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
-    return render(request, &#39;blog_detail.html&#39;,&#123;&#39;blog&#39;:blog&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;&#39;, blog_detail, name&#x3D;&#39;blog_detail&#39;),</code></pre>
-
-<p>新建页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;title&gt;&#123;&#123; blog.title &#125;&#125;&lt;&#x2F;title&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-&lt;h1&gt;
-    &lt;a href&#x3D;&quot;&#123;% url &#39;blog_detail&#39; pk&#x3D;blog.pk %&#125;&quot;&gt;
-        &#123;&#123; blog.title &#125;&#125;
-    &lt;&#x2F;a&gt;
-&lt;&#x2F;h1&gt;
-&lt;p&gt;&#123;&#123; blog.content &#125;&#125;&lt;&#x2F;p&gt;
-&lt;p&gt;创建日期:&#123;&#123; blog.created_at &#125;&#125;&lt;&#x2F;p&gt;
-&lt;p&gt;最后一次更新日期:&#123;&#123; blog.updated_at &#125;&#125;&lt;&#x2F;p&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-
-<p>创建forms.py文件(app目录内)</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">from django import forms
-from .models import Blog
-
-class BlogForm(forms.ModelForm):
-    class Meta:
-        model &#x3D; Blog
-        fields &#x3D; [&#39;title&#39;, &#39;content&#39;]</code></pre>
-
-<p>创建文章页面</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">class CreateBlogView(View):
-    template_name &#x3D; &#39;create_blog.html&#39;
-
-    def get(self, request):
-        form &#x3D; BlogForm()
-        return render(request, self.template_name,&#123;&#39;form&#39;:form&#125;)
-
-    def post(self, request):
-        form &#x3D; BlogForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(&#39;blog_list&#39;)
-        return render(request, self.template_name, &#123;&#39;form&#39;: form&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;create&#x2F;&#39;, CreateBlogView.as_view(), name&#x3D;&#39;create_blog&#39;),</code></pre>
-
-<p>编写页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
-  &#123;% csrf_token %&#125;
-  &#123;&#123; form.as_p &#125;&#125;
-  &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
-&lt;&#x2F;form&gt;</code></pre>
-
-<p>文章编辑</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def edit_blog(request, pk):
-    blog &#x3D; Blog.objects.get(pk&#x3D;pk)
-    if request.method &#x3D;&#x3D; &#39;POST&#39;:
-        form &#x3D; BlogForm(request.POST, instance&#x3D;blog)
-        if form.is_valid():
-            form.save()
-            return redirect(&#39;blog_detail&#39;, pk&#x3D;blog.pk)
-    else:
-        form &#x3D; BlogForm(instance&#x3D;blog)
-    return render(request, &#39;edit_blog.html&#39;, &#123;&#39;form&#39;: form&#125;)</code></pre>
-
-<p>配置路由</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">path(&#39;blogs&#x2F;&lt;int:pk&gt;&#x2F;edit&#x2F;&#39;, edit_blog, name&#x3D;&#39;edit_blog&#39;),</code></pre>
-
-<p>编写页面</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form method&#x3D;&quot;post&quot;&gt;
-    &#123;% csrf_token %&#125;
-    &#123;&#123; form.as_p &#125;&#125;
-    &lt;button type&#x3D;&quot;submit&quot;&gt;Save&lt;&#x2F;button&gt;
-&lt;&#x2F;form&gt;</code></pre>
-</li>
-<li><p>创建 Django URL，实现页面路由功能。</p>
-</li>
-<li><p>编写 HTML 页面，实现博客页面的设计。</p>
-</li>
-<li><p>使用 CSS 完成页面样式设计。</p>
-</li>
-<li><p>使用 JavaScript 实现前端交互功能。</p>
-</li>
-<li><p>配置数据库连接。</p>
-<p>在 Django 项目的 settings.py 文件中，你需要配置数据库连接：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">INSTALLED_APPS &#x3D; [
-    &#39;django.contrib.admin&#39;,
-    &#39;django.contrib.auth&#39;,
-    &#39;django.contrib.contenttypes&#39;,
-    &#39;django.contrib.sessions&#39;,
-    &#39;django.contrib.messages&#39;,
-    &#39;django.contrib.staticfiles&#39;,
-    &#39;blog.apps.BlogConfig&#39;,
-    &#39;django.db.backends.mysql&#39;
-]</code></pre>
-
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">DATABASES &#x3D; &#123;
-    &#39;default&#39;: &#123;
-        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
-        &#39;NAME&#39;: &#39;blog&#39;,
-        &#39;USER&#39;: &#39;root&#39;,
-        &#39;PASSWORD&#39;: &#39;root&#39;,
-        &#39;HOST&#39;: &#39;localhost&#39;,
-        &#39;POST&#39;: &#39;3306&#39;,
-        &#39;OPTION&#39;: &#123;
-            &#39;charset&#39;: &#39;utf8mb4&#39;
-        &#125;
-    &#125;
-&#125;</code></pre>
-
-<p>其中 <code>NAME</code> 是数据库的名称，<code>USER</code> 是数据库用户的名称，<code>PASSWORD</code> 是数据库用户的密码，<code>HOST</code> 是数据库服务器的主机名，<code>PORT</code> 是数据库服务器的端口号。</p>
-<p>然后你还需要安装 Django 的 MySQL 驱动，在你的项目的虚拟环境中执行以下命令：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip install mysqlclient</code></pre>
-
-<p>安装完驱动之后，你就可以使用 Django 的命令行工具进行数据库迁移：</p>
-<pre class="line-numbers language-none"><code class="language-none">python manage.py makemigrations
-python manage.py migrate</code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">ImportError: Couldn&#39;t import Django. Are you sure it&#39;s installed and available on your PYTHONPATH environment variable? </code></pre>
-
-<p>此错误通常表示 Django 在系统中没有正确安装或不在 Python 路径中。请确保已经安装了 Django，并在Python 路径中，可以在命令行或终端中运行以下命令来检查它是否已经正确安装：</p>
-<pre class="line-numbers language-none"><code class="language-none">python -c &quot;import django; print(django.get_version())&quot;</code></pre>
-
-<p>如果没有安装 Django，请使用以下命令安装它：</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install django</code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">WARNING: You are using pip version 20.2.3; however, version 23.0 is available. You should consider upgrading via the &#39;d:\program files\python39\python.exe -m pip install --upgrade pip&#39; command.</code></pre>
-
-<p>这是一个 pip 包管理器的警告，告诫您当前使用的 pip 版本已经过时，建议您升级到最新版本。您可以通过在命令行&#x2F;终端中运行以下命令升级 pip：</p>
-<pre class="line-numbers language-none"><code class="language-none">*****\python39\python.exe -m pip install --upgrade pip</code></pre></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">import MySQLdb as Database
-
-ModuleNotFoundError: No module named &#39;MySQLdb&#39;</code></pre>
-
-<p>MySQLdb 这个库已经不再维护了，建议使用 PyMySQL 作为替代方案。</p>
-<ol>
-<li>确认您的 Python 版本是否与您的数据库版本相匹配（例如，如果您使用的是 Python 3，则您需要选择 Python 3 版本的 MySQL 数据库驱动程序）。</li>
-<li>确认您是否已安装 MySQLdb 模块。您可以在命令行中执行 “pip install mysqlclient” 来安装该模块。</li>
-<li>如果仍然无法导入 MySQLdb，则请确保您的系统上安装了所需的编译器（例如 Visual Studio）以及其他需要的依赖项。</li>
-<li>如果仍然无法解决，请检查您的 Django 设置文件（settings.py），确保您已正确配置了数据库连接，并且在 INSTALLED_APPS 列表中已添加了对数据库应用程序的支持。</li>
-</ol>
-<p>数据库迁移命令不报错，但是在数据库中未生成表。</p>
-<ol>
-<li>检查您是否正确配置了数据库，确保您的settings.py文件中的数据库设置正确。</li>
-<li>检查是否在INSTALLED_APPS中正确配置了应用程序。</li>
-<li>检查是否在数据库中已经有一个名为blog的数据库，如果有，请删除它。</li>
-<li>检查模型是否正确，确保它包含了正确的字段和选项。</li>
-</ol>
-<p>pycharm的坑</p>
-<p>在终端中pip之后，未加载到项目中，需要前往设置项目解释器，手动添加。</p>
-<ol>
-<li>配置 Django 的管理员站点，以便管理员进行博客内容的管理。</li>
-<li>测试博客系统，修复发现的 bug。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>反射与注解</title>
-    <url>//post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html</url>
-    <content><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p>
-<p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p>
-<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p>
-<p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p>
-<p>那么“反”，其实就是根据对象来反推出其类型。</p>
-<p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">Date date &#x3D; new Date();   &#x2F;&#x2F; 正 获取对象
-System.out.println(date.getClass());  &#x2F;&#x2F;  反 由对象获取类信息</code></pre>
-
-
-
-<h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p>
-<p>1、利用Object类的getClass（）方法</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">Date date &#x3D; new Date();   &#x2F;&#x2F; 正 获取对象
-Class&lt;?&gt; a &#x3D; date.getClass();
-System.out.println(a);  &#x2F;&#x2F;  反 由对象获取类信息</code></pre>
-
-<p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">Class&lt;?&gt; a &#x3D; Date.class;
-System.out.println(a);</code></pre>
-
-<p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p>
-<p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">Class&lt;?&gt; a &#x3D; Class.forName(&quot;java.util.Date&quot;);
-System.out.println(a);</code></pre>
-
-<p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>
-<p>当然，在使用forName的时候，请务必确保类存在。否则异常如下。</p>
-<p><img src="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" class="lazyload" data-srcset="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220618211522778"></p>
-<p>要注意，类存在更多指的是CLASSPATH环境属性中有该类。</p>
-<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="认识注解"><a href="#认识注解" class="headerlink" title="认识注解"></a>认识注解</h3><p>注解是java对元数据的支持。</p>
-<p>简单的来说，注解与注释相似，他们都不是程序本身，而是对程序做出解释，不同的是，注释是给开发者看的，而注解是用于编译器或者其他程序读取的。</p>
-<p>javaSE中三类常见注解：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Override&#x2F;&#x2F;重写注解
-@Deprecated&#x2F;&#x2F;不推荐使用注解，可以使用但是有风险或者有更好的方式（被淘汰）
-@SuppressWarnings &#x2F;&#x2F;“镇压”警告注解（不推介使用）</code></pre>
-
-<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>除了系统定义的，如同以上三类注解之外，用户也可以自定义注解。</p>
-<p>java中自定义注解，需要用@interface进行标记，同时也可以用@Target等元注解来对自定义的注解类型做说明。</p>
-<ul>
-<li>@Target：用于描述注解的使用范围</li>
-<li>@Retention：用于表示需要在什么级别保存注解信息，用于描述注解的声明周期，（SOURCE&lt;CLASS&lt;RUNTIME）</li>
-<li>@Document：说明该注解将被包含在javadoc中</li>
-<li>@Inherited：说明子类可以继承父类中的该注解</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)
-@interface Defaultannotion &#123;
-    String title();
-
-    String print() default &quot;1111111&quot;;
-&#125;
-
-class Message &#123;
-    @Defaultannotion(title &#x3D; &quot;sss&quot;)
-    public void send() &#123;
-        System.out.println(&quot;1111&quot;);
-    &#125;
-&#125;</code></pre>]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>javase</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>变治法</title>
     <url>//post/%E5%8F%98%E6%B2%BB%E6%B3%95.html</url>
     <content><![CDATA[<h1 id="变治法"><a href="#变治法" class="headerlink" title="变治法"></a>变治法</h1><p>算法设计与分析方法之中的一种特殊的变换思想，严格意义上说，他并不想分治法、动态规划那样标准，它只是一种变换问题的思想。</p>
@@ -2675,6 +2607,167 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
     Horner_rule(arr,4,4)</code></pre>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>反射与注解</title>
+    <url>//post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3.html</url>
+    <content><![CDATA[<h1 id="反射与注解"><a href="#反射与注解" class="headerlink" title="反射与注解"></a>反射与注解</h1><p>jdk 1.5之后，java多了许多新的特性，其中一个很重要的机制，就是对元数据的支持，这种对元数据的支持，后来也被叫做注解。</p>
+<p>注解的作用，使得开发者在改变原有逻辑的情况下，在源文件内嵌入一些补充的信息。</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="认识反射机制"><a href="#认识反射机制" class="headerlink" title="认识反射机制"></a>认识反射机制</h3><p>这是java很重要的一项技术支持。</p>
+<p>首先，很朴素的一点是，我们首先考虑的是“反”与“正”的操作。所谓的“正”，即我们使用一个类的时候，一定要先导入程序所在的包，而后根据类进行实例化，并且依靠得到的对象调用方法。</p>
+<p>那么“反”，其实就是根据对象来反推出其类型。</p>
+<p>其中，反射的根源，应当是Class类，可以通过Object类中所提供的方法来获取一个Class实例。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Date date &#x3D; new Date();   &#x2F;&#x2F; 正 获取对象
+System.out.println(date.getClass());  &#x2F;&#x2F;  反 由对象获取类信息</code></pre>
+
+
+
+<h3 id="Class-类对象实例化"><a href="#Class-类对象实例化" class="headerlink" title="Class 类对象实例化"></a>Class 类对象实例化</h3><p>Class类是反射的起源，为了应对不同的情况，java为其提供了三种不同的实例化对象方式。</p>
+<p>1、利用Object类的getClass（）方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Date date &#x3D; new Date();   &#x2F;&#x2F; 正 获取对象
+Class&lt;?&gt; a &#x3D; date.getClass();
+System.out.println(a);  &#x2F;&#x2F;  反 由对象获取类信息</code></pre>
+
+<p>2、使用类.class的形式，获取指定类或者接口的Class实例化对象。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Class&lt;?&gt; a &#x3D; Date.class;
+System.out.println(a);</code></pre>
+
+<p>要注意：直接通过一个类的完整名称可以获取class类实例，这就代表，要么import或者把类名写全，也就是要注意包名。</p>
+<p>3、使用Class类内部提供的forName（）方法根据类的完整名称获取实例化对象。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Class&lt;?&gt; a &#x3D; Class.forName(&quot;java.util.Date&quot;);
+System.out.println(a);</code></pre>
+
+<p>第三种方法乍一看好像很麻烦，但实际上这种通过字符串获取class实力的方式，可以不适用import导入，并且由于字符串的支持较多并且拼接起来比较方便，十分的灵活。</p>
+<p>当然，在使用forName的时候，请务必确保类存在。否则异常如下。</p>
+<p><img src="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" class="lazyload" data-srcset="/post/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/image-20220618211522778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220618211522778"></p>
+<p>要注意，类存在更多指的是CLASSPATH环境属性中有该类。</p>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="认识注解"><a href="#认识注解" class="headerlink" title="认识注解"></a>认识注解</h3><p>注解是java对元数据的支持。</p>
+<p>简单的来说，注解与注释相似，他们都不是程序本身，而是对程序做出解释，不同的是，注释是给开发者看的，而注解是用于编译器或者其他程序读取的。</p>
+<p>javaSE中三类常见注解：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Override&#x2F;&#x2F;重写注解
+@Deprecated&#x2F;&#x2F;不推荐使用注解，可以使用但是有风险或者有更好的方式（被淘汰）
+@SuppressWarnings &#x2F;&#x2F;“镇压”警告注解（不推介使用）</code></pre>
+
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>除了系统定义的，如同以上三类注解之外，用户也可以自定义注解。</p>
+<p>java中自定义注解，需要用@interface进行标记，同时也可以用@Target等元注解来对自定义的注解类型做说明。</p>
+<ul>
+<li>@Target：用于描述注解的使用范围</li>
+<li>@Retention：用于表示需要在什么级别保存注解信息，用于描述注解的声明周期，（SOURCE&lt;CLASS&lt;RUNTIME）</li>
+<li>@Document：说明该注解将被包含在javadoc中</li>
+<li>@Inherited：说明子类可以继承父类中的该注解</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)
+@interface Defaultannotion &#123;
+    String title();
+
+    String print() default &quot;1111111&quot;;
+&#125;
+
+class Message &#123;
+    @Defaultannotion(title &#x3D; &quot;sss&quot;)
+    public void send() &#123;
+        System.out.println(&quot;1111&quot;);
+    &#125;
+&#125;</code></pre>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>javase</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于python的QT（一）</title>
+    <url>//post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>QT，一个跨平台的GUI编程框架，支持多种语言，java、c++、python。</p>
+<p>此笔记基于python。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Qt，对于python而言，QT支持的版本最低是3.6，在官方文档中，建议使用虚拟环境，即venu，笔记中使用pycharm工具自动配置。</p>
+<p>pycharm中，创建项目，软件自动配置虚拟环境。</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105050533.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105050533.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105050533"></p>
+<p>当然也可以不使用pycharm。</p>
+<p>以下为官网对创建和激活环境的描述：</p>
+<pre class="line-numbers language-none"><code class="language-none">创建和激活环境 您可以通过在终端上运行以下命令来做到这一点：
+
+python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3&#96;）
+
+用于 Linux 和 macOS 的源 env&#x2F;bin&#x2F;activate
+
+适用于 Windows 的env\Scripts\activate.bat</code></pre>
+
+<p>安装pyside6包，可使用pip，也可以在pycharm中搜索安装。</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819104853500"></p>
+<p>如上图，pycharm中直接安装即可。（安装可能会因为网速等问题过慢，可自行更换镜像）</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105817742.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105817742.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105817742"></p>
+<p>此处添加即可。</p>
+<p>pip命令如下：</p>
+<hr>
+<p><strong>pip install pyside6</strong>，用于最新版本。</p>
+<p><strong>pip install pyside6&#x3D;&#x3D;6.0</strong>，专门针对版本<code>6.0</code></p>
+<p>也可以从官方的服务器安装特定快照：</p>
+<pre class="line-numbers language-none"><code class="language-none">pip install --index-url&#x3D;https:&#x2F;&#x2F;download.qt.io&#x2F;snapshots&#x2F;ci&#x2F;pyside&#x2F;6.0.0&#x2F;latest pyside6 --trusted-host download.qt.io</code></pre>
+
+<p>测试</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105856465"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import PySide6.QtCore
+
+print(PySide6.__version__)</code></pre>
+
+<p>引入核心包，打印版本信息即可。</p>
+<p>6.3.1（笔记版本）</p>
+<h2 id="Helloworld"><a href="#Helloworld" class="headerlink" title="Helloworld"></a>Helloworld</h2><p>pyside6模块提供了一些子模块用来访问Qt的API。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">import sys
+
+from PySide6 import QtWidgets, QtCore,QtGui
+
+
+class MyWidget(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.hello &#x3D; &#39;hello Tom&#39;
+
+        self.button &#x3D; QtWidgets.QPushButton(&#39;点我&#39;)
+
+        self.text &#x3D; QtWidgets.QLabel(&#39;helloworld&#39;, alignment&#x3D;QtCore.Qt.AlignCenter)
+
+        self.layout &#x3D; QtWidgets.QVBoxLayout(self)
+
+        self.layout.addWidget(self.text)
+
+        self.layout.addWidget(self.button)
+
+        self.button.clicked.connect(self.magic)
+
+    @QtCore.Slot()
+    def magic(self):
+        self.text.setText(self.hello)
+
+
+if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
+    app &#x3D; QtWidgets.QApplication([])
+
+    widget &#x3D; MyWidget()
+    widget.resize(800, 600)
+    widget.show()
+
+    sys.exit(app.exec())</code></pre>
+
+<p>这是官方文档中的例子，我只是取消了随机，让他变得更简单一点。</p>
+<p>虽然他看起来十分的简单，但实际上这个例子包含了Qt的很多核心内容。</p>
+<p>如果你尝试运行了这个代码，你会发现当你点击按钮的时候，屏幕上的文字会发生变化，这看起来似乎没什么了不起的，但实际上，这让我们的小部件和其他小部件进行了通信，它足以帮我们解决很多。</p>
+<p>代码之中</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">self.button.clicked.connect(self.magic)</code></pre>
+
+<p>其中clicked是<em>QPushButton</em>的一个预定义信号，在使用之中不会提示，甚至idea还有弹出警告，因为在<em>QPushButton</em>中找不到任何名为clicked的属性与方法。</p>
+<p>但实际上，当我们观察<em>QPushButton</em>类，会发现他继承了父类QAbstractButton，而父类拥有此方法。</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112618328.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112618328.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819112618328"></p>
+<p>对于这个警告，直接选择忽略即可。</p>
+<p>运行结果：</p>
+<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112659956.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112659956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819112659956"></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>基于Python的QT（二）</title>
@@ -2791,99 +2884,6 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 
     sys.exit(app.exec())</code></pre>
 
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于python的QT（一）</title>
-    <url>//post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>QT，一个跨平台的GUI编程框架，支持多种语言，java、c++、python。</p>
-<p>此笔记基于python。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Qt，对于python而言，QT支持的版本最低是3.6，在官方文档中，建议使用虚拟环境，即venu，笔记中使用pycharm工具自动配置。</p>
-<p>pycharm中，创建项目，软件自动配置虚拟环境。</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105050533.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105050533.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105050533"></p>
-<p>当然也可以不使用pycharm。</p>
-<p>以下为官网对创建和激活环境的描述：</p>
-<pre class="line-numbers language-none"><code class="language-none">创建和激活环境 您可以通过在终端上运行以下命令来做到这一点：
-
-python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3&#96;）
-
-用于 Linux 和 macOS 的源 env&#x2F;bin&#x2F;activate
-
-适用于 Windows 的env\Scripts\activate.bat</code></pre>
-
-<p>安装pyside6包，可使用pip，也可以在pycharm中搜索安装。</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819104853500"></p>
-<p>如上图，pycharm中直接安装即可。（安装可能会因为网速等问题过慢，可自行更换镜像）</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105817742.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105817742.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105817742"></p>
-<p>此处添加即可。</p>
-<p>pip命令如下：</p>
-<hr>
-<p><strong>pip install pyside6</strong>，用于最新版本。</p>
-<p><strong>pip install pyside6&#x3D;&#x3D;6.0</strong>，专门针对版本<code>6.0</code></p>
-<p>也可以从官方的服务器安装特定快照：</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install --index-url&#x3D;https:&#x2F;&#x2F;download.qt.io&#x2F;snapshots&#x2F;ci&#x2F;pyside&#x2F;6.0.0&#x2F;latest pyside6 --trusted-host download.qt.io</code></pre>
-
-<p>测试</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105856465"></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import PySide6.QtCore
-
-print(PySide6.__version__)</code></pre>
-
-<p>引入核心包，打印版本信息即可。</p>
-<p>6.3.1（笔记版本）</p>
-<h2 id="Helloworld"><a href="#Helloworld" class="headerlink" title="Helloworld"></a>Helloworld</h2><p>pyside6模块提供了一些子模块用来访问Qt的API。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import sys
-
-from PySide6 import QtWidgets, QtCore,QtGui
-
-
-class MyWidget(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.hello &#x3D; &#39;hello Tom&#39;
-
-        self.button &#x3D; QtWidgets.QPushButton(&#39;点我&#39;)
-
-        self.text &#x3D; QtWidgets.QLabel(&#39;helloworld&#39;, alignment&#x3D;QtCore.Qt.AlignCenter)
-
-        self.layout &#x3D; QtWidgets.QVBoxLayout(self)
-
-        self.layout.addWidget(self.text)
-
-        self.layout.addWidget(self.button)
-
-        self.button.clicked.connect(self.magic)
-
-    @QtCore.Slot()
-    def magic(self):
-        self.text.setText(self.hello)
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    app &#x3D; QtWidgets.QApplication([])
-
-    widget &#x3D; MyWidget()
-    widget.resize(800, 600)
-    widget.show()
-
-    sys.exit(app.exec())</code></pre>
-
-<p>这是官方文档中的例子，我只是取消了随机，让他变得更简单一点。</p>
-<p>虽然他看起来十分的简单，但实际上这个例子包含了Qt的很多核心内容。</p>
-<p>如果你尝试运行了这个代码，你会发现当你点击按钮的时候，屏幕上的文字会发生变化，这看起来似乎没什么了不起的，但实际上，这让我们的小部件和其他小部件进行了通信，它足以帮我们解决很多。</p>
-<p>代码之中</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">self.button.clicked.connect(self.magic)</code></pre>
-
-<p>其中clicked是<em>QPushButton</em>的一个预定义信号，在使用之中不会提示，甚至idea还有弹出警告，因为在<em>QPushButton</em>中找不到任何名为clicked的属性与方法。</p>
-<p>但实际上，当我们观察<em>QPushButton</em>类，会发现他继承了父类QAbstractButton，而父类拥有此方法。</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112618328.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112618328.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819112618328"></p>
-<p>对于这个警告，直接选择忽略即可。</p>
-<p>运行结果：</p>
-<p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112659956.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819112659956.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819112659956"></p>
 ]]></content>
       <tags>
         <tag>python</tag>
@@ -3409,127 +3409,9 @@ int main() &#123;
 ]]></content>
   </entry>
   <entry>
-    <title>数据库恢复与安全性</title>
-    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</url>
-    <content><![CDATA[<h1 id="数据库恢复与安全性（Oracle）"><a href="#数据库恢复与安全性（Oracle）" class="headerlink" title="数据库恢复与安全性（Oracle）"></a>数据库恢复与安全性（Oracle）</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）了解oracle的物理备份<br>（2）掌握oracle数据库逻辑备份方法<br>（3）掌握oracle数据库恢复的方法<br>（4）学会使用exp备份数据库、使用imp恢复数据库<br>（5）了解flashback 的使用<br>（6）学会完成SQL导入导出<br>（7）掌握ORACLE中有关用户创建的方法<br>（8）熟练掌握PL-SQL的数据控制语言，能通过自主存取控制进行权限管理<br>（9）熟悉用户资源文件的使用<br>（10）熟悉ORACLE中角色管理<br>（11）熟悉视图机制在自主存取控制上的应用</p>
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Oracle Database 12 home</p>
-<h2 id="实验步骤、出现的问题及解决方案"><a href="#实验步骤、出现的问题及解决方案" class="headerlink" title="实验步骤、出现的问题及解决方案"></a>实验步骤、出现的问题及解决方案</h2><p>数据库用户、表空间、表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>逻辑备份</p>
-<p>导出“预约”表</p>
-<pre class="line-numbers language-oracle" data-language="oracle"><code class="language-oracle">exp userid&#x3D;ZS20220872&#x2F;123456@orcl tables&#x3D;TEST.预约 file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>删除”预约“表</p>
-<pre class="line-numbers language-none"><code class="language-none">drop table 预约;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>导入“预约表”，恢复“预约表”</p>
-<pre class="line-numbers language-none"><code class="language-none">imp userid&#x3D;ZS20220872&#x2F;123456@orcl fromuser&#x3D;test file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp tables&#x3D;预约</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>查询预约表中信息</p>
-<pre class="line-numbers language-none"><code class="language-none">select * from 预约;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>导出数据库</p>
-<pre class="line-numbers language-none"><code class="language-none">exp userid&#x3D;ZS20220872&#x2F;123456@orcl full&#x3D;y inctype&#x3D;complete file&#x3D;C:\Users\Administrator\Desktop\西 南科技大学\数据库原理\all.dmp</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>使用闪回(flashback)</p>
-<p>设置行可移动</p>
-<pre class="line-numbers language-none"><code class="language-none">alter table 读者 enable row movement;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>在读者表中添加多条记录</p>
-<pre class="line-numbers language-none"><code class="language-none">insert into 读者 values(&#39;20190325&#39;,&#39;张四&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;1352659962&#39;,&#39;52182193213123&#39;);
-insert into 读者 values(&#39;201903232&#39;,&#39;张七&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;135262359962&#39;,&#39;522665445454564563&#39;);
-select 姓名,性别 from 读者;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221124153425218"></p>
-<p>闪回到改变之前</p>
-<pre class="line-numbers language-none"><code class="language-none">flashback table 读者 to timestamp to_timestamp(&#39;2022&#x2F;11&#x2F;24 15:30:00&#39;,&#39;YYYY&#x2F;MM&#x2F;DDHH24:MI:SS&#39;);
- select 姓名,性别 from 读者;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>SQl导入导出</p>
-<p>导出图书表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>删除表</p>
-<p>NULL</p>
-<p>导入表</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>以SYSTEM登录数据库，为自己帐号增加系统角色DBA</p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">grant dba to ZS20220872;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>重新以自己的帐号登录，创建一个数据库用户，该用户拥有所有CONNECT, RESOURCE，DBA系统角色权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create user Renchengzhen identified by 123456;
-grant connect to renchengzhen;
-grant resource to renchengzhen;
-grant dba to renchengzhen;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>(未定义函数，以下语句无效)</p>
-<p>建立角色：renchengzhen_OPER，该角色拥有调用存储过程借书、还书、预约的权限，以及CONNECT系统角色权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_role;
-grant connect to renchengzhen_role;
-grant execute on 借书 to renchengzhen_role;
-grant execute on 还书 to renchengzhen_role;
-grant execute on 预约 to renchengzhen_role;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个数据库用户：用户_oper（用户为“自己名字全拼”）为该用户授权角色：用户_role。以该用户登录，完成借书，还书功能。</p>
-<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_oper;
-grant renchengzhen_role to renchengzhen_oper;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">call renchengzhen.借书();</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>以自己的帐号登录，建立视图VIEW_READER, 该视图包含书目（ISBN, 书名，作者，出版单位，图书分类名称）</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE VIEW VIEW_READER
-AS
-SELECT
-	&quot;书目&quot;.&quot;iSBN&quot;, 
-	&quot;书目&quot;.&quot;书名&quot;, 
-	&quot;书目&quot;.&quot;作者&quot;, 
-	&quot;书目&quot;.&quot;出版单位&quot;, 
-	&quot;书目&quot;.&quot;图书分类号&quot;
-FROM
-	&quot;书目&quot;;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个数据库用户：renchengzhen_USER1，该用户具有对视图VIEW_READER查询的权限。</p>
-<pre class="line-numbers language-none"><code class="language-none">create user renchengzhen_user1 identified by 123456;
-grant connect to renchengzhen_user1;
-grant select on view_reader to renchengzhen_user1;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p>创建一个概要文件，如果renchengzhen_USER1连续3次登录失败，则锁定该账户，10天后该账户自动解锁。把创建的概要文件分配给该账号，然后以该用户登录进行权限测试。</p>
-<pre class="line-numbers language-none"><code class="language-none">CREATE PROFILE LOCK_USER LIMIT
-FAILED_LOGIN_ATTEMPTS 3
-PASSWORD_LOCK_TIME 10;
-ALTER USER renchengzhen_USER1 PROFILE LOCK_USER;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<pre class="line-numbers language-none"><code class="language-none">ALTER USER renchengzhen_USER1 ACCOUNT UNLOCK;</code></pre>
-
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+    <title>文件盒子</title>
+    <url>//post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html</url>
+    <content><![CDATA[<h1 id="ppt的内容"><a href="#ppt的内容" class="headerlink" title="ppt的内容"></a>ppt的内容</h1><div class="link-group"><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="案例分析1.pptx" href="/files/案例分析1.pptx"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">案例分析1.pptx</p><p class="url">/files/案例分析1.pptx</p></div></a></div><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="项目立项.pptx" href="/files/项目立项.pptx"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">项目立项.pptx</p><p class="url">/files/项目立项.pptx</p></div></a></div></div>
 ]]></content>
   </entry>
   <entry>
@@ -5982,38 +5864,6 @@ AB -&gt; 28
       </tags>
   </entry>
   <entry>
-    <title>英语笔记</title>
-    <url>//post/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<h2 id="虚拟语气"><a href="#虚拟语气" class="headerlink" title="虚拟语气"></a>虚拟语气</h2><p>1、—Tom is always making so many mistakes in his English exercises!  — Yeah. If he ________ more careful, he ________ fewer mistakes.</p>
-<p>were,would make</p>
-<p>试题分析：汤姆总是在英语联系中犯那么多错误！如果他可以更加细心一点，他就会犯更少的错误。</p>
-<p>表示与现在事实相反的假设，If+主语+动词过去式（be动词用were）,主语+would&#x2F;should&#x2F;might&#x2F;could+动词原形。</p>
-<p>2、If I ＿＿you . I＿＿study harder.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会更努力学习。</p>
-<p>虚拟语气表示与过去事实相反。</p>
-<p>3、 If I ______ you, I ______invite him to go to see a movie.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会邀请他去看电影，go to see a movie去看电影，invite sb to do 邀请某人做某事，在表达与现在事实相反的虚拟语气中，Be动词用were，主语用would。</p>
-<p>4、If I  you,I  buy a bike for him.</p>
-<p>were,would</p>
-<p>试题分析：如果我是你，我会给他买一俩自行车，buy sth for sb给某人买某物，本句是虚拟语气，表示与现在的事实相反，在虚拟语气中不能用was。</p>
-<p>5、— Come and join us, Ben!— I’m afraid I can’t. I’m too busy now. If I ________ time, I would certainly go.</p>
-<p>had</p>
-<p>试题分析：本、来加入我们吧！恐怕我不能，我现在太忙，如果我有时间，我一定会去的。条件状语从句中描述的与现在相反的事实，从句用一般过去时态。</p>
-<h2 id="作文"><a href="#作文" class="headerlink" title="作文"></a>作文</h2><p>欢迎游客来北京旅游</p>
-<p>Welcome to Beijing, the bustling capital city of China! This vibrant city offers an abundance of history, culture, and modern amenities. From visiting the iconic Forbidden City and climbing the Great Wall, to experiencing the local street food and shopping at the bustling markets, there is truly something for everyone in Beijing. Whether you are a first-time visitor or a returning traveler, we are confident that you will find this city to be a unique and fascinating destination. So come, explore and immerse yourself in the rich history and culture of Beijing. Enjoy your trip!</p>
-<p>欢迎来到北京，中国繁华的首都！这座充满活力的城市提供了丰富的历史、文化和现代设施。从参观标志性的故宫和爬登长城，到体验当地的街头美食和在繁忙的市场购物，北京确实有适合每个人的地方。无论您是初次访问者还是回头客，我们相信您会发现这座城市是一个独特而有趣的目的地。所以，来吧，探索和沉浸在北京丰富的历史和文化中。祝您旅途愉快！</p>
-<p>都江堰旅游</p>
-<p>Welcome to Dujiangyan, a beautiful and historic city located in Sichuan province, China. This charming city is renowned for its magnificent natural scenery and rich cultural heritage, making it an ideal destination for tourists who are looking for a unique and unforgettable travel experience.</p>
-<p>Dujiangyan is famous for its ancient irrigation system, which was built over 2,000 years ago and remains in use today. The system is considered one of the greatest engineering marvels of ancient China, and visitors can witness its beauty and functionality by taking a boat ride along the river. In addition to its historical significance, Dujiangyan is also surrounded by stunning natural beauty, including lush mountains, sparkling rivers, and verdant forests.</p>
-<p>Whether you are interested in history, culture, or nature, Dujiangyan has something to offer for everyone. So come, explore this beautiful city and immerse yourself in its rich history and natural beauty. We guarantee that you will leave Dujiangyan with a newfound appreciation for this unique and fascinating destination. Enjoy your trip!</p>
-<p>欢迎来到都江堰，一个位于中国四川省的美丽和历史悠久的城市。这个迷人的城市以其壮丽的自然风光和丰富的文化遗产而闻名，是寻求独特和难忘旅行体验的游客理想的目的地。</p>
-<p>都江堰以其古老的灌溉系统而闻名，该系统建于2000多年前，至今仍在使用。该系统被认为是古代中国最伟大的工程奇迹之一，游客可以通过沿河船游见证其美丽和功能性。除了其历史意义外，都江堰周围还环绕着壮丽的自然美景，包括茂盛的山峦、闪闪发光的河流和绿油油的森林。</p>
-<p>无论您对历史、文化还是自然有兴趣，都江堰都有适合每个人的内容。所以，来探索这个美丽的城市，沉浸在其丰富的历史和自然美中。我们保证您将带着对这个独特和迷人的目的地的新的钦佩离开都江堰。祝您旅途愉快！</p>
-]]></content>
-  </entry>
-  <entry>
     <title>算法设计与分析的常用十大方案</title>
     <url>//post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</url>
     <content><![CDATA[<h1 id="01背包问题（最优解问题）"><a href="#01背包问题（最优解问题）" class="headerlink" title="01背包问题（最优解问题）"></a>01背包问题（最优解问题）</h1><p>就是现在有一个体积为c的背包，现在要装一些东西，这些东西有体积和价值，现在要求一个最优解，<br>也就是在c之内，放最大价值的物品<br>目的是限制化重量下，求最大价值</p>
@@ -6363,6 +6213,130 @@ return total_value,select_items</code></pre>
 		nodes.append(Node(node.level+1,bound,weight))
 return max_value</code></pre>
 
+]]></content>
+  </entry>
+  <entry>
+    <title>数据库恢复与安全性</title>
+    <url>//post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</url>
+    <content><![CDATA[<h1 id="数据库恢复与安全性（Oracle）"><a href="#数据库恢复与安全性（Oracle）" class="headerlink" title="数据库恢复与安全性（Oracle）"></a>数据库恢复与安全性（Oracle）</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>（1）了解oracle的物理备份<br>（2）掌握oracle数据库逻辑备份方法<br>（3）掌握oracle数据库恢复的方法<br>（4）学会使用exp备份数据库、使用imp恢复数据库<br>（5）了解flashback 的使用<br>（6）学会完成SQL导入导出<br>（7）掌握ORACLE中有关用户创建的方法<br>（8）熟练掌握PL-SQL的数据控制语言，能通过自主存取控制进行权限管理<br>（9）熟悉用户资源文件的使用<br>（10）熟悉ORACLE中角色管理<br>（11）熟悉视图机制在自主存取控制上的应用</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>Oracle Database 12 home</p>
+<h2 id="实验步骤、出现的问题及解决方案"><a href="#实验步骤、出现的问题及解决方案" class="headerlink" title="实验步骤、出现的问题及解决方案"></a>实验步骤、出现的问题及解决方案</h2><p>数据库用户、表空间、表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145025551.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145115615.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124144945430.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>逻辑备份</p>
+<p>导出“预约”表</p>
+<pre class="line-numbers language-oracle" data-language="oracle"><code class="language-oracle">exp userid&#x3D;ZS20220872&#x2F;123456@orcl tables&#x3D;TEST.预约 file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124145730196.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151312923.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>删除”预约“表</p>
+<pre class="line-numbers language-none"><code class="language-none">drop table 预约;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150202433.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>导入“预约表”，恢复“预约表”</p>
+<pre class="line-numbers language-none"><code class="language-none">imp userid&#x3D;ZS20220872&#x2F;123456@orcl fromuser&#x3D;test file&#x3D;C:\Users\Administrator\Desktop\西南科技大学\数据库原理\预约.dmp tables&#x3D;预约</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150853581-16692737350081.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>查询预约表中信息</p>
+<pre class="line-numbers language-none"><code class="language-none">select * from 预约;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124150933598.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>导出数据库</p>
+<pre class="line-numbers language-none"><code class="language-none">exp userid&#x3D;ZS20220872&#x2F;123456@orcl full&#x3D;y inctype&#x3D;complete file&#x3D;C:\Users\Administrator\Desktop\西 南科技大学\数据库原理\all.dmp</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151159985.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124151327016.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>使用闪回(flashback)</p>
+<p>设置行可移动</p>
+<pre class="line-numbers language-none"><code class="language-none">alter table 读者 enable row movement;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124152743635.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>在读者表中添加多条记录</p>
+<pre class="line-numbers language-none"><code class="language-none">insert into 读者 values(&#39;20190325&#39;,&#39;张四&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;1352659962&#39;,&#39;52182193213123&#39;);
+insert into 读者 values(&#39;201903232&#39;,&#39;张七&#39;,&#39;西科大应计学院&#39;,&#39;男&#39;,&#39;西山学院西100宿舍楼&#39;,&#39;135262359962&#39;,&#39;522665445454564563&#39;);
+select 姓名,性别 from 读者;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153029912.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153117778.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153425218.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221124153425218"></p>
+<p>闪回到改变之前</p>
+<pre class="line-numbers language-none"><code class="language-none">flashback table 读者 to timestamp to_timestamp(&#39;2022&#x2F;11&#x2F;24 15:30:00&#39;,&#39;YYYY&#x2F;MM&#x2F;DDHH24:MI:SS&#39;);
+ select 姓名,性别 from 读者;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153638827.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>SQl导入导出</p>
+<p>导出图书表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154258167.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124153840889.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>删除表</p>
+<p>NULL</p>
+<p>导入表</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154336840.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>以SYSTEM登录数据库，为自己帐号增加系统角色DBA</p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154609641.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">grant dba to ZS20220872;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154647214.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>重新以自己的帐号登录，创建一个数据库用户，该用户拥有所有CONNECT, RESOURCE，DBA系统角色权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create user Renchengzhen identified by 123456;
+grant connect to renchengzhen;
+grant resource to renchengzhen;
+grant dba to renchengzhen;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124154932902.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155023487.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155114676.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>(未定义函数，以下语句无效)</p>
+<p>建立角色：renchengzhen_OPER，该角色拥有调用存储过程借书、还书、预约的权限，以及CONNECT系统角色权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_role;
+grant connect to renchengzhen_role;
+grant execute on 借书 to renchengzhen_role;
+grant execute on 还书 to renchengzhen_role;
+grant execute on 预约 to renchengzhen_role;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155502229.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个数据库用户：用户_oper（用户为“自己名字全拼”）为该用户授权角色：用户_role。以该用户登录，完成借书，还书功能。</p>
+<pre class="line-numbers language-none"><code class="language-none">create role renchengzhen_oper;
+grant renchengzhen_role to renchengzhen_oper;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155900990.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">call renchengzhen.借书();</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124155939791.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>以自己的帐号登录，建立视图VIEW_READER, 该视图包含书目（ISBN, 书名，作者，出版单位，图书分类名称）</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE VIEW VIEW_READER
+AS
+SELECT
+	&quot;书目&quot;.&quot;iSBN&quot;, 
+	&quot;书目&quot;.&quot;书名&quot;, 
+	&quot;书目&quot;.&quot;作者&quot;, 
+	&quot;书目&quot;.&quot;出版单位&quot;, 
+	&quot;书目&quot;.&quot;图书分类号&quot;
+FROM
+	&quot;书目&quot;;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161138090.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个数据库用户：renchengzhen_USER1，该用户具有对视图VIEW_READER查询的权限。</p>
+<pre class="line-numbers language-none"><code class="language-none">create user renchengzhen_user1 identified by 123456;
+grant connect to renchengzhen_user1;
+grant select on view_reader to renchengzhen_user1;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161413536.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>创建一个概要文件，如果renchengzhen_USER1连续3次登录失败，则锁定该账户，10天后该账户自动解锁。把创建的概要文件分配给该账号，然后以该用户登录进行权限测试。</p>
+<pre class="line-numbers language-none"><code class="language-none">CREATE PROFILE LOCK_USER LIMIT
+FAILED_LOGIN_ATTEMPTS 3
+PASSWORD_LOCK_TIME 10;
+ALTER USER renchengzhen_USER1 PROFILE LOCK_USER;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161605933.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161636982.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161711052.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161729036.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<pre class="line-numbers language-none"><code class="language-none">ALTER USER renchengzhen_USER1 ACCOUNT UNLOCK;</code></pre>
+
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161834866.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" class="lazyload" data-srcset="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7/image-20221124161844693.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 ]]></content>
   </entry>
   <entry>
@@ -7981,6 +7955,38 @@ InitList:
       </tags>
   </entry>
   <entry>
+    <title>英语笔记</title>
+    <url>//post/%E8%8B%B1%E8%AF%AD%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<h2 id="虚拟语气"><a href="#虚拟语气" class="headerlink" title="虚拟语气"></a>虚拟语气</h2><p>1、—Tom is always making so many mistakes in his English exercises!  — Yeah. If he ________ more careful, he ________ fewer mistakes.</p>
+<p>were,would make</p>
+<p>试题分析：汤姆总是在英语联系中犯那么多错误！如果他可以更加细心一点，他就会犯更少的错误。</p>
+<p>表示与现在事实相反的假设，If+主语+动词过去式（be动词用were）,主语+would&#x2F;should&#x2F;might&#x2F;could+动词原形。</p>
+<p>2、If I ＿＿you . I＿＿study harder.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会更努力学习。</p>
+<p>虚拟语气表示与过去事实相反。</p>
+<p>3、 If I ______ you, I ______invite him to go to see a movie.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会邀请他去看电影，go to see a movie去看电影，invite sb to do 邀请某人做某事，在表达与现在事实相反的虚拟语气中，Be动词用were，主语用would。</p>
+<p>4、If I  you,I  buy a bike for him.</p>
+<p>were,would</p>
+<p>试题分析：如果我是你，我会给他买一俩自行车，buy sth for sb给某人买某物，本句是虚拟语气，表示与现在的事实相反，在虚拟语气中不能用was。</p>
+<p>5、— Come and join us, Ben!— I’m afraid I can’t. I’m too busy now. If I ________ time, I would certainly go.</p>
+<p>had</p>
+<p>试题分析：本、来加入我们吧！恐怕我不能，我现在太忙，如果我有时间，我一定会去的。条件状语从句中描述的与现在相反的事实，从句用一般过去时态。</p>
+<h2 id="作文"><a href="#作文" class="headerlink" title="作文"></a>作文</h2><p>欢迎游客来北京旅游</p>
+<p>Welcome to Beijing, the bustling capital city of China! This vibrant city offers an abundance of history, culture, and modern amenities. From visiting the iconic Forbidden City and climbing the Great Wall, to experiencing the local street food and shopping at the bustling markets, there is truly something for everyone in Beijing. Whether you are a first-time visitor or a returning traveler, we are confident that you will find this city to be a unique and fascinating destination. So come, explore and immerse yourself in the rich history and culture of Beijing. Enjoy your trip!</p>
+<p>欢迎来到北京，中国繁华的首都！这座充满活力的城市提供了丰富的历史、文化和现代设施。从参观标志性的故宫和爬登长城，到体验当地的街头美食和在繁忙的市场购物，北京确实有适合每个人的地方。无论您是初次访问者还是回头客，我们相信您会发现这座城市是一个独特而有趣的目的地。所以，来吧，探索和沉浸在北京丰富的历史和文化中。祝您旅途愉快！</p>
+<p>都江堰旅游</p>
+<p>Welcome to Dujiangyan, a beautiful and historic city located in Sichuan province, China. This charming city is renowned for its magnificent natural scenery and rich cultural heritage, making it an ideal destination for tourists who are looking for a unique and unforgettable travel experience.</p>
+<p>Dujiangyan is famous for its ancient irrigation system, which was built over 2,000 years ago and remains in use today. The system is considered one of the greatest engineering marvels of ancient China, and visitors can witness its beauty and functionality by taking a boat ride along the river. In addition to its historical significance, Dujiangyan is also surrounded by stunning natural beauty, including lush mountains, sparkling rivers, and verdant forests.</p>
+<p>Whether you are interested in history, culture, or nature, Dujiangyan has something to offer for everyone. So come, explore this beautiful city and immerse yourself in its rich history and natural beauty. We guarantee that you will leave Dujiangyan with a newfound appreciation for this unique and fascinating destination. Enjoy your trip!</p>
+<p>欢迎来到都江堰，一个位于中国四川省的美丽和历史悠久的城市。这个迷人的城市以其壮丽的自然风光和丰富的文化遗产而闻名，是寻求独特和难忘旅行体验的游客理想的目的地。</p>
+<p>都江堰以其古老的灌溉系统而闻名，该系统建于2000多年前，至今仍在使用。该系统被认为是古代中国最伟大的工程奇迹之一，游客可以通过沿河船游见证其美丽和功能性。除了其历史意义外，都江堰周围还环绕着壮丽的自然美景，包括茂盛的山峦、闪闪发光的河流和绿油油的森林。</p>
+<p>无论您对历史、文化还是自然有兴趣，都江堰都有适合每个人的内容。所以，来探索这个美丽的城市，沉浸在其丰富的历史和自然美中。我们保证您将带着对这个独特和迷人的目的地的新的钦佩离开都江堰。祝您旅途愉快！</p>
+]]></content>
+  </entry>
+  <entry>
     <title>高等数学</title>
     <url>//post/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6.html</url>
     <content><![CDATA[<h1 id="高等数学学习笔记"><a href="#高等数学学习笔记" class="headerlink" title="高等数学学习笔记"></a>高等数学学习笔记</h1><p>数学公式显示错误时，可刷新界面。</p>
@@ -8221,11 +8227,5 @@ InitList:
       <tags>
         <tag>高数</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>文件盒子</title>
-    <url>//post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html</url>
-    <content><![CDATA[<h1 id="ppt的内容"><a href="#ppt的内容" class="headerlink" title="ppt的内容"></a>ppt的内容</h1><div class="link-group"><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="1.txt" href="/files/1.txt"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">1.txt</p><p class="url">/files/1.txt</p></div></a></div><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="案例分析1.pptx" href="/files/案例分析1.pptx"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></div><div class="right"><p class="text">案例分析1.pptx</p><p class="url">/files/案例分析1.pptx</p></div></a></div></div>
-]]></content>
   </entry>
 </search>
