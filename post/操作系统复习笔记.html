@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>springboot+vue（1） | 小小世界</title>
+  <title>操作系统复习笔记 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/头像.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -612,21 +612,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子3.jpg')">
+  background-position: center center;position: relative;background-image:url('https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-21.png')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        springboot+vue（1）
+        操作系统复习笔记
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-08-24 |
+          <i class="fas fa-calendar"></i> 发表于：2023-05-23 |
         </span>
       
 
@@ -635,11 +635,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 784 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 5.6k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 2分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 18分钟 |
           </span>
   
           
@@ -666,63 +666,318 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>JavaEE：Springboot+MybatisPlus</p>
-<p>Web前端：Vue+ELementUi</p>
-<h2 id="Web基础"><a href="#Web基础" class="headerlink" title="Web基础"></a>Web基础</h2><p>主要的软件架构模式：BS（浏览器|服务器） 与 CS（客户端|服务器）</p>
-<p>Web主要的架构模式：BS（维护方便，开发简单、成本低、更新快等）</p>
-<p>程序的逻辑和数据都在服务端，浏览器求请求服务器，获取web页面，并把web页面展示给用户。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>JDK 1.8以上就可以（环境变量配置）</p>
-<p>IDEA 什么版本都可以</p>
-<p>Maven（项目管理工具）处理java项目的自动化构建（编译、运行、打包、文档）和依赖的管理。</p>
-<h2 id="Springboot介绍"><a href="#Springboot介绍" class="headerlink" title="Springboot介绍"></a>Springboot介绍</h2><p>基于Spring的全新框架，简化spring的搭建和开发，比ssm的配置简单了很多，省略了很多xml文档。</p>
-<p>约定优于配置，默认配置较多，只需要很少的配置。</p>
-<p>内嵌了tomcat、jetty，不需要war包。</p>
-<p>提供了定制化的启动器Starters，简化了maven（定制了maven的配置，帮助我们简化了配置），开箱就用。</p>
-<p>纯java、没有xml和代码生成。</p>
-<p>提供了监控方案，安全、服务健康等。</p>
-<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210539414.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824210539414"></p>
-<p>在idea中选择的时候，注意jdk的版本等信息。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824210802751.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824210802751"></p>
-<p>此处可选择springboot的版本信息，以及要导入的依赖。</p>
-<p>此时等待一段时间即可。</p>
-<p>目录结构：</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211339566.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824211339566"></p>
-<p>java下存放java代码，resource下的static和template用来存放公共资源，一般的，我们把js、css、图片等信息存放到static下，将页面放到template下，访问时，static的优先级是要大于template的，并且template下的页面不用thymeleaf映射和controller是无法直接url访问的。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824211737361.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824211737361"></p>
-<p>写一个Controller，注解声明一下，这个类就可以去接受请求，而后写一个方法，加一个注解getmapping，这表明浏览器发一个get请求，字符串内的内容是url。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212119510.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824212119510"></p>
-<p>此时，运行启动器，打开网页，访问hello，就可以看到我们定义的返回值。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212210339.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824212210339"></p>
-<p>一般的，默认的端口是8080，可自定义。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212243749.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824212243749"></p>
-<h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p>在实际开发中，我们会经常的修改后台文件，导致重新编译、启动等，非常麻烦。</p>
-<p>springboot提供了devtools组件，让我们不用手动重启应用也可以重新编译、启动。</p>
-<p>devtools会监控classpath下的文件，触发restart类加载器重新加载这个类，从而实现类文件和属性文件的热部署。</p>
-<p>注意的是，也不是什么都需要重启应用，可以通过设置属性来制定一些目录或文件的修改不用重启。</p>
-<p>引入依赖</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826222051160.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220826222051160"></p>
-<p>其中optional的含义是，依赖不会传递，也就是其他项目如果引入这个项目的jar包，不会包含这个devtools。</p>
-<p>引入依赖后，记得刷一下maven。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824212809166.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824212809166"></p>
-<p>如果你找不到这个按钮。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220824213521794.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220824213521794"></p>
-<p>在引入了依赖之后，我们需要在idea中手动配置。</p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220434604.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220826220434604"></p>
-<p><img src="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" class="lazyload" data-srcset="/post/springboot-vue%EF%BC%881%EF%BC%89/image-20220826220943295.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220826220943295"></p>
-<p>重启idea后生效。</p>
-<p>但是这其实并不是真正的热部署，但是好在他可以实现快速重启。</p>
-<p>如果你觉得这不够快，你可以使用**<a href="https://link.zhihu.com/?target=https://jrebel.com/software/jrebel/">JRebel</a>**插件，只是说它要收费。</p>
+        <h1 id="操作系统介绍"><a href="#操作系统介绍" class="headerlink" title="操作系统介绍"></a>操作系统介绍</h1><h2 id="操作系统的历史"><a href="#操作系统的历史" class="headerlink" title="操作系统的历史"></a>操作系统的历史</h2><p>第一个操作系统是在 1950 年代和 1960 年代开发的。这些早期的操作系统非常简单，专为大型计算机设计。</p>
+<p>在 20 世纪 70 年代，操作系统开始变得更加复杂。这些新操作系统专为个人计算机设计，能够同时支持多个用户和多个程序。</p>
+<p>在 20 世纪 80 年代，操作系统变得更加强大和用户友好。这些新操作系统能够支持图形用户界面 (GUI)，并且能够在各种硬件平台上运行。</p>
+<p>如今，操作系统对于计算机的运行至关重要。它们为用户提供了运行应用程序、管理文件和访问硬件设备的平台。</p>
+<h2 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h2><p>操作系统执行各种功能，包括：</p>
+<ul>
+<li>管理硬件资源：操作系统管理计算机的硬件资源，例如 CPU、内存和 I&#x2F;O 设备。</li>
+<li>提供用户界面：操作系统提供用户界面，允许用户与计算机进行交互。</li>
+<li>管理文件：操作系统管理文件，文件是存储在计算机硬盘驱动器上的数据集合。</li>
+<li>提供安全性：操作系统提供安全功能来保护用户免受恶意软件和其他威胁。</li>
+<li><strong>操作系统的组成部分</strong></li>
+</ul>
+<p>操作系统由多种组件组成，包括：</p>
+<ul>
+<li>内核：内核是操作系统的核心。它负责管理计算机的硬件资源，并为其他软件提供运行平台。</li>
+<li>用户界面：用户界面是用户与操作系统交互的方式。它包括桌面、菜单和图标等元素。</li>
+<li>文件系统：文件系统是一种在计算机硬盘驱动器上组织文件的方式。它允许用户存储、检索和管理文件。</li>
+<li>设备驱动程序：设备驱动程序是允许操作系统与打印机、键盘和鼠标等硬件设备进行通信的软件。</li>
+<li>服务：服务是在后台运行并为操作系统和其他程序提供基本服务的程序。</li>
+<li>安全性：操作系统提供安全功能以保护用户免受恶意软件和其他威胁。</li>
+</ul>
+<h1 id="进程描述与控制"><a href="#进程描述与控制" class="headerlink" title="进程描述与控制"></a>进程描述与控制</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是当前正在运行的程序。</p>
+<p>它是一个执行单元，由一个程序计数器、一组寄存器和一个堆栈组成。</p>
+<p>程序计数器指向进程将执行的下一条指令。寄存器存储变量的值，堆栈存储调用堆栈。</p>
+<h2 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h2><p>当用户启动一个程序时，操作系统会为该程序创建一个进程。该进程是使用内存中程序代码和数据的副本创建的。该进程也被赋予一个唯一的标识符和一个优先级。</p>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a><strong>进程调度</strong></h2><p>操作系统调度进程的执行。调度器决定接下来运行哪个进程。调度程序可以使用多种因素来做出决定，例如进程的优先级、状态以及等待运行的时间。</p>
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a><strong>进程通信</strong></h2><p>操作系统提供了多种允许进程相互通信的IPC机制。这些机制包括共享内存、管道和套接字。</p>
+<ul>
+<li><strong>共享内存</strong></li>
+</ul>
+<p>共享内存是一种技术，其中两个或多个进程共享一个公共内存块。这允许进程轻松地彼此共享数据。</p>
+<ul>
+<li><strong>管道</strong></li>
+</ul>
+<p>管道是一种单向通信通道，允许两个进程相互通信。管道通常用于进程之间的短期通信。</p>
+<ul>
+<li><strong>套接字</strong></li>
+</ul>
+<p>套接字是一种双向通信通道，允许两个进程相互通信。套接字通常用于进程之间的长期通信。</p>
+<h2 id="进程终止"><a href="#进程终止" class="headerlink" title="进程终止"></a>进程终止</h2><p>当一个进程终止时，操作系统回收它的资源。回收的资源包括内存、CPU 时间和 I&#x2F;O 资源。</p>
+<p>操作系统管理进程以确保它们高效运行并且不会相互干扰。操作系统使用多种技术来管理进程，例如进程创建、调度和终止。</p>
+<p>以下是操作系统在管理进程时面临的一些挑战：</p>
+<ul>
+<li><strong>并发</strong></li>
+</ul>
+<p>多个进程可以同时运行。操作系统必须确保这些进程不会相互干扰。</p>
+<ul>
+<li><strong>僵局</strong></li>
+</ul>
+<p>死锁是两个或多个进程互相等待完成的情况。操作系统必须防止死锁的发生。</p>
+<ul>
+<li><strong>饥饿</strong></li>
+</ul>
+<p>饥饿是一种进程无法运行的情况，因为它总是被其他进程抢占。操作系统必须防止发生饥饿。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<ul>
+<li><strong>调度</strong></li>
+</ul>
+<p>操作系统使用调度程序来决定接下来运行哪个进程。调度程序可以使用多种因素来做出决定，例如进程的优先级、状态以及等待运行的时间。</p>
+<ul>
+<li><strong>同步化</strong></li>
+</ul>
+<p>操作系统使用同步技术来确保进程不会相互干扰。同步技术包括互斥、信号量和监视器。</p>
+<ul>
+<li><strong>死锁检测和预防</strong></li>
+</ul>
+<p>操作系统可以检测死锁并防止它们发生。死锁检测和预防技术包括资源分配图和银行家算法。</p>
+<ul>
+<li><strong>避免饥饿</strong></li>
+</ul>
+<p>操作系统可以通过使用优先级继承和老化等多种技术来避免饥饿。</p>
+<h1 id="处理器调度和死锁"><a href="#处理器调度和死锁" class="headerlink" title="处理器调度和死锁"></a>处理器调度和死锁</h1><h2 id="处理器调度"><a href="#处理器调度" class="headerlink" title="处理器调度"></a>处理器调度</h2><p>处理器调度是决定下一个进程将在 CPU 上运行的过程。操作系统使用调度程序来做出此决定。调度程序可以使用多种因素来做出决定，例如进程的优先级、状态以及等待运行的时间。</p>
+<p><strong>抢占式调度</strong></p>
+<p>在抢占式调度中，操作系统可以抢占正在运行的进程并将 CPU 交给另一个进程。这是在正在运行的进程用完其时间片或更高优先级的进程准备好运行时完成的。</p>
+<p><strong>非抢占式调度</strong></p>
+<p>在非抢占式调度中，进程只有在主动放弃CPU时才能被抢占。这是在进程调用系统调用或进入 I&#x2F;O 等待</p>
+<p><strong>僵局</strong></p>
+<p>死锁是两个或多个进程互相等待完成的情况。当两个进程各自持有另一个进程需要的资源时，就会发生这种情况。可以使用多种技术来防止死锁，例如资源分配图和银行家算法。</p>
+<p>操作系统使用多种技术来调度 CPU 上进程的执行。这些技术允许操作系统确保进程获得公平份额的 CPU 时间，并且没有进程会饿死 CPU 时间。</p>
+<p>以下是操作系统在调度进程时面临的一些挑战：</p>
+<p><strong>并发</strong></p>
+<p>多个进程可以同时运行。操作系统必须确保这些进程不会相互干扰。</p>
+<p><strong>僵局</strong></p>
+<p>死锁是两个或多个进程互相等待完成的情况。操作系统必须防止死锁的发生。</p>
+<p><strong>饥饿</strong></p>
+<p>饥饿是一种进程无法运行的情况，因为它总是被其他进程抢占。操作系统必须防止发生饥饿。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<p><strong>调度</strong></p>
+<p>操作系统使用调度程序来决定接下来运行哪个进程。调度程序可以使用多种因素来做出决定，例如进程的优先级、状态以及等待运行的时间。</p>
+<p><strong>死锁检测和预防</strong></p>
+<p>操作系统可以检测死锁并防止它们发生。死锁检测和预防技术包括资源分配图和银行家算法。</p>
+<p><strong>避免饥饿</strong></p>
+<p>操作系统可以通过使用优先级继承和老化等多种技术来避免饥饿。</p>
+<h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><ul>
+<li><strong>互斥</strong></li>
+</ul>
+<p>互斥是一种确保一次只有一个进程可以访问共享资源的技术。这是通过使用锁来完成的。当进程想要访问共享资源时，它必须获得锁。一旦进程获得了锁，它就可以访问共享资源。当进程使用完共享资源时，它必须释放锁。</p>
+<ul>
+<li><strong>信号量</strong></li>
+</ul>
+<p>信号量是一种同步原语，可用于控制对共享资源的访问。信号量是一个可以保存整数值的变量。信号量的值可以是0或1。当信号量的值为0时，表示共享资源不可用。当信号量的值为1时，表示共享资源可用。</p>
+<ul>
+<li><strong>监视器</strong></li>
+</ul>
+<p>监视器是一种同步结构，结合了互斥和信号量的特性。监视器是包含共享资源和锁的数据结构。当一个进程想要访问共享资源时，它必须获得锁。一旦进程获得了锁，它就可以访问共享资源。当进程使用完共享资源时，它必须释放锁。</p>
+<p>操作系统使用多种技术来确保进程不会干扰彼此的数据。这些技术，如互斥、信号量和监视器，允许操作系统确保进程以安全有序的方式访问共享资源。</p>
+<p>以下是操作系统在确保进程同步方面面临的一些挑战：</p>
+<ul>
+<li><strong>竞争条件</strong></li>
+</ul>
+<p>竞争条件是两个或多个进程试图同时访问同一个共享资源的情况。这可能会导致数据损坏。</p>
+<ul>
+<li><strong>僵局</strong></li>
+</ul>
+<p>死锁是两个或多个进程互相等待完成的情况。当两个进程各自持有另一个进程需要的资源时，就会发生这种情况。</p>
+<ul>
+<li><strong>饥饿</strong></li>
+</ul>
+<p>饥饿是一种进程无法访问共享资源的情况，因为它总是被其他进程抢占。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<ul>
+<li><strong>互斥</strong></li>
+</ul>
+<p>互斥确保一次只有一个进程可以访问共享资源。这可以防止竞争条件。</p>
+<ul>
+<li><strong>信号量</strong></li>
+</ul>
+<p>信号量用于控制对共享资源的访问。它们可以防止死锁和饥饿。</p>
+<ul>
+<li><strong>监视器</strong></li>
+</ul>
+<p>监视器是互斥和信号量的组合。它们提供了一种更强大的方式来控制对共享资源的访问。</p>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><ul>
+<li><strong>内存分配</strong></li>
+</ul>
+<p>内存分配就是给进程分配内存的过程。操作系统必须确保每个进程都有足够的内存来运行，但没有进程使用超过其需要的内存。</p>
+<ul>
+<li><strong>分页</strong></li>
+</ul>
+<p>分页是一种内存管理技术，它允许操作系统使用比系统中实际存在的内存更多的内存。当进程需要访问当前不在内存中的页面时，操作系统会将页面换出到磁盘并调入另一个页面。</p>
+<ul>
+<li><strong>分段</strong></li>
+</ul>
+<p>分段是一种内存管理技术，允许操作系统将内存划分为逻辑段。可以为每个段分配其自己的权限，这允许操作系统保护进程免受彼此的影响。</p>
+<p>操作系统使用多种技术来管理内存，例如内存分配、分页和分段。这些技术允许操作系统确保进程有足够的内存来运行，没有进程使用超过其需要的内存，并且进程相互保护。</p>
+<p>以下是操作系统在管理内存方面面临的一些挑战：</p>
+<ul>
+<li><strong>内存碎片</strong></li>
+</ul>
+<p>内存碎片是指存在小块空闲内存的情况，这些内存块太小而无法被任何进程使用。当进程分配内存然后释放时，可能会发生这种情况。</p>
+<ul>
+<li><strong>内存保护</strong></li>
+</ul>
+<p>操作系统必须确保进程不访问它们无权访问的内存。这是通过使用内存保护机制（例如分段和分页）来完成的。</p>
+<ul>
+<li><strong>内存开销</strong></li>
+</ul>
+<p>操作系统将一些内存用于自己的目的，例如存储进程表和内存映射。此内存称为内存开销。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<ul>
+<li><strong>内存压缩</strong></li>
+</ul>
+<p>内存压缩是一种可用于减少内存碎片的技术。内存压缩将空闲内存块移动到一起，以便进程可以使用它们。</p>
+<ul>
+<li><strong>内存保护</strong></li>
+</ul>
+<p>操作系统使用内存保护机制来确保进程不会访问它们无权访问的内存。</p>
+<ul>
+<li><strong>减少内存开销</strong></li>
+</ul>
+<p>操作系统可以通过使用虚拟内存和分页等技术来减少内存开销。虚拟内存允许操作系统使用比系统中实际存在的内存更多的内存。分页允许操作系统在不使用时将页面换出到磁盘。</p>
+<h1 id="虚拟存储"><a href="#虚拟存储" class="headerlink" title="虚拟存储"></a>虚拟存储</h1><ul>
+<li><strong>虚拟内存</strong></li>
+</ul>
+<p>虚拟内存是一种内存管理技术，它允许每个进程拥有一个大于系统物理内存的虚拟地址空间。这是通过将虚拟地址空间划分为页面，然后只存储当前在物理内存中使用的页面来实现的。当前未使用的页面存储在磁盘上。</p>
+<ul>
+<li><strong>分页</strong></li>
+</ul>
+<p>分页是一种用于实现虚拟内存的技术。当进程需要访问当前不在物理内存中的页面时，操作系统会将页面换出到磁盘并调入另一个页面。</p>
+<ul>
+<li><strong>分割</strong></li>
+</ul>
+<p>分段是用于实现虚拟内存的另一种技术。分段将虚拟地址空间划分为多个段，然后每个段都可以分配自己的权限。这允许操作系统保护进程彼此。</p>
+<ul>
+<li><strong>地址翻译</strong></li>
+</ul>
+<p>地址转换是将虚拟地址转换为物理地址的过程。这是由操作系统使用转换后备缓冲区 (TLB) 完成的。TLB 是一个小表，用于存储虚拟地址和物理地址之间的映射关系。</p>
+<p>虚拟内存是现代操作系统的一个重要特性。它允许进程运行，即使它们大于系统的物理内存。它还允许操作系统相互保护进程。</p>
+<p>以下是虚拟内存的一些好处：</p>
+<ul>
+<li><strong>内存使用量增加</strong></li>
+</ul>
+<p>虚拟内存允许进程使用比系统中实际存在的内存更多的内存。这是因为操作系统可以存储当前未在磁盘上使用的页面。</p>
+<ul>
+<li><strong>提高性能</strong></li>
+</ul>
+<p>虚拟内存可以通过允许操作系统在不使用页面时将页面换出到磁盘来提高性能。这为其他进程释放了物理内存，从而可以提高系统的整体性能。</p>
+<ul>
+<li><strong>提高安全性</strong></li>
+</ul>
+<p>虚拟内存可以通过允许操作系统相互保护进程来提高安全性。这是因为每个进程都有自己的虚拟地址空间，操作系统可以控制哪些进程可以访问哪些页面。</p>
+<h1 id="IO系统"><a href="#IO系统" class="headerlink" title="IO系统"></a>IO系统</h1><ul>
+<li><strong>输入&#x2F;输出 (I&#x2F;O)</strong></li>
+</ul>
+<p>I&#x2F;O 是在计算机和外部设备之间传输数据的过程。I&#x2F;O 设备是允许用户与计算机进行交互的硬件设备，例如键盘、鼠标和打印机。</p>
+<ul>
+<li><strong>设备驱动程序</strong></li>
+</ul>
+<p>设备驱动程序是允许操作系统与 I&#x2F;O 设备通信的软件程序。设备驱动程序负责将操作系统的指令翻译成 I&#x2F;O 设备可以理解的命令。</p>
+<ul>
+<li><strong>缓冲</strong></li>
+</ul>
+<p>缓冲是一种用于提高 I&#x2F;O 操作性能的技术。当进程从 I&#x2F;O 设备请求数据时，操作系统首先将数据复制到缓冲区中。缓冲区是位于计算机主内存中的一小块内存。一旦数据在缓冲区中，操作系统就可以将数据传输到进程，而不必等待 I&#x2F;O 设备完成数据传输。</p>
+<ul>
+<li><strong>缓存</strong></li>
+</ul>
+<p>缓存是一种通过将频繁访问的数据存储在内存中来提高 I&#x2F;O 操作性能的技术。当进程从 I&#x2F;O 设备请求数据时，操作系统将首先检查数据是否已经在缓存中。如果数据在高速缓存中，操作系统就可以将数据传输给进程，而不必等待 I&#x2F;O 设备完成数据传输。</p>
+<h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><ul>
+<li><strong>文件</strong></li>
+</ul>
+<p>文件是存储在计算机硬盘上的数据集合。文件可以用来存储任何东西，例如文档、图像、音乐和视频。</p>
+<ul>
+<li><strong>文件系统</strong></li>
+</ul>
+<p>文件系统是一种在计算机硬盘驱动器上组织文件的方式。文件系统将硬盘分为若干个目录，每个目录可以包含若干个文件。</p>
+<ul>
+<li><strong>文件管理</strong></li>
+</ul>
+<p>文件管理是在计算机硬盘驱动器上创建、删除和访问文件的过程。文件管理通常使用文件管理器完成，文件管理器是允许用户与文件系统交互的软件程序。</p>
+<ul>
+<li><strong>文件创建</strong></li>
+</ul>
+<p>文件创建是在计算机硬盘驱动器上创建新文件的过程。要创建新文件，用户通常使用文件管理器打开一个新目录，然后输入文件名。</p>
+<ul>
+<li><strong>文件删除</strong></li>
+</ul>
+<p>文件删除是从计算机硬盘驱动器中删除文件的过程。要删除文件，用户通常使用文件管理器选择文件，然后按删除键。</p>
+<ul>
+<li><strong>文件存取</strong></li>
+</ul>
+<p>文件访问是打开计算机硬盘驱动器上的文件的过程。为了访问文件，用户通常使用文件管理器来选择文件然后按下打开键。</p>
+<p>文件管理是使用计算机的重要部分。它允许用户组织他们的文件并快速轻松地访问它们。</p>
+<p>以下是操作系统在管理文件时面临的一些挑战：</p>
+<ul>
+<li><strong>文件碎片</strong></li>
+</ul>
+<p>文件碎片是文件存储在硬盘驱动器上的非连续块中的情况。当文件被删除然后重新创建，或者文件被四处移动时，可能会发生这种情况。文件碎片会减慢文件访问速度。</p>
+<ul>
+<li><strong>文件安全</strong></li>
+</ul>
+<p>操作系统必须确保文件不会受到未经授权的访问。这是通过使用文件权限来完成的，文件权限控制谁可以访问文件以及他们可以对文件做什么。</p>
+<ul>
+<li><strong>文件备份</strong></li>
+</ul>
+<p>操作系统必须确保备份文件以防数据丢失。这是通过使用文件备份工具完成的，该工具将文件复制到安全位置。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<ul>
+<li><strong>碎片整理</strong></li>
+</ul>
+<p>碎片整理是一个可用于减少文件碎片的过程。碎片整理移动文件，以便它们存储在硬盘驱动器上的连续块中。</p>
+<ul>
+<li><strong>文件权限</strong></li>
+</ul>
+<p>文件权限用于控制谁可以访问文件以及他们可以对文件做什么。文件权限可以由用户或操作系统设置。</p>
+<ul>
+<li><strong>文件备份</strong></li>
+</ul>
+<p>文件备份是将文件复制到安全位置的过程。文件备份可以手动或自动完成。</p>
+<h1 id="磁盘存储管理"><a href="#磁盘存储管理" class="headerlink" title="磁盘存储管理"></a>磁盘存储管理</h1><ul>
+<li><strong>文件分配</strong></li>
+</ul>
+<p>文件分配是将磁盘上的空间分配给文件的过程。创建文件时，操作系统会在磁盘上为该文件分配一块空间。</p>
+<ul>
+<li><strong>碎片化</strong></li>
+</ul>
+<p>碎片是文件存储在磁盘上的非连续块中的情况。当文件被删除然后重新创建，或者文件被四处移动时，可能会发生这种情况。碎片会减慢文件访问速度。</p>
+<ul>
+<li><strong>袭击</strong></li>
+</ul>
+<p>RAID（独立磁盘冗余阵列）是一种可用于提高磁盘存储性能和可靠性的技术。RAID 的工作原理是将多个磁盘组合成一个逻辑磁盘。</p>
+<p>文件分配是磁盘存储管理的重要组成部分。它确保文件以高效的方式存储并且可以快速访问。</p>
+<p>碎片会减慢文件访问速度。它还会使删除文件变得困难。碎片整理是一个可用于减少碎片的过程。</p>
+<p>RAID 是一种可用于提高磁盘存储性能和可靠性的技术。RAID 的工作原理是将多个磁盘组合成一个逻辑磁盘。这可以通过将负载分散到多个磁盘来提高性能。它还可以通过在其中一个磁盘发生故障时提供备份来提高可靠性。</p>
+<p>以下是操作系统在管理磁盘存储方面面临的一些挑战：</p>
+<ul>
+<li><strong>磁盘空间管理</strong></li>
+</ul>
+<p>操作系统必须确保有效地使用磁盘空间。这是通过使用文件分配技术完成的，例如连续分配和链接分配。</p>
+<ul>
+<li><strong>磁盘碎片</strong></li>
+</ul>
+<p>磁盘碎片会减慢文件访问速度。操作系统可以使用碎片整理工具来减少碎片。</p>
+<ul>
+<li><strong>磁盘故障</strong></li>
+</ul>
+<p>磁盘可能会发生故障。操作系统必须确保在磁盘发生故障时数据不会丢失。这是通过使用 RAID 技术完成的。</p>
+<p>操作系统使用多种技术来克服这些挑战，例如：</p>
+<ul>
+<li><strong>文件分配技术</strong></li>
+</ul>
+<p>操作系统使用文件分配技术来确保有效地使用磁盘空间。连续分配将文件存储在磁盘上的连续块中。链接分配将文件存储在磁盘上的非连续块中。</p>
+<ul>
+<li><strong>碎片整理工具</strong></li>
+</ul>
+<p>操作系统使用碎片整理工具来减少磁盘碎片。碎片整理工具移动文件，以便它们存储在磁盘上的连续块中。</p>
+<ul>
+<li><strong>RAID技术</strong></li>
+</ul>
+<p>操作系统使用 RAID 技术来提高磁盘存储的性能和可靠性。RAID 的工作原理是将多个磁盘组合成一个逻辑磁盘。这可以通过将负载分散到多个磁盘来提高性能。它还可以通过在其中一个磁盘发生故障时提供备份来提高可靠性。</p>
 
       </div>
       <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/java/" class="">
-              java
-            </a>
-          
-        </div>
         
       </div>
       
@@ -733,7 +988,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="//post/springboot-vue（1）.html" target="_blank" title="springboot+vue（1）">http://rczmm.top//post/springboot-vue（1）.html</a>
+    <a href="//post/操作系统复习笔记.html" target="_blank" title="操作系统复习笔记">http://rczmm.top//post/操作系统复习笔记.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -751,40 +1006,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-21.png" alt="">
-    </div>
-    <a href="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8.html" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">Python装饰器</div>
-      </div>
-      
-      <!-- <div class="content">
-        Python 装饰器装饰器在Python中，函数也是一个对象，可以被当做参数传递，可以在另一个函数中调用，也可以实现函数
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子5.jpg" src="" alt="">
+      <img class="lazyload" src="https://blog-1304280091.cos.ap-chengdu.myqcloud.com/images/天气之子-19.png" src="" alt="">
     </div>
-    <a href="/post/%E5%9F%BA%E4%BA%8EPython%E7%9A%84QT%EF%BC%88%E4%BA%8C%EF%BC%89.html" class="post-nav-link">
+    <a href="/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">基于Python的QT（二）</div>
+        <div class="title-text">文件盒子</div>
       </div>
       <!-- <div class="content">
-        Qt首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。
-qtb
+        ppt的内容案例分析1.pptx/files/案例分析1.pptx项目立项.pptx/files/项目立项.pptx
+
       </div> -->
     </a>
   </div>
@@ -1086,7 +1323,7 @@ qtb
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B9"><span class="toc-text">内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E5%9F%BA%E7%A1%80"><span class="toc-text">Web基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Springboot%E4%BB%8B%E7%BB%8D"><span class="toc-text">Springboot介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E9%83%A8%E7%BD%B2"><span class="toc-text">热部署</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-text">操作系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-text">操作系统的历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">操作系统的功能</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8F%8F%E8%BF%B0%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="toc-text">进程描述与控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-text">进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">进程创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-text">进程调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-text">进程通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2"><span class="toc-text">进程终止</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6%E5%92%8C%E6%AD%BB%E9%94%81"><span class="toc-text">处理器调度和死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6"><span class="toc-text">处理器调度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-text">进程同步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8"><span class="toc-text">虚拟存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO%E7%B3%BB%E7%BB%9F"><span class="toc-text">IO系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-text">磁盘存储管理</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
