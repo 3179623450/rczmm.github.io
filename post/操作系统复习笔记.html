@@ -635,11 +635,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 11.1k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 12k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 38分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 41分钟 |
           </span>
   
           
@@ -666,7 +666,7 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="操作系统介绍"><a href="#操作系统介绍" class="headerlink" title="操作系统介绍"></a>操作系统介绍</h1><h3 id="操作系统的历史"><a href="#操作系统的历史" class="headerlink" title="操作系统的历史"></a>操作系统的历史</h3><p>第一个操作系统是在 1950 年代和 1960 年代开发的。这些早期的操作系统非常简单，专为大型计算机设计。</p>
+        <h2 id="操作系统介绍"><a href="#操作系统介绍" class="headerlink" title="操作系统介绍"></a>操作系统介绍</h2><h3 id="操作系统的历史"><a href="#操作系统的历史" class="headerlink" title="操作系统的历史"></a>操作系统的历史</h3><p>第一个操作系统是在 1950 年代和 1960 年代开发的。这些早期的操作系统非常简单，专为大型计算机设计。</p>
 <p>在 20 世纪 70 年代，操作系统开始变得更加复杂。这些新操作系统专为个人计算机设计，能够同时支持多个用户和多个程序。</p>
 <p>在 20 世纪 80 年代，操作系统变得更加强大和用户友好。这些新操作系统能够支持图形用户界面 (GUI)，并且能够在各种硬件平台上运行。</p>
 <p>如今，操作系统对于计算机的运行至关重要。它们为用户提供了运行应用程序、管理文件和访问硬件设备的平台。</p>
@@ -755,10 +755,11 @@
 <p>单道程序的环境中，程序可以理解为严格按照先后次序运行的序列。</p>
 <p>这样的顺序执行的程序，具有顺序性、封闭性、可再现性的特征。</p>
 <p><strong>程序的并发执行</strong></p>
-<p>对于并发的处理技术来说，程序的执行不再是顺序的，有的程序有一个执行顺序的问题，例如对于关于IO的程序来说，必要的需要先接受到输入才能继续下一步的操作。但是对于某些程序来说却没有。</p>
-<p>因此这样的程序具有间断性、失去封闭性、失去可再现性的特征。</p>
-<p>程序的并发是有条件的，Bernsterin条件规定了这一点，他将程序在执行期间要参考的变量取名为“读集”，另外的在执行期间要改变的变量集合取名为“写集”。</p>
-<p>两个程序P1与P2并发执行的条件是，当且仅当<br>$$<br>R（P1）∩W（P2）∪R（P2）∩W（P1）∪W（P1）∩W（P2）&#x3D; {∅}<br>$$</p>
+<p>对于并发的处理技术来说，进程的执行不再是顺序的，有的进程有一个执行顺序的问题，例如对于关于IO的进程来说，必要的需要先接受到输入才能继续下一步的操作。但是对于某些进程来说却没有。</p>
+<p>因此这样的进程具有间断性、失去封闭性、失去可再现性的特征。</p>
+<p>进程的并发是有条件的，Bernsterin条件规定了这一点，他将程序在执行期间要参考的变量取名为“读集”，另外的在执行期间要改变的变量集合取名为“写集”。</p>
+<p>两个进程P1与P2并发执行的条件是，当且仅当<br>$$<br>R（P1）∩W（P2）∪R（P2）∩W（P1）∪W（P1）∩W（P2）&#x3D; {∅}<br>$$</p>
+<p>简单的说，进程P1的读集要和P2的写集没有关系，写集要和P2的读集和写集都没有关系。才能形成无互斥的访问，两个进程才能并发执行。</p>
 <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程是当前正在运行的程序。</p>
 <p>它是操作系统的基本工作单元。进程是在用户启动程序时由操作系统创建的。它们在程序终止时被销毁。</p>
 <p>进程没有一个统一的定义，以上的说法并不准确，参考时请注意场景。</p>
@@ -1136,8 +1137,29 @@
 <p>因此我们需要新的更加灵活的方式来处理。</p>
 <p>引入不止 一个基址和界限寄存器对，给地址空间内的每个逻辑段（segment）一对。一个段只是地址空间里的一个连续定长的区域，在典型的地址空间里有 3 个逻辑不同的段：代码、栈 和堆。分段的机制使得操作系统能够将不同的段放到不同的物理内存区域，从而避免了虚拟地址空间中的未使用部分占用物理内存。</p>
 <p>段错误指的是在支持分段的机器上发生了非法的内存访问。有趣的是，即使在不支持分段的机器上这个术语依然保留。</p>
-<h3 id="空闲空间管理"><a href="#空闲空间管理" class="headerlink" title="空闲空间管理"></a>空闲空间管理</h3><p>要管理的空闲空间由大小不同的单元构成，管理就变得困难（而且有趣）。 </p>
-<p>这种情况出现在用户级的内存分配库（如 malloc()和 free()），或者操作系统用分段（segmentation） 的方式实现虚拟内存。在这两种情况下，出现了外部碎片（external fragmentation）的问题： 空闲空间被分割成不同大小的小块，成为碎片，后续的请求可能失败，因为没有一块足够 大的连续空闲空间，即使这时总的空闲空间超出了请求的大小。</p>
+<h3 id="空闲空间管理"><a href="#空闲空间管理" class="headerlink" title="空闲空间管理"></a>空闲空间管理</h3><p>事实上，要管理的空闲空间由大小不同的单元构成，他们不是连续的，管理就变得困难（而且有趣）。 </p>
+<p>在用户级的内存分配库（如 malloc()和 free()），或者操作系统用分段（segmentation） 的方式实现虚拟内存。</p>
+<p>在这两种情况下，出现了外部碎片（external fragmentation）的问题： 空闲空间被分割成不同大小的小块，成为碎片，后续的请求可能失败，因为没有一块足够 大的连续空闲空间，即使这时总的空闲空间超出了请求的大小。</p>
+<p>此时我们需要引入一些来自底层的机制。</p>
+<p><strong>分割和合并</strong></p>
+<p>当我们申请一个较小的空间时，刚好此刻的空闲空间足够，那么分配程序执行分割动作，找到一块满足的空间分割，将满足用户需求的一块返回，剩下的留在空闲空间中。</p>
+<p><strong>追踪已分配空间的大小</strong></p>
+<p>要想完成free函数，就必须完成这一点，毕竟你可以发现，在这个函数使用时，并没有携带参数。</p>
+<p>大多数分配程序会在头部保存一点额外信息，他在返回的内存块之前。</p>
+<p><strong>嵌入空闲空间</strong></p>
+<p><strong>让堆增长</strong></p>
+<p>当空闲空间的内存耗尽？此时如果还需要分配，那么就可以请求系统再次分配。</p>
+<h3 id="匹配策略（空闲空间分配算法）"><a href="#匹配策略（空闲空间分配算法）" class="headerlink" title="匹配策略（空闲空间分配算法）"></a>匹配策略（空闲空间分配算法）</h3><p>最优匹配（best fit）策略非常简单：首先遍历整个空闲列表，找到和请求大小一样或更 大的空闲块，然后返回这组候选者中最小的一块。这就是所谓的最优匹配（也可以称为最 小匹配）。只需要遍历一次空闲列表，就足以找到正确的块并返回。</p>
+<p>最差匹配（worst fit）方法与最优匹配相反，它尝试找最大的空闲块，分割并满足用户 需求后，将剩余的块（很大）加入空闲列表。最差匹配尝试在空闲列表中保留较大的块， 而不是向最优匹配那样可能剩下很多难以利用的小块。但是，最差匹配同样需要遍历整个 空闲列表。更糟糕的是，大多数研究表明它的表现非常差，导致过量的碎片，同时还有很 高的开销。</p>
+<p>首次匹配（first fit）策略就是找到第一个足够大的块，将请求的空间返回给用户。同样， 剩余的空闲空间留给后续请求。</p>
+<p>下次匹配（next fit）算法多维护一个指针， 指向上一次查找结束的位置。其想法是将对空闲空间的查找操作扩散到整个列表中去，避 免对列表开头频繁的分割。这种策略的性能与首次匹配很接它，同样避免了遍历查找。</p>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>先回顾吧，OS如何管理空间呢？</p>
+<p>基址加界限寄存器的方式让OS能在单进程运行时，管理程序、堆栈，并且实现对堆栈的扩展。</p>
+<p>但是这样不灵活的方式十分的浪费空间，于是引入多对基址加界限寄存器构成了分段。</p>
+<p>本质上说，空间被分割成了不同长度的片。</p>
+<p>但是这样来管理空间出现了问题，相信如果你实现了对于空闲空间的管理之后，就会发现。</p>
+<p>使得，空间本身变得碎片化，并且分配内存会变得十分困难，因为涉及到大量的合并操作。</p>
+<p>因此，OS考虑了新的解决方案，同样是分割，但是长度变为定长的，这就是分页。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -1486,7 +1508,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-text">操作系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-text">操作系统的历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">操作系统的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-text">操作系统的特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-text">进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%A8%8B%E5%BA%8F"><span class="toc-text">进程与程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%8A%E8%BD%AC%E6%8D%A2"><span class="toc-text">进程的状态及转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">进程控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">进程的互斥与同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90"><span class="toc-text">临界资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">进程互斥的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV"><span class="toc-text">信号量与PV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AND%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-text">AND信号量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E2%80%9C%E4%BF%A1%E5%8F%B7%E9%87%8F%E9%9B%86%E2%80%9D"><span class="toc-text">一般“信号量集”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-text">生产者和消费者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E8%80%85%E3%80%81%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-text">读者、写者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-text">哲学家进餐问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%A8%8B"><span class="toc-text">管程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88IPC%EF%BC%89"><span class="toc-text">进程通信（IPC）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-text">处理机调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">调度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%EF%BC%88%E5%86%85%E5%AD%98%EF%BC%89"><span class="toc-text">存储管理（内存）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-text">地址转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-text">重定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5"><span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="toc-text">空闲空间管理</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-text">操作系统介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="toc-text">操作系统的历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-text">操作系统的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-text">操作系统的特征</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-text">进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%A8%8B%E5%BA%8F"><span class="toc-text">进程与程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E5%8F%8A%E8%BD%AC%E6%8D%A2"><span class="toc-text">进程的状态及转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">进程控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BA%92%E6%96%A5%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="toc-text">进程的互斥与同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90"><span class="toc-text">临界资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">进程互斥的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E4%B8%8EPV"><span class="toc-text">信号量与PV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AND%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-text">AND信号量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E2%80%9C%E4%BF%A1%E5%8F%B7%E9%87%8F%E9%9B%86%E2%80%9D"><span class="toc-text">一般“信号量集”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-text">生产者和消费者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E8%80%85%E3%80%81%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-text">读者、写者问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-text">哲学家进餐问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%A8%8B"><span class="toc-text">管程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88IPC%EF%BC%89"><span class="toc-text">进程通信（IPC）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-text">处理机调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">调度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%EF%BC%88%E5%86%85%E5%AD%98%EF%BC%89"><span class="toc-text">存储管理（内存）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-text">地址转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E4%BD%8D"><span class="toc-text">重定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5"><span class="toc-text">分段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="toc-text">空闲空间管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%AD%96%E7%95%A5%EF%BC%88%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-text">匹配策略（空闲空间分配算法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-text">分页</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
