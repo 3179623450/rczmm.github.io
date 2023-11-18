@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签: Java | 小小世界</title>
+  <title>线性代数 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="/images/%E5%A4%B4%E5%83%8F.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -584,106 +584,742 @@
 </header>
         <!-- 内容区域 -->
         
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="/js/prism/prism-okaidia.min.css" rel="stylesheet">
+    
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-tagDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
-
-<div class="tag-header" style="background-image: url('https://pic1.zhimg.com/80/v2-604a15cef201cf177943af2d915eb2e7_1440w.jpg?source=1940ef5c');">
-  <div class="tag-header-title">
-    tag
-  </div>
-  <div class="tag-header-desc">
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
   
-    <span class="title" id="tag-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#tag-header-desc';
-    const type = 'tagDetail';
-    let desc = '无时无刻都要牢记，我到底要做什么，我已经做了什么，我还要去做什么。'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-20.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        线性代数
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2023-11-11 |
+        </span>
+      
+
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 153 |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 1分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><p>线性组合，这应该是线性代数的中心。</p>
+<p>数乘与加减构成线性组合。</p>
+<p>线性组合的对象不是变量而是向量。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>如上，这就是一个二维的列向量。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>v</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>,</mo><mi>w</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>w</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>w</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>,</mo><mi>v</mi><mo>+</mo><mi>w</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn><mo>+</mo><mi>w</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn><mo>+</mo><mi>w</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>向量加法，此刻v与w的第一与第二分量依然要分开。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mn>2</mn><mi>v</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>2</mn><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mn>2</mn><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>这是纯量乘法，当然一般叫数乘，依然是数字乘每一个分量。</p>
+<p>结合向量加法与数乘的结果就是线性组合。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>c</mi><mi>v</mi><mo>+</mo><mi>d</mi><mi>w</mi></math></p>
+<p>向量加法（头到尾），v的终点就是w的起点。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>rczmm</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="//post/计算机网络.html" target="_blank" title="线性代数">http://rczmm.site//post/计算机网络.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-21.png" src="" alt="">
+    </div>
+    <a href="/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">操作系统复习笔记</div>
+      </div>
+      <!-- <div class="content">
+        操作系统介绍操作系统的历史第一个操作系统是在 1950 年代和 1960 年代开发的。这些早期的操作系统非常简单，专为大
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/images/wechatpay.png" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/images/wechatQR.png" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
 </script>
     
+
+    <!-- 分享 -->
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('https://img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
   </div>
-  <div class="mask-box"></div>
-</div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
 
 
-
-<div class="tag">
-  <div class="tag-name">
-    <div class="name" style="background-color: #FFF;">Java 分类</div>
   </div>
-  <!-- 每一篇文章卡片 -->
-  <!-- hash算法 -->
 
-<section class="posts">
+  <!-- 目录 -->
+  <aside id='l_side'>
   
     
-    <article class="post reveal" style="flex-direction: row-reverse;   ">
-      <div class="post-main">
-        <div class="post-info">
-          <div class="post-time">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span class="post-time">2022-08-26</span>
-          </div>
-          <div class="post-title">
-            <a class="post-title-link" href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">springboot+vue（2）</a>
-          </div>
-          <div class="post-meta">
-            <div class="post-tags">
-              <!-- 文章详情页的标签 -->
-
-    <i class="iconfont icontag"></i>
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-            </div>
-            <div class="post-categories">
-              <!-- 文章详情页的分类 -->
-
-
-            </div>
-          </div>
-          <div class="post-img-mobile">
-            <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" style="background-size: cover; 
-              background-position: center center;">
-              <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-16.png" alt="">
-            </a>
-          </div>
-          <div class="post-content">
-            写点基础的东西。
-Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，提供了start-web等组件，简化了应用配置。
-创建项目时，选择SpringWeb，会自动把启动器加入到项目中，其中mvc、json
-          </div>
-        </div>
-        <div class="post-more">
-          <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html">
-            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
-          </a>
-        </div>
-      </div>
-      <div class="post-img">
-        <a href="/post/springboot-vue%EF%BC%882%EF%BC%89.html" style="background-size: cover; 
-          background-position: center center;">
-          <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-16.png" alt="">
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='images/头像.jpg'/>
         </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>脉脉</h2>
+        
+        
+          <p>永远在路上</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">小小世界</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
       </div>
-    </article>
-  
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:3179623450@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=3179623450"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
 </section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
-<div class="w-70">
-  
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-20.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-11</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.html">线性代数</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-21.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">05-23</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html">操作系统复习笔记</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-19.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-07</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html">文件盒子</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-23.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">02-15</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html">算法设计与分析的常用十大方案</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload" style="width:100%;height:100%;object-fit:cover;" data-src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-19.png" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">02-14</span>
+                
+              </div>
+              <a class="post-title" href="/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html">博客开发日记</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
@@ -1188,408 +1824,6 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
 <script>
   function loadIssuesJS() {
     if ($(".post-detail").find(".issues-api").length == 0) {
-      return;
-    } 
-    loadScript('/js/issues/index.js');
-  };
-  $(function () {
-    loadIssuesJS();
-  });
-  document.addEventListener('pjax:complete', function () {
-    if (typeof IssuesAPI == "undefined") {
-      loadIssuesJS();
-    }
-  })
-</script>
-
-<!-- 输入框打字特效 -->
-<!-- 输入框打字特效 -->
-
-  <script src="/js/activate-power-mode.js"></script>
-  <script>
-    POWERMODE.colorful = true;  // 打开随机颜色特效
-    POWERMODE.shake = false;    // 关闭输入框抖动
-    document.body.addEventListener('input', POWERMODE);//监听打字事件
-  </script>
-
-
-<!-- markdown代码一键复制功能 -->
-
-  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
-  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
-  <script src="/js/clipboard/clipboard.min.js"></script>
-  <div id="appCopy">
-  </div>
-  <script data-pjax>
-    var vm = new Vue({
-      el: '#appCopy',
-      data: {
-      },
-      computed: {
-      },
-      mounted() {
-        const that = this;
-        var copy = '复制';
-        /* code */
-        var initCopyCode = function () {
-          var copyHtml = '';
-          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
-          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
-          copyHtml += '</button>';
-          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
-          $(".post-detail pre").not('.gutter pre').before(copyHtml);
-          new ClipboardJS('.btn-copy', {
-            target: function (trigger) {
-              return trigger.nextElementSibling;
-            }
-          });
-        }
-        initCopyCode();
-        $('.btn-copy').unbind('click').bind('click', function () {
-          doSomething();
-        })
-        $(document).unbind('keypress').bind('keypress', function (e) {
-          if (e.ctrlKey && e.keyCode == 67) {
-            doSomething();
-          }
-        })
-
-        function doSomething() {
-          that.$notify({
-            title: "成功",
-            content: "这么垃圾的代码也要copy？？？？",
-            type: 'success'
-          })
-        }
-      },
-      methods: {
-      },
-      created() { }
-    })
-  </script>
-  
-
-<!-- 图片懒加载 -->
-<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
-<script>
-  // https://www.npmjs.com/package/vanilla-lazyload
-  // Set the options globally
-  // to make LazyLoad self-initialize
-  window.lazyLoadOptions = {
-    elements_selector: ".lazyload",
-    threshold: 0
-  };
-  // Listen to the initialization event
-  // and get the instance of LazyLoad
-  window.addEventListener(
-    "LazyLoad::Initialized",
-    function (event) {
-      window.lazyLoadInstance = event.detail.instance;
-    },
-    false
-  );
-  document.addEventListener('DOMContentLoaded', function () {
-    lazyLoadInstance.update();
-  });
-  document.addEventListener('pjax:complete', function () {
-    lazyLoadInstance.update();
-  });
-</script>
-
-
-<!-- 卡片滚动动画 -->
-   
-
-<!-- 评论所需js -->
-
-  
-    <!-- 弹幕所需的css和js -->
-    
-<!-- 具体js，请前往valine/script.ejs查看 -->
-
-    <script>
-  var requiredFields = '';
-  requiredFields = requiredFields.split(',');
-  comment_el = '.comment';
-  let looperValine = null;
-  load_valine = function () {
-    if ($(comment_el).length) {
-      var valine = new Valine({
-        el: '#vcomment',
-        path: window.location.pathname,
-        notify: false,
-        verify: false,
-        app_id: "tbpzEI3JX9x5SMRqI0MYBQHc-9Nh9j0Va",
-        app_key: "UuxnA5liCzoSIlXGGSnWG271",
-        placeholder: "客官，说点什么吧",
-        avatar: "",
-        master: "",   //博主邮箱md5
-        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
-        friends: "",
-        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
-        requiredFields: requiredFields,
-        enableQQ: true,
-      });
-      function debounce(fn) {
-        var timerID = null
-        return function () {
-          var arg = arguments[0]   //获取事件
-          if (timerID) {
-            clearTimeout(timerID)
-          }
-          timerID = setTimeout(function () {
-            fn(arg)              //事件传入函数
-          }, 200)
-        }
-      }
-      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
-      var themeDanmu = eval('false');
-      var themeLoop = eval('false');
-      var themeLooperTime = '5000' || 5000;
-      var speed = '40' || 20;
-      var isBarrager = true;
-      if (themeDanmu == true) {
-        do_barrager();
-        if ($('.danmuBox').length <= 0) {
-          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
-        }
-        $('.danmuBtn').on('click', debounce(
-          function () {
-            if ($('.danmuBtn').hasClass('open')) {
-              $('.danmuBtn').removeClass('open')
-              clearInterval(looperValine);
-              $.fn.barrager.removeAll();
-            } else {
-              $('.danmuBtn').addClass("open");
-              do_barrager();
-            }
-          }
-        ))
-      }
-      function do_barrager() {
-        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
-          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
-          var run_once = true;
-          var looper_time = themeLooperTime;
-          var total = comments.length;
-          // var looper = null;
-          var index = 0;
-          if (total > 0) {
-            barrager();
-          } else {
-            // 当评论数为0的时候，自动关闭弹幕
-            // $('.danmuBtn').removeClass('open');
-          }
-          function barrager() {
-            if (run_once) {
-              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
-              looperValine = setInterval(barrager, looper_time);
-              run_once = false;
-            }
-            var content = comments[index]._serverData.comment;
-            var email = comments[index]._serverData.mail;
-            var link = comments[index]._serverData.link;
-            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
-            //发布一个弹幕
-            const item = {
-              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
-              info: newcontent, //文字 
-              href: link, //链接 
-              close: true, //显示关闭按钮 
-              speed: speed, //延迟,单位秒,默认6 
-              color: '#fff', //颜色,默认白色 
-              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
-            }
-            $('body').barrager(item);
-            //索引自增
-            index++;
-            //所有弹幕发布完毕，清除计时器。
-            if (index == total) {
-              clearInterval(looperValine);
-              if (themeLoop === true) {
-                setTimeout(function () {
-                  do_barrager();
-                }, 5000);
-              } else {
-                $('.danmuBtn').removeClass('open');
-              }
-              return false;
-            }
-
-          }
-        })
-      }
-    }
-  };
-  $(document).ready(load_valine);
-  document.addEventListener('pjax:send', function (e) {
-    
-  })
-  document.addEventListener('pjax:complete', function () {
-    load_valine();
-  });
-</script>
-
-  
-
-
-<!-- 鼠标点击特效 -->
-<!-- 爱心点击 -->
-
-  
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
-    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/js/cursor/explosion.min.js"></script>
-  
-
-
-
-
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
-
-
-<!-- 轮播图标签 -->
-<script>
-  var bambooSwiperTag = {};
-  function load_swiper() {
-    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
-    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
-    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
-      pjax_swiper();
-    });
-  }
-
-  load_swiper();
-
-  function pjax_swiper() {
-    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
-      slidesPerView: 'auto',
-      spaceBetween: 8,
-      centeredSlides: true,
-      loop: true,
-      autoplay: true ? {
-        delay: 3000,
-        stopOnLastSlide: false,
-        disableOnInteraction: false,
-      } : false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      on:{
-        init: function(){
-          swiperAnimateCache(this); //隐藏动画元素 
-          swiperAnimate(this); //初始化完成开始动画
-        }, 
-        slideChangeTransitionEnd: function(){ 
-          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
-          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
-        } 
-      }
-    });
-  }
-
-  document.addEventListener('pjax:complete', function () {
-    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
-    if (typeof bambooSwiperTag.swiper === "undefined") {
-      load_swiper();
-    } else {
-      pjax_swiper();
-    }
-  });
-</script>
-    <!-- pjax -->
-    
-
-<!-- pjax -->
-
-
-  <script src="/js/pjax@0.2.8/index.js"></script>
-  
-    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
-
-<div class="pjax-animate">
-  
-    <div class="loading-circle"><div id="loader-circle"></div></div>
-    <script>
-      window.ShowLoading = function() {
-        $(".loading-circle").css("display", "block");
-      };
-      window.HideLoading = function() {
-        $(".loading-circle").css("display", "none");
-      }
-    </script>
-  
-	<script>
-    document.addEventListener('pjax:complete', function () {
-      window.HideLoading();
-    })
-    document.addEventListener('pjax:send', function () {
-      window.ShowLoading();
-    })
-    document.addEventListener('pjax:error', function () {
-      window.HideLoading();
-    })
-	</script>
-</div>
-
-  
-
-  <script>
-    var pjax = new Pjax({
-      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
-      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
-      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
-      timeout: 5000
-    });
-
-    document.addEventListener('pjax:send', function (e) {
-
-      try {
-        var currentUrl = window.location.pathname;
-        var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
-        if (banUrl[0] != "") {
-          banUrl.forEach(item => {
-            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
-              window.location.href = targetUrl;
-            }
-          });
-        }
-      } catch (error) {}
-
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
-
-    })
-    
-    document.addEventListener('pjax:complete', function () {
-      $('script[data-pjax], .pjax-reload script').each(function () {
-        $(this).parent().append($(this).remove());
-      });
-    });
-
-    document.addEventListener('pjax:error', function (e) {
-      window.location.href = e.triggerElement.href;
-    })
-    
-    // 刷新不从顶部开始
-    document.addEventListener("DOMContentLoaded", function () {
-      history.scrollRestoration = 'auto';
-    })
-  </script>
-
-
-
-  </body>
-</html>".issues-api").length == 0) {
       return;
     } 
     loadScript('/js/issues/index.js');

@@ -3,23 +3,39 @@
   <entry>
     <title>CLion中配置CMake运行多个main函数</title>
     <url>//post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html</url>
-    <content><![CDATA[<p>CLion中配置CMake运行多个main函数</p>
-<p>简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可以实现，为了简化，添加了一个插件。</p>
-<p>项目目录</p>
-<p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202631044.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221007202631044"></p>
-<p>添加我们新建的目录src，在src下新建CMakeLists.txt文件。</p>
-<p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202727079.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221007202727079"></p>
-<p>添加信息。</p>
-<p>但是一般的，我们都是先创建好文件，再去配置，这样的话显然有一些不愉快了。</p>
+    <content><![CDATA[<h1 id="在-CLion-中配置-CMake-运行多个-main-函数"><a href="#在-CLion-中配置-CMake-运行多个-main-函数" class="headerlink" title="在 CLion 中配置 CMake 运行多个 main 函数"></a>在 CLion 中配置 CMake 运行多个 main 函数</h1><p>在 CLion 中开发项目时,我们经常会需要在一个项目中编译运行多个 main 函数。为了方便管理多个 main,我们可以通过配置 CMake 实现。本文将简要介绍在 CLion 中如何配置 CMake 来运行多个 main 函数。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在 CLion 创建的 C&#x2F;C++ 项目中,CMake 默认只会编译 src 目录下的 main.cpp 文件,也就只能运行这个 main 函数。如果需要在项目中添加更多的 main 源文件并独立运行,我们需要修改 CMake 配置。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>要实现运行多个 main,主要是在 CMakeLists.txt 中正确配置目录和源文件。具体步骤如下:</p>
+<ol>
+<li>在项目中添加存放各个 main 源文件的目录,例如名为 src 的目录。</li>
+<li>在 src 目录下添加 CMakeLists.txt 文件。</li>
+<li>在 src&#x2F;CMakeLists.txt 中添加要编译的 main 源文件:</li>
+</ol>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_executable(main1 main1.cpp) 
+add_executable(main2 main2.cpp)</code></pre>
+
+<ol start="4">
+<li>在项目根目录的 CMakeLists.txt 中添加 src 子目录:</li>
+</ol>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_subdirectory(src)</code></pre>
+
+<p>这样就可以分别编译 src 目录下的两个 main 程序了。在 CLion 中可以通过 “Add Configuration” 选择要运行的 main。</p>
+<p>这样我们就可以轻松在一个项目中管理和运行多个 main 函数了。</p>
+<h3 id="使用-CMake-Helper"><a href="#使用-CMake-Helper" class="headerlink" title="使用 CMake Helper"></a>使用 CMake Helper</h3><p>实际配置时,手动同步更新 CMakeLists.txt 往往不是很方便。这里可以使用 CMake Helper 这个 CLion 插件来自动生成 CMake 配置。</p>
+<p>该插件可以自动扫描项目的源文件,并同步更新 CMakeLists.txt。我们只需在源文件目录右键选择 “Update CMakeLists” 即可自动添加编译规则。这样在新增 main 源文件时就不需要手动修改 CMake 文件了。</p>
+<p>需要注意的是,CMake Helper 无法自动处理目录结构变更,如果添加了新的源文件目录,还需手动在 CMakeLists 中添加该目录。所以该插件可以简化源文件配置,但处理目录时还是需要手动操作。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>要在 CLion 项目中运行多个 main 函数,主要通过以下步骤实现:</p>
+<ul>
+<li>在 CMakeLists.txt 中添加要编译的源文件目录</li>
+<li>为每个 main 源文件配置一个可执行目标</li>
+<li>在 CLion 中通过 “Add Configuration” 添加多个可执行项</li>
+<li>使用 CMake Helper 插件简化源文件的配置更新</li>
+</ul>
+<p>通过正确配置 CMake,我们可以轻松管理 CLion 项目中的多个 main 函数,提高多目标开发的效率。</p>
 <p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007202835314.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221007202835314"></p>
-<p>这个插件可以帮助我们自动的更新CMakeLists.txt文件，但是值得一提的是，他并不强大，因为在涉及到目录时，他无法解决，依然需要手动配置。</p>
-<p>对于配置好目录信息后，就可以直接创建文件，右键直接添加执行文件了。</p>
 <p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203125621.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221007203125621"></p>
-<p>最终效果</p>
 <p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221007203213953.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221007203213953"></p>
-<p>值得一提的是，其实不需要在src目录中配置CMakeLists文件。</p>
 <p><img src="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" class="lazyload" data-srcset="/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0/image-20221008145425011.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20221008145425011"></p>
-<p>在最外层的CMakeLists文件中这样描述就可以了。</p>
 ]]></content>
   </entry>
   <entry>
@@ -3746,61 +3762,19 @@ public class TimeAspect &#123;
 <p>在 20 世纪 70 年代，操作系统开始变得更加复杂。这些新操作系统专为个人计算机设计，能够同时支持多个用户和多个程序。</p>
 <p>在 20 世纪 80 年代，操作系统变得更加强大和用户友好。这些新操作系统能够支持图形用户界面 (GUI)，并且能够在各种硬件平台上运行。</p>
 <p>如今，操作系统对于计算机的运行至关重要。它们为用户提供了运行应用程序、管理文件和访问硬件设备的平台。</p>
-<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><p>OS的初衷就是为了优化系统资源利用和方便用户的使用，因此它首要的就是管理整个系统资源。</p>
-<p>包括：</p>
-<ul>
-<li><strong>处理机管理</strong></li>
+<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><ul>
+<li>处理机管理</li>
+<li>存储管理</li>
+<li>设备管理</li>
+<li>信息资源管理</li>
 </ul>
-<p>CPU的管理，为了提高利用率，引入了多道程序设计技术，当程序因为等待不能继续时，就转让给下一个程序，或者抢占发生。这样的程序就叫做进程，因此使用进程管理来协调多道程序管理是必要的，最终可以解决对CPU的调度分配以及回收的问题。<br>进程管理</p>
-<ol>
-<li>进程控制<br>包括对进程的创建、撤销以及他们在运行过程中的转台转换。</li>
-<li>进程同步<br>进程在执行时，是不可知的，有时候需要进行协调。<br>互斥：有些资源同一时间只能被一个进程访问，例如打印机。<br>同步：A进程与B进程执行，A需要B执行后的结果，那么B就只能先执行，执行完成后再执行A。这样的协作关系就是同步。<br>最简单的互斥和同步机制就是信号量。</li>
-<li>进程通信<br>多进程的执行有时需要传递信息，进程通信就是为了解决这一点，不同的计算机系统之间的通信也称为网络通信。</li>
-<li>进程调度<br>内存同时放入多个程序，此时这些程序都准备好运行，OS就需要按照一定的算法选择进程的运行顺序。</li>
-</ol>
-<ul>
-<li><strong>存储管理</strong><br>存储管理针对的对象只是内存。它是为了方便用户使用、提升利用率和在逻辑上提高容量。<br>包括：</li>
-</ul>
-<ol>
-<li>内存分配<br>程序要在计算机上运行，那么程序和数据必须占用一定的占空，那么就需要为了这个程序分配空间，当程序需要增加内存时，还需要为它附加内存。</li>
-<li>地址映射<br>程序在装入内存时，必要一个地址转换的过程，因为程序无法预知自己将被放在内存的那一个位置。因此编译器的内存通常都是从0开始的。</li>
-<li>内存保护<br>内存中有多个程序，以及OS本身的程序，为了避免被干扰和破坏，因此需要一定的存储保护措施。</li>
-<li>内存扩充<br>内存是有限的，不可能满足任意的需要，因此需要利用软件来优化（虚拟存储器）。</li>
-</ol>
-<ul>
-<li><strong>设备管理</strong><br>IO设备，这是OS中最复杂的部分，因为设备很多，并且涉及到具体的物理设备。</li>
-</ul>
-<ol>
-<li><p>设备分配</p>
-<p>根据用户的IO请求，为之分配设备。</p>
-</li>
-<li><p>设备控制</p>
-<p>实现物理IO，即实施具体的IO操作。</p>
-</li>
-<li><p>设备无关性</p>
-<p>指程序独立于具体设备。</p>
-</li>
-</ol>
-<ul>
-<li><strong>信息资源管理</strong><br>程序和数据是以文件的形式存储在计算机中的，所以也叫文件管理。</li>
-</ul>
-<ol>
-<li>文件存储空间的管理</li>
-<li>目录管理</li>
-<li>文件的读写管理</li>
-<li>文件的存取控制</li>
-</ol>
-<ul>
-<li><strong>操作系统的组成部分</strong></li>
-</ul>
-<p>操作系统由多种组件组成，包括：</p>
-<ul>
-<li>内核：内核是操作系统的核心。它负责管理计算机的硬件资源，并为其他软件提供运行平台。</li>
-<li>用户界面：用户界面是用户与操作系统交互的方式。它包括桌面、菜单和图标等元素。</li>
-<li>文件系统：文件系统是一种在计算机硬盘驱动器上组织文件的方式。它允许用户存储、检索和管理文件。</li>
-<li>设备驱动程序：设备驱动程序是允许操作系统与打印机、键盘和鼠标等硬件设备进行通信的软件。</li>
-<li>服务：服务是在后台运行并为操作系统和其他程序提供基本服务的程序。</li>
-<li>安全性：操作系统提供安全功能以保护用户免受恶意软件和其他威胁。</li>
+<h4 id="操作系统的组成部分"><a href="#操作系统的组成部分" class="headerlink" title="操作系统的组成部分"></a>操作系统的组成部分</h4><ul>
+<li>内核</li>
+<li>用户界面</li>
+<li>文件系统</li>
+<li>设备驱动程序</li>
+<li>服务</li>
+<li>安全性</li>
 </ul>
 <h3 id="操作系统的特征"><a href="#操作系统的特征" class="headerlink" title="操作系统的特征"></a>操作系统的特征</h3><ul>
 <li><strong>并发</strong></li>
@@ -8721,5 +8695,23 @@ AB -&gt; 28
       <tags>
         <tag>未完成</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>线性代数</title>
+    <url>//post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.html</url>
+    <content><![CDATA[<h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><p>线性组合，这应该是线性代数的中心。</p>
+<p>数乘与加减构成线性组合。</p>
+<p>线性组合的对象不是变量而是向量。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>如上，这就是一个二维的列向量。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>v</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>,</mo><mi>w</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>w</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>w</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow><mo>,</mo><mi>v</mi><mo>+</mo><mi>w</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn><mo>+</mo><mi>w</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn><mo>+</mo><mi>w</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>向量加法，此刻v与w的第一与第二分量依然要分开。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mn>2</mn><mi>v</mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>2</mn><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mn>2</mn><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
+<p>这是纯量乘法，当然一般叫数乘，依然是数字乘每一个分量。</p>
+<p>结合向量加法与数乘的结果就是线性组合。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>c</mi><mi>v</mi><mo>+</mo><mi>d</mi><mi>w</mi></math></p>
+<p>向量加法（头到尾），v的终点就是w的起点。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+]]></content>
   </entry>
 </search>

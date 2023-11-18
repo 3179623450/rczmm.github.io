@@ -3,11 +3,11 @@
   <title>小小世界</title>
   
   <subtitle>永远在路上</subtitle>
-  <link href="http://rczmm.top/atom.xml" rel="self"/>
+  <link href="http://rczmm.site/atom.xml" rel="self"/>
   
-  <link href="http://rczmm.top/"/>
-  <updated>2023-06-01T14:48:36.162Z</updated>
-  <id>http://rczmm.top/</id>
+  <link href="http://rczmm.site/"/>
+  <updated>2023-11-18T03:41:31.801Z</updated>
+  <id>http://rczmm.site/</id>
   
   <author>
     <name>rczmm</name>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>线性代数</title>
+    <link href="http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.html"/>
+    <id>http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C.html</id>
+    <published>2023-11-10T23:57:37.000Z</published>
+    <updated>2023-11-18T03:41:31.801Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;矩阵&quot;&gt;&lt;a href=&quot;#矩阵&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>操作系统复习笔记</title>
-    <link href="http://rczmm.top/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0.html</id>
     <published>2023-05-23T11:59:32.000Z</published>
-    <updated>2023-06-01T14:48:36.162Z</updated>
+    <updated>2023-07-14T22:41:57.180Z</updated>
     
     
       
@@ -39,8 +60,8 @@
   
   <entry>
     <title>文件盒子</title>
-    <link href="http://rczmm.top/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html"/>
-    <id>http://rczmm.top/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html</id>
+    <link href="http://rczmm.site/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html"/>
+    <id>http://rczmm.site/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html</id>
     <published>2023-03-07T13:31:45.000Z</published>
     <updated>2023-03-07T13:32:40.521Z</updated>
     
@@ -60,8 +81,8 @@
   
   <entry>
     <title>算法设计与分析的常用十大方案</title>
-    <link href="http://rczmm.top/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html"/>
-    <id>http://rczmm.top/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</id>
+    <link href="http://rczmm.site/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html"/>
+    <id>http://rczmm.site/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</id>
     <published>2023-02-15T10:03:00.000Z</published>
     <updated>2023-05-23T12:31:34.359Z</updated>
     
@@ -81,8 +102,8 @@
   
   <entry>
     <title>博客开发日记</title>
-    <link href="http://rczmm.top/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91%E6%97%A5%E8%AE%B0.html</id>
     <published>2023-02-13T18:08:22.000Z</published>
     <updated>2023-05-23T12:30:44.881Z</updated>
     
@@ -102,8 +123,8 @@
   
   <entry>
     <title>算法笔记</title>
-    <link href="http://rczmm.top/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.html</id>
     <published>2023-02-05T04:34:10.000Z</published>
     <updated>2023-03-08T14:58:46.230Z</updated>
     
@@ -119,14 +140,14 @@
     
     
     
-    <category term="未完成" scheme="http://rczmm.top/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/"/>
+    <category term="未完成" scheme="http://rczmm.site/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/"/>
     
   </entry>
   
   <entry>
     <title>数据库原理与应用</title>
-    <link href="http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html"/>
-    <id>http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html</id>
+    <link href="http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html"/>
+    <id>http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8.html</id>
     <published>2022-11-29T08:18:46.000Z</published>
     <updated>2022-11-29T09:28:39.122Z</updated>
     
@@ -146,8 +167,8 @@
   
   <entry>
     <title>Sql笔记</title>
-    <link href="http://rczmm.top/post/Sql%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/Sql%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/Sql%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/Sql%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-11-25T11:11:35.000Z</published>
     <updated>2022-11-25T14:51:03.405Z</updated>
     
@@ -168,8 +189,8 @@
   
   <entry>
     <title>数据库恢复与安全性</title>
-    <link href="http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html"/>
-    <id>http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</id>
+    <link href="http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html"/>
+    <id>http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D%E4%B8%8E%E5%AE%89%E5%85%A8%E6%80%A7.html</id>
     <published>2022-11-24T06:15:51.000Z</published>
     <updated>2022-11-24T08:20:38.003Z</updated>
     
@@ -189,8 +210,8 @@
   
   <entry>
     <title>变治法</title>
-    <link href="http://rczmm.top/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html"/>
-    <id>http://rczmm.top/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html</id>
+    <link href="http://rczmm.site/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html"/>
+    <id>http://rczmm.site/post/%E5%8F%98%E6%B2%BB%E6%B3%95.html</id>
     <published>2022-11-21T08:21:13.729Z</published>
     <updated>2022-11-21T08:25:48.552Z</updated>
     
@@ -210,8 +231,8 @@
   
   <entry>
     <title>计算机系统-信息的表示与处理</title>
-    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html"/>
-    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html</id>
+    <link href="http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html"/>
+    <id>http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86.html</id>
     <published>2022-11-10T06:12:24.000Z</published>
     <updated>2022-11-13T12:18:30.218Z</updated>
     
@@ -231,8 +252,8 @@
   
   <entry>
     <title>Oracle19C+PLSQL安装和配置详细教程</title>
-    <link href="http://rczmm.top/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html"/>
-    <id>http://rczmm.top/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html</id>
+    <link href="http://rczmm.site/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html"/>
+    <id>http://rczmm.site/post/Oracle19C-PLSQL%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B.html</id>
     <published>2022-11-09T13:13:06.000Z</published>
     <updated>2022-11-09T13:22:47.863Z</updated>
     
@@ -253,8 +274,8 @@
   
   <entry>
     <title>计算机算术</title>
-    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html"/>
-    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</id>
+    <link href="http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html"/>
+    <id>http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF.html</id>
     <published>2022-10-27T04:31:51.000Z</published>
     <updated>2022-11-05T05:39:10.776Z</updated>
     
@@ -274,8 +295,8 @@
   
   <entry>
     <title>计算机系统-程序的机器级表示</title>
-    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html"/>
-    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html</id>
+    <link href="http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html"/>
+    <id>http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA.html</id>
     <published>2022-10-12T04:18:07.000Z</published>
     <updated>2022-11-20T08:27:37.949Z</updated>
     
@@ -295,8 +316,8 @@
   
   <entry>
     <title>数据结构</title>
-    <link href="http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"/>
-    <id>http://rczmm.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</id>
+    <link href="http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"/>
+    <id>http://rczmm.site/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html</id>
     <published>2022-10-08T11:07:47.000Z</published>
     <updated>2022-10-10T04:35:45.461Z</updated>
     
@@ -316,20 +337,17 @@
   
   <entry>
     <title>CLion中配置CMake运行多个main函数</title>
-    <link href="http://rczmm.top/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html"/>
-    <id>http://rczmm.top/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html</id>
+    <link href="http://rczmm.site/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html"/>
+    <id>http://rczmm.site/post/CLion%E4%B8%AD%E9%85%8D%E7%BD%AECMake%E8%BF%90%E8%A1%8C%E5%A4%9A%E4%B8%AAmain%E5%87%BD%E6%95%B0.html</id>
     <published>2022-10-07T12:24:09.000Z</published>
-    <updated>2022-10-08T06:54:41.867Z</updated>
+    <updated>2023-07-14T22:37:12.406Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;CLion中配置CMake运行多个main函数&lt;/p&gt;
-&lt;p&gt;简答的说，配置CMakeLists.txt文件，添加目录以及运行程序就可以实现，为了简化，添加了一个插件。&lt;/p&gt;
-&lt;p&gt;项目目录&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;h1 id=&quot;在-CLion-中配置-CMake-运行多个-main-函数&quot;&gt;&lt;a href=&quot;#在-CLion-中配置-CMake-运行多个-main-函数&quot; class=&quot;headerlink&quot; title=&quot;在 CLion 中配置 CMake 运行多个 main</summary>
         
       
     
@@ -340,8 +358,8 @@
   
   <entry>
     <title>计算机网络笔记</title>
-    <link href="http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-09-30T08:53:05.000Z</published>
     <updated>2022-10-26T11:54:07.793Z</updated>
     
@@ -359,14 +377,14 @@
     
     
     
-    <category term="笔记" scheme="http://rczmm.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="http://rczmm.site/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>概率论笔记</title>
-    <link href="http://rczmm.top/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-09-10T03:03:17.000Z</published>
     <updated>2022-09-11T03:15:34.451Z</updated>
     
@@ -384,14 +402,14 @@
     
     
     
-    <category term="高数" scheme="http://rczmm.top/tags/%E9%AB%98%E6%95%B0/"/>
+    <category term="高数" scheme="http://rczmm.site/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
   <entry>
     <title>MatLab笔记</title>
-    <link href="http://rczmm.top/post/MatLab%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.top/post/MatLab%E7%AC%94%E8%AE%B0.html</id>
+    <link href="http://rczmm.site/post/MatLab%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/MatLab%E7%AC%94%E8%AE%B0.html</id>
     <published>2022-08-30T10:45:13.937Z</published>
     <updated>2022-11-13T09:53:56.657Z</updated>
     
@@ -407,14 +425,14 @@
     
     
     
-    <category term="MatLab" scheme="http://rczmm.top/tags/MatLab/"/>
+    <category term="MatLab" scheme="http://rczmm.site/tags/MatLab/"/>
     
   </entry>
   
   <entry>
     <title>C++自学笔记（1）</title>
-    <link href="http://rczmm.top/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html"/>
-    <id>http://rczmm.top/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html</id>
+    <link href="http://rczmm.site/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html"/>
+    <id>http://rczmm.site/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html</id>
     <published>2022-08-29T14:35:09.000Z</published>
     <updated>2022-09-10T01:32:08.800Z</updated>
     
@@ -431,32 +449,7 @@
     
     
     
-    <category term="c++" scheme="http://rczmm.top/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>springboot+vue（6）</title>
-    <link href="http://rczmm.top/post/springboot-vue%EF%BC%886%EF%BC%89.html"/>
-    <id>http://rczmm.top/post/springboot-vue%EF%BC%886%EF%BC%89.html</id>
-    <published>2022-08-28T06:53:54.000Z</published>
-    <updated>2022-08-28T07:25:39.690Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;多表查询和分页查询&quot;&gt;&lt;a href=&quot;#多表查询和分页查询&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="java" scheme="http://rczmm.top/tags/java/"/>
-    
-    <category term="springboot" scheme="http://rczmm.top/tags/springboot/"/>
+    <category term="c++" scheme="http://rczmm.site/tags/c/"/>
     
   </entry>
   
