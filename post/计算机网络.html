@@ -635,11 +635,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 153 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 1k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 1分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 3分钟 |
           </span>
   
           
@@ -679,6 +679,37 @@
 <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>c</mi><mi>v</mi><mo>+</mo><mi>d</mi><mi>w</mi></math></p>
 <p>向量加法（头到尾），v的终点就是w的起点。</p>
 <p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231114204633263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h2 id="逆矩阵"><a href="#逆矩阵" class="headerlink" title="逆矩阵"></a>逆矩阵</h2><p>此处讨论的所有矩阵（n阶方阵）</p>
+<p>不是所有的矩阵都可逆。</p>
+<p>矩阵可逆，演绎法上通过消元法来确认矩阵A必须具有n个非零的主元，也就是说矩阵的秩，或者说构成向量空间的维数必须大于n。</p>
+<p>代数法是行列式，矩阵可逆则行列式不可为0。此处可以使用化上三角或者下三角的方式，将矩阵变成三角矩阵，此时行列式的值特殊在，主对角线上包含了一个行列式的展开式形式，当行列式为0时，矩阵不是满秩的，因此不可逆。</p>
+<p>方程式也可以测试可逆的性质，Ax&#x3D;0，x&#x3D;0必须是唯一解时，矩阵是可逆的。</p>
+<p>如果A，B都可逆（相同的大小），那么AB，BA都是可逆的。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mo>（</mo><mi>A</mi><mi>B</mi><msup><mo>）</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>&#x3D;</mo><msup><mi>B</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math></p>
+<p>如何得到逆矩阵？</p>
+<p>高斯若尔当消元。</p>
+<h2 id="奇异"><a href="#奇异" class="headerlink" title="奇异"></a>奇异</h2><p>如果A不可逆呢？那么他就是奇异的。</p>
+<p>奇异矩阵，指的是列相关，当然行也肯定相关的矩阵，不难得出此时矩阵的行列式为0，并且轻易的能得出不可逆的性质。</p>
+<p>从方程式上看，Ax&#x3D;0，应该具备有无穷多解，Ax&#x3D;b无解或者具备无穷多解。毕竟这样奇异的矩阵写成方程组相当于，n个未知数但是有效的方程不到n个。</p>
+<p>秩数上来看，A的秩明显小是于n。</p>
+<p>此时再简化行阶梯型，那么至少存在一个全零行。</p>
+<p>再看列空间的维度，明显小于n，行空间同理。</p>
+<p>特征值呢？0是A的一个特征值</p>
+<p>正定性？<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>A</mi><msup><mi>A</mi><mrow><mi>T</mi></mrow></msup></math>只有半定。</p>
+<p>奇异值？A有r&lt;n个奇异值</p>
+<h2 id="正交"><a href="#正交" class="headerlink" title="正交"></a>正交</h2><p>两个二维空间上的向量正交或者是三维上的，很好理解，就是垂直，此时向量的点积为0。</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>v</mi><mo>.</mo><mi>w</mi><mo>&#x3D;</mo><msup><mi>v</mi><mrow><mi>T</mi></mrow></msup><mi>w</mi><mo>&#x3D;</mo><mn>0</mn></math></p>
+<p>这里来讨论正交子空间与正交基底以及正交矩阵。来为矩阵正交化铺垫。</p>
+<p>矩阵的子空间指的是，Ax &#x3D; b的行空间与列空间以及Ax &#x3D; 0的零空间与<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msup><mi>A</mi><mrow><mi>T</mi></mrow></msup></math>的零空间。</p>
+<p>A的列空间，A矩阵中所有列向量构成的向量空间。</p>
+<p>行空间垂直于A的零空间，列空间垂直于A的转置的零空间。</p>
+<p>行空间与零空间垂直，A 的每个行与Ax &#x3D; 0 的每个解垂直，得到图形左侧的90度角。</p>
+<p>列空间与 A T 的零空间垂直，当 b 在列空间之外，当我们想要求解 Ax &#x3D; b 却 做不到时，此时 A的转置的零空间就会显示出独特的优势，它包含“最小二乘”解的 误差 e &#x3D; b - Ax，最小二乘是线性代数在本章中的关键应用。</p>
+<p>行与列空间有相同的维度 r (他们吸取相同大小)，两个零空间有剩下的维度n - r与m - r。现在我们证明行空间与零空间是向量空间中的正交子空间。</p>
+<p>A 的行不可能在 A 的零空间中 (除了零行之外)，两个正交子空间中都存在的向量只有零向量。</p>
+<h2 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h2><h2 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h2><h2 id="正交单位基底与格莱姆-施密特"><a href="#正交单位基底与格莱姆-施密特" class="headerlink" title="正交单位基底与格莱姆-施密特"></a>正交单位基底与格莱姆-施密特</h2><p>若 Q 也是方形，则 Q Q的转置&#x3D; I 且 Q 的转置 &#x3D; Q 的逆矩阵，Q 是“正交矩阵”。</p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231119211024162.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231119211024162.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231119211032595.png" class="lazyload" data-srcset="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20231119211032595.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
       </div>
       <div class="post-tags-categories">
@@ -1026,7 +1057,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5"><span class="toc-text">矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E7%9F%A9%E9%98%B5"><span class="toc-text">逆矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%87%E5%BC%82"><span class="toc-text">奇异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E4%BA%A4"><span class="toc-text">正交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98"><span class="toc-text">最小二乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E4%BA%A4%E5%8D%95%E4%BD%8D%E5%9F%BA%E5%BA%95%E4%B8%8E%E6%A0%BC%E8%8E%B1%E5%A7%86-%E6%96%BD%E5%AF%86%E7%89%B9"><span class="toc-text">正交单位基底与格莱姆-施密特</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
