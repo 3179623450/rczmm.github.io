@@ -54,7 +54,7 @@
     <!-- import link -->
     
         
-            
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         
             
         
@@ -89,10 +89,36 @@
   <!-- 页面预加载动画 -->
 
   
-    <div class="preloader_2" id="loader">
-  <div class="loader"></div>
-</div>
+    <div class="preloader_5" id="loader">
+  <div class="cube">
+    <div class="topD"></div>
+    <div>
+      <span style="--i:0"></span>
+      <span style="--i:1"></span>
+      <span style="--i:2"></span>
+      <span style="--i:3"></span>
+    </div>
 
+    <div class="cube2">
+      <div>
+        <span style="--i:0"></span>
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+      </div>
+
+      <div class="cube3">
+        <div class="top3"></div>
+        <div>
+          <span style="--i:0"></span>
+          <span style="--i:1"></span>
+          <span style="--i:2"></span>
+          <span style="--i:3"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
 <script>
   var endLoading = function () {
@@ -603,12 +629,12 @@
   <swiper v-cloak ref="mySwiper" :options="swiperOptions" @slideChangeTransitionEnd="slideChangeTransitionEnd">
     
       <swiper-slide>
-        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%907.jpg" style="background-size: 300000px; 
+        <div class="item swiper-lazy" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%904.jpg" style="background-size: 300000px; 
           background-position: left center;" style="position: relative;">
           <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
             <div class="flag">
               
-              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%907.jpg" style="height: 100%; background-size: cover; 
+              <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%904.jpg" style="height: 100%; background-size: cover; 
                 background-position: center center;">
                 <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
               </div>
@@ -1857,8 +1883,8 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sun Nov 19 2023 21:14:33 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2023-11-19 日</div>
+            <div id="last-update" style="display: none;">Sun Nov 26 2023 14:34:23 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2023-11-26 日</div>
           
         </div>
         
@@ -1908,7 +1934,7 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-11-19 日';
+            document.getElementById('last-update-show').innerHTML = '2023-11-26 日';
           }
         </script>
         
@@ -1925,16 +1951,6 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
 </div>
 <!-- 花瓣和雪花飘落 -->
 <!-- 雪花和花瓣特效 -->
-
-  
-    <script type="text/javascript">
-      //只在桌面版网页启用特效
-      var windowWidth = $(window).width();
-      if (windowWidth > 768) {
-        loadScript('/js/falling/sakura.js');
-      }
-    </script>
-  
 
 
 
@@ -2244,8 +2260,6 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
     
     <!-- 背景彩带 -->
     
-      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
-    
 
     <script src="/js/utils/index.js"></script>
     <script src="/js/app.js"></script>
@@ -2513,7 +2527,7 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
         function doSomething() {
           that.$notify({
             title: "成功",
-            content: "这么垃圾的代码也要copy？？？？",
+            content: "",
             type: 'success'
           })
         }
@@ -2691,12 +2705,6 @@ Web入门Spring Boot是把传统的mvc、json、tomcat等框架结合起来，�
 
 <!-- 鼠标点击特效 -->
 <!-- 爱心点击 -->
-
-  
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
-    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/js/cursor/explosion.min.js"></script>
-  
 
 
 
