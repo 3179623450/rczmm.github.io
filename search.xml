@@ -8699,7 +8699,14 @@ AB -&gt; 28
   <entry>
     <title>线性代数</title>
     <url>//post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html</url>
-    <content><![CDATA[<h1 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h1><p>线性组合，这应该是线性代数的中心。</p>
+    <content><![CDATA[<p>开端是矩阵</p>
+<p>线性方程组</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">{</mo><mtable columnalign="left left" columnspacing="1em" rowspacing=".2em"><mtr><mtd><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>&#x3D;</mo><mn>1</mn></mtd></mtr><mtr><mtd><mi>x</mi><mo>−</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>&#x3D;</mo><mn>2</mn></mtd></mtr><mtr><mtd><mo>−</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>−</mo><mi>z</mi><mo>&#x3D;</mo><mn>3</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE" fence="true" stretchy="true" symmetric="true"></mo></mrow></math></p>
+<p>向量集</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true" columnalign="right left right left right left right left right left right left" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" rowspacing="3pt"><mtr><mtd><mrow><mi mathvariant="bold">x</mi></mrow></mtd><mtd><mi></mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnalign="center" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr><mtr><mtd><mi>z</mi></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi mathvariant="bold">b</mi></mrow></mtd><mtd><mi></mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnalign="center" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd></mtr><mtr><mtd><mrow><mi mathvariant="bold">A</mi></mrow></mtd><mtd><mi></mi><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnalign="center" columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow></mtd></mtr></mtable></math></p>
+<p>矩阵</p>
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr><mtr><mtd><mi>z</mi></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow><mo>&#x3D;</mo><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">(</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">)</mo></mrow></math></p>
+<p>这就是线性代数，当然如果你足够具有空间思维，你会发现如果这个方程组有唯一解，此时的A向量集中的三个向量应该可以通过线性组合成一个完整的三维空间。</p>
 <p>数乘与加减构成线性组合。</p>
 <p>线性组合的对象不是变量而是向量。</p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow data-mjx-texclass="INNER"><mo data-mjx-texclass="OPEN">[</mo><mtable columnspacing="1em" rowspacing="4pt"><mtr><mtd><mi>v</mi><mn>1</mn></mtd></mtr><mtr><mtd><mi>v</mi><mn>2</mn></mtd></mtr></mtable><mo data-mjx-texclass="CLOSE">]</mo></mrow></math></p>
@@ -8712,6 +8719,8 @@ AB -&gt; 28
 <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>c</mi><mi>v</mi><mo>+</mo><mi>d</mi><mi>w</mi></math></p>
 <p>向量加法（头到尾），v的终点就是w的起点。</p>
 <p><img src="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231114204633263.png" class="lazyload" data-srcset="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231114204633263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>如果此时方程组有唯一解，对于这个三元一次方程组而言，有唯一解就意味着所有的方程都有作用，不存在无意义的方程。</p>
+<p>这一类无意义的方程例如是</p>
 <h2 id="逆矩阵"><a href="#逆矩阵" class="headerlink" title="逆矩阵"></a>逆矩阵</h2><p>此处讨论的所有矩阵（n阶方阵）</p>
 <p>不是所有的矩阵都可逆。</p>
 <p>矩阵可逆，演绎法上通过消元法来确认矩阵A必须具有n个非零的主元，也就是说矩阵的秩，或者说构成向量空间的维数必须等于n。</p>
@@ -8746,9 +8755,577 @@ AB -&gt; 28
 <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>cos</mi><mo data-mjx-texclass="NONE">⁡</mo><mi>a</mi><mo>∗</mo><mi>a</mi><mi>c</mi></math></p>
 <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mi>a</mi><mi>c</mi><mo>∗</mo><mi>a</mi><mi>d</mi></mrow><mrow><mi>a</mi><mi>c</mi><mo>∗</mo><mi>a</mi><mi>c</mi></mrow></mfrac><mo>∗</mo><mi>a</mi><mi>c</mi></math></p>
 <p>矩阵也是一样的思路，只是我无法用几何的方式展示而已。</p>
-<h2 id="正交单位基底与格莱姆-施密特"><a href="#正交单位基底与格莱姆-施密特" class="headerlink" title="正交单位基底与格莱姆-施密特"></a>正交单位基底与格莱姆-施密特</h2><p>若 Q 也是方形，则 Q Q的转置&#x3D; I 且 Q 的转置 &#x3D; Q 的逆矩阵，Q 是“正交矩阵”。</p>
+<p>正交单位基底与格莱姆-施密特</p>
+<p>若 Q 也是方形，则 Q Q的转置&#x3D; I 且 Q 的转置 &#x3D; Q 的逆矩阵，Q 是“正交矩阵”。</p>
 <p><img src="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231119211024162.png" class="lazyload" data-srcset="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231119211024162.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 <p><img src="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231119211032595.png" class="lazyload" data-srcset="/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/image-20231119211032595.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>若依入门到入土</title>
+    <url>//post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>毕设项目是一个后台管理系统，使用若依来进行低代码开发。</p>
+<p>选择若依的原因？</p>
+<p>方便，若依足够简单，能做到低代码开发的同时也能兼顾功能健全性。</p>
+<p>若依是什么？</p>
+<p>一个低代码开发框架，本身是一个后台管理系统。</p>
+<p>如何使用若依？</p>
+<p>在Github或Gitee上挑选合适的版本，此处使用基础的前后端不分离的简易版本。</p>
+<h2 id="社区管理系统"><a href="#社区管理系统" class="headerlink" title="社区管理系统"></a>社区管理系统</h2><p>社区管理系统应当包含如下的基本功能：居民信息管理、物业费管理、停车管理、出入管理、安全管理、社区活动管理、社区服务管理</p>
+<p>系统用户主要包含，社区工作人员与社区居民。社区工作人员包含社区居委会以及物业，居民包括业主和租户。</p>
+<p>系统功能模块：居民信息管理模块、物业费管理模块、停车管理模块、出入管理模块、安全管理模块、社区活动管理模块、社区服务管理模块</p>
+<p>根据如上的功能和用户，设计如下的数据库表。</p>
+<p><strong>居民信息表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>居民编号</td>
+<td>整数</td>
+<td>居民唯一标识</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>字符串</td>
+<td>居民姓名</td>
+</tr>
+<tr>
+<td>性别</td>
+<td>字符串</td>
+<td>居民性别</td>
+</tr>
+<tr>
+<td>身份证号</td>
+<td>字符串</td>
+<td>居民身份证号码</td>
+</tr>
+<tr>
+<td>家庭住址</td>
+<td>字符串</td>
+<td>居民家庭住址</td>
+</tr>
+<tr>
+<td>联系方式</td>
+<td>字符串</td>
+<td>居民联系方式</td>
+</tr>
+<tr>
+<td>家庭成员</td>
+<td>字符串</td>
+<td>居民家庭成员信息</td>
+</tr>
+</tbody></table>
+<p><strong>物业费缴纳表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>缴纳单号</td>
+<td>整数</td>
+<td>物业费缴纳单号</td>
+</tr>
+<tr>
+<td>缴纳人</td>
+<td>字符串</td>
+<td>缴纳人姓名</td>
+</tr>
+<tr>
+<td>缴纳金额</td>
+<td>浮点数</td>
+<td>缴纳金额</td>
+</tr>
+<tr>
+<td>缴纳时间</td>
+<td>日期</td>
+<td>缴纳时间</td>
+</tr>
+</tbody></table>
+<p><strong>停车位信息表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>停车位编号</td>
+<td>整数</td>
+<td>停车位唯一标识</td>
+</tr>
+<tr>
+<td>车位类型</td>
+<td>字符串</td>
+<td>停车位类型</td>
+</tr>
+<tr>
+<td>车位价格</td>
+<td>浮点数</td>
+<td>停车位价格</td>
+</tr>
+</tbody></table>
+<p><strong>出入登记表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出入人员</td>
+<td>字符串</td>
+<td>出入人员姓名</td>
+</tr>
+<tr>
+<td>出入时间</td>
+<td>日期</td>
+<td>出入时间</td>
+</tr>
+<tr>
+<td>出入目的</td>
+<td>字符串</td>
+<td>出入目的</td>
+</tr>
+</tbody></table>
+<p><strong>安全报警表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>报警时间</td>
+<td>日期</td>
+<td>报警时间</td>
+</tr>
+<tr>
+<td>报警地点</td>
+<td>字符串</td>
+<td>报警地点</td>
+</tr>
+<tr>
+<td>报警类型</td>
+<td>字符串</td>
+<td>报警类型</td>
+</tr>
+</tbody></table>
+<p><strong>社区活动信息表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>活动名称</td>
+<td>字符串</td>
+<td>活动名称</td>
+</tr>
+<tr>
+<td>活动时间</td>
+<td>日期</td>
+<td>活动时间</td>
+</tr>
+<tr>
+<td>活动地点</td>
+<td>字符串</td>
+<td>活动地点</td>
+</tr>
+<tr>
+<td>活动内容</td>
+<td>字符串</td>
+<td>活动内容</td>
+</tr>
+</tbody></table>
+<p><strong>社区服务项目表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务项目名称</td>
+<td>字符串</td>
+<td>服务项目名称</td>
+</tr>
+<tr>
+<td>服务内容</td>
+<td>字符串</td>
+<td>服务内容</td>
+</tr>
+<tr>
+<td>服务费用</td>
+<td>浮点数</td>
+<td>服务费用</td>
+</tr>
+</tbody></table>
+<p><strong>社区服务申请表</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>申请人</td>
+<td>字符串</td>
+<td>申请人姓名</td>
+</tr>
+<tr>
+<td>申请项目</td>
+<td>字符串</td>
+<td>申请服务项目</td>
+</tr>
+<tr>
+<td>申请时间</td>
+<td>日期</td>
+<td>申请时间</td>
+</tr>
+</tbody></table>
+<p>以上表结构能够满足社区管理系统的基本功能需求。当然，在实际开发中，还可以根据具体需求进行调整。</p>
+<p><strong>数据库设计注意事项</strong></p>
+<p>在设计数据库时，需要注意以下几点：</p>
+<ul>
+<li>数据表应尽量保持简单，避免过度设计。</li>
+<li>数据表字段的名称应具有明确的含义，便于理解和使用。</li>
+<li>数据表之间应建立合理的关联关系，以便提高数据的查询效率。</li>
+<li>数据库应采用合理的存储结构，以便提高数据的查询和操作效率。</li>
+</ul>
+<p>此外，还需要考虑数据库的安全性。可以采用以下措施保障数据安全：</p>
+<ul>
+<li>采用数据加密技术，防止数据泄露。</li>
+<li>设置访问控制，限制用户对数据的访问权限。</li>
+<li>定期进行数据备份，防止数据丢失。</li>
+</ul>
+<p>现在来设计数据库</p>
+<p>![Diagram 1](若依入门到入土&#x2F;Diagram 1.png)</p>
+<h2 id="若依"><a href="#若依" class="headerlink" title="若依"></a>若依</h2><p>引入若依</p>
+<pre class="line-numbers language-none"><code class="language-none">git clone https:&#x2F;&#x2F;gitee.com&#x2F;y_project&#x2F;RuoYi.git</code></pre>
+
+<p>git命令行直接克隆到本地，或者是下载压缩包，解压到本地</p>
+<p>文件夹结构</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114222821861.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114222821861.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20240114222821861"></p>
+<p>打开IDEA，选择ruoyi文件夹打开项目。</p>
+<p>项目结构</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223029776.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223029776.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>数据库</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223110361.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223110361.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>配置数据库信息后，启动项目</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223700802.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223700802.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>启动成功，浏览器登录。</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223752851.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223752851.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>端口信息。</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223820673.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223820673.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223838985.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223838985.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224349561.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224349561.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224435261.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224435261.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>代码生成</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223943154.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114223943154.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224100684.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224100684.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224228863.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224228863.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>字段描述必须写。</p>
+<p><img src="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224512250.png" class="lazyload" data-srcset="/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F/image-20240114224512250.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<p>依次保存后，生成代码。</p>
+<p>代码生成后，在项目中新建模块，将代码导入。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>//post/Spring%20Security-6.2%20and%20spring%20boot.html</url>
+    <content><![CDATA[<p>Spring Security-6.2 and spring boot</p>
+<p>实现描述：在spring boot中引入新版的Security。</p>
+<p>1、引入security</p>
+<pre class="line-numbers language-maven" data-language="maven"><code class="language-maven">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;&#x2F;artifactId&gt;
+&lt;&#x2F;dependency&gt;</code></pre>
+
+<p>2、配置security</p>
+<p>主要包含处理用户登录逻辑的AuthenticationManager以及负责放行以及其他控制的SecurityFilterChain。</p>
+<p>引入security后，此时不做任何修改，启动项目，无论输入哪一个url都会发现进入security提供的登录页面。</p>
+<p>此时就代表引入成功，其他的页面被security默认视为是私有资源，需要获得登录认证后授权才能访问。而登录界面由security生成，此时的账号密码可以在application.yml文件中配置。</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">security:
+  user:
+    name: test
+    password: 123456</code></pre>
+
+<p>用户登录</p>
+<p>对于security而言，登录所需的用户由UserDetails这个接口实现，同时这个接口又实现了序列化，因此对于自己项目中的实体类来说，只需要实现这个接口就可以了。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class User implements UserDetails</code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;**
+  * 获取用户权限
+ *&#x2F;
+@Override
+public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() &#123;return null;&#125;
+
+@Override
+public String getPassword() &#123;return this.password;&#125;
+
+@Override
+public String getUsername() &#123;return this.username;&#125;
+
+
+&#x2F;**
+  * 判断用户是否过期，未过期返回true
+  *&#x2F;
+@Override
+public boolean isAccountNonExpired() &#123;return true;&#125;
+
+
+&#x2F;**
+  * 判断账号是否被锁定
+  *&#x2F;
+@Override
+public boolean isAccountNonLocked() &#123;return true;&#125;
+
+&#x2F;**
+  * 判断用户凭据是否过期需要更新
+  *&#x2F;
+@Override
+public boolean isCredentialsNonExpired() &#123;return true;&#125;
+
+&#x2F;**
+  * 判断用户是否可用
+  *&#x2F;
+@Override
+public boolean isEnabled() &#123;return true;&#125;</code></pre>
+
+<p>以上是需要实现的方法。</p>
+<p>在Mapper中，引入Mybatis-plus</p>
+<pre class="line-numbers language-maven" data-language="maven"><code class="language-maven">&lt;dependency&gt;
+	&lt;groupId&gt;com.baomidou&lt;&#x2F;groupId&gt;
+	&lt;artifactId&gt;mybatis-plus-boot-starter&lt;&#x2F;artifactId&gt;
+	&lt;version&gt;3.5.5&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;</code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Mapper
+public interface UserMapper extends BaseMapper&lt;User&gt; &#123;
+&#125;</code></pre>
+
+<p>此处继承BaseMapper类，不必再去创建xml。</p>
+<p>关于登录逻辑，security交由UserDetailsService实现用户检验，因此只需要实现这个接口即可。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Service
+public class UserDetailServiceImpl implements UserDetailsService</code></pre>
+
+<p>需要实现的方法只有一个。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException &#123;
+    User user &#x3D; userMapper.selectOne(new LambdaQueryWrapper&lt;User&gt;().eq(User::getUsername, username));
+    log.info(&quot;loadUserByUsername:&quot; + user);
+    return user;
+&#125;</code></pre>
+
+<p>此时，只是重写了security对于登录逻辑的接口，我们还需要自定义登录的内容，例如抛出用户名与密码错误的异常等。</p>
+<p>定义登录接口</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public interface UserService extends IService&lt;User&gt; &#123;
+    int register(User user);
+
+    String login(User user);
+
+&#125;</code></pre>
+
+<p>实现登录接口</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Service
+public class UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements UserService &#123;
+
+    @Resource
+    AuthenticationManager authenticationManager;
+    
+    @Resource
+    UserMapper userMapper;
+    
+    @Resource
+    PasswordEncoder passwordEncoder;
+    
+    @Resource
+    JwtUtil jwtUtil;
+
+    @Override
+    public int register(User user) &#123;
+        String password &#x3D; passwordEncoder.encode(user.getPassword());
+        user.setPassword(password);
+        userMapper.insert(user);
+        return 0;
+    &#125;
+
+    @Override
+    public String login(User user) &#123;
+        UsernamePasswordAuthenticationToken authenticationToken &#x3D;
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        Authentication authentication &#x3D; null;
+        try &#123;
+            authentication &#x3D; authenticationManager.authenticate(authenticationToken);
+        &#125; catch (AuthenticationException e) &#123;
+            log.info(&quot;用户名或密码错误！&quot;);
+            return &quot;用户名或密码错误！&quot;;
+        &#125;
+
+        User user1 &#x3D; (User) authentication.getPrincipal();
+        Map&lt;String, Object&gt; map &#x3D; new HashMap&lt;&gt;();
+
+        map.put(&quot;username&quot;, user1.getUsername());
+        log.info(&quot;username&#123;&#125;&quot;, user1.getUsername());
+        String token &#x3D; jwtUtil.createToken(map);
+        System.out.println(token);
+        return token;
+    &#125;
+&#125;</code></pre>
+
+<p>此处引入了认证管理器与密码编码和自定义的JWT工具类。</p>
+<p>JWT令牌</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Component
+public class JwtUtil &#123;
+
+    private String serectKey &#x3D; &quot;feqguifebahjfhabdsbh&quot;;
+
+    public String createToken(Map&lt;String, Object&gt; map) &#123;
+        return Jwts.builder()
+                .setClaims(map)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 1000))
+                .signWith(SignatureAlgorithm.HS256, serectKey)
+                .compact();
+    &#125;
+
+    public Claims paresToken(String token) &#123;
+        Claims claims;
+        try &#123;
+            claims &#x3D; Jwts.parser()
+                    .setSigningKey(serectKey)
+                    .parseClaimsJws(token)
+                    .getBody();
+        &#125; catch (ExpiredJwtException e) &#123;
+            claims &#x3D; e.getClaims();
+        &#125;
+        return claims;
+    &#125;
+&#125;</code></pre>
+
+<p>定义一个生成token的方法和解析的方法。注意秘钥与有效期。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Controller
+public class AutoController &#123;
+
+    @Resource
+    UserService userService;
+
+    @PostMapping(&quot;&#x2F;dologin&quot;)
+    @ResponseBody
+    public String login(User user) &#123;
+        String token &#x3D; userService.login(user);
+        return token;
+    &#125;
+&#125;</code></pre>
+
+<p>在控制层，抛出登录接口。</p>
+<p>前端页面简单使用表单即可。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&lt;form action&#x3D;&quot;&#x2F;dologin&quot; method&#x3D;&quot;post&quot;&gt;
+    账号&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot;&gt;
+    密码&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot;&gt;
+    &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;login&quot;&gt;
+&lt;&#x2F;form&gt;</code></pre>
+
+<p>此时我们只是定义了自己的登录逻辑，但还没有对security进行配置。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Configuration
+@EnableWebSecurity
+public class SecurityConfig</code></pre>
+
+<p>我们需要使用两个注解，缺一不可。</p>
+<p>在我们自己的业务类中，我们引入了密码编码，因此在此处需要定义。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Bean
+public PasswordEncoder passwordEncoder() &#123;
+    return new BCryptPasswordEncoder();
+&#125;</code></pre>
+
+<p>使用@Bean方法注解写入即可。</p>
+<p>认证管理器也需要定义，其中需要把自定义的UserDetailsService和密码管理器插入。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Bean
+public AuthenticationManager authenticationManager(PasswordEncoder passwordEncoder) &#123;
+    DaoAuthenticationProvider provider &#x3D; new DaoAuthenticationProvider();
+    provider.setUserDetailsService(userDetailsService);
+    provider.setPasswordEncoder(passwordEncoder);
+    return new ProviderManager(provider);
+&#125;</code></pre>
+
+<p>此时来配置过滤器链。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception &#123;
+        http
+                .csrf(csrf -&gt; csrf.disable());
+        http.authorizeHttpRequests(auth -&gt; auth
+                .requestMatchers(&quot;&#x2F;login&quot;, &quot;&#x2F;register&quot;, &quot;&#x2F;&quot;)
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+        );
+        http.formLogin(
+                form -&gt; form.loginPage(&quot;&#x2F;login&quot;)
+                        .loginProcessingUrl(&quot;&#x2F;dologin&quot;)
+                        .usernameParameter(&quot;username&quot;)
+                        .passwordParameter(&quot;password&quot;)
+                        .failureForwardUrl(&quot;&#x2F;demo&quot;)
+&#x2F;&#x2F;                        .successForwardUrl(&quot;&#x2F;&quot;)
+        );
+
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+&#125;</code></pre>
+
+<p>由于我们使用自定义的界面，所以需要禁用csrf，这个在原始的登录页面中被隐藏的用于防劫持的input标签。之后，我们需要开放所有用户和请求都可以访问的地址，其中包括登录注册和首页，除此之外的任何请求都需要验证。</p>
+<p>之后我们需要处理登录表单，指定登录页面，和登录接口，以及参数和失败后跳转的页面，此处讲成功后跳转的页面注释，是因为会与自己的业务产生冲突。</p>
+<p>最后需要进行JWT验证，因此在账号密码过滤器前添加了自定义的JWT的过滤器。</p>
+<p>返回构建。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter &#123;
+
+    @Resource
+    JwtUtil jwtUtil;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException &#123;
+        String token &#x3D; request.getHeader(&quot;Authorization&quot;);
+        if (token &#x3D;&#x3D; null) &#123;
+            doFilter(request, response, filterChain);
+            return;
+        &#125;
+        Claims claims &#x3D; null;
+        claims &#x3D; jwtUtil.paresToken(token);
+        System.out.println(&quot;claims: &quot; + claims);
+        String username &#x3D; claims.get(&quot;username&quot;, String.class);
+        User user &#x3D; new User();
+        user.setUsername(username);
+        UsernamePasswordAuthenticationToken authenticationToken &#x3D; new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        System.out.println(&quot;authenticationToken: &quot; + authenticationToken);
+        doFilter(request, response, filterChain);
+    &#125;
+&#125;</code></pre>
+
+<p>Claims是Java中专用于对JWT声明的类，包含了JWT中声明的所有的键值对。</p>
 ]]></content>
   </entry>
 </search>

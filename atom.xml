@@ -6,7 +6,7 @@
   <link href="http://rczmm.site/atom.xml" rel="self"/>
   
   <link href="http://rczmm.site/"/>
-  <updated>2023-11-29T14:51:15.935Z</updated>
+  <updated>2024-03-11T05:38:43.415Z</updated>
   <id>http://rczmm.site/</id>
   
   <author>
@@ -17,18 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://rczmm.site/post/Spring%20Security-6.2%20and%20spring%20boot.html"/>
+    <id>http://rczmm.site/post/Spring%20Security-6.2%20and%20spring%20boot.html</id>
+    <published>2024-03-11T05:43:07.212Z</published>
+    <updated>2024-03-11T05:38:43.415Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Spring Security-6.2 and spring boot&lt;/p&gt;
+&lt;p&gt;实现描述：在spring boot中引入新版的Security。&lt;/p&gt;
+&lt;p&gt;1、引入security&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>若依入门到入土</title>
+    <link href="http://rczmm.site/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html"/>
+    <id>http://rczmm.site/post/%E8%8B%A5%E4%BE%9D%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html</id>
+    <published>2024-01-14T14:04:30.000Z</published>
+    <updated>2024-02-21T19:38:15.566Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>线性代数</title>
     <link href="http://rczmm.site/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html"/>
     <id>http://rczmm.site/post/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0.html</id>
     <published>2023-11-10T23:57:37.000Z</published>
-    <updated>2023-11-29T14:51:15.935Z</updated>
+    <updated>2024-01-08T15:33:25.913Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;矩阵&quot;&gt;&lt;a href=&quot;#矩阵&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;开端是矩阵&lt;/p&gt;
+&lt;p&gt;线性方程组&lt;/p&gt;
+&lt;p&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mrow data-mjx-texclass=&quot;INNER&quot;&gt;&lt;mo</summary>
         
       
     
@@ -403,53 +450,6 @@
     
     
     <category term="高数" scheme="http://rczmm.site/tags/%E9%AB%98%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MatLab笔记</title>
-    <link href="http://rczmm.site/post/MatLab%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://rczmm.site/post/MatLab%E7%AC%94%E8%AE%B0.html</id>
-    <published>2022-08-30T10:45:13.937Z</published>
-    <updated>2022-11-13T09:53:56.657Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre class=&quot;line-numbers language-matlab&quot; data-language=&quot;matlab&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MatLab" scheme="http://rczmm.site/tags/MatLab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++自学笔记（1）</title>
-    <link href="http://rczmm.site/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html"/>
-    <id>http://rczmm.site/post/C-%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0%EF%BC%881%EF%BC%89.html</id>
-    <published>2022-08-29T14:35:09.000Z</published>
-    <updated>2022-09-10T01:32:08.800Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;C++很重要，很重要，很重要。&lt;/p&gt;
-&lt;h2 id=&quot;HelloWorld&quot;&gt;&lt;a href=&quot;#HelloWorld&quot; class=&quot;headerlink&quot; title=&quot;HelloWorld&quot;&gt;&lt;/a&gt;HelloWorld&lt;/h2&gt;&lt;pre</summary>
-        
-      
-    
-    
-    
-    
-    <category term="c++" scheme="http://rczmm.site/tags/c/"/>
     
   </entry>
   
