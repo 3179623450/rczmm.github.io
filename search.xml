@@ -9053,7 +9053,7 @@ AB -&gt; 28
 ]]></content>
   </entry>
   <entry>
-    <title></title>
+    <title>Spring Security-6.2 and spring boot</title>
     <url>//post/Spring%20Security-6.2%20and%20spring%20boot.html</url>
     <content><![CDATA[<p>Spring Security-6.2 and spring boot</p>
 <p>实现描述：在spring boot中引入新版的Security。</p>
