@@ -128,27 +128,6 @@
   </entry>
   
   <entry>
-    <title>文件盒子</title>
-    <link href="http://rczmm.site/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html"/>
-    <id>http://rczmm.site/post/%E6%96%87%E4%BB%B6%E7%9B%92%E5%AD%90.html</id>
-    <published>2023-03-07T13:31:45.000Z</published>
-    <updated>2023-03-07T13:32:40.521Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;ppt的内容&quot;&gt;&lt;a href=&quot;#ppt的内容&quot; class=&quot;headerlink&quot; title=&quot;ppt的内容&quot;&gt;&lt;/a&gt;ppt的内容&lt;/h1&gt;&lt;div class=&quot;link-group&quot;&gt;&lt;div class=&quot;tagLink&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>算法设计与分析的常用十大方案</title>
     <link href="http://rczmm.site/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html"/>
     <id>http://rczmm.site/post/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E7%94%A8%E5%8D%81%E5%A4%A7%E6%96%B9%E6%A1%88.html</id>
@@ -447,6 +426,31 @@
     
     
     <category term="笔记" scheme="http://rczmm.site/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>概率论笔记</title>
+    <link href="http://rczmm.site/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html"/>
+    <id>http://rczmm.site/post/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%AC%94%E8%AE%B0.html</id>
+    <published>2022-09-10T03:03:17.000Z</published>
+    <updated>2022-09-11T03:15:34.451Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;罗素悖论&lt;/p&gt;
+&lt;p&gt;令 P(x) 表示 x ∉ x. 也就是说，对 x 而言，如果 P(x) 是真的， 那么 x 就不是自身的元素; 但如果 P(x) 为假，那么 x 就是 x 中的元素。&lt;/p&gt;
+&lt;p&gt;那么 R</summary>
+        
+      
+    
+    
+    
+    
+    <category term="高数" scheme="http://rczmm.site/tags/%E9%AB%98%E6%95%B0/"/>
     
   </entry>
   
