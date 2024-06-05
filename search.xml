@@ -9326,6 +9326,79 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter &#123;
 &#125;</code></pre>
 
 <p>Claims是Java中专用于对JWT声明的类，包含了JWT中声明的所有的键值对。</p>
+<p>授权</p>
+<p>权限模型</p>
+<p>RBAC，基于角色的访问控制。</p>
+<p>数据库表设计</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">-- 角色表
+CREATE TABLE Roles (
+    RoleID INT PRIMARY KEY,
+    RoleName VARCHAR(50) UNIQUE
+);
+
+-- 权限表
+CREATE TABLE Permissions (
+    PermissionID INT PRIMARY KEY,
+    PermissionName VARCHAR(100) UNIQUE
+);
+
+-- 用户表
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    UserName VARCHAR(50) UNIQUE,
+    Password VARCHAR(100), -- 注意：密码最好加密存储
+    Email VARCHAR(100) UNIQUE
+);
+
+-- 用户角色关联表
+CREATE TABLE UserRoles (
+    UserRoleID INT PRIMARY KEY,
+    UserID INT,
+    RoleID INT,
+    UNIQUE(UserID, RoleID)
+);
+
+-- 角色权限关联表
+CREATE TABLE RolePermissions (
+    RolePermissionID INT PRIMARY KEY,
+    RoleID INT,
+    PermissionID INT,
+    UNIQUE(RoleID, PermissionID)
+);
+</code></pre>
+
+<p>OAuth2.0（第三方授权登录，颁发令牌）</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Git笔记</title>
+    <url>//post/Git%E7%AC%94%E8%AE%B0.html</url>
+    <content><![CDATA[<p>1、Git克隆</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone &quot;&quot;</code></pre>
+
+<p>引号内为仓库URL。</p>
+<p>2、Git提交</p>
+<p>提交的前提是在Github有一个新的仓库或者创建一个仓库</p>
+<p>在本地项目的根目录初始化一个仓库</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">git init</code></pre>
+
+<p>将本地项目文件添加在Git仓库</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">Git add .</code></pre>
+
+<p>.表示添加所有文件，也可以指定单独的文件或文件夹</p>
+<p>提交到本地Git仓库</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">git commit -m &quot;&quot;</code></pre>
+
+<p>引号内为消息来反映提交的内容</p>
+<p>将本地Git仓库连接到远程Github仓库</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">git remote add origin &#39;&#39;</code></pre>
+
+<p>引号内为Github仓库的URL。</p>
+<p>将本地提交推送到Github</p>
+<pre class="line-numbers language-git" data-language="git"><code class="language-git">git push -u origin master</code></pre>
+
+<p>master为默认分支。</p>
+<p>输入Github用户与密码（当前为ssh秘钥）验证身份。</p>
 ]]></content>
   </entry>
 </search>
