@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>基于Python的QT（二） | 小小世界</title>
+  <title>bug记录 | 小小世界</title>
 
   <link rel="icon" type="image/jpeg" href="/images/%E5%A4%B4%E5%83%8F.jpg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -638,21 +638,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%905.jpg')">
+  background-position: center center;position: relative;background-image:url('/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%907.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        基于Python的QT（二）
+        bug记录
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2022-08-24 |
+          <i class="fas fa-calendar"></i> 发表于：2024-06-30 |
         </span>
       
 
@@ -661,11 +661,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 1.1k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 660 |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 4分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 2分钟 |
           </span>
   
           
@@ -692,126 +692,75 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="Qt"><a href="#Qt" class="headerlink" title="Qt"></a>Qt</h2><p>首先，Qt原来是用C++写的一个框架，作为一个框架，Qt包含了很多的组件，这些组件是按照模块和组件来分布的。</p>
-<p>qtbase就是大多数模块的基础组件，比例qtcore、qtgui、qtwidgets、qtnetworks，这些模块里当然都有一些直接可以实例化的类。</p>
-<p>因此在编程中，我们可以直接使用他们，用他们来创建应用程序、处理文件、网络连接、正则表达式、文本编码等。</p>
-<p>值得一提的是qtwidgets模块，该模块用于图形化程序，这在qt中是核心的部分。</p>
-<p>当然还有一些其他的模块，在qt中，有着qml的存在，使得我们可以使用javascript来处理一些命令式的部分，官网是这样描述的，所谓的命令式，即计算机how的过程。之所以用到js，在我看来是为了更好的兼容与扩展，这一点在qt可以使用c++扩展和连接代码就可以看出。</p>
-<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><p>在qt中，除了py文件之外，还存在着用户界面定义文件ui文件，以及资源收集的qrc文件和qt建模语言文件qml。</p>
-<p>当然还有项目文件pyproject。</p>
-<h2 id="信号和槽"><a href="#信号和槽" class="headerlink" title="信号和槽"></a>信号和槽</h2><p>这其实直接放在helloworld后面会好一些。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import sys
+        <h1 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h1><h2 id="达梦与mbplus"><a href="#达梦与mbplus" class="headerlink" title="达梦与mbplus"></a>达梦与mbplus</h2><h3 id="问题1：分页失效"><a href="#问题1：分页失效" class="headerlink" title="问题1：分页失效"></a>问题1：分页失效</h3><p>问题描述：在新模块中正常引入达梦与mbplus，mbplus自带的page方法分页无效。无其他报错信息，返回对象正常，但是对象属性异常，total与size以及current等分页必备的属性异常，导致的分页无效。控制台无报错提示，无警告。</p>
+<p>问题原因：使用达梦，没有指定数据库方言的类型。mbplus支持的数据库中包含达梦，因此简单的配置就可以解决。</p>
+<p>解决方法：</p>
+<p>在 Spring Boot 项目中，通过 Java 配置来添加分页插件：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Configuration
+@MapperScan(&quot;scan.your.mapper.package&quot;)
+public class MybatisPlusConfig &#123;
 
-from PySide6 import QtWidgets, QtCore,QtGui
-from PySide6.QtCore import Slot
+    &#x2F;**
+     * 添加分页插件
+     *&#x2F;
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() &#123;
+        MybatisPlusInterceptor interceptor &#x3D; new MybatisPlusInterceptor();
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL)); &#x2F;&#x2F; 如果配置多个插件, 切记分页最后添加
+        &#x2F;&#x2F; 如果有多数据源可以不配具体类型, 否则都建议配上具体的 DbType
+        return interceptor;
+    &#125;
+&#125;</code></pre>
 
-
-class MyWidget(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.hello &#x3D; &#39;hello Tom&#39;
-
-        self.button &#x3D; QtWidgets.QPushButton(&#39;点我&#39;)
-
-        self.text &#x3D; QtWidgets.QLabel(&#39;helloworld&#39;, alignment&#x3D;QtCore.Qt.AlignCenter)
-
-        self.layout &#x3D; QtWidgets.QVBoxLayout(self)
-
-        self.layout.addWidget(self.text)
-
-        self.layout.addWidget(self.button)
-
-        self.button.clicked.connect(self.say)
-
-    @Slot()
-    def magic(self):
-        self.text.setText(self.hello)
-
-    @Slot()
-    def say(self):
-        print(&quot;Button clicked&quot;)
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    app &#x3D; QtWidgets.QApplication([])
-
-    widget &#x3D; MyWidget()
-    widget.resize(800, 600)
-    widget.show()
-
-    sys.exit(app.exec())</code></pre>
-
-<p>这是helloworld的代码，我们忽略那些定义和创建的内容，我们会发现，程序本质上定义了一个按钮，并且在按钮按下的时候，调用了一个方法。</p>
-<p>这看起来似乎很简单，但是在qt中，在按钮按下到执行对应内容的机制，被称为信号和槽，同时这也是qt的核心特性。</p>
-<p>信号，在上述代码中，当我们单击按钮的时候，这就是一个信号，所谓的槽也就是信号传出时发生的情况，或者说信号的接收者。</p>
-<p>信号和插槽不是按钮的专属，事实上所有继承了qobject的子类都可以包含信号和插槽，信号由对象发出。要注意的是，信号仅仅承担发出，并不关心接受的问题。这看起来似乎有点不负责任，但是封装的很好。</p>
-<p>插槽用来接受信号，但实际上他们本质上只是最普通的函数，槽同样的只负责接受，他不知道有什么信号能连接到它。</p>
-<p>这样的看起来紧密，却随时可以断开连接，互相连接就导致了qt可以创建真正的独立组件。</p>
-<p>一个例子，我们可以创建很多的信号，这些信号都连接到一个插槽，或者多个插槽，甚至我们可以把一个信号连接到一个信号。</p>
-<p>当然在qt中，有一些预定义的信号和插槽。</p>
-<p>关于信号，在 Python 中编写类时，信号被声明为 class 的类级变量<code>QtCore.Signal()</code></p>
-<p>关于槽，由装饰器指示 <code>@QtCore.Slot()</code>，<code>Slot()</code>也接受一个<code>name</code>和一个<code>result</code>关键字。<code>result</code>关键字定义将返回的类型，可以是 C 或 Python 类型。关键字的<code>name</code>行为方式与<code>Signal()</code>. 如果没有作为名称传递，则新插槽将与正在装饰的函数具有相同的名称。</p>
-<p>在例子中，我们能发现，我们自定义了一个插槽，却没有定义信号，其实此处是利用了qt的预定义信号。</p>
-<p>下面自定义信号，并且实现信号与槽的连接。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import sys
-
-
-from PySide6 import QtWidgets, QtCore,QtGui
-from PySide6.QtCore import Slot,Signal
-
-
-class MyWidget(QtWidgets.QWidget):
-
-    signal1 &#x3D; Signal()
-
-    def __init__(self):
-        super().__init__()
-
-        self.hello &#x3D; &#39;hello Tom&#39;
-
-        self.button &#x3D; QtWidgets.QPushButton(&#39;点我&#39;)
-
-        self.text &#x3D; QtWidgets.QLabel(&#39;helloworld&#39;, alignment&#x3D;QtCore.Qt.AlignCenter)
-
-        self.layout &#x3D; QtWidgets.QVBoxLayout(self)
-
-        self.layout.addWidget(self.text)
-
-        self.layout.addWidget(self.button)
-
-        self.button.clicked.connect(self.magic)
-
-        self.signal1.connect(self.say)
-
-    @Slot()
-    def magic(self):
-        self.text.setText(self.hello)
-        sign &#x3D; MyWidget()
-        sign.signal1.emit()
-
-
-    def say(self):
-        print(&quot;Button clicked&quot;)
-
-
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    app &#x3D; QtWidgets.QApplication([])
-
-    widget &#x3D; MyWidget()
-    widget.resize(800, 600)
-    widget.show()
-
-    sys.exit(app.exec())</code></pre>
-
+<table>
+<thead>
+<tr>
+<th align="center">属性名</th>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">overflow</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+<td align="center">溢出总页数后是否进行处理</td>
+</tr>
+<tr>
+<td align="center">maxLimit</td>
+<td align="center">Long</td>
+<td align="center"></td>
+<td align="center">单页分页条数限制</td>
+</tr>
+<tr>
+<td align="center">dbType</td>
+<td align="center">DbType</td>
+<td align="center"></td>
+<td align="center">数据库类型</td>
+</tr>
+<tr>
+<td align="center">dialect</td>
+<td align="center">IDialect</td>
+<td align="center"></td>
+<td align="center">方言实现类</td>
+</tr>
+</tbody></table>
+<p>备注：</p>
+<p>官方介绍中，建议单一数据库类型的均设置dbType。</p>
+<p>分页插件置后的原因：分页插件需要count sql，因此在执行链最后面才能保证准确性。</p>
+<h3 id="问题2：插入失败，无效的列"><a href="#问题2：插入失败，无效的列" class="headerlink" title="问题2：插入失败，无效的列"></a>问题2：插入失败，无效的列</h3><p>问题描述：使用达梦数据库时，编写crud代码，但是使用save时插入失效，控制台报错提示无效的列，针对双引号进行反复测试，均无法解决，数据库采用大小写不敏感，自定义sql方法可行。</p>
+<p>问题原因：目前暂定为字段转义，数据库采用大小写不敏感，因此在实体类中去掉所有字段的转义，可实现正常插入。（搜索引擎提到的原因包含：版本不适配与mbplus生成的sql包含换行符，达梦无法正确识别等原因）</p>
+<p>解决方法：临时解决方法，覆盖或者重写一个save方法。可能的方案，根据数据库的大小写敏感，处理好转义的关系。</p>
+<p>备注：转义问题，除却插入之外的查询更新与删除均能正常运行，插入失效，因此一开始将问题放在mb与达梦本身上，在测试插入时，因此实体字段较多，因此只测试插入一个字段的情况，对于双引号转义也只是处理了一个字段，结果均为无效的列。</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/python/" class="">
-              python
+            <a href="/tags/java/" class="">
+              java
             </a>
           
         </div>
@@ -825,7 +774,7 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="//post/基于Python的QT（二）.html" target="_blank" title="基于Python的QT（二）">http://rczmm.site//post/基于Python的QT（二）.html</a>
+    <a href="//post/bug记录.html" target="_blank" title="bug记录">http://rczmm.site//post/bug记录.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -843,43 +792,26 @@ if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%903.jpg" alt="">
-    </div>
-    <a href="/post/springboot-vue%EF%BC%881%EF%BC%89.html" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">springboot+vue（1）</div>
-      </div>
-      
-      <!-- <div class="content">
-        内容JavaEE：Springboot+MybatisPlus
-Web前端：Vue+ELementUi
-Web基础主要的
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-14.png" src="" alt="">
+      <img class="lazyload" src="/images/%E5%A4%A9%E6%B0%94%E4%B9%8B%E5%AD%90-16.png" src="" alt="">
     </div>
-    <a href="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89.html" class="post-nav-link">
+    <a href="/post/Git%E7%AC%94%E8%AE%B0.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">基于python的QT（一）</div>
+        <div class="title-text">Git笔记</div>
       </div>
       <!-- <div class="content">
-        前言QT，一个跨平台的GUI编程框架，支持多种语言，java、c++、python。
-此笔记基于python。
-安装Qt
+        1、Git克隆
+git clone &quot;&quot;
+
+引号内为仓库URL。
+2、Git提交
+提交的前提是在Gi
       </div> -->
     </a>
   </div>
@@ -1181,7 +1113,7 @@ Web基础主要的
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Qt"><span class="toc-text">Qt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">文件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD"><span class="toc-text">信号和槽</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#bug%E8%AE%B0%E5%BD%95"><span class="toc-text">bug记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%BE%E6%A2%A6%E4%B8%8Embplus"><span class="toc-text">达梦与mbplus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%981%EF%BC%9A%E5%88%86%E9%A1%B5%E5%A4%B1%E6%95%88"><span class="toc-text">问题1：分页失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%982%EF%BC%9A%E6%8F%92%E5%85%A5%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%97%A0%E6%95%88%E7%9A%84%E5%88%97"><span class="toc-text">问题2：插入失败，无效的列</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
