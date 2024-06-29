@@ -703,7 +703,7 @@ int main()&#123;
     cout&lt;&lt;&quot;hello!&quot;;
     &#x2F;&#x2F; 返回0，终止main函数，并且向调用进程返回0
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分号 &amp; 语句块</p>
 <p>在c++里，分号是语句的结束符，并且每一条语句都必须以分号结尾。</p>
@@ -726,7 +726,7 @@ int main()&#123;
   我是多行注释内的内容！！
 &#x2F;&#x2F;  我是单行注释
   
-*&#x2F; </code></pre>
+*&#x2F; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>单行注释，从&#x2F;&#x2F;开始，直到一行结束</p>
 <p>多行注释，在&#x2F;* 到 *&#x2F;的内容都是多行注释的内容，并且可以在其中添加单行注释，实现注释的嵌套。</p>
@@ -734,7 +734,7 @@ int main()&#123;
 <p>除此之外，还可以通过条件编译在实现注释：</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if 0
 cout&lt;&lt;&quot;hello&quot;;
-#endif</code></pre>
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -796,34 +796,34 @@ int main() &#123;
     cout &lt;&lt; &quot;string: \t&quot; &lt;&lt; &quot;所占字节数：&quot; &lt;&lt; sizeof(string) &lt;&lt; endl;
     cout &lt;&lt; &quot;type: \t\t&quot; &lt;&lt; &quot;************size**************&quot; &lt;&lt; endl;
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>变量的大小会编译器所在的系统有所不同，上面的实例会输出你实际电脑上各种类型的大小。</p>
 <p>其中，endl，这会在每一行后插入换行符，&lt;&lt;运算度可以向平复传送多个值，sizeof（）可以获取各个数据类型的大小。</p>
 <p>typedef声明 &amp; 枚举类型</p>
 <p>可以使用typedef为一个已有的类型取一个新的名字。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef int id;
-id student_id;</code></pre>
+id student_id;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>如上的声明就完全合法。</p>
 <p>枚举是一种派生的数据类型，他是由用户定义的若干枚举类型常量的集合。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">enum sex&#123;man&#x3D;1,woman&#x3D;0&#125; xiaoming;
-xiaoming &#x3D; man;</code></pre>
+xiaoming &#x3D; man;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>默认的，如果不设置整形常数，他会根据顺序赋值，从0开始，但是可以给一些特殊的值，默认的，每个名称都会比前一个名称大一，因此如果你设置了man等于3，那么woman等于4。</p>
 <p>变量类型 &amp; 作用域</p>
 <p>变量是程序可操作的存储区的名称，每一个变量都应该有指定的类型，类型决定了变量的大小和布局，这个范围内的值都可以存储在内存中。</p>
 <p>变量名称遵循标识符的命名规范，由字母、数字、下划线组成，数字不能开头。</p>
 <p>变量定义</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int age &#x3D; 10;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int age &#x3D; 10;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如上的语句就可以声明一个变量，并且赋值为10。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int age;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">extern int age;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>extern关键字可以任何一个地方声明变量，当使用多个文件，但是只在一个文件内定义变量的时候，就可以使用它。</p>
 <p>当然，虽然可以在c++中多次声明一个变量，但变量只能在某个文件、函数或代码块中被定义一次。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int age;
-char age;</code></pre>
+char age;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>如上，即使类型不一样，但依旧无法被定义，并且编译器报错。</p>
 <p>左值和右值</p>
@@ -844,7 +844,7 @@ char age;</code></pre>
 <p>也可以表示为，二进制、十进制、八进制、十六进制。由前缀指定，0x指定十六进制，0表示八进制，0b表示二进制，什么都不带表示十进制。</p>
 <p>浮点常量，可以带小数点，也可以使用指数形式表达。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double a &#x3D; 31415956e-6;
-cout &lt;&lt; a &lt;&lt; endl;</code></pre>
+cout &lt;&lt; a &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>其中e-6代表10的-6次方，如果是float单精度浮点类型，可以在末尾加l。</p>
 <p>输出后，自动保留三位小数，对于这样的精度设置问题，解决方案如下</p>
@@ -852,10 +852,10 @@ cout &lt;&lt; a &lt;&lt; endl;</code></pre>
 
 cout &lt;&lt; setprecision(8) &lt;&lt; a &lt;&lt; endl;
 
-cout &lt;&lt; setiosflags(ios::fixed|ios::showpoint)&lt;&lt;setprecision(10)&lt;&lt; a &lt;&lt; endl;</code></pre>
+cout &lt;&lt; setiosflags(ios::fixed|ios::showpoint)&lt;&lt;setprecision(10)&lt;&lt; a &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>其中，范例中用到的函数都需要引入头文件</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iomanip&gt;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iomanip&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其中，setprecision用来设置精度，也就是控制输出的位数，自动四舍五入，且不保留小数后的不影响大小的0。setiosflags是一个格式控制函数，此处用到的fixed、以定点方式显示实数，也就是整数部分，搭配setprecision使用，此时后者就用来只控制小数位数了，但是他依旧不能保留0，于是引入showpoint。</p>
 <p>布尔常量</p>
@@ -925,20 +925,20 @@ cout &lt;&lt; setiosflags(ios::fixed|ios::showpoint)&lt;&lt;setprecision(10)&lt;
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">while(condition)
 &#123;
    statement(s);
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>for</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">for ( init; condition; increment )
 &#123;
    statement(s);
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>do while</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">do
 &#123;
    statement(s);
 
-&#125;while( condition );</code></pre>
+&#125;while( condition );<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>循环控制语句</p>
 <p>break</p>
@@ -950,14 +950,14 @@ cout &lt;&lt; setiosflags(ios::fixed|ios::showpoint)&lt;&lt;setprecision(10)&lt;
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">goto label;
 ..
 .
-label: statement;</code></pre>
+label: statement;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>分支</p>
 <p>if</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(boolean_expression)
 &#123;
    &#x2F;&#x2F; 如果布尔表达式为真将执行的语句
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>if else</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">if(boolean_expression)
@@ -967,7 +967,7 @@ label: statement;</code></pre>
 else
 &#123;
    &#x2F;&#x2F; 如果布尔表达式为假将执行的语句
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>switch case</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">switch(expression)&#123;
@@ -981,11 +981,11 @@ else
     &#x2F;&#x2F; 您可以有任意数量的 case 语句
     default : &#x2F;&#x2F; 可选的
        statement(s);
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>constant-expression</strong> 必须与 switch 中的变量具有相同的数据类型，且必须是一个常量或字面量</p>
 <p>条件运算符</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Exp1 ? Exp2 : Exp3;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Exp1 ? Exp2 : Exp3;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。</p>
 <p>? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。</p>
@@ -999,7 +999,7 @@ else
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">return_type function_name( parameter list )
 &#123;
    body of the function
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li><strong>返回类型：</strong>一个函数可以返回一个值。<strong>return_type</strong> 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 <strong>void</strong>。</li>
@@ -1039,36 +1039,36 @@ else
 <p>C++11 提供了对匿名函数的支持,称为 Lambda 函数(也叫 Lambda 表达式)。</p>
 <p>Lambda 表达式把函数看作对象。Lambda 表达式可以像对象一样使用，比如可以将它们赋给变量和作为参数传递，还可以像函数一样对其求值。</p>
 <p>Lambda 表达式本质上与函数声明非常类似。Lambda 表达式具体形式如下:</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">[capture](parameters)-&gt;return-type&#123;body&#125;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">[capture](parameters)-&gt;return-type&#123;body&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">auto m &#x3D; [](int m,int n)-&gt;int &#123; int z &#x3D; m +n;return z;&#125;;
 
 int a11 &#x3D; m(2,7);
-cout &lt;&lt; a11 &lt;&lt;endl;</code></pre>
+cout &lt;&lt; a11 &lt;&lt;endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>数组</p>
 <p>在 C++ 中，您可以逐个初始化数组，也可以使用一个初始化语句</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double balance[5] &#x3D; &#123;1000.0, 2.0, 3.4, 7.0, 50.0&#125;;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double balance[5] &#x3D; &#123;1000.0, 2.0, 3.4, 7.0, 50.0&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>大括号 { } 之间的值的数目不能大于我们在数组声明时在方括号 [ ] 中指定的元素数目。</p>
 <p>如果您省略掉了数组的大小，数组的大小则为初始化时元素的个数。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double balance[] &#x3D; &#123;1000.0, 2.0, 3.4, 7.0, 50.0&#125;;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double balance[] &#x3D; &#123;1000.0, 2.0, 3.4, 7.0, 50.0&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>数组元素可以通过数组名称加索引进行访问。元素的索引是放在方括号内，跟在数组名称的后边。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double salary &#x3D; balance[9];</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">double salary &#x3D; balance[9];<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>字符串</p>
 <p>C 风格的字符串起源于 C 语言，并在 C++ 中继续得到支持。字符串实际上是使用 <strong>null</strong> 字符 <strong>\0</strong> 终止的一维字符数组。因此，一个以 null 结尾的字符串，包含了组成字符串的字符。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char site[] &#x3D; &quot;RUNOOB&quot;;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char site[] &#x3D; &quot;RUNOOB&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>C++ 标准库提供了 <strong>string</strong> 类类型</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str1 &#x3D; &quot;runoob&quot;;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string str1 &#x3D; &quot;runoob&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>指针 </p>
 <p>学习 C++ 的指针既简单又有趣。通过指针，可以简化一些 C++ 编程任务的执行，还有一些任务，如动态内存分配，没有指针是无法执行的。所以，想要成为一名优秀的 C++ 程序员，学习指针是很有必要的。</p>
 <p>正如您所知道的，每一个变量都有一个内存位置，每一个内存位置都定义了可使用连字号（&amp;）运算符访问的地址，它表示了在内存中的一个地址。</p>
 <p><strong>指针</strong>是一个变量，其值为另一个变量的地址，即，内存位置的直接地址。就像其他变量或常量一样，您必须在使用指针存储其他变量地址之前，对其进行声明。指针变量声明的一般形式为：</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">type *var-name;</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">type *var-name;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>引用</p>
 <p>本质是个别名。</p>
@@ -1081,7 +1081,7 @@ cout &lt;&lt; a11 &lt;&lt;endl;</code></pre>
 <p>变量名称是变量附属在内存位置中的标签，可以把引用当成是变量附属在内存位置中的第二个标签。因此，可以通过原始变量名称或引用来访问变量的内容。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int i &#x3D; 17;
 int&amp;  r &#x3D; i;
-double&amp; s &#x3D; d;</code></pre>
+double&amp; s &#x3D; d;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>在这些声明中，&amp; 读作<strong>引用</strong>。因此，第一个声明可以读作 “r 是一个初始化为 i 的整型引用”，第二个声明可以读作 “s 是一个初始化为 d 的 double 型引用”。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int *i;
@@ -1091,7 +1091,7 @@ cout &lt;&lt; i &lt;&lt;endl;
 
 int var1 &#x3D; 100;
 int&amp; var2 &#x3D; var1;
-cout &lt;&lt; var2 &lt;&lt; endl;</code></pre>
+cout &lt;&lt; var2 &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>日期与时间</p>
 <p>C++ 继承了 C 语言用于日期和时间操作的结构和函数。为了使用日期和时间相关的函数和结构，需要在 C++ 程序中引用 <ctime> 头文件。</ctime></p>
@@ -1103,7 +1103,7 @@ cout &lt;&lt; dt;
 tm *gmtm &#x3D; gmtime(&amp;now);
 dt &#x3D; asctime(gmtm);
 cout &lt;&lt; dt;
-cout &lt;&lt;  &quot;年：&quot; &lt;&lt;gmtm -&gt;tm_year + 1900;</code></pre>
+cout &lt;&lt;  &quot;年：&quot; &lt;&lt;gmtm -&gt;tm_year + 1900;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>基本的IO</p>
 <p>C++ 标准库提供了一组丰富的输入&#x2F;输出功能。</p>
@@ -1116,7 +1116,7 @@ cout &lt;&lt;  &quot;年：&quot; &lt;&lt;gmtm -&gt;tm_year + 1900;</code></pre>
 <p>预定义的对象 <strong>cin</strong> 是 <strong>iostream</strong> 类的一个实例。cin 对象附属到标准输入设备，通常是键盘。<strong>cin</strong> 是与流提取运算符 &gt;&gt; 结合使用的</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">char name[10];
 cin &gt;&gt; name;
-cout &lt;&lt; name &lt;&lt; endl;</code></pre>
+cout &lt;&lt; name &lt;&lt; endl;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>C++ 编译器根据要输入值的数据类型，选择合适的流提取运算符来提取值，并把它存储在给定的变量中。</p>
 <p>流提取运算符 &gt;&gt; 在一个语句中可以多次使用。</p>
@@ -1136,7 +1136,7 @@ member_type2 member_name2;
 member_type3 member_name3;
 .
 .
-&#125; object_names;</code></pre>
+&#125; object_names;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>type_name</strong> 是结构体类型的名称，<strong>member_type1 member_name1</strong> 是标准的变量定义，比如 <strong>int i;</strong> 或者 <strong>float f;</strong> 或者其他有效的变量定义。在结构定义的末尾，最后一个分号之前，您可以指定一个或多个结构变量，这是可选的。</p>
 <p>为了访问结构的成员，我们使用<strong>成员访问运算符（.）</strong>。成员访问运算符是结构变量名称和我们要访问的结构成员之间的一个句号。</p>
@@ -1151,7 +1151,7 @@ public :
     int id;
     string name;
     double price;
-&#125;;</code></pre>
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>关键字 <strong>public</strong> 确定了类成员的访问属性。在类对象作用域内，公共成员在类的外部是可访问的。您也可以指定类的成员为 <strong>private</strong> 或 <strong>protected</strong>。</p>
 <p>定义对象</p>
@@ -1176,7 +1176,7 @@ class Animal &#123;
 &#x2F;&#x2F;派生类
 class Dog : public Animal &#123;
     &#x2F;&#x2F; bark() 函数
-&#125;;</code></pre>
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>重载运算符 &amp; 重载函数</p>
 <p>C++ 允许在同一作用域中的某个<strong>函数</strong>和<strong>运算符</strong>指定多个定义，分别称为<strong>函数重载</strong>和<strong>运算符重载</strong>。</p>
@@ -1184,7 +1184,7 @@ class Dog : public Animal &#123;
 <p>当您调用一个<strong>重载函数</strong>或<strong>重载运算符</strong>时，编译器通过把您所使用的参数类型与定义中的参数类型进行比较，决定选用最合适的定义。选择最合适的重载函数或重载运算符的过程，称为<strong>重载决策</strong>。</p>
 <p>您可以重定义或重载大部分 C++ 内置的运算符。这样，您就能使用自定义类型的运算符。</p>
 <p>重载的运算符是带有特殊名称的函数，函数名是由关键字 operator 和其后要重载的运算符符号构成的。与其他函数一样，重载运算符有一个返回类型和一个参数列表。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Box operator+(const Box&amp;);</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Box operator+(const Box&amp;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>声明加法运算符用于把两个 Box 对象相加，返回最终的 Box 对象。大多数的重载运算符可被定义为普通的非成员函数或者被定义为类成员函数。如果我们定义上面的函数为类的非成员函数，那么我们需要为每次操作传递两个参数。</p>
 <p>多态</p>
@@ -1230,7 +1230,7 @@ class Dog : public Animal &#123;
 <p>要在 C++ 中进行文件处理，必须在 C++ 源代码文件中包含头文件 <iostream> 和 <fstream>。</fstream></iostream></p>
 <p>在从文件读取信息或者向文件写入信息之前，必须先打开文件。<strong>ofstream</strong> 和 <strong>fstream</strong> 对象都可以用来打开文件进行写操作，如果只需要打开文件进行读操作，则使用 <strong>ifstream</strong> 对象。</p>
 <p>下面是 open() 函数的标准语法，open() 函数是 fstream、ifstream 和 ofstream 对象的一个成员。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void open(const char *filename, ios::openmode mode);</code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void open(const char *filename, ios::openmode mode);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;fstream&gt;
 #include &lt;iostream&gt;
@@ -1280,7 +1280,7 @@ int main ()
    infile.close();
  
    return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>异常处理</p>
 <p>异常是程序在执行期间产生的问题。C++ 异常是指在程序运行时发生的特殊情况，比如尝试除以零的操作。</p>
@@ -1309,7 +1309,7 @@ int main ()
 <pre class="line-numbers language-none"><code class="language-none">namespace namespace_name &#123;
    &#x2F;&#x2F; 代码声明
 &#125;
-name::code;  &#x2F;&#x2F; code 可以是变量或函数</code></pre>
+name::code;  &#x2F;&#x2F; code 可以是变量或函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>预处理器</p>
 <p>预处理器是一些指令，指示编译器在实际编译之前所需完成的预处理。</p>
@@ -1321,7 +1321,7 @@ name::code;  &#x2F;&#x2F; code 可以是变量或函数</code></pre>
 <p>条件预处理器的结构与 if 选择结构很像。</p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#ifdef NULL
    #define NULL 0
-#endif</code></pre>
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
       </div>
       <div class="post-tags-categories">
@@ -1374,8 +1374,9 @@ name::code;  &#x2F;&#x2F; code 可以是变量或函数</code></pre>
       </div>
       
       <!-- <div class="content">
-        x&#x3D;linspace(0,6);%createavectorxbetween0and6
-y1&#x3D;sin
+        x=linspace(0,6);%createavectorxbetween0and6
+y1=sin(2*x);
+y2=
       </div> -->
     </a>
   </div>
@@ -2887,5 +2888,5 @@ y1&#x3D;sin
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

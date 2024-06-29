@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,7 +661,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 660 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 651 |
           </span>
   
           <span class="min2read">
@@ -696,21 +696,21 @@
 <p>问题原因：使用达梦，没有指定数据库方言的类型。mbplus支持的数据库中包含达梦，因此简单的配置就可以解决。</p>
 <p>解决方法：</p>
 <p>在 Spring Boot 项目中，通过 Java 配置来添加分页插件：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Configuration
-@MapperScan(&quot;scan.your.mapper.package&quot;)
-public class MybatisPlusConfig &#123;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span><span class="token string">"scan.your.mapper.package"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisPlusConfig</span> <span class="token punctuation">&#123;</span>
 
-    &#x2F;**
+    <span class="token comment">/**
      * 添加分页插件
-     *&#x2F;
-    @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() &#123;
-        MybatisPlusInterceptor interceptor &#x3D; new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL)); &#x2F;&#x2F; 如果配置多个插件, 切记分页最后添加
-        &#x2F;&#x2F; 如果有多数据源可以不配具体类型, 否则都建议配上具体的 DbType
-        return interceptor;
-    &#125;
-&#125;</code></pre>
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">MybatisPlusInterceptor</span> <span class="token function">mybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">MybatisPlusInterceptor</span> interceptor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MybatisPlusInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        interceptor<span class="token punctuation">.</span><span class="token function">addInnerInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PaginationInnerInterceptor</span><span class="token punctuation">(</span><span class="token class-name">DbType</span><span class="token punctuation">.</span><span class="token constant">MYSQL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果配置多个插件, 切记分页最后添加</span>
+        <span class="token comment">// 如果有多数据源可以不配具体类型, 否则都建议配上具体的 DbType</span>
+        <span class="token keyword">return</span> interceptor<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -807,11 +807,11 @@ public class MybatisPlusConfig &#123;
       </div>
       <!-- <div class="content">
         1、Git克隆
-git clone &quot;&quot;
+git clone ""
 
 引号内为仓库URL。
 2、Git提交
-提交的前提是在Gi
+提交的前提是在Github有一个新的仓
       </div> -->
     </a>
   </div>
@@ -2303,5 +2303,5 @@ git clone &quot;&quot;
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

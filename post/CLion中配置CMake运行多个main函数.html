@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -700,13 +700,13 @@
 <li>在 src 目录下添加 CMakeLists.txt 文件。</li>
 <li>在 src&#x2F;CMakeLists.txt 中添加要编译的 main 源文件:</li>
 </ol>
-<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_executable(main1 main1.cpp) 
-add_executable(main2 main2.cpp)</code></pre>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">add_executable</span><span class="token punctuation">(</span>main1 main1.cpp<span class="token punctuation">)</span> 
+<span class="token keyword">add_executable</span><span class="token punctuation">(</span>main2 main2.cpp<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="4">
 <li>在项目根目录的 CMakeLists.txt 中添加 src 子目录:</li>
 </ol>
-<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake">add_subdirectory(src)</code></pre>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">add_subdirectory</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这样就可以分别编译 src 目录下的两个 main 程序了。在 CLion 中可以通过 “Add Configuration” 选择要运行的 main。</p>
 <p>这样我们就可以轻松在一个项目中管理和运行多个 main 函数了。</p>
@@ -769,8 +769,9 @@ add_executable(main2 main2.cpp)</code></pre>
       </div>
       
       <!-- <div class="content">
-        数据结构线性表顺序表&#x2F;&#x2F;
-&#x2F;&#x2F; Created by Administrator
+        数据结构线性表顺序表//
+// Created by Administrator on 2022/10/7.
+// 描述
       </div> -->
     </a>
   </div>
@@ -2284,5 +2285,5 @@ add_executable(main2 main2.cpp)</code></pre>
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

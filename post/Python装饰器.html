@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -670,11 +670,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 1.4k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 1.3k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 6分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 5分钟 |
           </span>
   
           
@@ -703,48 +703,48 @@
       <div class="post-content">
         <h1 id="Python-装饰器"><a href="#Python-装饰器" class="headerlink" title="Python 装饰器"></a>Python 装饰器</h1><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><p>在Python中，函数也是一个对象，可以被当做参数传递，可以在另一个函数中调用，也可以实现函数的嵌套。</p>
 <p>所以，利用这个特性，我们可以写出一段测试功能运行时长的代码。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-def function():
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
 
 
-def index(func):
-    startTime &#x3D; time.time()
-    func()
-    enfTime &#x3D; time.time()
-    print(&quot;script spend time is&quot;, enfTime - startTime)
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    startTime <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    enfTime <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"script spend time is"</span><span class="token punctuation">,</span> enfTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span>
 
 
-index(function)</code></pre>
+index<span class="token punctuation">(</span>function<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样的想法乍一看很好，但其实这从本质上看，不是改变了function函数的功能，而是创建了一个新的函数，而后将function融合进了这个函数里，最终实际上对function函数的一个包装，使它成为了一个新的函数，来实现功能。</p>
 <p>那么，如果我们想要直接调用function函数就能实现像程序计时这样的功能呐？（要注意，我们做的一切都要建立在不更改function函数任何代码的前提之下。）</p>
 <p>Python中有装饰器可以帮助我们更好的实现这样的功能。</p>
 <p>装饰器的本质还是函数，他的作用是去装饰另外一个函数，而在程序计时这样的场景里，我们就需要根据我们要计时的程序，去编写一个计时的函数，这个计时的函数就是装饰器。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-def index(func):
-    def test_time():
-        print(&quot;I doing some work&quot;)
-        func()
-        print(&quot;I am end!&quot;)
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">test_time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I doing some work"</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am end!"</span><span class="token punctuation">)</span>
 
-    return test_time
-
-
-@index
-def function():
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
+    <span class="token keyword">return</span> test_time
 
 
-function()</code></pre>
+<span class="token decorator annotation punctuation">@index</span>
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
+
+
+function<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们使用了装饰器的语法糖，@加函数名的形式，这其实就相当于一个index(function)，但是因为他的本质是装饰，因此在function不执行的情况下，程序也不会执行。</p>
 <p>最后我们直接调用function函数，就能顺利的完成程序计时的功能。</p>
@@ -760,157 +760,157 @@ function()</code></pre>
 <p>于是我们简单的使用一样python中的动态参数。</p>
 <p><img src="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8/image-20220826121202910.png" class="lazyload" data-srcset="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8/image-20220826121202910.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220826121202910"></p>
 <p>这其实很简单，不用动态参数，你手动加入参数也可以。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-def index(func):
-    def test_time(*args, **kwargs):
-        print(&quot;I doing some work&quot;)
-        func(*args, **kwargs)
-        print(&quot;I am end!&quot;)
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">test_time</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I doing some work"</span><span class="token punctuation">)</span>
+        func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am end!"</span><span class="token punctuation">)</span>
 
-    return test_time
-
-
-@index
-def function(x, y):
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
-    print(x + y)
+    <span class="token keyword">return</span> test_time
 
 
-function(2, 3)</code></pre>
+<span class="token decorator annotation punctuation">@index</span>
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
+
+
+function<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>装饰器带参数</p>
 <p>这是另外一个问题，我们希望给装饰器带上参数，使得它使用起来更加的灵活，如果你见过flask的代码，那么就应该见过装饰器带参数的情况。、</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-def index(url):
-    def test_time(func):
-        def Timer(*args, **kwargs):
-            print(&quot;I doing some work&quot;)
-            func(*args, **kwargs)
-            print(&quot;I request the &quot;, url)
-            print(&quot;I am end!&quot;)
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">test_time</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">Timer</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I doing some work"</span><span class="token punctuation">)</span>
+            func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I request the "</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am end!"</span><span class="token punctuation">)</span>
 
-        return Timer
-    return test_time
-
-
-@index(&quot;&#x2F;home&quot;)
-def function(x, y):
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
-    print(x + y)
+        <span class="token keyword">return</span> Timer
+    <span class="token keyword">return</span> test_time
 
 
-function(2, 4)</code></pre>
+<span class="token decorator annotation punctuation">@index</span><span class="token punctuation">(</span><span class="token string">"/home"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
+
+
+function<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如上，这就是一个带参数的装饰器。</p>
 <p>你可能发现了装饰器上三层的函数嵌套，并且写出了内两层的返回值，这是不可缺少的。</p>
 <p>我们将它写成最开始的形式;</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-def function(x, y):
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
-    print(x + y)
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
 
 
-def index(url, func, *args, **kwargs):
-    startTime &#x3D; time.time()
-    func(*args, **kwargs)
-    enfTime &#x3D; time.time()
-    print(&quot;script spend time is&quot;, enfTime - startTime)
-    print(&quot;I request the &quot;, url)
-    return index
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> func<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    startTime <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+    enfTime <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"script spend time is"</span><span class="token punctuation">,</span> enfTime <span class="token operator">-</span> startTime<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I request the "</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> index
 
 
-index(&quot;home&quot;, function, 2, 5)</code></pre>
+index<span class="token punctuation">(</span><span class="token string">"home"</span><span class="token punctuation">,</span> function<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以发现此时再使用这种形式，整个函数的调用就变得异常的繁琐和麻烦了起来。</p>
 <h2 id="类装饰器"><a href="#类装饰器" class="headerlink" title="类装饰器"></a>类装饰器</h2><p>或许叫他装饰器类更加合适，比起一般的函数形式的装饰器，</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import time
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 
-class Foo(object):
-    def __init__(self, url):
-        self._url &#x3D; url
+<span class="token keyword">class</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
 
-    def __call__(self, func):
-        def wrap(*args,**kwargs):
-            print(&quot;func is starting!&quot;)
-            func(*args, **kwargs)
-            print(&quot;I request the &quot; + self._url)
-            print(&quot;func is ending!&quot;)
-        return wrap
-
-
-@Foo(&quot;home&quot;)
-def function(x, y):
-    print(&quot;I am function!&quot;)
-    time.sleep(3)
-    print(&quot;I have finished my work!&quot;)
-    print(x+y)
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">wrap</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"func is starting!"</span><span class="token punctuation">)</span>
+            func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I request the "</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_url<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"func is ending!"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> wrap
 
 
-function(4, 6)</code></pre>
-
-<h2 id="装饰器嵌套"><a href="#装饰器嵌套" class="headerlink" title="装饰器嵌套"></a>装饰器嵌套</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">class Foo01(object):
-    def __init__(self, url):
-        self._url &#x3D; url
-
-    def __call__(self, func):
-        def wrap(*args, **kwargs):
-
-            func(*args, **kwargs)
-            print(&quot;I request the &quot; + self._url)
+<span class="token decorator annotation punctuation">@Foo</span><span class="token punctuation">(</span><span class="token string">"home"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I am function!"</span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I have finished my work!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token operator">+</span>y<span class="token punctuation">)</span>
 
 
-        return wrap
+function<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="装饰器嵌套"><a href="#装饰器嵌套" class="headerlink" title="装饰器嵌套"></a>装饰器嵌套</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Foo01</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
+
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">wrap</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+            func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"I request the "</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_url<span class="token punctuation">)</span>
 
 
-class Foo02(object):
-    def __init__(self, url):
-        self._url &#x3D; url
-
-    def __call__(self, func):
-        def wrap(*args, **kwargs):
-
-            func(*args, **kwargs)
-            print(&quot;The IP&quot; + self._url)
+        <span class="token keyword">return</span> wrap
 
 
-        return wrap
+<span class="token keyword">class</span> <span class="token class-name">Foo02</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
+
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">wrap</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+            func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"The IP"</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_url<span class="token punctuation">)</span>
 
 
-class Foo03(object):
-    def __init__(self, url):
-        self._url &#x3D; url
-
-    def __call__(self, func):
-        def wrap(*args, **kwargs):
-
-            func(*args, **kwargs)
-            print(&quot;The UA&quot; + self._url)
+        <span class="token keyword">return</span> wrap
 
 
-        return wrap
+<span class="token keyword">class</span> <span class="token class-name">Foo03</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_url <span class="token operator">=</span> url
+
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">def</span> <span class="token function">wrap</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+            func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"The UA"</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>_url<span class="token punctuation">)</span>
 
 
-@Foo03(&quot;&#123;&#39;User_Agent&#39;:&#39;*****&#39;&#125;&quot;)
-@Foo02(&quot;192.168.121.130&quot;)
-@Foo01(&quot;home&quot;)
-def function(x, y):
-    print(x + y)
+        <span class="token keyword">return</span> wrap
 
 
-function(4, 6)</code></pre>
+<span class="token decorator annotation punctuation">@Foo03</span><span class="token punctuation">(</span><span class="token string">"&#123;'User_Agent':'*****'&#125;"</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@Foo02</span><span class="token punctuation">(</span><span class="token string">"192.168.121.130"</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@Foo01</span><span class="token punctuation">(</span><span class="token string">"home"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span>
+
+
+function<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8/image-20220826125058086.png" class="lazyload" data-srcset="/post/Python%E8%A3%85%E9%A5%B0%E5%99%A8/image-20220826125058086.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220826125058086"></p>
 <p>由此可以发现，装饰器的运行是按照和函数的距离来决定的，越近就越先执行。</p>
@@ -2480,5 +2480,5 @@ Web基础主要的
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

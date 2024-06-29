@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,7 +661,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 705 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 688 |
           </span>
   
           <span class="min2read">
@@ -705,7 +705,7 @@ python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3
 
 用于 Linux 和 macOS 的源 env&#x2F;bin&#x2F;activate
 
-适用于 Windows 的env\Scripts\activate.bat</code></pre>
+适用于 Windows 的env\Scripts\activate.bat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>安装pyside6包，可使用pip，也可以在pycharm中搜索安装。</p>
 <p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819104853500.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819104853500"></p>
@@ -717,59 +717,59 @@ python -m venv env，（您的 Python 可执行文件可能被调用&#96;python3
 <p><strong>pip install pyside6</strong>，用于最新版本。</p>
 <p><strong>pip install pyside6&#x3D;&#x3D;6.0</strong>，专门针对版本<code>6.0</code></p>
 <p>也可以从官方的服务器安装特定快照：</p>
-<pre class="line-numbers language-none"><code class="language-none">pip install --index-url&#x3D;https:&#x2F;&#x2F;download.qt.io&#x2F;snapshots&#x2F;ci&#x2F;pyside&#x2F;6.0.0&#x2F;latest pyside6 --trusted-host download.qt.io</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">pip install --index-url&#x3D;https:&#x2F;&#x2F;download.qt.io&#x2F;snapshots&#x2F;ci&#x2F;pyside&#x2F;6.0.0&#x2F;latest pyside6 --trusted-host download.qt.io<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>测试</p>
 <p><img src="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" class="lazyload" data-srcset="/post/%E5%9F%BA%E4%BA%8Epython%E7%9A%84QT%EF%BC%88%E4%B8%80%EF%BC%89/image-20220819105856465.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20220819105856465"></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import PySide6.QtCore
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> PySide6<span class="token punctuation">.</span>QtCore
 
-print(PySide6.__version__)</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>PySide6<span class="token punctuation">.</span>__version__<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>引入核心包，打印版本信息即可。</p>
 <p>6.3.1（笔记版本）</p>
 <h2 id="Helloworld"><a href="#Helloworld" class="headerlink" title="Helloworld"></a>Helloworld</h2><p>pyside6模块提供了一些子模块用来访问Qt的API。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import sys
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
 
-from PySide6 import QtWidgets, QtCore,QtGui
-
-
-class MyWidget(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-
-        self.hello &#x3D; &#39;hello Tom&#39;
-
-        self.button &#x3D; QtWidgets.QPushButton(&#39;点我&#39;)
-
-        self.text &#x3D; QtWidgets.QLabel(&#39;helloworld&#39;, alignment&#x3D;QtCore.Qt.AlignCenter)
-
-        self.layout &#x3D; QtWidgets.QVBoxLayout(self)
-
-        self.layout.addWidget(self.text)
-
-        self.layout.addWidget(self.button)
-
-        self.button.clicked.connect(self.magic)
-
-    @QtCore.Slot()
-    def magic(self):
-        self.text.setText(self.hello)
+<span class="token keyword">from</span> PySide6 <span class="token keyword">import</span> QtWidgets<span class="token punctuation">,</span> QtCore<span class="token punctuation">,</span>QtGui
 
 
-if __name__ &#x3D;&#x3D; &quot;__main__&quot;:
-    app &#x3D; QtWidgets.QApplication([])
+<span class="token keyword">class</span> <span class="token class-name">MyWidget</span><span class="token punctuation">(</span>QtWidgets<span class="token punctuation">.</span>QWidget<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    widget &#x3D; MyWidget()
-    widget.resize(800, 600)
-    widget.show()
+        self<span class="token punctuation">.</span>hello <span class="token operator">=</span> <span class="token string">'hello Tom'</span>
 
-    sys.exit(app.exec())</code></pre>
+        self<span class="token punctuation">.</span>button <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QPushButton<span class="token punctuation">(</span><span class="token string">'点我'</span><span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>text <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QLabel<span class="token punctuation">(</span><span class="token string">'helloworld'</span><span class="token punctuation">,</span> alignment<span class="token operator">=</span>QtCore<span class="token punctuation">.</span>Qt<span class="token punctuation">.</span>AlignCenter<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QVBoxLayout<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>layout<span class="token punctuation">.</span>addWidget<span class="token punctuation">(</span>self<span class="token punctuation">.</span>button<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>self<span class="token punctuation">.</span>magic<span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@QtCore<span class="token punctuation">.</span>Slot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">magic</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>text<span class="token punctuation">.</span>setText<span class="token punctuation">(</span>self<span class="token punctuation">.</span>hello<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app <span class="token operator">=</span> QtWidgets<span class="token punctuation">.</span>QApplication<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    widget <span class="token operator">=</span> MyWidget<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">,</span> <span class="token number">600</span><span class="token punctuation">)</span>
+    widget<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span>app<span class="token punctuation">.</span><span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这是官方文档中的例子，我只是取消了随机，让他变得更简单一点。</p>
 <p>虽然他看起来十分的简单，但实际上这个例子包含了Qt的很多核心内容。</p>
 <p>如果你尝试运行了这个代码，你会发现当你点击按钮的时候，屏幕上的文字会发生变化，这看起来似乎没什么了不起的，但实际上，这让我们的小部件和其他小部件进行了通信，它足以帮我们解决很多。</p>
 <p>代码之中</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">self.button.clicked.connect(self.magic)</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">self<span class="token punctuation">.</span>button<span class="token punctuation">.</span>clicked<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>self<span class="token punctuation">.</span>magic<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其中clicked是<em>QPushButton</em>的一个预定义信号，在使用之中不会提示，甚至idea还有弹出警告，因为在<em>QPushButton</em>中找不到任何名为clicked的属性与方法。</p>
 <p>但实际上，当我们观察<em>QPushButton</em>类，会发现他继承了父类QAbstractButton，而父类拥有此方法。</p>
@@ -2345,5 +2345,5 @@ JQue
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

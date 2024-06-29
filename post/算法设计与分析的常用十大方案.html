@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -665,7 +665,7 @@
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 13分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 12分钟 |
           </span>
   
           
@@ -751,7 +751,7 @@ for i in range(2**n)：
 		# 求最大价值
 
 		res &#x3D; max(res,total_value)
-return res</code></pre>
+return res<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>“””<br>当i&#x3D;&#x3D;0时，代表没有选择物品</p>
 <p>i&#x3D;&#x3D;1,第一种方案，j&#x3D;&#x3D;0，第一个物品 1&lt;&lt;0 &#x3D; 1 1 &amp; 1 &#x3D;1 代表在第i&#x3D;&#x3D;1种方案下，第j&#x3D;&#x3D;0（第一个物品）<br>被放进背包。<br>j &#x3D;&#x3D; 1 表示第二个物品 1 &lt;&lt; 1 &#x3D; 10 1 &amp; 10 &#x3D; 0 没有被选择<br>j &#x3D;&#x3D; 2,3,4…n-1</p>
@@ -770,7 +770,7 @@ return res</code></pre>
 		return bag01(weight,value,n-1,c)
 		
 
-return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))</code></pre>
+return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,value,n-1,c))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="循环-动态规划"><a href="#循环-动态规划" class="headerlink" title="循环(动态规划)"></a>循环(动态规划)</h3><pre class="line-numbers language-none"><code class="language-none">def bag01(n,c,weight,value):
 	# 保存最终结果，c+1（存储了0-c的所有结果）
@@ -784,7 +784,7 @@ return max(value[n-1] + bag01(weight,value,n-1,c - weight[n-1]),bag01(weight,val
 			# 如果加入，dp[j] &#x3D;&#x3D; dp[j - w[i]] + v[i]
 			# 不加入，dp[j]
 			dp[j] &#x3D; max(dp[j],dp[j-weight[i]] + value[i])
-	return dp[c]</code></pre>
+	return dp[c]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -804,7 +804,7 @@ def bag01(n,c,weight,value):
 		return bag01(n-1,c,weight,value)
 	else:
 		# 递归解决剩下问题，（放和不放，最大值）
-		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1,c.weight,value))</code></pre>
+		return max(value[n-1] + bag01(n-1,c-weight[n-1]),bag01(n-1,c.weight,value))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -813,7 +813,7 @@ def bag01(n,c,weight,value):
 	for i in range(1,n+1):
 		for j in range(c,weight[i-1] -1,-1):
 			dp[j] &#x3D; max(dp[j],dp[j-weight[i-1]]+value[i-1])
-	return dp[c]</code></pre>
+	return dp[c]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>​	</p>
 <p>分治法重点是把物品不断的切割，分别考虑每组物品是否被选择</p>
@@ -833,7 +833,7 @@ def bag01(n,c,weight,value):
 			else:
 				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
 				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
-	return f[n][c]</code></pre>
+	return f[n][c]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -854,7 +854,7 @@ def bag01(n,c,weight,value):
 			else:
 				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
 				f[i % 2][j] &#x3D; max(f[i % 2][j],f[（i-1） % 2][j-weight[i-1]])
-	return f[n][c]</code></pre>
+	return f[n][c]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -875,7 +875,7 @@ def bag01(n,c,weight,value):
 			else:
 				# 取第i-1个物品的状态和第i个物品放入的状态的较大值
 				f[i][j] &#x3D; max(f[i-1][j],f[i-1][j-weight[i-1]])
-	return f[n][c]</code></pre>
+	return f[n][c]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -901,7 +901,7 @@ def bag01(n,c,weight,value):
 			bag[i] &#x3D; c&#x2F;weight[i]
 			total_value +&#x3D; value[i] * (c&#x2F;weight[i])
 			break
-	return total_value,bag</code></pre>
+	return total_value,bag<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -937,7 +937,7 @@ while c &gt;0:
 
 	if all(select_items):
 		break
-return total_value,select_items</code></pre>
+return total_value,select_items<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -969,75 +969,75 @@ return total_value,select_items</code></pre>
 		back(i+1,c_weight+weight[i],c_value+value[i])
 	max_value &#x3D; 0
 	back(0,0,0)
-	return max_value</code></pre>
+	return max_value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>​	</p>
-<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">def bag01(c,n,weight,value)：
+<h3 id="分支界限-对回溯算法的改进。剪枝"><a href="#分支界限-对回溯算法的改进。剪枝" class="headerlink" title="分支界限(对回溯算法的改进。剪枝)"></a>分支界限(对回溯算法的改进。剪枝)</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bag01</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span>n<span class="token punctuation">,</span>weight<span class="token punctuation">,</span>value<span class="token punctuation">)</span>：
 
-	# 创建一个节点类，保存当前状态和状态的价值上界。
+	<span class="token comment"># 创建一个节点类，保存当前状态和状态的价值上界。</span>
 
-	class Node:
-		def __init__(self,level,value,weight):
+	<span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token punctuation">:</span>
+		<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>level<span class="token punctuation">,</span>value<span class="token punctuation">,</span>weight<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-			# level表示当前节点的深度
+			<span class="token comment"># level表示当前节点的深度</span>
 
-			self.level &#x3D; level
-			self.value &#x3D; value
-			self.weight &#x3D; weight
+			self<span class="token punctuation">.</span>level <span class="token operator">=</span> level
+			self<span class="token punctuation">.</span>value <span class="token operator">=</span> value
+			self<span class="token punctuation">.</span>weight <span class="token operator">=</span> weight
 
-		# 定义对象之间的＜比较。
+		<span class="token comment"># 定义对象之间的＜比较。</span>
 
-		def __lt__(self,other):
-			return self.value &gt; other.value
+		<span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span>other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+			<span class="token keyword">return</span> self<span class="token punctuation">.</span>value <span class="token operator">></span> other<span class="token punctuation">.</span>value
 
-	# 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空
+	<span class="token comment"># 创建一个优先队列，用来保存待扩展的节点，初始队列只有一个节点，表示当前状态为空</span>
 
-	nodes &#x3D; [Node(0,0,0)]
-	max_value &#x3D; 0
-	while nodes:
-		node &#x3D; nodes.pop(0)
+	nodes <span class="token operator">=</span> <span class="token punctuation">[</span>Node<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+	max_value <span class="token operator">=</span> <span class="token number">0</span>
+	<span class="token keyword">while</span> nodes<span class="token punctuation">:</span>
+		node <span class="token operator">=</span> nodes<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 
-		# 代表选完了所有的节点
+		<span class="token comment"># 代表选完了所有的节点</span>
 
-		if node.level &#x3D;&#x3D; n:
-			if node_value &gt; max_value:
-				max_value &#x3D; node_value
-			continue
+		<span class="token keyword">if</span> node<span class="token punctuation">.</span>level <span class="token operator">==</span> n<span class="token punctuation">:</span>
+			<span class="token keyword">if</span> node_value <span class="token operator">></span> max_value<span class="token punctuation">:</span>
+				max_value <span class="token operator">=</span> node_value
+			<span class="token keyword">continue</span>
 		
 
-	# bound 存储计算得到的价值上界
+	<span class="token comment"># bound 存储计算得到的价值上界</span>
 
-	bound &#x3D; node_value
+	bound <span class="token operator">=</span> node_value
 
-	# 不选第i件物品
+	<span class="token comment"># 不选第i件物品</span>
 
-	for j in range(node.level,n):
+	<span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>level<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-		# 装不下
+		<span class="token comment"># 装不下</span>
 
-		if node.weight + weight[j] &gt; c:
+		<span class="token keyword">if</span> node<span class="token punctuation">.</span>weight <span class="token operator">+</span> weight<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> c<span class="token punctuation">:</span>
 
-			# 取物品的部分
+			<span class="token comment"># 取物品的部分</span>
 
-			bound +&#x3D; (c - node.weight) &#x2F; weight[j] * value[j]
-			break
-		bound +&#x3D; value[j]
+			bound <span class="token operator">+=</span> <span class="token punctuation">(</span>c <span class="token operator">-</span> node<span class="token punctuation">.</span>weight<span class="token punctuation">)</span> <span class="token operator">/</span> weight<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> value<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+			<span class="token keyword">break</span>
+		bound <span class="token operator">+=</span> value<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
 
-	# 价值上界大于已知的最大价值
+	<span class="token comment"># 价值上界大于已知的最大价值</span>
 
-	if bound &gt; max_value:
-		nodes.append(Node(node.level+1,node.value,node.weight))
+	<span class="token keyword">if</span> bound <span class="token operator">></span> max_value<span class="token punctuation">:</span>
+		nodes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Node<span class="token punctuation">(</span>node<span class="token punctuation">.</span>level<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>node<span class="token punctuation">.</span>value<span class="token punctuation">,</span>node<span class="token punctuation">.</span>weight<span class="token punctuation">)</span><span class="token punctuation">)</span>
 	
 
-	# 选第i件物品
+	<span class="token comment"># 选第i件物品</span>
 
-	bound &#x3D; node.value + value[node.level]
-	weight &#x3D; node.weight + weight[node.level]
-	if weight &lt;&#x3D; c and bound &gt; max_value:
-		max_value &#x3D; bound
-	if bound &gt; max_value:
-		nodes.append(Node(node.level+1,bound,weight))
-return max_value</code></pre>
+	bound <span class="token operator">=</span> node<span class="token punctuation">.</span>value <span class="token operator">+</span> value<span class="token punctuation">[</span>node<span class="token punctuation">.</span>level<span class="token punctuation">]</span>
+	weight <span class="token operator">=</span> node<span class="token punctuation">.</span>weight <span class="token operator">+</span> weight<span class="token punctuation">[</span>node<span class="token punctuation">.</span>level<span class="token punctuation">]</span>
+	<span class="token keyword">if</span> weight <span class="token operator">&lt;=</span> c <span class="token keyword">and</span> bound <span class="token operator">></span> max_value<span class="token punctuation">:</span>
+		max_value <span class="token operator">=</span> bound
+	<span class="token keyword">if</span> bound <span class="token operator">></span> max_value<span class="token punctuation">:</span>
+		nodes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Node<span class="token punctuation">(</span>node<span class="token punctuation">.</span>level<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>bound<span class="token punctuation">,</span>weight<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">return</span> max_value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
       </div>
@@ -2597,5 +2597,5 @@ return max_value</code></pre>
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

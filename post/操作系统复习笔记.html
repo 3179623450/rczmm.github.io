@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,7 +661,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 11.3k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 11.2k |
           </span>
   
           <span class="min2read">
@@ -875,38 +875,38 @@
 <h3 id="信号量与PV"><a href="#信号量与PV" class="headerlink" title="信号量与PV"></a>信号量与PV</h3><p>信号量是一个用于解决进程同步问题的设计，通俗的说他就是一个可以在C中表示的结构体。</p>
 <p>PV操作，P与V都是原语，P代表进程请求一个资源，而V表示进程释放一个资源。</p>
 <p>最初的信号量值包含一个整形值和一个等待队列。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">struct semaphore&#123;  
-	int value;  
-	struct QUEUETYPE *queue;  
-&#125; </code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">semaphore</span><span class="token punctuation">&#123;</span>  
+	<span class="token keyword">int</span> value<span class="token punctuation">;</span>  
+	<span class="token keyword">struct</span> <span class="token class-name">QUEUETYPE</span> <span class="token operator">*</span>queue<span class="token punctuation">;</span>  
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>P操作（一般使用wait函数来表示）</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void wait(semaphore s)  &#123; 		s.value &#x3D; s.value - 1;  
-	if (s.value &lt; 0)  				block(s.queue); &#x2F;* 将进程阻塞，并将其投入等待队列 s.queue *&#x2F;
-&#125;</code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">wait</span><span class="token punctuation">(</span>semaphore s<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span> 		s<span class="token punctuation">.</span>value <span class="token operator">=</span> s<span class="token punctuation">.</span>value <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>  
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>value <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>  				<span class="token function">block</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* 将进程阻塞，并将其投入等待队列 s.queue */</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>V操作（一般使用函数signal表示）</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void signal(semaphore s)  &#123; 	s.value &#x3D; s.value + 1;  
-	if (s.value &lt;&#x3D; 0)  				wackup(s.queue);  &#x2F;* 唤醒被阻塞进程，将其从等待队列 s.queue 取出，投入就绪队列*&#x2F; 
-&#125; </code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">signal</span><span class="token punctuation">(</span>semaphore s<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span> 	s<span class="token punctuation">.</span>value <span class="token operator">=</span> s<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>  
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span>value <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>  				<span class="token function">wackup</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">/* 唤醒被阻塞进程，将其从等待队列 s.queue 取出，投入就绪队列*/</span> 
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>在信号量机制中，信号量的初值 s.value 表示系统中某种资源的数目，因而又称为资源信 号量。</p>
 <h3 id="AND信号量"><a href="#AND信号量" class="headerlink" title="AND信号量"></a>AND信号量</h3><p>当一个进程需要先获得多个临界资源的资源事后，之前的单个资源的互斥访问就无法起到作用了。很容易出现僵持的状态。</p>
 <p>其基本思想是，将进程在整个运行期间所 需要的所有临界资源，一次性地全部分配给进程，待该进程使用完后再一起释放。</p>
 <p>因为一个AND条件，所以称作是AND信号量。</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Swait(s1,s2,…,sn)
-&#123;
-	if (s1 &gt;&#x3D; 1 &amp;&amp; s2 &gt;&#x3D; 1 &amp;&amp; … &amp;&amp; sn.&gt;&#x3D; 1) &#123; 
-		&#x2F;* 满足资源要求时*&#x2F; 
- 		for (i &#x3D; 1; i &lt;&#x3D; n; i &#x3D; i + 1) 
- 			si &#x3D; si -1; 
- 	&#125; 
- 	else 
- 	&#123; &#x2F;* 某些资源不能满足要求时*&#x2F; 
-		将进程投入第一个小于 1 的信号量的等待队列 si.queue ; 
-		阻塞进程;
- 	&#125;
-&#125;</code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">Swait</span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span>s2<span class="token punctuation">,</span>…<span class="token punctuation">,</span>sn<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>s1 <span class="token operator">>=</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> s2 <span class="token operator">>=</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> … <span class="token operator">&amp;&amp;</span> sn<span class="token punctuation">.</span><span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+		<span class="token comment">/* 满足资源要求时*/</span> 
+ 		<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> 
+ 			si <span class="token operator">=</span> si <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> 
+ 	<span class="token punctuation">&#125;</span> 
+ 	<span class="token keyword">else</span> 
+ 	<span class="token punctuation">&#123;</span> <span class="token comment">/* 某些资源不能满足要求时*/</span> 
+		将进程投入第一个小于 <span class="token number">1</span> 的信号量的等待队列 si<span class="token punctuation">.</span>queue <span class="token punctuation">;</span> 
+		阻塞进程<span class="token punctuation">;</span>
+ 	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>以上是wait的函数的伪代码，signal函数同理。</p>
 <p>但是可以看出此时临界值一直是1，这明显不符合实际。</p>
@@ -914,19 +914,19 @@
 <p>如果进程同时需要多种资源，且对每种资源需要的数目不同，并且系统在分配资源时存 在一个临界值 t，只有系统中的资源数大于 t 时，才予以分配且一次分配 d 个（通常 t &gt;&#x3D; d） 资源；否则不予分配。</p>
 <p>这样就对AND信号量进行扩充。</p>
 </blockquote>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Swait(s1,t1,d1,…,sn,tn,dn)
-&#123;
-	if (s1 &gt;&#x3D; t1 &amp;&amp; s2 &gt;&#x3D; t2 &amp;&amp; … &amp;&amp; sn.&gt;&#x3D; tn) &#123; 
-		&#x2F;* 满足资源要求时*&#x2F; 
- 		for (i &#x3D; 1; i &lt;&#x3D; n; i &#x3D; i + 1) 
- 			si &#x3D; si -di; 
- 	&#125; 
- 	else 
- 	&#123; &#x2F;* 某些资源不能满足要求时*&#x2F; 
-		将进程投入第一个小于 1 的信号量的等待队列 si.queue ; 
-		阻塞进程;
- 	&#125;
-&#125;</code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">Swait</span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span>t1<span class="token punctuation">,</span>d1<span class="token punctuation">,</span>…<span class="token punctuation">,</span>sn<span class="token punctuation">,</span>tn<span class="token punctuation">,</span>dn<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>s1 <span class="token operator">>=</span> t1 <span class="token operator">&amp;&amp;</span> s2 <span class="token operator">>=</span> t2 <span class="token operator">&amp;&amp;</span> … <span class="token operator">&amp;&amp;</span> sn<span class="token punctuation">.</span><span class="token operator">>=</span> tn<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+		<span class="token comment">/* 满足资源要求时*/</span> 
+ 		<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> 
+ 			si <span class="token operator">=</span> si <span class="token operator">-</span>di<span class="token punctuation">;</span> 
+ 	<span class="token punctuation">&#125;</span> 
+ 	<span class="token keyword">else</span> 
+ 	<span class="token punctuation">&#123;</span> <span class="token comment">/* 某些资源不能满足要求时*/</span> 
+		将进程投入第一个小于 <span class="token number">1</span> 的信号量的等待队列 si<span class="token punctuation">.</span>queue <span class="token punctuation">;</span> 
+		阻塞进程<span class="token punctuation">;</span>
+ 	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>一般“信号量集”可以用于各种情况的资源的分配和释放。下面我们讨论几种特殊情况： </p>
 <ul>
@@ -2708,5 +2708,5 @@ x&#x3
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

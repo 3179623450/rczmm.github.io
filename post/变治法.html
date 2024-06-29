@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,7 +661,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 637 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 606 |
           </span>
   
           <span class="min2read">
@@ -704,72 +704,72 @@
 <p>求解线性方程组的方式，将系数矩阵化为上三角矩阵。（就是一种变治和化简的思想）</p>
 <h2 id="改变问题（AVL、多路查找树）"><a href="#改变问题（AVL、多路查找树）" class="headerlink" title="改变问题（AVL、多路查找树）"></a>改变问题（AVL、多路查找树）</h2><p>AVL，为了改善二叉排序树的查找性能</p>
 <h2 id="问题化简（堆排序）"><a href="#问题化简（堆排序）" class="headerlink" title="问题化简（堆排序）"></a>问题化简（堆排序）</h2><p>堆排序</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">def heapsort2(arr):
-    # 建立堆
-    def heapify(arr, low, high):
-        # 开始指向堆顶元素
-        i &#x3D; low
-        # 开始指向左节点
-        j &#x3D; 2 * i + 1
-        # 储存堆顶元素
-        temp &#x3D; arr[low]
-        # j位置有效
-        while j &lt;&#x3D; high:
-            # 右结点大于左结点
-            if j + 1 &lt;&#x3D; high and arr[j + 1] &gt;&#x3D; arr[j]:
-                # 指向右结点
-                j &#x3D; j + 1
-            # 子结点大于父节点
-            if arr[j] &gt; temp:
-                # 交换
-                arr[i] &#x3D; arr[j]
-                i &#x3D; j
-                j &#x3D; 2 * i + 1
-            else:
-                # temp放入某一节父节点
-                arr[i] &#x3D; temp
-                break
-        else:
-            # temp放到叶子结点
-            arr[i] &#x3D; temp
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">heapsort2</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 建立堆</span>
+    <span class="token keyword">def</span> <span class="token function">heapify</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 开始指向堆顶元素</span>
+        i <span class="token operator">=</span> low
+        <span class="token comment"># 开始指向左节点</span>
+        j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token comment"># 储存堆顶元素</span>
+        temp <span class="token operator">=</span> arr<span class="token punctuation">[</span>low<span class="token punctuation">]</span>
+        <span class="token comment"># j位置有效</span>
+        <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> high<span class="token punctuation">:</span>
+            <span class="token comment"># 右结点大于左结点</span>
+            <span class="token keyword">if</span> j <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> high <span class="token keyword">and</span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">>=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token comment"># 指向右结点</span>
+                j <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token comment"># 子结点大于父节点</span>
+            <span class="token keyword">if</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">></span> temp<span class="token punctuation">:</span>
+                <span class="token comment"># 交换</span>
+                arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+                i <span class="token operator">=</span> j
+                j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># temp放入某一节父节点</span>
+                arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># temp放到叶子结点</span>
+            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp
 
-    # 排序
-    def sort(nums):
-        n &#x3D; len(nums)
+    <span class="token comment"># 排序</span>
+    <span class="token keyword">def</span> <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span>
 
-        for i in range((n - 2) &#x2F;&#x2F; 2, -1, -1):
-            heapify(nums, i, n - 1)
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            heapify<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> i<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-        for i in range(n - 1, -1, -1):
-            nums[0], nums[i] &#x3D; nums[i], nums[0]
-            heapify(nums, 0, i - 1)
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            heapify<span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-    sort(arr)
-    # print(&quot;结果数组：&quot;, arr)</code></pre>
+    sort<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+    <span class="token comment"># print("结果数组：", arr)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
 <h2 id="霍纳法则"><a href="#霍纳法则" class="headerlink" title="霍纳法则"></a>霍纳法则</h2><p>P（x） &#x3D; an * x^n  + ……a1* x + a0</p>
 <p>一项一项的计算很慢，如果改变表现形式，这样就只要进行迭代。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"># 霍纳法则
-# arr（多项式，a1-an的数组）
-# n（项数）
-# x（x的值）
-def Horner_rule(arr, n, x):
-    i &#x3D; 0
-    ans &#x3D; 0
-    while i &lt; n:
-        ans &#x3D; arr[i] + x * ans
-        i+&#x3D;1
-    print(ans)
-    return ans
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 霍纳法则</span>
+<span class="token comment"># arr（多项式，a1-an的数组）</span>
+<span class="token comment"># n（项数）</span>
+<span class="token comment"># x（x的值）</span>
+<span class="token keyword">def</span> <span class="token function">Horner_rule</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    ans <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">:</span>
+        ans <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> x <span class="token operator">*</span> ans
+        i<span class="token operator">+=</span><span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> ans
 
-if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
-    arr &#x3D; [1 for i in range(0,10)]
-    print(arr)
-    x &#x3D; 4
-    n &#x3D; 4
-    Horner_rule(arr,4,4)</code></pre>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+    x <span class="token operator">=</span> <span class="token number">4</span>
+    n <span class="token operator">=</span> <span class="token number">4</span>
+    Horner_rule<span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
       </div>
@@ -2328,5 +2328,5 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,11 +661,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 1.5k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 1.2k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 8分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 6分钟 |
           </span>
   
           
@@ -692,302 +692,302 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F;
-&#x2F;&#x2F; Created by Administrator on 2022&#x2F;10&#x2F;7.
-&#x2F;&#x2F; 描述顺序线性表这种常用的数据结构
-&#x2F;&#x2F;
+        <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//</span>
+<span class="token comment">// Created by Administrator on 2022/10/7.</span>
+<span class="token comment">// 描述顺序线性表这种常用的数据结构</span>
+<span class="token comment">//</span>
 
-#include &lt;stdio.h&gt;
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
-#define MAXSIZE 100
-#define ElemType int
-#define OK 1
-#define ERROR 0
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAXSIZE</span> <span class="token expression"><span class="token number">100</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ElemType</span> <span class="token expression"><span class="token keyword">int</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">OK</span> <span class="token expression"><span class="token number">1</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ERROR</span> <span class="token expression"><span class="token number">0</span></span></span>
 
-typedef int Status;
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> Status<span class="token punctuation">;</span>
 
-&#x2F;&#x2F; 定义一个存储整形int的顺序表，最大长度为100，实际长度为length
-typedef struct &#123;
-    ElemType data[MAXSIZE];
-    int length;
-&#125; SqList;
+<span class="token comment">// 定义一个存储整形int的顺序表，最大长度为100，实际长度为length</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    ElemType data<span class="token punctuation">[</span>MAXSIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> length<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> SqList<span class="token punctuation">;</span>
 
-&#x2F;&#x2F; 初始化线性表
-int initSqList(SqList *L, ElemType a[], int n) &#123;
-    if (n &gt; MAXSIZE) &#123;
-        printf(&quot;failed!&quot;);
-        return ERROR;
-    &#125;
-    for (int i &#x3D; 0; i &lt; n; i++)
-        L-&gt;data[i] &#x3D; a[i];
-    L-&gt;length &#x3D; n;
-    return OK;
-&#125;
+<span class="token comment">// 初始化线性表</span>
+<span class="token keyword">int</span> <span class="token function">initSqList</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">,</span> ElemType a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> MAXSIZE<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        L<span class="token operator">-></span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    L<span class="token operator">-></span>length <span class="token operator">=</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 获取元素
-&#x2F;&#x2F; 获取L的第i个元素，并用e返回值
-Status GetElem(SqList L, int i, ElemType *e) &#123;
-    if (L.length &#x3D;&#x3D; 0 || i &lt; 1 || i &gt; L.length)
-        return ERROR;
-    *e &#x3D; L.data[i - 1];
-    return OK;
-&#125;
+<span class="token comment">// 获取元素</span>
+<span class="token comment">// 获取L的第i个元素，并用e返回值</span>
+Status <span class="token function">GetElem</span><span class="token punctuation">(</span>SqList L<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ElemType <span class="token operator">*</span>e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>L<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> i <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token operator">||</span> i <span class="token operator">></span> L<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token operator">*</span>e <span class="token operator">=</span> L<span class="token punctuation">.</span>data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 插入元素
-&#x2F;&#x2F; 在L的第i个位置，插入元素e，L长度加一
-Status InsertElem(SqList *L, int i, ElemType e) &#123;
-    int k;
-    if (L-&gt;length &#x3D;&#x3D; MAXSIZE)
-        return ERROR;
-    if (i &lt; 1 || i &gt; L-&gt;length + 1)
-        return ERROR;
-    if (i &lt;&#x3D; L-&gt;length) &#123;
-        for (k &#x3D; L-&gt;length - 1; k &gt;&#x3D; i - 1; k--)
-            L-&gt;data[k + 1] &#x3D; L-&gt;data[k];
-    &#125;
-    L-&gt;data[i - 1] &#x3D; e;
-    L-&gt;length++;
-    return OK;
-&#125;
+<span class="token comment">// 插入元素</span>
+<span class="token comment">// 在L的第i个位置，插入元素e，L长度加一</span>
+Status <span class="token function">InsertElem</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ElemType e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> k<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>L<span class="token operator">-></span>length <span class="token operator">==</span> MAXSIZE<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">1</span> <span class="token operator">||</span> i <span class="token operator">></span> L<span class="token operator">-></span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> L<span class="token operator">-></span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> L<span class="token operator">-></span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">>=</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
+            L<span class="token operator">-></span>data<span class="token punctuation">[</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token operator">-></span>data<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    L<span class="token operator">-></span>data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    L<span class="token operator">-></span>length<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 打印线性表
-void PrintElem(SqList *L) &#123;
-    for (int i &#x3D; 0; i &lt; L-&gt;length; i++) &#123;
-        printf(&quot;%d\t&quot;, L-&gt;data[i]);
-    &#125;
-    printf(&quot;\n&quot;);
-&#125;
+<span class="token comment">// 打印线性表</span>
+<span class="token keyword">void</span> <span class="token function">PrintElem</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> L<span class="token operator">-></span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\t"</span><span class="token punctuation">,</span> L<span class="token operator">-></span>data<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 删除元素
-&#x2F;&#x2F; 删除L的第i个元素，并且e返回值，L的长度减1
-Status DeleteElem(SqList *L, int i, ElemType *e) &#123;
-    int k;
-    if (L-&gt;length &#x3D;&#x3D; 0) &#123;
-        return ERROR;
-    &#125;
-    if (i &gt; L-&gt;length || i &lt; 1) &#123;
-        return ERROR;
-    &#125;
-    *e &#x3D; L-&gt;data[i - 1];
-    if (i &lt; L-&gt;length) &#123;
-        for (k &#x3D; i; k &lt; L-&gt;length; k++) &#123;
-            L-&gt;data[k - 1] &#x3D; L-&gt;data[k];
-        &#125;
-    &#125;
-    L-&gt;length--;
-    return OK;
-&#125;
+<span class="token comment">// 删除元素</span>
+<span class="token comment">// 删除L的第i个元素，并且e返回值，L的长度减1</span>
+Status <span class="token function">DeleteElem</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ElemType <span class="token operator">*</span>e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> k<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>L<span class="token operator">-></span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> L<span class="token operator">-></span>length <span class="token operator">||</span> i <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token operator">*</span>e <span class="token operator">=</span> L<span class="token operator">-></span>data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> L<span class="token operator">-></span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>k <span class="token operator">=</span> i<span class="token punctuation">;</span> k <span class="token operator">&lt;</span> L<span class="token operator">-></span>length<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            L<span class="token operator">-></span>data<span class="token punctuation">[</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> L<span class="token operator">-></span>data<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    L<span class="token operator">-></span>length<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 修改元素
-&#x2F;&#x2F; 修改L的第i个元素为e
-Status UpdateElem(SqList *L, int i, ElemType e) &#123;
-    if (L-&gt;length &#x3D;&#x3D; 0)
-        return ERROR;
-    if (i &gt; L-&gt;length || i &lt; 1)
-        return ERROR;
-    L-&gt;data[i - 1] &#x3D; e;
-    return OK;
+<span class="token comment">// 修改元素</span>
+<span class="token comment">// 修改L的第i个元素为e</span>
+Status <span class="token function">UpdateElem</span><span class="token punctuation">(</span>SqList <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> ElemType e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>L<span class="token operator">-></span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> L<span class="token operator">-></span>length <span class="token operator">||</span> i <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    L<span class="token operator">-></span>data<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-int main() &#123;
-    SqList L;
-    ElemType e;
-    int data[] &#x3D; &#123;1, 10, 2, 3, 1, 5&#125;;
-    initSqList(&amp;L, data, 6);
-    PrintElem(&amp;L);
-    GetElem(L, 3, &amp;e);
-    printf(&quot;获取到了元素：%d\n&quot;, e);
-    InsertElem(&amp;L, 5, 10);
-    PrintElem(&amp;L);
-    DeleteElem(&amp;L, 1, &amp;e);
-    printf(&quot;删除了元素：%d\n&quot;, e);
-    PrintElem(&amp;L);
-    UpdateElem(&amp;L,2,100);
-    PrintElem(&amp;L);
-&#125;</code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    SqList L<span class="token punctuation">;</span>
+    ElemType e<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token function">initSqList</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">GetElem</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"获取到了元素：%d\n"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">InsertElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">DeleteElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"删除了元素：%d\n"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">UpdateElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintElem</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F;
-&#x2F;&#x2F; Created by Administrator on 2022&#x2F;10&#x2F;9.
-&#x2F;&#x2F;
-#include &lt;stdio.h&gt;
-#include &lt;malloc.h&gt;
+<h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//</span>
+<span class="token comment">// Created by Administrator on 2022/10/9.</span>
+<span class="token comment">//</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;malloc.h></span></span>
 
-#define OK 1
-#define ERROR 0
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">OK</span> <span class="token expression"><span class="token number">1</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ERROR</span> <span class="token expression"><span class="token number">0</span></span></span>
 
-typedef int DataType;
-typedef int Status;
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> DataType<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> Status<span class="token punctuation">;</span>
 
-typedef struct Node &#123;
-    DataType data;
-    struct Node *next;
-&#125; Node;
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">Node</span> <span class="token punctuation">&#123;</span>
+    DataType data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> <span class="token class-name">Node</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> Node<span class="token punctuation">;</span>
 
-&#x2F;&#x2F; 初始化链表
-Node *InitList() &#123;
-    Node *first &#x3D; (Node *) malloc(sizeof(Node));
-    first-&gt;next &#x3D; NULL;
-    return first;
-&#125;
+<span class="token comment">// 初始化链表</span>
+Node <span class="token operator">*</span><span class="token function">InitList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>first <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> first<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 输出链表
-void PrintNode(Node *first) &#123;
-    Node *p &#x3D; first-&gt;next;
-    printf(&quot;Node:&quot;);
-    while (p !&#x3D; NULL) &#123;
-        printf(&quot;%d-&gt;&quot;, p-&gt;data);
-        p &#x3D; p-&gt;next;
-    &#125;
-    printf(&quot;\n&quot;);
-&#125;
+<span class="token comment">// 输出链表</span>
+<span class="token keyword">void</span> <span class="token function">PrintNode</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Node:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d->"</span><span class="token punctuation">,</span> p<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 求链表长度
-int length(Node *first) &#123;
-    Node *p &#x3D; first-&gt;next;
-    int count &#x3D; 0;
-    while (p !&#x3D; NULL) &#123;
-        p &#x3D; p-&gt;next;
-        count++;
-    &#125;
-    return count;
-&#125;
+<span class="token comment">// 求链表长度</span>
+<span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 头插法建立单链表
-Node *CreateList_head(DataType a[], int n) &#123;
-    Node *s &#x3D; NULL;
-    Node *first &#x3D; (Node *) malloc(sizeof(Node));
-    first-&gt;next &#x3D; NULL; &#x2F;&#x2F; 初始化头结点
-    for (int i &#x3D; 0; i &lt; n; i++) &#123;
-        s &#x3D; (Node *) malloc(sizeof(Node)); &#x2F;&#x2F; 申请内存
-        s-&gt;data &#x3D; a[i];
-        s-&gt;next &#x3D; first-&gt;next; &#x2F;&#x2F; 将结点s插入头结点之后
-        first-&gt;next &#x3D; s;
-    &#125;
-    return first;
-&#125;
+<span class="token comment">// 头插法建立单链表</span>
+Node <span class="token operator">*</span><span class="token function">CreateList_head</span><span class="token punctuation">(</span>DataType a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>first <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    first<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 初始化头结点</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        s <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 申请内存</span>
+        s<span class="token operator">-></span>data <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        s<span class="token operator">-></span>next <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span> <span class="token comment">// 将结点s插入头结点之后</span>
+        first<span class="token operator">-></span>next <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> first<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 尾插法建立单链表
-Node *CreateList_end(DataType a[], int n) &#123;
-    Node *s &#x3D; NULL;
-    Node *r &#x3D; NULL;
-    Node *first &#x3D; (Node *) malloc(sizeof(Node)); &#x2F;&#x2F; 生成头结点
-    r &#x3D; first; &#x2F;&#x2F; 尾指针初始化
-    for (int i &#x3D; 0; i &lt; n; i++) &#123;
-        s &#x3D; (Node *) malloc(sizeof(Node));
-        s-&gt;data &#x3D; a[i];
-        r-&gt;next &#x3D; s; &#x2F;&#x2F; 将结点s插到尾指针之后
-        r &#x3D; s;
-    &#125;
-    r-&gt;next &#x3D; NULL; &#x2F;&#x2F; 单链表建立完毕，将尾指针指针域置空
-    return first;
-&#125;
+<span class="token comment">// 尾插法建立单链表</span>
+Node <span class="token operator">*</span><span class="token function">CreateList_end</span><span class="token punctuation">(</span>DataType a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>r <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>first <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 生成头结点</span>
+    r <span class="token operator">=</span> first<span class="token punctuation">;</span> <span class="token comment">// 尾指针初始化</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        s <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s<span class="token operator">-></span>data <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        r<span class="token operator">-></span>next <span class="token operator">=</span> s<span class="token punctuation">;</span> <span class="token comment">// 将结点s插到尾指针之后</span>
+        r <span class="token operator">=</span> s<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    r<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span> <span class="token comment">// 单链表建立完毕，将尾指针指针域置空</span>
+    <span class="token keyword">return</span> first<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 插入元素
-Status Insert(Node *first, int i, DataType x) &#123;
-    Node *s &#x3D; NULL;
-    Node *p &#x3D; first; &#x2F;&#x2F; 指针初始化，指向头结点
-    int count &#x3D; 0;
-    while (p !&#x3D; NULL &amp;&amp; count &lt; i) &#123; &#x2F;&#x2F; 查找第i-1个节点
-        p &#x3D; p-&gt;next;
-        count++;
-    &#125;
-    if (p &#x3D;&#x3D; NULL) &#123;
-        printf(&quot;error location cannot insert!\n&quot;);\
-        return 0;
-    &#125; else &#123;
-        s &#x3D; (Node *) malloc(sizeof(Node)); &#x2F;&#x2F; 创建一个新节点
-        s-&gt;data &#x3D; x;
-        s-&gt;next &#x3D; p-&gt;next; &#x2F;&#x2F; 将结点插入到p之后
-        p-&gt;next &#x3D; s;
-        return OK;
-    &#125;
-&#125;
+<span class="token comment">// 插入元素</span>
+Status <span class="token function">Insert</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> DataType x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>s <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token punctuation">;</span> <span class="token comment">// 指针初始化，指向头结点</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> count <span class="token operator">&lt;</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 查找第i-1个节点</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"error location cannot insert!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        s <span class="token operator">=</span> <span class="token punctuation">(</span>Node <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Node<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新节点</span>
+        s<span class="token operator">-></span>data <span class="token operator">=</span> x<span class="token punctuation">;</span>
+        s<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span> <span class="token comment">// 将结点插入到p之后</span>
+        p<span class="token operator">-></span>next <span class="token operator">=</span> s<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 删除元素
-Status Delete(Node *first, int i, DataType *ptr) &#123;
-    Node *p &#x3D; first; &#x2F;&#x2F; 指针指向头结点
-    Node *q &#x3D; NULL;
-    int count &#x3D; 0;
-    while (p !&#x3D; NULL &amp;&amp; count &lt; i - 1) &#123; &#x2F;&#x2F; 查找第i-1个节点
-        p &#x3D; p-&gt;next;
-        count++;
-    &#125;
-    if (p &#x3D;&#x3D; NULL || p-&gt;next &#x3D;&#x3D; NULL) &#123; &#x2F;&#x2F; p节点或者p的后置节点不存在
-        printf(&quot;ERROR location!&quot;);
-    &#125; else &#123; &#x2F;&#x2F; 找到i节点并删除，通过指针*ptr返回删除后的数据
-        q &#x3D; p-&gt;next;
-        *ptr &#x3D; q-&gt;data;
-        p-&gt;next &#x3D; q-&gt;next;
-        free(q);
-        return OK;
-    &#125;
-&#125;
+<span class="token comment">// 删除元素</span>
+Status <span class="token function">Delete</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> DataType <span class="token operator">*</span>ptr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token punctuation">;</span> <span class="token comment">// 指针指向头结点</span>
+    Node <span class="token operator">*</span>q <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> count <span class="token operator">&lt;</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 查找第i-1个节点</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> p<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// p节点或者p的后置节点不存在</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ERROR location!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 找到i节点并删除，通过指针*ptr返回删除后的数据</span>
+        q <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token operator">*</span>ptr <span class="token operator">=</span> q<span class="token operator">-></span>data<span class="token punctuation">;</span>
+        p<span class="token operator">-></span>next <span class="token operator">=</span> q<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 删除单链表
-Status Destory(Node *first) &#123;
-    Node *p &#x3D; first;
-    while (p !&#x3D; NULL) &#123;
-        first &#x3D; first-&gt;next;
-        free(p);
-        p &#x3D; first;
-    &#125;
-&#125;
+<span class="token comment">// 删除单链表</span>
+Status <span class="token function">Destory</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        first <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p <span class="token operator">=</span> first<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 判断链表是否为空
-Status isEmpty(Node *first) &#123;
-    if (first-&gt;next &#x3D;&#x3D; NULL) &#123;
-        return OK;
-    &#125; else &#123;
-        return ERROR;
-    &#125;
-&#125;
+<span class="token comment">// 判断链表是否为空</span>
+Status <span class="token function">isEmpty</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>first<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> ERROR<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 按值查找位置
-int locate(Node *first, DataType x) &#123;
-    Node *p &#x3D; first-&gt;next;
-    int count &#x3D; 1;
-    while (p !&#x3D; NULL) &#123;
-        if (p-&gt;data &#x3D;&#x3D; x) &#123;
-            return count;
-        &#125;
-        p &#x3D; p-&gt;next;
-        count++;
-    &#125;
-    return 0;
-&#125;
+<span class="token comment">// 按值查找位置</span>
+<span class="token keyword">int</span> <span class="token function">locate</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">,</span> DataType x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-></span>data <span class="token operator">==</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;&#x2F; 按照位置查找
-int Get(Node *first, int i, DataType *ptr) &#123;
-    Node *p &#x3D; first-&gt;next;
-    int count &#x3D; 1;
-    while (p !&#x3D; NULL &amp;&amp; count &lt; i) &#123;
-        p &#x3D; p-&gt;next;
-        count++;
-    &#125;
-    if (p &#x3D;&#x3D; NULL) &#123;
-        printf(&quot;error location!&quot;);
-    &#125; else &#123;
-        *ptr &#x3D; p-&gt;data;
-        return OK;
-    &#125;
-&#125;
+<span class="token comment">// 按照位置查找</span>
+<span class="token keyword">int</span> <span class="token function">Get</span><span class="token punctuation">(</span>Node <span class="token operator">*</span>first<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> DataType <span class="token operator">*</span>ptr<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    Node <span class="token operator">*</span>p <span class="token operator">=</span> first<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> count <span class="token operator">&lt;</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        count<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"error location!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token operator">*</span>ptr <span class="token operator">=</span> p<span class="token operator">-></span>data<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> OK<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-int main() &#123;
-    DataType x;
-    int data[5] &#x3D; &#123;1, 2, 3, 4, 5&#125;;
-    Node *first &#x3D; CreateList_head(data, 5);
-    Node *last &#x3D; CreateList_end(data, 5);
-    PrintNode(first);
-    printf(&quot;链表的长度为：%d\n&quot;, length(first));
-    PrintNode(last);
-    printf(&quot;链表的长度为：%d\n&quot;, length(last));
-    Insert(first, 1, 10);
-    PrintNode(first);
-    Delete(first, 3, &amp;x);
-    PrintNode(first);
-    return 0;
-&#125;</code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    DataType x<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>first <span class="token operator">=</span> <span class="token function">CreateList_head</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Node <span class="token operator">*</span>last <span class="token operator">=</span> <span class="token function">CreateList_end</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintNode</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"链表的长度为：%d\n"</span><span class="token punctuation">,</span> <span class="token function">length</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintNode</span><span class="token punctuation">(</span>last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"链表的长度为：%d\n"</span><span class="token punctuation">,</span> <span class="token function">length</span><span class="token punctuation">(</span>last<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Insert</span><span class="token punctuation">(</span>first<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintNode</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Delete</span><span class="token punctuation">(</span>first<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PrintNode</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>循环链表</p>
 <p>双向链表</p>
@@ -2551,5 +2551,5 @@ int main() &#123;
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

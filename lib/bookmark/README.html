@@ -615,7 +615,7 @@
     
     <link href="/js/prism/prism-line-numbers.css" rel="stylesheet">
     
-        <link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="/js/prism/prism.min.css" rel="stylesheet">
     
 
     <style>
@@ -661,7 +661,7 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 217 |
+            <i class="fas fa-file-text-o"></i> 字数统计: 200 |
           </span>
   
           <span class="min2read">
@@ -706,29 +706,29 @@
 <h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
 
 <p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cd themes&#x2F;next
-$ ls
-bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  source  test</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> themes/next
+$ <span class="token function">ls</span>
+bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="token builtin class-name">source</span>  <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h2 align="center">Step 2 &rarr; Get module</h2>
 
 <p>Install module to <code>source/lib</code> directory:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-bookmark.git source&#x2F;lib&#x2F;bookmark</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> clone https://github.com/theme-next/theme-next-bookmark.git source/lib/bookmark<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 align="center">Step 3 &rarr; Set it up</h2>
 
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">bookmark: true</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">bookmark</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>And, if you wants to use the CDN, then need to set:</strong></p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">vendors:
-  ...
-  bookmark: https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;theme-next&#x2F;theme-next-bookmark@latest&#x2F;bookmark.min.js</code></pre>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">vendors</span><span class="token punctuation">:</span>
+  <span class="token punctuation">...</span>
+  <span class="token key atrule">bookmark</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//cdn.jsdelivr.net/gh/theme<span class="token punctuation">-</span>next/theme<span class="token punctuation">-</span>next<span class="token punctuation">-</span>bookmark@latest/bookmark.min.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h1 align="center">Update</h1>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ cd themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;bookmark
-$ git pull</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> themes/next/source/lib/bookmark
+$ <span class="token function">git</span> pull<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
       </div>
       <div class="post-tags-categories">
@@ -1276,7 +1276,7 @@ $ git pull</code></pre>
       
         <div class="webinfo-item">
           <div>本站总字数：</div>
-          <div>114.3k 字</div>
+          <div>111.7k 字</div>
         </div>
       
 
@@ -1302,7 +1302,7 @@ $ git pull</code></pre>
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Sun Jun 30 2024 01:19:40 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Sun Jun 30 2024 02:23:57 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2024-06-30 日</div>
           
         </div>
@@ -2418,5 +2418,5 @@ $ git pull</code></pre>
 
 
 
-  </body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
